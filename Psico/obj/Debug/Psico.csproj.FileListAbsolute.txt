@@ -1,0 +1,17 @@
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\bin\Debug\Psico.exe.config
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\bin\Debug\Psico.exe
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\bin\Debug\Psico.pdb
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\obj\Debug\Psico.csprojAssemblyReference.cache
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\obj\Debug\Psico.Properties.Resources.resources
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\obj\Debug\Psico.csproj.GenerateResource.cache
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\obj\Debug\Psico.csproj.CoreCompileInputs.cache
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\obj\Debug\Psico.exe
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\obj\Debug\Psico.pdb
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\obj\Debug\Psico.Autorization.resources
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\obj\Debug\Psico.SpisokZadach.resources
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\obj\Debug\Psico.Anketa.resources
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\obj\Debug\Psico.Vstuplenie.resources
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\obj\Debug\Psico.administrator.resources
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\obj\Debug\Psico.Zadacha.resources
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\obj\Debug\Psico.Fenom1.resources
+C:\Users\Овнер.DESKTOP-38O7FKR\Desktop\Psico\Psico\obj\Debug\Psico.Fenom2.resources
