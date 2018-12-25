@@ -81,7 +81,7 @@ namespace Psico
                 panel1.Controls.Add(checkBox);
                 kolvotext = checkBox.Text.Length;
 
-                if (kolvotext > 50)
+                if (kolvotext > 70)
                 {
                     checkBox.AutoSize = false;
                     checkBox.Width = 500;

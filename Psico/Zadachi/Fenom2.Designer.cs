@@ -46,9 +46,9 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.PowderBlue;
             this.panel2.Controls.Add(this.panel1);
-            this.panel2.Location = new System.Drawing.Point(12, 12);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1342, 744);
+            this.panel2.Size = new System.Drawing.Size(1366, 768);
             this.panel2.TabIndex = 9;
             // 
             // panel1
@@ -66,7 +66,7 @@
             this.panel1.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.panel1.Location = new System.Drawing.Point(9, 9);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1324, 726);
+            this.panel1.Size = new System.Drawing.Size(1345, 747);
             this.panel1.TabIndex = 2;
             // 
             // label4
@@ -96,7 +96,7 @@
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(1290, 3);
+            this.button3.Location = new System.Drawing.Point(1311, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(29, 28);
             this.button3.TabIndex = 33;

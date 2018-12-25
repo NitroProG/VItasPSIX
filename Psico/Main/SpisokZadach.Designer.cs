@@ -123,9 +123,9 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.PowderBlue;
             this.panel2.Controls.Add(this.panel1);
-            this.panel2.Location = new System.Drawing.Point(12, 12);
+            this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1342, 744);
+            this.panel2.Size = new System.Drawing.Size(1366, 768);
             this.panel2.TabIndex = 4;
             // 
             // SpisokZadach
