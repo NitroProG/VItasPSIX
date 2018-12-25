@@ -14,6 +14,7 @@ namespace Psico
     public partial class Zadacha : Form
     {
         string podzadacha;
+
         public Zadacha()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace Psico
         {
             SpisokZadach spisokZadach = new SpisokZadach();
             spisokZadach.Show();
-            this.Close();
+            Close();
         }
 
         private void Zadacha_Load(object sender, EventArgs e)
@@ -49,7 +50,32 @@ namespace Psico
                 case "1":
                         Fenom1 fenom1 = new Fenom1();
                         fenom1.Show();
-                        this.Close();
+                        Close();
+                    break;
+                case "2":
+                        teor1 teor1 = new teor1();
+                        teor1.Show();
+                        Close();
+                    break;
+                case "3":
+                        dpo dpo = new dpo();
+                        dpo.Show();
+                        Close();
+                    break;
+                case "4":
+                        dz1 dz1 = new dz1();
+                        dz1.Show();
+                        Close();
+                    break;
+                case "5":
+                        meropriyatiya1 meropriyatiya1 = new meropriyatiya1();
+                        meropriyatiya1.Show();
+                        Close();
+                    break;
+                case "6":
+                        katamnez katamnez = new katamnez();
+                        katamnez.Show();
+                        Close();
                     break;
                 default:
                     MessageBox.Show("МОЧА");
@@ -60,6 +86,31 @@ namespace Psico
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             podzadacha = "1";
+        }
+
+        private void radioButton4_CheckedChanged(object sender, EventArgs e)
+        {
+            podzadacha = "2";
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            podzadacha = "3";
+        }
+
+        private void radioButton5_CheckedChanged(object sender, EventArgs e)
+        {
+            podzadacha = "4";
+        }
+
+        private void radioButton3_CheckedChanged(object sender, EventArgs e)
+        {
+            podzadacha = "5";
+        }
+
+        private void radioButton6_CheckedChanged(object sender, EventArgs e)
+        {
+            podzadacha = "6";
         }
     }
 }

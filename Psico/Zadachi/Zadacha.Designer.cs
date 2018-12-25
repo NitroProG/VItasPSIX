@@ -117,6 +117,7 @@
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "Катамнез";
             this.radioButton6.UseVisualStyleBackColor = true;
+            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
             // 
             // radioButton5
             // 
@@ -129,6 +130,7 @@
             this.radioButton5.TabStop = true;
             this.radioButton5.Text = "Диагностическое заключение";
             this.radioButton5.UseVisualStyleBackColor = true;
+            this.radioButton5.CheckedChanged += new System.EventHandler(this.radioButton5_CheckedChanged);
             // 
             // radioButton4
             // 
@@ -141,6 +143,7 @@
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "Теоретический конструкт и гипотезы";
             this.radioButton4.UseVisualStyleBackColor = true;
+            this.radioButton4.CheckedChanged += new System.EventHandler(this.radioButton4_CheckedChanged);
             // 
             // radioButton3
             // 
@@ -153,6 +156,7 @@
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "Предположенные мероприятия";
             this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.radioButton3_CheckedChanged);
             // 
             // radioButton2
             // 
@@ -165,6 +169,7 @@
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "Данные психологического обследования";
             this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // radioButton1
             // 

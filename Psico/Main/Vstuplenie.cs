@@ -21,7 +21,7 @@ namespace Psico
         {
             SpisokZadach spisokZadach = new SpisokZadach();
             spisokZadach.Show();
-            this.Close();
+            Close();
         }
 
         private void button3_Click(object sender, EventArgs e)

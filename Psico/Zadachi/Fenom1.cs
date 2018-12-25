@@ -26,7 +26,7 @@ namespace Psico
         {
             Zadacha zadacha = new Zadacha();
             zadacha.Show();
-            this.Close();
+            Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -71,7 +71,7 @@ namespace Psico
                 radioButton.Text = Convert.ToString(datagr.Rows[i-1].Cells[0].Value);
                 radioButton.Location = new Point(17, y);
                 radioButton.AutoSize = true;
-                radioButton.CheckedChanged += this.radiobutton_checkedchanged;
+                radioButton.CheckedChanged += radiobutton_checkedchanged;
                 panel1.Controls.Add(radioButton);
                 y = y + 30;
             }
@@ -94,7 +94,7 @@ namespace Psico
         {
             Fenom2 fenom2 = new Fenom2();
             fenom2.Show();
-            this.Close();
+            Close();
         }
     }
 }

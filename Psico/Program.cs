@@ -16,7 +16,7 @@ namespace Psico
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Autorization());
+            Application.Run(new SpisokZadach());
         }
 
         public static int NomerZadachi;

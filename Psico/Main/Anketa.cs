@@ -70,7 +70,7 @@ namespace Psico
         {
             Autorization autorization = new Autorization();
             autorization.Show();
-            this.Close();
+            Close();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -85,7 +85,7 @@ namespace Psico
             {
                 Vstuplenie vstuplenie = new Vstuplenie();
                 vstuplenie.Show();
-                this.Close();
+                Close();
             }
             else
             {

@@ -43,7 +43,7 @@ namespace Psico
             {
                 administrator administrator = new administrator();
                 administrator.Show();
-                this.Hide();
+                Hide();
             }
             else
             {
@@ -61,7 +61,7 @@ namespace Psico
                 {
                     Anketa anketa = new Anketa();
                     anketa.Show();
-                    this.Hide();
+                    Hide();
                 }
                 else
                 {

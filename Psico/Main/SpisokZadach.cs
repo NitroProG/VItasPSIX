@@ -22,7 +22,7 @@ namespace Psico
         {
             Autorization autorization = new Autorization();
             autorization.Show();
-            this.Close();
+            Close();
         }
 
         private void SpisokZadach_Load(object sender, EventArgs e)
@@ -42,7 +42,7 @@ namespace Psico
             Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedIndex) + 1;
             Zadacha zadacha = new Zadacha();
             zadacha.Show();
-            this.Close();
+            Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
