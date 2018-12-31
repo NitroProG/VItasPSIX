@@ -120,6 +120,7 @@
             this.richTextBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBox1.Location = new System.Drawing.Point(699, 132);
             this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
             this.richTextBox1.Size = new System.Drawing.Size(603, 331);
             this.richTextBox1.TabIndex = 34;
             this.richTextBox1.Text = "";
@@ -131,7 +132,7 @@
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(1290, 3);
+            this.button3.Location = new System.Drawing.Point(1311, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(29, 28);
             this.button3.TabIndex = 33;

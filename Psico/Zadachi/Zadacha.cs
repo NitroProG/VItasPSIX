@@ -41,6 +41,27 @@ namespace Psico
             SqlDataReader dr = get_otd_name.ExecuteReader();
             dr.Read();
             label3.Text = dr["Zapros"].ToString();
+
+            switch (Program.diagnoz)
+            {
+                case 1:
+                    label4.Text = "Диагноз не правильный";
+                    label4.ForeColor = Color.Red;
+                    break;
+                case 2:
+                    label4.Text = "Диагноз частично правильный";
+                    label4.ForeColor = Color.Green;
+                    break;
+                case 3:
+                    label4.Text = "Диагноз правильный";
+                    label4.ForeColor = Color.Lime;
+                    radioButton3.Enabled = true;
+                    radioButton6.Enabled = true;
+                    break;
+                default:
+                    label4.Text = "";
+                    break;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

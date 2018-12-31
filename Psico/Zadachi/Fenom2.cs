@@ -45,6 +45,8 @@ namespace Psico
         {
             label2.Text = Convert.ToString(Program.NomerZadachi);
 
+            richTextBox1.Text = Program.fenomenologiya;
+
             con.Open(); // подключение к БД
 
             SqlCommand Zaprosi = new SqlCommand("select Zapros from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);

@@ -34,6 +34,8 @@ namespace Psico
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Program.gipotezi = richTextBox2.Text;
+
             teor2 teor2 = new teor2();
             teor2.Show();
             Close();
@@ -42,6 +44,9 @@ namespace Psico
         private void teor1_Load(object sender, EventArgs e)
         {
             label2.Text = Convert.ToString(Program.NomerZadachi);
+
+            richTextBox1.Text = Program.fenomenologiya;
+            richTextBox2.Text = Program.gipotezi;
 
             con.Open(); // подключение к БД
 

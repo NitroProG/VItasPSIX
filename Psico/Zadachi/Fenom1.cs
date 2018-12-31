@@ -38,6 +38,9 @@ namespace Psico
         {
             label2.Text = Convert.ToString(Program.NomerZadachi);
 
+            richTextBox2.Text = Program.fenomenologiya;
+            richTextBox3.Text = Program.glavsved;
+
             con.Open(); // подключение к БД
 
             SqlCommand Zaprosi = new SqlCommand("select Zapros from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
@@ -64,7 +67,7 @@ namespace Psico
             panel1.Controls.Add(datagr);
             datagr.Visible = false;
 
-            for (int y = 132, i = 1; i < kolvoRb; i++)
+            for (int y = 150, i = 1; i < kolvoRb; i++)
             {
                 RadioButton radioButton = new RadioButton();
                 radioButton.Name = "radiobutton" + i + "";
@@ -92,6 +95,9 @@ namespace Psico
 
         private void button1_Click(object sender, EventArgs e)
         {
+            Program.fenomenologiya = richTextBox2.Text;
+            Program.glavsved = richTextBox3.Text;
+
             Fenom2 fenom2 = new Fenom2();
             fenom2.Show();
             Close();

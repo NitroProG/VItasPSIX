@@ -69,6 +69,7 @@ create table [dbo].[dpo]
 [lb] varchar(max) not null,
 [lbtext] varchar(max) not null,
 [lb_image] varchar(max) null,
+[lb_image2] varchar(max) null,
 [zadacha_id] int not null
 constraint [id_dpo] primary key clustered
 	([id_dpo]ASC) on [primary],
@@ -84,6 +85,17 @@ create table [dbo].[dz]
 constraint [id_dz] primary key clustered
 	([id_dz]ASC) on [primary],
 CONSTRAINT [FK_Zadacha3_id] FOREIGN KEY ([Zadacha_id])
+	REFERENCES [DBO].[Zadacha]([id_Zadacha])
+)
+
+create table [dbo].[vernotv]
+(
+[id_vernotv] int not null identity (1,1),
+[otv] varchar(max) not null,
+[zadacha_id] int not null
+constraint [id_vernotv] primary key clustered
+	([id_vernotv]ASC) on [primary],
+CONSTRAINT [FK_Zadacha6_id] FOREIGN KEY ([Zadacha_id])
 	REFERENCES [DBO].[Zadacha]([id_Zadacha])
 )
 

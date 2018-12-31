@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -153,6 +168,15 @@
     <EmbeddedResource Include="Main\Autorization.resx">
       <DependentUpon>Autorization.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Zadachi\dpo.resx">
+      <DependentUpon>dpo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Zadachi\dz1.resx">
+      <DependentUpon>dz1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Zadachi\dz2.resx">
+      <DependentUpon>dz2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Zadachi\Fenom1.resx">
       <DependentUpon>Fenom1.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,6 +197,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Zadachi\Fenom2.resx">
       <DependentUpon>Fenom2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Zadachi\katamnez.resx">
+      <DependentUpon>katamnez.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Zadachi\meropriyatiya1.resx">
+      <DependentUpon>meropriyatiya1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Zadachi\meropriyatiya2.resx">
+      <DependentUpon>meropriyatiya2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Zadachi\teor1.resx">
       <DependentUpon>teor1.cs</DependentUpon>
@@ -195,6 +228,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database1.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database1_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>Database1.mdf</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

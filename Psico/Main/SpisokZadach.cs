@@ -35,6 +35,15 @@ namespace Psico
             dt.Load(dr);
             comboBox1.DataSource = dt;
             comboBox1.ValueMember = "ido";
+
+            Program.fenomenologiya = "";
+            Program.glavsved = "";
+            Program.gipotezi = "";
+            Program.obsledovaniya = "";
+            Program.zakluch = "";
+            Program.zaklOTV = 0;
+            Program.NeVernOtv = 0;
+            Program.diagnoz = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -48,6 +57,18 @@ namespace Psico
         private void button3_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Width = 1920;
+            Height = 1080;
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Width = 1080;
+            Height = 768;
         }
     }
 }

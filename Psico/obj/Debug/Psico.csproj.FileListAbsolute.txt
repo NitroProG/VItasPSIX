@@ -34,3 +34,11 @@ C:\Users\Овнер.DESKTOP-38O7FKR\Documents\GitHub\Psico\VItasPSIX\Psico\bin\D
 C:\Users\Овнер.DESKTOP-38O7FKR\Documents\GitHub\Psico\VItasPSIX\Psico\bin\Debug\Psico.pdb
 C:\Users\Овнер.DESKTOP-38O7FKR\Documents\GitHub\Psico\VItasPSIX\Psico\obj\Debug\Psico.teor1.resources
 C:\Users\Овнер.DESKTOP-38O7FKR\Documents\GitHub\Psico\VItasPSIX\Psico\obj\Debug\Psico.teor2.resources
+C:\Users\Овнер.DESKTOP-38O7FKR\Documents\GitHub\Psico\VItasPSIX\Psico\obj\Debug\Psico.dz1.resources
+C:\Users\Овнер.DESKTOP-38O7FKR\Documents\GitHub\Psico\VItasPSIX\Psico\obj\Debug\Psico.dz2.resources
+C:\Users\Овнер.DESKTOP-38O7FKR\Documents\GitHub\Psico\VItasPSIX\Psico\obj\Debug\Psico.katamnez.resources
+C:\Users\Овнер.DESKTOP-38O7FKR\Documents\GitHub\Psico\VItasPSIX\Psico\obj\Debug\Psico.meropriyatiya1.resources
+C:\Users\Овнер.DESKTOP-38O7FKR\Documents\GitHub\Psico\VItasPSIX\Psico\obj\Debug\Psico.meropriyatiya2.resources
+C:\Users\Овнер.DESKTOP-38O7FKR\Documents\GitHub\Psico\VItasPSIX\Psico\obj\Debug\Psico.dpo.resources
+C:\Users\Овнер.DESKTOP-38O7FKR\Documents\GitHub\Psico\VItasPSIX\Psico\bin\Debug\Database1.mdf
+C:\Users\Овнер.DESKTOP-38O7FKR\Documents\GitHub\Psico\VItasPSIX\Psico\bin\Debug\Database1_log.ldf
