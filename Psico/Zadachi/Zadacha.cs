@@ -14,6 +14,7 @@ namespace Psico
     public partial class Zadacha : Form
     {
         string podzadacha;
+        SqlConnection con = new SqlConnection("Data Source=DESKTOP-38O7FKR\\FILESBD;initial catalog=psico; Persist Security info = True; User ID = sa; Password = D6747960f");
 
         public Zadacha()
         {
@@ -27,33 +28,54 @@ namespace Psico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            SpisokZadach spisokZadach = new SpisokZadach();
-            spisokZadach.Show();
-            Close();
+            if (Program.diagnoz == 3)
+            {
+                DialogResult result = MessageBox.Show("Если вы перейдёте к списку задач, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.OK)
+                {
+                    SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
+                    StrPrc1.CommandType = CommandType.StoredProcedure;
+                    StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
+                    StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
+                    StrPrc1.ExecuteNonQuery();
+                    SpisokZadach spisokZadach = new SpisokZadach();
+                    spisokZadach.Show();
+                    Close();
+                }
+            }
+            else
+            {
+                SpisokZadach spisokZadach = new SpisokZadach();
+                spisokZadach.Show();
+                Close();
+            }
         }
 
         private void Zadacha_Load(object sender, EventArgs e)
         {
-            label2.Text = Convert.ToString(Program.NomerZadachi);
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-38O7FKR\\FILESBD;initial catalog=psico; Persist Security info = True; User ID = sa; Password = D6747960f");
+            label2.Text = Convert.ToString(Program.NomerZadachi) + "  -";
             con.Open(); // подключение к БД
-            SqlCommand get_otd_name = new SqlCommand("select Zapros from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
+            SqlCommand get_otd_name = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
             SqlDataReader dr = get_otd_name.ExecuteReader();
             dr.Read();
             label3.Text = dr["Zapros"].ToString();
+            label5.Text = dr["sved"].ToString();
+            dr.Close();
 
             switch (Program.diagnoz)
             {
                 case 1:
-                    label4.Text = "Диагноз не правильный";
+                    label4.Text = "Диагноз неверный";
                     label4.ForeColor = Color.Red;
                     break;
                 case 2:
-                    label4.Text = "Диагноз частично правильный";
+                    label4.Text = "Диагноз частично верный";
                     label4.ForeColor = Color.Green;
                     break;
                 case 3:
-                    label4.Text = "Диагноз правильный";
+                    label4.Text = "Диагноз верный";
                     label4.ForeColor = Color.Lime;
                     radioButton3.Enabled = true;
                     radioButton6.Enabled = true;

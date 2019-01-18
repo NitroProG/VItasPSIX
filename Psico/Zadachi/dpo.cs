@@ -17,6 +17,7 @@ namespace Psico
         int kolvolb;
         DataGridView datagr = new DataGridView();
         int kolvotext;
+        string smalltext;
 
         public dpo()
         {
@@ -25,16 +26,17 @@ namespace Psico
 
         private void dpo_Load(object sender, EventArgs e)
         {
-            label2.Text = Convert.ToString(Program.NomerZadachi);
+            label2.Text = Convert.ToString(Program.NomerZadachi) + "  -";
 
             richTextBox1.Text = Program.gipotezi;
 
             con.Open(); // подключение к БД
 
-            SqlCommand Zaprosi = new SqlCommand("select Zapros from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
+            SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
             SqlDataReader dr = Zaprosi.ExecuteReader();
             dr.Read();
             label3.Text = dr["Zapros"].ToString();
+            label6.Text = dr["sved"].ToString();
             dr.Close();
 
             SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from dpo where zadacha_id = " + Program.NomerZadachi + "", con);
@@ -46,7 +48,7 @@ namespace Psico
 
             datagr.Name = "datagrview";
             datagr.Location = new Point(300, 300);
-            SqlDataAdapter da1 = new SqlDataAdapter("select lb, lbtext, lb_image, lb_image2 from dpo where zadacha_id = " + Program.NomerZadachi + "", con);
+            SqlDataAdapter da1 = new SqlDataAdapter("select lb_small,lb, lbtext, lb_image, lb_image2 from dpo where zadacha_id = " + Program.NomerZadachi + "", con);
             SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
             DataSet ds1 = new DataSet();
             da1.Fill(ds1, "dpo");
@@ -78,13 +80,37 @@ namespace Psico
                 pb.Width = 680;
                 pb.Height = 250;
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                pb.Click += pb_click;
                 panel1.Controls.Add(pb);
+                pb.Cursor = Cursors.SizeNESW;
             }
             else rtb.Height = 500;
 
             for (int i = 1; i < kolvolb; i++)
             {
-                listBox1.Items.Add(Convert.ToString(datagr.Rows[i-1].Cells[0].Value));
+                smalltext = Convert.ToString(datagr.Rows[i - 1].Cells[0].Value);
+                if (smalltext != "")
+                {
+                    listBox1.Items.Add(Convert.ToString(datagr.Rows[i - 1].Cells[0].Value));
+                }
+                else listBox1.Items.Add(Convert.ToString(datagr.Rows[i - 1].Cells[1].Value));
+            }
+        }
+
+        private void pb_click(object sender, EventArgs e)
+        {
+            if (((panel1.Controls["picturebox"] as PictureBox).Width == 680)&& ((panel1.Controls["picturebox"] as PictureBox).Height == 250))
+            {
+                (panel1.Controls["picturebox"] as PictureBox).Location = new Point(0,0);
+                (panel1.Controls["picturebox"] as PictureBox).Width = 1345;
+                (panel1.Controls["picturebox"] as PictureBox).Height = 740;
+                (panel1.Controls["picturebox"] as PictureBox).BringToFront();
+            }
+            else
+            {
+                (panel1.Controls["picturebox"] as PictureBox).Location = new Point(636,400);
+                (panel1.Controls["picturebox"] as PictureBox).Width = 680;
+                (panel1.Controls["picturebox"] as PictureBox).Height = 250;
             }
         }
 
@@ -115,12 +141,13 @@ namespace Psico
             {
                 if (listBox1.SelectedIndex == i-1)
                 {
-                    if (Convert.ToString(datagr.Rows[1].Cells[2].Value) != "")
+                    if (Convert.ToString(datagr.Rows[1].Cells[3].Value) != "")
                     {
-                        (panel1.Controls["picturebox"] as PictureBox).Load("" + Convert.ToString(datagr.Rows[i - 1].Cells[2].Value + ""));
+                        (panel1.Controls["picturebox"] as PictureBox).Load("" + Convert.ToString(datagr.Rows[i - 1].Cells[3].Value + ""));
                     }
-                    panel1.Controls["richtextbox"].Text = Convert.ToString(datagr.Rows[i-1].Cells[1].Value);
-                    panel1.Controls["label"].Text = Convert.ToString(datagr.Rows[i-1].Cells[0].Value);
+                    panel1.Controls["richtextbox"].Text = Convert.ToString(datagr.Rows[i-1].Cells[2].Value);
+
+                    panel1.Controls["label"].Text = Convert.ToString(datagr.Rows[i - 1].Cells[1].Value);
                     kolvotext = panel1.Controls["label"].Text.Length;
 
                     if (kolvotext > 70)
@@ -130,9 +157,10 @@ namespace Psico
                         (panel1.Controls["label"] as Label).Height = 40;
                     }
 
-                    if (Convert.ToString(datagr.Rows[i - 1].Cells[3].Value) != "")
+                    if (Convert.ToString(datagr.Rows[i - 1].Cells[4].Value) != "")
                     {
                         button5.Visible = true;
+                        button4.Visible = false;
                     }
                     else button5.Visible = false;
                 }
@@ -141,14 +169,34 @@ namespace Psico
 
         private void button5_Click(object sender, EventArgs e)
         {
-            for (int i = 1; i < kolvolb; i++)
+            if (button5.Text == "Следующий рисунок")
             {
-                if (listBox1.SelectedIndex == i-1)
+                for (int i = 1; i < kolvolb; i++)
                 {
-                    (panel1.Controls["picturebox"] as PictureBox).Load("" + Convert.ToString(datagr.Rows[i - 1].Cells[3].Value + ""));
-                    button5.Visible = false;
+                    if (listBox1.SelectedIndex == i - 1)
+                    {
+                        (panel1.Controls["picturebox"] as PictureBox).Load("" + Convert.ToString(datagr.Rows[i - 1].Cells[4].Value + ""));
+                        button5.Text = "Предыдущий рисунок";
+                    }
                 }
             }
+            else
+            {
+                for (int i = 1; i < kolvolb; i++)
+                {
+                    if (listBox1.SelectedIndex == i - 1)
+                    {
+                        (panel1.Controls["picturebox"] as PictureBox).Load("" + Convert.ToString(datagr.Rows[i - 1].Cells[3].Value + ""));
+                        button5.Text = "Следующий рисунок";
+                    }
+                }
+            }
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            button5.Visible = false;
+            button4.Visible = true;
         }
     }
 }

@@ -34,21 +34,33 @@ namespace Psico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SpisokZadach spisokZadach = new SpisokZadach();
-            spisokZadach.Show();
-            Close();
+            DialogResult result = MessageBox.Show("Если вы перейдёте к списку задач, у вас не будет возможности вернутся к этой задаче!","Внимание!", 
+                            MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (result == DialogResult.OK)
+            {
+                SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
+                StrPrc1.CommandType = CommandType.StoredProcedure;
+                StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
+                StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
+                StrPrc1.ExecuteNonQuery();
+                SpisokZadach spisokZadach = new SpisokZadach();
+                spisokZadach.Show();
+                Close();
+            }
         }
 
         private void katamnez_Load(object sender, EventArgs e)
         {
-            label2.Text = Convert.ToString(Program.NomerZadachi);
+            label2.Text = Convert.ToString(Program.NomerZadachi) + "  -";
 
             con.Open(); // подключение к БД
 
-            SqlCommand Zaprosi = new SqlCommand("select Zapros from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
+            SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
             SqlDataReader dr = Zaprosi.ExecuteReader();
             dr.Read();
             label3.Text = dr["Zapros"].ToString();
+            label5.Text = dr["sved"].ToString();
             dr.Close();
 
             SqlCommand text = new SqlCommand("select katamneztext from katamnez where zadacha_id = " + Program.NomerZadachi + "", con);

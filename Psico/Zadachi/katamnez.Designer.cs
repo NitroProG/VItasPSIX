@@ -38,6 +38,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +56,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.richTextBox1);
             this.panel1.Controls.Add(this.button3);
@@ -111,10 +113,10 @@
             this.button2.BackColor = System.Drawing.Color.PowderBlue;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(34, 673);
+            this.button2.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(18, 695);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 46);
+            this.button2.Size = new System.Drawing.Size(184, 35);
             this.button2.TabIndex = 32;
             this.button2.Text = "НАЗАД";
             this.button2.UseVisualStyleBackColor = false;
@@ -123,9 +125,9 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("MS Reference Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(29, 54);
+            this.label3.Location = new System.Drawing.Point(13, 54);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(851, 64);
+            this.label3.Size = new System.Drawing.Size(882, 98);
             this.label3.TabIndex = 5;
             this.label3.Text = "Запрос матери: \"Очень разборчив в еде. Ест плохо. Не поймёшь в каком настроении н" +
     "аходится. В чем дело?\"\r\n";
@@ -134,7 +136,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(594, 20);
+            this.label2.Location = new System.Drawing.Point(332, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 34);
             this.label2.TabIndex = 4;
@@ -144,11 +146,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(284, 20);
+            this.label1.Location = new System.Drawing.Point(182, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(321, 34);
+            this.label1.Size = new System.Drawing.Size(155, 34);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Диагностика задач №";
+            this.label1.Text = "Задача №";
             // 
             // button1
             // 
@@ -156,20 +158,30 @@
             this.button1.BackColor = System.Drawing.Color.PowderBlue;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(641, 673);
+            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(711, 695);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(239, 46);
+            this.button1.Size = new System.Drawing.Size(184, 35);
             this.button1.TabIndex = 0;
-            this.button1.Text = "К списку задач";
+            this.button1.Text = "К СПИСКУ ЗАДАЧ";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(389, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(32, 34);
+            this.label5.TabIndex = 38;
+            this.label5.Text = "1";
             // 
             // katamnez
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.ClientSize = new System.Drawing.Size(1366, 768);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(1366, 768);
@@ -196,5 +208,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -24,9 +24,23 @@ constraint [id_user] PRIMARY KEY CLUSTERED
 create table [dbo].[Zadacha]
 (
 [id_zadacha] int not null identity(1,1),
-[Zapros] varchar(max) not null
+[Zapros] varchar(max) not null,
+[sved] varchar(max) not null
 constraint [id_zadacha] primary key clustered
-	([id_zadacha]ASC) on [Primary],
+	([id_zadacha]ASC) on [Primary]
+)
+
+create table [dbo].[resh]
+(
+[id_resh] int not null identity(1,1),
+[users_id] int not null,
+[zadacha_id] int not null
+constraint [id_resh] primary key clustered
+	([id_resh]ASC) on [Primary],
+CONSTRAINT [FK_users_id] FOREIGN KEY ([users_id])
+	REFERENCES [DBO].[users]([id_user]),
+CONSTRAINT [FK_Zadacha7_id] FOREIGN KEY ([Zadacha_id])
+	REFERENCES [DBO].[Zadacha]([id_Zadacha])
 )
 
 create table [dbo].[Fenom1]
@@ -66,6 +80,7 @@ CONSTRAINT [FK_Zadacha1_id] FOREIGN KEY ([Zadacha_id])
 create table [dbo].[dpo]
 (
 [id_dpo] int not null identity (1,1),
+[lb_small] varchar(max) null,	
 [lb] varchar(max) not null,
 [lbtext] varchar(max) not null,
 [lb_image] varchar(max) null,
@@ -151,4 +166,13 @@ AS
 	User_Password=@User_Password,
 	isAdmin=@isadmin
 	where id_user=@id_user
+go
+
+CREATE PROCEDURE [DBO].[resh_add]
+(
+@Users_id int,
+@Zadacha_id int
+)
+AS
+	insert into [dbo].[resh]([users_id],[zadacha_id]) values((@Users_id),(@Zadacha_id));
 go

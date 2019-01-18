@@ -44,7 +44,7 @@ namespace Psico
 
         private void richTextBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (richTextBox3.Text == "Местро работы и стаж")
+            if (richTextBox3.Text == "Место работы и стаж")
             {
                 richTextBox3.Text = "";
             }
@@ -76,11 +76,11 @@ namespace Psico
         private void button1_Click(object sender, EventArgs e)
         {
             if (
-                (richTextBox1.Text != "") &&
-                (richTextBox2.Text != "") &&
-                (richTextBox3.Text != "") &&
-                (richTextBox4.Text != "") &&
-                (richTextBox5.Text != "") 
+                (richTextBox1.Text != "") && (richTextBox1.Text != "ФИО") &&
+                (richTextBox2.Text != "") && (richTextBox2.Text != "Образование") &&
+                (richTextBox3.Text != "") && (richTextBox3.Text != "Место работы и стаж") &&
+                (richTextBox4.Text != "") && (richTextBox4.Text != "Год обучения") &&
+                (richTextBox5.Text != "") && (richTextBox5.Text != "Возраст")
                 )
             {
                 Vstuplenie vstuplenie = new Vstuplenie();

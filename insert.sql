@@ -1,37 +1,39 @@
-﻿insert into dbo.Zadacha(Zapros)
-	values ('Запрос от матери: "У Сергея нет друзей.  Объясните в чем причина."');
-insert into dbo.Zadacha(Zapros)
-	values ('Запрос от матери: "Очень разборчив в еде. Ест плохо. Не поймёшь в каком настроении находится. В чем дело?"');
-insert into dbo.Zadacha(Zapros)
-	values ('Запрос от отца: «Сын способный, но постоянно учится на «четвертки» по всем предметам».');
-insert into dbo.Zadacha(Zapros)
-	values ('Запрос от матери: "Юра ворует крупные суммы денег. Учится очень плохо. Что мне делать?"');
-insert into dbo.Zadacha(Zapros)
-	values ('Запрос от классного руководителя : "Сделайте что-нибудь с этим учеником, он неуправляем."');
-insert into dbo.Zadacha(Zapros)
-	values ('Запрос от мамы: "Очень переживает свои неудачи и удачи брата. Объясните, почему?"');
-insert into dbo.Zadacha(Zapros)
-	values ('Запрос от мамы: "Чрезмерная подвижность ребенка на уроках. Объясните, в чем причина?"');
-insert into dbo.Zadacha(Zapros)
-	values ('Запрос от мамы: "Все в классе управляют Лизой. Она постоянно находится под влиянием одноклассников. Не может высказать собственной точки зрения. Почему это происходит?"');
-insert into dbo.Zadacha(Zapros)
-	values ('Запрос от учителя:"Ученик, характеризующийся с положительной стороны, начал пропускать уроки без уважительной причины. Почему это происходит?"');
-insert into dbo.Zadacha(Zapros)
-	values ('Запрос от учителя:"Ребёнок на уроке ничего не хочет делать или занимается тем, чем ему хочется(чтение книг, рисование). Почему так происходит?"');
-insert into dbo.Zadacha(Zapros)
-	values ('Запрос от классного руководителя:"Имеются страхи в отношениях с учителями, как с ними бороться?"');
-insert into dbo.Zadacha(Zapros)
-	values ('Запрос от учителя:"Ведёт себя плохо на уроках, что делать?"');
-insert into dbo.Zadacha(Zapros)
-	values ('Запрос от классного руководителя:"Саша проявляет страхи в отношениях с учителями, необходимо помочь ей их преодолеть."');
-insert into dbo.Zadacha(Zapros)
-	values ('Запрос от директора:"Не желает учится, что делать?"');
-insert into dbo.Zadacha(Zapros)
-	values ('Запрос от мамы:"Не знаю, как с ним найти общий язык, его трудно застравить что-либо сделать."');
-insert into dbo.Zadacha(Zapros)
-	values ('Запрос от мамы:"Хотелось бы понять, почему Саша общается только внутри референтной группы и часто отказывается от помощи даже близких людей(вплоть до вспышек агрессии)."');
+﻿insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от матери: "У Сергея нет друзей.  Объясните в чем причина."','Сергей - 15 лет, 9 класс.');
+insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от матери: "Очень разборчив в еде. Ест плохо. Не поймёшь в каком настроении находится. В чем дело?"','Дима - 14 лет, 8 класс.');
+insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от отца: «Сын способный, но постоянно учится на «четвертки» по всем предметам».','Дима - 14 лет, 8 класс.');
+insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от матери: "Юра ворует крупные суммы денег. Учится очень плохо. Что мне делать?"','Юра - 14 лет.');
+insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от классного руководителя : "Сделайте что-нибудь с этим учеником, он неуправляем."','Денис - 15 лет, 9 класс.');
+insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от мамы: "Очень переживает свои неудачи и удачи брата. Объясните, почему?"','Иван - 7 лет, 1 класс.');
+insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от мамы: "Чрезмерная подвижность ребенка на уроках. Объясните, в чем причина?"','Никита - 8 лет, 1 класс.');
+insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от мамы: "Все в классе управляют Лизой. Она постоянно находится под влиянием одноклассников. Не может высказать собственной точки зрения. Почему это происходит?"','Лиза - 9 лет, 3 класс.');
+insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от учителя:"Ученик, характеризующийся с положительной стороны, начал пропускать уроки без уважительной причины. Почему это происходит?"','Сережа - 10 лет, 4 класс.');
+insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от учителя:"Ребёнок на уроке ничего не хочет делать или занимается тем, чем ему хочется(чтение книг, рисование). Почему так происходит?"','Влад - 10 лет, 4 класс.');
+insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от классного руководителя:"Имеются страхи в отношениях с учителями, как с ними бороться?"','Влада – 14 лет, 7 класс.');
+insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от учителя:"Ведёт себя плохо на уроках, что делать?"','Борис - 12 лет, 5 класс.');
+insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от классного руководителя:"Саша проявляет страхи в отношениях с учителями, необходимо помочь ей их преодолеть."','Александра - 15 лет, 8 класс.');
+insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от директора:"Не желает учится, что делать?"','Никита - 15 лет, 9 класс.');
+insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от мамы:"Не знаю, как с ним найти общий язык, его трудно застравить что-либо сделать."','Лев - 12 лет, 5 класс.');
+insert into dbo.Zadacha(Zapros,sved)
+	values ('Запрос от мамы:"Хотелось бы понять, почему Саша общается только внутри референтной группы и часто отказывается от помощи даже близких людей(вплоть до вспышек агрессии)."','Александр - 18 лет, 2 курс техникума.');
 go
 
+insert into dbo.Fenom1(RB,RBText,zadacha_id)
+	values('Общие сведения','Сергей, 9 класс, 15 лет, полная семья(мама и папа), есть младший брат, в воспитании принимает участие также бабушка.',1)
 insert into dbo.Fenom1(RB,RBText,zadacha_id)
 	values ('Данные, приведённые классным руководителем','    Данные приведенные классным руководителем отсутствуют.',1)
 insert into dbo.Fenom1(RB,RBText,zadacha_id)
@@ -62,6 +64,8 @@ insert into dbo.Fenom1(RB,RBText,zadacha_id)
 	,1)
 go
 
+insert into dbo.Fenom1(RB,RBText,zadacha_id)
+	values('Общие сведения','Дима, 8 класс, 14 лет, полная семья(мама и отчим), есть младший брат от второго брака.',2)
 insert into dbo.Fenom1(RB,RBText,zadacha_id)
 	values ('Данные от классного руководителя','Данные приведенные классным руководителем 
 отсутствуют.',2)
@@ -133,6 +137,8 @@ insert into dbo.Fenom1(RB,RBText,zadacha_id)
 go
 
 insert into dbo.Fenom1(RB,RBText,zadacha_id)
+	values('Общие сведения','Дима, 8 класс, 14 лет, полная семья(мама и отчим), есть младший брат от второго брака.',3)
+insert into dbo.Fenom1(RB,RBText,zadacha_id)
 	values ('Данные от классного руководителя','Данные приведенные классным руководителем 
 отсутствуют.',3)
 insert into dbo.Fenom1(RB,RBText,zadacha_id)
@@ -182,6 +188,8 @@ insert into dbo.Fenom1(RB,RBText,zadacha_id)
 сделать уроки и побольше отдохнуть".',3)
 go
 
+insert into dbo.Fenom1(RB,RBText,zadacha_id)
+	values('Общие сведения','Юра, 14 лет, неполная семья(мама и мамина бабушка).',4)
 insert into dbo.Fenom1(RB,RBText,zadacha_id)
 	values ('Данные от классного руководителя','Данные приведенные классным руководителем 
 отсутствуют.',4)
@@ -258,6 +266,8 @@ insert into dbo.Fenom1(RB,RBText,zadacha_id)
 он самостоятельный и никаких проблем у него нет".',4)
 go
 
+insert into dbo.Fenom1(RB,RBText,zadacha_id)
+	values('Общие сведения','Денис, 15 лет, 9 класс, неполная семья(мама и мамина бабушка).',5)
 insert into dbo.Fenom1(RB,RBText,zadacha_id)
 	values ('Данные от классного руководителя','Денис недисциплинированный и не 
 ответственный ученик. По всем школьным предметам 
@@ -2540,689 +2550,689 @@ go
 insert into dbo.dz(CB,zadacha_id)
 	values ('Высокая тревожность',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая самооценка',6)
+	values ('Высокая самооценка',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('пессимизм',6)
+	values ('Пессимизм',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('доминантность',6)
+	values ('Доминантность',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень развития восприятия',6)
+	values ('Высокий уровень развития восприятия',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень концентрации внимания',6)
+	values ('Высокий уровень концентрации внимания',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень притязаний',6)
+	values ('Высокий уровень притязаний',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая вербальная агрессия',6)
+	values ('Высокая вербальная агрессия',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая депрессия',6)
+	values ('Высокая депрессия',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('импульсивность',6)
+	values ('Импульсивность',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('неуравновешенность',6)
+	values ('Неуравновешенность',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('эмоциональная возбудимость',6)
+	values ('Эмоциональная возбудимость',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('склонность к риску',6)
+	values ('Склонность к риску',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('мечтательность',6)
+	values ('Мечтательность',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('сниженное настроение',6)
+	values ('Сниженное настроение',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('интровертная направленность',6)
+	values ('Интровертная направленность',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая уверенность в себе',6)
+	values ('Высокая уверенность в себе',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень переключения внимания',6)
+	values ('Низкий уровень переключения внимания',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень познавательного развития',6)
+	values ('Высокий уровень познавательного развития',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень общей школьной тревожности',6)
+	values ('Низкий уровень общей школьной тревожности',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('истероидность (ревность, демонстративность);',6)
+	values ('Истероидность (ревность, демонстративность);',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень социальной адекватности поведения',6)
+	values ('Низкий уровень социальной адекватности поведения',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('отгороженность',6)
+	values ('Отгороженность',6)
 insert into dbo.dz(CB,zadacha_id)
-	values ('психологические барьеры в общении со сверстниками',6)
+	values ('Психологические барьеры в общении со сверстниками',6)
 go
 
 insert into dbo.dz(CB,zadacha_id)
-	values ('Низкий уровень развития словесной (слуховой памяти);',7)
+	values ('Низкий уровень развития словесной (слуховой памяти)',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень общей тревожности',7)
+	values ('Высокий уровень общей тревожности',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('тревожность как устойчивая черта личности',7)
+	values ('Тревожность как устойчивая черта личности',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая мотивация на приобретение знаний',7)
+	values ('Высокая мотивация на приобретение знаний',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('экстравертированная направленность',7)
+	values ('Экстравертированная направленность',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая мотивационная направленность на отметку',7)
+	values ('Низкая мотивационная направленность на отметку',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая школьная тревожность',7)
+	values ('Высокая школьная тревожность',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая вербальная агрессия',7)
+	values ('Высокая вербальная агрессия',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень самоконтроля своего поведения',7)
+	values ('Низкий уровень самоконтроля своего поведения',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая самооценка',7)
+	values ('Высокая самооценка',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая познавательная компетентность',7)
+	values ('Высокая познавательная компетентность',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('депрессивные тенденции',7)
+	values ('Депрессивные тенденции',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('отсутствие склонности к риску',7)
+	values ('Отсутствие склонности к риску',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий авторитет родителей в глазах ребенка',7)
+	values ('Низкий авторитет родителей в глазах ребенка',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая уверенность в себе',7)
+	values ('Низкая уверенность в себе',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('интровертная направленность',7)
+	values ('Интровертная направленность',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая независимость',7)
+	values ('Высокая независимость',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень коммуникативной компетентности',7)
+	values ('Низкий уровень коммуникативной компетентности',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень смелости',7)
+	values ('Низкий уровень смелости',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('истероидность',7)
+	values ('Истероидность',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('пессимизм',7)
+	values ('Пессимизм',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая доминантность',7)
+	values ('Высокая доминантность',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('оптимизм',7)
+	values ('Оптимизм',7)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень развития внимания (устойчивости, объема, переключения)',7)
+	values ('Низкий уровень развития внимания (устойчивости, объема, переключения)',7)
 go
 
 insert into dbo.dz(CB,zadacha_id)
 	values ('Высокий уровень устойчивости внимания',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий интеллект',8)
+	values ('Низкий интеллект',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень познавательного развития',8)
+	values ('Высокий уровень познавательного развития',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('интровертированная направленность',8)
+	values ('Интровертированная направленность',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень компетентности в общении',8)
+	values ('Низкий уровень компетентности в общении',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокое самоприятие',8)
+	values ('Высокое самоприятие',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень притязаний',8)
+	values ('Низкий уровень притязаний',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая самооценка',8)
+	values ('Высокая самооценка',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень самоконтроля своего поведения',8)
+	values ('Высокий уровень самоконтроля своего поведения',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('депрессивные тенденции',8)
+	values ('Депрессивные тенденции',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая агрессивность',8)
+	values ('Высокая агрессивность',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('ярко выраженная склонность к риску',8)
+	values ('Ярко выраженная склонность к риску',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая уверенность в себе',8)
+	values ('Высокая уверенность в себе',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('демонстративность',8)
+	values ('Демонстративность',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('сниженный фон настроения',8)
+	values ('Сниженный фон настроения',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая тревожность',8)
+	values ('Высокая тревожность',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая благоразумность',8)
+	values ('Высокая благоразумность',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('уступчивость',8)
+	values ('Уступчивость',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая самооценка',8)
+	values ('Низкая самооценка',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('пессимизм',8)
+	values ('Пессимизм',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая доминантность',8)
+	values ('Высокая доминантность',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('мечтательность',8)
+	values ('Мечтательность',8)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень закрытости',8)
+	values ('Высокий уровень закрытости',8)
 go
 
 insert into dbo.dz(CB,zadacha_id)
 	values ('Низкий объем внимания',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('строгость в воспитании',9)
+	values ('Строгость в воспитании',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень развития вербально-логического мышления',9)
+	values ('Высокий уровень развития вербально-логического мышления',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('интровертированная направленность',9)
+	values ('Интровертированная направленность',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень  общения со сверстниками',9)
+	values ('Низкий уровень  общения со сверстниками',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень межличностной тревожности',9)
+	values ('Высокий уровень межличностной тревожности',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая агрессивность',9)
+	values ('Высокая агрессивность',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('неправильная педагогическая позиция родителей и учителя;',9)
+	values ('Неправильная педагогическая позиция родителей и учителя;',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('уступчивость и сенситивность Сережи',9)
+	values ('Уступчивость и сенситивность Сережи',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('проблемы и страхи в отношениях с учителями',9)
+	values ('Проблемы и страхи в отношениях с учителями',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('страх ситуации проверки знаний',9)
+	values ('Страх ситуации проверки знаний',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('склонность к депрессии',9)
+	values ('Склонность к депрессии',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая школьная мотивация',9)
+	values ('Низкая школьная мотивация',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая самооценка',9)
+	values ('Низкая самооценка',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень притязаний',9)
+	values ('Низкий уровень притязаний',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('демостративность',9)
+	values ('Демостративность',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая вербальная агрессия',9)
+	values ('Высокая вербальная агрессия',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая уверенность в себе',9)
+	values ('Низкая уверенность в себе',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий самоконтроль',9)
+	values ('Низкий самоконтроль',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('пессимизм',9)
+	values ('Пессимизм',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень социальной адекватности поведения',9)
+	values ('Низкий уровень социальной адекватности поведения',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('личностный конфликт',9)
+	values ('Личностный конфликт',9)
 insert into dbo.dz(CB,zadacha_id)
-	values ('доминирующий тип поведения',9)
+	values ('Доминирующий тип поведения',9)
 go
 
 insert into dbo.dz(CB,zadacha_id)
 	values ('Низкий уровень развития восприятия',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень общей школьной тревожности',10)
+	values ('Высокий уровень общей школьной тревожности',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень развития вербально-логического мышления',10)
+	values ('Высокий уровень развития вербально-логического мышления',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень концентрации внимания',10)
+	values ('Низкий уровень концентрации внимания',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень самооценочной тревожности',10)
+	values ('Высокий уровень самооценочной тревожности',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень физиологической сопротивляемости стрессу',10)
+	values ('Низкий уровень физиологической сопротивляемости стрессу',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая самооценка',10)
+	values ('Высокая самооценка',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень притязаний',10)
+	values ('Низкий уровень притязаний',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('демонстративность',10)
+	values ('Демонстративность',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая самооценка',10)
+	values ('Низкая самооценка',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('несформированность коммуникативных навыков',10)
+	values ('Несформированность коммуникативных навыков',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('интровертная направленность',10)
+	values ('Интровертная направленность',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая уверенность к себе',10)
+	values ('Низкая уверенность к себе',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая самооценка',10)
+	values ('Низкая самооценка',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('эмоциональной невозбудимость',10)
+	values ('Эмоциональной невозбудимость',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень  независимости',10)
+	values ('Высокий уровень  независимости',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('противоречивые требования в воспитательном процессе',10)
+	values ('Противоречивые требования в воспитательном процессе',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('безответственность',10)
+	values ('Безответственность',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('отсутствие мотивации к учебной деятельности',10)
+	values ('Отсутствие мотивации к учебной деятельности',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('недостаточность произвольной регуляции деятельности',10)
+	values ('Недостаточность произвольной регуляции деятельности',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень доминантности',10)
+	values ('Высокий уровень доминантности',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая агрессивность',10)
+	values ('Высокая агрессивность',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень депрессии',10)
+	values ('Высокий уровень депрессии',10)
 insert into dbo.dz(CB,zadacha_id)
-	values ('стремление к избеганию неудач',10)
+	values ('Стремление к избеганию неудач',10)
 go
 
 insert into dbo.dz(CB,zadacha_id)
 	values ('Повышенная чувствительность как характерологическая черта',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая самооценка',11)
+	values ('Низкая самооценка',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий оптимизм',11)
+	values ('Низкий оптимизм',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('стремление к избеганию неудач',11)
+	values ('Стремление к избеганию неудач',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая уверенность в себе',11)
+	values ('Низкая уверенность в себе',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень запоминания',11)
+	values ('Низкий уровень запоминания',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень притязаний',11)
+	values ('Низкий уровень притязаний',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая вербальная агрессия',11)
+	values ('Высокая вербальная агрессия',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая депрессия',11)
+	values ('Высокая депрессия',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('самостоятельность',11)
+	values ('Самостоятельность',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('стремление к избеганию неудач',11)
+	values ('Стремление к избеганию неудач',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('ригидность мышления',11)
+	values ('Ригидность мышления',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая избирательность внимания',11)
+	values ('Низкая избирательность внимания',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('мечтательность',11)
+	values ('Мечтательность',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('повышенная чувствительность как особенность темперамента',11)
+	values ('Повышенная чувствительность как особенность темперамента',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('интровертная направленность',11)
+	values ('Интровертная направленность',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень принятия других',11)
+	values ('Низкий уровень принятия других',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень способности прощать',11)
+	values ('Низкий уровень способности прощать',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень доверия к близким',11)
+	values ('Низкий уровень доверия к близким',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая жизнестойкость',11)
+	values ('Низкая жизнестойкость',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень субъективного благополучия',11)
+	values ('Низкий уровень субъективного благополучия',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('доминирование негативных эмоций',11)
+	values ('Доминирование негативных эмоций',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая физиологическая сопротивляемость стрессу как особенность темперамента',11)
+	values ('Низкая физиологическая сопротивляемость стрессу как особенность темперамента',11)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая интернальность',11)
+	values ('Высокая интернальность',11)
 go
 
 insert into dbo.dz(CB,zadacha_id)
 	values ('Недопонимание социальных норм или асоциальность',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень интеллектуального развития',12)
+	values ('Низкий уровень интеллектуального развития',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('мотивация, направленная на избегание неудач',12)
+	values ('Мотивация, направленная на избегание неудач',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('мотивация, направленная на успех',12)
+	values ('Мотивация, направленная на успех',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('экстравертированная направленность',12)
+	values ('Экстравертированная направленность',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая мотивация к учебной деятельности',12)
+	values ('Низкая мотивация к учебной деятельности',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая школьная тревожность',12)
+	values ('Низкая школьная тревожность',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая вербальная агрессия',12)
+	values ('Низкая вербальная агрессия',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая мстительность',12)
+	values ('Высокая мстительность',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая самооценка',12)
+	values ('Высокая самооценка',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая способность прощать',12)
+	values ('Низкая способность прощать',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('истероидные черты характера',12)
+	values ('Истероидные черты характера',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('страх не соответствовать ожиданиям сверстников',12)
+	values ('Страх не соответствовать ожиданиям сверстников',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('непринятие других',12)
+	values ('Непринятие других',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая уверенность в себе',12)
+	values ('Высокая уверенность в себе',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('агрессивный тип воспитания',12)
+	values ('Агрессивный тип воспитания',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая зависимость от родителей',12)
+	values ('Высокая зависимость от родителей',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень коммуникативной компетентности',12)
+	values ('Низкий уровень коммуникативной компетентности',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('недоверие к окружающим',12)
+	values ('Недоверие к окружающим',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('гиперактивность (дефицит внимания, импульсивность)',12)
+	values ('Гиперактивность (дефицит внимания, импульсивность)',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('попустительский тип воспитания',12)
+	values ('Попустительский тип воспитания',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень субъективного благополучия',12)
+	values ('Низкий уровень субъективного благополучия',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('оптимизм',12)
+	values ('Оптимизм',12)
 insert into dbo.dz(CB,zadacha_id)
-	values ('слабое развитие всех познавательных процессов',12)
+	values ('Слабое развитие всех познавательных процессов',12)
 go
 
 insert into dbo.dz(CB,zadacha_id)
 	values ('Высокое чувство вины за свои поступки',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий интеллект',13)
+	values ('Низкий интеллект',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень познавательного развития',13)
+	values ('Высокий уровень познавательного развития',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая толерантность к неопределенности',13)
+	values ('Низкая толерантность к неопределенности',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень компетентности в общении',13)
+	values ('Высокий уровень компетентности в общении',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокое самопринятие',13)
+	values ('Высокое самопринятие',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая школьная тревожность',13)
+	values ('Высокая школьная тревожность',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('страх самовыражения',13)
+	values ('Страх самовыражения',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень гибкости мышления',13)
+	values ('Низкий уровень гибкости мышления',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень ответственности и морального сознания',13)
+	values ('Высокий уровень ответственности и морального сознания',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень внимания',13)
+	values ('Низкий уровень внимания',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокое принятие других',13)
+	values ('Высокое принятие других',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая способность прощать',13)
+	values ('Высокая способность прощать',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень доверия к учителям',13)
+	values ('Низкий уровень доверия к учителям',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('стратегия избегания в конфликтах',13)
+	values ('Стратегия избегания в конфликтах',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('сниженная уверенность в себе',13)
+	values ('Сниженная уверенность в себе',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('стремление к избеганию неудач',13)
+	values ('Стремление к избеганию неудач',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('комфортность',13)
+	values ('Комфортность',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая самооценка',13)
+	values ('Низкая самооценка',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('страх не соответствовать ожиданиям окружения',13)
+	values ('Страх не соответствовать ожиданиям окружения',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('ведомость',13)
+	values ('Ведомость',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая социальная смелость',13)
+	values ('Низкая социальная смелость',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень закрытости',13)
+	values ('Высокий уровень закрытости',13)
 insert into dbo.dz(CB,zadacha_id)
-	values ('стратегия соперничества в конфликтах',13)
+	values ('Стратегия соперничества в конфликтах',13)
 go
 
 insert into dbo.dz(CB,zadacha_id)
 	values ('Высокое принятие риска',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('нарушенное в смысловом плане воспитание, обесценивающее учебную деятельность',14)
+	values ('Нарушенное в смысловом плане воспитание, обесценивающее учебную деятельность',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень переключения внимания',14)
+	values ('Низкий уровень переключения внимания',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая жизнестойкость',14)
+	values ('Низкая жизнестойкость',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая толерантность к неопределенности',14)
+	values ('Низкая толерантность к неопределенности',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень школьной тревожности',14)
+	values ('Высокий уровень школьной тревожности',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая агрессивность',14)
+	values ('Высокая агрессивность',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('неправильная педагогическая позиция учителей',14)
+	values ('Неправильная педагогическая позиция учителей',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('нарушенные смысловые установки относительно ценности учебной деятельности',14)
+	values ('Нарушенные смысловые установки относительно ценности учебной деятельности',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень доверия к учителям',14)
+	values ('Низкий уровень доверия к учителям',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень позитивных эмоций по отношению к учителям',14)
+	values ('Низкий уровень позитивных эмоций по отношению к учителям',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('склонность к депрессии',14)
+	values ('Склонность к депрессии',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая мстительность',14)
+	values ('Высокая мстительность',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('очень высокая самооценка',14)
+	values ('Очень высокая самооценка',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('отсутствие мотивации на успех в ситуации учебы',14)
+	values ('Отсутствие мотивации на успех в ситуации учебы',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень моральных качеств по отношению к учебе',14)
+	values ('Низкий уровень моральных качеств по отношению к учебе',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая компетентность в общении',14)
+	values ('Низкая компетентность в общении',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая уверенность в себе',14)
+	values ('Высокая уверенность в себе',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий самоконтроль',14)
+	values ('Низкий самоконтроль',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('выраженный оптимизм',14)
+	values ('Выраженный оптимизм',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень социальной адекватности поведения',14)
+	values ('Низкий уровень социальной адекватности поведения',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкое субъективное благополучие',14)
+	values ('Низкое субъективное благополучие',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('непринятие других',14)
+	values ('Непринятие других',14)
 insert into dbo.dz(CB,zadacha_id)
-	values ('обиды на учителей',14)
+	values ('Обиды на учителей',14)
 go
 
 insert into dbo.dz(CB,zadacha_id)
 	values ('Эмоциональная неустойчивость',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('сверхреакция даже на слабые стимулы',15)
+	values ('Сверхреакция даже на слабые стимулы',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('аггравация',15)
+	values ('Аггравация',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень концентрации внимания',15)
+	values ('Низкий уровень концентрации внимания',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень развития всех познавательных процессов',15)
+	values ('Низкий уровень развития всех познавательных процессов',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('фрустрация потребностей Льва в самоактуализации, безопасности и теплых отношениях',15)
+	values ('Фрустрация потребностей Льва в самоактуализации, безопасности и теплых отношениях',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая агрессивность',15)
+	values ('Высокая агрессивность',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('злопамятность',15)
+	values ('Злопамятность',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('агрессивность в общении',15)
+	values ('Агрессивность в общении',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('несформированность коммуникативных навыков',15)
+	values ('Несформированность коммуникативных навыков',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('негативное отношение к критике',15)
+	values ('Негативное отношение к критике',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('пренебрежительность',15)
+	values ('Пренебрежительность',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая напряженность',15)
+	values ('Высокая напряженность',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('эмоциональной возбудимость',15)
+	values ('Эмоциональной возбудимость',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('враждебность',15)
+	values ('Враждебность',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('автономный тип воспитания',15)
+	values ('Автономный тип воспитания',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('непоследовательные воспитательные воздействия',15)
+	values ('Непоследовательные воспитательные воздействия',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('циклоидность',15)
+	values ('Циклоидность',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('недостаточность произвольной регуляции деятельности',15)
+	values ('Недостаточность произвольной регуляции деятельности',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень позитивных состояний по отношению к своей семье',15)
+	values ('Низкий уровень позитивных состояний по отношению к своей семье',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая агрессивность',15)
+	values ('Высокая агрессивность',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень депрессии',15)
+	values ('Высокий уровень депрессии',15)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая позитивная атмосфера в семье',15)
+	values ('Низкая позитивная атмосфера в семье',15)
 go
 
 insert into dbo.dz(CB,zadacha_id)
 	values ('Высокие депрессивные тенденции',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий интеллект',16)
+	values ('Высокий интеллект',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокий уровень познавательного развития',16)
+	values ('Высокий уровень познавательного развития',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкая толерантность к неопределенности',16)
+	values ('Низкая толерантность к неопределенности',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая экстернальность',16)
+	values ('Высокая экстернальность',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('эмоциональная нестабильность',16)
+	values ('Эмоциональная нестабильность',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая агрессивность',16)
+	values ('Высокая агрессивность',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('избирательность доверия',16)
+	values ('Избирательность доверия',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень гибкости мышления',16)
+	values ('Низкий уровень гибкости мышления',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень позитивных эмоций',16)
+	values ('Низкий уровень позитивных эмоций',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкое субъективное благополучие',16)
+	values ('Низкое субъективное благополучие',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкое принятие других',16)
+	values ('Низкое принятие других',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая способность прощать',16)
+	values ('Высокая способность прощать',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая уверенность в необходимости принятия самостоятельных решений',16)
+	values ('Высокая уверенность в необходимости принятия самостоятельных решений',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('стратегия соперничества в конфликтах',16)
+	values ('Стратегия соперничества в конфликтах',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('высокая тревожность',16)
+	values ('Высокая тревожность',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('стремление к избеганию неудач',16)
+	values ('Стремление к избеганию неудач',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('доминантность как характерологическая особенность',16)
+	values ('Доминантность как характерологическая особенность',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('определенные особенности социального интеллекта',16)
+	values ('Определенные особенности социального интеллекта',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('страх не соответствовать ожиданиям окружения',16)
+	values ('Страх не соответствовать ожиданиям окружения',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('тип личности, сложившийся на фоне холерически-флегматического темперамента',16)
+	values ('Тип личности, сложившийся на фоне холерически-флегматического темперамента',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('низкий уровень развития переключения внимания',16)
+	values ('Низкий уровень развития переключения внимания',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('плохое развитие логического запоминания',16)
+	values ('Плохое развитие логического запоминания',16)
 insert into dbo.dz(CB,zadacha_id)
-	values ('авторитарные черты личности',16)
+	values ('Авторитарные черты личности',16)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('стиль семейного воспитания по принципу «Повышенная моральная ответственность»',1)
+	values('Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',1)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('флегматический тип темперамента',1)
+	values('Флегматический тип темперамента',1)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('эгоцентрический тип личности с независимым характером',1)
+	values('Эгоцентрический тип личности с независимым характером',1)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('эмоциональный конфликт с матерью и отцом',2)
+	values('Эмоциональный конфликт с матерью и отцом',2)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('лабильная акцентуация характера',2)
+	values('Лабильная акцентуация характера',2)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('лабильная акцентуация характера',3)
+	values('Лабильная акцентуация характера',3)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('недостаточная сформированность логических связей',3)
+	values('Недостаточная сформированность логических связей',3)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('неустойчивая акцентуация характера',4)
+	values('Неустойчивая акцентуация характера',4)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',4)
+	values('Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',4)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('потребность в поиске сильных ощущений',4)
+	values('Потребность в поиске сильных ощущений',4)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('сильный страх самовыражения',5)
+	values('Сильный страх самовыражения',5)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('высокий уровень школьной тревожности',5)
+	values('Высокий уровень школьной тревожности',5)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('гипертимно-неустойчивая акцентуация характера',5)
+	values('Гипертимно-неустойчивая акцентуация характера',5)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('стиль семейного воспитания по типу "Потворствующая гиперпротекция"',5)
+	values('Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',5)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('высокая самооценка',6)
+	values('Высокая самооценка',6)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('высокий уровень притязаний',6)
+	values('Высокий уровень притязаний',6)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('истероидность (ревность, демонстративность);',6)
+	values('Истероидность (ревность, демонстративность);',6)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('высокая вербальная агрессия',7)
+	values('Высокая вербальная агрессия',7)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('низкий авторитет родителей в глазах ребенка',7)
+	values('Низкий авторитет родителей в глазах ребенка',7)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('низкий уровень развития внимания (устойчивости, объема, переключения)',7)
+	values('Низкий уровень развития внимания (устойчивости, объема, переключения)',7)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('низкий уровень самоконтроля своего поведения',7)
+	values('Низкий уровень самоконтроля своего поведения',7)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('высокая тревожность',8)
+	values('Высокая тревожность',8)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('низкая самооценка;',8)
+	values('Низкая самооценка',8)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('уступчивость',8)
+	values('Уступчивость',8)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('личностный конфликт',9)
+	values('Личностный конфликт',9)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('неправильная педагогическая позиция родителей и учителя',9)
+	values('Неправильная педагогическая позиция родителей и учителя',9)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('низкая школьная мотивация',9)
+	values('Низкая школьная мотивация',9)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('уступчивость и сенситивность Сережи',9)
+	values('Уступчивость и сенситивность Сережи',9)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('недостаточность произвольной регуляции деятельности',10)
+	values('Недостаточность произвольной регуляции деятельности',10)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('несформированность коммуникативных навыков',10)
+	values('Несформированность коммуникативных навыков',10)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('отсутствие мотивации к учебной деятельности',10)
+	values('Отсутствие мотивации к учебной деятельности',10)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('противоречивые требования в воспитательном процессе',10)
+	values('Противоречивые требования в воспитательном процессе',10)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('низкая физиологическая сопротивляемость стрессу как особенность темперамента',11)
+	values('Низкая физиологическая сопротивляемость стрессу как особенность темперамента',11)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('повышенная чувствительность как особенность темперамента;',11)
+	values('Повышенная чувствительность как особенность темперамента',11)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('повышенная чувствительность как характерологическая черта',11)
+	values('Повышенная чувствительность как характерологическая черта',11)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('гиперактивность (дефицит внимания, импульсивность);',12)
+	values('Гиперактивность (дефицит внимания, импульсивность)',12)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('истероидные черты характера',12)
+	values('Истероидные черты характера',12)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('недопонимание социальных норм или асоциальность',12)
+	values('Недопонимание социальных норм или асоциальность',12)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('попустительский тип воспитания;',12)
+	values('Попустительский тип воспитания',12)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('страх не соответствовать ожиданиям сверстников',12)
+	values('Страх не соответствовать ожиданиям сверстников',12)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('высокий уровень ответственности и морального сознания',13)
+	values('Высокий уровень ответственности и морального сознания',13)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('низкая социальная смелость',13)
+	values('Низкая социальная смелость',13)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('низкий уровень доверия к учителям',13)
+	values('Низкий уровень доверия к учителям',13)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('сниженная уверенность в себе',13)
+	values('Сниженная уверенность в себе',13)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('нарушенное в смысловом плане воспитание, обесценивающее учебную деятельность',14)
+	values('Нарушенное в смысловом плане воспитание, обесценивающее учебную деятельность',14)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('нарушенные смысловые установки относительно ценности учебной деятельности',14)
+	values('Нарушенные смысловые установки относительно ценности учебной деятельности',14)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('низкий уровень моральных качеств по отношению к учебе',14)
+	values('Низкий уровень моральных качеств по отношению к учебе',14)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('отсутствие мотивации на успех в ситуации учебы',14)
+	values('Отсутствие мотивации на успех в ситуации учебы',14)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('непоследовательные воспитательные воздействия',15)
+	values('Непоследовательные воспитательные воздействия',15)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('низкая позитивная атмосфера в семье',15)
+	values('Низкая позитивная атмосфера в семье',15)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('низкий уровень позитивных состояний по отношению к своей семье',15)
+	values('Низкий уровень позитивных состояний по отношению к своей семье',15)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('фрустрация потребностей Льва в самоактуализации, безопасности и теплых отношениях',15)
+	values('Фрустрация потребностей Льва в самоактуализации, безопасности и теплых отношениях',15)
 go
 
 insert into dbo.vernotv(otv,zadacha_id)
-	values('высокая уверенность в необходимости принятия самостоятельных решений',16)
+	values('Высокая уверенность в необходимости принятия самостоятельных решений',16)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('избирательность доверия',16)
+	values('Избирательность доверия',16)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('определенные особенности социального интеллекта',16)
+	values('Определенные особенности социального интеллекта',16)
 insert into dbo.vernotv(otv,zadacha_id)
-	values('тип личности, сложившийся на фоне холерически-флегматического темперамента',16)
+	values('Тип личности, сложившийся на фоне холерически-флегматического темперамента',16)
 go
 
 insert into dbo.meropr(meroprtext,zadacha_id)
@@ -3702,14 +3712,14 @@ insert into dbo.katamnez(katamneztext,zadacha_id)
 ',16)
 go
 
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Школьный тест умственного развития" К.М. Гуревич ШТУР.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Школьный тест умственного развития" К.М. Гуревич ШТУР.',
 	'Норма:  34%
     Вывод: высокое умственное развитие (75,4%).
 	Гуревич, К.М.  Психологическая коррекция умственного развития учащихся / К.М.Гуревич, И.В.Дубровина. −  М, 1990. – С. 33-35.'
 	,'Kortinki\\Zadacha1\\1.1.png','Kortinki\\Zadacha1\\1.2.png',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Цветовой тест" М. Люшера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Цветовой тест" М. Люшера.',
     'Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики испытуемый хорошо работает в сотрудничестве с другими людьми. Ему необходима личная жизнь, основанная на взаимопонимании и отсутствии разногласий. Стремится к откровенным отношениям, основанным на взаимном доверии и понимании. Старается действовать только в согласии со своими убеждениями. Требует свободы принимать решения самостоятельно, без всякого вмешательства со стороны, внешнего влияния или необходимости идти на компромисс. Хочет почувствовать себя эмоционально вовлеченным, способным получать удовлетворение в сексуальной активности, но пытается избегать конфликтов. Нуждается в признании. Честолюбив, стремится производить  впечатление. Хочет, чтобы на него смотрели снизу вверх, ищет популярности, восхищения со стороны окружающих. Стремится ликвидировать разрыв, который, как он считает, отделяет его от других.  Оказывает сильное сопротивление внешним воздействиям и любому посягательству на его свободу, чтобы самостоятельно принимать решения и строить планы. Старается утвердить свое положение и упрочить  его. Считает, что ему не дают двигаться вперед и ограничивают  это продвижение. Ищет решения, которое снимет подобные ограничения.
 	Обследуемый - хороший сотрудник, независим и честен в ведении дел. Честолюбив, с высокой самооценкой, стремится производить впечатления, ищет популярности и восхищения у других. Старается действовать только в согласии со своими убеждениями, а также утвердить и упрочить свое положение. Требует свободы принимать бескомпромиссные, самостоятельные решения. В случае внешнего воздействия на его планы, оказывает сильное сопротивление.  Ощущает разрыв, который, отделяет его от других и не дает почувствовать себя эмоционально вовлеченным, но пытается избегать конфликтов.  Считает, что его ограничивают и пытается избавиться от этого. В личной жизни для обследуемого необходимо взаимопонимание, доверие и отсутствие разногласий.
 	Дополнительная информация: Для обследуемого характерны ригидность взглядов и некоторая эмоциональная  негибкость.  Способен работать долго и непрерывно, несмотря на сопротивления и трудности, ибо благодаря упорству человек может довести начатое дело до конца и тем самым повысить свое самоуважение. Тревожность обследуемого в пределах нормы.
@@ -3718,8 +3728,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:	обследуемый независим и честен в ведении дел. Честолюбив, с высокой самооценкой. Тревожность в пределах нормы.
 	Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизнь-XXIвек. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.'
 	,'Kortinki\\Zadacha1\\2.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('16 Личностных Факторов Р.Б. Кеттелла.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','16 Личностных Факторов Р.Б. Кеттелла.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данный тип личности обладает  коммуникативными свойствами личности, которые характеризуются сдержанностью и рассудительностью в выборе партнёров по общению. В поведении проявляются независимость характера: ориентация на собственные решения и стремление иметь своё мнение, самостоятельность, уравновешенность, направленность на реальную действительность, настойчивость, упрямство, напористость, иногда конфликтность, агрессивность, отказ от признания внешней власти, склонность к  авторитарному поведению, жажда восхищения. Потворствует своим желаниям, не делает усилий по выполнению групповых требований и норм. Отсутствует согласие с общепринятыми моральными правилами и стандартами, а также свобода от их влияния. Развитые волевые качества.     Эмоциональная сфера характеризуется уверенностью в себе и в своих силах, спокойным, адекватным восприятием действительности, умением контролировать свои эмоции и поведение, стрессоустойчивость. Интеллектуальная сфера характеризуется оперативностью, подвижностью мышления, высоким уровнем общей культуры, развитой аналитичностью, интересом и интеллектуальным знанием. Склонность к свободомыслию, радикализму, широта взглядов, высокая эрудированность, стремление к новым знаниям. Склонность к самостоятельным оригинальным решениям интеллектуальных задач. В целом личность можно диагностировать как человека сдержанного и рассудительного в выборе партнёров по общению. Он имеет независимый характер: уверен в себе и в своих силах, ориентируется на собственные решения и стремится иметь своё мнение, самостоятельный, уравновешенный, настойчивый, упрямый, склонный к авторитарному поведению, жаждущий восхищения. Он потворствует своим желаниям, не делает усилий по выполнению групповых требований и норм, а также свободен от их влияния. Личность относится к мыслительному типу: имеет оперативность и подвижность мышления, с развитой аналитичностью. Склонен к свободомыслию и радикализму, а также к самостоятельным оригинальным решениям интеллектуальных задач.
 		Если по какому-либо фактору набрано 5-6, это говорит о том, что полюс данного фактора четко не выражен;
 		Оценка 4 отражает тенденцию к проявлению левого полюса фактора;
@@ -3732,16 +3742,16 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	•	факторы  D,  G,  и Q2 соответствуют норме.
 	Головей, Л.А. Практикум по возрастной психологии: Учеб. пособие / Л.А. Головей , Е.Ф. Рыбалко. − СПб.: Речь, 2002. С. 578-588.'
 	,'Kortinki\\Zadacha1\\3.1.png','Kortinki\\Zadacha1\\3.2.png',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Тест рисуночных ассоциаций" С. Розенцвейга.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Тест рисуночных ассоциаций" С. Розенцвейга.',
 	'Полученные данные:
 	•	КГА = 30 %
 	Интерпретация полученных данных. По мнению автора методики, испытуемый не достаточно адаптирован к своему окружению. Его поведение во фрустрирующей ситуации отличается от поведения большинства. Склонен предъявлять повышенные требования к окружающим, и защищать своё "Я" в форме проявления неконструктивных реакций таких, как обвинения, враждебность против других, открытое проявление агрессии с целью скрыть свою ранимую, уязвимую личность. Попадая во фрустрирующую ситуацию, сначала предъявляет повышенные требования к окружающим и защищает своё "Я". После продолжительного пребывания в напряжении начинает сводить к минимуму данное препятствие, вплоть до полного отрицания его существования, а также отвергать ответственность лиц, вовлечённых во фрустрирующую ситуацию. Стремится избегать каких-либо осуждений конкретных лиц.
 	Вывод: обследуемый не достаточно адаптирован к социальному окружению.
 	Дементий, Л.И. Фрустрация: Понятие и диагностика. Учеб. метод. пособие для студентов специальности «Психология» / Л.И. Дементий. ОмГУ, 2004. – 68 с.'
 	,'Kortinki\\Zadacha1\\net.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Тест руки" (Hand-тест) А. Вагнера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Тест руки" (Hand-тест) А. Вагнера.',
 	'Полученные данные:
 	•	MAL = 16%
 	•	WITH = 8%
@@ -3755,23 +3765,23 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:  у испытуемого существует тенденция агрессивного поведения. Нежелание приспосабливаться к внешнему окружению выражена в средней степени. Склонность к открытому агрессивному поведению низкая. Испытуемый преимущественно воспринимает руку как ведущую, оказывающую влияние на другого, а также как просто выполняющую какие-то действия.
 	Елисеев, О.П. Практикум по психологии личности / О.П. Елисеев. СПб., 2003. С.310-327.'
 	,'Kortinki\\Zadacha1\\net.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Диагностика межличностных отношений" Т. Лири.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Диагностика межличностных отношений" Т. Лири.',
 	'Полученные данные: (в цифровом виде не представлены)
 	Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, тип личности испытуемого независимо-доминирующий и властно-лидирующий с большой независимостью своего мнения, упорством отстаивания своей точки зрения, тенденцией к лидерству и доминированию. Ему свойственна нетерпимость к критике, переоценка своих возможностей. Стиль межличностных взаимоотношений самодовольный, нарциссический с выраженным чувством собственного превосходства над окружающими и тенденцией занимать в группе обособленную позицию. Он искренен, прямолинеен, настойчив в достижении поставленной цели. База суждений и поступков реалистична, присутствует скептицизм и нонконформизм.
 	Норма:  От 0 до 8 баллов
 	Вывод:   тип личности испытуемого независимо-доминирующий и властно-лидирующий с большой независимостью своего мнения.
 	Собчик, Л.Н.  Психология индивидуальности. Теория и практика психодиагностики / Л.Н. Собчик. СПб.: Речь, 2005. 624 с. '
 	,'Kortinki\\Zadacha1\\6.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Диагностика уровня субъективного контроля УСК" Дж. Роттера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Диагностика уровня субъективного контроля УСК" Дж. Роттера.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, испытуемому свойственен высокий уровень субъективного контроля над любыми значимыми ситуациями, событиями и достижениями. В области здоровья внутренний контроль особенно высокий. В области неудач испытуемый склонен приписывать ответственность за события, происходящие с ним другим людям или считать их результатом невезения.
 	Норма: 5,5 стенов.
 	Вывод: высокий уровень субъективного контроля над любыми значимыми ситуациями, событиями и достижениями.
 	Грецов, А.Г. Психологические тесты для старшеклассников и студентов / А.Г. Грецов, А.А. Азбель. СПб.: Питер, 2012. 208 с.'
 	,'Kortinki\\Zadacha1\\7.1.png','Kortinki\\Zadacha1\\7.2.png',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Исследование волевой саморегуляции ВСК" А. Зверков, Е.В. Эйдман.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Исследование волевой саморегуляции ВСК" А. Зверков, Е.В. Эйдман.',
 	'Полученные данные:
 	•	волевая саморегуляция  - 15 баллов
 	•	настойчивость -10 баллов
@@ -3781,8 +3791,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод: волевая саморегуляция очень высокая.
 	Пашукова, Т.И. Психологические исследования. Практикум по общей психологии для студентов педагогических вузов / Т.И. Пашукова, А.И. Допира, Г.В. Дьяконов.  М.: ИПП, 1996. - 177 с.'
 	,'Kortinki\\Zadacha1\\8.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Диагностика предрасположенности личности к конфликтному поведению" Томаса',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Диагностика предрасположенности личности к конфликтному поведению" Томаса',
 	'Полученные данные:
 	•	избегание  - 8 баллов
 	•	приспособление - 7 баллов
@@ -3793,8 +3803,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:  выражены такие формы поведения в конфликтных ситуациях как    избегание и приспособление.
 	Истратова, О.Н. Психодиагностика. Коллекция лучших тестов / О.Н. Истратова, Т.В. Эксакусто. РнД.: Феникс, 2006. 375 с.'
 	,'Kortinki\\Zadacha1\\9.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Методика выявления коммуникативных и организаторских склонностей" КОС-2.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Методика выявления коммуникативных и организаторских склонностей" КОС-2.',
 	'Полученные данные:
 	•	организаторские склонности  - 90%
 	•	коммуникативные способности - 85%
@@ -3802,8 +3812,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:  очень хорошие организаторские и коммуникативные способности
 	Фетискин, Н. П. Социально-психологическая диагностика развития личности и малых групп / Н. П. Фетискин, В. В. Козлов, Г. М. Майнулов. – М.: Институт Психотерапии, 2002. – C.263265.'
 	,'Kortinki\\Zadacha1\\10.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Диагностика социально-психологических установок личности в мотивационно-потребностной сфере" О.Ф.Потемкиной.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Диагностика социально-психологических установок личности.','Тест "Диагностика социально-психологических установок личности в мотивационно-потребностной сфере" О.Ф.Потемкиной.',
 	'Полученные данные:
 	•	ориентация на альтруизм. 3
 	•	ориентация на процесс. 8
@@ -3821,8 +3831,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:  у испытуемого наиболее ярко выражены следующие социально-психологические установки: ориентация на труд, результат, процесс и свободу, ориентация на эгоизм. Установки ориентация на альтруизм, власть и деньги выражены слабо.
 	Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001. – С.641-648.'
 	,'Kortinki\\Zadacha1\\net.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Шкала искренности Марлоу-Крауна.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала искренности Марлоу-Крауна.',
 	'Полученные данные:  общий итоговый показатель “мотивации одобрения” 6 баллов
 	Измерительная шкала:
 	шкала потребности к одобрению
@@ -3833,8 +3843,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод: у испытуемого мотивация одобрения выражена в низкой степени.
 	Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001.  – С.635-636.'
 	,'Kortinki\\Zadacha1\\net.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник мотивации достижения А.Мехрабиана',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник мотивации достижения А.Мехрабиана',
 	'Полученные данные: мотивация стремления к успеху 160 баллов, мотивация избегания неудач 145 баллов
 	Измерительная шкала: стремление к успеху, избегание неудачи
 	•	Сумма баллов интервале от 165 до 210   доминирует стремление к успеху.
@@ -3844,8 +3854,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод: у испытуемого мотивация стремления к успеху выражена в высокой степени. Мотивация избегания неудач выражена также в высокой степени.
 	Фетискин,  Н.П.  Социально-психологическая диагностика развития личности и малых групп. / Н.П. Фетискин, В.В. Козлов, Г.М. Мануйлов  – М, 2002. – C.98-102.'
 	,'Kortinki\\Zadacha1\\net.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика изучения мотивации к избеганию неудач Т. Элерса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика изучения мотивации к избеганию неудач Т. Элерса.',
 	'Полученные данные: 20 баллов
 	Измерительная шкала: чем больше сумма баллов, тем выше уровень мотивации к избеганию неудач, защите.
 	•	От 2 до 10 баллов: низкая мотивация к защите;
@@ -3856,8 +3866,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:  у испытуемого мотивация к избеганию неудач выражена в высокой степени.
 	Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.630-632.'
 	,'Kortinki\\Zadacha1\\net.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика изучения мотивации успеха Т. Элерса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика изучения мотивации успеха Т. Элерса.',
 	'Полученные данные: 20 баллов. 
 	Измерительная шкала:
 	•	от 1 до 10 баллов: низкая мотивация к успеху; 
@@ -3868,8 +3878,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод: у испытуемого мотивация стремления к успеху выражена в высокой степени. Это проявляется в низкой степени готовности к риску, а также в высокой степени выраженности мотивации избегания неудач (защите).
 	Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.626-629.'
 	,'Kortinki\\Zadacha1\\net.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика диагностики оперативной оценки самочувствия, активности и настроения (САН).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика диагностики оперативной оценки самочувствия, активности и настроения (САН).',
 	'Норма: 
 	•	самочувствие – 5,4;
 	•	активность – 5,0; 
@@ -3877,8 +3887,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:  у испытуемого самочувствие, настроение и активность в норме.
 	Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.17-21.'
 	,'Kortinki\\Zadacha1\\16.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Самооценка психических состояний по Айзенку.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Самооценка психических состояний по Айзенку.',
 	'Полученные данные:
 	•	тревожность 14 баллов
 	•	фрустрация 14 баллов
@@ -3897,8 +3907,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:  у обслдеуемого уровень тревожности и фрустрации средний, уровень агрессивности – низкий. Испытуемый спокоен и выдержан. Ригидность сильно выражена. Обследуемому свойственны неизменность поведения, убеждений, и взглядов.
 	Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С. 141-145.'
 	,'Kortinki\\Zadacha1\\net.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('ПДО "Патохарактерологический диагностический опросник для подростков" А.Е. Личко, Н.Я. Иванова.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('ПДО "Патохарактерологический диагностический опросник для подростков".','ПДО "Патохарактерологический диагностический опросник для подростков" А.Е. Личко, Н.Я. Иванова.',
 	'Содержательные характеристики при указанном сочетании параметров личности: отношение испытуемого к исследованию позитивное. Степень его откровенности не выявлена. У испытуемого преобладают черты мужественности. В умеренной степени выражены конформность и реакция эмансипации. Склонность к диссимуляции и делинквентности, а также психологическая склонность к алкоголю и употреблению психоактивных веществ отсутствует. Риск депрессии не определен.
 Измерительная шкала: буквенные символы кода соответствуют баллам в пользу соответствующих типов:
 Г — гипертимный 
@@ -3927,8 +3937,8 @@ d — психологической склонности к делинквен�
 Вывод:  по результатам исследования акцентуация не выявлена.
 Личко, А.Е. Патохарактерологический диагностический опросник для подростков / А.Е. Личко, Н.Я. Иванов. - 2-е изд. — М.: Фолиум, 1995 – 64 с.'
 	,'Kortinki\\Zadacha1\\18.1.png','Kortinki\\Zadacha1\\18.2.png',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Сокращённый многофакторный опросник для исследования личности СМОЛ.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Сокращённый многофакторный опросник для исследования личности СМОЛ.',
 	'Содержательные характеристики при указанном сочетании параметров личности: испытуемый уверен в себе, стремится доминировать и частично контролирует свои эмоции. Испытуемый эгоцентричен, настойчив, склонен к ревности. У него отмечаются трудности в коммуникативных контактах.
 Измерительная шкала:
 Оценочные шкалы
@@ -3959,15 +3969,15 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод:    испытуемый находится в относительно конформном состоянии, способен отражать и раскрывать свои моральные и психические дефекты. 
 Большая энциклопедия психологических тестов /Составитель А. Карелин. — М.: ЭКСМО, 2009. — С. 76-79.'
 	,'Kortinki\\Zadacha1\\19.1.png','Kortinki\\Zadacha1\\19.2.png',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика "Родителей оценивают дети" (РОД).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика "Родителей оценивают дети" (РОД).',
 	'Содержательные характеристики при указанном сочетании параметров личности: при таком стиле воспитания требования к подростку слишком велики, непомерны, не соответствующие его возможностям, что представляет риск, психотравматизации. Но в то же время подростку все можно. Он сам определяет, например время возвращения домой вечером, круг друзей, ни за что не отчитываться перед родителями, т.е. подросток сам определяет свой способ поведения.
 	Норма:  см. таблицу
 	Вывод:  по мнению подростка, его родители допускают ошибки в стиле семейного воспитания по типу "повышенная моральная ответственность" (чрезмерность требований - обязанностей (Т+) и недостаточность требований - запретов (З-) к сыну).
 	Фурманов,  И.А. Психологическая работа с детьми, лишенными родительского попечительства: Книга для психологов / И.А. Фурманов,  А.А. Аладьин,  Н.В. Фурманова  – МН.: ТЕСЕЙ, 1999. – С. 174, 210 – 216.'
 	,'Kortinki\\Zadacha1\\20.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика "Анализ семейного воспитания" (АСВ) Э.Г. Эйдемиллер, В.В. Юстицкиса.)',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика "Анализ семейного воспитания" (АСВ) Э.Г. Эйдемиллер, В.В. Юстицкиса.)',
 	'Полученные данные: чрезмерность требований (обязанностей) – шкала Т+;
 недостаточность требований – запретов (доминирование) – шкала З-.
 Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, при таком стиле воспитания требования к подростку слишком велики, непомерны, не соответствующие его возможностям, что представляет риск психотравматизации. Но в то же время подростку все можно. Он сам определяет, например время возвращения домой вечером, круг друзей, ни за что не отчитываться перед родителями, т.е. подросток сам определяет свой способ поведения.
@@ -3987,8 +3997,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Диагностируется неправильный стиль семейного воспитания "повышенная моральная ответственность"
 Детская психодиагностика и профориентация / Под ред. Л.Д. Столяренко – Ростов н/Д: Феникс, 1999. – С. 289-301.'
 	,'Kortinki\\Zadacha1\\21.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика "Кинетический рисунок семьи" (КРС) Р.Бернса и С.Кауфмана.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика "Кинетический рисунок семьи" (КРС) Р.Бернса и С.Кауфмана.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, наблюдается негативное отношение к отцу в сочетании с неадекватным самовосприятием и ощущением собственной робости, замкнутости. Существенная разобщенность между членами семьи.
 Измерительная шкала.
 1) благоприятная семейная ситуация – 0-13 баллов;
@@ -4003,8 +4013,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 - эмоционально позитивное отношение к матери.
 Корнилова, Т.В. Подростковая группа риска / Т.В. Корнилова, Е.Л. Григоренко, С.Д. Смирнов. – СПб.: Питер, 2005. – 336 с.'
 	,'Kortinki\\Zadacha1\\22.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Несуществующее животное".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Несуществующее животное".',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, испытуемый - уверенный в себе человек, увлеченный своей деятельностью и стремящийся завоевать себе соответствующее место в социуме. Ему свойственен сильный эгоцентризм. К собственным поступкам, действиям, размышлениям и решениям относится положительно. Основательно, рационально и обдумано относится к принятию любых решений. Но эта основательность по отношению к собственной жизни вызывает тревогу. Для обследуемого характерны также наличие вербальной агрессии, направленной на окружающих, и самообвинения.
 	Измерительная шкала.
 Аспекты анализа рисунка.
@@ -4024,8 +4034,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Выводы: сильная устойчивая личность со склонностью к вербальной агрессии.
 Кочубеева, Л.А. Применение проективной рисуночной методики "Несуществующее животное" для определения ТИМ / Л.А. Кочубеева, М.Л. Стоялова // Соционика, ментология и психология личности. – № 6. – 2002. – С. 5-18.'
 	,'Kortinki\\Zadacha1\\23.1.png','Kortinki\\Zadacha1\\23.2.png',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Дом-Дерево-Человек" Дж. Бука (ДДЧ).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Дом-Дерево-Человек" Дж. Бука (ДДЧ).',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого благополучное психологическое состояние. Все психологические черты сбалансированы. Психологическая защита сильная, поэтому, тревожность и агрессивность слабые. Он уверен в себе. У него нет чувства неполноценности и конфликтности. Фон настроения позитивный. Имеются трудности в общении.
 Измерительная шкала.
 •	Детали - осознание и заинтересованность человека в каждодневной жизненной ситуации;
@@ -4034,8 +4044,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Выводы: у испытуемого благополучное психологическое состояние, однако имеются трудности в общении.
 Романова, Е.С. Графические методы в практической психологии / Е.С.  Романова. – СПб.: Речь, 2001. – 529 с.'
 	,'Kortinki\\Zadacha1\\24.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Незаконченные предложения" Сакса, Леви.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Незаконченные предложения" Сакса, Леви.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, Сергей воспринимает себя и свою мать как одну семью. Образцом женственности для него является его мать. Она ему нравится, но он отмечает, что иногда она бывает просто невыносима. Считает, что большинство матерей поначалу в шоке от ребенка. Отношение к отцу позитивное. Сергей отмечает, что отец редко выпивает вне дома, но и недостаточно часто выполняет работу по дому. Хочет, чтобы отец имел больший авторитет на работе и более высокую оплату своего труда.
 Измерительная шкала:
 •	"+2" — максимальное, отчетливо выраженное, сильно положительное отношение к объекту или субъекту, о котором идет речь в предложении;
@@ -4046,8 +4056,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод: отклонений в отношении к родителям нет.
 Казачкова, В.Г. Метод незаконченных предложений при изучении отношений личности / В.Г. Казачкова // Вопросы психологии. – 1989. – N 3. – С. 154-157.'
 	,'Kortinki\\Zadacha1\\25.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Тест школьной тревожности" Филипса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Тест школьной тревожности" Филипса.',
 	'Факторы:
 1. Общая тревожность в школе (13,6%);
 2. Переживание социального стресса (45,5%);
@@ -4066,8 +4076,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод: результат в пределах нормы.
 Психологические тесты для профессионалов / авт. сост Н.Ф. Гребень. – Минск: Современная школа, 2007. – С. 162-165.'
 	,'Kortinki\\Zadacha1\\26.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика Ч.Д. Спилберга и Ю.Л. Ханина.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика Ч.Д. Спилберга и Ю.Л. Ханина.',
 	'Полученные результаты.
 РТ (реактивная тревожность) – 32 балла;
 ЛТ (личностная тревожность) – 45 баллов.
@@ -4081,8 +4091,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод: результаты в пределах нормы.
 Диагностика эмоционально-нравственного развития / Ред. и сост. Дерманова И.Б. – СПб.: 2002. – С.124-126.'
 	,'Kortinki\\Zadacha1\\net.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Самооценка личности" по Дембо-Рубинштейн в модификации А.М.Прихожан.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Самооценка личности" по Дембо-Рубинштейн в модификации А.М.Прихожан.',
 	'Полученные результаты.
 Уровень притязаний  - 76%.
 Уровень самооценки - 63,5 %;
@@ -4093,8 +4103,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод: результаты в пределах нормы.
 Практическая психодиагностика. Методики и тесты. / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — 672 с.'
 	,'Kortinki\\Zadacha1\\28.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Теппинг-тест" Е.П. Ильина.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Теппинг-тест" Е.П. Ильина.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого сильная НС. Он способен выдерживать большую по величине и длительности нагрузку. Он обладает такими качествами, как выносливость и работоспособность. У него высокая концентрация внимания и активность.
 Измерительная шкала.
 •	Сильный тип: темп нарастает до максимального в первые 10-15 с. работы; в следующие 25-30 с. он может снизиться ниже исходного уровня (т.е. наблюдавшегося в первые 5 с работы). Этот тип кривой свидетельствует о наличии у испытуемого сильной нервной системы;
@@ -4105,8 +4115,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод: у испытуемого сильная НС. 
 Практическая психодиагностика. Методики и тесты. / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — С. 528-530.'
 	,'Kortinki\\Zadacha1\\29.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('«Опросник Айзенка по определению темперамента и характера EPI» Т.В.Матолиной',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','«Опросник Айзенка по определению темперамента и характера EPI» Т.В.Матолиной',
 	'Полученные данные: 
 экстраверсия – 9 баллов;
 нейротизм – 8 баллов;
@@ -4121,8 +4131,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод. Испытуемому свойственны следующие черты характера: спокойствие, молчаливость, рассудительность. Он замедленно деятельный, независимый, кропотливый, беспристрастный, скромный, низко-эмоциональный. Иногда может быть отвлечен от реальности. 
 Фетискин, Н. П. Экспресс-диагностика характерологических особенностей личности / Н. П. Фетискин, В. В. Козлов,  Г. М. Мануйлов. –  М., 2002. –  C. 35-44.'
 	,'Kortinki\\Zadacha1\\30.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('ОФДСИ «Опросник формально-динамических свойств индивидуальности» В.М.Русалова',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','ОФДСИ «Опросник формально-динамических свойств индивидуальности» В.М.Русалова',
 	'Полученные данные: 
 ИОА – 110
 ИОЭ – 72 
@@ -4145,8 +4155,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод. У испытуемого общая адаптивность ниже нормы. В психомоторной и интеллектуальной сферах диагностируется флегматический тип темперамента. В коммуникативной сфере - смешанный низко эмоциональный тип. Общий тип темперамента флегматический.
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 118-130.'
 	,'Kortinki\\Zadacha1\\31.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Ориентировочно-диагностическая анкета познавательных процессов (ДДО)',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Ориентировочно-диагностическая анкета познавательных процессов (ДДО)',
 	'Полученные данные: 
 человек-природа – высокий показатель
 человек-знак – средний показатель
@@ -4155,8 +4165,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод. Направленность личности испытуемого преимущественно на профессиональную область "человек-природа". В нее входят все профессии связанные с растениеводством, животноводством и лесным хозяйством. Также ему интересна профессиональная область "человек-знак". В нее входят все профессии, связанные с расчетами, цифровыми и буквенными знаками, в том числе и музыкальные специальности.
 Райгородский, Д. Я. Практическая психодиагностика. Методики и тесты / Самара: Бахра-М., 2015. – C. 569-573.'
 	,'Kortinki\\Zadacha1\\32.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест «Карта интересов «Голомштока»',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест «Карта интересов «Голомштока»',
 	'Полученные данные: наибольшее количество знаков «+» набрали виды деятельности: техника, биология, география, геология, история.
 Процедура обработки данных
 Подсчет в каждом столбце бланка для ответов количество знаков «+» и «-», а далее из первой суммы вычитается вторая. Таким образом, получается 24 цифры со знаком «+» или «-», которые соответствуют 24 видам деятельности. Выбираются 2-3 вида деятельности, которые набрали большее количество знаков «+». 
@@ -4164,8 +4174,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод. Интересы испытуемого направлены преимущественно на области: техника, биология, география, геология и история.
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М., 2015. – C. 516-521.'
 	,'Kortinki\\Zadacha1\\net.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест «Исследование объема эмоциональной памяти»',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест «Исследование объема эмоциональной памяти»',
 	'Полученные данные: 47%
 Измерительная шкала. Коэффициент эмоциональной памяти: 
 0-25% низкий уровень эмоциональной памяти;
@@ -4176,8 +4186,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод. У испытуемого объем эмоциональной памяти в норме. Им преимущественно запоминаются слова положительной модальности. Слова нейтральной модальности запоминаются в меньшей степени.
 Изучение основных закономерностей познавательных процессов в период взрослости [Электронный ресурс] / Экспериментальное изучение памяти // Режим доступа:http://studbooks.net/1613171/psihologiya/eksperimentalnaya_chast'
 	,'Kortinki\\Zadacha1\\net.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Исследование объема кратковременной памяти" с помощью субтеста "Повторение цифр" из теста Векслера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('"Исследование объема кратковременной памяти" с помощью субтеста Векслера.','"Исследование объема кратковременной памяти" с помощью субтеста "Повторение цифр" из теста Векслера.',
 	'Полученные данные.
 Объем кратковременной памяти – 7
 Концентрация внимания – 6
@@ -4194,8 +4204,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод: у испытуемого объем кратковременной памяти в норме. Концентрация внимания в норме.
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C.325-403.'
 	,'Kortinki\\Zadacha1\\net.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "10 слов" (оценка состояния памяти, утомляемости, особенностей мышления).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "10 слов" (оценка состояния памяти, утомляемости, особенностей мышления).',
 	'Полученные данные 
 Первое повторение – 5 слов
 Второе повторение – 8 слов
@@ -4205,15 +4215,15 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод: у испытуемого память и активность внимания в норме. Утомляемость низкая.
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М., 2015. – C. 202-203. '
 	,'Kortinki\\Zadacha1\\net.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Сложные аналогии"',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Сложные аналогии"',
 	'Полученные данные: 8 баллов (18 ответов)
 	Норма: 6  баллов и выше
 Вывод: показатель понимания сложных логических отношений и выделение абстрактных связей у испытуемого выше нормы.
 Касьянов, С. Психологические тесты / С. Касьянов. – М.: Эксмо, 2006. –  608 с.'
 	,'Kortinki\\Zadacha1\\37.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Выделение существенных признаков".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Выделение существенных признаков".',
 	'Полученные данные: 6 баллов (36 слов)
 	Норма: 5 баллов и выше
 Интерпретация результатов
@@ -4221,8 +4231,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод: операции мышления анализ, сравнение, обобщение и классификация развиты выше средних показателей. 
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 61-62.'
 	,'Kortinki\\Zadacha1\\38.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Корректурная проба Бурдона".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Корректурная проба Бурдона".',
 	'Полученные данные.
 Концентрация внимания – 52 %
 Устойчивость внимания –  медленное снижение скорости просмотра
@@ -4240,8 +4250,8 @@ A = S / t, где
 Вывод: у испытуемого концентрация  и устойчивость внимания в норме. 
 Корректурная проба (Тест Бурдона) / Альманах психологических тестов. – М., 1995. –  С.107-111.'
 	,'Kortinki\\Zadacha1\\39.png','',1)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник для изучения познавательных интересов Юркевича.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник для изучения познавательных интересов Юркевича.',
 	'Полученные данные:  21 балл
 Измерительная шкала.
 Интенсивность познавательной потребности.
@@ -4254,14 +4264,14 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	,'Kortinki\\Zadacha1\\net.png','',1)
 go
 
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Школьный тест умственного развития" К.М. Гуревич ШТУР.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Школьный тест умственного развития" К.М. Гуревич ШТУР.',
 	'Норма:  34%
 Вывод:  умственное развитие  в норме (34,8%).
 Гуревич, К.М.  Психологическая коррекция умственного развития учащихся / К.М.Гуревич, И.В.Дубровина. −  М, 1990. – С. 33-35.'
 	,'Kortinki\\Zadacha2\\1_1.png','Kortinki\\Zadacha2\\1_2.png',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Цветовой тест" М. Люшера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Цветовой тест" М. Люшера.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики испытуемый старается улучшить представления о себе других людей, чтобы они пошли на уступки и считались с его потребностями и  желаниями. Он хочет избавиться от ощущения пустоты и устранить разрыв, который по его мнению, отделяет его от других. Озабочен тем, чтобы узнать жизнь со всех сторон, использовать предоставленные ею возможности и прожить её во всей полноте. Поэтому он возмущается по поводу любых ограничений и рамок, накладываемых на него, и настаивает на том, чтобы ему предоставили свободу и не чинили препятствий. Он способен достигать физического удовлетворения через  сексуальную активность, но склонен оставаться эмоционально замкнутым, что ограждает его от глубокой вовлеченности. Он жаждет успеха, волнений, и жизни полной впечатлений. Хочет свободно развиваться, сбросить оковы неуверенности в себе, побеждать и жить насыщенной жизнью. Любит общаться с людьми. Энтузиаст по натуре. Восприимчив ко всему новому, современному и увлекательному. У него много интересов, и он хочет расширить сферы своей деятельности. На  будущее смотрит оптимистично. Он борется с ограничениями и запретами и настаивает на том, чтобы ему дали возможность свободно развиваться, прилагая собственные  усилия.  Он считает, что ему не дают двигаться вперед и ограничивают  это продвижение. Ищет решения, которое снимет подобные ограничения. Этот человек придаёт особенное значение общительности. Он жаждет успеха и жизни полной впечатлений, восприимчив ко всему новому, современному и увлекательному. Для этого хочет сбросить существующие оковы неуверенности в себе, ощущение пустоты и устранить разрыв, который как ему кажется, отделяет его от других. Для этого он старается улучшить представление о себе у людей, чтобы они пошли на уступки и считались с его потребностями. Но вместе с тем он склонен оставаться эмоционально замкнутым. Он чувствителен в  отношении критических замечаний в свой адрес. У него много интересов и на жизнь он смотрит оптимистично. Но его не устраивают существующие запреты и ограничения. Ищет решения, как освободиться от них для того, чтобы развиваться свободно. 
 Дополнительная информация:  У испытуемого средняя степень гибкости своего мнения.  Если он хочет сделать какую-либо работу, то она будет завершена им. И  личным приоритетом в ней будет желание чувствовать себя победителем в завоевании того, чего он хотел добиться.  Тревожность испытуемого находится в норме. Поведение и цель испытуемого согласованы. Работоспособность больше, чем хочет показать. Уровень  работоспособности достаточный.
 Измерительная шкала:
@@ -4271,8 +4281,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизнь-XXI век. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.'
 	,'Kortinki\\Zadacha2\\2.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('16 ЛФ Р.Б. Кеттелла.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','16 ЛФ Р.Б. Кеттелла.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данный тип личности обладает коммуникативными свойствами личности, которые  характеризуются открытостью, общительностью, активностью в установлении как межличностных, так и  социальных контактов. Направленность вовне, на людей. По отношению к людям он открыт и прямолинеен. Экстраверсия.
         В поведении проявляются экспрессивность, импульсивность, социальная смелость, склонность к риску, готовность к вступлению в новые группы, быть лидером. Независимость характера, склонность к принятию неординарных решений. Имеется некоторая социальная незрелость.        Эмоциональная сфера характеризуется уверенностью в себе, спокойным, адекватным восприятием действительности, стрессоустойчивостью. У него наблюдается удовлетворённость самим собой, внутренняя расслабленность и низкая мотивация (это сказывается на недостаточной эффективности профессиональной деятельности). Иногда у него может быть некоторая чёрствость по отношению к окружающим, он склонен к ревности и раздражительности, практичен.  Интеллектуальная сфера характеризуется оперативностью, подвижностью мышления, высоким уровнем общей культуры, развитой аналитичностью, интересом и интеллектуальным знанием. Стремлением к свободомыслию, радикализму. Умение оперировать абстракциями, развитое воображение. Склонность к самостоятельным оригинальным решениям. Имеет гармонично развитый интеллект. В целом личность можно диагностировать как экстраверта: с направленностью вовне - на людей и на процесс общения. Стремится быть лидером. Он открыт и прямолинеен в коммуникативных контактах. Иногда у него может быть некоторая чёрствость по отношению к окружающим, он склонен к ревности и раздражительности, практичен. Личность относится к мыслительному типу: имеет оперативность и подвижность мышления, с развитой аналитичностью, интересом и интеллектуальным знанием. Склонен к самостоятельным оригинальным решениям. У него гармонично развитый интеллект. Он уверен в себе, спокойный, с адекватным восприятием действительности и  стрессоустойчив. Импульсивен, социально смел, склонен к риску. Имеет 
 независимый характер, склонен к принятию неординарных решений.
@@ -4290,8 +4300,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	факторы  B,E,G, I  и Q3, Q4 соответствуют норме.
 Головей, Л.А. Практикум по возрастной психологии: Учеб. пособие / Л.А. Головей , Е.Ф. Рыбалко. − СПб.: Речь, 2002.  С. 578-588.'
 	,'Kortinki\\Zadacha2\\3_1.png','Kortinki\\Zadacha2\\3_2.png',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Тест рисуночных ассоциаций" С. Розенцвейга.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Тест рисуночных ассоциаций" С. Розенцвейга.',
 	'Полученные данные:
 •	КГА = 29%
 
@@ -4304,8 +4314,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Дементий, Л.И. Фрустрация: Понятие и диагностика. Учеб. метод. пособие для студентов специальности «Психология»/ Л.И. Дементий.  ОмГУ, 2004. – 68 с.'
 	,'Kortinki\\Zadacha2\\net.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Тест руки" (Hand-тест) А. Вагнера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Тест руки" (Hand-тест) А. Вагнера.',
 	'Полученные данные:
 •	MAL =  0%
 •	WITH = 2,9 %
@@ -4324,8 +4334,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Елисеев, О.П. Практикум по психологии личности / О.П. Елисеев.  СПб., 2003.  С.310-327.
 '
 	,'Kortinki\\Zadacha2\\net.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Диагностика межличностных отношений" Т. Лири.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Диагностика межличностных отношений" Т. Лири.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, тип личности испытуемого независимо-доминирующий и прямолинейно-агрессивный с выраженным чувством собственного превосходства над окружающими и с тенденцией иметь свое, особе мнение, отличное от большинства. У него имеется стремление занимать обособленную позицию в группе, которая может сопровождаться чрезмерным упорством, недружелюбием, несдержанностью и вспыльчивостью.
 	Норма:  От 0 до 8 баллов 
 Вывод:  тип личности испытуемого независимо-доминирующий и прямолинейно-агрессивный. 
@@ -4334,8 +4344,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Собчик, Л.Н.  Психология индивидуальности. Теория и практика психодиагностики / Л.Н. Собчик.   СПб.: Речь, 2005.  624 с. 
 '
 	,'Kortinki\\Zadacha2\\6.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Диагностика уровня субъективного контроля УСК" Дж. Роттера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Диагностика уровня субъективного контроля УСК" Дж. Роттера.',
 	'   Полученные данные: 
 •	Uо = 5,5 стенов
 •	Uс = 8 стенов
@@ -4352,8 +4362,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Грецов, А.Г. Психологические тесты для старшеклассников и студентов / А.Г. Грецов, А.А. Азбель.  СПб.: Питер, 2012.  208 с.
 '
 ,'Kortinki\\Zadacha2\\7_1.png','Kortinki\\Zadacha2\\7_2.png',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Исследование волевой саморегуляции ВСК" А. Зверков, Е.В. Эйдман.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Исследование волевой саморегуляции ВСК" А. Зверков, Е.В. Эйдман.',
 	'Полученные данные:
 •	волевая саморегуляция  - 9 баллов
 •	настойчивость - 5 баллов 
@@ -4366,8 +4376,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Пашукова, Т.И. Психологические исследования. Практикум по общей психологии для студентов педагогических вузов / Т.И. Пашукова, А.И. Допира, Г.В. Дьяконов.   М.: ИПП, 1996. - 177 с.
 '
 ,'Kortinki\\Zadacha2\\8.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Диагностика предрасположенности личности к конфликтному поведению" Томаса',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Диагностика предрасположенности личности к конфликтному поведению" Томаса',
 	'Полученные данные: 
 
 •	избегание  - 3 баллов
@@ -4382,8 +4392,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Истратова, О.Н. Психодиагностика. Коллекция лучших тестов / О.Н. Истратова, Т.В. Эксакусто.  РнД.: Феникс, 2006.  375 с.
 '
 ,'Kortinki\\Zadacha2\\9.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Методика выявления коммуникативных и организаторских склонностей" КОС-2.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Методика выявления коммуникативных и организаторских склонностей" КОС-2.',
 	'Полученные данные: 
 •	организаторские склонности  - 85% 
 •	коммуникативные способности - 75% 
@@ -4393,8 +4403,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Фетискин, Н. П. Социально-психологическая диагностика развития личности и малых групп / Н. П. Фетискин, В. В. Козлов, Г. М. Майнулов. – М.: Институт Психотерапии, 2002. – C.263265.
 '
 ,'Kortinki\\Zadacha2\\10.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Диагностика социально-психологических установок личности в мотивационно-потребностной сфере" О.Ф.Потемкиной.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Диагностика социально-психологических установок личности.','Тест "Диагностика социально-психологических установок личности в мотивационно-потребностой сфере" О.Ф.Потемкиной.',
 	'Полученные данные:
 •	ориентация на альтруизм. 5
 •	ориентация на процесс. 6
@@ -4416,8 +4426,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001. – С.641-648. 
 '
 ,'Kortinki\\Zadacha2\\net.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Шкала искренности Марлоу-Крауна.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала искренности Марлоу-Крауна.',
 	'Полученные данные:  общий итоговый показатель “мотивации одобрения” 6 баллов
 
 Измерительная шкала: 
@@ -4433,8 +4443,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001.  – С.635-636.
 '
 ,'Kortinki\\Zadacha2\\net.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник мотивации достижения А.Мехрабиана',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник мотивации достижения А.Мехрабиана',
 	'Полученные данные: мотивация стремления к  успеху 110 баллов, мотивация избегания неудач  90 баллов
 Измерительная шкала: стремление к успеху, избегание неудачи
 •	Сумма баллов интервале от 165 до 210   доминирует стремление к успеху.
@@ -4447,8 +4457,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Фетискин,  Н.П.  Социально-психологическая диагностика развития личности и малых групп. / Н.П. Фетискин, В.В. Козлов, Г.М. Мануйлов  – М, 2002. – C.98-102.
 '
 ,'Kortinki\\Zadacha2\\net.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика изучения мотивации к избеганию неудач Т. Элерса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика изучения мотивации к избеганию неудач Т. Элерса.',
 	'Полученные данные: 15 баллов
 Измерительная шкала:
 •	от 2 до 10 баллов: низкая мотивация к защите;
@@ -4462,8 +4472,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.630-632.
 '
 ,'Kortinki\\Zadacha2\\net.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика изучения мотивации успеха Т. Элерса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика изучения мотивации успеха Т. Элерса.',
 	'Полученные данные: 11 баллов
 Измерительная шкала:
 •	от 1 до 10 баллов: низкая мотивация к успеху; 
@@ -4476,8 +4486,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.626-629.
 '
 ,'Kortinki\\Zadacha2\\net.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика диагностики оперативной оценки самочувствия, активности и настроения (САН).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика диагностики оперативной оценки самочувствия, активности и настроения (САН).',
 	'Норма: 
 •	самочувствие – 5,4;
 •	активность – 5,0; 
@@ -4486,8 +4496,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.17-21.
 '
 ,'Kortinki\\Zadacha2\\16.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Самооценка психических состояний по Айзенку.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Самооценка психических состояний по Айзенку.',
 	'Полученные данные:
 •	Шкала тревожности 14 баллов
 •	Шкала фрустрации 14 баллов
@@ -4510,8 +4520,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С. 141-145.
 '
 ,'Kortinki\\Zadacha2\\net.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('ПДО "Патохарактерологический диагностический опросник для подростков" А.Е. Личко, Н.Я. Иванова".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('ПДО "Патохарактерологический диагностический опросник для подростков"".','ПДО "Патохарактерологический диагностический опросник для подростков" А.Е. Личко, Н.Я. Иванова".',
 	'Содержательные характеристики при указанном сочетании параметров личности: у испытуемого позитивное отношение к исследованию. Откровенность испытуемого в норме. Выявлена высокая конформность и низкая диссимуляция. Слабая реакция эмансипации и низкая склонность к делинквентности. Преобладание мужественных или женственных черт не выявлено. Имеется психологическая склонность к алкоголизации, а также умеренный риск к употреблению психоактивных средств. Риск депрессии не определен.
 
 Измерительная шкала.
@@ -4563,8 +4573,8 @@ d — психологической склонности к делинквен�
 Личко, А.Е. Патохарактерологический диагностический опросник для подростков / А.Е. Личко, Н.Я. Иванов. - 2-е изд. — М.: Фолиум, 1995 – 64 с.
 '
 ,'Kortinki\\Zadacha2\\18_1.png','Kortinki\\Zadacha2\\18_2.png',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Сокращённый многофакторный опросник для исследования личности СМОЛ.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Сокращённый многофакторный опросник для исследования личности СМОЛ.',
 	'Полученные данные: L<40 Т-баллов, К=51 Т-балл, пик по шкале 9 (61 Т-балл).
  Повышение профиля на верхнюю границу нормы по 6 шкале (59 Т-баллов)
 Содержательные характеристики при указанном сочетании параметров личности: испытуемый уверен в себе, стремится доминировать и частично контролирует свои эмоции. Испытуемый эгоцентричен, настойчив, склонен к ревности. У него отмечаются  черты лабильной акцентуации характера. Данные черты могут проявляться в частых респираторных заболеваниях (ангина, простуда), мало мотивированной смене настроения. Его уровень общительности, аппетита и работоспособности находятся в зависимости от 
@@ -4603,8 +4613,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Большая энциклопедия психологических тестов /Составитель А. Карелин. — М.: ЭКСМО, 2009. — С. 76-79.
 '
 ,'Kortinki\\Zadacha2\\19_1.png','Kortinki\\Zadacha2\\19_2.png',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика "Родителей оценивают дети" (РОД).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика "Родителей оценивают дети" (РОД).',
 	'Полученные данные: числовых данные отсутствуют
 
 Содержательные характеристики при указанном сочетании параметров личности: в представлениях подростка ошибок со стороны родителей в стиле его семейного воспитания нет.
@@ -4613,8 +4623,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Фурманов,  И.А. Психологическая работа с детьми, лишенными родительского попечительства: Книга для психологов / И.А. Фурманов,  А.А. Аладьин,  Н.В. Фурманова  – МН.: ТЕСЕЙ, 1999. – С. 174, 210 – 216.
 '
 ,'Kortinki\\Zadacha2\\20_1.png','Kortinki\\Zadacha2\\20_2.png',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика "Анализ семейного воспитания" (АСВ) Э.Г. Эйдемиллер, В.В. Юстицкиса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика "Анализ семейного воспитания" (АСВ) Э.Г. Эйдемиллер, В.В. Юстицкиса.',
 	'Полученные данные:
 чрезмерность требований (обязанностей) – шкала Т+;
 недостаточность требований – запретов (доминирование) – шкала З-.
@@ -4635,8 +4645,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Детская психодиагностика и профориентация / Под ред. Л.Д. Столяренко –Ростов н/Д: «Феникс», 1999. – С. 289-301.
 '
 ,'Kortinki\\Zadacha2\\21.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика "Кинетический рисунок семьи" (КРС).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика "Кинетический рисунок семьи" (КРС).',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, полученные результаты не противоречат друг другу. Зона возможных проблем - "агрессия членов семьи по отношению к Диме".
 Измерительная шкала:
 1)	благоприятная семейная ситуация – 0-13 баллов;
@@ -4654,8 +4664,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Корнилова, Т.В. Подростковая группа риска / Т.В. Корнилова, Е.Л. Григоренко, С.Д. Смирнов. – СПб.: Питер, 2005. – 336 с.
 '
 ,'Kortinki\\Zadacha2\\22.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Несуществующее животное".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Несуществующее животное".',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, диагностируется готовность к контролируемой коммуникации. Обследуемый ценит эрудицию в себе и окружающих. Ему свойственна рациональность при принятии решения путем опоры на существующие положение и значимую информацию. У него высокой контроль за рассуждениями, выводами и решениями. Имеется тенденция к замкнутости, закрытости своего внутреннего мира. Тревожность связана с поло-сексуальной проблемой. Отношение к своему "Я" нейтральное. Для обследуемого свойственен эгоцентризм.  Для него значимо мнение окружающих его близких людей.
 Измерительная шкала.
 Аспекты анализа рисунка.
@@ -4682,8 +4692,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Кочубеева, Л.А. Применение проективной рисуночной методики "Несуществующее животное" для определения ТИМ / Л.А. Кочубеева, М.Л. Стоялова // Соционика, ментология и психология личности. – № 6. – 2002. –  С. 5-18.
 '
 ,'Kortinki\\Zadacha2\\23_1.png','Kortinki\\Zadacha2\\23_2.png',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Дом-Дерево-Человек" Дж. Бука (ДДЧ).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Дом-Дерево-Человек" Дж. Бука (ДДЧ).',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого все психологические черты сбалансированы. Психологическая защита сильная, поэтому тревожность слабая. Для него характерна уверенность в себе, отсутствие чувства неполноценности, слабая агрессивность, слабая конфликтность. Нет трудностей общения и пониженного фона настроения.
 Измерительная шкала.
 •	Детали - осознание и заинтересованность человека в каждодневной жизненной ситуации;
@@ -4695,8 +4705,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Романова, Е.С. Графические методы в практической психологии / Е.С.  Романова. – СПб.: Речь, 2001. – 529 с. 
 '
 ,'Kortinki\\Zadacha2\\24.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Незаконченные предложения" Сакса, Леви.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Незаконченные предложения" Сакса, Леви.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, Дима любит мать, но отмечает у себя некоторое непослушание и иногда обижается на неё. У Димы позитивное отношение к членам своей семьи. Он доверяет настоящему другу и считает, что он должен тоже ценить дружбу и быть надежным. Дима относится к сверстникам позитивно и считает, что они такие же, как и он. Не любит, когда его обсуждают. Отношение к взрослым в целом позитивное, но считает, что взрослые губят себя вредными привычками - курением и спиртным. Не любит, когда взрослые ему не верят и не понимают его. Отношение к учебе и учителям позитивное. Считает, что он прилагает усилия для учебы и таким образом выполняет требования взрослых. В школе проявляет старательность. В конфликте Дима выбирает стиль поведения - соперничество. У людей он выделяет такие отрицательные черты как злость, жадность и несправедливость. Сейчас Дима ощущает чувство вины за непослушание. Отмечает у себя наличие такой отрицательной черты как нехватка терпения. Своей положительной чертой он считает способность к самоконтролю и честность. Считает, что в жизни будет соблюдать законы. О своем будущем Дима пока не думает. Надеется, что в будущем все будет хорошо, исполнятся его мечты, и он не будет курить. Жалеет о том, что не слушается родителей. Хочет забыть тот день, когда ему причинили зло. Хочет, чтобы все люди были счастливы и добры, а также, исполнение своей мечты.
 
 Измерительная шкала:
@@ -4717,8 +4727,8 @@ E. В какой манере выражаются конфликты: конф�
 Казачкова В.Г. Метод незаконченных предложений при изучении отношений личности // Вопросы психологии. - 1989. - N 3. - С. 154-157. 
 '
 ,'Kortinki\\Zadacha2\\25.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Тест школьной тревожности" Филипса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Тест школьной тревожности" Филипса.',
 	'Факторы:
 1. Общая тревожность в школе (13,7%);
 2. Переживание социального стресса (27,3%);
@@ -4737,8 +4747,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Психологические тесты для профессионалов / авт. сост Н.Ф. Гребень. – Минск: Современная школа, 2007. – С. 162-165.
 '
 ,'Kortinki\\Zadacha2\\26.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика Ч.Д. Спилберга и Ю.Л. Ханина.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика Ч.Д. Спилберга и Ю.Л. Ханина.',
 	'Полученные результаты:
 РТ (реактивная тревожность) – 31 балла;
 ЛТ (личностная тревожность) – 14 баллов.
@@ -4752,8 +4762,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Диагностика эмоционально-нравственного развития / Ред. и сост. Дерманова И.Б. – СПб.: 2002. – С.124-126.
 '
 ,'Kortinki\\Zadacha2\\net.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Самооценка личности" по Дембо-Рубинштейн в модификации А.М.Прихожан.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Самооценка личности" по Дембо-Рубинштейн в модификации А.М.Прихожан.',
 	'Полученные результаты:
 Уровень притязаний – 75-89%.
 Самооценка – 45-74%;
@@ -4767,8 +4777,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Практическая психодиагностика. Методики и тесты / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — 672 с.
 '
 ,'Kortinki\\Zadacha2\\28.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Теппинг-тест" Е.П. Ильина.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Теппинг-тест" Е.П. Ильина.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого средне-слабая НС. Он плохо выдерживает большую по величине и длительности нагрузку. У него быстро наступает утомление.
 Измерительная шкала:
 •	сильный тип: темп нарастает до максимального в первые 10-15 с. работы; в следующие 25-30 с. он может снизиться ниже исходного уровня (т.е. наблюдавшегося в первые 5 с работы). Этот тип кривой свидетельствует о наличии у испытуемого сильной нервной системы;
@@ -4781,8 +4791,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Практическая психодиагностика. Методики и тесты / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — С. 528-530.
 '
 ,'Kortinki\\Zadacha2\\29_1.png','Kortinki\\Zadacha2\\29_2.png',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Опросник Айзенка по определению темперамента и характера EPI" Т.В.Матолиной',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Опросник Айзенка по определению темперамента и характера EPI" Т.В.Матолиной',
 	'Полученные данные.
 Экстраверсия – 20 баллов
 Нейротизм – 7 баллов
@@ -4801,8 +4811,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Фетискин, Н. П. Экспресс-диагностика характерологических особенностей личности / Н. П. Фетискин, В. В. Козлов,  Г. М. Мануйлов. –  М., 2002. –  C. 35-44.
 '
 ,'Kortinki\\Zadacha2\\30.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('ОФДСИ «Опросник формально-динамических свойств индивидуальности» В.М.Русалова',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','ОФДСИ «Опросник формально-динамических свойств индивидуальности» В.М.Русалова',
 	'Полученные данные: 
 ИОА – 249
 ИОЭ – 93 
@@ -4830,8 +4840,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 118-130.
 '
 ,'Kortinki\\Zadacha2\\31_1.png','Kortinki\\Zadacha2\\31_2.png',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Ориентировочно-диагностическая анкета познавательных процессов (ДДО)',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Ориентировочно-диагностическая анкета познавательных процессов (ДДО)',
 	'Полученные данные.
 Человек-человек – высокий показатель.
 Человек-техника – средний показатель.
@@ -4842,8 +4852,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д. Я. Практическая психодиагностика. Методики и тесты / Самара: Бахра-М, 2015. – C. 569-573
 '
 ,'Kortinki\\Zadacha2\\32.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Карта интересов Голомштока"',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Карта интересов Голомштока"',
 	'Полученные данные: наибольшее количество знаков «+» набрали виды деятельности: Техника, транспорт, сфера обслуживания, общественная работа.
 
 Измерительная шкала.
@@ -4856,8 +4866,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 516-521.
 '
 ,'Kortinki\\Zadacha2\\net.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Исследование объема эмоциональной памяти"',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Исследование объема эмоциональной памяти"',
 	'Полученные данные: 42%
 
 Измерительная шкала. Коэффициент эмоциональной памяти: 
@@ -4874,8 +4884,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Изучение основных закономерностей познавательных процессов в период взрослости [Электронный ресурс] / Экспериментальное изучение памяти // Режим доступа : http://studbooks.net/1613171/psihologiya/eksperimentalnaya_chast
 '
 ,'Kortinki\\Zadacha2\\net.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Исследование объема кратковременной памяти" с помощью субтеста "Повторение цифр" из теста Векслера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('"Исследование объема кратковременной памяти" с помощью субтеста Векслера.','"Исследование объема кратковременной памяти" с помощью субтеста "Повторение цифр" из теста Векслера.',
 	'Полученные данные.
 Объем кратковременной памяти – 8
 Концентрация внимания – 7
@@ -4897,8 +4907,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C.325-403.
 '
 ,'Kortinki\\Zadacha2\\net.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "10 слов" (оценка состояния памяти, утомляемости, особенностей мышления).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "10 слов" (оценка состояния памяти, утомляемости, особенностей мышления).',
 	'Полученные данные.
 Первое повторение – 5 слов
 Второе повторение – 6 слов
@@ -4912,8 +4922,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 202-203. 
 '
 ,'Kortinki\\Zadacha2\\net.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Сложные аналогии"',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Сложные аналогии"',
 	'Полученные данные: 5 баллов (13 ответов)
 	Норма: 6 баллов и выше
 
@@ -4922,8 +4932,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Касьянов, С. Психологические тесты / С. Касьянов. – М.: Эксмо, 2006. –  608 с.
 '
 ,'Kortinki\\Zadacha2\\37.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Выделение существенных признаков".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Выделение существенных признаков".',
 	'Полученные данные: 5 баллов (33 слова)  
 	Норма:  5 баллов и выше
 
@@ -4935,8 +4945,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 61-62.
 '
 ,'Kortinki\\Zadacha2\\38.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Корректурная проба Бурдона".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Корректурная проба Бурдона".',
 	'Полученные данные.
 Концентрация внимания – 48 %
 Устойчивость внимания –  медленное снижение скорости просмотра
@@ -4958,8 +4968,8 @@ A = S / t, где
 Корректурная проба (Тест Бурдона) / Альманах психологических тестов. – М., 1995. –  С.107-111.
 '
 ,'Kortinki\\Zadacha2\\39.png','',2)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник для изучения познавательных интересов Юркевича.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник для изучения познавательных интересов Юркевича.',
 	'Полученные данные:  10 балл
 
 Измерительная шкала. Интенсивность познавательной потребности:
@@ -4976,14 +4986,14 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 ,'Kortinki\\Zadacha2\\net.png','',2)
 go
 
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Школьный тест умственного развития" К.М. Гуревич ШТУР.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Школьный тест умственного развития" К.М. Гуревич ШТУР.',
 	'Норма:  34%
 Вывод:  умственное развитие  в норме (34,8%).
 Гуревич, К.М.  Психологическая коррекция умственного развития учащихся / К.М.Гуревич, И.В.Дубровина. −  М, 1990. – С. 33-35.'
 	,'Kortinki\\Zadacha3\\1_1.png','Kortinki\\Zadacha3\\1_2.png',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Цветовой тест" М. Люшера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Цветовой тест" М. Люшера.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики испытуемый старается улучшить представления о себе других людей, чтобы они пошли на уступки и считались с его потребностями и  желаниями. Он хочет избавиться от ощущения пустоты и устранить разрыв, который по его мнению, отделяет его от других. Озабочен тем, чтобы узнать жизнь со всех сторон, использовать предоставленные ею возможности и прожить её во всей полноте. Поэтому он возмущается по поводу любых ограничений и рамок, накладываемых на него, и настаивает на том, чтобы ему предоставили свободу и не чинили препятствий. Он способен достигать физического удовлетворения через  сексуальную активность, но склонен оставаться эмоционально замкнутым, что ограждает его от глубокой вовлеченности. Он жаждет успеха, волнений, и жизни полной впечатлений. Хочет свободно развиваться, сбросить оковы неуверенности в себе, побеждать и жить насыщенной жизнью. Любит общаться с людьми. Энтузиаст по натуре. Восприимчив ко всему новому, современному и увлекательному. У него много интересов, и он хочет расширить сферы своей деятельности. На  будущее смотрит оптимистично. Он борется с ограничениями и запретами и настаивает на том, чтобы ему дали возможность свободно развиваться, прилагая собственные  усилия.  Он считает, что ему не дают двигаться вперед и ограничивают  это продвижение. Ищет решения, которое снимет подобные ограничения. Этот человек придаёт особенное значение общительности. Он жаждет успеха и жизни полной впечатлений, восприимчив ко всему новому, современному и увлекательному. Для этого хочет сбросить существующие оковы неуверенности в себе, ощущение пустоты и устранить разрыв, который как ему кажется, отделяет его от других. Для этого он старается улучшить представление о себе у людей, чтобы они пошли на уступки и считались с его потребностями. Но вместе с тем он склонен оставаться эмоционально замкнутым. Он чувствителен в  отношении критических замечаний в свой адрес. У него много интересов и на жизнь он смотрит оптимистично. Но его не устраивают существующие запреты и ограничения. Ищет решения, как освободиться от них для того, чтобы развиваться свободно. 
 Дополнительная информация:  У испытуемого средняя степень гибкости своего мнения.  Если он хочет сделать какую-либо работу, то она будет завершена им. И  личным приоритетом в ней будет желание чувствовать себя победителем в завоевании того, чего он хотел добиться.  Тревожность испытуемого находится в норме. Поведение и цель испытуемого согласованы. Работоспособность больше, чем хочет показать. Уровень  работоспособности достаточный.
 Измерительная шкала:
@@ -4993,8 +5003,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизнь-XXI век. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.'
 	,'Kortinki\\Zadacha3\\2.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('16 ЛФ Р.Б. Кеттелла.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','16 ЛФ Р.Б. Кеттелла.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данный тип личности обладает коммуникативными свойствами личности, которые  характеризуются открытостью, общительностью, активностью в установлении как межличностных, так и  социальных контактов. Направленность вовне, на людей. По отношению к людям он открыт и прямолинеен. Экстраверсия.
         В поведении проявляются экспрессивность, импульсивность, социальная смелость, склонность к риску, готовность к вступлению в новые группы, быть лидером. Независимость характера, склонность к принятию неординарных решений. Имеется некоторая социальная незрелость.        Эмоциональная сфера характеризуется уверенностью в себе, спокойным, адекватным восприятием действительности, стрессоустойчивостью. У него наблюдается удовлетворённость самим собой, внутренняя расслабленность и низкая мотивация (это сказывается на недостаточной эффективности профессиональной деятельности). Иногда у него может быть некоторая чёрствость по отношению к окружающим, он склонен к ревности и раздражительности, практичен.  Интеллектуальная сфера характеризуется оперативностью, подвижностью мышления, высоким уровнем общей культуры, развитой аналитичностью, интересом и интеллектуальным знанием. Стремлением к свободомыслию, радикализму. Умение оперировать абстракциями, развитое воображение. Склонность к самостоятельным оригинальным решениям. Имеет гармонично развитый интеллект. В целом личность можно диагностировать как экстраверта: с направленностью вовне - на людей и на процесс общения. Стремится быть лидером. Он открыт и прямолинеен в коммуникативных контактах. Иногда у него может быть некоторая чёрствость по отношению к окружающим, он склонен к ревности и раздражительности, практичен. Личность относится к мыслительному типу: имеет оперативность и подвижность мышления, с развитой аналитичностью, интересом и интеллектуальным знанием. Склонен к самостоятельным оригинальным решениям. У него гармонично развитый интеллект. Он уверен в себе, спокойный, с адекватным восприятием действительности и  стрессоустойчив. Импульсивен, социально смел, склонен к риску. Имеет 
 независимый характер, склонен к принятию неординарных решений.
@@ -5012,8 +5022,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	факторы  B,E,G, I  и Q3, Q4 соответствуют норме.
 Головей, Л.А. Практикум по возрастной психологии: Учеб. пособие / Л.А. Головей , Е.Ф. Рыбалко. − СПб.: Речь, 2002.  С. 578-588.'
 	,'Kortinki\\Zadacha3\\3_1.png','Kortinki\\Zadacha3\\3_2.png',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Тест рисуночных ассоциаций" С. Розенцвейга.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Тест рисуночных ассоциаций" С. Розенцвейга.',
 	'Полученные данные:
 •	КГА = 29%
 
@@ -5026,8 +5036,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Дементий, Л.И. Фрустрация: Понятие и диагностика. Учеб. метод. пособие для студентов специальности «Психология»/ Л.И. Дементий.  ОмГУ, 2004. – 68 с.'
 	,'Kortinki\\Zadacha3\\net.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Тест руки" (Hand-тест) А. Вагнера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Тест руки" (Hand-тест) А. Вагнера.',
 	'Полученные данные:
 •	MAL =  0%
 •	WITH = 2,9 %
@@ -5046,8 +5056,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Елисеев, О.П. Практикум по психологии личности / О.П. Елисеев.  СПб., 2003.  С.310-327.
 '
 	,'Kortinki\\Zadacha3\\net.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Диагностика межличностных отношений" Т. Лири.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Диагностика межличностных отношений" Т. Лири.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, тип личности испытуемого независимо-доминирующий и прямолинейно-агрессивный с выраженным чувством собственного превосходства над окружающими и с тенденцией иметь свое, особе мнение, отличное от большинства. У него имеется стремление занимать обособленную позицию в группе, которая может сопровождаться чрезмерным упорством, недружелюбием, несдержанностью и вспыльчивостью.
 	Норма:  От 0 до 8 баллов 
 Вывод:  тип личности испытуемого независимо-доминирующий и прямолинейно-агрессивный. 
@@ -5056,8 +5066,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Собчик, Л.Н.  Психология индивидуальности. Теория и практика психодиагностики / Л.Н. Собчик.   СПб.: Речь, 2005.  624 с. 
 '
 	,'Kortinki\\Zadacha3\\6.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Диагностика уровня субъективного контроля УСК" Дж. Роттера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Диагностика уровня субъективного контроля УСК" Дж. Роттера.',
 	'   Полученные данные: 
 •	Uо = 5,5 стенов
 •	Uс = 8 стенов
@@ -5074,8 +5084,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Грецов, А.Г. Психологические тесты для старшеклассников и студентов / А.Г. Грецов, А.А. Азбель.  СПб.: Питер, 2012.  208 с.
 '
 ,'Kortinki\\Zadacha3\\7_1.png','Kortinki\\Zadacha3\\7_2.png',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Исследование волевой саморегуляции ВСК" А. Зверков, Е.В. Эйдман.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Исследование волевой саморегуляции ВСК" А. Зверков, Е.В. Эйдман.',
 	'Полученные данные:
 •	волевая саморегуляция  - 9 баллов
 •	настойчивость - 5 баллов 
@@ -5088,8 +5098,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Пашукова, Т.И. Психологические исследования. Практикум по общей психологии для студентов педагогических вузов / Т.И. Пашукова, А.И. Допира, Г.В. Дьяконов.   М.: ИПП, 1996. - 177 с.
 '
 ,'Kortinki\\Zadacha3\\8.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Диагностика предрасположенности личности к конфликтному поведению" Томаса',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Диагностика предрасположенности личности к конфликтному поведению" Томаса',
 	'Полученные данные: 
 
 •	избегание  - 3 баллов
@@ -5104,8 +5114,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Истратова, О.Н. Психодиагностика. Коллекция лучших тестов / О.Н. Истратова, Т.В. Эксакусто.  РнД.: Феникс, 2006.  375 с.
 '
 ,'Kortinki\\Zadacha3\\9.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Методика выявления коммуникативных и организаторских склонностей" КОС-2.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Методика выявления коммуникативных и организаторских склонностей" КОС-2.',
 	'Полученные данные: 
 •	организаторские склонности  - 85% 
 •	коммуникативные способности - 75% 
@@ -5115,8 +5125,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Фетискин, Н. П. Социально-психологическая диагностика развития личности и малых групп / Н. П. Фетискин, В. В. Козлов, Г. М. Майнулов. – М.: Институт Психотерапии, 2002. – C.263265.
 '
 ,'Kortinki\\Zadacha3\\10.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Диагностика социально-психологических установок личности в мотивационно-потребностной сфере" О.Ф.Потемкиной.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Диагностика социально-психологических установок личности.','Тест "Диагностика социально-психологических установок личности в мотивационно-потребностной сфере" О.Ф.Потемкиной.',
 	'Полученные данные:
 •	ориентация на альтруизм. 5
 •	ориентация на процесс. 6
@@ -5138,8 +5148,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001. – С.641-648. 
 '
 ,'Kortinki\\Zadacha3\\net.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Шкала искренности Марлоу-Крауна.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала искренности Марлоу-Крауна.',
 	'Полученные данные:  общий итоговый показатель “мотивации одобрения” 6 баллов
 
 Измерительная шкала: 
@@ -5155,8 +5165,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001.  – С.635-636.
 '
 ,'Kortinki\\Zadacha3\\net.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник мотивации достижения А.Мехрабиана',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник мотивации достижения А.Мехрабиана',
 	'Полученные данные: мотивация стремления к  успеху 110 баллов, мотивация избегания неудач  90 баллов
 Измерительная шкала: стремление к успеху, избегание неудачи
 •	Сумма баллов интервале от 165 до 210   доминирует стремление к успеху.
@@ -5169,8 +5179,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Фетискин,  Н.П.  Социально-психологическая диагностика развития личности и малых групп. / Н.П. Фетискин, В.В. Козлов, Г.М. Мануйлов  – М, 2002. – C.98-102.
 '
 ,'Kortinki\\Zadacha3\\net.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика изучения мотивации к избеганию неудач Т. Элерса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика изучения мотивации к избеганию неудач Т. Элерса.',
 	'Полученные данные: 15 баллов
 Измерительная шкала:
 •	от 2 до 10 баллов: низкая мотивация к защите;
@@ -5184,8 +5194,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.630-632.
 '
 ,'Kortinki\\Zadacha3\\net.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика изучения мотивации успеха Т. Элерса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика изучения мотивации успеха Т. Элерса.',
 	'Полученные данные: 11 баллов
 Измерительная шкала:
 •	от 1 до 10 баллов: низкая мотивация к успеху; 
@@ -5198,8 +5208,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.626-629.
 '
 ,'Kortinki\\Zadacha3\\net.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика диагностики оперативной оценки самочувствия, активности и настроения (САН).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика диагностики оперативной оценки самочувствия, активности и настроения (САН).',
 	'Норма: 
 •	самочувствие – 5,4;
 •	активность – 5,0; 
@@ -5208,8 +5218,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.17-21.
 '
 ,'Kortinki\\Zadacha3\\16.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Самооценка психических состояний по Айзенку.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Самооценка психических состояний по Айзенку.',
 	'Полученные данные:
 •	Шкала тревожности 14 баллов
 •	Шкала фрустрации 14 баллов
@@ -5232,8 +5242,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С. 141-145.
 '
 ,'Kortinki\\Zadacha3\\net.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('ПДО "Патохарактерологический диагностический опросник для подростков" А.Е. Личко, Н.Я. Иванова".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('ПДО "Патохарактерологический диагностический опросник для подростков".','ПДО "Патохарактерологический диагностический опросник для подростков" А.Е. Личко, Н.Я. Иванова.',
 	'Содержательные характеристики при указанном сочетании параметров личности: у испытуемого позитивное отношение к исследованию. Откровенность испытуемого в норме. Выявлена высокая конформность и низкая диссимуляция. Слабая реакция эмансипации и низкая склонность к делинквентности. Преобладание мужественных или женственных черт не выявлено. Имеется психологическая склонность к алкоголизации, а также умеренный риск к употреблению психоактивных средств. Риск депрессии не определен.
 
 Измерительная шкала.
@@ -5285,8 +5295,8 @@ d — психологической склонности к делинквен�
 Личко, А.Е. Патохарактерологический диагностический опросник для подростков / А.Е. Личко, Н.Я. Иванов. - 2-е изд. — М.: Фолиум, 1995 – 64 с.
 '
 ,'Kortinki\\Zadacha3\\18_1.png','Kortinki\\Zadacha3\\18_2.png',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Сокращённый многофакторный опросник для исследования личности СМОЛ.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Сокращённый многофакторный опросник для исследования личности СМОЛ.',
 	'Полученные данные: L<40 Т-баллов, К=51 Т-балл, пик по шкале 9 (61 Т-балл).
  Повышение профиля на верхнюю границу нормы по 6 шкале (59 Т-баллов)
 Содержательные характеристики при указанном сочетании параметров личности: испытуемый уверен в себе, стремится доминировать и частично контролирует свои эмоции. Испытуемый эгоцентричен, настойчив, склонен к ревности. У него отмечаются  черты лабильной акцентуации характера. Данные черты могут проявляться в частых респираторных заболеваниях (ангина, простуда), мало мотивированной смене настроения. Его уровень общительности, аппетита и работоспособности находятся в зависимости от 
@@ -5325,8 +5335,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Большая энциклопедия психологических тестов /Составитель А. Карелин. — М.: ЭКСМО, 2009. — С. 76-79.
 '
 ,'Kortinki\\Zadacha3\\19_1.png','Kortinki\\Zadacha3\\19_2.png',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика "Родителей оценивают дети" (РОД).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика "Родителей оценивают дети" (РОД).',
 	'Полученные данные: числовых данные отсутствуют
 
 Содержательные характеристики при указанном сочетании параметров личности: в представлениях подростка ошибок со стороны родителей в стиле его семейного воспитания нет.
@@ -5335,8 +5345,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Фурманов,  И.А. Психологическая работа с детьми, лишенными родительского попечительства: Книга для психологов / И.А. Фурманов,  А.А. Аладьин,  Н.В. Фурманова  – МН.: ТЕСЕЙ, 1999. – С. 174, 210 – 216.
 '
 ,'Kortinki\\Zadacha3\\20_1.png','Kortinki\\Zadacha3\\20_2.png',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика "Анализ семейного воспитания" (АСВ) Э.Г. Эйдемиллер, В.В. Юстицкиса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика "Анализ семейного воспитания" (АСВ) Э.Г. Эйдемиллер, В.В. Юстицкиса.',
 	'Полученные данные:
 чрезмерность требований (обязанностей) – шкала Т+;
 недостаточность требований – запретов (доминирование) – шкала З-.
@@ -5357,8 +5367,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Детская психодиагностика и профориентация / Под ред. Л.Д. Столяренко –Ростов н/Д: «Феникс», 1999. – С. 289-301.
 '
 ,'Kortinki\\Zadacha3\\21.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика "Кинетический рисунок семьи" (КРС).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика "Кинетический рисунок семьи" (КРС).',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, полученные результаты не противоречат друг другу. Зона возможных проблем - "агрессия членов семьи по отношению к Диме".
 Измерительная шкала:
 1)	благоприятная семейная ситуация – 0-13 баллов;
@@ -5376,8 +5386,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Корнилова, Т.В. Подростковая группа риска / Т.В. Корнилова, Е.Л. Григоренко, С.Д. Смирнов. – СПб.: Питер, 2005. – 336 с.
 '
 ,'Kortinki\\Zadacha3\\22.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Несуществующее животное".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Несуществующее животное".',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, диагностируется готовность к контролируемой коммуникации. Обследуемый ценит эрудицию в себе и окружающих. Ему свойственна рациональность при принятии решения путем опоры на существующие положение и значимую информацию. У него высокой контроль за рассуждениями, выводами и решениями. Имеется тенденция к замкнутости, закрытости своего внутреннего мира. Тревожность связана с поло-сексуальной проблемой. Отношение к своему "Я" нейтральное. Для обследуемого свойственен эгоцентризм.  Для него значимо мнение окружающих его близких людей.
 Измерительная шкала.
 Аспекты анализа рисунка.
@@ -5404,8 +5414,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Кочубеева, Л.А. Применение проективной рисуночной методики "Несуществующее животное" для определения ТИМ / Л.А. Кочубеева, М.Л. Стоялова // Соционика, ментология и психология личности. – № 6. – 2002. –  С. 5-18.
 '
 ,'Kortinki\\Zadacha3\\23_1.png','Kortinki\\Zadacha3\\23_2.png',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Дом-Дерево-Человек" Дж. Бука (ДДЧ).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Дом-Дерево-Человек" Дж. Бука (ДДЧ).',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого все психологические черты сбалансированы. Психологическая защита сильная, поэтому тревожность слабая. Для него характерна уверенность в себе, отсутствие чувства неполноценности, слабая агрессивность, слабая конфликтность. Нет трудностей общения и пониженного фона настроения.
 Измерительная шкала.
 •	Детали - осознание и заинтересованность человека в каждодневной жизненной ситуации;
@@ -5417,8 +5427,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Романова, Е.С. Графические методы в практической психологии / Е.С.  Романова. – СПб.: Речь, 2001. – 529 с. 
 '
 ,'Kortinki\\Zadacha3\\24.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Незаконченные предложения" Сакса, Леви.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Незаконченные предложения" Сакса, Леви.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, Дима любит мать, но отмечает у себя некоторое непослушание и иногда обижается на неё. У Димы позитивное отношение к членам своей семьи. Он доверяет настоящему другу и считает, что он должен тоже ценить дружбу и быть надежным. Дима относится к сверстникам позитивно и считает, что они такие же, как и он. Не любит, когда его обсуждают. Отношение к взрослым в целом позитивное, но считает, что взрослые губят себя вредными привычками - курением и спиртным. Не любит, когда взрослые ему не верят и не понимают его. Отношение к учебе и учителям позитивное. Считает, что он прилагает усилия для учебы и таким образом выполняет требования взрослых. В школе проявляет старательность. В конфликте Дима выбирает стиль поведения - соперничество. У людей он выделяет такие отрицательные черты как злость, жадность и несправедливость. Сейчас Дима ощущает чувство вины за непослушание. Отмечает у себя наличие такой отрицательной черты как нехватка терпения. Своей положительной чертой он считает способность к самоконтролю и честность. Считает, что в жизни будет соблюдать законы. О своем будущем Дима пока не думает. Надеется, что в будущем все будет хорошо, исполнятся его мечты, и он не будет курить. Жалеет о том, что не слушается родителей. Хочет забыть тот день, когда ему причинили зло. Хочет, чтобы все люди были счастливы и добры, а также, исполнение своей мечты.
 
 Измерительная шкала:
@@ -5439,8 +5449,8 @@ E. В какой манере выражаются конфликты: конф�
 Казачкова В.Г. Метод незаконченных предложений при изучении отношений личности // Вопросы психологии. - 1989. - N 3. - С. 154-157. 
 '
 ,'Kortinki\\Zadacha3\\25.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Тест школьной тревожности" Филипса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Тест школьной тревожности" Филипса.',
 	'Факторы:
 1. Общая тревожность в школе (13,7%);
 2. Переживание социального стресса (27,3%);
@@ -5459,8 +5469,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Психологические тесты для профессионалов / авт. сост Н.Ф. Гребень. – Минск: Современная школа, 2007. – С. 162-165.
 '
 ,'Kortinki\\Zadacha3\\26.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика Ч.Д. Спилберга и Ю.Л. Ханина.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика Ч.Д. Спилберга и Ю.Л. Ханина.',
 	'Полученные результаты:
 РТ (реактивная тревожность) – 31 балла;
 ЛТ (личностная тревожность) – 14 баллов.
@@ -5474,8 +5484,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Диагностика эмоционально-нравственного развития / Ред. и сост. Дерманова И.Б. – СПб.: 2002. – С.124-126.
 '
 ,'Kortinki\\Zadacha3\\net.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Самооценка личности" по Дембо-Рубинштейн в модификации А.М.Прихожан.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Самооценка личности" по Дембо-Рубинштейн в модификации А.М.Прихожан.',
 	'Полученные результаты:
 Уровень притязаний – 75-89%.
 Самооценка – 45-74%;
@@ -5489,8 +5499,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Практическая психодиагностика. Методики и тесты / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — 672 с.
 '
 ,'Kortinki\\Zadacha3\\28.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Теппинг-тест" Е.П. Ильина.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Теппинг-тест" Е.П. Ильина.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого средне-слабая НС. Он плохо выдерживает большую по величине и длительности нагрузку. У него быстро наступает утомление.
 Измерительная шкала:
 •	сильный тип: темп нарастает до максимального в первые 10-15 с. работы; в следующие 25-30 с. он может снизиться ниже исходного уровня (т.е. наблюдавшегося в первые 5 с работы). Этот тип кривой свидетельствует о наличии у испытуемого сильной нервной системы;
@@ -5503,8 +5513,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Практическая психодиагностика. Методики и тесты / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — С. 528-530.
 '
 ,'Kortinki\\Zadacha3\\29_1.png','Kortinki\\Zadacha3\\29_2.png',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Опросник Айзенка по определению темперамента и характера EPI" Т.В.Матолиной',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Опросник Айзенка по определению темперамента и характера EPI" Т.В.Матолиной',
 	'Полученные данные.
 Экстраверсия – 20 баллов
 Нейротизм – 7 баллов
@@ -5523,8 +5533,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Фетискин, Н. П. Экспресс-диагностика характерологических особенностей личности / Н. П. Фетискин, В. В. Козлов,  Г. М. Мануйлов. –  М., 2002. –  C. 35-44.
 '
 ,'Kortinki\\Zadacha3\\30.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('ОФДСИ «Опросник формально-динамических свойств индивидуальности» В.М.Русалова',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','ОФДСИ «Опросник формально-динамических свойств индивидуальности» В.М.Русалова',
 	'Полученные данные: 
 ИОА – 249
 ИОЭ – 93 
@@ -5552,8 +5562,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 118-130.
 '
 ,'Kortinki\\Zadacha3\\31_1.png','Kortinki\\Zadacha3\\31_2.png',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Ориентировочно-диагностическая анкета познавательных процессов (ДДО)',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Ориентировочно-диагностическая анкета познавательных процессов (ДДО)',
 	'Полученные данные.
 Человек-человек – высокий показатель.
 Человек-техника – средний показатель.
@@ -5564,8 +5574,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д. Я. Практическая психодиагностика. Методики и тесты / Самара: Бахра-М, 2015. – C. 569-573
 '
 ,'Kortinki\\Zadacha3\\32.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Карта интересов Голомштока"',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Карта интересов Голомштока"',
 	'Полученные данные: наибольшее количество знаков «+» набрали виды деятельности: Техника, транспорт, сфера обслуживания, общественная работа.
 
 Измерительная шкала.
@@ -5578,8 +5588,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 516-521.
 '
 ,'Kortinki\\Zadacha3\\net.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Исследование объема эмоциональной памяти"',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Исследование объема эмоциональной памяти"',
 	'Полученные данные: 42%
 
 Измерительная шкала. Коэффициент эмоциональной памяти: 
@@ -5596,8 +5606,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Изучение основных закономерностей познавательных процессов в период взрослости [Электронный ресурс] / Экспериментальное изучение памяти // Режим доступа : http://studbooks.net/1613171/psihologiya/eksperimentalnaya_chast
 '
 ,'Kortinki\\Zadacha3\\net.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Исследование объема кратковременной памяти" с помощью субтеста "Повторение цифр" из теста Векслера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('"Исследование объема кратковременной памяти" с помощью субтеста Векслера.','"Исследование объема кратковременной памяти" с помощью субтеста "Повторение цифр" из теста Векслера.',
 	'Полученные данные.
 Объем кратковременной памяти – 8
 Концентрация внимания – 7
@@ -5619,8 +5629,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C.325-403.
 '
 ,'Kortinki\\Zadacha3\\net.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "10 слов" (оценка состояния памяти, утомляемости, особенностей мышления).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "10 слов" (оценка состояния памяти, утомляемости, особенностей мышления).',
 	'Полученные данные.
 Первое повторение – 5 слов
 Второе повторение – 6 слов
@@ -5634,8 +5644,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 202-203. 
 '
 ,'Kortinki\\Zadacha3\\net.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Сложные аналогии"',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Сложные аналогии"',
 	'Полученные данные: 5 баллов (13 ответов)
 	Норма: 6 баллов и выше
 
@@ -5644,8 +5654,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Касьянов, С. Психологические тесты / С. Касьянов. – М.: Эксмо, 2006. –  608 с.
 '
 ,'Kortinki\\Zadacha3\\37.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Выделение существенных признаков".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Выделение существенных признаков".',
 	'Полученные данные: 5 баллов (33 слова)  
 	Норма:  5 баллов и выше
 
@@ -5657,8 +5667,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 61-62.
 '
 ,'Kortinki\\Zadacha3\\38.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Корректурная проба Бурдона".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Корректурная проба Бурдона".',
 	'Полученные данные.
 Концентрация внимания – 48 %
 Устойчивость внимания –  медленное снижение скорости просмотра
@@ -5680,8 +5690,8 @@ A = S / t, где
 Корректурная проба (Тест Бурдона) / Альманах психологических тестов. – М., 1995. –  С.107-111.
 '
 ,'Kortinki\\Zadacha3\\39.png','',3)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник для изучения познавательных интересов Юркевича.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник для изучения познавательных интересов Юркевича.',
 	'Полученные данные:  10 балл
 
 Измерительная шкала. Интенсивность познавательной потребности:
@@ -5698,8 +5708,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 ,'Kortinki\\Zadacha3\\net.png','',3)
 go
 
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('."Школьный тест умственного развития" К.М. Гуревич ШТУР.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Школьный тест умственного развития" К.М. Гуревич ШТУР.',
 	'Норма:  34%
 
 Вывод:  умственное развитие  низкое  (32%).
@@ -5707,8 +5717,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Гуревич, К.М.  Психологическая коррекция умственного развития учащихся / К.М.Гуревич, И.В.Дубровина. −  М, 1990. – С. 33-35.
 '
 	,'Kortinki\\Zadacha4\\1_1.png','Kortinki\\Zadacha4\\1_2.png',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Цветовой тест" М. Люшера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Цветовой тест" М. Люшера.',
 	'Полученные данные: цветовой выбор
 +	+	X	X	=	=	-	-
 5	3	4	1	2	6	0	7
@@ -5732,8 +5742,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизньXXI век. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.
 '
 	,'Kortinki\\Zadacha4\\2.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('16 ЛФ Р.Б. Кеттелла.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','16 ЛФ Р.Б. Кеттелла.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данный тип личности обладает  коммуникативными свойствами личности, которые  характеризуются сдержанностью  в непосредственных межличностных контактах, активностью,  экспрессивностью в социальном общении, готовностью к вступлению в  новые группы, склонностью к лидерству. Склонен к экстраверсии. В поведении проявляются мягкость, доверчивость, уступчивость, прямолинейность. В социальном поведении отмечаются нонконформные реакции: противопоставление себя группе, свободное отношение к  общепринятым моральным правилам и нормам. Можно предполагать  личностную и социальную незрелость.   Эмоциональная сфера характеризуется уверенностью в себе, спокойным, адекватным восприятием действительности. Такой человек не нуждается в волевой регуляции своих эмоций и поведения, стрессоустойчив, ригиден. В поведении может быть уравновешен, спокоен. У него наблюдается удовлетворённость самим собой, внутренняя расслабленность и низкая мотивация (это сказывается на недостаточной эффективности профессиональной деятельности). Интеллектуальная сфера характеризуется невысокой оперативностью мышления, с недостаточно развитым уровнем общей культуры. Такой человек обладает развитой аналитичностью мышления, интеллектуальными интересами, умением оперировать абстрактными понятиями, развитым воображением. Склонен принимать самостоятельные оригинальные решения. Низкие оценки по фактору "В", при таком сочетании факторов могут объясняться рядом причин: недостаточным уровнем образования; фрустрированностью; ситуативной тревожностью; плохим физическим самочувствием на момент выполнения теста.        В целом личность можно диагностировать как человека, склонного к экстраверсии и лидерству: сдержанного в межличностных контактах, активного и экспрессивного в социальном общении. В социальном поведении у него отмечаются нонконформные реакции: противопоставление себя группе, свободное отношение к общепринятым моральным правилам и нормам. Он уверен в себе, спокойный, с адекватным восприятием действительности. Такой человек стрессоустойчив и ригиден. В поведении может быть уравновешен и спокоен. Он имеет невысокую оперативность и подвижность мышления, с недостаточно развитым уровнем общей культуры, но хорошо развитую аналитичностью мышления и интеллектуальные интересы. Склонен к самостоятельным оригинальным решениям. Возможно у него недостаточный уровень образования или он фрустрирован, а также имеет ситуативную тревожность.
 		Если по какому-либо фактору набрано 5-6, это говорит о том, что полюс данного фактора четко не выражен;
 	Оценка 4 отражает тенденцию к проявлению левого полюса фактора;
@@ -5750,8 +5760,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Головей, Л.А. Практикум по возрастной психологии: Учеб. пособие / Л.А. Головей , Е.Ф. Рыбалко. − СПб.: Речь, 2002.  С. 578-588.
 '
 	,'Kortinki\\Zadacha4\\3_1.png','Kortinki\\Zadacha4\\3_2.png',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Тест рисуночных ассоциаций" С. Розенцвейга.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Тест рисуночных ассоциаций" С. Розенцвейга.',
 	'Полученные данные:
 •	КГА = 25%
 
@@ -5763,8 +5773,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Дементий, Л.И. Фрустрация: Понятие и диагностика. Учеб. метод. пособие для студентов специальности «Психология»/ Л.И. Дементий.  ОмГУ, 2004. – 68 с.
 '
 	,'Kortinki\\Zadacha4\\net.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Тест руки" (Hand-тест) А. Вагнера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Тест руки" (Hand-тест) А. Вагнера.',
 	'Полученные данные:
 •	MAL =  0%
 •	WITH = 0%
@@ -5783,8 +5793,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Елисеев, О.П. Практикум по психологии личности / О.П. Елисеев.  СПб., 2003.  С.310-327.
 '
 	,'Kortinki\\Zadacha4\\net.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Диагностика межличностных отношений" Т. Лири.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Диагностика межличностных отношений" Т. Лири.',
 	'Полученные данные: (в цифровом значении не представлены)
 Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, тип личности испытуемого независимо-доминирующий и недоверчиво-скептический, в средней степени выражено чувство собственного превосходства над окружающими. Он стремится иметь свое, особе мнение, отличное от большинства и занимать обособленную позицию в группе. У него наблюдается крайняя обидчивость с недоверчивым модусом  отношения с окружающими, со склонностью к критицизму и подозрительностью. Он уверен в себе, у него хорошие организаторские умения. Он настойчив в достижении поставленной цели.
 Норма:  От 0 до 8 баллов 
@@ -5793,8 +5803,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Собчик, Л.Н.  Психология индивидуальности. Теория и практика психодиагностики / Л.Н. Собчик.   СПб.: Речь, 2005.  624 с. 
 '
 	,'Kortinki\\Zadacha4\\6.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Диагностика уровня субъективного контроля УСК" Дж. Роттера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Диагностика уровня субъективного контроля УСК" Дж. Роттера.',
 	'Полученные данные: 
 •	Uо = 4 стена
 •	Uс = 6 стенов
@@ -5811,8 +5821,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Грецов, А.Г. Психологические тесты для старшеклассников и студентов /А. Г. Грецов, А.А. Азбель.  СПб.: Питер, 2012.  208 с.
 '
 	,'Kortinki\\Zadacha4\\7_1.png','Kortinki\\Zadacha4\\7_2.png',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Исследование волевой саморегуляции ВСК" А. Зверков, Е.В. Эйдман.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Исследование волевой саморегуляции ВСК" А. Зверков, Е.В. Эйдман.',
 	'Полученные данные:
 •	волевая саморегуляция  - 7 баллов
 •	настойчивость - 8 баллов 
@@ -5825,8 +5835,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Пашукова, Т.И. Психологические исследования. Практикум по общей психологии для студентов педагогических вузов / Т.И. Пашукова, А.И. Допира, Г.В. Дьяконов.   М.: ИПП, 1996. - 177 с.
 '
 	,'Kortinki\\Zadacha4\\8.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Диагностика предрасположенности личности к конфликтному поведению" Томаса',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Диагностика предрасположенности личности к конфликтному поведению" Томаса',
 	'Полученные данные: 
 
 •	избегание  - 8 баллов
@@ -5842,8 +5852,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 '
 	,'Kortinki\\Zadacha4\\9.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Методика выявления коммуникативных и организаторских склонностей" КОС-2.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Методика выявления коммуникативных и организаторских склонностей" КОС-2.',
 	'Полученные данные: 
 •	организаторские склонности  - 35% 
 •	коммуникативные способности - 40% 
@@ -5853,8 +5863,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Фетискин, Н. П. Социально-психологическая диагностика развития личности и малых групп / Н. П. Фетискин, В. В. Козлов, Г. М. Майнулов. – М.: Институт Психотерапии, 2002. – C.263265.
 '
 	,'Kortinki\\Zadacha4\\10.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Диагностика социально-психологических установок личности в мотивационно-потребностной сфере" О.Ф.Потемкиной.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Диагностика социально-психологических установок личности','Тест "Диагностика социально-психологических установок личности в мотивационно-потребностной сфере" О.Ф.Потемкиной.',
 	'Полученные данные:
 
 •	ориентация на альтруизм. 4
@@ -5877,8 +5887,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001. – С.641-648. 
 '
 	,'Kortinki\\Zadacha4\\net.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Шкала искренности Марлоу-Крауна.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала искренности Марлоу-Крауна.',
 	'Полученные данные: общий итоговый показатель “мотивации одобрения” 11 баллов
 
 Измерительная шкала: 
@@ -5894,8 +5904,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001.  – С.635-636.
 '
 	,'Kortinki\\Zadacha4\\net.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник мотивации достижения А.Мехрабиана',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник мотивации достижения А.Мехрабиана',
 	'Полученные данные: мотивация стремления к успеху 60 баллов, мотивация избегания неудач  170 баллов
 Измерительная шкала: стремление к успеху, избегание неудачи
 •	Сумма баллов интервале от 165 до 210   доминирует стремление к успеху.
@@ -5907,8 +5917,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Фетискин,  Н.П.  Социально-психологическая диагностика развития личности и малых групп. / Н.П. Фетискин, В.В. Козлов, Г.М. Мануйлов  – М, 2002. – C.98-102.
 '
 	,'Kortinki\\Zadacha4\\net.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика изучения мотивации к избеганию неудач Т. Элерса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика изучения мотивации к избеганию неудач Т. Элерса.',
 	'Полученные данные: 20 баллов
 Измерительная шкала:чем больше сумма баллов, тем выше уровень мотивации к избеганию неудач, защите.
 •	от 2 до 10 баллов: низкая мотивация к защите;
@@ -5921,8 +5931,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.630-632.
 '
 	,'Kortinki\\Zadacha4\\net.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика изучения мотивации успеха Т. Элерса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика изучения мотивации успеха Т. Элерса.',
 	'Полученные данные: 8 баллов
 Измерительная шкала:
 •	от 1 до 10 баллов: низкая мотивация к успеху; 
@@ -5935,8 +5945,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.626-629.
 '
 	,'Kortinki\\Zadacha4\\net.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика диагностики оперативной оценки самочувствия, активности и настроения (САН).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика диагностики оперативной оценки самочувствия, активности и настроения (САН).',
 	'Норма: 
 •	самочувствие – 5,4;
 •	активность – 5,0; 
@@ -5945,8 +5955,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.17-21.
 '
 	,'Kortinki\\Zadacha4\\16.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Самооценка психических состояний по Айзенку.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Самооценка психических состояний по Айзенку.',
 	'Полученные данные:
 
 •	тревожность  14 баллов
@@ -5969,8 +5979,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С. 141-145.
 '
 	,'Kortinki\\Zadacha4\\net.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('ПДО "Патохарактерологический диагностический опросник для подростков" А.Е. Личко, Н.Я. Иванова".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('ПДО "Патохарактерологический диагностический опросник для подростков".','ПДО "Патохарактерологический диагностический опросник для подростков" А.Е. Личко, Н.Я. Иванова.',
 	'Содержательные характеристики при указанном сочетании параметров личности: имеется риск дезадаптации. У испытуемого позитивное отношение к исследованию. Выявлена низкая конформность и возможность диссимуляции. Реакция эмансипации умеренная. Преобладают черты мужественности. Нет психологической склонности к алкоголизации, но имеется выраженный риск к употреблению психоактивных средств. Риск депрессии отрицается.
 
 
@@ -6024,8 +6034,8 @@ d — психологической склонности к делинквен�
 Личко, А.Е. Патохарактерологический диагностический опросник для подростков / А.Е. Личко, Н.Я. Иванов. - 2-е изд. — М.: Фолиум, 1995. – 64 с.
 '
 	,'Kortinki\\Zadacha4\\18_1.png','Kortinki\\Zadacha4\\18_2.png',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Сокращённый многофакторный опросник для исследования личности СМОЛ.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Сокращённый многофакторный опросник для исследования личности СМОЛ.',
 	'Содержательные характеристики при указанном сочетании параметров личности: у него имеется отклонение от нормальных личностных реакций. Испытуемый амбоверт.   По сочетанию пиков в шкалах 3 и 4 диагностируется наличие проблемы импульсивности. Т.е. имеются проблема с контролем и сдерживанием социально неприемлемых импульсов в поведении.
 
 
@@ -6061,8 +6071,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Большая энциклопедия психологических тестов /Составитель А. Карелин. — М.: ЭКСМО, 2009. — С. 76-79.
 '
 	,'Kortinki\\Zadacha4\\19_1.png','Kortinki\\Zadacha4\\19_2.png',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика "Родителей оценивают дети" (РОД).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика "Родителей оценивают дети" (РОД).',
 	'Полученные данные: (в числовом виде отсутствуют) 
 
 Содержательные характеристики при указанном сочетании параметров личности: в совокупности нарушение всех данных стилей семейного воспитания может проявляться в следующем: мать стремится к удовлетворению любых потребностей сына. Любое его желание для матери - закон. Мать предпочитает либо вовсе обходиться без наказаний, либо применять их крайне редко. У подростка формируются такие черты характера, как непослушание, непоседливость. По мнению подростка, мать уделяет очень много внимания и сил для его воспитания и она ему предъявляет огромное количество требований, ограничивающие его свободу и самостоятельность.
@@ -6071,8 +6081,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Фурманов,  И.А. Психологическая работа с детьми, лишенными родительского попечительства: Книга для психологов / И.А. Фурманов,  А.А. Аладьин,  Н.В. Фурманова  – МН.: ТЕСЕЙ, 1999. – С. 174, 210 – 216.
 '
 	,'Kortinki\\Zadacha4\\20.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика "Анализ семейного воспитания" (АСВ) Э.Г. Эйдемиллер, В.В. Юстицкиса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика "Анализ семейного воспитания" (АСВ) Э.Г. Эйдемиллер, В.В. Юстицкиса.',
 	'Полученные данные:
 гипопротекция – шкала Г-;
 потворствование  - шкала У+;
@@ -6095,8 +6105,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Детская психодиагностика и профориентация / Под ред. Л.Д. Столяренко. –Ростов н/Д: «Феникс», 1999. – С. 289-301.
 '
 	,'Kortinki\\Zadacha4\\21.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика "Кинетический рисунок семьи" (КРС).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика "Кинетический рисунок семьи" (КРС).',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, прослеживается тенденция к ухудшению семейной ситуации. Пока она воспринимается испытуемым как благополучная, но наблюдается рост таких черт, как тревожность и чувство неполноценности.
 Измерительная шкала:
 1) благоприятная семейная ситуация – 0-13 баллов;
@@ -6113,8 +6123,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Корнилова, Т.В. Подростковая группа риска / Т.В. Корнилова, Е.Л. Григоренко, С.Д. Смирнов. – СПб.: Питер, 2005. – 336 с. 
 '
 	,'Kortinki\\Zadacha4\\22.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Несуществующее животное".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Несуществующее животное".',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, испытуемому свойственна вербальная агрессия и эгоцентризм, он заинтересован в информации от окружающих. Относится к своему "Я" нейтрально, имеется тенденция к замкнутости и нежеланию давать информацию о себе окружающим. Инфантилен, конформен в суждениях и установках. Импульсивен в принятии решений. Средняя степень астеничности.
 Измерительная шкала.
 Аспекты анализа рисунка:
@@ -6140,8 +6150,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Кочубеева, Л.А. Применение проективной рисуночной методики "Несуществующее животное" для определения ТИМ / Л.А. Кочубеева, М.Л. Стоялова // Соционика, ментология и психология личности. – № 6. – 2002. – С. 5-18.
 '
 	,'Kortinki\\Zadacha4\\23_1.png','Kortinki\\Zadacha4\\23_2.png',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Дом-Дерево-Человек" Дж. Бука (ДДЧ).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Дом-Дерево-Человек" Дж. Бука (ДДЧ).',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, в жизненной ситуации испытуемого происходят события, ослабляющие его психологическую защиту и это влияет на появление неуверенности и чувства неполноценности (он видит свои отличия от других и воспринимает их как недостаток).
 Измерительная шкала.
 •	детали - осознание и заинтересованность человека в каждодневной жизненной ситуации;
@@ -6153,8 +6163,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Романова, Е.С. Графические методы в практической психологии / Е.С.  Романова. – СПб.: Речь, 2001. – 529 с.
 '
 	,'Kortinki\\Zadacha4\\24.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Незаконченные предложения" Сакса, Леви.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Незаконченные предложения" Сакса, Леви.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у Димы отношение к матери позитивное, он любит и считает её красивой. Убежден, что его мать и он сам - нормальные. Юра думает, что большинство матерей счастливы со своим ребенком. Но не любит своего отца. Юра отмечает, что с отцом он не встречается. Ребенок его не хочет видеть и считает его плохим. Юра считает свою семью лучше других. Отмечают, что мать с ним обращается как с сыном. Помнит, что в детстве его окружали взрослые. Юра считает, что у него есть настоящий, хороший друг. Его друзья помнят о нем. Но он не любит плохих людей. Отношение к сверстникам у Юры позитивное. Но он не любит, когда они играют не по правилам в какие-нибудь игры, например в футбол. Юра любит хороших людей. Считает, что большинство юношей и девушек нюхают наркотики, а взрослые не работают. Ему не нравится, когда взрослые отзываются о нем плохо. Юра при воспоминании о школе ощущает свою беспомощность, хотя отмечает, что в школе он учится. Свою учебу он оценивает как среднюю, а учителей - хорошими. Юра считает, что если люди будут настроены против него, то им надо отвечать тем же - настроем против них. Идеалом женщины он видит свою маму. И отмечает, что плохих людей он не любит. Юра считает, что он способен учиться на пятерки, но у него имеется большая слабость - лень. Когда ему не везет, он огорчается. Но если люди будут настроены против него, то и он будет настроен против них. Свое детство Юра не помнит, но считает, что если бы оно повторилось, то он не сделал бы ничего плохого. Будущее кажется Юре светлым и счастливым. Он ждет день окончания школы и мечтает стать юристом или футболистом. Юра жалеет о том, что в семье он один ребенок. Он хочет забыть все плохое. Считает, что самой большой ошибкой мамы было "жениться на" папе, а его самого - обидеть маму. В детстве испытывал чувство вины, если "гадил в штанишки". Юра хочет быть умным и иметь джина, который бы ему помогал. Хочет быть счастливым.
 Измерительная шкала.
 •	"+2" — максимальное, отчетливо выраженное, сильно положительное отношение к объекту или субъекту, о котором идет речь в предложении;
@@ -6175,8 +6185,8 @@ E. В какой манере выражаются конфликты: эмоц�
 Казачкова В.Г. Метод незаконченных предложений при изучении отношений личности // Вопросы психологии. - 1989. - N 3. - С. 154-157.
 '
 	,'Kortinki\\Zadacha4\\25.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Тест школьной тревожности" Филипса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Тест школьной тревожности" Филипса.',
 	'Факторы.
 1. Общая тревожность в школе (27,6%);
 2. Переживание социального стресса (24%);
@@ -6197,8 +6207,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Психологические тесты для профессионалов / авт. сост Н.Ф. Гребень. – Минск: Современная школа, 2007. – С. 162-165.
 '
 	,'Kortinki\\Zadacha4\\26.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика Ч.Д. Спилберга и Ю.Л. Ханина.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика Ч.Д. Спилберга и Ю.Л. Ханина.',
 	'Полученные результаты:
 РТ (реактивная тревожность) – 32 балла;
 ЛТ (личностная тревожность) – 40 баллов.
@@ -6211,8 +6221,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Диагностика эмоционально-нравственного развития / Ред. и сост. Дерманова И.Б. – СПб.: 2002. – С.124-126.
 '
 	,'Kortinki\\Zadacha4\\net.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Самооценка личности" по Дембо-Рубинштейн в модификации А.М.Прихожан.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Самооценка личности" по Дембо-Рубинштейн в модификации А.М.Прихожан.',
 	'Полученные результаты:
 уровень притязаний  - 79,6%.
 уровень самооценки - 55 %;
@@ -6226,8 +6236,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Практическая психодиагностика. Методики и тесты. / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — 672 с.
 '
 	,'Kortinki\\Zadacha4\\28.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Теппинг-тест" Е.П. Ильина.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Теппинг-тест" Е.П. Ильина.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого сильная НС. Он способен выдерживать большую по величине и длительности нагрузку. Он обладает такими качествами, как выносливость и работоспособность. У него высокая концентрация внимания и активность.
 Измерительная шкала.
 •	Сильный тип: темп нарастает до максимального в первые 10-15 с. работы; в следующие 25-30 с. он может снизиться ниже исходного уровня (т.е. наблюдавшегося в первые 5 с работы). Этот тип кривой свидетельствует о наличии у испытуемого сильной нервной системы;
@@ -6241,8 +6251,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Практическая психодиагностика. Методики и тесты. / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — С. 528-530.
 '
 	,'Kortinki\\Zadacha4\\29.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Опросник Айзенка по определению темперамента и характера EPI" Т.В.Матолиной',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Опросник Айзенка по определению темперамента и характера EPI" Т.В.Матолиной',
 	'Полученные данные:
 экстраверсия – 16 баллов
 нейротизм – 17 баллов
@@ -6260,8 +6270,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Фетискин, Н. П. Экспресс-диагностика характерологических особенностей личности / Н. П. Фетискин, В. В. Козлов,  Г. М. Мануйлов. –  М., 2002. –  C. 35-44.
 '
 	,'Kortinki\\Zadacha4\\30.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('ОФДСИ «Опросник формально-динамических свойств индивидуальности» В.М.Русалова',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','ОФДСИ «Опросник формально-динамических свойств индивидуальности» В.М.Русалова',
 	'Полученные данные: 
 ИОА – 271
 ИОЭ – 81 
@@ -6289,8 +6299,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 118-130.
 '
 	,'Kortinki\\Zadacha4\\31_1.png','Kortinki\\Zadacha4\\31_2.png',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Ориентировочно-диагностическая анкета познавательных процессов (ДДО)',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Ориентировочно-диагностическая анкета познавательных процессов (ДДО)',
 	'Полученные данные: человек-человек, человек- художественный образ 
 	Рекомендуется выбирается тот вид профессии, который получил максимальное количество знаков.
 
@@ -6301,8 +6311,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д. Я. Практическая психодиагностика. Методики и тесты / Самара: Бахра-М, 2015. – C. 569-573.
 '
 	,'Kortinki\\Zadacha4\\32.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Карта интересов Голомштока"',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Карта интересов Голомштока"',
 	'Полученные данные: наибольшее количество знаков «+» набрали виды деятельности: география, геология, литература и история.
 
 Процедура обработки. Подсчет в каждом столбце бланка для ответов количество знаков «+» и «-», а далее из первой суммы вычитается вторая. Таким образом, получается 24 цифры со знаком «+» или «-», которые соответствуют 24 видам деятельности. Выбираются 2-3 вида деятельности, которые набрали большее количество знаков «+». 
@@ -6314,8 +6324,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 516-521.
 '
 	,'Kortinki\\Zadacha4\\net.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Исследование объема эмоциональной памяти"',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Исследование объема эмоциональной памяти"',
 	'Полученные данные: 30%
 
 Измерительная шкала. Коэффициент эмоциональной памяти: 
@@ -6332,8 +6342,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Изучение основных закономерностей познавательных процессов в период взрослости [Электронный ресурс] / Экспериментальное изучение памяти // Режим доступа : http://studbooks.net/1613171/psihologiya/eksperimentalnaya_chast
 '
 	,'Kortinki\\Zadacha4\\net.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Исследование объема кратковременной памяти" с помощью субтеста "Повторение цифр" из теста Векслера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('"Исследование объема кратковременной памяти" с помощью субтеста Векслера.','"Исследование объема кратковременной памяти" с помощью субтеста "Повторение цифр" из теста Векслера.',
 	'Полученные данные.
 Объем кратковременной памяти – 8
 Концентрация внимания – 6
@@ -6353,8 +6363,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C.325-403.
 '
 	,'Kortinki\\Zadacha4\\net.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "10 слов" (оценка состояния памяти, утомляемости, особенностей мышления).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "10 слов" (оценка состояния памяти, утомляемости, особенностей мышления).',
 	'Полученные данные.
 Первое повторение – 6 слов
 Второе повторение – 7 слов
@@ -6369,8 +6379,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 202-203. 
 '
 	,'Kortinki\\Zadacha4\\net.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Сложные аналогии"',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Сложные аналогии"',
 	'Полученные данные: 4 балла (10 ответов)
 	Норма: 5 баллов и выше
 
@@ -6379,8 +6389,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Касьянов, С. Психологические тесты / С. Касьянов. – М.: Эксмо, 2006. –  608 с.
 '
 	,'Kortinki\\Zadacha4\\37.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Выделение существенных признаков".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Выделение существенных признаков".',
 	'Полученные данные: 3 балла (25 слов)  
 	Норма: 5 баллов и выше
 
@@ -6391,8 +6401,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 61-62.
 '
 	,'Kortinki\\Zadacha4\\38.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Корректурная проба Бурдона".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Корректурная проба Бурдона".',
 	'Полученные данные: 
 концентрация внимания – 56 %
 устойчивость внимания –  медленное снижение скорости просмотра
@@ -6414,8 +6424,8 @@ A = S / t, где
 Корректурная проба (Тест Бурдона) / Альманах психологических тестов. – М., 1995. –  С.107-111.
 '
 	,'Kortinki\\Zadacha4\\39.png','',4)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник для изучения познавательных интересов Юркевича.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник для изучения познавательных интересов Юркевича.',
 	'Полученные данные:  10 балл
 
 Измерительная шкала
@@ -6433,8 +6443,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	,'Kortinki\\Zadacha4\\net.png','',4)
 go
 
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Школьный тест умственного развития" К.М. Гуревич ШТУР.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Школьный тест умственного развития" К.М. Гуревич ШТУР.',
 	'Норма:  34%
 
 Вывод:  умственное развитие  очень низкое  (18,8%).
@@ -6442,8 +6452,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Гуревич, К.М.  Психологическая коррекция умственного развития учащихся / К.М.Гуревич, И.В.Дубровина. −  М, 1990. – С. 33-35.
 '
 	,'Kortinki\\Zadacha5\\1_1.png','Kortinki\\Zadacha5\\1_2.png',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Цветовой тест" М. Люшера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Цветовой тест" М. Люшера.',
 	'Полученные данные: не представлены.
 •	Существующая ситуация (Х6 Х2)
 •	Источник стресса (-0-1)
@@ -6461,8 +6471,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин / Химия и жизньXXI век. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.
 '
 	,'Kortinki\\Zadacha5\\net.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('16 ЛФ Р.Б. Кеттелла.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','16 ЛФ Р.Б. Кеттелла.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данный тип личности обладает  коммуникативными свойствами личности, которые  характеризуются независимостью характера, проявляющейся в свободном отношении к общепринятым моральным нормам и правилам, не выраженным чувством долга и ответственности. В поведении отмечаются конформные реакции, зависимость от мнения и требований группы, открытость и прямолинейность в отношении к людям, некоторая социальная незрелость. Эмоциональная сфера характеризуется генетической эмоциональной стабильностью, низким контролем эмоций и поведения, низкой саморегуляцией, порождающей неуверенность в себе, сомнения и мнительность, недовольство собой. Но в экстремальных ситуациях проявляются природные качества, обеспечивающие стрессоустойчивость и достаточную уравновешенность поведения. Отмечается эмоционально-волевая незрелость личности. Интеллектуальная сфера характеризуется невысокой оперативностью мышления, неумением актуализировать свои знания, низкой общей культурой и эрудированностью, консерватизмом и критичностью в принятии новых интеллектуальных знаний, сниженными интеллектуальными процессами, конкретностью воображения и направленностью на практическую, конкретную деятельность. (Высокие оценки по факторам Е и N не влияют на интеллектуальные, но обостряют негативные свойства личности: доминированность, житейская изворотливость, упрямство). В целом личность можно диагностировать как человека, стремящегося к неформальному лидерству. Для этого он может свободно пренебрегать общепринятым моральным нормам и правилам. Его чувство долга и ответственности плохо развиты. Такой лидер будет стараться удовлетворять потребности группы и полностью соответствовать её принципам. А в отношениях с другими людьми он может быть прямолинеен, что характеризует его некоторую социальную незрелость.  Он имеет незрелую эмоционально-волевую сферу, проявляющуюся в низком контроле эмоций, поведения и низкой саморегуляции. В силу чего он становится неуверенным и недовольным собой. Его интеллектуальные процессы снижены, а воображение направлено на практическую и конкретную деятельность.
 		Если по какому-либо фактору набрано 5-6, это говорит о том, что полюс данного фактора четко не выражен;
 	Оценка 4 отражает тенденцию к проявлению левого полюса фактора;
@@ -6480,8 +6490,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 '
 	,'Kortinki\\Zadacha5\\3_1.png','Kortinki\\Zadacha5\\3_1.png',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Тест рисуночных ассоциаций" С. Розенцвейга.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Тест рисуночных ассоциаций" С. Розенцвейга.',
 	'Полученные данные:
 •	КГА = 20%
 
@@ -6493,8 +6503,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Дементий, Л.И. Фрустрация: Понятие и диагностика. Учеб. метод. пособие для студентов специальности «Психология»/ Л.И. Дементий.  ОмГУ, 2004. – 68 с.
 '
 	,'Kortinki\\Zadacha5\\net.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Тест руки" (Hand-тест) А. Вагнера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Тест руки" (Hand-тест) А. Вагнера.',
 	'Полученные данные:
 •	MAL =  12%
 •	WITH = 6 %
@@ -6512,8 +6522,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Елисеев, О.П. Практикум по психологии личности / О.П. Елисеев.  СПб., 2003.  С.310-327.
 '
 	,'Kortinki\\Zadacha5\\net.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Диагностика межличностных отношений" Т. Лири.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Диагностика межличностных отношений" Т. Лири.',
 	'Полученные данные: (в цифровом виде не представлены)
 
 Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, тип личности испытуемого независимо-доминирующий с независимым и стремящимся к соперничеству, самодовольным стилем межличностных взаимоотношений. Он стремится иметь свое, особе мнение, отличное от большинства. Мнение окружающих воспринимается критически, а собственное мнение возводится в ранг догмы или достаточно категорические отстаивается. Эмоциям не достает тепла. Низкая подчиняемость.
@@ -6524,8 +6534,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Собчик, Л.Н.  Психология индивидуальности. Теория и практика психодиагностики / Л.Н. Собчик.   СПб.: Речь, 2005.  624 с. 
 '
 	,'Kortinki\\Zadacha5\\6.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Диагностика уровня субъективного контроля УСК" Дж. Роттера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Диагностика уровня субъективного контроля УСК" Дж. Роттера.',
 	'Полученные данные: 
 •	Uо = 4 стена
 •	Uс = 6 стенов
@@ -6542,8 +6552,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Грецов, А.Г., Психологические тесты для старшеклассников и студентов / А.Г. Грецов, А.А. Азбель.  СПб.: Питер, 2012.  208 с.
 '
 	,'Kortinki\\Zadacha5\\7_1.png','Kortinki\\Zadacha5\\7_2.png',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Исследование волевой саморегуляции ВСК" А. Зверков, Е.В. Эйдман.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Исследование волевой саморегуляции ВСК" А. Зверков, Е.В. Эйдман.',
 	'   Полученные данные:
 •	волевая саморегуляция  - 5 баллов
 •	настойчивость - 3 баллов 
@@ -6556,8 +6566,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Пашукова, Т.И. Психологические исследования. Практикум по общей психологии для студентов педагогических вузов / Т.И. Пашукова, А.И. Допира, Г.В. Дьяконов.   М.: ИПП, 1996. - 177 с.
 '
 	,'Kortinki\\Zadacha5\\8.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Диагностика предрасположенности личности к конфликтному поведению" Томаса',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Диагностика предрасположенности личности к конфликтному поведению" Томаса',
 	'Полученные данные: 
 
 •	избегание  - 10 баллов
@@ -6571,8 +6581,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Истратова, О.Н. Психодиагностика. Коллекция лучших тестов / О.Н. Истратова, Т.В. Эксакусто.  РнД.: Феникс, 2006.  375 с.'
 	,'Kortinki\\Zadacha5\\9.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Методика выявления коммуникативных и организаторских склонностей" КОС-2.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Методика выявления коммуникативных и организаторских склонностей" КОС-2.',
 	'Полученные данные: 
 •	организаторские склонности  - 80% 
 •	коммуникативные способности - 85% 
@@ -6582,8 +6592,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Фетискин, Н. П. Социально-психологическая диагностика развития личности и малых групп / Н. П. Фетискин, В. В. Козлов, Г. М. Майнулов. – М.: Институт Психотерапии, 2002. – C.263265.
 '
 	,'Kortinki\\Zadacha5\\10.png','',5)
-	insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Диагностика социально-психологических установок личности в мотивационно-потребностной сфере" О.Ф.Потемкиной.',
+	insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Диагностика социально-психологических установок личности','Тест "Диагностика социально-психологических установок личности в мотивационно-потребностной сфере" О.Ф.Потемкиной.',
 	'Полученные данные:
 
 •	ориентация на альтруизм. 4
@@ -6607,8 +6617,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001. – С.641-648. 
 '
 	,'Kortinki\\Zadacha5\\net.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Шкала искренности Марлоу-Крауна.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала искренности Марлоу-Крауна.',
 	'Полученные данные: общий итоговый показатель “мотивации одобрения” 12 баллов
 
 Измерительная шкала: 
@@ -6624,8 +6634,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001.  – С.635-636.
 '
 	,'Kortinki\\Zadacha5\\net.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник мотивации достижения А.Мехрабиана',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник мотивации достижения А.Мехрабиана',
 	'Полученные данные: мотивация стремления к успеху 45 баллов, мотивация избегания неудач 35 баллов
 Измерительная шкала: стремление к успеху, избегание неудачи
 •	Сумма баллов интервале от 165 до 210   доминирует стремление к успеху.
@@ -6638,8 +6648,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Фетискин,  Н.П.  Социально-психологическая диагностика развития личности и малых групп. / Н.П. Фетискин, В.В. Козлов, Г.М. Мануйлов  – М, 2002. – C.98-102.
 '
 	,'Kortinki\\Zadacha5\\net.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика изучения мотивации к избеганию неудач Т. Элерса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика изучения мотивации к избеганию неудач Т. Элерса.',
 	'Полученные данные: 5 баллов
 Измерительная шкала:чем больше сумма баллов, тем выше уровень мотивации к избеганию неудач, защите.
 •	от 2 до 10 баллов: низкая мотивация к защите;
@@ -6653,8 +6663,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.630-632.
 '
 	,'Kortinki\\Zadacha5\\net.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика изучения мотивации успеха Т. Элерса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика изучения мотивации успеха Т. Элерса.',
 	'Полученные данные: 5 баллов
 Измерительная шкала:
 •	от 1 до 10 баллов: низкая мотивация к успеху; 
@@ -6667,8 +6677,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.626-629.
 '
 	,'Kortinki\\Zadacha5\\net.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика диагностики оперативной оценки самочувствия, активности и настроения (САН).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика диагностики оперативной оценки самочувствия, активности и настроения (САН).',
 	'Норма: 
 •	самочувствие – 5,4;
 •	активность – 5,0; 
@@ -6677,8 +6687,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.17-21.
 '
 	,'Kortinki\\Zadacha5\\16.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Самооценка психических состояний по Айзенку.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Самооценка психических состояний по Айзенку.',
 	'Полученные данные:
 
 •	тревожность  18 баллов
@@ -6705,8 +6715,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С. 141-145.
 '
 	,'Kortinki\\Zadacha5\\net.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('ПДО "Патохарактерологический диагностический опросник для подростков" А.Е. Личко, Н.Я. Иванова".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('ПДО "Патохарактерологический диагностический опросник для подростков".','ПДО "Патохарактерологический диагностический опросник для подростков" А.Е. Личко, Н.Я. Иванова.',
 	'Содержательные характеристики при указанном сочетании параметров личности: имеется  риск дезадаптации.  У испытуемого позитивное отношение к исследованию. Выявлена высокая конформность. Диссимуляция отрицается. Реакция  эмансипации сильная. Преобладают черты мужественности. Имеется психологическая склонность к алкоголизации.
 
 Измерительная шкала.
@@ -6758,8 +6768,8 @@ d — психологической склонности к делинквен�
 Личко, А.Е. Патохарактерологический диагностический опросник для подростков / А.Е. Личко, Н.Я. Иванов. - 2-е изд. — М.: Фолиум, 1995. – 64 с.
 '
 	,'Kortinki\\Zadacha5\\18_1.png','Kortinki\\Zadacha5\\18_2.png',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Сокращённый многофакторный опросник для исследования личности СМОЛ.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Сокращённый многофакторный опросник для исследования личности СМОЛ.',
 	'Полученные данные: L=47 Т-баллов, К=53 Т-балла, пик по шкале 9 -73 Т-балла
 	Содержательные характеристики при указанном сочетании параметров личности: по результатам исследования испытуемый находится в относительно конформном состоянии, способен отражать и раскрывать свои моральные и психические дефекты. Испытуемый уверен в себе, стремится доминировать и частично контролирует свои эмоции.
 
@@ -6795,16 +6805,16 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Большая энциклопедия психологических тестов /Составитель А. Карелин. — М.: ЭКСМО, 2009. — С. 76-79.
 '
 	,'Kortinki\\Zadacha5\\19_1.png','Kortinki\\Zadacha5\\19_2.png',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика "Родителей оценивают дети" (РОД).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика "Родителей оценивают дети" (РОД).',
 	'Полученные данные: числовых значений нет
 Содержательные характеристики при указанном сочетании параметров личности: у подростка формируются такие черты характера, как, жажда развлечений и рискованных похождений, пренебрежение занятиями в школе, алкоголизация или употребление наркотиков.
 Вывод: в представлениях подростка его матерью допускаются ошибки в стиле семейного воспитания по типу  потворствующая гиперпротекция.
 Фурманов,  И.А. Психологическая работа с детьми, лишенными родительского попечительства: Книга для психологов / И.А. Фурманов,  А.А. Аладьин,  Н.В. Фурманова  – МН.: ТЕСЕЙ, 1999. – С. 174, 210 – 216.
 '
 	,'Kortinki\\Zadacha5\\20.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика "Анализ семейного воспитания" (АСВ) Э.Г. Эйдемиллер, В.В. Юстицкиса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика "Анализ семейного воспитания" (АСВ) Э.Г. Эйдемиллер, В.В. Юстицкиса.',
 	'Полученные данные:
 потворствующая гиперпротекция – шкала У+.
 Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, при таком стиле воспитания ребенок находится в центре внимания семьи, которая стремится к максимальному удовлетворению его потребностей. Этот тип воспитания содействует развитию демонстративных (истероидных) и гипертимных черт характера у ребенка.
@@ -6827,8 +6837,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Детская психодиагностика и профориентация / Под ред. Л.Д. Столяренко –Ростов н/Д: Феникс, 1999. –  С. 289-301.
 '
 	,'Kortinki\\Zadacha5\\21.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика "Кинетический рисунок семьи" (КРС).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика "Кинетический рисунок семьи" (КРС).',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, диагностируется фактор психического неблагополучия испытуемого, связанный с отсутствием эмоционального тепла, нарушением межличностных отношений и нарастанием тревожности в семье. У испытуемого эмоциональная нестабильность. Его агрессивные мотивы направлены к матери и отцу. Он не подчиняется родителям и пренебрегает ими. Сомневается в своей интеллектуальной полноценности.
 
 Измерительная шкала:
@@ -6845,8 +6855,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Корнилова, Т.В. Подростковая группа риска / Т.В. Корнилова, Е.Л. Григоренко, С.Д. Смирнов. – СПб.: Питер, 2005. – 336 с. 
 '
 	,'Kortinki\\Zadacha5\\22.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Несуществующее животное".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Несуществующее животное".',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, в момент проявления негативизма испытуемому свойственна легкомысленность, поверхностность и необоснованность суждений, а также импульсивность в принятии решений. Его суждения конформны. К собственным действиям, поступкам, решениям и вербальной информации он относится позитивно и стремится защитить себя от чужого мнения. Он заинтересован в позитивном мнении окружающих о нем. Имеющиеся у испытуемого навязчивые влечения вызывают у него сильную тревогу.
 Измерительная шкала.
 Аспекты анализа рисунка:
@@ -6873,8 +6883,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Кочубеева, Л.А. Применение проективной рисуночной методики "Несуществующее животное" для определения ТИМ / Л.А. Кочубеева, М.Л. Стоялова // Соционика, ментология и психология личности. – № 6. – 2002. – С. 5-18.
 '
 	,'Kortinki\\Zadacha5\\23_1.png','Kortinki\\Zadacha5\\23_2.png',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Дом-Дерево-Человек" Дж. Бука (ДДЧ).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Дом-Дерево-Человек" Дж. Бука (ДДЧ).',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, зона возможных проблем связана с негативным самоощущением и сильной неуверенностью в себе, с имеющимися трудностями в общении и неадекватным отношением к своей семье.Испытуемый находится в состоянии тревоги и сильной фрустрации. Тревога имеет тенденцию увеличиваться. Психологическая защита сильная, чувство неполноценности, агрессивность и депрессивность выражены слабо. Пониженный фон настроения отсутствует.
 
 Измерительная шкала:
@@ -6887,8 +6897,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Романова, Е.С. Графические методы в практической психологии / Е.С.  Романова. – СПб.: Речь, 2001. – 529 с.
 '
 	,'Kortinki\\Zadacha5\\24.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Незаконченные предложения" Сакса, Леви.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Незаконченные предложения" Сакса, Леви.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого отношение к матери негативное. Он считает, что она виновата в том, что у него сейчас нет отца. Денис считает, что его отец пьет из-за не сложившихся отношений с матерью. Он считает отца безвольной "тряпкой". Денис считает свою семью обычной, а также, что у него есть настоящие, хорошие друзья в компании. Они понимают и уважают его. Отношение к сверстникам у Дениса позитивное. Он считает, что каждый может дружить с кем хочет. Важно, чтобы вместе было весело. Денис к взрослым относится позитивно. Считает, что у них больше возможностей для развлечений и отдыха. Никто их не контролирует. Денис считает, что в школе ему скучно, его не понимают и сверстники относятся к нему негативно. Он считает, что если люди будут настроены против него, то с ними не надо общаться. Денис считает, что он мог бы учиться хорошо. Но учителя и сверстники считают его "дебилом". Возможно он глупый на самом деле, иначе бы он учился хорошо. Свое детство Денис считает обычным, как у большинства других детей. Будущее кажется Денису светлым и счастливым. Он ждет, когда станет свободным и сможет много времени проводить с друзьями в компании. Денис не о чем не жалеет и никакого чувства вины у него нет. Денис хочет быть успешным и богатым, чтобы были деньги для хорошего отдыха.
 Измерительная шкала:
 •	"+2" — максимальное, отчетливо выраженное, сильно положительное отношение к объекту или субъекту, о котором идет речь в предложении;
@@ -6910,8 +6920,8 @@ E. В какой манере выражаются конфликты: эмоц�
 Казачкова В.Г. Метод незаконченных предложений при изучении отношений личности // Вопросы психологии. - 1989. - N 3. - С. 154-157.
 '
 	,'Kortinki\\Zadacha5\\25.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Тест школьной тревожности" Филипса.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Тест школьной тревожности" Филипса.',
 	'Факторы.
 1. Общая тревожность в школе (54%);
 2. Переживание социального стресса (36%);
@@ -6930,8 +6940,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Психологические тесты для профессионалов / авт. сост Н.Ф. Гребень. – Минск: Современная школа, 2007. – С. 162-165.
 '
 	,'Kortinki\\Zadacha5\\26.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика Ч.Д. Спилберга и Ю.Л. Ханина.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика Ч.Д. Спилберга и Ю.Л. Ханина.',
 	'Полученные результаты:
 РТ (реактивная тревожность) – 27 балла;
 ЛТ (личностная тревожность) – 47 баллов.
@@ -6947,8 +6957,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Диагностика эмоционально-нравственного развития / Ред. и сост. Дерманова И.Б. – СПб.: 2002. – С.124-126.
 '
 	,'Kortinki\\Zadacha5\\net.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Самооценка личности" по Дембо-Рубинштейн в модификации А.М.Прихожан.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Самооценка личности" по Дембо-Рубинштейн в модификации А.М.Прихожан.',
 	'Полученные результаты: 
 уровень притязаний  - 100%.
 уровень самооценки - 80 %;
@@ -6960,8 +6970,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Практическая психодиагностика. Методики и тесты. / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — 672 с.
 '
 	,'Kortinki\\Zadacha5\\28.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Теппинг-тест" Е.П. Ильина.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Теппинг-тест" Е.П. Ильина.',
 	'Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого НС средней силы. Большую по величине и длительности нагрузку он выдерживает достаточно долго и примерно на одном уровне. У него долго не наступает утомление.
 Измерительная шкала.
 •	Сильный тип: темп нарастает до максимального в первые 10-15 с. работы; в следующие 25-30 с. он может снизиться ниже исходного уровня (т.е. наблюдавшегося в первые 5 с работы). Этот тип кривой свидетельствует о наличии у испытуемого сильной нервной системы;
@@ -6975,8 +6985,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Практическая психодиагностика. Методики и тесты. / Ред. и сост. Райгородский Д.Я. — Самара: БАХРАХ-М, 2001. — С. 528-530.
 '
 	,'Kortinki\\Zadacha5\\29.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Опросник Айзенка по определению темперамента и характера EPI" Т.В.Матолиной',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','"Опросник Айзенка по определению темперамента и характера EPI" Т.В.Матолиной',
 	'Полученные данные:
 экстраверсия – 14 баллов
 нейротизм – 2 баллов
@@ -6994,8 +7004,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Фетискин, Н. П. Экспресс-диагностика характерологических особенностей личности / Н. П. Фетискин, В. В. Козлов,  Г. М. Мануйлов. –  М., 2002. –  C. 35-44.
 '
 	,'Kortinki\\Zadacha5\\30.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('ОФДСИ «Опросник формально-динамических свойств индивидуальности» В.М.Русалова',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','ОФДСИ «Опросник формально-динамических свойств индивидуальности» В.М.Русалова',
 	'Полученные данные: 
 ИОА – 124
 ИОЭ – 428 
@@ -7023,8 +7033,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 118-130.
 '
 	,'Kortinki\\Zadacha5\\31_1.png','Kortinki\\Zadacha5\\31_2.png',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Ориентировочно-диагностическая анкета познавательных процессов (ДДО)',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Ориентировочно-диагностическая анкета познавательных процессов (ДДО)',
 	'Полученные данные: человек- человек – высокий показатель
 	Рекомендуется выбирается тот вид профессии, который получил максимальное количество знаков.
 Норма. В данной методике нормы не представлены
@@ -7034,8 +7044,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д. Я. Практическая психодиагностика. Методики и тесты / Самара: Бахра-М, 2015. – C. 569-573
 '
 	,'Kortinki\\Zadacha5\\32.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Карта интересов Голомштока"',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Карта интересов Голомштока"',
 	'Полученные данные: наибольшее количество знаков «+» набрали виды деятельности: физкультура и спорт, военные специальности, сфера обслуживания и торговля.
 
 Процедура обработки данных
@@ -7048,8 +7058,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 516-521.
 '
 	,'Kortinki\\Zadacha5\\net.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Исследование объема эмоциональной памяти"',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Исследование объема эмоциональной памяти"',
 	'Полученные данные: 15%
 
 Измерительная шкала. Коэффициент эмоциональной памяти: 
@@ -7066,8 +7076,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Изучение основных закономерностей познавательных процессов в период взрослости [Электронный ресурс] / Экспериментальное изучение памяти // Режим доступа : http://studbooks.net/1613171/psihologiya/eksperimentalnaya_chast
 '
 	,'Kortinki\\Zadacha5\\net.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('"Исследование объема кратковременной памяти" с помощью субтеста "Повторение цифр" из теста Векслера.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('"Исследование объема кратковременной памяти" с помощью субтеста Векслера.','"Исследование объема кратковременной памяти" с помощью субтеста "Повторение цифр" из теста Векслера.',
 	'Полученные данные.
 Объем кратковременной памяти – 3
 Концентрация внимания – 2
@@ -7087,8 +7097,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C.325-403.
 '
 	,'Kortinki\\Zadacha5\\net.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "10 слов" (оценка состояния памяти, утомляемости, особенностей мышления).',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "10 слов" (оценка состояния памяти, утомляемости, особенностей мышления).',
 	'Полученные данные.
 Первое повторение – 3 слов
 Второе повторение – 6 слов
@@ -7103,8 +7113,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский –  Самара: Бахра-М, 2015. – C. 202-203 
 '
 	,'Kortinki\\Zadacha5\\net.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Сложные аналогии"',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Сложные аналогии"',
 	'Полученные данные: 0 баллов
 	Норма: 5 баллов и выше
 
@@ -7114,8 +7124,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 '
 	,'Kortinki\\Zadacha5\\37.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Выделение существенных признаков".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Выделение существенных признаков".',
 	'Полученные данные: 1 балл (18 слов)  
 	Норма: 5 баллов и выше
 
@@ -7126,8 +7136,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 61-62.
 '
 	,'Kortinki\\Zadacha5\\38.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест "Корректурная проба Бурдона".',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест "Корректурная проба Бурдона".',
 	'Полученные данные.
 Концентрация внимания – 24 %
 Устойчивость внимания –  быстрое снижение скорости просмотра
@@ -7149,8 +7159,8 @@ A = S / t, где
 Корректурная проба (Тест Бурдона) / Альманах психологических тестов. – М., 1995. –  С.107-111.
 '
 	,'Kortinki\\Zadacha5\\39.png','',5)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник для изучения познавательных интересов Юркевича.',
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник для изучения познавательных интересов Юркевича.',
 	'Полученные данные:  7 баллов
 
 Измерительная шкала
@@ -7168,10 +7178,10 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 	,'Kortinki\\Zadacha5\\net.png','',5)
 go
 
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Данные об успеваемости.','Успеваемость: в школу пошел в 6 лет 10 месяцев. Получается все хуже, чем у брата. Мальчик  особых усилий не прилагает, чтобы у него получилось лучше, но, тем не менее, из-за этого расстраивается.','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «Сложная фигура» А. Реем.','Восприятие пространственных представлений 
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Данные об успеваемости.','Успеваемость: в школу пошел в 6 лет 10 месяцев. Получается все хуже, чем у брата. Мальчик  особых усилий не прилагает, чтобы у него получилось лучше, но, тем не менее, из-за этого расстраивается.','','',6)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Сложная фигура» А. Реем.','Восприятие пространственных представлений 
 Полученные данные:
 15 баллов
 Измерительная шкала:
@@ -7191,8 +7201,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод: высокий уровень развития зрительной памяти
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.31-34
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «Кодирование» (модификация метода Пьерона-Рузера).','Концентрация внимания
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Кодирование» (модификация метода Пьерона-Рузера).','Концентрация внимания
 Полученные данные:
 0 ошибок
 Измерительная шкала:
@@ -7212,8 +7222,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод:  низкий уровень устойчивости внимания
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.37-39.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «Корректурная проба» Бурдона.','Концентрация внимания
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Корректурная проба» Бурдона.','Концентрация внимания
 Полученные данные:
 О ошибок
 Измерительная шкала:
@@ -7233,8 +7243,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Вывод:  низкий уровень устойчивости внимания
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.145-148.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «Запомни и расставь точки».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Запомни и расставь точки».','Полученные данные:
 6 баллов
 
 Измерительная шкала:
@@ -7250,8 +7260,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Немов Р.С. Психология. В 3-х кн.
 Кн.1.: Психодиагностика. Введение в научное психологическое исследование с элементами математической статистики. – М.: Изд-во ВЛАДОС, 2007. – С.81-83.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «Оценка переключения внимания» (использование колец Ландольта).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Оценка переключения внимания» (использование колец Ландольта).','Полученные данные:
 2 балла
 
 Измерительная шкала:
@@ -7265,8 +7275,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Немов Р.С. Психология. В 3-х кн. Кн.1.: Психодиагностика. Введение в научное психологическое исследование с элементами математической статистики. – М.: Изд-во ВЛАДОС, 2007. – С.178-179.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «10 слов» А.Р.Лурия.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «10 слов» А.Р.Лурия.','Полученные данные:
 6 баллов
 
 Измерительная шкала:
@@ -7280,8 +7290,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.34-37.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «Долговременная память».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Долговременная память».','Полученные данные:
 коэффициент долговременной памяти – 50%
 
 Измерительная шкала:
@@ -7295,8 +7305,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Ануфриев А.Ф., Костромина С.Н. Как преодолеть трудности в обучении детей. Психодиагностические таблицы. Психодиагностические методики. Коррекционные упражнения. – М.:Изд-во «Ось-89», 2001. – С. 42-43
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «Исключение слов».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Исключение слов».','Полученные данные:
 19 баллов
 
 Измерительная шкала:
@@ -7310,8 +7320,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Рогов Е.И. Настольная книга практического психолога. В 2 кн. Кн.1.:Система работы психолога с детьми разного возраста: учеб.пособие. – М.: Изд-во ВЛАДОС-ПРЕСС, 2008. – С. 96-98.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Прогрессивные матрицы Равена.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Прогрессивные матрицы Равена.','Полученные данные:
 41 балл
 
 Измерительная шкала:
@@ -7323,8 +7333,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Вывод: высокий уровень развития наглядно-образного мышления (классификации)
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Тест Д. Векслера.','Общий интеллект
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест Д. Векслера.','Общий интеллект
 
 Полученные данные:
 98 баллов
@@ -7375,8 +7385,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Ведущее предприятие России по комплексному обеспечению психологической практики – ИМАТОН (Госстандарт России). Инструментарий: диагностика, коррекция, развитие.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные:
 18 баллов
 
 Измерительная шкала:
@@ -7390,8 +7400,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л. Психологические рисуночные тесты. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – 159 с.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Проективная методика диагностики школьной тревожности А.М.Прихожан.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Проективная методика диагностики школьной тревожности А.М.Прихожан.','Полученные данные:
 6 баллов
 
 Измерительная шкала:
@@ -7405,8 +7415,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Прихожан А.М. Тревожность у детей и подростков: психологическая природа и возрастная динамика. – М.: МПСИ; Воронеж: Изд-во НПО «МОДЕК», 2000.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «Шкала явной тревожности» (CMAS).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Шкала явной тревожности» (CMAS).','Полученные данные:
 4 стена
 
 Измерительная шкала:
@@ -7420,8 +7430,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Прихожан А.М. Тревожность у детей и подростков: психологическая природа и возрастная динамика. – М.: МПСИ; Воронеж: Изд-во НПО «МОДЕК», 2000. – С. 233-241.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Тест школьной тревожности Филлипса.','Общая тревожность
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест школьной тревожности Филлипса.','Общая тревожность
 Полученные данные:
 3 балла
 
@@ -7543,8 +7553,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.323-327.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «Шкала личностной тревожности» А.М.Прихожан.','Общая тревожность
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Шкала личностной тревожности» А.М.Прихожан.','Общая тревожность
 
 Полученные данные:
 5 стенов
@@ -7620,8 +7630,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Прихожан А.М. Тревожность у детей и подростков: психологическая природа и возрастная динамика. – М.: МПСИ; Воронеж: Изд-во НПО «МОДЕК», 2000. – С. 242-251.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Анкета для определения школьной мотивации.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Анкета для определения школьной мотивации.','Полученные данные:
 24 балла
 
 Измерительная шкала:
@@ -7635,8 +7645,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Ануфриев А.Ф., Костромина С.Н. Как преодолеть трудности в обучении детей. Психодиагностические таблицы. Психодиагностические методики. Коррекционные упражнения. – М.:Изд-во «Ось-89», 2001. – 116-117
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «Изучение направленности на приобретение знаний» (Е.П.Ильин, Н.А.Курдюкова).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Изучение направленности на приобретение знаний» (Е.П.Ильин, Н.А.Курдюкова).','Полученные данные:
 Мотивация на приобретение знаний – 9 баллов
 Мотивационная направленность на отметку – 10 баллов
 
@@ -7652,14 +7662,14 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.460-461.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «Изучение отношения к учению и к учебным предметам» (Г.Н.Казанцева).','Вывод: Ребенка привлекает изучение всех школьных предметов. Для него они интересны, легко усваиваются и нравится как преподает учитель.
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Изучение отношения к учению и к учебным предметам» (Г.Н.Казанцева).','Вывод: Ребенка привлекает изучение всех школьных предметов. Для него они интересны, легко усваиваются и нравится как преподает учитель.
 Ребенок учится с целью, чтобы быть грамотным, умным, получить глубокие знания, нравится получать хорошие оценки.
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.461-462.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «Лесенка» (модифицированный вариант методики «САН»).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Лесенка» (модифицированный вариант методики «САН»).','Полученные данные:
 5 баллов
 
 Измерительная шкала:
@@ -7673,8 +7683,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Все идет нормально? Комплект диагностических методик для комплексного обследования младших школьников /Авт. Сост. В.И.Екимова, А.Г.Демидова. – М.:АРКТИ, 2007. – С.25.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «Шкала детского понимания собственной компетентности» С.Хартер.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Шкала детского понимания собственной компетентности» С.Хартер.','Полученные данные:
 Познавательная компетентность – 20 баллов
 Компетентность в общении – 14 баллов
 Компетентность во внеурочной деятельности – 16 баллов
@@ -7691,8 +7701,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Чернышова Н.С. Характер младшего школьника: учеб.пособие. – М.: Флинта: Наука, 2006. – С.283-287.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика Дембо-Рубинштейн в модификации А.М.Прихожан.','Уровень притязания
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика Дембо-Рубинштейн в модификации А.М.Прихожан.','Уровень притязания
 Полученные данные:
 100 баллов
 
@@ -7721,21 +7731,21 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.469-471.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Проективный тест «Несуществующее животное» М.З.Дукаревич.','Полученные данные: образ животного нестандартный, слишком вычурный; у животного имеются ресницы, много украшающих деталей, животное с большим ртом и зубами
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Проективный тест «Несуществующее животное» М.З.Дукаревич.','Полученные данные: образ животного нестандартный, слишком вычурный; у животного имеются ресницы, много украшающих деталей, животное с большим ртом и зубами
 Выводы: выражено стремление продемонстрировать свою непохожесть на других, высокая вербальная агрессия, демонстративность, истероидность
 
 Венгер А.Л. Психологические рисуночные тесты . – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – 159 с.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные: уменьшенный размер человека 
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные: уменьшенный размер человека 
 
 Вывод: сниженное настроение, высокая депрессия
 
 Венгер А.Л. Психологические рисуночные тесты . – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – 159 с.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Многофакторный личностный опросник Р.Кеттела (детский вариант).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Многофакторный личностный опросник Р.Кеттела (детский вариант).','Полученные данные:
 
 •	Экстравертность-интровертность – 3 балла
 •	Уверенность в себе – 8 баллов
@@ -7760,22 +7770,22 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Немов Р.С. Психология. В 3-х кн. Кн.1.: Психодиагностика. Введение в научное психологическое исследование с элементами математической статистики. – М.: Изд-во ВЛАДОС, 2007. – С.227-225.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Рисуночный тест «Дом-дерево-человек» Бака и Хэммера.','Полученные данные: дом не имеет дверей, на окнах решетки, наличие забора
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисуночный тест «Дом-дерево-человек» Бака и Хэммера.','Полученные данные: дом не имеет дверей, на окнах решетки, наличие забора
 
  Вывод: низкий уровень  социальной адаптированности   
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.48-52.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «Пиктограмма» А.Р.Лурия в модификации В.Г.Меньшикова.','Полученные данные: на всех рисунках крупное изображение собственного облика. Также на рисунках присутствует небольшое количество людей; схематичное изображение человека; почти на всех рисунках ребенок изображает себя одного; изображение собственного облика в анфас. На рисунке  «Отдых в семье» - изобразил себя и брата
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Пиктограмма» А.Р.Лурия в модификации В.Г.Меньшикова.','Полученные данные: на всех рисунках крупное изображение собственного облика. Также на рисунках присутствует небольшое количество людей; схематичное изображение человека; почти на всех рисунках ребенок изображает себя одного; изображение собственного облика в анфас. На рисунке  «Отдых в семье» - изобразил себя и брата
 
 Вывод: доминирующий тип поведения, высокая потребность в общении со сверстниками, которая остается неудовлетворенной; испытывает трудности в общении со сверстниками. Кроме того, доминирующая сфера общения в семье – общение с братом. 
 
 Чернышова Н.С. Характер младшего школьника: учеб.пособие. – М.: Флинта: Наука, 2006. – С.265-269.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Проективная методика Рене Жиля.','Тип поведения в сфере общения
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Проективная методика Рене Жиля.','Тип поведения в сфере общения
 
 Полученные данные:
 4 балла
@@ -7893,8 +7903,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Райгородский Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие. – Самара: Изд.дом «БАХРАХ-М», 2001. – С.418-436.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Методика «Рисунок семьи» Халсома и Хэррисома.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Рисунок семьи» Халсома и Хэррисома.','Полученные данные:
 Фигуры матери и отца на рисунке одинакового размера; себя изобразил рядом с братом; собственную фигуру изобразил на пьедестале
 
 Вывод: мать и отец в одинаковой мере значимы для ребенка; выражено тесное общение с братом; высокое стремление ребенка на лидирующее положение в семье
@@ -7902,8 +7912,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.56-60.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Опросник социализации для школьников «Моя семья».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник социализации для школьников «Моя семья».','Полученные данные:
 96 баллов
 
 Измерительная шкала:
@@ -7918,8 +7928,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.638-640.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Опросник «Взаимоотношение родителя с ребенком» (ВРР) – для родителей.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник «Взаимоотношение родителя с ребенком» (ВРР) – для родителей.','Полученные данные:
 •	Нетребовательность-требовательность – 10 баллов
 •	Мягкость-строгость – 18 баллов
 •	Автономность-контроль – 41 балл
@@ -7950,14 +7960,14 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Широкова Г.А., Жадько Е.Г. Практикум детского психолога. – Ростов н/Д: Феникс, 2005. – С.23-27.
 ','','',6)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values('Беседа с мамой о личностных особенностях Ивана.','Он очень хочет быть лидером, но у него это не получается, лидером остается Никита, из-за этого ребенок очень сильно переживает. Иван каждый день наблюдает, что у Никиты все получается лучше, чем у него, из-за этого страдает. Часто говорит родителям: «Меня никто не любит», «Меня все обижают».  Если мама улыбается, ему кажется, что она смеется над ним, и он говорит: «Не смейся надо мной». Болезненно переживает удачи брата.','','',6)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Беседа с мамой о личностных особенностях Ивана.','Он очень хочет быть лидером, но у него это не получается, лидером остается Никита, из-за этого ребенок очень сильно переживает. Иван каждый день наблюдает, что у Никиты все получается лучше, чем у него, из-за этого страдает. Часто говорит родителям: «Меня никто не любит», «Меня все обижают».  Если мама улыбается, ему кажется, что она смеется над ним, и он говорит: «Не смейся надо мной». Болезненно переживает удачи брата.','','',6)
 go
 
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Данные об успеваемости.','Успеваемость: учится на среднем уровне. Может учиться лучше, но из-за отвлекаемости на уроках, получает оценки ниже.','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Сложная фигура» А. Реем.','Восприятие пространственных представлений 
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Данные об успеваемости.','Успеваемость: учится на среднем уровне. Может учиться лучше, но из-за отвлекаемости на уроках, получает оценки ниже.','','',7)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Сложная фигура» А. Реем.','Восприятие пространственных представлений 
 
 Полученные данные:
 13 баллов
@@ -7986,8 +7996,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.31-34
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Кодирование» (модификация метода Пьерона-Рузера).','Концентрация внимания
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Кодирование» (модификация метода Пьерона-Рузера).','Концентрация внимания
 
 Полученные данные:
 1 ошибка
@@ -8016,8 +8026,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.37-39.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Корректурная проба» Бурдона.','Устойчивость внимания 
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Корректурная проба» Бурдона.','Устойчивость внимания 
 
 Полученные данные:
  за 10 минут просмотрено  348 знаков из 1200 знаков
@@ -8048,8 +8058,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.145-148.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Запомни и расставь точки».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Запомни и расставь точки».','Полученные данные:
 7 баллов
 
 Измерительная шкала:
@@ -8063,8 +8073,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Немов Р.С. Психология. В 3-х кн. Кн.1.: Психодиагностика. Введение в научное психологическое исследование с элементами математической статистики. – М.: Изд-во ВЛАДОС, 2007. – С.81-83.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Оценка переключения внимания» (использование колец Ландольта).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Оценка переключения внимания» (использование колец Ландольта).','Полученные данные:
 4 балла
 
 Измерительная шкала:
@@ -8078,8 +8088,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Немов Р.С. Психология. В 3-х кн. Кн.1.: Психодиагностика. Введение в научное психологическое исследование с элементами математической статистики. – М.: Изд-во ВЛАДОС, 2007. – С.178-179.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «10 слов» А.Р.Лурия.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «10 слов» А.Р.Лурия.','Полученные данные:
 3 балла
 
 Измерительная шкала:
@@ -8093,8 +8103,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.34-37.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Долговременная память»','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Долговременная память»','Полученные данные:
 коэффициент долговременной памяти – 60%
 
 Измерительная шкала:
@@ -8108,8 +8118,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Ануфриев А.Ф., Костромина С.Н. Как преодолеть трудности в обучении детей. Психодиагностические таблицы. Психодиагностические методики. Коррекционные упражнения. – М.:Изд-во «Ось-89», 2001. – С. 42-43
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Исключение слов».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Исключение слов».','Полученные данные:
 10 баллов
 
 Измерительная шкала:
@@ -8123,8 +8133,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Рогов Е.И. Настольная книга практического психолога. В 2 кн. Кн.1.:Система работы психолога с детьми разного возраста: учеб.пособие. – М.: Изд-во ВЛАДОС-ПРЕСС, 2008. – С. 96-98.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Прогрессивные матрицы Равена».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Прогрессивные матрицы Равена».','Полученные данные:
 25 баллов
 
 Измерительная шкала:
@@ -8136,8 +8146,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Вывод: средний уровень развития наглядно-образного мышления (классификации)
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест Д. Векслера.','Общий интеллект
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест Д. Векслера.','Общий интеллект
 
 Полученные данные:
 94 балла
@@ -8188,8 +8198,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Ведущее предприятие России по комплексному обеспечению психологической практики – ИМАТОН (Госстандарт России). Инструментарий: диагностика, коррекция, развитие.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные:
 15 баллов
 
 Измерительная шкала:
@@ -8203,8 +8213,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л. Психологические рисуночные тесты. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – 159 с.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Проективная методика диагностики школьной тревожности А.М.Прихожан.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Проективная методика диагностики школьной тревожности А.М.Прихожан.','Полученные данные:
 9 баллов
 
 Измерительная шкала:
@@ -8218,8 +8228,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Прихожан А.М. Тревожность у детей и подростков: психологическая природа и возрастная динамика. – М.: МПСИ; Воронеж: Изд-во НПО «МОДЕК», 2000.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Шкала явной тревожности» (CMAS).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Шкала явной тревожности» (CMAS).','Полученные данные:
 7 стенов
 
 Измерительная шкала:
@@ -8233,8 +8243,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Прихожан А.М. Тревожность у детей и подростков: психологическая природа и возрастная динамика. – М.: МПСИ; Воронеж: Изд-во НПО «МОДЕК», 2000. – С. 233-241.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест школьной тревожности Филлипса.','Общая тревожность
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест школьной тревожности Филлипса.','Общая тревожность
 Полученные данные:
 15 баллов
 
@@ -8356,8 +8366,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.323-327.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Шкала личностной тревожности» А.М.Прихожан.','Общая тревожность
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Шкала личностной тревожности» А.М.Прихожан.','Общая тревожность
 
 Полученные данные:
 5 стенов
@@ -8433,8 +8443,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Прихожан А.М. Тревожность у детей и подростков: психологическая природа и возрастная динамика. – М.: МПСИ; Воронеж: Изд-во НПО «МОДЕК», 2000. – С. 242-251.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Анкета для определения школьной мотивации.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Анкета для определения школьной мотивации.','Полученные данные:
 20 баллов
 
 Измерительная шкала:
@@ -8448,8 +8458,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Ануфриев А.Ф., Костромина С.Н. Как преодолеть трудности в обучении детей. Психодиагностические таблицы. Психодиагностические методики. Коррекционные упражнения. – М.:Изд-во «Ось-89», 2001. – 116-117
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Изучение направленности на приобретение знаний» (Е.П.Ильин, Н.А.Курдюкова).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Изучение направленности на приобретение знаний» (Е.П.Ильин, Н.А.Курдюкова).','Полученные данные:
 Мотивация на приобретение знаний – 10 баллов
 Мотивационная направленность на отметку – 4 балла
 
@@ -8465,12 +8475,12 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.460-461.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Изучение отношения к учению и к учебным предметам» (Г.Н.Казанцева).','Вывод: Ребенка привлекает изучение всех предметов, неинтересных предметов для него нет. Изучение данных предметов ему интересно, он считает, что их нужно знать всем. При изучении школьных предметов необходимо терпение. Они способствуют развитию общей культуры.
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Изучение отношения к учению и к учебным предметам» (Г.Н.Казанцева).','Вывод: Ребенка привлекает изучение всех предметов, неинтересных предметов для него нет. Изучение данных предметов ему интересно, он считает, что их нужно знать всем. При изучении школьных предметов необходимо терпение. Они способствуют развитию общей культуры.
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.461-462
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Лесенка» (модифицированный вариант методики «САН»).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Лесенка» (модифицированный вариант методики «САН»).','Полученные данные:
 5 баллов
 
 Измерительная шкала:
@@ -8484,8 +8494,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Все идет нормально? Комплект диагностических методик для комплексного обследования младших школьников /Авт. Сост. В.И.Екимова, А.Г.Демидова. – М.:АРКТИ, 2007. – С.25.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Шкала детского понимания собственной компетентности» С.Хартер.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Шкала детского понимания собственной компетентности» С.Хартер.','Полученные данные:
 Познавательная компетентность – 20 баллов
 Компетентность в общении – 20 баллов
 Компетентность во внеурочной деятельности – 18 баллов
@@ -8502,8 +8512,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Чернышова Н.С. Характер младшего школьника: учеб.пособие. – М.: Флинта: Наука, 2006. – С.283-287.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика Дембо-Рубинштейн в модификации А.М.Прихожан.','Уровень притязания
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика Дембо-Рубинштейн в модификации А.М.Прихожан.','Уровень притязания
 Полученные данные:
 30 баллов
 
@@ -8532,20 +8542,20 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.469-471.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Проективный тест «Несуществующее животное» М.З.Дукаревич.','Полученные данные: Полученные данные: имеются в рисунке детали украшения: перья, карманы, ресницы. В рисунке много острых деталей; большой рот с прорисовкой зубов; животное производит впечатление злого и агрессивного
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Проективный тест «Несуществующее животное» М.З.Дукаревич.','Полученные данные: Полученные данные: имеются в рисунке детали украшения: перья, карманы, ресницы. В рисунке много острых деталей; большой рот с прорисовкой зубов; животное производит впечатление злого и агрессивного
 Вывод: выражены признаки демонстративности, высокая вербальная и физическая агрессия
 Венгер А.Л. Психологические рисуночные тесты . – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – 159 с.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные: в рисунке отсутствуют детали, указывающие на проявление депрессивных тенденций
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные: в рисунке отсутствуют детали, указывающие на проявление депрессивных тенденций
 
 Вывод: депрессивных тенденций не наблюдается
 
 Венгер А.Л. Психологические рисуночные тесты . – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – 159 с.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Многофакторный личностный опросник Р.Кеттела (детский вариант).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Многофакторный личностный опросник Р.Кеттела (детский вариант).','Полученные данные:
 
 •	Экстравертность-интровертность – 8 баллов
 •	Уверенность в себе – 4 баллов
@@ -8570,19 +8580,19 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Немов Р.С. Психология. В 3-х кн. Кн.1.: Психодиагностика. Введение в научное психологическое исследование с элементами математической статистики. – М.: Изд-во ВЛАДОС, 2007. – С.227-225.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Рисуночный тест «Дом-дерево-человек» Бака и Хэммера.','Полученные данные: дом нарисован особо большим по сравнению с деревом и человеком; дом нарисован без дверей и трубы. Дерево изображено с большими корнями
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисуночный тест «Дом-дерево-человек» Бака и Хэммера.','Полученные данные: дом нарисован особо большим по сравнению с деревом и человеком; дом нарисован без дверей и трубы. Дерево изображено с большими корнями
 Вывод: ощущение несвободы, полной зависимости от родителей. Наблюдается слабая связь семьи с внешним миром. У ребенка выражена потребность влиять на ситуацию, насколько это возможно. Имеется  острая потребность в опоре и привязанности. Испытывает недостаток эмоциональной теплоты дома.
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.48-52.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Пиктограмма» А.Р.Лурия в модификации В.Г.Меньшикова.','Полученные данные: на всех рисунках пиктограммы рисует собственный образ преувеличенным. На всех рисунках пиктограммы рисует себя в окружении других людей и в совместной деятельности с ними. Рисунок «Отдых в семье» испытуемый рисует себя с друзьями
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Пиктограмма» А.Р.Лурия в модификации В.Г.Меньшикова.','Полученные данные: на всех рисунках пиктограммы рисует собственный образ преувеличенным. На всех рисунках пиктограммы рисует себя в окружении других людей и в совместной деятельности с ними. Рисунок «Отдых в семье» испытуемый рисует себя с друзьями
 Выводы: доминирующий тип поведения. Проявляется легкость в общении со сверстниками. Отсутствие чувства общности между родителями и ребенком
 
 Чернышова Н.С. Характер младшего школьника: учеб.пособие. – М.: Флинта: Наука, 2006. – С.265-269.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Проективная методика Рене Жиля.','Тип поведения в сфере общения
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Проективная методика Рене Жиля.','Тип поведения в сфере общения
 
 Полученные данные:
 4 балла
@@ -8700,16 +8710,16 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Райгородский Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие. – Самара: Изд.дом «БАХРАХ-М», 2001. – С.418-436.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Рисунок семьи» Халсома и Хэррисома.','Полученные данные: свой образ на рисунке изображает изолированным (в квадрате) от фигур родителей; фигуры родителей изображены одинаковых размеров
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Рисунок семьи» Халсома и Хэррисома.','Полученные данные: свой образ на рисунке изображает изолированным (в квадрате) от фигур родителей; фигуры родителей изображены одинаковых размеров
 
 Вывод:  недостаточность эмоциональных отношений между родителями и ребенком. Ребенок ощущает себя изолированным в семье. Мать и отец занимают одинаковое положение. Более доминантный член семьи не выделяется. Низкий авторитет родителей в глазах ребенка. Прослеживается отсутствие чувства общности между родителями и ребенком. При всем этом ребенок стремится сплотить, объединить семью.  
 
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.56-60.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник социализации для школьников «Моя семья».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник социализации для школьников «Моя семья».','Полученные данные:
 80 баллов
 
 Измерительная шкала:
@@ -8724,8 +8734,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.638-640.
 ','','',7)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник «Взаимоотношение родителя с ребенком» (ВРР) – для родителей.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник «Взаимоотношение родителя с ребенком» (ВРР) – для родителей.','Полученные данные:
 •	Нетребовательность-требовательность – 16 баллов
 •	Мягкость-строгость – 12 баллов
 •	Автономность-контроль – 32 балла
@@ -8758,10 +8768,10 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 ','','',7)
 go
 
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Данные об успеваемости.','Успеваемость: в школе учится на среднем уровне. По некоторым предметам имеются «тройки». Может учиться лучше, но очень ленится.','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Сложная фигура» А. Реем.','Восприятие пространственных представлений 
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Данные об успеваемости.','Успеваемость: в школе учится на среднем уровне. По некоторым предметам имеются «тройки». Может учиться лучше, но очень ленится.','','',8)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Сложная фигура» А. Реем.','Восприятие пространственных представлений 
 
 Полученные данные:
 17 баллов
@@ -8790,8 +8800,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.31-34
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Кодирование» (модификация метода Пьерона-Рузера).','Концентрация внимания
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Кодирование» (модификация метода Пьерона-Рузера).','Концентрация внимания
 
 Полученные данные:
 3 ошибки
@@ -8820,8 +8830,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.37-39.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Корректурная проба» Бурдона.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Корректурная проба» Бурдона.','Полученные данные:
 за 10 минут просмотрено  1118 знаков из 1200 знаков
 
 Измерительная шкала:
@@ -8850,8 +8860,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.145-148.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Запомни и расставь точки».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Запомни и расставь точки».','Полученные данные:
 10 баллов
 
 Измерительная шкала:
@@ -8866,8 +8876,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Немов Р.С. Психология. В 3-х кн. Кн.1.: Психодиагностика. Введение в научное психологическое исследование с элементами математической статистики. – М.: Изд-во ВЛАДОС, 2007. – С.81-83.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Оценка переключения внимания» (использование колец Ландольта).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Оценка переключения внимания» (использование колец Ландольта).','Полученные данные:
 6 баллов
 
 Измерительная шкала:
@@ -8881,8 +8891,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Немов Р.С. Психология. В 3-х кн. Кн.1.: Психодиагностика. Введение в научное психологическое исследование с элементами математической статистики. – М.: Изд-во ВЛАДОС, 2007. – С.178-179.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «10 слов» А.Р.Лурия.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «10 слов» А.Р.Лурия.','Полученные данные:
 7 баллов
 
 Измерительная шкала:
@@ -8896,8 +8906,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.34-37.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Долговременная память».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Долговременная память».','Полученные данные:
 коэффициент долговременной памяти – 70%
 
 Измерительная шкала:
@@ -8911,8 +8921,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Ануфриев А.Ф., Костромина С.Н. Как преодолеть трудности в обучении детей. Психодиагностические таблицы. Психодиагностические методики. Коррекционные упражнения. – М.:Изд-во «Ось-89», 2001. – С. 42-43
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Исключение слов».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Исключение слов».','Полученные данные:
 6 баллов
 
 Измерительная шкала:
@@ -8926,8 +8936,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Рогов Е.И. Настольная книга практического психолога. В 2 кн. Кн.1.:Система работы психолога с детьми разного возраста: учеб.пособие. – М.: Изд-во ВЛАДОС-ПРЕСС, 2008. – С. 96-98.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Прогрессивные матрицы Равена».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Прогрессивные матрицы Равена».','Полученные данные:
 37 баллов
 
 Измерительная шкала:
@@ -8939,8 +8949,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Вывод: средний уровень развития наглядно-образного мышления (классификации)
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест Д. Векслера.','Общий интеллект
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест Д. Векслера.','Общий интеллект
 
 Полученные данные:
 94 балла
@@ -8991,8 +9001,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Ведущее предприятие России по комплексному обеспечению психологической практики – ИМАТОН (Госстандарт России). Инструментарий: диагностика, коррекция, развитие.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные:
 16 баллов
 
 Измерительная шкала:
@@ -9006,8 +9016,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л. Психологические рисуночные тесты. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – 159 с.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Проективная методика диагностики школьной тревожности А.М.Прихожан.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Проективная методика диагностики школьной тревожности А.М.Прихожан.','Полученные данные:
 6 баллов
 
 Измерительная шкала:
@@ -9021,8 +9031,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Прихожан А.М. Тревожность у детей и подростков: психологическая природа и возрастная динамика. – М.: МПСИ; Воронеж: Изд-во НПО «МОДЕК», 2000.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Шкала явной тревожности» (CMAS).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Шкала явной тревожности» (CMAS).','Полученные данные:
 7 стенов
 
 Измерительная шкала:
@@ -9036,8 +9046,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Прихожан А.М. Тревожность у детей и подростков: психологическая природа и возрастная динамика. – М.: МПСИ; Воронеж: Изд-во НПО «МОДЕК», 2000. – С. 233-241.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест школьной тревожности Филлипса.','Общая тревожность
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест школьной тревожности Филлипса.','Общая тревожность
 Полученные данные:
 15 баллов
 
@@ -9159,8 +9169,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.323-327.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Шкала личностной тревожности» А.М.Прихожан.','Общая тревожность
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Шкала личностной тревожности» А.М.Прихожан.','Общая тревожность
 
 Полученные данные:
 9 стенов
@@ -9236,8 +9246,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Прихожан А.М. Тревожность у детей и подростков: психологическая природа и возрастная динамика. – М.: МПСИ; Воронеж: Изд-во НПО «МОДЕК», 2000. – С. 242-251.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Анкета для определения школьной мотивации.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Анкета для определения школьной мотивации.','Полученные данные:
 15 баллов
 
 Измерительная шкала:
@@ -9251,8 +9261,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Ануфриев А.Ф., Костромина С.Н. Как преодолеть трудности в обучении детей. Психодиагностические таблицы. Психодиагностические методики. Коррекционные упражнения. – М.:Изд-во «Ось-89», 2001. – 116-117
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Изучение направленности на приобретение знаний» (Е.П.Ильин, Н.А.Курдюкова).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Изучение направленности на приобретение знаний» (Е.П.Ильин, Н.А.Курдюкова).','Полученные данные:
 Мотивация на приобретение знаний – 6 баллов
 Мотивационная направленность на отметку –  6 баллов
 
@@ -9268,14 +9278,14 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.460-461.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Изучение отношения к учению и к учебным предметам» (Г.Н.Казанцева).','Вывод: Ребенка привлекает изучение предметов – труд, математика, рисование, физкультура, окружающий мир, музыка. Для него они интересны, легко усваиваются и нравится как преподает учитель, эти предметы надо знать всем и они пригодятся для будущей профессии.
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Изучение отношения к учению и к учебным предметам» (Г.Н.Казанцева).','Вывод: Ребенка привлекает изучение предметов – труд, математика, рисование, физкультура, окружающий мир, музыка. Для него они интересны, легко усваиваются и нравится как преподает учитель, эти предметы надо знать всем и они пригодятся для будущей профессии.
 Не вызывают интереса и вызывают трудности в усвоении предметы – русский язык, чтение.
 Ребенок учится с целью, чтобы быть грамотным, полезным гражданином, умным и эрудированным. Нравится получать хорошие оценки и похвалу от учителя. Ребенок считает учебу своим долгом.
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.461-462.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Лесенка» (модифицированный вариант методики «САН»).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Лесенка» (модифицированный вариант методики «САН»).','Полученные данные:
 2 балла
 
 Измерительная шкала:
@@ -9289,8 +9299,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Все идет нормально? Комплект диагностических методик для комплексного обследования младших школьников /Авт. Сост. В.И.Екимова, А.Г.Демидова. – М.:АРКТИ, 2007. – С.25.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Шкала детского понимания собственной компетентности» С.Хартер.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Шкала детского понимания собственной компетентности» С.Хартер.','Полученные данные:
 Познавательная компетентность – 15 баллов
 Компетентность в общении – 17 баллов
 Компетентность во внеурочной деятельности – 19 баллов
@@ -9307,8 +9317,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Чернышова Н.С. Характер младшего школьника: учеб.пособие. – М.: Флинта: Наука, 2006. – С.283-287.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика Дембо-Рубинштейн в модификации А.М.Прихожан','Уровень притязания
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика Дембо-Рубинштейн в модификации А.М.Прихожан','Уровень притязания
 Полученные данные:
 70 баллов
 
@@ -9337,20 +9347,20 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.469-471.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Проективный тест «Несуществующее животное» М.З.Дукаревич.','Полученные данные: много украшений в рисунке. Прорисовка рта с зубами; наличие панциря у животного
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Проективный тест «Несуществующее животное» М.З.Дукаревич.','Полученные данные: много украшений в рисунке. Прорисовка рта с зубами; наличие панциря у животного
 Вывод: выражена демонстративность. Отмечается наличие вербальной агрессии, выражен страх агрессии, потребность в защите
 Венгер А.Л. Психологические рисуночные тесты . – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – 159 с.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные: уменьшенный размер рисунка, расположение в углу листа
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные: уменьшенный размер рисунка, расположение в углу листа
 
 Вывод: сниженное настроение
 
 Венгер А.Л. Психологические рисуночные тесты. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – 159 с.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Многофакторный личностный опросник Р.Кеттела (детский вариант).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Многофакторный личностный опросник Р.Кеттела (детский вариант).','Полученные данные:
 
 •	Экстравертность-интровертность – 3 балла
 •	Уверенность в себе – 4 балла
@@ -9375,19 +9385,19 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Немов Р.С. Психология. В 3-х кн. Кн.1.: Психодиагностика. Введение в научное психологическое исследование с элементами математической статистики. – М.: Изд-во ВЛАДОС, 2007. – С.227-225.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Рисуночный тест «Дом-дерево-человек» Бака и Хэммера.','Полученные данные: дом крупнее других рисунков; у дома отсутствуют двери, окна; у дерева прорисованы чрезмерно большие корни
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисуночный тест «Дом-дерево-человек» Бака и Хэммера.','Полученные данные: дом крупнее других рисунков; у дома отсутствуют двери, окна; у дерева прорисованы чрезмерно большие корни
 Вывод:  Весь мир ребенка исчерпывается в основном его домом, семьей. Недостаточное ощущение опоры, защиты от неблагоприятных внешних условий, недостаточная уверенность в себе. Слабая связь с внешним миром. Проявление замкнутости.
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.48-52.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Пиктограмма» А.Р.Лурия в модификации В.Г.Меньшикова.','Полученные данные: себя изображает меньших размеров, чем одноклассников. На всех рисунках себя изображает одну, на рисунках отсутствуют кисти рук и ступни. На рис. «Отдых в семье» изображает себя одну, сидящей на скамейке
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Пиктограмма» А.Р.Лурия в модификации В.Г.Меньшикова.','Полученные данные: себя изображает меньших размеров, чем одноклассников. На всех рисунках себя изображает одну, на рисунках отсутствуют кисти рук и ступни. На рис. «Отдых в семье» изображает себя одну, сидящей на скамейке
 Вывод: уступчивый тип поведения. Высокая потребность в общении со сверстниками, которая остается неудовлетворенной; испытывает трудности в общении со сверстниками. В семье испытывает одиночество
 
 Чернышова Н.С. Характер младшего школьника: учеб.пособие. – М.: Флинта: Наука, 2006. – С.265-269.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Проективная методика Рене Жиля.','Тип поведения в сфере общения
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Проективная методика Рене Жиля.','Тип поведения в сфере общения
 
 Полученные данные:
 1 балл
@@ -9505,8 +9515,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Райгородский Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие. – Самара: Изд.дом «БАХРАХ-М», 2001. – С.418-436.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Рисунок семьи» Халсома и Хэррисома.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Рисунок семьи» Халсома и Хэррисома.','Полученные данные:
 Изображает первую мать, затем себя и сестру; у всех на рисунке большие глаза; отсутствие кистей рук; у матери нарисован большой рот; на рисунке отсутствуют вторая сестра и брат
 
 Вывод: 
@@ -9515,8 +9525,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.56-60.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник социализации для школьников «Моя семья».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник социализации для школьников «Моя семья».','Полученные данные:
 64 балла
 
 Измерительная шкала:
@@ -9531,8 +9541,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.638-640.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник «Взаимоотношение родителя с ребенком» (ВРР) – для родителей.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник «Взаимоотношение родителя с ребенком» (ВРР) – для родителей.','Полученные данные:
 •	Нетребовательность-требовательность – 15 баллов
 •	Мягкость-строгость – 10 баллов
 •	Автономность-контроль – 35 баллов
@@ -9563,8 +9573,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Широкова Г.А., Жадько Е.Г. Практикум детского психолога. – Ростов н/Д: Феникс, 2005. – С.23-27.
 ','','',8)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Шкала изучения поведения детей с характерологическими особенностями (для учителей).','Уступчивость
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала изучения поведения детей с характерологическими особенностями (для учителей).','Уступчивость
 Полученные данные: 9 баллов
 
 Измерительная шкала: 
@@ -9581,10 +9591,10 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 ','','',8)
 go
 
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Данные об успеваемости.','Успеваемость: в первом классе у мальчика были серьезные проблемы с учебой, он отставал от своих одноклассников по многим предметам. Но к четвертому классу он здорово подтянулся в учебе и во всех четвертях имеет только одну тройку по русскому языку.','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Сложная фигура» А. Реем.','Восприятие пространственных представлений 
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Данные об успеваемости.','Успеваемость: в первом классе у мальчика были серьезные проблемы с учебой, он отставал от своих одноклассников по многим предметам. Но к четвертому классу он здорово подтянулся в учебе и во всех четвертях имеет только одну тройку по русскому языку.','','',9)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Сложная фигура» А. Реем.','Восприятие пространственных представлений 
 
 Полученные данные:
 18 баллов
@@ -9613,8 +9623,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.31-34
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Кодирование» (модификация метода Пьерона-Рузера).','Концентрация внимания
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Кодирование» (модификация метода Пьерона-Рузера).','Концентрация внимания
 
 Полученные данные:
 0 ошибок
@@ -9643,8 +9653,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.37-39.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Корректурная проба» Бурдона.','Устойчивость внимания 
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Корректурная проба» Бурдона.','Устойчивость внимания 
 
 Полученные данные:
 за 10 минут просмотрено  805 знаков из 1200 знаков
@@ -9675,8 +9685,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.145-148.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Запомни и расставь точки».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Запомни и расставь точки».','Полученные данные:
 8 баллов
 
 Измерительная шкала:
@@ -9691,8 +9701,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Немов Р.С. Психология. В 3-х кн. Кн.1.: Психодиагностика. Введение в научное психологическое исследование с элементами математической статистики. – М.: Изд-во ВЛАДОС, 2007. – С.81-83.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Оценка переключения внимания» (использование колец Ландольта).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Оценка переключения внимания» (использование колец Ландольта).','Полученные данные:
 7 баллов
 
 Измерительная шкала:
@@ -9706,8 +9716,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Немов Р.С. Психология. В 3-х кн. Кн.1.: Психодиагностика. Введение в научное психологическое исследование с элементами математической статистики. – М.: Изд-во ВЛАДОС, 2007. – С.178-179.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «10 слов» А.Р.Лурия.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «10 слов» А.Р.Лурия.','Полученные данные:
 8 баллов
 
 Измерительная шкала:
@@ -9721,8 +9731,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.34-37.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Долговременная память».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Долговременная память».','Полученные данные:
 коэффициент долговременной памяти – 75%
 
 Измерительная шкала:
@@ -9736,8 +9746,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Ануфриев А.Ф., Костромина С.Н. Как преодолеть трудности в обучении детей. Психодиагностические таблицы. Психодиагностические методики. Коррекционные упражнения. – М.:Изд-во «Ось-89», 2001. – С. 42-43
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Исключение слов».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Исключение слов».','Полученные данные:
 6 баллов
 
 Измерительная шкала:
@@ -9751,8 +9761,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Рогов Е.И. Настольная книга практического психолога. В 2 кн. Кн.1.:Система работы психолога с детьми разного возраста: учеб.пособие. – М.: Изд-во ВЛАДОС-ПРЕСС, 2008. – С. 96-98.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Прогрессивные матрицы Равена».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Прогрессивные матрицы Равена».','Полученные данные:
 44 балла
 
 Измерительная шкала:
@@ -9764,8 +9774,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Вывод: высокий уровень развития наглядно-образного мышления (классификации)
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест Д. Векслера','Общий интеллект
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест Д. Векслера','Общий интеллект
 
 Полученные данные:
 108 баллов
@@ -9810,8 +9820,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Ведущее предприятие России по комплексному обеспечению психологической практики – ИМАТОН (Госстандарт России). Инструментарий: диагностика, коррекция, развитие.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные:
 26 баллов
 
 Измерительная шкала:
@@ -9825,8 +9835,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л. Психологические рисуночные тесты. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – 159 с.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Проективная методика диагностики школьной тревожности А.М.Прихожан.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Проективная методика диагностики школьной тревожности А.М.Прихожан.','Полученные данные:
 6 баллов
 
 Измерительная шкала:
@@ -9840,8 +9850,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Прихожан А.М. Тревожность у детей и подростков: психологическая природа и возрастная динамика. – М.: МПСИ; Воронеж: Изд-во НПО «МОДЕК», 2000.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Шкала явной тревожности» (CMAS).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Шкала явной тревожности» (CMAS).','Полученные данные:
 2 стена
 
 Измерительная шкала:
@@ -9855,8 +9865,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Прихожан А.М. Тревожность у детей и подростков: психологическая природа и возрастная динамика. – М.: МПСИ; Воронеж: Изд-во НПО «МОДЕК», 2000. – С. 233-241.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест школьной тревожности Филлипса','Общая тревожность
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест школьной тревожности Филлипса','Общая тревожность
 Полученные данные:
 4 балла
 
@@ -9978,8 +9988,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.323-327.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Шкала личностной тревожности» А.М.Прихожан.','Общая тревожность
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Шкала личностной тревожности» А.М.Прихожан.','Общая тревожность
 
 Полученные данные:
 2 стена
@@ -10055,8 +10065,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Прихожан А.М. Тревожность у детей и подростков: психологическая природа и возрастная динамика. – М.: МПСИ; Воронеж: Изд-во НПО «МОДЕК», 2000. – С. 242-251.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Анкета для определения школьной мотивации.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Анкета для определения школьной мотивации.','Полученные данные:
 6 баллов
 
 Измерительная шкала:
@@ -10070,8 +10080,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Ануфриев А.Ф., Костромина С.Н. Как преодолеть трудности в обучении детей. Психодиагностические таблицы. Психодиагностические методики. Коррекционные упражнения. – М.:Изд-во «Ось-89», 2001. – 116-117
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Изучение направленности на приобретение знаний» (Е.П.Ильин, Н.А.Курдюкова).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Изучение направленности на приобретение знаний» (Е.П.Ильин, Н.А.Курдюкова).','Полученные данные:
 Мотивация на приобретение знаний – 6 баллов
 Мотивационная направленность на отметку –  1 балл
 
@@ -10087,14 +10097,14 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.460-461.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Изучение отношения к учению и к учебным предметам» (Г.Н.Казанцева).','Вывод: Ребенка привлекает изучение предметов – труд, физкультура, музыка, математика. Изучение данных предметов ему нравится как преподает учитель, нужны для поступления в институт и для будущей профессии.
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Изучение отношения к учению и к учебным предметам» (Г.Н.Казанцева).','Вывод: Ребенка привлекает изучение предметов – труд, физкультура, музыка, математика. Изучение данных предметов ему нравится как преподает учитель, нужны для поступления в институт и для будущей профессии.
 Не вызывают интереса и вызывают трудности в усвоении предметы – русский язык, чтение и информатика.
 Ребенок учится с целью, чтобы быть грамотным, не хочет подводить класс, хочет научиться самостоятельно работать, а также учиться заставляют родители и учитель.
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.461-462.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Лесенка» (модифицированный вариант методики «САН»).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Лесенка» (модифицированный вариант методики «САН»).','Полученные данные:
 3 балла
 
 Измерительная шкала:
@@ -10108,8 +10118,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Все идет нормально? Комплект диагностических методик для комплексного обследования младших школьников /Авт. Сост. В.И.Екимова, А.Г.Демидова. – М.:АРКТИ, 2007. – С.25.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Шкала детского понимания собственной компетентности» С.Хартер.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Шкала детского понимания собственной компетентности» С.Хартер.','Полученные данные:
 Познавательная компетентность – 13 баллов
 Компетентность в общении – 22 балла
 Компетентность во внеурочной деятельности – 20 баллов
@@ -10126,8 +10136,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Чернышова Н.С. Характер младшего школьника: учеб.пособие. – М.: Флинта: Наука, 2006. – С.283-287.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика Дембо-Рубинштейн в модификации А.М.Прихожан.','Уровень притязания
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика Дембо-Рубинштейн в модификации А.М.Прихожан.','Уровень притязания
 Полученные данные:
 100 баллов
 
@@ -10156,22 +10166,22 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.469-471.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Проективный тест «Несуществующее животное» М.З.Дукаревич.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Проективный тест «Несуществующее животное» М.З.Дукаревич.','Полученные данные:
 Наличие в рисунке украшений. В рисунке присутствуют острые детали – когти, зубы
 Вывод: выражена демонстративность. Отмечается небольшая агрессия
 
 Венгер А.Л. Психологические рисуночные тесты . – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – 159 с.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные: все компоненты рисунка выражают оптимистический настрой
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные: все компоненты рисунка выражают оптимистический настрой
 
 Вывод: депрессивных тенденций не обнаружено 
 
 Венгер А.Л. Психологические рисуночные тесты. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – 159 с.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Многофакторный личностный опросник Р.Кеттела (детский вариант).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Многофакторный личностный опросник Р.Кеттела (детский вариант).','Полученные данные:
 
 •	Экстравертность-интровертность – 3 балла
 •	Уверенность в себе – 3 балла
@@ -10196,14 +10206,14 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Немов Р.С. Психология. В 3-х кн. Кн.1.: Психодиагностика. Введение в научное психологическое исследование с элементами математической статистики. – М.: Изд-во ВЛАДОС, 2007. – С.227-225.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Рисуночный тест «Дом-дерево-человек» Бака и Хэммера.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисуночный тест «Дом-дерево-человек» Бака и Хэммера.','Полученные данные:
 Дверь плотно закрыта, на окнах решетки; четкая прорисовка корней у дерева
  Вывод:  Слабая связь с внешним миром. Характерны замкнутость и недостаточная уверенность в себе. Выражено стремление защититься от окружающего мира. Испытывает острую потребность в опоре и привязанности.
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.48-52.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Пиктограмма» А.Р.Лурия в модификации В.Г.Меньшикова','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Пиктограмма» А.Р.Лурия в модификации В.Г.Меньшикова','Полученные данные:
 Рисует себя меньших размеров, чем одноклассников. Рис. «Я и класс»:
 Рисует себя с одноклассниками; рис. «Я и друг»: рисует себя одного.
 
@@ -10212,8 +10222,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Чернышова Н.С. Характер младшего школьника: учеб.пособие. – М.: Флинта: Наука, 2006. – С.265-269.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Проективная методика Рене Жиля.','Тип поведения в сфере общения
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Проективная методика Рене Жиля.','Тип поведения в сфере общения
 
 Полученные данные:
 1 балл
@@ -10331,8 +10341,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Райгородский Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие. – Самара: Изд.дом «БАХРАХ-М», 2001. – С.418-436.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Рисунок семьи» Халсома и Хэррисома.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Рисунок семьи» Халсома и Хэррисома.','Полученные данные:
 Первой изображает мать, затем отца, старшего брата и себя. У всех членов семьи изображен рот с прорисовкой зубов, лица закрашены красным карандашом. Общее впечатление от рисунка - мрачное.
 
 Вывод:    доминантный и наиболее значимый член семьи для ребенка – мать. В семье наблюдаются недостаточно насыщенные эмоциональные отношения.   Прослеживается агрессия в семейных отношениях. Вырисовывается личностный конфликт Сережи на фоне требований к нему родителей и его возможностей. 
@@ -10340,8 +10350,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.56-60.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник социализации для школьников «Моя семья».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник социализации для школьников «Моя семья».','Полученные данные:
 79 баллов
 
 Измерительная шкала:
@@ -10356,8 +10366,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.638-640.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник «Взаимоотношение родителя с ребенком» (ВРР) – для родителей.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник «Взаимоотношение родителя с ребенком» (ВРР) – для родителей.','Полученные данные:
 •	Нетребовательность-требовательность – 18 баллов
 •	Мягкость-строгость – 18 баллов
 •	Автономность-контроль – 38 баллов
@@ -10388,8 +10398,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Широкова Г.А., Жадько Е.Г. Практикум детского психолога. – Ростов н/Д: Феникс, 2005. – С.23-27.
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Шкала изучения поведения детей с характерологическими особенностями (для учителей).','Уступчивость
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала изучения поведения детей с характерологическими особенностями (для учителей).','Уступчивость
 
 Полученные данные: 8 баллов
 
@@ -10404,8 +10414,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Чернышева Н. С. Характер младшего школьника  /  Н. С. Чернышева — 
 «ФЛИНТА»,  2014. – 155 с. 
 ','','',9)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Анкета выявлений акцентуаций характера (для родителей).','Полученные данные: Г=1балл; Н=2 балла; С=9 баллов; И=3 балла; Ш=5 баллов; Э=1 балл; П=2 балла
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Анкета выявлений акцентуаций характера (для родителей).','Полученные данные: Г=1балл; Н=2 балла; С=9 баллов; И=3 балла; Ш=5 баллов; Э=1 балл; П=2 балла
 
 Измерительная шкала: 
 высокий – Г=10 баллов; Н=10 баллов; С=12 баллов; И=10 баллов; Ш=12 баллов; Э=12 баллов; П=3 балла
@@ -10421,10 +10431,10 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 ','','',9)
 go
 
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Данные об успеваемости.','Успеваемость: мальчик неглупый, может учиться очень хорошо, но из-за того, что ничего не хочет делать на уроках, получает часто тройки.','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Сложная фигура» А. Реем.','Восприятие пространственных представлений 
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Данные об успеваемости.','Успеваемость: мальчик неглупый, может учиться очень хорошо, но из-за того, что ничего не хочет делать на уроках, получает часто тройки.','','',10)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Сложная фигура» А. Реем.','Восприятие пространственных представлений 
 
 Полученные данные:
 7 баллов
@@ -10454,8 +10464,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.31-34
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Кодирование» (модификация метода Пьерона-Рузера).','Концентрация внимания
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Кодирование» (модификация метода Пьерона-Рузера).','Концентрация внимания
 
 Полученные данные:
 4 ошибки
@@ -10481,11 +10491,10 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Вывод:  низкий уровень устойчивости внимания
 
-
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.37-39.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Корректурная проба» Бурдона.','Устойчивость внимания 
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Корректурная проба» Бурдона.','Устойчивость внимания 
 
 Полученные данные:
 за 10 минут просмотрено  380 знаков из 1200 знаков
@@ -10516,8 +10525,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.145-148.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Запомни и расставь точки».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Запомни и расставь точки».','Полученные данные:
 5 баллов
 
 Измерительная шкала:
@@ -10532,8 +10541,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Немов Р.С. Психология. В 3-х кн. Кн.1.: Психодиагностика. Введение в научное психологическое исследование с элементами математической статистики. – М.: Изд-во ВЛАДОС, 2007. – С.81-83.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Оценка переключения внимания» (использование колец Ландольта).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Оценка переключения внимания» (использование колец Ландольта).','Полученные данные:
 4 балла
 
 Измерительная шкала:
@@ -10547,8 +10556,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Немов Р.С. Психология. В 3-х кн. Кн.1.: Психодиагностика. Введение в научное психологическое исследование с элементами математической статистики. – М.: Изд-во ВЛАДОС, 2007. – С.178-179.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «10 слов» А.Р.Лурия.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «10 слов» А.Р.Лурия.','Полученные данные:
 6 баллов
 
 Измерительная шкала:
@@ -10562,8 +10571,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.34-37.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Долговременная память».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Долговременная память».','Полученные данные:
 коэффициент долговременной памяти – 50%
 
 Измерительная шкала:
@@ -10577,8 +10586,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Ануфриев А.Ф., Костромина С.Н. Как преодолеть трудности в обучении детей. Психодиагностические таблицы. Психодиагностические методики. Коррекционные упражнения. – М.:Изд-во «Ось-89», 2001. – С. 42-43
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Исключение слов».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Исключение слов».','Полученные данные:
 12 баллов
 
 Измерительная шкала:
@@ -10592,8 +10601,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Рогов Е.И. Настольная книга практического психолога. В 2 кн. Кн.1.:Система работы психолога с детьми разного возраста: учеб.пособие. – М.: Изд-во ВЛАДОС-ПРЕСС, 2008. – С. 96-98.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Прогрессивные матрицы Равена».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Прогрессивные матрицы Равена».','Полученные данные:
 24 балла
 
 Измерительная шкала:
@@ -10605,8 +10614,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Вывод: средний уровень развития наглядно-образного мышления (классификации)
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест Д. Векслера.','Общий интеллект
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест Д. Векслера.','Общий интеллект
 
 Полученные данные:
 95 баллов
@@ -10634,11 +10643,6 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Вывод:    средний уровень  вербального интеллекта (показатель развития словесного мышления)
 
-
-
-
-
-
 Невербальный  интеллект (показатель развития действенного мышления)
 
 Полученные данные:
@@ -10656,8 +10660,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Ведущее предприятие России по комплексному обеспечению психологической практики – ИМАТОН (Госстандарт России). Инструментарий: диагностика, коррекция, развитие.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные:
 12 баллов
 
 Измерительная шкала:
@@ -10671,8 +10675,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л. Психологические рисуночные тесты. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – 159 с.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Проективная методика диагностики школьной тревожности А.М.Прихожан.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Проективная методика диагностики школьной тревожности А.М.Прихожан.','Полученные данные:
 6 баллов
 
 Измерительная шкала:
@@ -10686,8 +10690,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Прихожан А.М. Тревожность у детей и подростков: психологическая природа и возрастная динамика. – М.: МПСИ; Воронеж: Изд-во НПО «МОДЕК», 2000.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Шкала явной тревожности» (CMAS).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Шкала явной тревожности» (CMAS).','Полученные данные:
 4 стена
 
 Измерительная шкала:
@@ -10701,8 +10705,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Прихожан А.М. Тревожность у детей и подростков: психологическая природа и возрастная динамика. – М.: МПСИ; Воронеж: Изд-во НПО «МОДЕК», 2000. – С. 233-241.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Тест школьной тревожности Филлипса.','Общая тревожность
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест школьной тревожности Филлипса.','Общая тревожность
 Полученные данные:
 15 баллов
 
@@ -10728,14 +10732,6 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 Норма: 5-7 баллов
 
 Вывод: средний уровень переживания социального стресса
-
-
-
-
-
-
-
-
 
 Фрустрация потребности в достижении успеха
 Полученные данные:
@@ -10824,8 +10820,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.323-327.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Шкала личностной тревожности» А.М.Прихожан.','Общая тревожность
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Шкала личностной тревожности» А.М.Прихожан.','Общая тревожность
 
 Полученные данные:
 10 стенов
@@ -10888,8 +10884,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Прихожан А.М. Тревожность у детей и подростков: психологическая природа и возрастная динамика. – М.: МПСИ; Воронеж: Изд-во НПО «МОДЕК», 2000. – С. 242-251.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Анкета для определения школьной мотивации.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Анкета для определения школьной мотивации.','Полученные данные:
 7 баллов
 
 Измерительная шкала:
@@ -10903,8 +10899,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Ануфриев А.Ф., Костромина С.Н. Как преодолеть трудности в обучении детей. Психодиагностические таблицы. Психодиагностические методики. Коррекционные упражнения. – М.:Изд-во «Ось-89», 2001. – 116-117
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Изучение направленности на приобретение знаний» (Е.П.Ильин, Н.А.Курдюкова).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Изучение направленности на приобретение знаний» (Е.П.Ильин, Н.А.Курдюкова).','Полученные данные:
 Мотивация на приобретение знаний – 4 балла
 Мотивационная направленность на отметку –  2 балла
 
@@ -10920,14 +10916,14 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.460-461.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Изучение отношения к учению и к учебным предметам» (Г.Н.Казанцева).','Вывод:  Ребенка привлекает изучение предметов – чтение, риторика. Для него они интересны, легко усваиваются и нравится как преподает учитель.
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Изучение отношения к учению и к учебным предметам» (Г.Н.Казанцева).','Вывод:  Ребенка привлекает изучение предметов – чтение, риторика. Для него они интересны, легко усваиваются и нравится как преподает учитель.
 Не вызывают интереса и вызывают трудности в усвоении предметы – математика, русский язык, история, окружающий мир.
 Ребенок учится с целью, чтобы быть грамотным, услышать похвалу от учителя, а также для него важно мнение класса, чтобы товарищи с ним дружили.
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.461-462.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Лесенка» (модифицированный вариант методики «САН»).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Лесенка» (модифицированный вариант методики «САН»).','Полученные данные:
 4 балла
 
 Измерительная шкала:
@@ -10941,8 +10937,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Все идет нормально? Комплект диагностических методик для комплексного обследования младших школьников /Авт. Сост. В.И.Екимова, А.Г.Демидова. – М.:АРКТИ, 2007. – С.25.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Шкала детского понимания собственной компетентности» С.Хартер.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Шкала детского понимания собственной компетентности» С.Хартер.','Полученные данные:
 Познавательная компетентность – 20 баллов
 Компетентность в общении – 9  баллов
 Компетентность во внеурочной деятельности – 16 баллов
@@ -10959,8 +10955,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Чернышова Н.С. Характер младшего школьника: учеб.пособие. – М.: Флинта: Наука, 2006. – С.283-287.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика Дембо-Рубинштейн в модификации А.М.Прихожан.','Уровень притязания
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика Дембо-Рубинштейн в модификации А.М.Прихожан.','Уровень притязания
 Полученные данные:
 100 баллов
 
@@ -10989,24 +10985,24 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.469-471.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Проективный тест «Несуществующее животное» М.З.Дукаревич.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Проективный тест «Несуществующее животное» М.З.Дукаревич.','Полученные данные:
 Много украшающих деталей. У животного нарисованы большие глаза, чешуя
 
 Вывод: выражена демонстративность, боится агрессии, имеется потребность в защите от потенциально опасного окружающего мира 
 
 Венгер А.Л. Психологические рисуночные тесты . – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – 159 с.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисуночный тест «Рисунок человека» К.Маховера.','Полученные данные:
 увеличен размер рисунка, общее впечатление – грустный человек, глаза нарисованы без зрачков
 
 Вывод:   имеется тенденция к депрессии, проявляется скрытость, замкнутость, закрытость своего внутреннего мира, нежелание давать сведения о себе окружающим
 
 Венгер А.Л. Психологические рисуночные тесты. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – 159 с.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Многофакторный личностный опросник Р.Кеттела (детский вариант).','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Многофакторный личностный опросник Р.Кеттела (детский вариант).','Полученные данные:
 
 •	Экстравертность-интровертность – 3 балла
 •	Уверенность в себе – 8 баллов
@@ -11031,8 +11027,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Немов Р.С. Психология. В 3-х кн. Кн.1.: Психодиагностика. Введение в научное психологическое исследование с элементами математической статистики. – М.: Изд-во ВЛАДОС, 2007. – С.227-225.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Рисуночный тест «Дом-дерево-человек» Бака и Хэммера.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисуночный тест «Дом-дерево-человек» Бака и Хэммера.','Полученные данные:
 Дом нарисован без дверей, окна закрыты; у дерева ветви закрыты линией кроны
 
 Вывод:  Выражена замкнутость. Общение ограничивается семьей. Отсутствие у ребенка контактов вне семьи.  
@@ -11040,16 +11036,16 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.48-52.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Пиктограмма» А.Р.Лурия в модификации В.Г.Меньшикова.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Пиктограмма» А.Р.Лурия в модификации В.Г.Меньшикова.','Полученные данные:
 Мало сюжетных картинок; трудности в изображении человеческих фигур (схематическое); на рис. «Я и класс» изобразил себя, сидящим спиной к классу. Часто рисует себя одного. Также на рис. «отдых в семье» рисует себя одного на берегу моря
 
 Вывод: отстраненный тип поведения. Отсутствие близких дружеских отношений со сверстниками. Ребенок испытывает одиночество. Нет близкого взаимоотношения между членами семьи.  
 
 Чернышова Н.С. Характер младшего школьника: учеб.пособие. – М.: Флинта: Наука, 2006. – С.265-269.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Проективная методика Рене Жиля.','Тип поведения в сфере общения
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Проективная методика Рене Жиля.','Тип поведения в сфере общения
 
 Полученные данные:
 0 балл
@@ -11167,8 +11163,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Райгородский Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие. – Самара: Изд.дом «БАХРАХ-М», 2001. – С.418-436.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Методика «Рисунок семьи» Халсома и Хэррисома.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Рисунок семьи» Халсома и Хэррисома.','Полученные данные:
 Первой рисует мать, затем себя, потом старшего брата и отца. Себя с матерью нарисовал в одинаковых позах. Лицо отца нарисовано мрачное.
 
 Вывод: Мать наиболее значимый член семьи для ребенка. Мальчик идентифицирует себя с матерью. Мрачная гримаса на лице отца может символизировать о негативных чувствах ребенка по отношению к отцу.
@@ -11176,8 +11172,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Венгер А.Л., Цукерман Г.А. Психологическое обследование младших школьников. – М.: Изд-во ВЛАДОС-ПРЕСС, 2007. – С.56-60.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник социализации для школьников «Моя семья».','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник социализации для школьников «Моя семья».','Полученные данные:
 81 балл
 
 Измерительная шкала:
@@ -11191,8 +11187,8 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Практикум по возрастной психологии: Учеб.пособие /Под ред. Л.А.Головей, Е.Ф.Рыбалко. – СПб.:Речь, 2006. – С.638-640.
 ','','',10)
-insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
-	values ('Опросник «Взаимоотношение родителя с ребенком» (ВРР) – для родителей.','Полученные данные:
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник «Взаимоотношение родителя с ребенком» (ВРР) – для родителей.','Полученные данные:
 •	Нетребовательность-требовательность – 10 баллов
 •	Мягкость-строгость – 18 баллов
 •	Автономность-контроль – 41 балл
@@ -11223,4 +11219,3292 @@ insert into dbo.dpo(lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Широкова Г.А., Жадько Е.Г. Практикум детского психолога. – Ростов н/Д: Феникс, 2005. – С.23-27.
 ','','',10)
+go
+
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Данные об успеваемости.','Успеваемость: У Влады хорошая успеваемость по всем гуманитарным предметам и удовлетворительная по точным наукам (математика, физика и т.д.).
+','Kortinki\\Zadacha11\\net.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика Мюнстерберга.','Полученные данные:
+22 слова за 136 сек, т.е.
+избирательность – 7 баллов.
+Общее количество слов в тесте равно 27.
+* За каждое пропущенное или неправильно найденное слово снимается по одному баллу.
+
+Норма: 120-199 баллов
+
+Вывод: уровень избирательности внимания ниже среднего.
+
+Бруннер Е.Ю. Лучше, чем супервнимание: Методики диагностики и психокоррекции. – Ростов н/Д: Феникс, 2006. –  С. 42-45.
+','Kortinki\\Zadacha11\\2.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «10 слов» А.Р.Лурия.','Полученные данные:
+проведено 5 попыток 
+          1) 4 из 10 слов;
+2) 4 из 10 + одно лишнее слово «школа»;  
+3) 4 из 10 + одно лишнее слово «рыцарь»;  
+4) 6 из 10; 
+5) 3 из 10 + одно лишнее слово «бумага».
+
+Содержательные характеристики при указанном сочетании параметров личности: наблюдается колебание концентрации внимания на запоминаемых словах. 
+
+Измерительная шкала:
+•	концентрация внимания и кратковременная память хорошая, если после одного зачитывания удается воспроизвести 8 и более слов;
+•	концентрация внимания и кратковременная память удовлетворительная, если удается воспроизвести 7 слов;
+•	концентрация внимания и кратковременная память слабая, если удается воспроизвести менее 7 слов.
+
+Норма: 7 слов.
+
+Вывод:  уровень концентрации и кратковременной памяти низкий.
+
+Устинов, Д. Сила концентрации или Главное качество великих людей: Методическое пособие [Электронный ресурс] / Д. Устинов // Тренинг центр Синтон. – 2010. – Режим доступа: http://www.syntone.ru. – 01.02.2013.
+','Kortinki\\Zadacha11\\net.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Числовые ряды Липмана.','Полученные данные.
+Время выполнения: 5.30 мин;
+количество ошибок – 5.
+
+Норма: 4 мин 35 сек – 9 мин 50 сек.
+
+Вывод: уровень логического мышления – ниже среднего.
+
+Основы психологии: Практикум /под ред. Столяренко Л.Д. – Изд. 7-е. – Ростов н/Д: Феникс, 2006 – С.58-59.
+','Kortinki\\Zadacha11\\4.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Словесный лабиринт».','Среднеарифметическое по всем заданиям – 95 секунд.
+* на графике представлены не 10, а 9 карточек, т.к. в 8 карточке испытуемая не знала самого слова.
+
+Содержательные характеристики при указанном сочетании параметров личности:
+•	наблюдается разброс результатов относительно среднеарифметического  показателя (95 сек) и отмечаются заметные графические изломы. Наблюдаются большие различия между минимальным (5 сек) и максимальным (250 сек) значением, график представляет зигзагообразную кривую, что свидетельствует о ригидности мышления испытуемой, ей приходится тратить лишнее время на «перестройку» своего мышления и переходу на новый способ решения задач;
+•	если смотреть на временные затраты, то на 1 и 2 задачу (карточку) испытуемая потратила гораздо больше времени, чем на последующие, что свидетельствует о научении во время решения задач;
+•	однако, сократившись, временные затраты все равно сохраняют разброс (зигзагообразность кривой), что свидетельствует о сохранении ригидности мышления, несмотря на научение.
+
+Норма:	
+•	сильные изломы графика - ригидность мышления (изломы определяются по отклонению времени выполнения каждого задания относительно среднеарифметической выполнения всех заданий);
+•	эффект научения определяется с помощью анализа временных затрат (его сокращения) на каждую последующую задачу.
+
+Вывод: диагностируется ригидность мышления.
+
+
+Практикум по общей, экспериментальной и прикладной психологии /Под ред. Крылова А.А., Маничева С.А. – 2-е изд., доп. и перераб. – СПб.: 2003. – 
+С. 145-147.
+','Kortinki\\Zadacha11\\5.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Многофакторный личностный опросник Р. Кеттелла (юношеский вариант—14PF), фактор В.','Полученные данные:
+6 стенов.
+	Если по какому-либо фактору набрано 5-6 стэнов, это говорит о том, что полюс данного фактора четко не выражен;
+	оценка 4 стэна отражает тенденцию к проявлению левого полюса фактора;
+	оценка 7 стэнов говорит о тенденции к проявлению правого полюса фактора.
+Норма: 5-6 стенов.
+
+Вывод:  средний уровень интеллекта.
+
+Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 578-588.
+','Kortinki\\Zadacha11\\6.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест смысложизненных ориентаций.','Полученные данные:
+•	наличие целей – 27 баллов;
+•	эмоциональная насыщенность жизнью (процесс жизни) – 31;
+•	удовлетворенность прошлым (результативность жизни) – 26;
+•	локус контроля «я» (вера в свои силы) – 20; 
+•	локус контроля «жизнь»  (управляемость жизнью) – 34;
+•	общая осмысленность жизни – 103.
+
+Норма: см. средние значения в таблице выше. 
+
+Выводы: 
+•	Наличие целей, удовлетворенность прошлым, а также вера в свои силы и управляемость жизнью также соответствуют норме;
+•	диагностируется высокая эмоциональная насыщенность и смысловая наполненность жизнью (процесс жизни);
+•	общая осмысленность жизни соответствует норме.
+
+Леонтьев Д.А. Тест смысложизненных ориентаций: Психодиагностическая серия. – М: Смысл, 2006. –  18 с.
+','Kortinki\\Zadacha11\\7.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест жизнестойкости (методика С. Мадди в адаптации Д.А. Леонтьева).','Полученные данные:
+•	вовлеченность в жизнь – 31 балл;
+•	контроль жизни –18;
+•	принятие риска – 17;
+•	общая жизнестойкость – 66.
+Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, показатель контроля над жизнью в сочетании с показателем общей жизнестойкости говорит о наличии убежденности в собственной беспомощности, неспособности сопротивляться негативным влияниям.
+
+Норма: см. средние значения в таблице выше. 
+
+Выводы: 
+•	вовлеченность в жизнь и принятие риска – средний уровень (соответствие норме);
+•	контроль жизни – сниженный уровень;
+•	общая жизнестойкость в пределах нормы.
+
+Леонтьев Д.А., Рассказова Е.И. Тест жизнестойкости. — М.: Смысл, 2006. — 63 с.
+','Kortinki\\Zadacha11\\8.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Мотивация успеха и боязнь неудачи (опросник А.А. Реана).','Полученные данные:
+10 баллов.
+
+Измерительная шкала:
+	от 1 до 7 – диагностируется мотивация на неудачу (боязнь неудачи);
+	от 14 до 20 – мотивация на успех (надежда на успех);
+	от 8 до 13 – мотивационный полюс ярко не выражен;
+	При этом можно иметь в виду, что если количество баллов 8 или 9, есть определенная тенденция мотивации на неудачу, а если количество баллов 12 или 13, имеется определенная тенденция мотивации на успех.
+
+Вывод: мотивационный полюс ярко не выражен.
+
+Малкина-Пых И.Г. Психосоматика: Справочник практического психолога. — М.: Эксмо, 2005. — С. 124-126.
+','Kortinki\\Zadacha11\\net.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Экспресс-диагностика характерологических особенностей личности.','Экспресс-диагностика характерологических особенностей личности (Н. Айзенк в модификации Т.В. Матолиной).','Полученные данные:
+Экстраверсия – 7 баллов;
+Нейротизм – 14.
+Шкала лжи – 7.
+Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, при данном соотношении показателей, данный тип личности активный, уравновешенный. Энергичен. Средне общителен. Привязчив к немногочисленным друзьям. Упорядочен. Умеет ставить перед собой задачи и добиваться решений. Не склонен к соперничеству. Иногда обидчив. Чувствителен. Предпочитает спокойное доверительное отношение окружающих.
+
+Измерительная шкала:
+Оценка результатов данной методики идет по двум параметрам, представленным на графике ниже:
+	шкале экстраверсии, которая образует ось абсцисс с полюсами интроверсия-экстраверсия;
+	шкале нейротизма, которая образует ось ординат с полюсами стабильный-нестабильный.
+Выводы:  
+
+•	есть тенденция к социально желательным ответам;
+•	тип темперамента Влады ближе всего к меланхоличному.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
+','Kortinki\\Zadacha11\\10.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Индивидуально-типологический детский опросник.','Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, вышеизложенное сочетание результатов говорит о переменчивое поведение, конформное поведение.
+
+Измерительная шкала:
+	Показатели в пределах нормы (3) - гармоничная личность;
+	заостренные (4-5) - акцентуированные черты;
+	выраженные избыточно (6) - свойства, затрудняющие адаптацию, создающие проблемы для самого ребенка или для окружающих;
+	примерно одинаково избыточно выраженные тенденции (более 4-х) по противоположным свойствам означают компенсированные антитенденции, что свидетельствует о значительной эмоциональной напряженности и является признаком наличия внутреннего конфликта. для нормы (в пределах 4-х) это свидетельство сбалансированности разнонаправленных свойств. это - признак развития самоконтроля;
+	если большинство показателей 0 или 1, то это указывает на плохое самопонимание или неоткровенность при обследовании.
+
+Норма: показатели в пределах 3-х баллов.
+
+Выводы: 
+•	уровень по шкале лжи соответствует верхней границе нормы, аггравация не выражена;
+•	к акцентуированным чертам относится агрессивность и тревожность, которые компенсируют друг друга. акцентуированы также интроверсия и лабильность;
+•	уровень ниже среднего диагностируется по шкале спонтанности;
+•	экстраверсия, ригидность и сензитивность в норме.
+
+Собчик Л.Н. Индивидуально-типологический опросник. – М.: Боргес, 2008. – 190 с.
+','Kortinki\\Zadacha11\\11.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Многофакторный личностный опросник Р. Кеттелла (юношеский вариант—14PF).','Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данный тип личности эмоционально устойчив, уравновешен, мягкосердечен, чувствителен, может быть как индивидуален, так, и склонен к коллективной работе, с нормальным уровнем самоконтроля. Влада совестлива и в меру самостоятельна. Ей присуща тенденция к зависимости и уступчивости. С одной стороны диагностируется уверенность в себе, а с другой, склонность к замкнутости и обособленности, свидетельствуют о сдержанности, озабоченности, склонности все усложнять, ко всему подходить слишком серьезно и осторожно.
+
+Измерительная шкала:
+Обозначение фактора	Левый полюс фактора
+(1-3 стена)	Правый полюс фактора
+(8-10)
+A	Шизотимия (отчуждённость) 	Аффектимия (доброта)
+B	Низкий интеллект 	Высокий интеллект
+C	Эмоциональная неустойчивость 	Эмоциональная устойчивость
+D	Уравновешенность 	Беспокойство
+E	Покорность 	Настойчивость
+F	Озабоченность 	Беспечность
+G	Недобросовестность 	Высокая совестливость
+H	Робость 	Смелость
+I	Суровость 	Мягкосердечность (чувствительность)
+J	Нонконформизм 	Конформизм
+Q1	Самоуверенность 	Склонность к чувству вины
+Q2	Зависимость от группы 	Самостоятельность
+Q3	Импульсивность 	Контроль желаний
+Q4	Нефрустрированность 	Фрустрированность
+
+	Если по какому-либо фактору набрано 5-6, это говорит о том, что полюс данного фактора четко не выражен;
+	Оценка 4 отражает тенденцию к проявлению левого полюса фактора;
+	Оценка 7 говорит о тенденции к проявлению правого полюса фактора.
+
+Норма: 5-6 стенов. 
+
+Выводы.  
+•	Факторы G, H, Q2, I выше нормы.
+•	факторы E, Q4 ниже нормы.
+•	факторы A, F, Q1 имеют низкие показатели.
+•	факторы B, C, D, J, Q3 соответствуют норме.
+
+Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 578-588.
+','Kortinki\\Zadacha11\\12_1.png','Kortinki\\Zadacha11\\12_2.png',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Многофакторный личностный опросник «Мини-мульт».','Многофакторный личностный опросник «Мини-мульт» (адаптация Ф.Б. Березинина и М.П. Мирошникова).','Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, вышеизложенные показатели говорят о сохранении постоянных интересов и тенденции к сниженной контактности с окружающими.
+
+Измерительная шкала: определяются по профилю (см. график), с учетом которого все результаты от 40 до 70 T баллов признаются нормой. Соответственно отклонение от нормы вниз – низкий балл, вверх – высокая выраженность.
+
+Норма: от 40 до 70 T. 
+
+Выводы: 
+•	шкала лжи, шкала достоверности, шкала коррекции соответствуют норме;
+•	психопатия – слегка ниже нормы;
+•	гипотония – на границе номы и сниженного значения;
+•	в пределах нормы следующие шкалы: шкала ипохондрии, депрессии, истерии, психопатии, паранойяльности, психастении, шизоидности.
+
+Менделевич В.Д. Психология девиантного поведения: Учебное пособие. –  СПб.: Речь, 2005. – С.409-411.
+','Kortinki\\Zadacha11\\13_1.png','Kortinki\\Zadacha11\\13_2',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Компьютерный Цветовой тест Люшера (адаптация А. Ласточкина).','Полученные данные: по мнению автора методики, при сделанной испытуемой частоте выбора цветов, диагностируется следующее.
+
+Результаты по выбоpу сеpого цвета:
+оппозиционность - возбудимость - недоверие. Противится возможности установления глубокой  сердечной привязанности, раздраженно и с нетерпением отвергает ее.
+
+Результаты по выбоpу 8 цветов.
+
+По устpемлению: стремится к чуткости, гармонии, ласке, нежности. Хочет в них растворится. Тонко чувствует эстетическую красоту и способна проникаться чувствами другого.
+
+По состоянию: недовольство ситуацией и  отношениями может привести к внезапным  и опрометчивым решениям. Своевольна и не слушает чьи-либо советы.
+
+По индифеpентности: чувствует себя несчастной из-за сопротивления, на которое наталкивается всякий раз, когда пытается отстаивать свои права. Полагает, однако, что мало что может изменить и что должна наилучшим образом использовать ситуацию, в которой она находится.
+
+По сознательно затоpможенной потpебности. 
+
+Физиологическая интерпретация: игнорирует физические потребности организма. Психологическая интерпретация: считает, что не достигнет поставленных перед собой целей, если будет вести размеренный образ жизни. Не хочет зависеть от физической удовлетворенности и  чувственных  наслаждений.  Испытывает  неудовлетворенную  потребность в объединении с людьми,  имеющими такие же высокие духовные стандарты, хочет выделиться из толпы.  Иногда ей хочется быть как все, но она подавляет в себе такое желание,  как слабость.  Стремится достичь  поставленные  перед собой цели,  чтобы поддержать чувство собственного достоинства и устранить неуверенность в себе. Считает, что, только сохраняя умение владеть собой, она может  надеяться  сохранить  свое  превосходство над другими как личность. Хочет, чтобы её любили и восхищались ей бескорыстно,  ради неё  самой. Нуждается во внимании, признании и уважении. Коротко: требует уважения к себе как к исключительной личности.
+
+Актуальная пpоблема: хочет, чтобы её ценили и уважали. Пытается найти это в близком и спокойном общении, основанном на взаимном уважении.
+
+Отдельные показатели:
+•	стремления мотивированные самопониманием. Воспринимает трудности   в  преодолении  неприятных  обстоятельств  как давление против неё, которое невозможно вынести. Избегает напряженности в отношениях. Ищет  ситуаций, где бы к ней относились бережно и где бы она чувствовал себя в безопасности;
+•	эмоциональная настроенность к определённому лицу. Определенные обстоятельства  ситуации воспринимает  как  помехи.  Они стесняют её,  но, тем не менее, чтобы избежать напряженности, не хотела бы провоцировать ссоры. Хотела бы, чтобы какие-либо требования удовлетворялись мирным путем. Стремится к постоянству, спокойствию и удовлетворенности;
+•	возбудимость, импульсивность. В сердечных отношениях претендует на неограниченную взаимность,  но,  в то же время боится, что придется разочароваться или потерять любовь. Чтобы как-то  стабилизировать  свой  эмоциональный  тонус,  старается вести себя независимо, однако нуждается в уважении;
+•	ожидание, отношение к окружению. Стремится освободиться   от   неприятной   ей  ситуации,  которая  её удручает.  Надеется на полное  понимание,  предупредительное  отношение  и доброжелательность окружающих;
+•	общая эмоциональная структура. Затронутое честолюбие. Стремится к  безопасности,  релаксации,  идиллической гармонии.  Однако из-за своеволия  не  может  приспосабливаться.  Чрезмерно  чувствительна  к помехам  и  сопротивлению;
+•	командование сердечной чувственностью. Настойчиво стремясь  к  самоутверждению,  не хочет поддерживать связи, воспринимаемые как зависимость.
+
+Измерительная шкала: с учетом того, что данный тест представлен в компьютерной форме, нормативы в него уже заложены (анализ частоты выбора цветов).
+Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизнь-XXIвек. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.
+','Kortinki\\Zadacha11\\net.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','«Толерантность к неопределенности» (Методика С. Баднера в адаптации Г.У. Солдатовой).','Полученные данные:
+•	новизна проблемы – 21 балл;
+•	сложность проблемы – 39;
+•	неразрешимость проблемы – 17; 
+•	общий показатель – 77. 
+
+Норма: см. средние значения в таблице выше.
+
+Выводы: 
+•	отношение к новизне и неразрешенности проблемы соответствует норме;
+•	уровень готовности к сложности проблемы высокий;
+•	общий показатель толерантности на высоком уровне.
+
+Психодиагностика толерантности личности /Под ред. Г.У. Солдатовой, Л.А. Шайгеровой. – М.: Смысл, 2008. – С. 94-97.
+','Kortinki\\Zadacha11\\15.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Шкала «Толерантность к двусмысленности».','Шкала «Толерантность к двусмысленности»  (методика Родника, Хезера и др. в адаптации Н.А. Бажановой и Г.Л. Бардиер).','Полученные данные:
+•	страстность (энергичность) – 12 баллов;  
+•	находчивость 17; 
+•	оптимизм – 20; 
+•	смелость, предприимчивость – 12; 
+•	адаптивность – 16; 
+•	уверенность -18; 
+•	толерантность к двусмысленности – 18.
+
+Норма: см. средние показатели в таблице выше. 
+
+Выводы.  
+•	Уверенность, адаптивность по отношению к двусмысленности соответствует норме.
+•	При этом уровень оптимизма высокий.
+•	Страстность (понимается как энергичность, неутомимость, повышенный жизненный тонус), находчивость и смелость имеют выраженность ниже среднего.
+•	Уровень толерантности к двусмысленности высокий.
+18 программ тренингов: Руководство для профессионалов /под ред. В.А. Чикер. – СПб.: Речь, 2007. — С. 322-325.
+','Kortinki\\Zadacha11\\16.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Уровень школьной тревожности Филипса.','Измерительная шкала: 
+•	если показатель больше 50 процентов, можно говорить о его повышенной выраженности;
+•	если более 75 - о высокой выраженности.
+
+Норма: 50 процентов и ниже. 
+
+Выводы: 
+•	в повышенной зоне оказались показатели тревожности относительно проверки знаний, страхи в отношениях с учителями и показатель низкой физиологической сопротивляемости стрессу;
+•	в пределах нормы оказались следующие показатели: общая тревожность, тревожность в школе, переживание социального стресса, фрустрация потребности в достижение успеха, страх самовыражения, страх несоответствия ожиданиям окружающих.
+Альманах психологических тестов. – Издание 2-е. – М.: КСП, 1996. – С. 165-171.
+','Kortinki\\Zadacha11\\17.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест уверенности в себе (В.Г. Ромек).','Полученные данные:
+•	уверенность в себе – 7 стенов;
+•	социальная смелость – 5;
+•	инициатива в социальных контактах – 4. 
+
+Норма: 5-6 стенов. 
+
+Выводы: 
+•	диагностируется уверенность в себе на уровне выше среднего;
+•	социальная смелость в пределах нормы;
+•	инициатива в социальных контактах снижена (ниже среднего).
+Практическая психодиагностика и психологическое консультирование. – Ростов-на-Дону: ЮРГИ, 1998. – С. 87-108.
+','Kortinki\\Zadacha11\\18.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Диагностика Доброжелательности (по шкале Кемпбелла).','Полученные данные:
+4 балла
+
+Измерительная шкала:
+	3 балла и меньше — низкий показатель доброжелательного отношения к другим;
+	4-6 — средний показатель доброжелательного отношения к другим;
+	7 и больше — высокий показатель доброжелательного отношения к другим.
+
+Норма: 4-6 баллов.
+
+Вывод: средний показатель принятия других.
+
+ Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 113-114.
+','Kortinki\\Zadacha11\\net.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Экспресс диагностика доверия (по шкале Розенберга).','Полученные данные:
+0 баллов. 
+
+Измерительная шкала:
+	0-1 баллов — низкий показатель доверия;
+	2 балла — средний показатель доверия;
+	3 балла — высокий показатель доверия.
+
+Норма: 2 балла. 
+
+Вывод:  диагностируется низкий показатель доверия.
+
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
+','Kortinki\\Zadacha11\\net.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика оценки доверия/недоверия личности другим людям (А.Б. Купрейченко).','Содержательные характеристики при указанном сочетании параметров личности:
+•	Влада чувствует общность интересов и приязнь даже к тому, кому не доверяет. Также из вышеупомянутого следует, что она считает, что хорошо знает то лицо, которому не доверяет;
+•	диагностируется, что Влада склона замечать недостатки тех, кому не доверяет, гораздо острее, чем тех, кому она доверяет – их недостатки она практически не замечает. Влада не особо считает тех, кому не доверяет расчетливыми людьми; 
+•	доверие Влады основывается на надежности данного лица и расчете.
+* Критерии доверия определяются по разности значений Д и НД, т.е. из показателей, полученных от испытуемого по отношению к тому, кому он доверяет вычитаются показатели, связанные с тем человеком, которому испытуемый не доверяет. В данном случае, при сравнении с нормами, критерием является то значение, которое превосходит нормы. Если значение значительно ниже нормы, значит данный показатель неприемлем для испытуемого как критерий доверия людям. 
+
+Выводы:  
+•	по отношению к тому человеку, которому Влада доверяет, отмечается, что значение по шкале недостатки значительно ниже нормы. Надежность и знание тут слегка выше нормы. Показатели единства и приязни слегка ниже нормы. Показатель расчета соответствует норме;
+•	по отношению к тому человеку, которому Влада не доверяет, отмечается, что, уровень выше среднего имеют показатели единства, знания и шкалы недостатков по отношению к человеку, которому Влада не доверяет. В пределах нормы находятся показатели надежности, приязни (веры). Ниже среднего имеет показатель расчета;
+•	критериями доверия для Влады служат надежность и в меньшей степени расчет.
+
+Купрейченко А.Б. Психология доверия и недоверия. – М.: Институт психологии РАН, 2008. – С. 224-301.
+','Kortinki\\Zadacha11\\21_1.png','Kortinki\\Zadacha11\\21_2.png',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на благодарность.','Полученные данные: 35 баллов. 
+
+Измерительная шкала.
+Тестирование, проведенное среди 1224 взрослых респондентов позволяет сделать следующие выводы:
+	если вы набрали не более 35 баллов, то попадаете в группу наименее благодарных (25 %);
+	 те, кто набрали от 36 до 38, относятся к средней группе (50 %);
+	люди с результатом от 39 до 41 особенно благодарны жизни (25 %);
+	а показатель 42 характеризует 12,5 % самых благодарных. 
+
+Норма: от 36 до 38 баллов. 
+
+Вывод: диагностируется средний уровень способности благодарить.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 102.
+','Kortinki\\Zadacha11\\net.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на трансгрессивную мотивацию (умение прощать), (Мак-Куллоу).','Полученные данные:
+•	стремление избежать обидчика – 22 балла;
+•	мстительность – 13. 
+Измерительная шкала.
+Стремление избегать обидчика.
+	Средний результат среди американцев — 12,6 баллов;
+	набравшие более 17,6 попадают в число «обиженных» (33 % американцев);
+	набравшие более 22,8 — обиженных смертельно (10 %).
+Мстительность.
+	Если вы набрали около 7,7, то ваш результат близок к среднеамериканскому;
+	набрав 11 и выше, вы попадаете в категорию людей мстительных (33 % американцев);
+	показатель 13,2 и выше свидетельствуют о том, что вы оказались среди самых заядлых мстителей (10 % американцев).
+
+Вывод: диагностируется высокий уровень обидчивости и мстительности.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 111.
+','Kortinki\\Zadacha11\\net.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест коммуникативных навыков (Методика Л. Михельсона в адаптации Ю.З. Гильбуха).','Полученные данные:
+•	уровень компетентности – 19 баллов;
+•	уровень зависимости в общении – 4;
+•	уровень агрессивности в общении – 4.
+
+Измерительная шкала: всего в тесте 27 утверждений, поэтому максимальный балл по одной из трех шкал (агрессивность, зависимость, компетентность)  – 27 баллов. Результаты анализируется в зависимости от сочетания баллов по данным шкалам.
+
+Вывод:  диагностируется высокий уровень компетентности в общении. При этом агрессивность и зависимость имеют низкий уровень выраженности.
+
+Колмогорова, Н. С. Коммуникативная компетентность как условие и следствие становления направленности личности: дис. ... канд. психол. наук: 19.00.01 / Наталья Степановна Колмогорова. – Барнаул, 2004. – 228 с.
+','Kortinki\\Zadacha11\\net.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест описания поведения К. Томаса (адаптация Н.В. Гришиной).','Полученные данные:
+•	стратегия соперничества – 5 стенов; 
+•	стратегия сотрудничества – 3; 
+•	стратегия компромисса – 4; 
+•	стратегия избегания – 8; 
+•	стратегия уступки (приспособления) – 7. 
+
+Норма: 5-6 стенов. 
+
+Выводы:  
+•	доминирующими стратегиями поведения в конфликтах – являются избегание (высокий уровень) и приспособление (выше среднего);
+•	стратегия сотрудничества в пределах нормы;
+•	наименее используемые стратегии – компромисс (ниже среднего) и соперничество (низкий уровень выраженности).
+
+Большая энциклопедия психологических тестов /Под ред. А.А. Карелина – М.: Эксмо, 2007. — С. 270-273.
+','Kortinki\\Zadacha11\\25.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Тест «Поведение родителей и отношение подростков к ним».','Тест «Поведение родителей и отношение подростков к ним» (методика Е. Шафера в адаптации Э. Матейчика и П. Ржичана).','Полученные данные.
+Оценка Владой воспитательных методов мамы:
+•	позитивный интерес – 3 стена;
+•	автономность – 4;
+•	враждебность – 4; 
+•	директивность – 2;
+•	непоследовательность воспитания – 3.
+
+Оценка Владой воспитательных методов бабушки:
+•	позитивный интерес – 3;
+•	автономность – 3;
+•	враждебность – 3; 
+•	директивность – 3;
+•	непоследовательность воспитания – 3.
+
+Норма: 3 стена. 
+
+Выводы.
+Со стороны матери к Владе (по мнению самой Влады):
+•	выраженными элементами воспитания являются автономность и враждебность;
+•	директивность на низком уровне выраженности;
+•	при этом позитивный интерес и непоследовательность воспитания выражены средне. 
+Со стороны бабушки к Владе: все элементы воспитания (позитивный интерес, враждебность, автономность, директивность и непоследовательность в воспитании) выражены средне.
+
+Сонин В.А. Психодиагностическое познание профессиональной деятельности. — СПб.: Речь, 2004. – С. 169-178.
+','Kortinki\\Zadacha11\\26.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Выявление самооценки по методике Дембо-Рубинштейн в модификации А.М. Прихожан.','Полученные данные: 
+•	среднее арифметическое по самооценке – 45 баллов;
+•	 среднее арифметическое по уровню притязаний – 73.
+
+Измерительная шкала:
+Уровень самооценки и уровня притязаний определяется положением на 100 бальной шкале отметок испытуемого.
+	Самооценка ниже 45 баллов признается низкой, 45-59 – средняя, 60-74 – высокая, 75-100 – очень высокий уровень;
+	уровень притязаний ниже 60 баллов признается низким, 60-74 – средним, 75-89 – высоким, 90-100 – очень высоким уровнем.
+* Нормы для среднеарифметических показателей аналогичны.
+Норма: 45-59 баллов для самооценки и 60-74 для уровня притязаний. 
+
+Выводы:
+•	Среднее арифметическое по самооценке на границе среднего и сниженного;
+•	среднее арифметическое по уровню притязаний – адекватно высокий;
+Отдельные показатели.
+Самооценка:
+•	низкий уровень самооценки – авторитет у сверстников, рукоделие;
+•	средний уровень самооценки – ум, характер, внешность и уверенность в себе.
+Уровень притязаний:
+•	низкий уровень притязаний по рукоделию и внешности;
+•	очень высокие притязания относительно уверенности в себе;
+•	по шкалам ум, характер и авторитет у сверстников показатели уровня притязаний на границе среднего и высокого.
+
+Практикум по возрастной психологии: Учеб. пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. - СПб.: Речь, 2002. – С. 559-561.
+','Kortinki\\Zadacha11\\27.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала самоуважения Розенберга.','Полученные данные: 5 стенов.
+Вывод: диагностируется средний уровень самоуважения.
+
+Бодалев А.А., Столин В.В. Общая психодиагностика. – СПб.: Речь, 2000. – С. 308.
+','','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на удовлетворенность жизнью.','Полученные данные: 30 баллов. 
+
+Измерительная шкала: 
+Этот тест уже выполнен десятками тысяч людей в разных странах. 
+	средний итоговый результат у пожилых американцев — 28 баллов у мужчин и 26 у женщин, у американских студентов — 23-25;
+	средний результат у китайских и восточноевропейских студентов —16-19;
+	заключенные тюрем мужского пола в среднем оценили степень удовлетворенности жизнью в 12;
+	больные, амбулаторно посещающие психологов, дали оценку в 14-18, а женщины, подвергшиеся насилию, и пожилые сиделки, как ни странно, показали довольно высокий результат — около 21 в среднем
+
+Вывод:  диагностируется высокий уровень удовлетворённости жизнью.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 92.
+','Kortinki\\Zadacha11\\28.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Эмоциональный тест Фордайса.','Полученные данные:
+•	уровень счастья – 7 баллов;
+•	переживание счастья – 40% всего времени;
+•	переживание несчастья – 20% всего времени;
+•	переживание нейтрального состояния – 40 % всего времени.
+
+Измерительная шкала:
+	по результатам тестирования 3050 взрослых американцев средний уровень ответов на первый вопрос составил 6,92;
+	согласно данным по второму вопросу, средний американец примерно половину своего времени (54,13 %) чувствует себя счастливым, 20,44 % времени — несчастным, а все остальное время (25,43 %) — чувствует себя нейтрально.
+
+Норма: 7 баллов (уровень счастья) и 50 % (переживания счастья). 
+
+Выводы. 
+Диагностируется: 
+•	средний уровень ощущения счастья;
+•	ниже среднего уровень частоты переживания счастья;
+•	уровень переживания нейтрального состояния выше среднего.
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 30.
+','Kortinki\\Zadacha11\\net.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала субъективного благополучия (методика Мендельсона и др. в адаптации М.В. Соколовой).','Полученные данные: уровень субъективного благополучия – 4 стена.
+Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, лица с такими оценками характеризуются умеренным субъективным благополучием, серьезные проблемы у них отсутствуют, но и полном эмоциональном комфорте говорить нельзя.
+
+Вывод: диагностируется сниженное субъективное благополучие.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – C. 467-470.
+','Kortinki\\Zadacha11\\net.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Шкала активности и оптимизма.','Шкала активности и оптимизма (методика И.С. Шуллера и А.Л. Комуниана в адаптации Г.С. Никифорова).','Полученные данные: 
+•	уровень активности – 18 баллов;
+•	уровень оптимизма – 11.
+
+Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, при данном сочетании в трудных ситуациях человек склонен реагировать агрессивно.
+
+Вывод: Влада активный пессимист.
+
+Практикум по психологии менеджмента и профессиональной деятельности /Под редакцией Г.С. Никифорова, М.А. Дмитриевой, В.М. Снеткова – СПб.: Речь, 2003. – С 287-293.
+','Kortinki\\Zadacha11\\31.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Самооценка силы воли (Н.Н. Обозов).','Полученные данные: 24 балла. 
+
+Измерительная шкала:
+	от 0 до 12 баллов – у Вас слабая сила воли, Вас легко переубедить;
+	от 13 до 21 – у Вас сила воли средняя. В различных ситуациях Вы действуете по-разному, иногда проявляя чудеса уступчивости и податливости, а иногда – настойчивость и упорство;
+	от 22 до 30 – у Вас большая сила воли, Вы волевой человек.
+
+Норма: от 13 до 21 балла. 
+
+Вывод. Диагностируется высокий уровень силы воли.
+
+Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 523-524.
+','Kortinki\\Zadacha11\\32.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Уровень субъективного контроля (УСК).','Уровень субъективного контроля (УСК) (методика Дж. Роттера в адаптацииЕ.Ф. Бажина, Е.А. Голынкиной, А.М. Эткинда).','Полученные данные: 
+•	общий показатель субъективного контроля – 32 балла;
+•	уровень интернальности в отношении достижений – 8; 
+•	интернальность в области неудач – 10. 
+
+Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики,  вышеизложенные показатели говорят о том, что в своих неудачах Влада винит себя.
+
+Выводы: 
+•	общий показатель субъективного контроля и уровень интернальности в отношении достижений соответствует норме (средний);
+•	в области неудач наблюдается высокий уровень интернальности.
+
+Немов Р.С. Психология. Учебник для студентов высших педагогических учебных заведений: В 3-х ч. Ч.3. Психодиагностика. –4-е изд. – М.:  Владос, 2001. – С. 480-483.
+','Kortinki\\Zadacha11\\net.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Моментальный тест на позитивную и негативную аффективность 
+(по отношению к учителям).','Полученные данные: 
+•	сумма негативных эмоций по отношению к учителям, которых Влада боится – 30 (доминирующие негативные эмоции: тревога, испуг, раздражение, беспокойство, нервозность – 5 баллов);
+•	сумма позитивных эмоций по отношению к учителям – 16 (доминирующие позитивные эмоции: бодрость, внимание – 4 балла).
+
+
+Измерительная шкала:
+М. Селигман предлагает главным образом исходить из следующего:
+	во-первых, максимальный уровень положительных или отрицательных эмоций может достигать 50 баллов;
+	во-вторых, необходимо обращать внимание на соотношение баллов по двум уровням эмоций (позитивный, негативный).
+* Оценка отдельной эмоции идет по 5-балльной шкале, где 4,5 – высоко, 3 – средне, 2,1 – низко.
+
+Норма: 3 балла (отдельная эмоция). 
+
+Вывод. Сумма баллов по негативным эмоциям в два раза превосходит сумму позитивных, что говорит о негативном эмоциональном фоне по отношению к нежелательным для Влады учителям. 
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 53.
+','Kortinki\\Zadacha11\\34.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Диагностика принятия других (по шкале Фейя).','Полученные данные: 55 баллов.
+
+Измерительная шкала:
+•	60 баллов и больше — высокий показатель принятия других;
+•	45—60 — средний показатель принятия других с тенденцией к высокому;
+•	30-45— средний показатель принятия других с тенденцией к низкому;
+•	30 и меньше — низкий показатель принятия других.
+
+Норма: 45-60 баллов. 
+
+Вывод: диагностируется средний показатель принятия других с тенденцией к высокому.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 112-113.
+','Kortinki\\Zadacha11\\net.png','',11)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Результаты Влады по методу беседы на тему чувства вины по отношению к учителям.','Влада: «Я стараюсь ответственно подходить к заданиям в школе. Почти все задания я делаю на высоком уровне, однако есть учителя, которые меня недолюбливают и я их тоже, по отношению к ним я не чувствую себя виноватой или обязанной им чем-то. Им как не сделай работу, все равно найдут к чему придраться».
+
+Вывод: чувство вины отсутствует. 
+','Kortinki\\Zadacha11\\net.png','',11)
+go
+
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Данные об успеваемости.','Успеваемость: у Бори плохая успеваемость по всем предметам.
+','Kortinki\\Zadacha12\\net.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика Мюнстерберга.','Полученные данные:
+21 слово (+1 ошибочное) за 284 сек, т.е.
+избирательность – 0 баллов.
+
+Содержательные характеристики: при выполнении методики где-то в середине Боря заинтересовался содержанием методики и стал быстрее находить слова (концентрация и устойчивость увеличилась), однако ему все равно не удалось выйти на средние показатели.
+
+Норма: 120-199 баллов
+
+Вывод: уровень избирательности внимания очень низкий.
+
+Бруннер Е.Ю. Лучше, чем супервнимание: Методики диагностики и психокоррекции. – Ростов н/Д: Феникс, 2006. –  С. 42-45.
+','Kortinki\\Zadacha12\\2.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Детский личностный опросника Р. Кеттелла (Адаптирован Э.М. Александровской). Фактор В.','Полученные данные:
+4 стена.
+
+	Если по какому-либо фактору набрано 5-6 стэнов, это говорит о том, что полюс данного фактора четко не выражен;
+	оценка 4 стэна отражает тенденцию к проявлению левого полюса фактора;
+	оценка 7 стэнов говорит о тенденции к проявлению правого полюса фактора.
+Норма: 5-6 стенов.
+
+Вывод:  уровень интеллекта ниже среднего.
+
+Адаптированный модифицированный вариант детского личностного опросника Р. Кеттелла (Адаптирован Э.М. Александровской) / Э.М. Александровская, И.Н. Гильяшева: Методические рекомендации. – М.: Фолиум, 1993. – 40 с.
+','Kortinki\\Zadacha12\\3.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика диагностики мотивации одобрения (методика Д. Марлоу и Д. Крауна в адаптации Ю.Л. Ханина).','Полученные данные:
+12 баллов.
+
+Измерительная шкала:
+	0-6 — Низкая мотивация к одобрению;
+	7-13 — Средняя мотивация к одобрению;
+	14-20 — Высокая мотивация к одобрению.
+
+Вывод: диагностируется средняя мотивация одобрения.
+
+Психологические тесты /Ред. и сост. С. Касьянов. – М.: Эксмо, 2006. – С. 358-360.
+','Kortinki\\Zadacha12\\net.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Мотивация успеха и боязнь неудачи (опросник А.А. Реана).','Полученные данные:
+16 баллов.
+
+Измерительная шкала:
+	от 1 до 7 – диагностируется мотивация на неудачу (боязнь неудачи);
+	от 14 до 20 – мотивация на успех (надежда на успех);
+	от 8 до 13 – мотивационный полюс ярко не выражен;
+	При этом можно иметь в виду, что если количество баллов 8 или 9, есть определенная тенденция мотивации на неудачу, а если количество баллов 12 или 13, имеется определенная тенденция мотивации на успех.
+
+Вывод: выражена мотивация на достижение успеха.
+
+Малкина-Пых И.Г. Психосоматика: Справочник практического психолога. — М.: Эксмо, 2005. — С. 124-126.
+','Kortinki\\Zadacha12\\net.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Модифицированный вариант анкеты школьной мотивации Н.Г. Лускановой.','Модифицированный вариант анкеты школьной мотивации Н.Г. Лускановой (модификация Е.И. Даниловой).','Полученные данные:
+10 баллов.
+
+Измерительная шкала:
+•	25-30 балла – высокий уровень школьной мотивации, учебной активности;
+•	20-24 – хорошая школьная мотивация;
+•	15 -19 – положительное отношение к школе, но школа привлекает больше внеучебными сторонами;
+•	10-14 – низкая школьная мотивация;
+•	Ниже 10 – негативное отношение к школе, школьная дезадаптация.   
+
+Вывод: диагностируется низкий уровень школьной мотивации.
+
+Коблик Е.Г. Первый раз в пятый класс! Программа адаптации детей к средней школе. – 2-е изд. – М.: Генезис, 2007.  – С. 56-62.
+','Kortinki\\Zadacha12\\net.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Экспресс-диагностика характерологических особенностей личности.','Экспресс-диагностика характерологических особенностей личности (Н. Айзенк в модификации Т.В. Матолиной).','Полученные данные:
+Экстраверсия – 16 баллов;
+Нейротизм – 21.
+Шкала лжи – 2.
+Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, при данном соотношении показателей властный, мнительный, подозрительный, импульсивный педантичный, импульсивный, возбудимый. Всегда стремится к первенству. Мелочный. Наслаждается любым проявлением превосходства. Язвительно-желчен. Склонен к насмешке над более слабыми. Мстителен, пренебрежителен, деспотичен. Легко утомляется. Нельзя относиться равнодушно. Можно относиться дружелюбно, можно – с иронией. Нужно дать возможность занять лидерское положение. Поощрять волю и упорство. При этом подростку желательно воспитывать в себе позитивное эмоциональное отношение к окружающим и позитивные установки.
+
+Измерительная шкала:
+Оценка результатов данной методики идет по двум параметрам, представленным на графике ниже:
+	шкале экстраверсии, которая образует ось абсцисс с полюсами интроверсия-экстраверсия;
+	шкале нейротизма, которая образует ось ординат с полюсами стабильный-нестабильный.
+
+Выводы:  
+
+•	шкала лжи – в пределах нормы;
+•	анализ графика показывает, что тип темперамента Бори ближе всего к холерическому.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
+','Kortinki\\Zadacha12\\7.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Индивидуально-типологический детский опросник.','Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, при таких показателях, имеется склонность к замкнутости, отгороженности, ранимости, обидчивости, депрессии при неудачах, ведомости. Также выражена эмоциональная неустойчивость и тревожность. Это дети, у которых настроение легко меняется - от избыточной веселости, болтливости, смешливости до резко пониженного настроения со слезами, с бурными реакциями огорчения. Такие дети любят быть в центре внимания, им важно, чтобы мнение других о них было положительным, могут проявлять истероидные реакции.
+Измерительная шкала:
+	Показатели в пределах нормы (3) - гармоничная личность;
+	заостренные (4-5) - акцентуированные черты;
+	выраженные избыточно (6) - свойства, затрудняющие адаптацию, создающие проблемы для самого ребенка или для окружающих;
+	примерно одинаково избыточно выраженные тенденции (более 4-х) по противоположным свойствам означают компенсированные антитенденции, что свидетельствует о значительной эмоциональной напряженности и является признаком наличия внутреннего конфликта. для нормы (в пределах 4-х) это свидетельство сбалансированности разнонаправленных свойств. это - признак развития самоконтроля;
+	если большинство показателей 0 или 1, то это указывает на плохое самопонимание или неоткровенность при обследовании.
+Норма: показатели в пределах 3-х баллов.
+
+Выводы: 
+•	ложь в ответах не прослеживается, аггравация практически не выражена;
+•	к акцентуированным чертам относится тревожность, лабильность, интроверсия и сензитивность;
+•	уровень ниже среднего диагностируется по шкалам агрессивности, ригидности и спонтанности;
+•	экстраверсия практически не выражена. 
+Собчик Л.Н. Индивидуально-типологический опросник. – М.: Боргес, 2008. – 190 с.
+','Kortinki\\Zadacha12\\8.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Детский личностный опросника Р. Кеттелла (Адаптирован Э.М. Александровской).','Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данные характеристики свидетельствуют об открытости, доброжелательности, общительности, реактивности, легкой возбудимости, чувствительности, нежности, зависимости от других, тревожности. Присутствует также о неуверенность в себе, ранимость, неустойчивость, уступчивость,  низкий самоконтроль, плохое понимание социальных нормативов.
+	Если по какому-либо фактору набрано 5-6, это говорит о том, что полюс данного фактора четко не выражен;
+	Оценка 4 отражает тенденцию к проявлению левого полюса фактора;
+	Оценка 7 говорит о тенденции к проявлению правого полюса фактора.
+Норма: 5-6 стенов. 
+
+Выводы.  
+•	Факторы A, D, I, O имеют высокую степень выраженности;
+•	факторы G, H, Q4 чуть выше нормы;
+•	факторы E, Q3, C имеют низкую степень выраженности;
+•	фактор B – ниже нормы; 
+•	фактор F соответствуют норме.
+Александровская Э.М., Гильяшева И.Н. Адаптированный модифицированный вариант детского личностного опросника Р. Кеттелла Методические рекомендации. – М.: Фолиум, 1993. – 40 с.
+','Kortinki\\Zadacha12\\9_1.png','Kortinki\\Zadacha12\\9_2.png',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисунок Несуществующего животного.','Рассказ Бори о животном. Его зовут Тарсакорс. Он травоядный, будет нападать, только если на него первого нападут. Все друг друга защищают (эти существа). Живут около ста лет. Они откладывают яйца. Родители, отложив яйцо, покидают его. А далее вылупившись, животное само ищет себе новых родителей и потом меняет их каждые 5 лет. Потому что так лучше, выбирать себе родителей, т.к. в основном те родители, которые есть изначально, не обращают на животное внимание. Ищут себе только миролюбивых друзей. Живут под землей, однако в 9 утра и до 10 вечера обитают на поверхности, лазают по деревьям и быстро бегают (как леопарды).
+Качественный анализ:
+•	положение рисунка ближе к низу говорит о неуверенности в себе;
+•	положение головы анфас свидетельствует об эгоцентризме;
+•	уши в виде локаторов – важность мнения о себе окружающих;
+•	открытый рот говорит о болтливости;
+•	на голове и теле животного множество шипов, выражены когти – символ защиты и агрессии;
+•	одно направленность контуров ног говорит и незрелости и банальности суждений;
+•	положения хвоста слегка вправо и вниз говорит о недовольстве собой;
+•	по общему характеру можно сделать вывод, что животное как бы привлекает внимание к себе, поднимая руки вверх;
+•	механизированные руки смогут свидетельствовать и шизоидности;
+•	животное является достаточно творчески нарисованным, т.к. является странным и не сводящимся к совмещению двух или трех существующих животных;
+•	название животного «Тарсакорс» отсылает нас к жанрам научной фантастики и фэнтези.
+
+Измерительная шкала.
+Помимо деталей рисунка, интерпретацию которых дает множество авторов (например, П.В. Яньшин), важно учитывать её в сочетании с рассказом испытуемого о животном.
+
+Вывод: налицо отражение на рисунке холодности в семье, животное призывает обратить на него внимание.
+Яньшин П.В. Клиническая психодиагностика личности: Учебно методическое пособие – 2-е изд., испр. – СПб: Речь, 2007. – С. 190-258.
+','Kortinki\\Zadacha12\\10.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Уровень школьной тревожности Филипса.','Измерительная шкала: 
+•	если показатель больше 50 процентов, можно говорить о его повышенной выраженности;
+•	если более 75 - о высокой выраженности.
+
+Норма: 50 процентов и ниже. 
+
+Выводы:
+•	в зоне высокой выраженности оказались показатели тревожности относительно ситуации проверки знаний и страха несоответствия ожиданиям окружающих;
+•	в повышенной зоне оказались следующие показатели: тревожность в школе, страх самовыражения и физиологическая сопротивляемость стрессу;
+•	в пределах нормы оказались следующие показатели: общий уровень тревожности, переживание социального стресса, фрустрация потребности в достижение успеха и страхи в отношениях с учителями.
+Альманах психологических тестов. – Издание 2-е. – М.: КСП, 1996. – С. 165-171.
+','Kortinki\\Zadacha12\\11.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест уверенности в себе (В.Г. Ромек).','Полученные данные:
+•	уверенность в себе – 6 стенов;
+•	социальная смелость – 5;
+•	инициатива в социальных контактах – 5.
+
+Норма: 5-6 стенов. 
+
+Вывод: показатели уверенности в себе, социальной смелости и инициативы в социальных контактах в пределах нормы.
+
+Практическая психодиагностика и психологическое консультирование. – Ростов-на-Дону: ЮРГИ, 1998. – С. 87-108.
+','Kortinki\\Zadacha12\\12.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Диагностика принятия других  (по шкале Фейя).','Полученные данные:
+63 балла
+
+Измерительная шкала:
+	60 баллов и больше — высокий показатель принятия других;
+	45—60 — средний показатель принятия других с тенденцией к высокому;
+	30-45— средний показатель принятия других с тенденцией к низкому;
+	30 и меньше — низкий показатель принятия других.
+
+Норма: 45-60 баллов.
+
+Вывод: высокий показатель принятия других.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 112-113.
+','Kortinki\\Zadacha12\\net.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Экспресс диагностика доверия (по шкале Розенберга).','Полученные данные:
+2 балла.
+
+Измерительная шкала:
+	0-1 баллов — низкий показатель доверия;
+	2 балла — средний показатель доверия;
+	3 балла — высокий показатель доверия.
+Норма: 2 балла. 
+
+Вывод:  диагностируется средний показатель доверия.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
+','Kortinki\\Zadacha12\\net.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика оценки доверия/недоверия личности другим людям (А.Б. Купрейченко).','Содержательные характеристики при указанном сочетании параметров личности:
+•	Боря склонен намного острее замечать недостатки тех людей, которым он не доверяет;
+•	доверие Бори основывается на надежности и знании данного лица.
+* Критерии доверия определяются по разности значений Д и НД, т.е. из показателей, полученных от испытуемого по отношению к тому, кому он доверяет вычитаются показатели, связанные с тем человеком, которому испытуемый не доверяет. В данном случае, при сравнении с нормами, критерием является то значение, которое превосходит нормы. Если значение значительно ниже нормы, значит данный показатель неприемлем для испытуемого как критерий доверия людям. 
+
+Выводы:  
+•	уровень доверия (почти по всем шкалам) на высоком уровне как к тем, кому Боря доверяет, так и к тем, кто его доверия не оправдал (Надежность, Знание, Приязнь, Единство, Расчет);
+•	показатель недостатков относительно тех, кому Боря доверяет в пределах нормы, а относительно тех людей, которым Боря не доверяет – высокий уровень выраженности;
+•	критериями доверия для Бори служат надежность и в меньшей степени знание.
+
+Купрейченко А.Б. Психология доверия и недоверия. – М.: Институт психологии РАН, 2008. – С. 224-301.
+','Kortinki\\Zadacha12\\15_1.png','Kortinki\\Zadacha12\\15_2.png',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на благодарность.','Полученные данные: 42 балла. 
+
+Измерительная шкала.
+Тестирование, проведенное среди 1224 взрослых респондентов позволяет сделать следующие выводы:
+	если вы набрали не более 35 баллов, то попадаете в группу наименее благодарных (25 %);
+	 те, кто набрали от 36 до 38, относятся к средней группе (50 %);
+	люди с результатом от 39 до 41 особенно благодарны жизни (25 %);
+	а показатель 42 характеризует 12,5 % самых благодарных. 
+
+Норма: от 36 до 38 баллов. 
+
+Вывод: диагностируется высокий уровень способности благодарить.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 102.
+','Kortinki\\Zadacha12\\net.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на трансгрессивную мотивацию (умение прощать), (Мак-Куллоу).','Полученные данные:
+•	стремление избежать обидчика – 16 баллов;
+•	мстительность – 10. 
+Измерительная шкала.
+Стремление избегать обидчика.
+	Средний результат среди американцев — 12,6 баллов;
+	набравшие более 17,6 попадают в число «обиженных» (33 % американцев);
+	набравшие более 22,8 — обиженных смертельно (10 %).
+Мстительность.
+	Если вы набрали около 7,7, то ваш результат близок к среднеамериканскому;
+	набрав 11 и выше, вы попадаете в категорию людей мстительных (33 % американцев);
+	показатель 13,2 и выше свидетельствуют о том, что вы оказались среди самых заядлых мстителей (10 % американцев).
+
+Вывод: диагностируется  уровень обидчивости и мстительности выше среднего.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 111.
+','Kortinki\\Zadacha12\\net.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест описания поведения К. Томаса (адаптация Н.В. Гришиной).','Полученные данные:
+•	стратегия соперничества – 7 стенов; 
+•	стратегия сотрудничества – 5; 
+•	стратегия компромисса – 1; 
+•	стратегия избегания – 6; 
+•	стратегия уступки (приспособления) – 8. 
+
+Норма: 5-6 стенов. 
+
+Выводы:  
+•	доминирующей стратегией поведения в конфликтах – являются уступка (высокий уровень выраженности);
+•	стратегия соперничества имеет уровень выраженности выше ниже среднего;
+•	стратегия компромисса практически не выражена;
+•	выраженность стратегий сотрудничества  и избегания в пределах нормы.
+Большая энциклопедия психологических тестов /Под ред. А.А. Карелина – М.: Эксмо, 2007. — С. 270-273.
+','Kortinki\\Zadacha12\\18.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Диагностика социально-психологической адаптации.','Диагностика социально-психологической адаптации (методика К. Роджерса и Р. Даймонда, адаптирована на факультет СПб государственного университета).','Полученные данные: 
+
+Уровень общей социально-психологической адаптации – 38 баллов.
+
+Измерительная шкала:
+	39-44 балла – норма адаптации;
+	Свыше 44 – высокая адаптация;
+	Ниже 39 – низкая.
+
+Норма: 39-44 балла. Нормы по отдельным шкалам считаются методом деления максимального количества баллов на 2, полученное число и есть средняя норма.
+
+Выводы:
+•	в целом диагностируется низкий уровень социально-психологической адаптации;
+•	наблюдается высокий уровень по следующим показателям: уход от проблем, доминирование, ожидание внутреннего и внешнего контроля, эмоциональный комфорт и одновременно дискомфорт, принятие других и себя; 
+•	на среднем уровне непринятие себя;
+•	на низком уровне конфликтность и ведомость.
+
+Широкова И.Б. Тренинг самопознания для подростков: Общение. Память: 8-10 классы. – М.: Генезис, 2005. – 169 с.
+','Kortinki\\Zadacha12\\19.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Выявление самооценки по методике Дембо-Рубинштейн в модификации А.М. Прихожан.','Полученные данные: 
+•	среднее арифметическое по самооценке – 59 баллов;
+•	среднее арифметическое по уровню притязаний – 85.
+
+Измерительная шкала:
+Уровень самооценки и уровня притязаний определяется положением на 100 бальной шкале отметок испытуемого.
+	Самооценка ниже 45 баллов признается низкой, 45-59 – средняя, 60-74 – высокая, 75-100 – очень высокий уровень;
+	уровень притязаний ниже 60 баллов признается низким, 60-74 – средним, 75-89 – высоким, 90-100 – очень высоким уровнем.
+* Нормы для среднеарифметических показателей аналогичны.
+Норма: 45-59 баллов для самооценки и 60-74 для уровня притязаний. 
+
+Выводы:
+•	среднее арифметическое по самооценке соответствует среднему уровню;
+•	среднее арифметическое по уровню притязаний – адекватно высокий;
+
+Отдельные показатели.
+Самооценка:
+•	уровень самооценки на границе среднего и низкого – ум, способности и авторитет у сверстников;
+•	высокий уровень самооценки – уверенность в себе;
+•	очень высокий уровень самооценки – рукоделие;
+•	средний уровень самооценки – характер и внешность.
+
+Уровень притязаний:
+•	высокий уровень притязаний относительно умственный способностей, внешности;
+•	очень высокий уровень притязаний – характер и умение чего-то делать своими руками, а также уверенности в себе;
+•	уровень притязаний соответствует норме по показателю авторитета у сверстников.
+
+Яньшин П.В. Клиническая психодиагностика личности: Учебно-методическое пособие – 2-е изд., испр. – СПб: Речь, 2007. – С. 29-54.
+','Kortinki\\Zadacha12\\20.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала самоуважения Розенберга.','Полученные данные: 9 стенов.
+Вывод: диагностируется высокий уровень самоуважения.
+
+Бодалев А.А., Столин В.В. Общая психодиагностика. – СПб.: Речь, 2000. – С. 308.
+','Kortinki\\Zadacha12\\21.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на удовлетворенность жизнью.','Полученные данные: 29 баллов. 
+
+Измерительная шкала: 
+Этот тест уже выполнен десятками тысяч людей в разных странах. 
+	средний итоговый результат у пожилых американцев — 28 баллов у мужчин и 26 у женщин, у американских студентов — 23-25;
+	средний результат у китайских и восточноевропейских студентов —16-19;
+	заключенные тюрем мужского пола в среднем оценили степень удовлетворенности жизнью в 12;
+	больные, амбулаторно посещающие психологов, дали оценку в 14-18, а женщины, подвергшиеся насилию, и пожилые сиделки, как ни странно, показали довольно высокий результат — около 21 в среднем
+
+Вывод:  диагностируется высокая удовлетворённость жизнью.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 92.
+','Kortinki\\Zadacha12\\net.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала субъективного благополучия (методика Мендельсона и др. в адаптации М.В. Соколовой).','Полученные данные: уровень субъективного благополучия – 3 стена.
+Вывод: диагностируется высокое субъективное благополучие.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – C. 467-470.
+','Kortinki\\Zadacha12\\23.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Самооценка силы воли (Н.Н. Обозов).','Полученные данные: 21 балл. 
+
+Измерительная шкала:
+	от 0 до 12 баллов – у Вас слабая сила воли, Вас легко переубедить;
+	от 13 до 21 – у Вас сила воли средняя. В различных ситуациях Вы действуете по-разному, иногда проявляя чудеса уступчивости и податливости, а иногда – настойчивость и упорство;
+	от 22 до 30 – у Вас большая сила воли, Вы волевой человек.
+
+Норма: от 13 до 21 балла. 
+
+Вывод. Диагностируется нормальный уровень силы воли.
+
+Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 523-524.
+','Kortinki\\Zadacha12\\net.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Уровень субъективного контроля (УСК).','Уровень субъективного контроля (УСК) (методика Дж. Роттера в адаптации Е.Ф. Бажина, Е.А. Голынкиной, А.М. Эткинда).','Полученные данные: 
+•	общий показатель субъективного контроля – 22 балла;
+•	уровень интернальности в отношении достижений – 5; 
+•	интернальность в области неудач – 7. 
+
+Вывод: общий показатель субъективного контроля, уровня интернальности в отношении достижений и в области неудач средний (соответствует норме).
+
+Немов Р.С. Психология. Учебник для студентов высших педагогических учебных заведений: В 3-х ч. Ч.3. Психодиагностика. –4-е изд. – М.:  Владос, 2001. – С. 480-483.
+','Kortinki\\Zadacha12\\25.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Моментальный тест на позитивную и негативную аффективность (по отношению к учителям).','Полученные данные: 
+•	сумма негативных эмоций – 24 (доминирующие негативные эмоции: испуг, тревога и огорчение – 5 баллов);
+•	сумма позитивных эмоций – 45 (доминирующие позитивные эмоции: заинтересованность, увлеченность, энтузиазм, бодрость, вдохновение, внимание, активность – 4-5 баллов).
+
+Измерительная шкала:
+М. Селигман предлагает главным образом исходить из следующего:
+	во-первых, максимальный уровень положительных или отрицательных эмоций может достигать 50 баллов;
+	во-вторых, необходимо обращать внимание на соотношение баллов по двум уровням эмоций (позитивный, негативный).
+* Оценка отдельной эмоции идет по 5-балльной шкале, где 4,5 – высоко, 3 – средне, 2,1 – низко.
+
+Норма: 3 балла (отдельная эмоция). 
+
+Вывод. Сумма баллов по позитивным эмоциям значительно превосходит сумму негативных, что говорит о доминировании позитивного эмоционального фона в момент тестирования.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 53.
+','Kortinki\\Zadacha12\\net.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Наблюдение психолога за поведением Бори перед началом психологического тренинга.','Перед началом тренинга, необходимо были провести с Борей пару методик. Однако только что веселый Боря вдруг изменился в лице (резкие перемены настроения) и сказал, что не хочет ничего делать. При попытке еще раз попросить Борю, он расплакался и упал на парту и с возгласами не хочу так и лежал на ней. Как только от него отстали, он немедленно вскочил и уже веселый начал быстро бегать по классу.
+
+Вывод: истероидность и демонстративность, импульсивность и гиперактивность.
+','Kortinki\\Zadacha12\\net.png','',12)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Наблюдение психолога на очередной психологической сессии поведения Бори.','Так получилось, что Боря и другой мальчик Лев работали одновременно с рядом тестов, сидя за разными столами. Лев вел себя тихо, а Боря постоянно пытался привлечь к себе внимание. Когда школьный психолог отвечал на вопросы Льва, он тут же начинал говорить что-то или также подзывать психолога. Кроме того, Боря часто вмешивался в разговор психолога со Львом, отпуская шутки и колкости относительно данного разговора.
+
+Вывод: диагностируются истероидные черты характера.
+','Kortinki\\Zadacha12\\net.png','',12)
+go
+
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Данные об успеваемости.','Успеваемость: высокий уровень практически по всем предметам, участие во множестве олимпиад от школы.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика Мюнстерберга.','Полученные данные:
+22 слова за 90 сек, т.е.
+избирательность – 11 баллов.
+Содержательные характеристики: скорость работы вначале была высокая (за 90 сек найдено 22 слова), однако в оставшиеся время (30 секунд) Саша больше не смогла найти слова, и сказала, что хочет закончить испытание. Это говорит о достаточно быстрой утомляемости и снижении устойчивости внимания.
+Общее количество слов в тесте равно 27.
+* За каждое пропущенное или неправильно найденное слово снимается по одному баллу.
+
+Норма: 120-199 баллов
+
+Вывод: уровень избирательности внимания средний с тенденцией к высокому.
+
+Бруннер Е.Ю. Лучше, чем супервнимание: Методики диагностики и психокоррекции. – Ростов н/Д: Феникс, 2006. –  С. 42-45.
+','Kortinki\\Zadacha13\\2.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «10 слов» А.Р.Лурия.','Полученные данные:
+Проведено 5 попыток 
+1) 9 из 10;
+2) 8 из 10;
+3) 5 из 10;
+4) 7 из 10;
+5) 8 из 10.
+
+Содержательные характеристики при указанном сочетании параметров личности: падение концентрации внимания и ослабление кратковременной памяти в середине исследования (3 серия) скорее всего, вызвана тем, что в момент проведения данной серии на улице стали очень громко кричать и Саша отвлеклась.
+
+
+Измерительная шкала:
+•	концентрация внимания и кратковременная память хорошая, если после одного зачитывания удается воспроизвести 8 и более слов;
+•	концентрация внимания и кратковременная память удовлетворительная, если удается воспроизвести 7 слов;
+•	концентрация внимания и кратковременная память слабая, если удается воспроизвести менее 7 слов.
+
+Норма: 7 слов.
+
+Вывод:  уровень концентрации внимания и кратковременной памяти выше среднего.
+
+Устинов, Д. Сила концентрации или Главное качество великих людей: Методическое пособие [Электронный ресурс] / Д. Устинов // Тренинг центр Синтон. – 2010. – Режим доступа: http://www.syntone.ru. – 01.02.2013.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Числовые ряды Липмана.','Полученные данные.
+Время выполнения: 8 мин;
+количество ошибок – 3.
+
+Норма: 4 мин 35 сек – 9 мин 50 сек.
+
+Вывод: уровень логического мышления – низкая норма.
+
+Основы психологии: Практикум /под ред. Столяренко Л.Д. – Изд. 7-е. – Ростов н/Д: Феникс, 2006 – С.58-59.
+','Kortinki\\Zadacha13\\4.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Словесный лабиринт».','Среднеарифметическое по всем заданиям – 72 секунды.
+* На графике представлены не 10, а 9 карточек, т.к. в 8 карточке испытуемая не знала самого слова.
+
+Содержательные характеристики при указанном сочетании параметров личности:
+•	Наблюдается разброс результатов относительно среднеарифметического  показателя (72 сек), наблюдается большие различия между минимальным (12 сек) и максимальным (295 сек) значением, что свидетельствует о ригидности мышления испытуемой, ей приходится тратить лишнее время на «перестройку» своего мышления и переходу на новый способ решения заданий;
+•	Также прослеживается эффект научения – т.к. уменьшаются временные затраты на решение карточек. Это также иллюстрируется тем, что среднее арифметическое первых 3-х карточек = 157 секундам, а последующих шести – всего 29,5 секунд;
+•	Если проследить разброс временных значений относительно среднеарифметического показателя карточек с 4 по 9, то, за исключением излома в 7 серии (по словам Саши, она в этот момент отвлеклась на резкий звонок её мобильного телефона), зигзагообразность графика пропадает, что говорит о проявлении пластичности мышления после эффекта научения.
+
+Норма:	
+•	сильные изломы графика - ригидность мышления (изломы определяются по отклонению времени выполнения каждого задания относительно среднеарифметической выполнения всех заданий);
+•	эффект научения определяется с помощью анализа временных затрат (его сокращения) на каждую последующую задачу.
+
+Вывод: после научения, мышление испытуемой способно к пластичности.
+
+Практикум по общей, экспериментальной и прикладной психологии /Под ред. Крылова А.А., Маничева С.А. – 2-е изд., доп. и перераб. – СПб.: 2003. – 
+С. 145-147.
+','Kortinki\\Zadacha13\\5.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Многофакторный личностный опросник Р. Кеттелла (юношеский вариант—14PF), фактор В.','Полученные данные:
+9 стенов.
+	Если по какому-либо фактору набрано 5-6 стэнов, это говорит о том, что полюс данного фактора четко не выражен;
+	оценка 4 стэна отражает тенденцию к проявлению левого полюса фактора;
+	оценка 7 стэнов говорит о тенденции к проявлению правого полюса фактора.
+Норма: 5-6 стенов.
+
+Вывод:  высокий уровень интеллекта.
+
+Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 578-588.
+','Kortinki\\Zadacha13\\6.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест интеллектуального потенциала (П. Ржичан).','Полученные данные.
+123 балла. 
+
+Норма: 100-119 баллов.
+
+Вывод: уровень интеллекта на высоком уровень.
+
+Резапкина Г.В. Отбор в профильные классы. – М.: Генезис, 2006. – С. 62-69.
+','Kortinki\\Zadacha13\\7.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест умственного развития (методика ШТУР в модификации Г. Резапкиной).','Полученные данные
+69 баллов. 
+
+Измерительная шкала.
+В модификации теста, принятой в образовательном центре №293, где проводилась с Сашей данная методика, нормы следующие:
+	20-45 балла  – низкий уровень;
+	46-55  – ниже среднего;
+	56-65 – средний показатель;
+	66-80 –  выше среднего;
+	Свыше 80 – высокий уровень.
+
+Норма: 56-65 баллов.
+
+Вывод: уровень умственного развития – выше среднего.
+
+Резапкина Г.В. Отбор в профильные классы. – М.: Генезис, 2006. – С. 74-95.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Краткий тест творческого мышления (Тест Торренса в адаптации Е.И. Щебланова, И.С. Аверина).','Показатель беглости – 10 баллов;
+оригинальность – 14.
+
+Норма: 7,3 – 10,9 баллов для беглости и 6 – 13,2 для оригинальности.
+
+Выводы:  
+•	Показатель беглости в пределах нормы;
+•	оригинальность  –  выше среднего.
+
+Краткий тест творческого мышления. Фигурная форма: Пособие для школьных психологов. – М.: ИНТОР, 1995. – 48 с.
+','Kortinki\\Zadacha13\\9_1.png','Kortinki\\Zadacha13\\9_2.png',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Методика диагностики уровня творческой активности учащихся.','Методика диагностики уровня творческой активности учащихся (М.И. Рожков, Ю.С Тюнников, Б.С Алишев, Л.А. Волович).','Полученные данные:
+•	чувство новизны – 1,7 баллов;
+•	критичность – 1,35;
+•	способность преобразовывать структуру объекта – 1,6;
+•	направленность на творчество  – 1,7; 
+•	самооценка качеств – 1,7;
+•	общий уровень – 1,6.
+Измерительная шкала:
+Уровни творческой активности
+	низкий — от 0 до 1 балла;
+	средний — от 1 до 1,5;
+	высокий — от 1,5 до 2.
+
+Норма: от 1 до 1,5 балла.
+
+Выводы:  
+•	чувство новизны, способность преобразовывать структуру объекта, направленность на творчество, самооценка своих качеств у испытуемой на высоком уровне развитости;
+•	уровень критичность – средний;
+•	общий уровень творческой активности  – высокий.
+
+Методика диагностики уровня творческой активности учащихся [Электронный ресурс] / М. И. Рожков [и др.] // Ваш психолог. – 2009. – Режим доступа: http://www.vashpsixolog.ru. – 21.09.2013.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест смысложизненных ориентаций.','Полученные данные:
+•	наличие целей – 17 баллов;
+•	эмоциональная насыщенность жизнью (процесс жизни) – 22;
+•	удовлетворенность прошлым (результативность жизни) – 17;
+•	локус контроля «я» (вера в свои силы) – 14; 
+•	локус контроля «жизнь»  (управляемость жизнью) – 20;
+•	общая осмысленность жизни – 76.
+
+Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, результаты испытуемой говорят о том, что, Саша склона жить сегодняшним днем. Степень удовлетворенности прошлым низкая, что может говорить о неудовлетворенности результативностью жизни. Также присутствует тенденция к фатализму.
+
+Норма: см. средние значения в таблице выше.
+
+Выводы: 
+•	наблюдается низкий уровень целеполагания (наличия целей), результативности (удовлетворенности прошлым), локуса контроля «жизнь»; 
+•	эмоциональная насыщенность жизни и локус контроля я на границы нормы и низкого уровня;
+•	общая осмысленность жизни снижена.
+Леонтьев Д.А. Тест смысложизненных ориентаций: Психодиагностическая серия. – М: Смысл, 2006. –  18 с.
+','Kortinki\\Zadacha13\\11.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест жизнестойкости (методика С. Мадди в адаптации Д.А. Леонтьева).','Полученные данные:
+•	вовлеченность в жизнь – 38 баллов;
+•	контроль жизни –33;
+•	принятие риска – 18;
+•	общая жизнестойкость – 89.
+
+Норма: см. средние значения в таблице выше. 
+
+Выводы: 
+•	 уровень вовлеченности, контроля и принятия риска соответствует норме;
+•	общий уровень жизнестойкости в норме.
+Леонтьев Д.А., Рассказова Е.И. Тест жизнестойкости. — М.: Смысл, 2006. — 63 с.
+','Kortinki\\Zadacha13\\12.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Мотивация успеха и боязнь неудачи (опросник А.А. Реана).','Полученные данные:
+15 баллов.
+
+Измерительная шкала:
+	от 1 до 7 – диагностируется мотивация на неудачу (боязнь неудачи);
+	от 14 до 20 – мотивация на успех (надежда на успех);
+	от 8 до 13 – мотивационный полюс ярко не выражен;
+	При этом можно иметь в виду, что если количество баллов 8 или 9, есть определенная тенденция мотивации на неудачу, а если количество баллов 12 или 13, имеется определенная тенденция мотивации на успех.
+
+Вывод: выражена мотивация к достижению успеха.
+
+Малкина-Пых И.Г. Психосоматика: Справочник практического психолога. — М.: Эксмо, 2005. — С. 124-126.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Экспресс-диагностика характерологических особенностей личности.','Экспресс-диагностика характерологических особенностей личности (Н. Айзенк в модификации Т.В. Матолиной).','Полученные данные:
+Экстраверсия – 12 баллов;
+Нейротизм – 12.
+Шкала лжи – 6.
+Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, при таком соотношении показателей, данный тип личности застенчив, не завистлив, стремится к самостоятельности, привязчив. Доброжелателен. С близкими людьми проявляет наблюдательность, чувство юмора. Склонен к глубоким доверительным отношениям. Избегает ситуаций риска, опасности. Не выносит навязанный темп. Иногда склонен к быстрым решениям. Часто раскаивается в своих поступках. В неудачах обвиняет только себя. Морально ответственен. Предпочитает спокойную, доброжелательную обстановку. Его необходимо вовлекать в активное решение деловых вопросов. 
+
+Измерительная шкала:
+Оценка результатов данной методики идет по двум параметрам, представленным на графике ниже:
+	шкале экстраверсии, которая образует ось абсцисс с полюсами интроверсия-экстраверсия;
+	шкале нейротизма, которая образует ось ординат с полюсами стабильный-нестабильный.
+
+Выводы:
+•	шкала лжи – слегка выше нормы;
+•	анализ графика показывает, что тип темперамента Саши находится на границе всех четырех типов темперамента.
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
+','Kortinki\\Zadacha13\\14.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Индивидуально-типологический детский опросник.','Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, у испытуемой выражено стремление преувеличивать свою вину в случившемся, диагностируется высокая ответственность и ведомость. Саше присущи нерешительность, внутренняя потребность соответствовать установкам окружения – преподавателей, родителей, класса, мнительность, боязливость, склонность к необоснованным страхам.
+Измерительная шкала:
+	Показатели в пределах нормы (3) - гармоничная личность;
+	заостренные (4-5) - акцентуированные черты;
+	выраженные избыточно (6) - свойства, затрудняющие адаптацию, создающие проблемы для самого ребенка или для окружающих;
+	примерно одинаково избыточно выраженные тенденции (более 4-х) по противоположным свойствам означают компенсированные антитенденции, что свидетельствует о значительной эмоциональной напряженности и является признаком наличия внутреннего конфликта. для нормы (в пределах 4-х) это свидетельство сбалансированности разнонаправленных свойств. это - признак развития самоконтроля;
+	если большинство показателей 0 или 1, то это указывает на плохое самопонимание или неоткровенность при обследовании.
+Норма: показатели в пределах 3-х баллов.
+
+Выводы: 
+•	уровень по шкале лжи выше нормы, аггравация практически не выражена;
+•	к акцентуированным чертам относится ригидность и лабильность, которые компенсируют друг друга. Акцентуированы также сензитивность и тревожность;
+•	уровень ниже среднего диагностируется по шкалам агрессивности и спонтанности;
+•	экстраверсия и сензитивность в норме.
+
+Собчик Л.Н. Индивидуально-типологический опросник. – М.: Боргес, 2008. – 190 с.
+','Kortinki\\Zadacha13\\15.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Многофакторный личностный опросник Р. Кеттелла (юношеский вариант—14PF).','Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данный тип личности склонен к недоверчивости другим людям. Такая личность уделяет много внимания планированию своего поведения, задумываются над своими ошибками и способами их исправления, способна отстаивать свою точку зрения. Она старается самостоятельно решать свои проблемы. Также присутствует жизнерадостность. Влада совестлива и в меру самостоятельна. Ей присуща тенденция к зависимости и уступчивости. С одной стороны диагностируется уверенность в себе, а с другой, склонность к замкнутости и обособленности, свидетельствуют о сдержанности, озабоченности, склонности все усложнять, ко всему подходить слишком серьезно и осторожно.
+	Если по какому-либо фактору набрано 5-6, это говорит о том, что полюс данного фактора четко не выражен;
+	Оценка 4 отражает тенденцию к проявлению левого полюса фактора;
+	Оценка 7 говорит о тенденции к проявлению правого полюса фактора.
+Норма: 5-6 стенов.
+
+Выводы.  
+•	Факторы J развит высоко;
+•	фактор Q2 имеет уровень выше среднего;
+•	факторы A, Q1, Q2 имеют уровень ниже среднего;
+•	факторы C, D, E, F, G, H, I и Q3 соответствуют норме.
+Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 578-588.
+','Kortinki\\Zadacha13\\16_1.png','Kortinki\\Zadacha13\\16_2.png',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Многофакторный личностный опросник «Мини-мульт».','Многофакторный личностный опросник «Мини-мульт» (адаптация Ф.Б. Березинина и М.П. Мирошникова).','Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, вышеуказанные данные говорят о том, что испытуемая – человек благоразумный, доброжелательный, общительный, имеет широкий круг интересов. Она конвенциональная личность, с высоким уровнем идентификации со своим социальным статусом, ей присуща тенденции к сохранению постоянных интересов, установок, целей. Она решительна в принятии решений.
+
+Измерительная шкала: определяются по профилю (см. график), с учетом которого все результаты от 40 до 70 T баллов признаются нормой. Соответственно отклонение от нормы вниз – низкий балл, вверх – высокая выраженность.
+
+Норма: от 40 до 70 T. 
+
+Выводы: 
+•	шкала лжи и достоверности в пределах нормы;
+•	шкалы коррекции, ипохондрии и шизойдности – слегка ниже нормы;
+•	психопатия – низкий уровень;
+•	психастения и истерия на границе нормы и сниженного значения;
+•	в пределах нормы следующие шкалы: шкала депрессии, паранойяльности и гипотонии.
+Менделевич В.Д. Психология девиантного поведения: Учебное пособие. –  СПб.: Речь, 2005. – С.409-411.
+','Kortinki\\Zadacha13\\17_1.png','Kortinki\\Zadacha13\\17_2.png',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Компьютерный Цветовой тест Люшера (адаптация А. Ласточкина).','Полученные данные: по мнению автора методики, при сделанной испытуемой частоте выбора цветов, диагностируется следующее.
+
+Результаты по выбоpу сеpого цвета:
+из-за невыносимых забот чувствует себя изнуренной. Хочет, чтобы её оставили в покое. Ей необходимы внимание со стороны других и отношения, гарантировавшие ей безопасность и защищенность. Это должно обеспечивать родительская ласка (позитивное отношение).
+
+Результаты по выбоpу 8 цветов.
+
+По устpемлению: чувствует, что взаимодействие с другими  измотало  её. Хочет оградить себя  от объяснений,  ссор.  Нуждается в мирной,  спокойной обстановке, чтобы набраться сил.
+
+По состоянию: требования, которые предъявляют  ей,  находит трудными, требующими слишком больших усилий.
+
+По сознательно заторможённой потребности. Физиологическая интерпретация: стресс, вызванный разочарованиями,  которые  принесла  с  собой  некоторая нежелательная ситуация. Психологическая интерпретация: чувствует себя  беспомощной  в невыносимо мучительной ситуации.  Раздражена невозможностью  достичь  цели  и  чувствует   нервное   истощение. Хочет выпутаться  из  этой  ситуации,  чтобы  чувствовать меньше ограничений,  и обрести свободу решать и действовать. 
+Коротко: фрустрированное желание независимости.
+
+Актуальная пpоблема: истощение жизненной энергии сделало невыносимым  какое-либо  дальнейшее возбуждение или какие-либо требования к нему. Ощущение бессилия вызывает у неё беспокойство,  раздражение  причиняет  острую  боль,  от  которой  она пытается  избавиться,  отказываясь  как-либо  участвовать  в происходящем. Ограждает себя, надеясь с помощью осторожности, скрывая свою ранимость.
+
+Отдельные показатели:
+•	стремления мотивированные самопониманием. Боится, что ситуация может стать  ненадежной или неопределенной. Боится пустоты  одиночества. Поэтому  с  повышенной чувствительностью  напряженно следит за тем, относятся ли  к  ней  с  должным  вниманием  и надежно  ли гарантирована её безопасность;
+•	эмоциональная настроенность к определённому лицу;
+•	возбудимость, импульсивность. Испытывает в сердечной связи горькое разочарование. Хотела  бы  стать  независимой  свободной,  чтобы  не  страдать  от собственной  чувствительности  и обидчивости;
+•	ожидание, отношение к окружению. Считает, что  её  отношения  с  окружающими  неприятные и невыносимые. Поэтому устанавливает  для  других  границу  приемлемого  и  неприемлемого поведения и хочет пока подержать себя на расстоянии, чтобы внести ясность, снять напряжение и найти выход. Что связано с повышенным недоверием к окружающим;
+•	хатронутое честолюбие. Стремится к  безопасности,  релаксации,  идиллической гармонии.  Однако из-за своеволия  не  может  приспосабливаться;
+•	чрезмерно  чувствительна  к помехам  и  сопротивлению. Стремление к  переживаниям  в идиллических чувственных отношениях,  где царит гармония и  всегда  чувствуешь  себя  в  безопасности. Эмоционально отзывчива;
+•	инфантильность. Надеется, что как  по  мановению  волшебной  палочки,  реализуются  её потребности в безопасности,  идиллической гармонии. Часто мечтает;
+•	уход в идиллию. Чувствует,
+что  больше  не  в  состоянии  носить внутреннее напряжение, оказывать сопротивление внешним силам.  Воспринимает предъявляемые к  ней требования  как  невыносимые. Согласна идти на компромиссы;
+•	больше не в состоянии  выносить  ни  конфликты,  ни  просто  волнения. Стремится  к  покою,  к  ситуации,  в  которой  приятно почувствовать свою защищенность и можно разрядить внутреннее напряжение;
+•	стремление к изнеженности и жалость к себе. Ищет прочной опоры  и  дающей  спокойствие  безопасности.  Стремится  к разрядке  в  идиллически гармоничных отношениях;
+•	командование сердечной чувственностью. Настойчиво стремясь  к  самоутверждению,  не  хочет поддерживать связи, воспринимаемые как зависимость;
+•	форсирование агрессии. Сопротивляется возникновению сердечной привязанности;
+•	безудержное честолюбие. Не хочет поддерживать существующие отношения;
+•	торможение сердечной чувственности. Противится сердечной привязанности,  чувствует себя непонятой, скрывает свою восприимчивость, уклоняется от постоянной связи;
+•	замкнутость. Не хочет поддерживать существующие отношения;
+•	борьба за своеволие в выборе переживаний. Хотела бы преодолеть возникшие препятствия и  добиться  своего,  проявив свою  волю и инициативу, чтобы получить признание других и не зависеть от их благосклонности. Хочет  поступать  только  в   согласии   со   своими убеждениями и по своему усмотрению;
+•	стремление получить доверие от других с опорой не на веру, а на знания и поступки;
+•	честолюбивые сверхпритязания. Честолюбива, стремится к  независимости  и  превосходству.  Находится  в состоянии напряженного ожидания;
+•	твердолобое стремление к самоутверждению. С повышенной  раздраженностью  реагирует  на  помехи  и  сопротивление, которое препятствует осуществлению её собственных намерений;
+•	защита с целью самоутверждения. Стремится к тому,  чтобы быть стойким и уверенным в себе.  Ставит перед собой как непосредственную, так и отдаленную цели,  чтобы, реализовав их, добиться желанного самоутверждения. Чтобы избежать критических замечаний, старается вести себя безупречно. Претендует на незаурядность;
+•	эмоциональная нестабильность. Ищет признания.  Если не находит его,  то считает, что её критикуют, умаляют  её  достоинства;
+•	фантаст. Больше не в состоянии выносить нее напряжение и оказывать сопротивление внешним силам. Чтобы уклониться от трудностей, строит иллюзии;
+•	беспомощность. Чувствует переутомление из-за перенапряжения и волнений;
+•	загнанность. Чувствует, что уже не в состоянии удовлетворить требованиям  окружающих и  ситуации.  Избегая  трудностей,  ищет убежища, где можно было бы снять напряжение;
+•	экспансивное стремление к новым переживаниям. Активна и эмоционально отзыва,  стремится все пережить. Постоянно ищет новые возможности в этом стремлении  и  надеется,  что  каждая  новая встреча или реализация новой возможности принесут желанное, исполнение её надежд;
+•	бегство от трудностей в "религию". Мучительные волнения вызывают отчаяние.  Бежит от трудностей. Надеется, что  найдется  выход  из  создавшегося  положения  и  придет  долгожданное облегчение;
+•	истерическая реакция на нарушение стремления к переживаниям. Чувствует себя  переутомленной.  Защищается  от  всего  волнующего  и мучительного. Ищет убежища и твердой опоры (например, в семье).
+
+Измерительная шкала: с учетом того, что данный тест представлен в компьютерной форме, нормативы в него уже заложены (анализ частоты выбора цветов).
+
+Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизнь-XXIвек. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','«Толерантность к неопределенности» (Методика С. Баднера в адаптации Г.У. Солдатовой).','Полученные данные:
+•	новизна проблемы – 25 баллов;
+•	сложность проблемы – 39;
+•	неразрешимость проблемы – 15; 
+•	общий показатель – 79. 
+
+Норма: см. средние значения в таблице выше.
+
+Выводы: 
+•	толерантность к новизне и сложности проблемы на высоком уровне;
+•	показатель толерантности к неразрешенности проблемы соответствует норме;
+•	общий показатель толерантности к неопределенности на высоком уровне.
+Психодиагностика толерантности личности /Под ред. Г.У. Солдатовой, Л.А. Шайгеровой. – М.: Смысл, 2008. – С. 94-97.
+','Kortinki\\Zadacha13\\19.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Шкала «Толерантность к двусмысленности».','Шкала «Толерантность к двусмысленности»  (методика Родника, Хезера и др. в адаптации Н.А. Бажановой и Г.Л. Бардиер).','Полученные данные:
+•	страстность (энергичность) – 23 балла;  
+•	находчивость – 21; 
+•	оптимизм – 24; 
+•	смелость, предприимчивость – 15; 
+•	адаптивность – 12; 
+•	уверенность -19; 
+•	толерантность к двусмысленности – 11.
+
+Норма: см. средние показатели в таблице выше. 
+
+Выводы.  
+•	Оптимизм и энергичность имеют уровень выраженности на границе нормы и высоких показателей.
+•	Адаптивность – низкая норма (граница нормы и низкого значения).
+•	Смелость, уверенность и находчивость в пределах нормы.
+•	Уровень толерантности к двусмысленности – низкая норма.
+
+18 программ тренингов: Руководство для профессионалов /под ред. В.А. Чикер. – СПб.: Речь, 2007. — С. 322-325.
+','Kortinki\\Zadacha13\\20.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Уровень школьной тревожности Филипса.','Измерительная шкала: 
+•	если показатель больше 50 процентов, можно говорить о его повышенной выраженности;
+•	если более 75 - о высокой выраженности.
+
+Норма: 50 процентов и ниже. 
+
+Выводы: 
+•	в повышенной зоне оказались показатели переживания социального стресса, страха самовыражения, страх в отношениях с учителями;
+•	в пределах нормы оказались следующие показатели: общая тревожность, тревожность в школе, фрустрация потребности в достижение успеха, тревожность относительно проверки знаний, физиологическая сопротивляемость стрессу и страх несоответствия ожиданиям окружающих.
+Альманах психологических тестов. – Издание 2-е. – М.: КСП, 1996. – С. 165-171.
+','Kortinki\\Zadacha13\\21.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест уверенности в себе (В.Г. Ромек).','Полученные данные:
+•	уверенность в себе – 4 стена;
+•	социальная смелость – 3;
+•	инициатива в социальных контактах – 1. 
+
+Норма: 5-6 стенов. 
+
+Выводы: 
+•	диагностируется уверенность в себе на уровне ниже среднего;
+•	социальная смелость и инициатива в социальных контактах – низкий уровень. 
+Практическая психодиагностика и психологическое консультирование. – Ростов-на-Дону: ЮРГИ, 1998. – С. 87-108.
+','Kortinki\\Zadacha13\\22.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Диагностика Доброжелательности (по шкале Кемпбелла).','Полученные данные:
+5 баллов
+
+Измерительная шкала:
+	3 балла и меньше — низкий показатель доброжелательного отношения к другим;
+	4-6 — средний показатель доброжелательного отношения к другим;
+	7 и больше — высокий показатель доброжелательного отношения к другим.
+
+Норма: 4-6 баллов.
+
+Вывод: средний показатель принятия других.
+
+ Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 113-114.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Экспресс диагностика доверия (по шкале Розенберга).','Доверие к окружающим
+ 
+Полученные данные:
+0 баллов. 
+Доверие к учителям
+ 
+Полученные данные:
+0 баллов. 
+
+Измерительная шкала:
+	0-1 баллов — низкий показатель доверия;
+	2 балла — средний показатель доверия;
+	3 балла — высокий показатель доверия.
+Норма: 2 балла. 
+
+Вывод:  диагностируется низкий показатель доверия.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика оценки доверия/недоверия личности другим людям (А.Б. Купрейченко).','Содержательные характеристики при указанном сочетании параметров личности:
+•	тех людей, которым Саша доверяет, по её мнению, она знает и считает их надежными. Она стремится не сильно обращать внимания на их недостатки. При этом доверие к ним она основывает не на вере, а на конкретных данных;
+•	людям, которым Саша не доверяет, она приписывает ненадежность и она не чувствует с ними единства. Однако её уровень приязни к ним нормальный. По её мнению, она знает этих людей и способна видеть их недостатки;
+•	доверие Саши основывается на единстве с данным человеком и надежности последнего.
+
+* Критерии доверия определяются по разности значений Д и НД, т.е. из показателей, полученных от испытуемого по отношению к тому, кому он доверяет вычитаются показатели, связанные с тем человеком, которому испытуемый не доверяет. В данном случае, при сравнении с нормами, критерием является то значение, которое превосходит нормы. Если значение значительно ниже нормы, значит данный показатель неприемлем для испытуемого как критерий доверия людям. 
+
+Выводы:  
+•	по отношению к тому человеку, которому Саша доверяет, отмечается, что значения по шкалам единства и расчета соответствуют норме. Также диагностируется повышенный уровень надежности и знания. Шкала недостатков  имеет уровень ниже среднего, а шкала приязни –  низкий уровень выраженности;
+•	по отношению к тому человеку, которому Саша не доверяет, отмечается, что шкалы надежности, единства и расчета имеют низкую степень выраженности. Шкалы знаний и недостатков имеют высокую степень выраженности. Шкала приязни соответствует норме;
+•	критериями доверия для Саши служат надежность человека и в меньшей степени единство с ним.
+
+Купрейченко А.Б. Психология доверия и недоверия. – М.: Институт психологии РАН, 2008. – С. 224-301.
+','Kortinki\\Zadacha13\\25_1.png','Kortinki\\Zadacha13\\25_2.png',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на благодарность.','Полученные данные: 37 баллов. 
+
+Измерительная шкала.
+Тестирование, проведенное среди 1224 взрослых респондентов позволяет сделать следующие выводы:
+	если вы набрали не более 35 баллов, то попадаете в группу наименее благодарных (25 %);
+	 те, кто набрали от 36 до 38, относятся к средней группе (50 %);
+	люди с результатом от 39 до 41 особенно благодарны жизни (25 %);
+	а показатель 42 характеризует 12,5 % самых благодарных. 
+
+Норма: от 36 до 38 баллов. 
+
+Вывод: диагностируется средний уровень способности благодарить.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 102.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на трансгрессивную мотивацию (умение прощать), (Мак-Куллоу).','Полученные данные:
+•	стремление избежать обидчика – 12 баллов;
+•	мстительность – 8. 
+Измерительная шкала.
+Стремление избегать обидчика.
+	Средний результат среди американцев — 12,6 баллов;
+	набравшие более 17,6 попадают в число «обиженных» (33 % американцев);
+	набравшие более 22,8 — обиженных смертельно (10 %).
+Мстительность.
+	Если вы набрали около 7,7, то ваш результат близок к среднеамериканскому;
+	набрав 11 и выше, вы попадаете в категорию людей мстительных (33 % американцев);
+	показатель 13,2 и выше свидетельствуют о том, что вы оказались среди самых заядлых мстителей (10 % американцев).
+
+Вывод: уровень обидчивости и мстительности соответствующий норме.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 111.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест коммуникативных навыков (Методика Л. Михельсона в адаптации Ю.З. Гильбуха).','Полученные данные:
+•	уровень компетентности – 24 балла;
+•	уровень зависимости в общении – 3;
+•	уровень агрессивности в общении – 0.
+
+Измерительная шкала: всего в тесте 27 утверждений, поэтому максимальный балл по одной из трех шкал (агрессивность, зависимость, компетентность)  – 27 баллов. Результаты анализируется в зависимости от сочетания баллов по данным шкалам.
+
+Вывод:  диагностируется высокий уровень компетентности в общении. Зависимость в общении практически не выражена. Агрессивность в общении отсутствует.
+
+Колмогорова, Н. С. Коммуникативная компетентность как условие и следствие становления направленности личности: дис. ... канд. психол. наук: 19.00.01 / Наталья Степановна Колмогорова. – Барнаул, 2004. – 228 с.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест описания поведения К. Томаса (адаптация Н.В. Гришиной).','Полученные данные:
+•	стратегия соперничества – 3 стена; 
+•	стратегия сотрудничества – 10; 
+•	стратегия компромисса – 4; 
+•	стратегия избегания – 5; 
+•	стратегия уступки (приспособления) – 5. 
+
+Норма: 5-6 стенов. 
+
+Выводы:  
+•	доминирующей стратегией поведения в конфликтах – является сотрудничество (высокий уровень выраженности);
+•	стратегии соперничества и компромисса имеют уровень выраженности ниже среднего;
+•	выраженность стратегий уступки и избегания в пределах нормы.
+Большая энциклопедия психологических тестов /Под ред. А.А. Карелина – М.: Эксмо, 2007. — С. 270-273.
+','Kortinki\\Zadacha13\\29.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Тест «Поведение родителей и отношение подростков к ним».','Тест «Поведение родителей и отношение подростков к ним» (методика Е. Шафера в адаптации Э. Матейчика и П. Ржичана).','Полученные данные.
+Оценка Владой воспитательных методов мамы:
+•	позитивный интерес – 2 стена;
+•	автономность – 3;
+•	враждебность – 1; 
+•	директивность – 2;
+•	непоследовательность воспитания – 2.
+
+Оценка Владой воспитательных методов бабушки:
+•	позитивный интерес – 1;
+•	автономность – 2;
+•	враждебность – 3; 
+•	директивность – 1;
+•	непоследовательность воспитания – 2.
+
+Норма: 3 стена. 
+
+Выводы.
+Со стороны матери к Саше (по мнению самой Саши): 
+•	позитивный интерес, враждебность, директивность и непоследовательность воспитания имеют низкую степень выраженности;
+•	автономность в пределах нормы.
+
+Со стороны папы к Саше:
+•	позитивный интерес, автономность, директивность и непоследовательность в воспитании имеют низкую степень выраженности;
+•	враждебность в пределах нормы.
+Сонин В.А. Психодиагностическое познание профессиональной деятельности. — СПб.: Речь, 2004. – С. 169-178.
+','Kortinki\\Zadacha13\\30.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Выявление самооценки по методике Дембо-Рубинштейн в модификации А.М. Прихожан.','Полученные данные: 
+•	среднее арифметическое по самооценке – 64 балла;
+•	 среднее арифметическое по уровню притязаний – 96.
+
+Измерительная шкала:
+Уровень самооценки и уровня притязаний определяется положением на 100 бальной шкале отметок испытуемого.
+	Самооценка ниже 45 баллов признается низкой, 45-59 – средняя, 60-74 – высокая, 75-100 – очень высокий уровень;
+	уровень притязаний ниже 60 баллов признается низким, 60-74 – средним, 75-89 – высоким, 90-100 – очень высоким уровнем.
+* Нормы для среднеарифметических показателей аналогичны.
+Норма: 45-59 баллов для самооценки и 60-74 для уровня притязаний. 
+
+Выводы:
+•	среднее арифметическое по самооценке среднее;
+•	среднее арифметическое по уровню притязаний – очень высокое;
+Отдельные показатели.
+Самооценка:
+•	очень высокий уровень самооценки – доверие к Близким людям;
+•	высокий уровень – ум и способности;
+•	уровень самооценки в пределах нормы по шкалам характера, авторитета у сверстников, счастья и доверия к окружающим.
+Уровень притязаний:
+•	очень высокий уровень притязаний по показателям: ум, характер, авторитет у сверстников, счастье, оптимизм, доверие к близким людям;
+•	уровень притязаний относительно доверия к окружающим на границе высокого и среднего.
+
+Яньшин П.В. Клиническая психодиагностика личности: Учебно-методическое пособие – 2-е изд., испр. – СПб: Речь, 2007. – С. 29-54.
+','Kortinki\\Zadacha13\\31.png','',13)
+	insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала самоуважения Розенберга.','Полученные данные: 4 стена.
+Вывод: диагностируется уровень самоуважения ниже среднего.
+
+Бодалев А.А., Столин В.В. Общая психодиагностика. – СПб.: Речь, 2000. – С. 308.
+','Kortinki\\Zadacha13\\32.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на удовлетворенность жизнью.','Полученные данные: 16 баллов. 
+
+Измерительная шкала: 
+Этот тест уже выполнен десятками тысяч людей в разных странах. 
+	средний итоговый результат у пожилых американцев — 28 баллов у мужчин и 26 у женщин, у американских студентов — 23-25;
+	средний результат у китайских и восточноевропейских студентов —16-19;
+	заключенные тюрем мужского пола в среднем оценили степень удовлетворенности жизнью в 12;
+	больные, амбулаторно посещающие психологов, дали оценку в 14-18, а женщины, подвергшиеся насилию, и пожилые сиделки, как ни странно, показали довольно высокий результат — около 21 в среднем
+
+Вывод:  диагностируется уровень удовлетворённости жизнью ниже среднего.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 92.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Эмоциональный тест Фордайса.','Полученные данные:
+•	уровень счастья – 7 баллов;
+•	переживание счастья – 20% всего времени;
+•	переживание несчастья – 15% всего времени;
+•	переживание нейтрального состояния – 65 % всего времени.
+
+Измерительная шкала:
+	по результатам тестирования 3050 взрослых американцев средний уровень ответов на первый вопрос составил 6,92;
+	согласно данным по второму вопросу, средний американец примерно половину своего времени (54,13 %) чувствует себя счастливым, 20,44 % времени — несчастным, а все остальное время (25,43 %) — чувствует себя нейтрально.
+
+Норма: 7 баллов (уровень счастья) и 50 % (переживания счастья). 
+
+Выводы. 
+Диагностируется: 
+•	средний уровень ощущения счастья;
+•	низкий уровень частоты переживания счастья;
+•	высокий уровень переживания нейтрального состояния. 
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 30.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала субъективного благополучия (методика Мендельсона и др. в адаптации М.В. Соколовой).','Полученные данные: уровень субъективного благополучия – 7 стенов.
+Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, лица с такими оценками характеризуются умеренным субъективным благополучием, серьезные проблемы у них отсутствуют, но и о полном эмоциональном комфорте говорить нельзя.
+
+Вывод: диагностируется сниженное субъективное благополучие, близкое к полному эмоциональному дискомфорту.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – C. 467-470.
+','Kortinki\\Zadacha13\\35.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Шкала активности и оптимизма.','Шкала активности и оптимизма (методика И.С. Шуллера и А.Л. Комуниана в адаптации Г.С. Никифорова).','Полученные данные: 
+•	уровень активности – 18 баллов;
+•	уровень оптимизма – 18.
+
+Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, при данном сочетании в трудных ситуациях человек не пытается «прыгнуть выше головы».
+
+Вывод: Саша реалист.
+
+Практикум по психологии менеджмента и профессиональной деятельности /Под редакцией Г.С. Никифорова, М.А. Дмитриевой, В.М. Снеткова – СПб.: Речь, 2003. – С 287-293.
+','Kortinki\\Zadacha13\\36.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Самооценка силы воли (Н.Н. Обозов).','Полученные данные: 21 балл. 
+
+Измерительная шкала:
+	от 0 до 12 баллов – у Вас слабая сила воли, Вас легко переубедить;
+	от 13 до 21 – у Вас сила воли средняя. В различных ситуациях Вы действуете по-разному, иногда проявляя чудеса уступчивости и податливости, а иногда – настойчивость и упорство;
+	от 22 до 30 – у Вас большая сила воли, Вы волевой человек.
+
+Норма: от 13 до 21 балла. 
+
+Вывод. Диагностируется средний уровень силы воли.
+
+Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 523-524.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Уровень субъективного контроля (УСК).','Уровень субъективного контроля (УСК) (методика Дж. Роттера в адаптации Е.Ф. Бажина, Е.А. Голынкиной, А.М. Эткинда).','Полученные данные: 
+•	общий показатель субъективного контроля – 37 баллов;
+•	уровень интернальности в отношении достижений – 10; 
+•	интернальность в области неудач – 10. 
+Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, такие люди считают, что большинство важных событий в их жизни есть результат их собственных действий, что они могут ими управлять, и, таким образом, они чувствуют свою собственную ответственность за эти события и за то, как складывается их жизнь в целом. Такие люди считают, что они сами добились всего того хорошего, что было и есть в их жизни, и что они способны с успехом преследовать свои цели в будущем. Их отношению к отрицательным событиям и ситуациям проявляется в склонности обвинять самого себя в разнообразных неприятностях и страданиях.
+
+Вывод: общий показатель субъективного контроля, уровня интернальности в отношении достижений и в области неудач высокий.
+
+Немов Р.С. Психология. Учебник для студентов высших педагогических учебных заведений: В 3-х ч. Ч.3. Психодиагностика. –4-е изд. – М.:  Владос, 2001. – С. 480-483.
+','Kortinki\\Zadacha13\\38.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Моментальный тест на позитивную и негативную аффективность (по отношению к учителям).','Полученные данные: 
+Вначале психолог попросил Сашу оценить свой эмоциональный фон в данный момент (первое тестирование), а затем, через 2 дня, попросил её оценить эмоциональное отношение к тем учителям, которых она боится.
+
+Первое тестирование:
+•	сумма негативных эмоций во время первого тестирования – 28 (доминирующие негативные эмоции: раздражение, нервозность, чувство вины – 4 балла);
+•	сумма позитивных эмоций – 38 (доминирующие позитивные эмоции: заинтересованность, внимание – 4 балла).
+
+Второе тестирование, через два дня:
+•	сумма негативных эмоций по отношению к учителям – 19 (доминирующие негативные эмоции: тревога, нервозность, чувство вины – 4 балла);
+•	сумма позитивных эмоций – 25 (доминирующие позитивные эмоции: невозмутимость и решимость – 4 балла).
+
+
+Измерительная шкала:
+М. Селигман предлагает главным образом исходить из следующего:
+	во-первых, максимальный уровень положительных или отрицательных эмоций может достигать 50 баллов;
+	во-вторых, необходимо обращать внимание на соотношение баллов по двум уровням эмоций (позитивный, негативный).
+* Оценка отдельной эмоции идет по 5-балльной шкале, где 4,5 – высоко, 3 – средне, 2,1 – низко.
+
+Норма: 3 балла (отдельная эмоция). 
+
+Вывод. Сумма баллов по позитивным эмоциям в обоих случаях превосходит сумму негативных, однако по отношению к учителям данное превосходство минимально, что говорит, что при данной ситуации выражаются практически в равной степени и позитивные, и негативные эмоции. 
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 53.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Диагностика морального сознания (Дилеммы Л. Кольберга).','Содержательные характеристики:
+•	Саша не следует в своих ответах принципу удовольствия и не следует во всем за нормами общества (по её словам, закон и мораль иногда расходятся) (см. Дилемму 1 и 4, 8). Т.е. Наблюдается гибкость моральных суждений, когда соблюдение законов общества сочетается с выполнением норм не писаной морали (при этом Саша все же признает, что закон – главный ориентир общества (Дилемма 8, 9));
+•	для Саши большое значение имеет выполнение другими, своих моральных обязательств (обещания должны сдерживаться), для неё важно, чтобы её труд вознаграждался (прослеживается, напр. В Дилемме 3);
+•	для Саши главенствующее качество морального сознания это совесть и честность – как критерии доверия (Дилемма 3 и 5, 6) (Дилемма 6).
+
+Измерительная шкала:
+По качественному анализу ответов испытуемой вычисляется уровень морального сознания:
+	преконвенциональный уровень отличается эгоцентричностью моральных суждений. Поступки оцениваются главным образом по принципу выгоды и по их физическим последствиям;
+	конвенциональный уровень развития моральных суждений достигается тогда, когда ребенок принимает оценки своей референтной группы: семьи, класса, религиозной общины. Моральные нормы этой группы усваиваются и соблюдаются некритично, как истина в последней инстанции;
+	постконвенциональный уровень развития моральных суждений встречается не часто даже у взрослых людей. Как уже говорилось, его достижение возможно с момента появления гипотетико-дедуктивного мышления. Это уровень развития личных нравственных принципов, которые могут отличаться от норм референтной группы, но при этом имеют общечеловеческую широту и универсальность.
+
+Вывод. Моральные установки имеют степень выраженности близкую к постконвенциональному.
+
+Диагностика эмоционально-нравственного развития: Сборник /Ред. и сост. И.Б. Дерманова. – СПб.: Речь, 2002. – С.103-112.
+','Kortinki\\Zadacha13\\40_1.png','Kortinki\\Zadacha13\\40_2.png',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисунок Несуществующего животного.','Рассказ Саши о животном. Данное животное не одиноко, оно живет с себе подобными, однако, на определенном моменте (совершеннолетие) оно должно уйти далеко для создания собственной семьи, повинуясь чувству долга. Данное событие не вызывает тревог, уже заложено генетически. Данные животные потом редко видятся с семьей. Также Саша почеркнула, что животные рождаются серыми, а потом расцветают. У них нет врагов и им незачем тревожиться. У них много друзей, которые всегда их по достоинству оценят. Пол у Сашиного животного – женский, имя Анфелия.
+Качественный анализ:
+•	рисунок в центре, что соответствует норме;
+•	сильный нажим говорит о тревожности (+ штриховка);
+•	рисунок сделан тщательно, с прорисовкой мелких деталей, что говорит об энергичности испытуемой
+•	животное в целом обращено влево, что говорит о склонности к рефлексии, может также говорить о нерешительности;
+•	глаза четко прорисованы (радужка тоже) что говорит о наличии страха;
+•	наличие больших ушек говорит о том, что испытуемой важно, что о неё думают другие;
+•	покрой животного нечто среднее между перьями и шерстью (больше напоминает последнее) – говорит либо о тенденции приукрашать себя (перья) или о чувствительности (шерсть);
+•	солидная опора с когтями говорит о желании испытуемой твердо стоять на  ногах и принимать взвешенные решения;
+•	ноги плотно соединены с корпусом, что говорит о продумывании и взвешивании решений и суждений;
+•	крылья - любознательность, "соучастие" как можно в большем количестве мероприятий, завоевание себе "места под солнцем" (самоутверждение);
+•	хвост направлен вправо и вверх, что означает, что Саша обращает большее внимания на поступки, нежели на мысли;
+•	длинный и разветвленный хвост – активность и готовность брать ответственность на себя;
+•	Саша подчеркивала, что данные животные стремятся к гармоничной жизни в уединении с себе подобными, что говорит о стремлении к покою и поиску родственной души.
+
+Измерительная шкала.
+Помимо деталей рисунка, интерпретацию которых дает множество авторов (например, П.В. Яньшин), важно учитывать её в сочетании с рассказом испытуемого о животном.
+
+Выводы: 
+•	Саша обращает свои надежды на спокойную и гармоничную жизнь в будущее;
+•	она стремится дистанцироваться от семьи;
+•	для Саши крайне важно признание её достоинств;
+•	общая красота и нарядность рисунка, оригинальность изображенного животного (и даже его имя) – свидетельство высокой креативности Саши.
+Яньшин П.В. Клиническая психодиагностика личности: Учебно методическое пособие – 2-е изд., испр. – СПб: Речь, 2007. – С. 190-258.
+','Kortinki\\Zadacha13\\41.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Диагностика принятия других (по шкале Фейя).','Полученные данные: 48 баллов.
+
+Измерительная шкала:
+•	60 баллов и больше — высокий показатель принятия других;
+•	45—60 — средний показатель принятия других с тенденцией к высокому;
+•	30-45— средний показатель принятия других с тенденцией к низкому;
+•	30 и меньше — низкий показатель принятия других.
+
+Норма: 45-60 баллов. 
+
+Вывод: диагностируется средний показатель принятия других с тенденцией к высокому.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 112-113.
+','Kortinki\\Zadacha13\\net.png','',13)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Определение степени ответственности Саши с помощью наблюдения психолога.','Определение степени ответственности Саши с помощью наблюдения психолога за Сашей в течение психологических сессий.','В течение всей работы на сессиях, Саша проявила себя как человек высоко ответственный. Если она не могла прийти в какой-то день, обязательно уведомляла об этом. Кроме того, если она что-то обещала, всегда держала слово. 
+
+Вывод: наблюдается высокая ответственность.
+','Kortinki\\Zadacha13\\net.png','',13)
+go
+
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Данные об успеваемости.','Успеваемость: Успеваемость крайне низкая по всем предметам, не аттестован по итогам второй четверти.
+','Kortinki\\Zadacha14\\net.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Детский личностный опросника Р. Кеттелла (Адаптирован Э.М. Александровской). Фактор В.','Полученные данные:
+4 стена.
+
+Измерительная шкала
+Обозначение фактора	Левый полюс фактора
+(1-3 стэна)	Правый полюс фактора
+(8-10 стэнов)
+ B	Низкий интеллект	Высокий интеллект
+
+	Если по какому-либо фактору набрано 5-6 стэнов, это говорит о том, что полюс данного фактора четко не выражен;
+	оценка 4 стэна отражает тенденцию к проявлению левого полюса фактора;
+	оценка 7 стэнов говорит о тенденции к проявлению правого полюса фактора.
+Норма: 5-6 стенов.
+
+Вывод:  уровень интеллекта ниже среднего.
+
+Адаптированный модифицированный вариант детского личностного опросника Р. Кеттелла (Адаптирован Э.М. Александровской) / Э.М. Александровская, И.Н. Гильяшева: Методические рекомендации. – М.: Фолиум, 1993. – 40 с.
+','Kortinki\\Zadacha14\\2.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест смысложизненных ориентаций.','Полученные данные:
+•	наличие целей – 30 баллов;
+•	эмоциональная насыщенность жизнью (процесс жизни) – 39;
+•	удовлетворенность прошлым (результативность жизни) – 23;
+•	локус контроля «я» (вера в свои силы) – 23; 
+•	локус контроля «жизнь»  (управляемость жизнью) – 22;
+•	общая осмысленность жизни – 101.
+Пояснения Никиты.У меня все хорошо с целями в жизни. Папа сказал, что поможет мне устроиться в автосалон, которым я впоследствии буду управлять, а мама говорит мне, что в колледже уже надо будет учиться, а здесь уж ладно.
+
+Норма: см. средние значения в таблице выше. 
+
+Выводы: 
+•	отмечается высокая эмоциональная насыщенность жизнью;
+•	уровень управляемости жизнью ниже среднего;
+•	наличие целей, удовлетворенность прошлым и локус контроля «я» в пределах нормы (средние);
+•	общая осмысленность жизни средняя.
+Леонтьев Д.А. Тест смысложизненных ориентаций: Психодиагностическая серия. – М: Смысл, 2006. –  18 с.
+','Kortinki\\Zadacha14\\3.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Мотивация успеха и боязнь неудачи (опросник А.А. Реана).','Полученные данные:
+Для оценки данного стремления, психолог сначала попросил Никиту заполнить опросник, ссылаясь на занятие спортом (Никитино хобби). А далее попросил Никиту заполнить этот же опросник, но в ситуациях, представленных в вопросах, он должен был представлять учебную деятельность.
+•	Уровень  мотивации успеха в ситуации спортивной деятельности – 15 баллов;
+•	Уровень  мотивации успеха в ситуации учебной деятельности – 8.
+
+Измерительная шкала:
+	от 1 до 7 – диагностируется мотивация на неудачу (боязнь неудачи);
+	от 14 до 20 – мотивация на успех (надежда на успех);
+	от 8 до 13 – мотивационный полюс ярко не выражен;
+	При этом можно иметь в виду, что если количество баллов 8 или 9, есть определенная тенденция мотивации на неудачу, а если количество баллов 12 или 13, имеется определенная тенденция мотивации на успех.
+
+Выводы.
+Диагностируется:
+•	высокое стремление к успеху в ситуации спортивной деятельности;
+•	тенденция к избеганию неудач по отношению к учебной деятельности.
+
+Малкина-Пых И.Г. Психосоматика: Справочник практического психолога. — М.: Эксмо, 2005. — С. 124-126.
+','Kortinki\\Zadacha14\\net.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест жизнестойкости (методика С. Мадди в адаптации Д.А. Леонтьева).','Полученные данные:
+•	вовлеченность в жизнь – 26 баллов;
+•	контроль жизни – 36;
+•	принятие риска – 23;
+•	общая жизнестойкость – 86.
+
+Норма: см. средние значения в таблице выше. 
+
+Выводы: 
+•	принятия риска на высоком уровне;
+•	уровень вовлеченности в жизнь сниженный;
+•	уровень контроля соответствует норме;
+•	уровень общей жизнестойкости в норме.
+Леонтьев Д.А., Рассказова Е.И. Тест жизнестойкости. — М.: Смысл, 2006. — 63 с.
+','Kortinki\\Zadacha14\\5.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Морфологический тест жизненных ценностей.','Морфологический тест жизненных ценностей (В.Ф. Сопов и Л.В. Кармушина), с пояснениями Никиты.','Полученные данные.
+Перечень жизненных ценностей:
+•	развитие себя – 4; 
+•	духовное удовлетворение – 4;
+•	креативность– 4;
+•	активные социальные контакты – 8; 
+•	достижение – 5;
+•	высокое материальное положение – 5;
+•	собственный престиж – 2;
+•	сохранение собственной индивидуальности – 7. 
+Перечень жизненных сфер, которых реализуются вышеуказанные жизненные ценности:
+•	сфера профессиональной жизни – 6; 
+•	сфера образования – 2; 
+•	сфера семейной жизни – 4;
+•	сфера общественной активности – 5; 
+•	сфера увлечений – 4; 	
+•	сфера физической активности – 6.
+
+Дополнительные пояснения Никиты во время выполнения методики: мне это не надо (учиться). Папа обещал и поможет мне открыть свой автосалон. Там я буду управляющим. Вот сейчас пойду в техникум и там получу нужные знания, а учеба мне не нужна эта школьная.
+
+Содержательные характеристики при указанном сочетании параметров личности:
+•	для Никиты доминирующую роль играет сохранение индивидуальности, преобладание собственных мнений, взглядов, убеждений над общепринятыми. Это подтверждается его твердым мнением, что учиться не нужно. Все равно потом можно будет добиться всего;
+•	ценности, важные для Никиты (например, активные социальные контакты), он не в какой мере не собирается реализовывать в сфере образования. 
+
+Норма: 5-6 стенов.	
+Выводы: все значимые жизненные ценности (активные социальные контакты, сохранение собственной индивидуальности, достижения и др.) Никита не настроен реализовывать в сфере образования (сама сфера не представляет интереса для Никиты). Учеба не имеет для Никиты никакой ценности, он уверен, что учиться в школе не нужно.	
+
+Подробно. 
+По самим ценностям:
+•	важные для Никиты жизненные ценности (высокий уровень) – это, во-первых, активные социальные контакты, во-вторых, сохранение собственной индивидуальности;
+•	в группу средне важных (средний уровень) для Никиты ценностей вошли ценности достижений (стремление к решению задач) и ценность высокого материального положения;
+•	в группу не особо важных (уровень ниже среднего) вошли ценности развития себя, духовного удовлетворения и креативности (реализации своих творческих возможностей);
+•	ценность, которая не важна (низкий уровень) для Никиты – это собственный престиж. 
+По реализации данных ценностей:
+•	менее всего Никита желает реализовывать имеющиеся у него ценности в сфере образования (низкий уровень);
+•	реализация ценностей в сфере увлечений или семейной жизни не представляется для Никиты особо актуальным (уровень ниже среднего);
+•	более всего Никита стремится к реализации имеющихся у него ценностей в следующих сферах: сфера профессиональной жизни, сфера общественной активности и сфера физической активности (средний уровень).
+
+Сопов В.Ф. Морфологический тест жизненных ценностей: руководство по применению /Ред. Б.М. Петров, И.Н. Сидоров. – Самара: СамИКП, 2002. – 56 с.
+','Kortinki\\Zadacha14\\6.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','«Толерантность к неопределенности» (Методика С. Баднера в адаптации Г.У. Солдатовой).','Полученные данные:
+•	новизна проблемы – 9 баллов;
+•	сложность проблемы – 35;
+•	неразрешимость проблемы – 9; 
+•	общий показатель – 49. 
+
+Норма: см. средние значения в таблице выше.
+
+Выводы: 
+•	толерантность к новизне проблемы снижена;
+•	толерантность к неразрешимости и сложности проблемы соответствует норме;
+•	общий показатель толерантности к неопределенности соответствует норме.
+Психодиагностика толерантности личности /Под ред. Г.У. Солдатовой, Л.А. Шайгеровой. – М.: Смысл, 2008. – С. 94-97.
+','Kortinki\\Zadacha14\\7.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Шкала «Толерантность к двусмысленности».','Шкала «Толерантность к двусмысленности»  (методика Родника, Хезера и др. в адаптации Н.А. Бажановой и Г.Л. Бардиер).','Полученные данные:
+•	страстность (энергичность) – 21 балл;  
+•	находчивость – 21; 
+•	оптимизм – 22; 
+•	смелость, предприимчивость – 24; 
+•	адаптивность – 28; 
+•	уверенность -23; 
+•	толерантность к двусмысленности – 19.
+
+Норма: см. средние показатели в таблице выше. 
+
+Выводы.  
+•	адаптивность и смелость развиты высоко;
+•	страстность, находчивость, уверенность и оптимизм находятся на уровне выше среднего;
+•	уровень толерантности к двусмысленности – соответствует норме.
+18 программ тренингов: Руководство для профессионалов /под ред. В.А. Чикер. – СПб.: Речь, 2007. — С. 322-325.
+','Kortinki\\Zadacha14\\8.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Экспресс диагностика доверия (по шкале Розенберга).','Полученные данные:
+2 балла. 
+
+Измерительная шкала:
+	0-1 баллов — низкий показатель доверия;
+	2 балла — средний показатель доверия;
+	3 балла — высокий показатель доверия.
+Норма: 2 балла. 
+
+Вывод:  диагностируется средний показатель доверия.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
+','Kortinki\\Zadacha14\\net.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика оценки доверия/недоверия личности другим людям (А.Б. Купрейченко).','Содержательные характеристики при указанном сочетании параметров личности:
+•	с теми людьми, которым Никита доверяет, он чувствует единство. Он стремится не сильно обращать внимания на их недостатки. Таких людей он считает не сильно расчетливыми;
+•	людей, которым Никита не доверяет, он все равно считает ненадежными и считает, что знает их хорошо. Он считает их расчетливыми, однако не стремится сильно замечать их недостатки, как и в случае с людьми, которым Никита доверяет;
+•	доверие Никиты основывается на единстве с данным человеком и приязни по отношению к нему, а значит, Никита часто способен подменять доверие (основанное на знании данного лица) верой.
+* Критерии доверия определяются по разности значений Д и НД, т.е. из показателей, полученных от испытуемого по отношению к тому, кому он доверяет вычитаются показатели, связанные с тем человеком, которому испытуемый не доверяет. В данном случае, при сравнении с нормами, критерием является то значение, которое превосходит нормы. Если значение значительно ниже нормы, значит данный показатель неприемлем для испытуемого как критерий доверия людям. 
+
+Выводы:  
+•	по отношению к тому человеку, которому Никита доверяет, отмечается, что значения по шкале единства высокое, а по шкале недостатки и расчет – ниже среднего. Шкалы надежности, знания, приязни в пределах нормы;
+•	по отношению к тем людям, которым Никита не доверяет, показатели единства и приязни соответствуют норме, уровень выше среднего имеют надежность таких людей, знание о них и их расчетливость. Уровень по шкале недостатков – низкий;
+•	критериями доверия для Никиты служат единство и в меньшей степени приязнь.
+
+Купрейченко А.Б. Психология доверия и недоверия. – М.: Институт психологии РАН, 2008. – С. 224-301.
+','Kortinki\\Zadacha14\\10_1.png','Kortinki\\Zadacha14\\10_2.png',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на трансгрессивную мотивацию (умение прощать), (Мак-Куллоу).','Полученные данные:
+•	стремление избежать обидчика – 19 баллов;
+•	мстительность – 17. 
+Измерительная шкала.
+Стремление избегать обидчика.
+	Средний результат среди американцев — 12,6 баллов;
+	набравшие более 17,6 попадают в число «обиженных» (33 % американцев);
+	набравшие более 22,8 — обиженных смертельно (10 %).
+Мстительность.
+	Если вы набрали около 7,7, то ваш результат близок к среднеамериканскому;
+	набрав 11 и выше, вы попадаете в категорию людей мстительных (33 % американцев);
+	показатель 13,2 и выше свидетельствуют о том, что вы оказались среди самых заядлых мстителей (10 % американцев).
+
+Выводы: 
+•	диагностируется уровень обидчивости на высоком уровне;
+•	уровень мстительности выражен очень высоко.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 111.
+','Kortinki\\Zadacha14\\net.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест коммуникативных навыков (Методика Л. Михельсона в адаптации Ю.З. Гильбуха).','Полученные данные:
+•	уровень компетентности – 7 баллов;
+•	уровень зависимости в общении – 9;
+•	уровень агрессивности в общении – 11.
+
+Измерительная шкала: всего в тесте 27 утверждений, поэтому максимальный балл по одной из трех шкал (агрессивность, зависимость, компетентность)  – 27 баллов. Результаты анализируется в зависимости от сочетания баллов по данным шкалам.
+
+Выводы:  
+•	диагностируется агрессивно-зависимое общение (зависит от ситуации);
+•	компетентность в общении низкая.
+
+Колмогорова, Н. С. Коммуникативная компетентность как условие и следствие становления направленности личности: дис. ... канд. психол. наук: 19.00.01 / Наталья Степановна Колмогорова. – Барнаул, 2004. – 228 с.
+','Kortinki\\Zadacha14\\net.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала субъективного благополучия (методика Мендельсона и др. в адаптации М.В. Соколовой).','Полученные данные: уровень субъективного благополучия – 4 стена.
+Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, лица с такими оценками характеризуются умеренным субъективным благополучием, серьезные проблемы у них отсутствуют, но и полном эмоциональном комфорте говорить нельзя.
+
+Вывод: диагностируется сниженное субъективное благополучие.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – C. 467-470.
+','Kortinki\\Zadacha14\\13.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Шкала активности и оптимизма.','Шкала активности и оптимизма (методика И.С. Шуллера и А.Л. Комуниана в адаптации Г.С. Никифорова).','Полученные данные: 
+•	уровень активности – 32 балла;
+•	уровень оптимизма – 20.
+
+Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого присутствует вера в свои силы и позитивные надежды на будущее.
+
+Вывод: Никита активный оптимист.
+
+Практикум по психологии менеджмента и профессиональной деятельности /Под редакцией Г.С. Никифорова, М.А. Дмитриевой, В.М. Снеткова – СПб.: Речь, 2003. – С 287-293.
+','Kortinki\\Zadacha14\\14.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Самооценка силы воли (Н.Н. Обозов).','Полученные данные: 20 баллов. 
+
+Измерительная шкала:
+	от 0 до 12 баллов – у Вас слабая сила воли, Вас легко переубедить;
+	от 13 до 21 – у Вас сила воли средняя. В различных ситуациях Вы действуете по-разному, иногда проявляя чудеса уступчивости и податливости, а иногда – настойчивость и упорство;
+	от 22 до 30 – у Вас большая сила воли, Вы волевой человек.
+
+Норма: от 13 до 21 балла. 
+
+Вывод. Диагностируется средний уровень силы воли.
+
+Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 523-524.
+','Kortinki\\Zadacha14\\net.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Моментальный тест на позитивную и негативную аффективность (по отношению к учителям).','Полученные данные: 
+•	сумма негативных эмоций по отношению к учителям – 33 (доминирующие негативные эмоции: огорчение, тревога, чувство вины, враждебность, стыд, беспокойство – 4 балла);
+•	сумма позитивных эмоций по отношению к учителям – 21 (доминирующие позитивные эмоции: решимость и гордость – 4 балла).
+
+Измерительная шкала:
+М. Селигман предлагает главным образом исходить из следующего:
+	во-первых, максимальный уровень положительных или отрицательных эмоций может достигать 50 баллов;
+	во-вторых, необходимо обращать внимание на соотношение баллов по двум уровням эмоций (позитивный, негативный).
+* Оценка отдельной эмоции идет по 5-балльной шкале, где 4,5 – высоко, 3 – средне, 2,1 – низко.
+
+Норма: 3 балла (отдельная эмоция). 
+
+Вывод. Сумма отрицательных эмоций превосходит сумму положительных, что означает низкий позитивный эмоциональный фон по отношению к учителям.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 53.
+','Kortinki\\Zadacha14\\net.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Беседа психолога с Никитой на тему морального долга по отношению к учебе.','По словам Никиты, его достали почти все учителя, у него нет желания выполнять никаких данных обещаний по отношению к школе. «Я готов держать обещания в среде друзей, но по отношению к школе у меня нет такого желания».
+
+Вывод: чувство морального долга по отношению к школе, учителям и самой учебе не выражено.
+','Kortinki\\Zadacha14\\net.png','',14)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Данные наблюдения психолога за поведением Никиты в течение психологических сессий.','- После четырех-пяти сессий и полученных данных по поводу отношения родителей к проблеме Никиты, он начал активно пропускать сессии под различными предлогами. 
+- После 6-7 сессий Никита больше ни разу не пришел. Каждый раз, когда школьный психолог его встречал, у него возникала новая причина не прийти. При этом он обещал прийти на следующую сессию. Таких ситуаций было около четырех. В итоге, он так ни разу и не пришел.
+
+Вывод: чувство морального долга по отношению к школе, учителям и самой учебе не выражено.
+','Kortinki\\Zadacha14\\net.png','',14)
+go
+
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Данные об успеваемости.','Успеваемость: успеваемость по большинству предметов удовлетворительная.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика Мюнстерберга.','Полученные данные:
+21 слово за 180 сек, т.е.
+избирательность – 1 балл.
+
+Общее количество слов в тесте равно 27.
+* За каждое пропущенное или неправильно найденное слово снимается по одному баллу.
+
+Норма: 120-199 баллов
+
+Вывод: уровень избирательности внимания низкий.
+
+Бруннер Е.Ю. Лучше, чем супервнимание: Методики диагностики и психокоррекции. – Ростов н/Д: Феникс, 2006. –  С. 42-45.
+','Kortinki\\Zadacha15\\2.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Заучивание 10 слов (А.Р. Лурия).','Содержательные характеристики при указанном сочетании параметров личности: 
+•	изгиб вначале (1-3 серия) означает неустойчивость внимания и быструю утомляемость, уровень памяти колеблется от сниженного до нормального;
+•	далее концентрация внимания, и процессы запоминания (4, 5 серия) возрастают на уровень ниже среднего (7 слов);
+•	через час испытуемый вспомнил 8 слов – т.е. вышел на нормальный уровень запоминания.
+Измерительная шкала.
+	в норме, при хорошем уровне процессов запоминания, после одной – двух серий, испытуемый должен воспроизводить 8-9 слов;
+	сильные изломы графика – проявление утомляемости, колебания активности внимания;
+
+Норма: 7-9 слов, отсутствие изломов.
+
+Вывод:  развитие памяти и внимания на уровне ниже среднего.
+
+Альманах психологических тестов /Сост. С. Римский, Р.Р. Римская. – М.: КСП+, 1995. – С. 92-94. 
+','Kortinki\\Zadacha15\\3.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Простые аналогии.','Полученные данные.
+•	наблюдается широкий разброс ошибок по всему тесту (из 32 заданий, ошибки допущены в 16). В основном в ошибках наблюдаются конкретные связи, реже категориальные вместо логических; 
+•	Лев допускал в процессе теста максимум две ошибки подряд (за исключением концовки теста);
+•	большинство ошибок (5) допущено в конце, что говорит о постепенной утомляемости мышления испытуемого.
+
+Измерительная шкала:
+	подсчитывается количество правильных и ошибочных ответов, анализируется характер установленных связей между понятиями – конкретные, логические, категориальные;
+	в норме испытуемый усваивает порядок решения задач после 2-3 примеров;
+	о неустойчивости, хрупкости процесса мышления, утомляемости можно судить в том случае, если испытуемый делает случайные ошибки 3-4 раза подряд, выбирая слово по конкретной ассоциации, а потом без напоминания решает правильным способом.
+
+Норма: в норме испытуемый усваивает порядок решения задач после 2-3 примеров.
+
+Выводы: 
+•	уровень развития логического мышления – средний;
+•	в конце теста наблюдается утомляемость и хрупкость мышления Льва.
+
+Сборник психологических тестов. Ч.2: Пособие /Сост. Е.Е. Миронова – Мн.: Женский институт ЭНВИЛА, 2006. – С. 38-40.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Детский личностный опросника Р. Кеттелла (Адаптирован Э.М. Александровской). Фактор В.','Полученные данные:
+5 стенов.
+
+	Если по какому-либо фактору набрано 5-6 стэнов, это говорит о том, что полюс данного фактора четко не выражен;
+	оценка 4 стэна отражает тенденцию к проявлению левого полюса фактора;
+	оценка 7 стэнов говорит о тенденции к проявлению правого полюса фактора.
+Норма: 5-6 стенов.
+
+Вывод:  средний уровень интеллекта.
+
+Адаптированный модифицированный вариант детского личностного опросника Р. Кеттелла (Адаптирован Э.М. Александровской) / Э.М. Александровская, И.Н. Гильяшева: Методические рекомендации. – М.: Фолиум, 1993. – 40 с.
+','Kortinki\\Zadacha15\\5.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест смысложизненных ориентаций.','Полученные данные:
+•	наличие целей – 24 балла;
+•	эмоциональная насыщенность жизнью (процесс жизни) – 5;
+•	удовлетворенность прошлым (результативность жизни) – 5;
+•	локус контроля «я» (вера в свои силы) – 16; 
+•	локус контроля «жизнь»  (управляемость жизнью) – 6;
+•	общая осмысленность жизни – 50.
+Пояснения Льва: по словам Льва главная цель у него – дистанцироваться от семьи и в будущем жить отдельно. Прошлый и нынешний процесс жизни его крайне не устраивает по причине вмешательства родителей в его дела. Он считает, что пока не может управлять своей жизнью. И только освободившись от опеки родителей, сможет почувствовать себя свободным.
+
+Норма: см. средние значения в таблице выше. 
+Выводы: 
+•	наблюдается низкий уровень эмоциональной насыщенности жизни, результативности (удовлетворенности прошлым), локуса контроля «я», локуса контроля «жизнь»; 
+•	по шкале наличие целей результат равен ниже среднего;
+•	общая осмысленность жизни низкая.
+Леонтьев Д.А. Тест смысложизненных ориентаций: Психодиагностическая серия. – М: Смысл, 2006. –  18 с.
+','Kortinki\\Zadacha15\\6.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест жизнестойкости (методика С. Мадди в адаптации Д.А. Леонтьева).','Полученные данные:
+•	вовлеченность в жизнь – 13 баллов;
+•	контроль жизни –17;
+•	принятие риска – 7;
+•	общая жизнестойкость – 37.
+
+Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, показатели Льва говорят о доминирующем чувстве отвергнутости, ощущении собственной беспомощности, боязни рисковать, убеждении в том, что контролировать свою жизнь невозможно.
+
+Норма: см. средние значения в таблице выше. 
+
+Выводы: 
+•	 уровень вовлеченности, контроля и принятия риска низкий;
+•	уровень общей жизнестойкости также низкий.
+
+Леонтьев Д.А., Рассказова Е.И. Тест жизнестойкости. — М.: Смысл, 2006. — 63 с.
+','Kortinki\\Zadacha15\\7.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Мотивация успеха и боязнь неудачи (опросник А.А. Реана).','Полученные данные:
+11 баллов.
+
+Измерительная шкала:
+	от 1 до 7 – диагностируется мотивация на неудачу (боязнь неудачи);
+	от 14 до 20 – мотивация на успех (надежда на успех);
+	от 8 до 13 – мотивационный полюс ярко не выражен;
+	При этом можно иметь в виду, что если количество баллов 8 или 9, есть определенная тенденция мотивации на неудачу, а если количество баллов 12 или 13, имеется определенная тенденция мотивации на успех.
+
+Вывод: мотивационный полюс ярко не выражен.
+
+Малкина-Пых И.Г. Психосоматика: Справочник практического психолога. — М.: Эксмо, 2005. — С. 124-126.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Экспресс-диагностика характерологических особенностей личности.','Экспресс-диагностика характерологических особенностей личности (Н. Айзенк в модификации Т.В. Матолиной).','Полученные данные:
+Экстраверсия – 19 баллов;
+Нейротизм – 22.
+Шкала лжи – 1.
+Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, при данном соотношении показателей, данный тип личности властный, мнительный, подозрительный, педантичный. Всегда стремится к первенству. Мелочный. Наслаждается любым проявлением превосходства. Язвительно-желчен. Склонен к насмешке над более слабыми. Мстителен, пренебрежителен, деспотичен. Легко утомляется. Нельзя относиться равнодушно. Можно относиться дружелюбно, можно – с иронией. Нужно дать возможность занять лидерское положение. Поощрять волю и упорство. При этом подростку желательно воспитывать в себе позитивное эмоциональное отношение к окружающим и позитивные установки.
+
+Измерительная шкала:
+Оценка результатов данной методики идет по двум параметрам, представленным на графике ниже:
+	шкале экстраверсии, которая образует ось абсцисс с полюсами интроверсия-экстраверсия;
+	шкале нейротизма, которая образует ось ординат с полюсами стабильный-нестабильный.
+
+Выводы:  
+
+•	шкала лжи – в пределах нормы;
+•	анализ графика показывает, что тип темперамента Льва ближе всего к холерическому.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
+','Kortinki\\Zadacha15\\9.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Индивидуально-типологический детский опросник.','Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, показатели испытуемого говорят об эмоциональной неустойчивости, циклоидности, зависимости в поведении. Имеется тенденция преувеличивать свои проблемы.
+
+Измерительная шкала:
+	Показатели в пределах нормы (3) - гармоничная личность;
+	заостренные (4-5) - акцентуированные черты;
+	выраженные избыточно (6) - свойства, затрудняющие адаптацию, создающие проблемы для самого ребенка или для окружающих;
+	примерно одинаково избыточно выраженные тенденции (более 4-х) по противоположным свойствам означают компенсированные антитенденции, что свидетельствует о значительной эмоциональной напряженности и является признаком наличия внутреннего конфликта. для нормы (в пределах 4-х) это свидетельство сбалансированности разнонаправленных свойств. это - признак развития самоконтроля;
+	если большинство показателей 0 или 1, то это указывает на плохое самопонимание или неоткровенность при обследовании.
+Норма: показатели в пределах 3-х баллов.
+Выводы: 
+•	уровень по шкале лжи – норма;
+•	аггравация ярко выражена;
+•	к акцентуированным чертам относится агрессивность, экстраверсия и интроверсия, которые компенсируют друг друга. ригидность и лабильность также стремятся компенсировать друг друга, однако ригидность более акцентуирована;
+•	уровень ниже среднего диагностируется по шкале сензитивность;
+•	низкий уровень по шкале спонтанности;
+•	тревожность в пределах нормы.
+
+Собчик Л.Н. Индивидуально-типологический опросник. – М.: Боргес, 2008. – 190 с.
+','Kortinki\\Zadacha15\\10.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Детский личностный опросника Р. Кеттелла (Адаптирован Э.М. Александровской).','Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, при такой выраженности факторов присутствует тенденции к уединению, скрытности, также выражен сниженный самоконтроль, застенчивость, неспособность справиться с жизненными трудностями. Имеется повышенная импульсивность или сверхреактивность на слабые провоцирующие стимулы. Лев склонен к печальным размышлениям в одиночестве, легко подвержен различным страхам и тяжело переживает любые жизненные неудачи. Он не верит в себя, склонен к самоупрекам, недооценивает свои возможности, знания, способности. Он постоянно находится в состоянии возбуждения, с большим трудом успокаивается, чувствует себя разбитым, усталым и не может оставаться без дела даже в обстановке, способствующей отдыху. Для него характерна эмоциональная неустойчивость с преобладанием пониженного настроения, раздражительность, проблемы со сном, негативное отношение к критике.
+	Если по какому-либо фактору набрано 5-6, это говорит о том, что полюс данного фактора четко не выражен;
+	Оценка 4 отражает тенденцию к проявлению левого полюса фактора;
+	Оценка 7 говорит о тенденции к проявлению правого полюса фактора.
+Норма: 5-6 стенов. 
+
+Выводы.  
+•	Факторы E, F, имеет уровень выше среднего;
+•	факторы D, I развиты высоко;
+•	факторы O, Q4 имеют очень высокий уровень;
+•	факторы A, Q3 имеют уровень ниже среднего;
+•	факторы C, H имеют низкий уровень;
+•	факторы B, G соответствуют норме.
+Александровская Э.М., Гильяшева И.Н. Адаптированный модифицированный вариант детского личностного опросника Р. Кеттелла Методические рекомендации. – М.: Фолиум, 1993. – 40 с.
+','Kortinki\\Zadacha15\\11_1.png','Kortinki\\Zadacha15\\11_2.png',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Многофакторный личностный опросник «Мини-мульт».','Многофакторный личностный опросник «Мини-мульт» (адаптация Ф.Б. Березинина и М.П. Мирошникова).','Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, показатели испытуемого говорят о тенденции к злопамятности.
+Измерительная шкала: определяются по профилю (см. график), с учетом которого все результаты от 40 до 70 T баллов признаются нормой. Соответственно отклонение от нормы вниз – низкий балл, вверх – высокая выраженность.
+
+Норма: от 40 до 70 T. 
+
+Выводы: 
+•	шкала лжи и коррекции в пределах нормы;
+•	шкала достоверности слегка выше нормы;
+•	на границе нормы и высоких значений – истерия, шизоидность;
+•	выше нормы – депрессия, психопатия паранойяльность, гипомания;
+•	в пределах нормы оказались шкалы ипохондрии и психастении.
+
+Менделевич В.Д. Психология девиантного поведения: Учебное пособие. –  СПб.: Речь, 2005. – С.409-411.
+','Kortinki\\Zadacha15\\12_1.png','Kortinki\\Zadacha15\\12_2.png',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Компьютерный Цветовой тест Люшера (адаптация А. Ласточкина).','Полученные данные: по мнению автора методики, при сделанной испытуемой частоте выбора цветов, диагностируется следующее.
+
+Результаты по выбоpу сеpого цвета:
+оппозиционность - позыв - чрезмерное раздражение. Требования,  предъявляемые   к   нему окружением, считает невыносимыми, шокирован ими и поэтому отклоняет эту связь. Считается только со своим
+мнением и борется с каждым, кто не соглашается  с его притязаниями на превосходство.
+
+Результаты по выбоpу 8 цветов.
+
+По устpемлению: нуждается в   признании,   честолюбив.   Хочет   производить   такое впечатление,  чтобы на него смотрели снизу  вверх.  Хочет  одновременно  и популярности и восхищения. Стремится ликвидировать разрыв, который, как он чувствует,  отделяет его от  других.  Нервно  напряжен  и  обладает  живой
+реакцией.
+
+По состоянию: предпочитает работать  в  сотрудничестве с другими.  Делает все,  чтобы личная жизнь была свободной от разногласий, основанной на взаимопонимании,
+с гармонией личных интересов.
+
+По индифеpентности: обстоятельства вынуждают  его идти на компромиссы и временно отказаться от некоторых удовольствий.  
+
+По сознательно заторможённой потребности. Физиологическая интерпретация: напряжение, вызванное подавлением чувственности.
+Психологическая интерпретация: получает наслаждение  от  всего  тонкого,  изящного,  изысканного,  однако сохраняет при этом критическую позицию и не позволяет себе увлечься,  если есть хоть тень недоверия.  Держит свои эмоциональные отношения под строгим и неусыпным контролем и пристально наблюдает за отношением к себе. В такой критически-выжидательной   позиции   выражение   чувств   заторможено,   а чувствительность  повышена.  Считает  себя  слишком  доверчивым  и,  чтобы защитить  себя  от возможных вредных последствий этого,  требует от других полной искренности в общении и ясности в отношениях.
+Коротко: контролируемая чувственность.
+
+Актуальная пpоблема: стремится укрепить  свою  позицию  и  повысить   чувство   собственного достоинства,  критически и с научной тщательностью анализируя свои и чужие достижения. Требует во всем ясности и недвусмысленности.
+
+Отдельные показатели:
+•	стpемления, мотивиpованные самопониманием. Не чувствует  себя  способным  преодолеть  трудности  и  отстоять  свои требования. Уклоняется   от  напряженности  конфликтных  ситуаций  и  ищет удовлетворения в дающем удовольствие комфорте и в душевной гармонии. Эмоциональная настроенность к опpеделенному лицу;
+•	определенные обстоятельства  ситуации  воспринимает  как  помехи. Они стесняют его,  но, тем не менее, чтобы избежать напряженности, не хотел бы провоцировать ссоры. Хотел бы, чтобы какие-либо требования удовлетворялись мирным путем. Стремится к постоянству, спокойствию и удовлетворенности;
+•	оценка своего "я", твеpдость воли Напряженно пытается утвердиться и  справиться  с  ситуацией.  Если  для выполнения собственных намерений необходимо - умеет приспосабливаться;
+•	возбудимость, импульсивность. Испытывает непреодолимую  потребность  всего  себя  отдать чувственному сердечному влечению как доминирующему  в  сознании  идеалу.  Ожидает от партнера неограниченной взаимности;
+•	ожидание, отношение к окpужению. Не согласен с имеющейся ситуацией,  находя ее неудовлетворяющей.  Ведет себя  в  этой  связи напряженно,  соблюдая дистанцию.  Опасается,  что его поставят в невыгодное положение или используют в своих интересах.  Поэтому ставит  упредительные  условия.  Стремится  изменить отношения так,  чтобы возникла ясность и можно было найти выход;
+•	общая эмоциональная структура. Затронутое честолюбие. Стремится к  безопасности,  релаксации,  идиллической гармонии.  Однако из-за своеволия  не  может  приспосабливаться.  Чрезмерно  чувствителен  к помехам  и  сопротивлению.  Хочет,  чтобы  его потребности удовлетворялись беспрепятственно;
+•	инфантильность. Надеется, что как  по  мановению  волшебной  палочки,  реализуются его потребности в безопасности,  идиллической гармонии.  Часто мечтает, забыв обо всем.
+•	уход в идиллию. Чувствует, что  больше  не  в  состоянии  носить внутреннее напряжение, оказывать сопротивление внешним силам. Воспринимает предъявляемые к  нему требования как  невыносимые  и  уклоняется  от их исполнения.  Испытывает потребность в безопасности, идиллической гармонии, разрядке. Согласен идти на компромиссы;
+•	стремление к изнеженности и жалость к себе. Ищет прочной опоры  и  дающей  спокойствие  безопасности. Стремится  к разрядке  в  идиллически гармоничных отношениях.  Считает,  что только они могут дать  ему  возможность  почувствовать  удовлетворенность.  Но  такие отношения всего лишь результат его иллюзий;
+•	честолюбивые сверхпритязания. Честолюбив, стремится к  независимости  и  превосходству.  Находится  в состоянии напряженного ожидания. Из всего извлекает собственную выгоду;
+•	защита с целью самоутверждения. Стремится к тому,  чтобы быть стойким и уверенным в себе. Ставит перед собой как непосредственную,  так и отдаленную цели,  чтобы, реализовав их, добиться желанного самоутверждения.  Чтобы избежать критических замечаний, старается вести себя безупречно. Претендует на незаурядность;
+•	фантаст. Больше не в состоянии выносить нее напряжение и оказывать сопротивление внешним силам. Чтобы уклониться от трудностей, строит иллюзии;
+•	загнанность. Чувствует, что уже не в состоянии удовлетворить требованиям  окружающих и  ситуации.  Избегая  трудностей,  ищет убежища,  где можно было бы снять напряжение.
+Измерительная шкала: с учетом того, что данный тест представлен в компьютерной форме, нормативы в него уже заложены (анализ частоты выбора цветов).
+
+
+Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизнь-XXIвек. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Рисунок Несуществующего животного.','Рассказ Льва о животном. Его имя Динозаврус. Это большое животное, живет в стае, это подросток – один из самых молодых в данной стае. Везде угроза, чтобы выжить эти животные объединяются. У них нет родителей, они от них отбились – военным путем, т.к. те были тиранами. Данные животные охотятся, ведут инстинктивный образ жизни. Подчиняясь им (инстинктам), они не испытывают радость в человеческом понимании.
+Качественный анализ:
+•	на рисунке имеется только голова и шея означает нерешительность и склонность к глубоким размышлениям и переживаниям;
+•	огромные зубы означают вербальную защитную агрессию;
+•	большие глаза выражают чувства страха и испуга;
+•	отсутствие несущей части фигуры означает импульсивность в принятии решений;
+•	несмотря на угрожающий внешний вид животного, Лев говорит, что оно не опасное для тех, кто сам на него не нападает;
+•	название с латинским окончанием «Динозаврус» означает демонстрацию разума.
+
+Измерительная шкала.
+Помимо деталей рисунка, интерпретацию которых дает множество авторов (например, П.В. Яньшин), важно учитывать её в сочетании с рассказом испытуемого о животном.
+
+Вывод: имеется четко прослеживаемое негативное отношение к семье.
+Яньшин П.В. Клиническая психодиагностика личности: Учебно методическое пособие – 2-е изд., испр. – СПб: Речь, 2007. – С. 190-258.
+','Kortinki\\Zadacha15\\14.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Шкала «Толерантность к двусмысленности».','Шкала «Толерантность к двусмысленности»  (методика Родника, Хезера и др. в адаптации Н.А. Бажановой и Г.Л. Бардиер).','Полученные данные:
+•	страстность (энергичность) – 25 баллов;  
+•	находчивость – 21; 
+•	оптимизм – 10; 
+•	смелость, предприимчивость – 7; 
+•	адаптивность – 12; 
+•	уверенность -22; 
+•	толерантность к двусмысленности – 5.
+
+Норма: см. средние показатели в таблице выше. 
+
+Выводы.  
+•	Оптимизм, смелость, адаптивность имеют низкую степень выраженности;
+•	страстность, находчивость и уверенность соответствуют норме;
+•	уровень толерантности к двусмысленности низкий.
+18 программ тренингов: Руководство для профессионалов /под ред. В.А. Чикер. – СПб.: Речь, 2007. — С. 322-325.
+','Kortinki\\Zadacha15\\15.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Уровень школьной тревожности Филипса.','Измерительная шкала: 
+•	если показатель больше 50 процентов, можно говорить о его повышенной выраженности;
+•	если более 75 - о высокой выраженности.
+
+Норма: 50 процентов и ниже. 
+
+Вывод. В пределах нормы оказались все показатели теста: общая тревожность, тревожность в школе, переживание социального стресса, фрустрация потребности в достижение успеха, страх самовыражения, тревожность относительно проверки знаний, страхи в отношениях с учителями, физиологическая сопротивляемость стрессу и страх несоответствия ожиданиям окружающих.
+Альманах психологических тестов. – Издание 2-е. – М.: КСП, 1996. – С. 165-171.
+','Kortinki\\Zadacha15\\16.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест уверенности в себе (В.Г. Ромек).','Полученные данные:
+•	уверенность в себе – 6 стенов;
+•	социальная смелость – 5;
+•	инициатива в социальных контактах – 5. 
+
+Норма: 5-6 стенов. 
+
+Вывод: показатели уверенности в себе, социальной смелости и инициативы в социальных контактах в пределах нормы.
+
+Практическая психодиагностика и психологическое консультирование. – Ростов-на-Дону: ЮРГИ, 1998. – С. 87-108.
+','Kortinki\\Zadacha15\\17.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Диагностика Доброжелательности (по шкале Кемпбелла).','Полученные данные:
+3 балла
+
+Измерительная шкала:
+	3 балла и меньше — низкий показатель доброжелательного отношения к другим;
+	4-6 — средний показатель доброжелательного отношения к другим;
+	7 и больше — высокий показатель доброжелательного отношения к другим.
+
+Норма: 4-6 баллов.
+
+Вывод: низкий показатель принятия других.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 113-114.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Экспресс диагностика доверия (по шкале Розенберга).','Полученные данные:
+1 балл. 
+
+Измерительная шкала:
+	0-1 баллов — низкий показатель доверия;
+	2 балла — средний показатель доверия;
+	3 балла — высокий показатель доверия.
+
+Норма: 2 балла. 
+
+Вывод:  диагностируется низкий показатель доверия.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика оценки доверия/недоверия личности другим людям (А.Б. Купрейченко).','Содержательные характеристики при указанном сочетании параметров личности:
+•	человека, которому Лев доверяет, он считает в первую очередь надежным и склонен не сильно замечать его недостатки;
+•	Лев считает, что знает о человеке, которому не доверяет даже больше, чем о том, кому доверяет. Он при этом считает таких людей ненадежными, не чувствует к ним приязни и единства с ними. Он также не считает их сильно расчетливыми;
+•	доверие Льва основывается на надежности человека.
+
+* Критерии доверия определяются по разности значений Д и НД, т.е. из показателей, полученных от испытуемого по отношению к тому, кому он доверяет вычитаются показатели, связанные с тем человеком, которому испытуемый не доверяет. В данном случае, при сравнении с нормами, критерием является то значение, которое превосходит нормы. Если значение значительно ниже нормы, значит данный показатель неприемлем для испытуемого как критерий доверия людям. 
+
+Выводы:  
+•	в отношении тех людей, которым Лев доверяет, показатель надежность имеет высокую степень выраженности. Показатели единства, знания, расчета и недостатков имеют уровень ниже среднего. Уровень приязни соответствует норме;
+•	в отношении тех людей, которым Лев не доверяет показатели надежности, единства и приязни (веры) имеют низкую степень выраженности. Шкала расчета – ниже среднего. Шкала знаний имеют высокую степень выраженности, а шкала недостатков слегка выше нормы; 
+•	критерием доверия для Льва выступает надежность.
+
+Купрейченко А.Б. Психология доверия и недоверия. – М.: Институт психологии РАН, 2008. – С. 224-301.
+','Kortinki\\Zadacha15\\20_1.png','Kortinki\\Zadacha15\\20_2.png',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на благодарность.','Полученные данные: 15 баллов. 
+
+Измерительная шкала.
+Тестирование, проведенное среди 1224 взрослых респондентов позволяет сделать следующие выводы:
+	если вы набрали не более 35 баллов, то попадаете в группу наименее благодарных (25 %);
+	 те, кто набрали от 36 до 38, относятся к средней группе (50 %);
+	люди с результатом от 39 до 41 особенно благодарны жизни (25 %);
+	а показатель 42 характеризует 12,5 % самых благодарных. 
+
+Норма: от 36 до 38 баллов. 
+
+Вывод: диагностируется низкий уровень способности благодарить.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 102.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на трансгрессивную мотивацию (умение прощать), (Мак-Куллоу).','Полученные данные:
+•	стремление избежать обидчика – 23 балла;
+•	мстительность – 35. 
+Измерительная шкала.
+Стремление избегать обидчика.
+	Средний результат среди американцев — 12,6 баллов;
+	набравшие более 17,6 попадают в число «обиженных» (33 % американцев);
+	набравшие более 22,8 — обиженных смертельно (10 %).
+Мстительность.
+	Если вы набрали около 7,7, то ваш результат близок к среднеамериканскому;
+	набрав 11 и выше, вы попадаете в категорию людей мстительных (33 % американцев);
+	показатель 13,2 и выше свидетельствуют о том, что вы оказались среди самых заядлых мстителей (10 % американцев).
+
+Вывод: диагностируется высокое стремление избежать обидчика (обидчивость) и очень высокая мстительность.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 111.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест коммуникативных навыков (Методика Л. Михельсона в адаптации Ю.З. Гильбуха).','Полученные данные:
+•	уровень компетентности – 13 баллов;
+•	уровень зависимости в общении – 1;
+•	уровень агрессивности в общении – 13.
+
+Содержательные характеристики при указанном сочетании параметров личности: коммуникативная реакция испытуемого зависит от ситуации. По словам Льва, он может проявлять вежливость, но только не в семье, где его постоянно заставляют что-то делать.
+
+Измерительная шкала: всего в тесте 27 утверждений, поэтому максимальный балл по одной из трех шкал (агрессивность, зависимость, компетентность)  – 27 баллов. Результаты анализируется в зависимости от сочетания баллов по данным шкалам.
+
+Выводы:  
+•	диагностируется компетентно-агрессивное общение (зависит от ситуации);
+•	зависимость в общении практически не выражена.
+
+Колмогорова, Н. С. Коммуникативная компетентность как условие и следствие становления направленности личности: дис. ... канд. психол. наук: 19.00.01 / Наталья Степановна Колмогорова. – Барнаул, 2004. – 228 с.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Методика диагностики степени удовлетворенности основных потребностей.','Методика диагностики степени удовлетворенности основных потребностей (адаптация В.В. Скворцова).','Полученные данные.
+Потребности:
+•	материальные – 11 баллов;
+•	в безопасности – 25;
+•	в признании – 15;
+•	социальная потребность в теплых отношениях и потребность быть понятым другим – 32;
+•	потребность в самоактуализации – 21.
+
+Измерительная шкала
+	0-14 баллов – зона удовлетворенности;
+	14-28 – частичная неудовлетворенность;
+	Выше 28 – зона неудовлетворённости, главный мотиватор среди остальных потребностей.
+
+Норма: 0-14 баллов. 
+
+Выводы. Потребности имеют следующую степень удовлетворенности:
+•	материальные – зона удовлетворенности;
+•	социальная потребность в теплых отношениях и потребность быть понятым другим – зона неудовлетворенности;
+•	в безопасности и самоактуализации – частично неудовлетворенная;
+•	в признании – слегка неудовлетворенная.
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 53-54.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Тест «Поведение родителей и отношение подростков к ним».','Тест «Поведение родителей и отношение подростков к ним» (методика Е. Шафера в адаптации Э. Матейчика и П. Ржичана).','Полученные данные.
+Оценка Владой воспитательных методов мамы:
+•	позитивный интерес – 4 стена;
+•	автономность – 4;
+•	враждебность – 4; 
+•	директивность – 2;
+•	непоследовательность воспитания – 5.
+
+Оценка Владой воспитательных методов бабушки:
+•	позитивный интерес – 2;
+•	автономность – 2;
+•	враждебность – 5; 
+•	директивность – 3;
+•	непоследовательность воспитания – 5.
+
+Норма: 3 стена. 
+
+Выводы.
+
+Со стороны матери ко Льву (по мнению самого Льва): 
+•	позитивный интерес, автономность и враждебность, а также непоследовательность воспитания имеют высокую степень выраженности;
+•	директивность имеет низкий уровень.
+
+Со стороны папы ко Льву:
+•	враждебность и непоследовательность воспитания имеют высокую степень выраженности;
+•	позитивный интерес и автономность имеют низкую степень выраженности;
+•	директивность в пределах нормы.
+
+Сонин В.А. Психодиагностическое познание профессиональной деятельности. — СПб.: Речь, 2004. – С. 169-178.
+','Kortinki\\Zadacha15\\25.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Выявление самооценки по методике Дембо-Рубинштейн в модификации А.М. Прихожан.','Полученные данные: 
+•	среднее арифметическое по самооценке – 45 баллов;
+•	 среднее арифметическое по уровню притязаний – 93.
+
+Измерительная шкала:
+Уровень самооценки и уровня притязаний определяется положением на 100 бальной шкале отметок испытуемого.
+	Самооценка ниже 45 баллов признается низкой, 45-59 – средняя, 60-74 – высокая, 75-100 – очень высокий уровень;
+	уровень притязаний ниже 60 баллов признается низким, 60-74 – средним, 75-89 – высоким, 90-100 – очень высоким уровнем.
+* Нормы для среднеарифметических показателей аналогичны.
+Норма: 45-59 баллов для самооценки и 60-74 для уровня притязаний. 
+
+Выводы:
+•	среднее арифметическое по самооценке – граница среднего и низкого;
+•	среднее арифметическое по уровню притязаний – очень высокое;
+
+Отдельные показатели.
+Самооценка:
+•	очень высокий уровень самооценки – ум, способности;
+•	высокий уровень – доверие к окружающим людям;
+•	средний уровень – доверие к близким людям;
+•	низкий уровень – характер, авторитет у сверстников;
+•	очень низкий – счастье и оптимизм.
+
+Уровень притязаний:
+•	очень высокий уровень притязаний по показателям: ум, способности, авторитет у сверстников, счастье, доверие к окружающим, оптимизм и доверие к близким людям;
+•	уровень притязаний относительно характера – низкий.
+
+Яньшин П.В. Клиническая психодиагностика личности: Учебно-методическое пособие – 2-е изд., испр. – СПб: Речь, 2007. – С. 29-54.
+','Kortinki\\Zadacha15\\26.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала самоуважения Розенберга.','Полученные данные: 5 стенов.','Вывод: диагностируется нормальный уровень самоуважения.
+
+Бодалев А.А., Столин В.В. Общая психодиагностика. – СПб.: Речь, 2000. – С. 308.
+','Kortinki\\Zadacha15\\27.png',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на удовлетворенность жизнью.','Полученные данные: 5 баллов. 
+
+Измерительная шкала: 
+Этот тест уже выполнен десятками тысяч людей в разных странах. 
+	средний итоговый результат у пожилых американцев — 28 баллов у мужчин и 26 у женщин, у американских студентов — 23-25;
+	средний результат у китайских и восточноевропейских студентов —16-19;
+	заключенные тюрем мужского пола в среднем оценили степень удовлетворенности жизнью в 12;
+	больные, амбулаторно посещающие психологов, дали оценку в 14-18, а женщины, подвергшиеся насилию, и пожилые сиделки, как ни странно, показали довольно высокий результат — около 21 в среднем
+
+Вывод:  диагностируется низкая удовлетворённость жизнью.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 92.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Эмоциональный тест Фордайса.','Полученные данные:
+•	уровень счастья – 1 балл;
+•	переживание счастья – 0,5% всего времени;
+•	переживание несчастья – 85% всего времени;
+•	переживание нейтрального состояния – 19,5 % всего времени.
+
+Измерительная шкала:
+	по результатам тестирования 3050 взрослых американцев средний уровень ответов на первый вопрос составил 6,92;
+	согласно данным по второму вопросу, средний американец примерно половину своего времени (54,13 %) чувствует себя счастливым, 20,44 % времени — несчастным, а все остальное время (25,43 %) — чувствует себя нейтрально.
+
+Норма: 7 баллов (уровень счастья) и 50 % (переживания счастья). 
+
+Выводы. 
+Диагностируется: 
+•	очень низкий уровень ощущения счастья;
+•	очень низкий уровень частоты переживания счастья;
+•	высокий уровень переживания несчастного состояния.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 30.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала субъективного благополучия (методика Мендельсона и др. в адаптации М.В. Соколовой).','Полученные данные: уровень субъективного благополучия – 10 стенов.
+
+Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, показатели испытуемого говорят о значительно выраженном эмоциональном дискомфорте.
+
+Вывод: диагностируется очень низкое субъективное благополучие, полный эмоциональный дискомфорт.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – C. 467-470.
+','Kortinki\\Zadacha15\\30.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Шкала активности и оптимизма.','Шкала активности и оптимизма (методика И.С. Шуллера и А.Л. Комуниана в адаптации Г.С. Никифорова).','Полученные данные: 
+•	уровень активности – 25 баллов;
+•	уровень оптимизма – 10.
+
+Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, при данных показателях, присутствует неверие в хорошее будущее, а также  нежелание что-либо делать для преодоления нежелательной ситуации.
+
+Вывод: Лев активный пессимист.
+
+Практикум по психологии менеджмента и профессиональной деятельности /Под редакцией Г.С. Никифорова, М.А. Дмитриевой, В.М. Снеткова – СПб.: Речь, 2003. – С 287-293.
+','Kortinki\\Zadacha15\\31.png','',15)
+	insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Самооценка силы воли (Н.Н. Обозов).','Полученные данные: 10 баллов. 
+
+Измерительная шкала:
+	от 0 до 12 баллов – у Вас слабая сила воли, Вас легко переубедить;
+	от 13 до 21 – у Вас сила воли средняя. В различных ситуациях Вы действуете по-разному, иногда проявляя чудеса уступчивости и податливости, а иногда – настойчивость и упорство;
+	от 22 до 30 – у Вас большая сила воли, Вы волевой человек.
+
+Норма: от 13 до 21 балла. 
+
+Вывод. Диагностируется низкий уровень силы воли.
+
+Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 523-524.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Уровень субъективного контроля (УСК).','Уровень субъективного контроля (УСК) (методика Дж. Роттера в адаптации Е.Ф. Бажина, Е.А. Голынкиной, А.М. Эткинда).','Полученные данные: 
+•	общий показатель субъективного контроля – 12 баллов;
+•	уровень интернальности в отношении достижений – 1; 
+•	интернальность в области неудач – 4. 
+
+Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, показатели испытуемого говорят о том, что Лев ощущает не способность контролировать свою жизнь и винит во всех неудачах других людей.
+
+Вывод: общий показатель субъективного контроля, уровня интернальности в отношении достижений и в области неудач средний низкий.
+
+Немов Р.С. Психология. Учебник для студентов высших педагогических учебных заведений: В 3-х ч. Ч.3. Психодиагностика. –4-е изд. – М.:  Владос, 2001. – С. 480-483.
+','Kortinki\\Zadacha15\\33.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Моментальный тест на позитивную и негативную аффективность (по отношению к учителям).','Полученные данные: 
+•	сумма негативных эмоций по отношению к матери – 23 балла (доминирующие негативные эмоции: чувство вины и беспокойство – 5 баллов);
+•	сумма позитивных эмоций – 37 (доминирующие позитивные эмоции: энтузиазм, гордость, внимание – 5 баллов, также бодрость и активность – 4 балла).
+
+Измерительная шкала:
+М. Селигман предлагает главным образом исходить из следующего:
+	во-первых, максимальный уровень положительных или отрицательных эмоций может достигать 50 баллов;
+	во-вторых, необходимо обращать внимание на соотношение баллов по двум уровням эмоций (позитивный, негативный).
+* Оценка отдельной эмоции идет по 5-балльной шкале, где 4,5 – высоко, 3 – средне, 2,1 – низко.
+
+Норма: 3 балла (отдельная эмоция). 
+
+Вывод. Сумма баллов по позитивным эмоциям  по отношению к матери значительно превосходит сумму негативных, что означает доминирование положительного эмоционального фона.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 53.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Диагностика социально-психологической адаптации.','Диагностика социально-психологической адаптации (методика К. Роджерса и Р. Даймонда, адаптирована на факультет СПб государственного университета).','Полученные данные: 
+
+Уровень общей социально-психологической адаптации – 42 балла.
+
+Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, при таких показателях имеется внутренний конфликт, возможно, проявляется чувство вины.
+Измерительная шкала:
+	39-44 балла – норма адаптации;
+	Свыше 44 – высокая адаптация;
+	Ниже 39 – низкая.
+
+Норма: 39-44 балла. Нормы по отдельным шкалам считаются методом деления максимального количества баллов на 2, полученное число и есть средняя норма.
+Выводы:
+•	в целом диагностируется уровень социально-психологической адаптации соответствующий норме;
+•	наблюдается высокий уровень по следующим показателям: принятие и непринятие себя, доминирование;
+•	на уровне выше среднего находится шкала ухода от проблем;
+•	на среднем уровне принятие других, эмоциональный комфорт, ожидание внутреннего контроля;
+•	на уровне ниже среднего: эмоциональный дискомфорт, ожидание внешнего контроля;
+•	на низком уровне конфликтность и ведомость.
+
+Широкова И.Б. Тренинг самопознания для подростков: Общение. Память: 8-10 классы. – М.: Генезис, 2005. – 169 с.
+','Kortinki\\Zadacha15\\35.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Диагностика принятия других (по шкале Фейя).','Полученные данные: 46 баллов.
+
+Измерительная шкала:
+•	60 баллов и больше — высокий показатель принятия других;
+•	45—60 — средний показатель принятия других с тенденцией к высокому;
+•	30-45— средний показатель принятия других с тенденцией к низкому;
+•	30 и меньше — низкий показатель принятия других.
+
+Норма: 45-60 баллов. 
+
+Вывод: диагностируется средний показатель принятия других с тенденцией к высокому.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 112-113.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Определение воспитательных мер в отношении Льва.','Лев: «Какое-то время до 2012 года, родители мне позволяли играть в компьютер по 5-6 часов, а сейчас резко запретили! За это я вообще ничего делать не буду. Они пытаются загнать меня в жесткие рамки, и я буду с эти бороться».
+
+Вывод: непоследовательность воспитательных мер.
+','Kortinki\\Zadacha15\\net.png','',15)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Выявление образа родителей методом беседы.','Выявление образа родителей методом беседы (беседа психолога со Львом на тему книги, которую он пишет).','Лев: «В моей «книге» герой, в конце концов, добился всего и стал жить счастливо. У него были жестокие родители, убивали насекомых и других животных, но сын не поддался на такое воспитание, не стал убийцей. Сын продолжает бороться со своими родителями, но не их методами».
+
+Вывод: наблюдается образ жестоких родителей.
+','Kortinki\\Zadacha15\\net.png','',15)
+go
+
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Данные об успеваемости.','Успеваемость: высокий уровень по всем предметам.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика Мюнстерберга.','Полученные данные:
+27 слов за 117 сек, т.е.
+избирательность – 14 баллов.
+
+Общее количество слов в тесте равно 27.
+* За каждое пропущенное или неправильно найденное слово снимается по одному баллу.
+
+Норма: 120-199 баллов
+
+Вывод: уровень избирательности внимания высокий.
+
+Бруннер Е.Ю. Лучше, чем супервнимание: Методики диагностики и психокоррекции. – Ростов н/Д: Феникс, 2006. –  С. 42-45.
+','Kortinki\\Zadacha16\\2.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика заучивания «10 слов» (А.Р. Лурия).','Содержательные характеристики при указанном сочетании параметров личности:
+•	сильных изгибов на графике не наблюдается;
+•	после первых двух серий испытуемый воспроизводит 8-9 слов.
+
+Измерительная шкала.
+Показатели:
+	в норме, при хорошем уровне процессов запоминания, после одной – двух серий, испытуемый должен воспроизводить 8-9 слов;
+	сильные изломы графика – проявление утомляемости, колебания активности внимания.
+
+Норма: 7-9 слов, отсутствие изгибов.
+
+Вывод:  уровень развития памяти и внимания соответствует норме. 
+
+Альманах психологических тестов /Сост. С. Римский, Р.Р. Римская. – М.: КСП+, 1995. – С. 92-94.
+','Kortinki\\Zadacha16\\3.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Перепутанные линии (тест Риса).','Из 25 линий правильно найдено 11. Время выполнения, 6 мин 50 секунд, что соответствует 3 баллам.
+
+Измерительная шкала: в исследованиях К.К. Платонова время выполнения задания различными испытуемыми колебалось в следующем диапазоне:
+•	3 минуты 33 секунды – лучший результат;
+•	4-10 минут – средний результат;
+•	13 минут  - худший результат.
+
+Норма: 4-10 мин, 10-18 правильных ответов.
+
+Вывод: уровень концентрации внимания хороший.
+
+Марищук В.Л. Методики психодиагностики в спорте: учебное пособие /В.Л. Марищук, Ю.М. Блудов, В.А. Плахтиенко, Л.К. Серова. – М.: Просвещение, 1984. – 191 с.
+','Kortinki\\Zadacha16\\4_1.png','Kortinki\\Zadacha16\\4_2.png',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика «Словесный лабиринт».','Среднеарифметическое всех заданий – 45 сек. 
+Содержательные характеристики при указанном сочетании параметров личности:
+•	среднее арифметическое всех заданий равно 45 сек, относительно него наблюдается высокое отклонение результатов в 1 и 2 серии;
+•	также прослеживается эффект научения, 1 и 2 карточка испытуемым выполнялись в среднем за 2 мин, а все последующие в пределах 1 минуты;
+•	если взять среднее арифметическое заданий с 3 по 10, то получится число равное 25 секундам, относительно него разброс результатов (кроме 8 серии) уменьшается;
+•	в результате пять серий (4, 6, 7, 9, 10) выполнены практически за одно и то же время.
+
+Норма:	
+•	сильные изломы графика - ригидность мышления (изломы определяются по отклонению времени выполнения каждого задания относительно среднеарифметической выполнения всех заданий);
+•	эффект научения определяется с помощью анализа временных затрат (его сокращения) на каждую последующую задачу.
+
+Вывод: лабильность мышления средняя.
+
+Практикум по общей, экспериментальной и прикладной психологии /Под ред. Крылова А.А., Маничева С.А. – 2-е изд., доп. и перераб. – СПб.: 2003. – 
+С. 145-147.
+','Kortinki\\Zadacha16\\5.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник на эмоциональный интеллект ЭмИн: новые психометрические данные (Д.В. Люсин).','Полученные данные:
+•	МП – 23 балла;
+•	МУ – 19;
+•	ВП – 25;
+•	ВУ – 21;
+•	ВЭ – 10;
+•	МЭИ – 42;
+•	ВЭИ – 55.
+
+Норма: см. средние показатели в таблице выше.
+
+Выводы:  
+•	понимание и управление чужими эмоциями, а также межличностный эмоциональный интеллект – средний уровень развития;
+•	понимание и управление своими эмоциями, а также внутриличностный эмоциональный интеллект – высокий уровень;
+•	контроль экспрессии – средний уровень.
+
+Социальный и эмоциональный интеллект: от процессов к измерениям /Под ред. Д.В. Люсина, Д.В. Ушакова. М.: Институт психологии РАН, 2009. С. 264 – 278.
+','Kortinki\\Zadacha16\\6.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Диагностика социального интеллекта. Тест Дж. Гилфорда и М. Салливена.','Диагностика социального интеллекта. Тест Дж. Гилфорда и М. Салливена (адаптация Михайловой Е.С.).','Полученные данные.
+•	Субтест 1 истории с завершением  – 2 балла;
+•	субтест 2 группы экспрессии – 2;
+•	субтест 3 вербальная экспрессия – 4;
+•	субтест 4 истории с дополнением – 2;
+•	общая оценка социального интеллекта – 2.
+Содержательные характеристики при указанном сочетании параметров социального интеллекта: по мнению авторов методики, при данных показателях, уровень предвидения своего поведения, определения состояния человека по жестам, позе и мимике, анализ межличностного взаимодействия выражен на уровне ниже среднего. Диагностируется наряду с вышеизложенным, обладание обладают высокой чувствительностью к характеру и оттенкам человеческих взаимоотношений, что помогает им быстро и правильно понимать то, что люди говорят друг другу (речевую экспрессию) в контексте определенной ситуации, конкретных взаимоотношений. Такие люди способны находить соответствующий тон общения с разными собеседниками в разных ситуациях, и имеют большой репертуар ролевого поведения (то есть они проявляют ролевую пластичность).
+
+Норма: 3 балла.
+
+Вывод: диагностируется социальный интеллект на уровне ниже среднего.
+
+Михайлова Е.С. Тест Дж. Гилфорда и М. Салливена. Диагностика социального интеллекта: Методическое руководство. –  СПб.: ИМАТОН, 2006. – 56 с.
+','Kortinki\\Zadacha16\\8.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест смысложизненных ориентаций.','Полученные данные:
+•	наличие целей – 42 балла;
+•	эмоциональная насыщенность жизнью (процесс жизни) – 39;
+•	удовлетворенность прошлым (результативность жизни) – 32;
+•	локус контроля "я" (вера в свои силы) – 25; 
+•	локус контроля «жизнь»  (управляемость жизнью) – 40;
+•	общая осмысленность жизни – 126.
+Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, при данных показателях, испытуемый четко видит и планирует свое будущее. Он контролирует свою жизнь, стремится самостоятельно её изменять и управлять её процессами и своей деятельностью.
+
+Норма: см. средние значения в таблице выше. 
+Выводы: 
+•	наблюдается высокий уровень целеполагания, эмоциональной насыщенности и результативности жизни,  локуса контроля «жизнь», и локуса контроля «Я»;
+•	общий показатель осмысленности жизни – высокий.
+Леонтьев Д.А. Тест смысложизненных ориентаций: Психодиагностическая серия. – М: Смысл, 2006. –  18 с.
+','Kortinki\\Zadacha16\\9.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест жизнестойкости (методика С. Мадди в адаптации Д.А. Леонтьева).','Полученные данные:
+•	вовлеченность в жизнь – 38 баллов;
+•	контроль жизни – 44;
+•	принятие риска – 20;
+•	общая жизнестойкость – 102.
+
+Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, показатели испытуемого говорят о том, что Саша убежден в том, что борьба позволяет повлиять на результат происходящего, пусть даже это влияние не абсолютно, и успех не гарантирован. Он готов рисковать ради этого. Выраженность жизнестойкости в целом у Саши препятствует возникновению внутреннего напряжения в стрессовых ситуациях за счет стойкого совладания со стрессом.
+
+Норма: см. средние значения в таблице выше. 
+
+Выводы: 
+•	уровень контроля за жизнью – очень высокий;
+•	уровень принятия риска – высокий;
+•	уровень вовлеченности соответствует норме;
+•	общий уровень жизнестойкости высокий.
+Леонтьев Д.А., Рассказова Е.И. Тест жизнестойкости. — М.: Смысл, 2006. — 63 с.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Мотивация успеха и боязнь неудачи (опросник А.А. Реана).','Полученные данные:
+16 баллов.
+
+Измерительная шкала:
+	от 1 до 7 – диагностируется мотивация на неудачу (боязнь неудачи);
+	от 14 до 20 – мотивация на успех (надежда на успех);
+	от 8 до 13 – мотивационный полюс ярко не выражен;
+	При этом можно иметь в виду, что если количество баллов 8 или 9, есть определенная тенденция мотивации на неудачу, а если количество баллов 12 или 13, имеется определенная тенденция мотивации на успех.
+
+Вывод: выражена мотивация к достижению успеха.
+
+Малкина-Пых И.Г. Психосоматика: Справочник практического психолога. — М.: Эксмо, 2005. — С. 124-126.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Тест психологической диагностики копинг-механизмов.','Тест психологической диагностики копинг-механизмов (тест Э. Хайма в адаптации Л.И. Вассермана).','Полученные данные:
+•	когнитивная стратегия – «Я стараюсь проанализировать, все взвесить  и   объяснить себе, что же случилось»;
+•	эмоциональная стратегия – «Я всегда уверен, что  есть  выход  из  трудной  ситуации»;
+•	поведенческая стратегия – «Я  использую  сотрудничество со значимыми  мне   людьми для преодоления трудностей».
+
+Содержательные характеристики при указанном сочетании параметров личности:
+•	в качестве когнитивной стратегии Саша использует проблемный анализ;
+•	в качестве эмоциональной стратегии совладания используется оптимизм;
+•	в качестве поведенческой – сотрудничество.
+
+Измерительная шкала:
+Стратегии, по мнению Э. Хайма, должны оцениваться по качественному содержанию и интерпретироваться как:
+	продуктивные;
+	полупродуктивные (для несложных ситуаций);
+	непродуктивные.
+Вывод:  все коппинг стратегии испытуемого продуктивны.
+
+Набиуллина Р.Р., Тухтарова И.В. Механизмы психологической защиты и совладания со стрессом (определение, структура, функции, виды, психотерапевтическая коррекция). – Казань: Казанская государственная медицинская академия, 2003. — 99 с.
+','Kortinki\\Zadacha16\\12.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Индивидуально-типологический опросник.','Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, при данных показателях, у испытуемого могут наблюдаться периодически вспышки агрессии и гнева, эмоциональные взрывы. Саша проявляет себя сдержано в новой обстановке и с новыми людьми. Присутствует также решительность, лидерские черты, стремление поступать по-своему, самостоятельность выбора.
+
+Измерительная шкала:
+	показатели 3-4 характерны для уравновешенной нормы; 
+	умеренно повышенные показатели (до 5) выявляют характерологические черты в пределах нормативного разброса;
+	умеренно выраженные тенденции, компенсированные полярными свойствами (т. е. антитенденциями), в пределах 4-5, свидетельство сбалансированности разнонаправленных свойств;
+	показатели 7-8 по тем или иным шкалам выявляют заостренные, акцентуированные черты характера, а также могут свидетельствовать о ситуативно обусловленной затрудненной адаптации;
+	если избыточно выраженным тенденциям (от 7 до 9) противопоставлены столь же высокие баллы по антитенденциям (полярным шкалам ИТО), то это говорит о значительной эмоциональной напряженности или стрессе;
+	показатели от 0 до 2 указывают на гипоэмотивность (пониженную эмоциональность), плохое самопонимание или неоткровенность при обследовании;
+	В противовес сильно выраженным характеристикам минимальные показатели по шкалам, отражающим антитенденции (0-2), свидетельствуют о том, что самоконтроль занижен и избыточная тенденция не компенсируется.
+Норма: показатели в пределах 3-х баллов.
+Выводы: 
+•	шкала лжи и аггравации соответствуют норме;
+•	к акцентуированным чертам относится агрессивность, ригидность-лабильность, интроверсия, спонтанность;
+•	экстраверсия, сензитивность и тревожность в пределах нормы.
+Собчик Л.Н. Индивидуально-типологический опросник. – М.: Боргес, 2008. – 190 с.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на склонность к любопытству и исследованию.','Полученные данные: 32 балла. 
+
+Измерительная шкала:
+Русскоязычная выборка включала 358 человек в возрасте от 17 до 66 лет (средний возраст 26,61±0,48 года). 91 мужчина и 267 женщин.
+	17 баллов и ниже – низкая склонность к любопытству и исследованию
+	29-18 – склонность к любопытству и исследованию ниже среднего;
+	от 30 до 34 – средняя склонность к любопытству и исследованию;
+	34-48 – высокая склонность к любопытству и исследованию;
+	49 – очень высокая склонность к любопытству и исследованию.
+
+Норма: от 30 до 34 баллов. 
+
+Вывод: средняя склонность к любопытству и исследованию
+
+Психометрические показатели русскоязычной версии теста «Склонность к любопытству и исследованию» (CEI-II) / С. П. Елшанский, А. Ф. Ануфриев, З. Ф. Камалетдинова [и др.] //Вестник Костромского государственного университета им. Р.А. Некрасова. Серия: Педагогика. Психология. Социальная работа. Ювенология. Социокинетика. – 2016. – Том 22., № 2. – C.113-118.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Методика диагностики мотивации одобрения.','Методика диагностики мотивации одобрения (методика Д. Марлоу и Д. Крауна в адаптации Ю.Л. Ханина).','Полученные данные: 12 баллов. 
+Измерительная шкала:
+	0-6 — низкая мотивация к одобрению;
+	7-13 — средняя мотивация к одобрению;
+	14-20 — высокая мотивация к одобрению.
+
+Норма: 7-13 баллов. 
+
+Вывод: диагностируется средняя мотивация одобрения.
+
+Психологические тесты /Ред. и сост. С. Касьянов. – М.: Эксмо, 2006. – С. 358-360.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Компьютерный Цветовой тест Люшера (адаптация А. Ласточкина).','Полученные данные: по мнению автора методики, при сделанной испытуемой частоте выбора цветов, диагностируется следующее.
+
+Результаты по выбоpу сеpого цвета: готовность к переживаниям - потребность в удовлетворении-самоутверждении. Не считает необходимым ограничивать себя предписаниями, не  согласованными с его  убеждениями  и  смело вступает в контакт с другими людьми. От новых встреч  ожидает, что  они  обогатят  его, дадут  возможность  узнать много интересного. Поэтому при встречах готов к соучастию и сопереживанию.
+
+Результаты по выбоpу 8 цветов.
+
+По устpемлению: томится по отношениям любви и  нежности,  по  состоянию  идеальной гармонии.  Повышенная потребность  стать  нежно  любимым.  Чувствителен к эстетической красоте. Способен  проникаться чувствами  другого. Может увлекаться.
+
+По состоянию: занимает оборонительную    позицию. Считает, что его положение недостаточно прочно  или  что  над  ним  нависла  какая-то  угроза. Полон решимости достичь своих целей,  несмотря на тревогу и раздражение, которые вызывает оппозиция к нему.
+
+По индифеpентности: желая расширить сферу деятельности,  настаивает на том, что его надежды и желания реальны.  Страдает от опасений, что ему могут помешать закончить то, что он делает. Ему  нужны:  спокойная   обстановка  и  дружеское подбадривание, для того, чтобы обрести уверенность. Физиологическая интерпретация: стресс, вызванный нежелательными ограничениями или запретами. Психологическая интерпретация: хочет свободно  следовать  своим  убеждениями  принципам,  развивать  свои способности,  хочет добиться уважения к  себе  как  к  личности.  Надеется благодаря   активности   и   усердию  устранить  внутренние  противоречия. Преследуя свои интересы,  борется  с  помехами  и  стремится  использовать каждую   возможность,   когда  можно  действовать,  не  подчиняясь  никаким ограничениям и запретам. Игнорируя требования своего организма, использует имеющиеся в его распоряжении силы так, чтобы достичь как можно большего. Коротко: желание распоряжаться своей судьбой.
+Актуальная проблема: стремится, избегая   критики   и  предотвращая  какие-либо  ограничения свободы его действий, самостоятельно определять свою судьбу, а когда имеет дело с другими людьми, пускает в ход личное обаяние.
+
+Отдельные показатели:
+•	стpемления, мотивиpованные самопониманием. Боится, что ситуация может стать  ненадежной или неопределенной. Боится пустоты  одиночества. Поэтому  с  повышенной чувствительностью  напряженно следит за тем, относятся ли  к  нему  с  должным  вниманием  и надежно  ли гарантирована его безопасность;
+•	возбудимость, импульсивность. Чувствует, что попал в ситуацию непонимания, которое воспринимается как оскорбление,    бессердечное   нежелание   пойти   навстречу,   стремление использовать его в своих интересах и вызывает обиду.  Поэтому держится  от других  на  расстоянии  и,  напряженно  следя  за  их  отношением  к себе, защищается от критики или от бесцеремонных нападок;
+•	затронутое честолюбие. Стремится к  безопасности,  релаксации,  идиллической гармонии.  Однако из-за своеволия  не  может  приспосабливаться.  Чрезмерно чувствителен  к помехам  и  сопротивлению.  Хочет,  чтобы  его потребности удовлетворялись беспрепятственно;
+•	инфантильность. Надеется, что как  по  мановению  волшебной  палочки,  реализуются  его потребности в безопасности,  идиллической гармонии.  Часто мечтает,  забыв обо всем;
+•	уход в идиллию. Чувствует, что  больше  не  в  состоянии  носить внутреннее напряжение, оказывать сопротивление внешним силам.  Воспринимает предъявляемые к  нему требования  как  невыносимые  и  уклоняется  от их исполнения.  Испытывает потребность в безопасности, идиллической гармонии, разрядке. Согласен идти на компромиссы;
+•	стремление к изнеженности и жалость к себе. Ищет прочной опоры  и  дающей  спокойствие  безопасности.  Стремится  к разрядке  в  идиллически гармоничных отношениях.  Считает,  что только они могут дать  ему  возможность  почувствовать  удовлетворенность.  Но такие отношения всего лишь результат его иллюзий;
+•	командование сердечной чувственностью. Настойчиво стремясь  к  самоутверждению,  не  хочет поддерживать связи, воспринимаемые как зависимость;
+•	форсированная агрессия. Гоним сильной  жаждой переживаний и не в состоянии спокойно предаваться какому-либо занятию. Сопротивляется возникновению сердечной привязанности;
+•	безудержное честолюбие. Не хочет поддерживать существующие отношения.  Испытывает разочарование в партнере и не хотел бы больше от него зависеть.  Беспокойно и настойчиво ищет новых связей и возможностей, которые могут сделать его счастливым;
+•	замкнутость. Не хочет поддерживать существующие отношения. Избегает волнений;
+•	борьба за своеволие в выборе переживаний. Хотел бы преодолеть возникшие препятствия и  добиться  своего,  проявив свою  волю и инициативу,  чтобы получить признание других и не зависеть от их  благосклонности.  Хочет  поступать  только  в   согласии   со   своими убеждениями и по своему усмотрению;
+•	честолюбив, стремится к  независимости  и  превосходству.  Находится  в состоянии напряженного ожидания. Из всего извлекает собственную выгоду. Твердолобое стремление к самоутверждению. С повышенной раздраженностью  реагирует  на  помехи  и  сопротивление, которое препятствует осуществлению его собственных намерений;
+•	защита с целью самоутверждения. Стремится к тому,  чтобы быть стойким и уверенным в себе.  Ставит перед собой как непосредственную,  так и отдаленную цели,  чтобы, реализовав их, добиться желанного самоутверждения.  Чтобы избежать критических замечаний, старается вести себя безупречно. Претендует на незаурядность;
+•	эмоциональная нестабильность. Ищет признания.  Если не находит его,  то считает,  что его  критикуют, умаляют   его  достоинства.  Поэтому  сверхчувствителен  и  раздражителен, реагирует преимущественно импульсивно;
+•	фантаст. Больше не в состоянии выносить нее напряжение и оказывать сопротивление внешним силам. Чтобы уклониться от трудностей, строит иллюзии;
+•	беспомощность. Чувствует переутомление из-за перенапряжения и волнений. По отношению к ситуации беспомощен;
+•	экспансивное стремление к новым переживаниям. Активный и эмоционально отзывчивый,  стремится все пережить.  Постоянно ищет новые возможности в этом стремлении  и  надеется,  что  каждая  новая встреча или реализация новой возможности принесут желанное, исполнение его надежд.
+
+Измерительная шкала: с учетом того, что данный тест представлен в компьютерной форме, нормативы в него уже заложены (анализ частоты выбора цветов).
+
+Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизнь-XXIвек. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник структуры темперамента (В.М. Русалов).','Полученные данные:
+•	эргичность – 6 баллов;
+•	социальная эргичность – 9;
+•	пластичность – 12;
+•	социальная пластичность – 5;
+•	темп – 9;
+•	социальный темп – 9;
+•	эмоциональность – 0;
+•	социальная эмоциональность – 4;
+•	шкала коррекции – 2.
+Содержательные характеристики при указанном сочетании параметров темперамента: при таком соотношении человек может долго выносить воздействующие на него негативные стимулы, однако длительное накопление такого рода стимулов может привести к резкой эмоциональной вспышке.
+Измерительная шкала.
+•	высокие значения – от 9 до 12 баллов;
+•	средние значения – от 4 до 8;
+•	низкие значения –  от 0 до 3.
+
+Выводы: 
+•	у испытуемого доминируют проявления двух типов темперамента: холерик (высокая социальная эргичность и высокая пластичность, также высокий темп и социальный темп) и флегматик (низкие показатели эмоциональности и социальной эмоциональности);
+•	показатели по шкале коррекции соответствует норме;
+•	показатели по шкалам эргичности и социальной пластичности также соответствуют норме.
+Русалов В.М. Опросник структуры темперамента (ОСТ). –  М.: ИП АН СССР, 1990. — 50 с.
+','Kortinki\\Zadacha16\\17.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Шкала «Толерантность к двусмысленности».','Шкала «Толерантность к двусмысленности»  (методика Родника, Хезера и др. в адаптации Н.А. Бажановой и Г.Л. Бардиер).','Полученные данные:
+•	страстность (энергичность) – 25 баллов;  
+•	находчивость – 21; 
+•	оптимизм – 10; 
+•	смелость, предприимчивость – 7; 
+•	адаптивность – 12; 
+•	уверенность -22; 
+•	толерантность к двусмысленности – 5.
+
+Норма: см. средние показатели в таблице выше. 
+
+Выводы.  
+•	Оптимизм, смелость, адаптивность имеют низкую степень выраженности;
+•	страстность, находчивость и уверенность соответствуют норме;
+•	уровень толерантности к двусмысленности низкий.
+18 программ тренингов: Руководство для профессионалов /под ред. В.А. Чикер. – СПб.: Речь, 2007. — С. 322-325.
+','Kortinki\\Zadacha16\\18.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест уверенности в себе (В.Г. Ромек).','Полученные данные:
+•	уверенность в себе – 10 стенов;
+•	социальная смелость – 8;
+•	инициатива в социальных контактах – 5. 
+
+Норма: 5-6 стенов. 
+
+Выводы: 
+•	диагностируется очень высокая уверенность в себе;
+•	социальная смелость на высоком уровне;
+•	инициативность в социальных контактах – средняя.
+
+Практическая психодиагностика и психологическое консультирование. – Ростов-на-Дону: ЮРГИ, 1998. – С. 87-108.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Диагностика Доброжелательности (по шкале Кемпбелла).','Полученные данные:
+5 баллов.
+
+Измерительная шкала:
+	3 балла и меньше — низкий показатель доброжелательного отношения к другим;
+	4-6 — средний показатель доброжелательного отношения к другим;
+	7 и больше — высокий показатель доброжелательного отношения к другим.
+
+Норма: 4-6 баллов.
+
+Вывод: диагностируется средний уровень доброжелательности.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 113-114.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Экспресс диагностика доверия (по шкале Розенберга).','Полученные данные:
+1 балл. 
+
+Измерительная шкала:
+	0-1 баллов — низкий показатель доверия;
+	2 балла — средний показатель доверия;
+	3 балла — высокий показатель доверия.
+
+Норма: 2 балла. 
+
+Вывод:  диагностируется низкий показатель доверия.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
+','Kortinki\\Zadacha16\\21_1.png','Kortinki\\Zadacha16\\21_2.png',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Методика оценки доверия/недоверия личности другим людям (А.Б. Купрейченко).','Содержательные характеристики при указанном сочетании параметров личности:
+•	тех людей, которым Саша доверяет, он считает приятными и готов верить им на слово, т.к. знает их. Также он не склонен замечать их недостатки;
+•	уровень надежности по отношению к тем людям, которым Саша не доверяет, соответствует норме для 55-летнего возраста, что говорит о крайне избирательном доверии другим людям по данному критерию; 
+•	доверие Саши основывается на надежности.
+
+* Критерии доверия определяются по разности значений Д и НД, т.е. из показателей, полученных от испытуемого по отношению к тому, кому он доверяет вычитаются показатели, связанные с тем человеком, которому испытуемый не доверяет. В данном случае, при сравнении с нормами, критерием является то значение, которое превосходит нормы. Если значение значительно ниже нормы, значит данный показатель неприемлем для испытуемого как критерий доверия людям. 
+
+Выводы:  
+•	по отношению к тому человеку, которому Саша доверяет, отмечается, что значения по шкалам единства, надежности и расчета соответствуют норме. Также диагностируется повышенный уровень знания и приязни. Шкала недостатков  имеет низкий уровень;
+•	по отношению к тому человеку, которому Саша не доверяет, отмечается, что шкалы знания, приязни, единства и расчета на уровне выше среднего Уровень шкалы недостатки соответствует норме. Показатель надёжности для Сашиного возраста (18 лет) снижен, однако является нормой для зрелого человека (53 и более лет);
+•	критерием доверия для Саши служит надежность человека.
+Купрейченко А.Б. Психология доверия и недоверия. – М.: Институт психологии РАН, 2008. – С. 224-301.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала чувства благодарности.','Полученные данные: 38 баллов. 
+
+Измерительная шкала.
+Русскоязычная выборка включала  359  человек   в   возрасте  от  17  до  66  лет  (средний  возраст  26,59±0,48 года), 91 мужчина и 268 женщин.
+	Если вы набрали не более 32 баллов, то попадаете в группу наименее благодарных;
+	 те, кто набрали от 32 до 35, относятся к средней группе;
+	люди с результатом от 35 до 41 особенно благодарны жизни;
+	а показатель 42 характеризует самых благодарных. 
+
+Норма: от 32 до 35 баллов. 
+
+Вывод: диагностируется высокий уровень способности благодарить.
+
+Психометрические показатели русскоязычной версии шкалы чувства благодарности / С. П. Елшанский, А. Ф. Ануфриев, З. Ф. Камалетдинова [и др.]  // Теоретическая и экспериментальная психология. – 2015. – Т. 8. – № 3. – С. 23-30.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на трансгрессивную мотивацию (умение прощать), (Мак-Куллоу).','Полученные данные:
+•	стремление избежать обидчика – 20 баллов;
+•	мстительность – 17. 
+Измерительная шкала.
+Стремление избегать обидчика.
+	Средний результат среди американцев — 12,6 баллов;
+	набравшие более 17,6 попадают в число «обиженных» (33 % американцев);
+	набравшие более 22,8 — обиженных смертельно (10 %).
+Мстительность.
+	Если вы набрали около 7,7, то ваш результат близок к среднеамериканскому;
+	набрав 11 и выше, вы попадаете в категорию людей мстительных (33 % американцев);
+	показатель 13,2 и выше свидетельствуют о том, что вы оказались среди самых заядлых мстителей (10 % американцев).
+
+Вывод: диагностируется высокий уровень обидчивости и мстительности.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 111.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест коммуникативных навыков (Методика Л. Михельсона в адаптации Ю.З. Гильбуха).','Полученные данные:
+•	уровень компетентности – 19 баллов;
+•	уровень зависимости в общении – 6;
+•	уровень агрессивности в общении – 2.
+
+Измерительная шкала: всего в тесте 27 утверждений, поэтому максимальный балл по одной из трех шкал (агрессивность, зависимость, компетентность)  – 27 баллов. Результаты анализируется в зависимости от сочетания баллов по данным шкалам.
+
+Выводы:  
+•	диагностируется высокий уровень компетентности в общении;
+•	зависимость в общении выражена на уровне ниже среднего;
+•	агрессивность в общении практически отсутствует.
+
+Колмогорова, Н. С. Коммуникативная компетентность как условие и следствие становления направленности личности: дис. ... канд. психол. наук: 19.00.01 / Наталья Степановна Колмогорова. – Барнаул, 2004. – 228 с.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Методика диагностики степени удовлетворенности основных потребностей.','Методика диагностики степени удовлетворенности основных потребностей (адаптация В.В. Скворцова).','Полученные данные.
+Потребности:
+•	материальные – 16;
+•	в безопасности – 16;
+•	в признании – 28;
+•	социальная потребность в теплых отношениях и потребность быть понятым другим – 24;
+•	потребность в самоактуализации – 20.
+
+Содержательные характеристики при указанном сочетании параметров личности: для испытуемого мотивирующей потребностью является потребность в признании и уважении, на втором месте потребность в теплых и доверительных отношениях. По словам Саши, именно уважение и признание его личности, ведут к надежному и доверительному общению и являются его мотиватором в выборе друзей.
+
+Измерительная шкала
+	0-14 баллов – зона удовлетворенности;
+	14-28 – частичная неудовлетворенность;
+	Выше 28 – зона неудовлетворённости, главный мотиватор среди остальных потребностей.
+
+Норма: 0-14 баллов. 
+
+Вывод. Потребности имеют следующую степень удовлетворенности:
+•	материальные потребности и потребность в безопасности – слегка неудовлетворенные;
+•	социальная потребность в теплых отношениях и хороших собеседниках и потребность в самоактуализации – зона частичной неудовлетворенности;
+•	признание – зона неудовлетворенности.
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 53-54.
+','Kortinki\\Zadacha16\\26.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест описания поведения К. Томаса (адаптация Н.В. Гришиной).','Полученные данные.
+•	Стратегия соперничества – 7 стенов; 
+•	стратегия сотрудничества – 6; 
+•	стратегия компромисса – 9; 
+•	стратегия избегания – 2; 
+•	стратегия уступки (приспособления) – 4. 
+
+Норма: 5,6 стенов. 
+
+Выводы.
+
+•	Доминирующей стратегией поведения в конфликтах – является компромисс (высокий уровень выраженности);
+•	стратегия соперничества имеют уровень выраженности выше среднего;
+•	выраженность стратегий уступки – ниже среднего;
+•	стратегия избегания практически отсутствует (уровень низкий);
+•	выраженность стратегии сотрудничества – среднее.
+Большая энциклопедия психологических тестов /Под ред. А.А. Карелина – М.: Эксмо, 2007. — С. 270-273.
+','Kortinki\\Zadacha16\\27.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Выявление самооценки по методике Дембо-Рубинштейн в модификации А.М. Прихожан.','Полученные данные: 
+•	среднее арифметическое по самооценке – 71 балл;
+•	 среднее арифметическое по уровню притязаний – 83.
+
+Измерительная шкала:
+Уровень самооценки и уровня притязаний определяется положением на 100 бальной шкале отметок испытуемого.
+	Самооценка ниже 45 баллов признается низкой, 45-59 – средняя, 60-74 – высокая, 75-100 – очень высокий уровень;
+	уровень притязаний ниже 60 баллов признается низким, 60-74 – средним, 75-89 – высоким, 90-100 – очень высоким уровнем.
+* Нормы для среднеарифметических показателей аналогичны.
+Норма: 45-59 баллов для самооценки и 60-74 для уровня притязаний. 
+
+Выводы:
+•	среднее арифметическое по самооценке высокое;
+•	среднее арифметическое по уровню притязаний – высокое;
+Отдельные показатели.
+Самооценка:
+•	очень высокий уровень самооценки – доверие к Близким людям;
+•	высокий уровень – ум, оптимизм и счастье;
+•	характер, доверие к окружающим и авторитет у сверстников на среднем уровне.
+Уровень притязаний:
+•	очень высокий уровень притязаний по показателям: ум и доверие к близким людям, счастье, оптимизм;
+•	характер – граница высокого и среднего уровня;
+•	авторитет у сверстников – средний уровень;
+•	доверие к окружающим – низкий уровень.
+Яньшин П.В. Клиническая психодиагностика личности: Учебно-методическое пособие – 2-е изд., испр. – СПб: Речь, 2007. – С. 29-54.
+','Kortinki\\Zadacha16\\28.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала самоуважения Розенберга.','Полученные данные: 9 стенов. 
+Вывод: диагностируется высокий уровень самоуважения.
+
+Бодалев А.А., Столин В.В. Общая психодиагностика. – СПб.: Речь, 2000. – С. 308.
+','Kortinki\\Zadacha16\\29.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Тест на удовлетворенность жизнью.','Полученные данные: 27 баллов.
+
+Норма: 20-24 балла. 
+
+Вывод:  диагностируется очень высокая удовлетворенность жизнью.
+
+Психометрические показатели русскоязычной версии шкалы удовлетворенности жизнью [Электронный ресурс] / С. П. Елшанский, А. Ф. Ануфриев, З. Ф. Камалетдинова [и др.] // Современные исследования социальных проблем. – 2015. – № 9 (53). – С. 444-458. – Режим доступа: http:// sisp.nkras.ru. – 09.12.2015.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Эмоциональный тест Фордайса.','Полученные данные:
+•	уровень счастья – 8;
+•	переживание счастья – 75% всего времени;
+•	переживание несчастья – 10% всего времени;
+•	переживание нейтрального состояния – 15% всего времени.
+
+Измерительная шкала:
+	по результатам тестирования 3050 взрослых американцев средний уровень ответов на первый вопрос составил 6,92;
+	согласно данным по второму вопросу, средний американец примерно половину своего времени (54,13 %) чувствует себя счастливым, 20,44 % времени — несчастным, а все остальное время (25,43 %) — чувствует себя нейтрально.
+
+Норма: 7 баллов (уровень счастья) и 50 % (переживания счастья). 
+
+Выводы. 
+Диагностируется: 
+•	высокий уровень ощущения счастья;
+•	высокий уровень частоты переживания счастья;
+•	низкий уровень переживания нейтрального и несчастного состояния.
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 30.
+','Kortinki\\Zadacha16\\31.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала субъективного благополучия (методика Мендельсона и др. в адаптации М.В. Соколовой).','Полученные данные: уровень субъективного благополучия – 3 стена.
+
+Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики,  при данных показателях, испытуемый, скорее всего, обладает позитивной самооценкой, не склонен высказывать жалобы на различные недомогания, оптимистичен, общителен, уверен в своих способностях, эффективно действует в условиях стресса, не склонен к тревогам.
+
+Вывод: диагностируется высокое субъективное благополучие.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – C. 467-470.
+','Kortinki\\Zadacha16\\32.png','',16)
+	insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Шкала активности и оптимизма.','Шкала активности и оптимизма (методика И.С. Шуллера и А.Л. Комуниана в адаптации Г.С. Никифорова).','Полученные данные: 
+•	уровень активности – 17 баллов;
+•	уровень оптимизма – 9.
+
+Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, при таких показателях, у испытуемого превалирует мрачное, подавленное настроение. В таком состояние люди часто используют стратегию агрессии в трудной ситуации.
+
+Вывод: Саша активный пессимист.
+
+Практикум по психологии менеджмента и профессиональной деятельности /Под редакцией Г.С. Никифорова, М.А. Дмитриевой, В.М. Снеткова – СПб.: Речь, 2003. – С 287-293.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Самооценка силы воли (Н.Н. Обозов).','Полученные данные: 23 балла. 
+
+Измерительная шкала:
+	от 0 до 12 баллов – у Вас слабая сила воли, Вас легко переубедить;
+	от 13 до 21 – у Вас сила воли средняя. В различных ситуациях Вы действуете по-разному, иногда проявляя чудеса уступчивости и податливости, а иногда – настойчивость и упорство;
+	от 22 до 30 – у Вас большая сила воли, Вы волевой человек.
+
+Норма: от 13 до 21 балла. 
+
+Вывод. Диагностируется высокий уровень силы воли.
+
+Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 523-524.
+','Kortinki\\Zadacha16\\34.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('Уровень субъективного контроля (УСК).','Уровень субъективного контроля (УСК) (методика Дж. Роттера в адаптации Е.Ф. Бажина, Е.А. Голынкиной, А.М. Эткинда).','Полученные данные: 
+•	общий показатель субъективного контроля – 34 балла;
+•	уровень интернальности в отношении достижений – 11; 
+•	интернальность в области неудач – 9. 
+
+Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, при данных показателях испытуемый считает, что большинство важных событий в его жизни есть результат его собственных действий. Он может ими управлять, и, таким образом, он чувствует свою собственную ответственность за эти события и за то, как складывается его жизнь в целом. Такие люди, как Саша, считают, что они сами добились всего того хорошего, что было и есть в их жизни, и что они способны с успехом преследовать свои цели в будущем.
+
+Выводы:
+•	диагностируется высокое значение относительно интернального контроля в области достижений;
+•	интернальность в области неудач на верхней границе нормы;
+•	уровень общей интернальности субъективного контроля – высокий. 
+
+Немов Р.С. Психология. Учебник для студентов высших педагогических учебных заведений: В 3-х ч. Ч.3. Психодиагностика. –4-е изд. – М.:  Владос, 2001. – С. 480-483.
+','Kortinki\\Zadacha16\\35.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Опросник стиля саморегуляции поведения (В.И. Моросанова).','Полученные данные: 
+•	планирование – 7 баллов;
+•	моделирование – 8;
+•	программирование – 6;
+•	оценивание результатов – 6;
+•	гибкость – 7;
+•	самостоятельность – 7;
+•	общий уровень саморегуляции – 36.
+
+Норма: см. средние показатели в таблице выше. 
+
+Выводы: 
+•	планирование, моделирование и самостоятельность поведения развиты высоко;
+•	уровень программирования, оценки результатов соответствует норме;
+•	общий уровень саморегуляции поведения –высокий уровень.
+
+Моросанова В.И. Опросник Стиль саморегуляции поведения (ССПМ) –  М.: Когито-Центр, 2004. – 44 с.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Моментальный тест на позитивную и негативную аффективность (по отношению к учителям).','Полученные данные.
+Психолог попросил Сашу оценить проанализировать эмоции по отношению к тем людям, которым Саша не доверяет и к тем, кому доверяет.
+
+По отношению к тем людям, которым Саша доверяет:
+•	сумма негативных эмоций во время первого тестирования – 12 (доминирующие негативные эмоции: отсутствуют);
+•	сумма позитивных эмоций – 45 (доминирующие позитивные эмоции: заинтересованность, увлеченность, бодрость, решимость, активность, энтузиазм, внимание – 5 баллов).
+По отношению к тем людям, которым Саша не доверяет:
+•	сумма негативных эмоций во время первого тестирования – 20 (доминирующие негативные эмоции: враждебность, раздражение – 4 балла);
+•	сумма позитивных эмоций – 21 (доминирующие позитивные эмоции: внимание – 4 балла).
+Измерительная шкала:
+М. Селигман предлагает главным образом исходить из следующего:
+	во-первых, максимальный уровень положительных или отрицательных эмоций может достигать 50 баллов;
+	во-вторых, необходимо обращать внимание на соотношение баллов по двум уровням эмоций (позитивный, негативный).
+* Оценка отдельной эмоции идет по 5-балльной шкале, где 4,5 – высоко, 3 – средне, 2,1 – низко.
+
+Норма: 3 балла (отдельная эмоция). 
+
+Выводы: 
+•	сумма баллов по позитивным эмоциям по отношению к тем людям, которым Саша доверяет, практически достигает максимума и доминирует по сравнению с низкой суммой негативных эмоций, среди которых не выделяется доминирующих;
+•	сумма же баллов по позитивным эмоциям по отношению к тем людям, которым Саша не доверяет, равна сумме негативных, при этом не выделяется (кроме внимания) доминирующих позитивных эмоций;
+•	эмоциональное отношение к тем людям, которым Саша не доверяет значительно менее позитивно и более негативно, чем к тем, которым Саша доверяет.
+
+Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 53.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Диагностика принятия других (по шкале Фейя).','Полученные данные: 52 балла.
+
+Измерительная шкала:
+•	60 баллов и больше — высокий показатель принятия других;
+•	45—60 — средний показатель принятия других с тенденцией к высокому;
+•	30-45— средний показатель принятия других с тенденцией к низкому;
+•	30 и меньше — низкий показатель принятия других.
+
+Норма: 45-60 баллов. 
+
+Вывод: диагностируется средний показатель принятия других с тенденцией к высокому.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 112-113.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Диагностика лидерских способностей  (Е. Жариков, Е. Крушельницкий).','Полученные данные: 33 балла.
+
+Измерительная шкала:
+
+	менее 25 –  качества лидера выражены слабо;
+	от 26 до 35 – качества лидера выражены средне;
+	от 36 до 40 – лидерские качества выражены сильно;
+	более 40 – данный человек как лидер склонен к диктату.
+
+Норма: от 26 до 35 баллов. 
+
+Вывод. Средняя выраженность лидерских способностей.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 222-226.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Коммуникативные и организаторские склонности (Кос-2), (В.В. Синявский, В.А. Федорошин).','Полученные данные: 0,9 баллов.
+
+Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, при данных показателях, испытуемый общительный, не теряется в новой обстановке и испытывает потребность в организаторской деятельности. Принимает самостоятельные решения, отстаивает свое мнение и добивается, чтобы оно было принято другими.
+
+Измерительная шкала.
+
+Коммуникативность:
+	от 0,10 до 0,45 баллов — низкий уровень;
+	от 0,46 до 0,55 — уровень ниже среднего;
+	от 0,56 до 0,65 — средний уровень;
+	от 0,66 до 0,75 — высокий уровень;
+	от 0,76 до 1,00 — очень высокий уровень.
+
+Организационные способности:
+	от 0,20 до 0,55 — низкий уровень;
+	от 0,56 до 0,65 — уровень ниже среднего;
+	от 0,66 до 0,70 — средний уровень;
+	от 0,71 до 0,80 — высокий уровень;
+	от 0,81 до 1,00 — очень высокий уровень.
+
+Норма: от 0,56 до 0,65 баллов для коммуникативности и от 0,66 до 0,70 для организаторских способностей. 
+
+Вывод. Диагностируется высокий уровень коммуникативных и организаторских склонностей.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 184-186.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Диагностика стилей руководства (А.Л. Журавлев).','Полученные данные: соотношение стилей, следующее 0,2 (Д) - 5,1 (К) - 0,9 (Л).
+
+Измерительная шкала.
+
+	Д-1-1 директивный стиль (например, 10-2-4, 6-3-4, 9-5-4 и т. д.);
+	1-К-1 коллегиальный стиль (например, 4-9-4, 3-8-4, 5-10-4);
+	1-1-Л либеральный стиль (например, 3-2-10, 4-3-9 и т. д.).
+
+Вывод. Доминирует коллегиальный (демократический) стиль управления.
+
+Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 215-218.
+','Kortinki\\Zadacha16\\41.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала осознания настоящего (текущего) момента.','Полученные данные: 123 балла.
+
+Норма: 102-103балла. 
+
+Вывод. Испытуемый обладает высокой степенью осознания настоящего (текущего) момента жизни.
+
+Психометрические показатели русскоязычной версии шкалы осознания настоящего (текущего) момента М. Аткинсона / С. П. Елшанский, А. Ф. Ануфриев, З. Ф. Камалетдинова [и др.] //Alma mater (Вестник высшей школы). – 2016. – № 3. – С. 43–49.
+','Kortinki\\Zadacha16\\42.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала эмоциональной зрелости М. Аткинсона.','Полученные данные: 120 баллов.
+
+Норма: 105-108 баллов. 
+
+Вывод. Испытуемый обладает высокой эмоциональной зрелостью.
+
+Психометрические показатели русскоязычной версии шкалы эмоциональной зрелости М. Аткинсона / С. П. Елшанский, А. Ф. Ануфриев, З. Ф. Камалетдинова [и др.] // Современные научные исследования и инновации. – 2015. – № 10 (54). – С. 547-558. – Режим доступа: http://web.snauka.ru/issues/2015/10/58552. – 21.11.2016.
+','Kortinki\\Zadacha16\\net.png','',16)
+insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
+	values('','Шкала «Наличие смысла жизни».','Полученные данные: 31 балл.
+
+Измерительная шкала: 
+•	ниже 10 баллов – низкая осмысленность жизни;
+•	10-23 – сниженная осмысленность жизни;
+•	24-26 – средний уровень осмысленности жизни;
+•	27-33 – наличие смысла жизни, высокая осмысленность жизни;
+•	34 – очень высокая осмысленность жизни.
+
+Норма: 24-26 баллов. 
+
+Вывод. Испытуемый четко осознает смысл своей жизни, ставит себе конкретные жизненные цели и имеет высокую осмысленность жизни.
+
+Психометрические показатели русскоязычной версии теста «Опросник смысла жизни» (MLQ) / С. П. Елшанский, А. Ф. Ануфриев, З. Ф. Камалетдинова [и др.] // Психология, социология и педагогика. – 2015. – № 10 (49). – С. 85–96.
+','Kortinki\\Zadacha16\\net.png','',16)
 go

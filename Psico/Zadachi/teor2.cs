@@ -17,6 +17,7 @@ namespace Psico
         int kolvoCb;
         DataGridView datagr = new DataGridView();
         int kolvotext;
+        int stolb = 0;
 
         public teor2()
         {
@@ -44,16 +45,17 @@ namespace Psico
 
         private void teor2_Load(object sender, EventArgs e)
         {
-            label2.Text = Convert.ToString(Program.NomerZadachi);
+            label2.Text = Convert.ToString(Program.NomerZadachi) + "  -";
 
             richTextBox1.Text = Program.gipotezi;
 
             con.Open(); // подключение к БД
 
-            SqlCommand Zaprosi = new SqlCommand("select Zapros from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
+            SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
             SqlDataReader dr = Zaprosi.ExecuteReader();
             dr.Read();
             label3.Text = dr["Zapros"].ToString();
+            label5.Text = dr["sved"].ToString();
             dr.Close();
 
             SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from teor where zadacha_id = " + Program.NomerZadachi + "", con);
@@ -62,6 +64,7 @@ namespace Psico
             kolvoCb = Convert.ToInt32(dr0["kolvo"].ToString());
             dr0.Close();
             kolvoCb = kolvoCb + 1;
+            stolb = kolvoCb / 2;
 
             datagr.Name = "datagrview";
             datagr.Location = new Point(300, 300);
@@ -96,12 +99,10 @@ namespace Psico
                     y = y + 20;
                 }
 
-                switch (i)
+                if (i == stolb)
                 {
-                    case 13:
-                        x = 750;
-                        y = 246;
-                        break;
+                    x = 750;
+                    y = 246;
                 }
             }
         }

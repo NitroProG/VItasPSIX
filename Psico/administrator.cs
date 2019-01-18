@@ -19,12 +19,22 @@ namespace Psico
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
             Autorization autorization = new Autorization();
             autorization.Show();
             this.Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button5_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }

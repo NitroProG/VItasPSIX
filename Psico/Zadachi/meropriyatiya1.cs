@@ -22,14 +22,15 @@ namespace Psico
 
         private void meropriyatiya1_Load(object sender, EventArgs e)
         {
-            label2.Text = Convert.ToString(Program.NomerZadachi);
+            label2.Text = Convert.ToString(Program.NomerZadachi) + "  -";
 
             con.Open(); // подключение к БД
 
-            SqlCommand Zaprosi = new SqlCommand("select Zapros from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
+            SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
             SqlDataReader dr = Zaprosi.ExecuteReader();
             dr.Read();
             label3.Text = dr["Zapros"].ToString();
+            label7.Text = dr["sved"].ToString();
             dr.Close();
         }
 
@@ -47,9 +48,17 @@ namespace Psico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            meropriyatiya2 meropriyatiya2 = new meropriyatiya2();
-            meropriyatiya2.Show();
-            Close();
+            if (
+                (richTextBox1.Text != "") ||
+                (richTextBox2.Text != "") ||
+                (richTextBox3.Text != "")
+                )
+            {
+                meropriyatiya2 meropriyatiya2 = new meropriyatiya2();
+                meropriyatiya2.Show();
+                Close();
+            }
+            else MessageBox.Show("Вы не написали рекомендации! Чтобы продолжить вам необходимо написать хоть одну рекомендацию!","Внимание!",MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Psico
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new SpisokZadach());
+            Application.Run(new Autorization());
         }
 
         public static int NomerZadachi;
@@ -41,6 +41,7 @@ namespace Psico
         public static string gipotezi;
         public static string obsledovaniya;
         public static string zakluch;
+        public static string user;
         public static int zaklOTV;
         public static int NeVernOtv;
         public static int diagnoz;

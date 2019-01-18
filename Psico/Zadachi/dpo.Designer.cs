@@ -30,6 +30,11 @@
         {
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -38,11 +43,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.richTextBox2 = new System.Windows.Forms.RichTextBox();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -60,6 +61,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.label5);
@@ -78,6 +80,70 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1345, 747);
             this.panel1.TabIndex = 2;
+            // 
+            // button5
+            // 
+            this.button5.AutoSize = true;
+            this.button5.BackColor = System.Drawing.Color.PowderBlue;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button5.Location = new System.Drawing.Point(393, 444);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(216, 34);
+            this.button5.TabIndex = 44;
+            this.button5.Text = "Следующий рисунок";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Visible = false;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // button4
+            // 
+            this.button4.AutoSize = true;
+            this.button4.BackColor = System.Drawing.Color.PowderBlue;
+            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button4.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button4.Location = new System.Drawing.Point(2, 444);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(121, 34);
+            this.button4.TabIndex = 43;
+            this.button4.Text = "Посмотреть";
+            this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label5.Location = new System.Drawing.Point(3, 532);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(413, 20);
+            this.label5.TabIndex = 42;
+            this.label5.Text = "Напишите результат проверки каждой гипотезы";
+            // 
+            // richTextBox2
+            // 
+            this.richTextBox2.BackColor = System.Drawing.Color.PowderBlue;
+            this.richTextBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.richTextBox2.Location = new System.Drawing.Point(3, 555);
+            this.richTextBox2.Name = "richTextBox2";
+            this.richTextBox2.Size = new System.Drawing.Size(606, 111);
+            this.richTextBox2.TabIndex = 41;
+            this.richTextBox2.Text = "";
+            // 
+            // listBox1
+            // 
+            this.listBox1.BackColor = System.Drawing.Color.PowderBlue;
+            this.listBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.IntegralHeight = false;
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(3, 224);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(606, 214);
+            this.listBox1.TabIndex = 40;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -121,10 +187,10 @@
             this.button2.BackColor = System.Drawing.Color.PowderBlue;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(3, 696);
+            this.button2.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(24, 698);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 46);
+            this.button2.Size = new System.Drawing.Size(156, 35);
             this.button2.TabIndex = 32;
             this.button2.Text = "НАЗАД";
             this.button2.UseVisualStyleBackColor = false;
@@ -133,9 +199,9 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("MS Reference Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(237, 54);
+            this.label3.Location = new System.Drawing.Point(19, 54);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(851, 64);
+            this.label3.Size = new System.Drawing.Size(1309, 64);
             this.label3.TabIndex = 5;
             this.label3.Text = "Запрос матери: \"Очень разборчив в еде. Ест плохо. Не поймёшь в каком настроении н" +
     "аходится. В чем дело?\"\r\n";
@@ -144,7 +210,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(803, 20);
+            this.label2.Location = new System.Drawing.Point(503, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(32, 34);
             this.label2.TabIndex = 4;
@@ -154,11 +220,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(493, 20);
+            this.label1.Location = new System.Drawing.Point(353, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(321, 34);
+            this.label1.Size = new System.Drawing.Size(155, 34);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Диагностика задач №";
+            this.label1.Text = "Задача №";
             // 
             // button1
             // 
@@ -166,76 +232,24 @@
             this.button1.BackColor = System.Drawing.Color.PowderBlue;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(1114, 696);
+            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(1172, 698);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(226, 46);
+            this.button1.Size = new System.Drawing.Size(156, 35);
             this.button1.TabIndex = 0;
             this.button1.Text = "ПРОДОЛЖИТЬ";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // listBox1
+            // label6
             // 
-            this.listBox1.BackColor = System.Drawing.Color.PowderBlue;
-            this.listBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(3, 224);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(606, 214);
-            this.listBox1.TabIndex = 40;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label5.Location = new System.Drawing.Point(3, 532);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(413, 20);
-            this.label5.TabIndex = 42;
-            this.label5.Text = "Напишите результат проверки каждой гипотезы";
-            // 
-            // richTextBox2
-            // 
-            this.richTextBox2.BackColor = System.Drawing.Color.PowderBlue;
-            this.richTextBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.richTextBox2.Location = new System.Drawing.Point(3, 555);
-            this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(606, 111);
-            this.richTextBox2.TabIndex = 41;
-            this.richTextBox2.Text = "";
-            // 
-            // button4
-            // 
-            this.button4.AutoSize = true;
-            this.button4.BackColor = System.Drawing.Color.PowderBlue;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button4.Location = new System.Drawing.Point(2, 444);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(121, 34);
-            this.button4.TabIndex = 43;
-            this.button4.Text = "Посмотреть";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
-            // 
-            // button5
-            // 
-            this.button5.AutoSize = true;
-            this.button5.BackColor = System.Drawing.Color.PowderBlue;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(418, 444);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(191, 34);
-            this.button5.TabIndex = 44;
-            this.button5.Text = "Следующий рисунок";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Visible = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.Location = new System.Drawing.Point(564, 20);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 34);
+            this.label6.TabIndex = 45;
+            this.label6.Text = "1";
             // 
             // dpo
             // 
@@ -273,5 +287,6 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label label6;
     }
 }

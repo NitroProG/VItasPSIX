@@ -15,6 +15,7 @@ namespace Psico
     {
         SqlConnection con = new SqlConnection("Data Source=DESKTOP-38O7FKR\\FILESBD;initial catalog=psico; Persist Security info = True; User ID = sa; Password = D6747960f");
         int kolvoCb;
+        int stolb = 0;
         DataGridView datagr = new DataGridView();
 
         public Fenom2()
@@ -43,16 +44,17 @@ namespace Psico
 
         private void Fenom2_Load(object sender, EventArgs e)
         {
-            label2.Text = Convert.ToString(Program.NomerZadachi);
+            label2.Text = Convert.ToString(Program.NomerZadachi) + "  -";
 
             richTextBox1.Text = Program.fenomenologiya;
 
             con.Open(); // подключение к БД
 
-            SqlCommand Zaprosi = new SqlCommand("select Zapros from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
+            SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
             SqlDataReader dr = Zaprosi.ExecuteReader();
             dr.Read();
             label3.Text = dr["Zapros"].ToString();
+            label5.Text = dr["sved"].ToString();
             dr.Close();
 
             SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from fenom2 where zadacha_id = " + Program.NomerZadachi + "", con);
@@ -61,6 +63,8 @@ namespace Psico
             kolvoCb = Convert.ToInt32(dr0["kolvo"].ToString());
             dr0.Close();
             kolvoCb = kolvoCb + 1;
+
+            stolb = kolvoCb / 2;
 
             datagr.Name = "datagrview";
             datagr.Location = new Point(300, 300);
@@ -82,12 +86,10 @@ namespace Psico
                 checkBox.AutoSize = true;
                 panel1.Controls.Add(checkBox);
                 y = y + 30;
-                switch (i)
+                if (i == stolb)
                 {
-                    case 9:
-                        x = 770;
-                        y = 246;
-                        break;
+                    x = 770;
+                    y = 246;
                 }
             }
         }

@@ -57,8 +57,12 @@ namespace Psico
                 }
                 dr1.Close();
 
+                SqlCommand sc2 = new SqlCommand("select id_user from users where[User_Login] = '" + richTextBox1.Text + "' and[User_Password] = '" + richTextBox2.Text + "'", con);
+                Program.user = sc2.ExecuteScalar().ToString();
+
                 if (count1 == 1)
                 {
+                    
                     Anketa anketa = new Anketa();
                     anketa.Show();
                     Hide();

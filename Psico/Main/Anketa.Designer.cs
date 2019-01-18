@@ -156,10 +156,10 @@
             this.button2.BackColor = System.Drawing.Color.PowderBlue;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(46, 393);
+            this.button2.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(46, 421);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(133, 46);
+            this.button2.Size = new System.Drawing.Size(113, 35);
             this.button2.TabIndex = 1;
             this.button2.Text = "НАЗАД";
             this.button2.UseVisualStyleBackColor = false;
@@ -171,10 +171,10 @@
             this.button1.BackColor = System.Drawing.Color.PowderBlue;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(308, 393);
+            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(328, 421);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(133, 46);
+            this.button1.Size = new System.Drawing.Size(113, 35);
             this.button1.TabIndex = 0;
             this.button1.Text = "ДАЛЕЕ";
             this.button1.UseVisualStyleBackColor = false;

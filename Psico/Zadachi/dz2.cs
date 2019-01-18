@@ -19,6 +19,7 @@ namespace Psico
         DataGridView datagr = new DataGridView();
         DataGridView datagr1 = new DataGridView();
         int kolvotext;
+        int stolb = 0;
 
         public dz2()
         {
@@ -30,16 +31,17 @@ namespace Psico
             Program.zaklOTV = 0;
             Program.NeVernOtv = 0;
 
-            label2.Text = Convert.ToString(Program.NomerZadachi);
+            label2.Text = Convert.ToString(Program.NomerZadachi) + "  -";
 
             con.Open(); // подключение к БД
 
             richTextBox1.Text = Program.zakluch;
 
-            SqlCommand Zaprosi = new SqlCommand("select Zapros from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
+            SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
             SqlDataReader dr = Zaprosi.ExecuteReader();
             dr.Read();
             label3.Text = dr["Zapros"].ToString();
+            label5.Text = dr["sved"].ToString();
             dr.Close();
 
             SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from dz where zadacha_id = " + Program.NomerZadachi + "", con);
@@ -48,6 +50,7 @@ namespace Psico
             kolvoCb = Convert.ToInt32(dr0["kolvo"].ToString());
             dr0.Close();
             kolvoCb = kolvoCb + 1;
+            stolb = kolvoCb / 2;
 
             SqlCommand kolotv = new SqlCommand("select count(*) as 'kolvo' from vernotv where zadacha_id = " + Program.NomerZadachi + "", con);
             SqlDataReader dr1 = kolotv.ExecuteReader();
@@ -97,12 +100,10 @@ namespace Psico
                     y = y + 20;
                 }
 
-                switch (i)
+                if (i == stolb)
                 {
-                    case 13:
-                        x = 750;
-                        y = 246;
-                        break;
+                    x = 750;
+                    y = 246;
                 }
             }
         }
@@ -121,6 +122,9 @@ namespace Psico
 
         private void button1_Click(object sender, EventArgs e)
         {
+            int otv = 0;
+            otv = kolvootv - 1;
+
             for (int i = 1; i < kolvoCb; i++)
             {
                 if ((panel1.Controls["checkbox" + i + ""] as CheckBox).Checked == true)
@@ -130,10 +134,10 @@ namespace Psico
                         if ((panel1.Controls["checkbox" + i + ""] as CheckBox).Text == Convert.ToString(datagr1.Rows[a].Cells[0].Value))
                         {
                             Program.zaklOTV = Program.zaklOTV + 1;
-                            Program.NeVernOtv = Program.NeVernOtv - 2;
                         }
                         else Program.NeVernOtv = Program.NeVernOtv + 1;
                     }
+                    Program.NeVernOtv = Program.NeVernOtv - otv;
                 }
             }
 
@@ -154,5 +158,8 @@ namespace Psico
             zadacha.Show();
             Close();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {    }
     }
 }

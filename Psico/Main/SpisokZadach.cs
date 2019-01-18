@@ -13,6 +13,10 @@ namespace Psico
 {
     public partial class SpisokZadach : Form
     {
+        DataGridView datagr = new DataGridView();
+        int error;
+        int kolvoreshzadach;
+
         public SpisokZadach()
         {
             InitializeComponent();
@@ -29,6 +33,25 @@ namespace Psico
         {
             SqlConnection con = new SqlConnection("Data Source=DESKTOP-38O7FKR\\FILESBD;initial catalog=psico; Persist Security info = True; User ID = sa; Password = D6747960f");
             con.Open(); // подключение к БД
+
+            SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from resh where users_id = " + Program.user + "", con);
+            SqlDataReader dr0 = kolvo.ExecuteReader();
+            dr0.Read();
+            kolvoreshzadach = Convert.ToInt32(dr0["kolvo"].ToString());
+            dr0.Close();
+            kolvoreshzadach = kolvoreshzadach + 1;
+
+            datagr.Name = "datagrview";
+            datagr.Location = new Point(100, 100);
+            SqlDataAdapter da1 = new SqlDataAdapter("select zadacha_id from resh where users_id = " + Program.user + "", con);
+            SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
+            DataSet ds1 = new DataSet();
+            da1.Fill(ds1, "dpo");
+            datagr.DataSource = ds1.Tables[0];
+            datagr.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            panel2.Controls.Add(datagr);
+            datagr.Visible = false;
+
             SqlCommand get_otd_name = new SqlCommand("select id_zadacha as \"ido\" from zadacha", con);
             SqlDataReader dr = get_otd_name.ExecuteReader();
             DataTable dt = new DataTable();
@@ -48,10 +71,24 @@ namespace Psico
 
         private void button1_Click(object sender, EventArgs e)
         {
+            error = 0;
             Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedIndex) + 1;
-            Zadacha zadacha = new Zadacha();
-            zadacha.Show();
-            Hide();
+            for (int i = 1; i < kolvoreshzadach; i++)
+            {
+                if (Convert.ToString(Program.NomerZadachi) == Convert.ToString(datagr.Rows[i-1].Cells[0].Value))
+                {
+                    DialogResult result = MessageBox.Show("Данная диагностическая задача была уже решена!", "Внимание!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    error = 1;
+                }
+            }
+
+            if (error == 0)
+            {
+                Zadacha zadacha = new Zadacha();
+                zadacha.Show();
+                Close();
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -59,16 +96,23 @@ namespace Psico
             Application.Exit();
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Width = 1920;
-            Height = 1080;
-        }
+            error = 0;
+            Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedIndex) + 1;
+            for (int i = 1; i < kolvoreshzadach; i++)
+            {
+                if (Convert.ToString(Program.NomerZadachi) == Convert.ToString(datagr.Rows[i - 1].Cells[0].Value))
+                {
+                    label3.Visible = true;
+                    error = 1;
+                }
+            }
 
-        private void button5_Click(object sender, EventArgs e)
-        {
-            Width = 1080;
-            Height = 768;
+            if (error == 0)
+            {
+                label3.Visible = false;
+            }
         }
     }
 }
