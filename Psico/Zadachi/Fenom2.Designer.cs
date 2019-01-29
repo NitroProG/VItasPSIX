@@ -164,6 +164,7 @@
             this.Name = "Fenom2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Fenom2";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.Fenom2_Load);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

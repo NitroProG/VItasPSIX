@@ -87,13 +87,13 @@ namespace Psico
                 y = y + 30;
                 if (i == stolb)
                 {
-                    x = 770;
+                    x = 700;
                     y = 246;
                 }
             }
 
             Rectangle screen = Screen.PrimaryScreen.Bounds;
-            if (Convert.ToInt32(screen.Size.Width) < 1366)
+            if (Convert.ToInt32(screen.Size.Width) > 1366)
             {
                 Width = 1024;
                 Height = 768;
@@ -119,7 +119,7 @@ namespace Psico
 
                     if (ctrl is CheckBox)
                     {
-                        ctrl.Left = ctrl.Left - 170;
+                        ctrl.Left = ctrl.Left - 130;
                         int nFontSize = 8; //размер
                         ctrl.Font = new Font(ctrl.Font.FontFamily, nFontSize);
                     }
