@@ -3,7 +3,7 @@ GO
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
-GO 
+GO
 
 CREATE DATABASE [psico]
 GO
@@ -14,8 +14,8 @@ GO
 CREATE TABLE [DBO].[users]
 (
 [id_user] INT NOT NULL IDENTITY (1,1),
-[User_Login] varchar(max) NOT NULL,
-[User_Password] varchar(max) NOT NULL,
+[User_Login] nvarchar(max) NOT NULL,
+[User_Password] nvarchar(max) NOT NULL,
 [isAdmin] int NOT NULL
 constraint [id_user] PRIMARY KEY CLUSTERED
 	([id_user] ASC) on [PRIMARY]
@@ -24,8 +24,8 @@ constraint [id_user] PRIMARY KEY CLUSTERED
 create table [dbo].[Zadacha]
 (
 [id_zadacha] int not null identity(1,1),
-[Zapros] varchar(max) not null,
-[sved] varchar(max) not null
+[Zapros] nvarchar(max) not null,
+[sved] nvarchar(max) not null
 constraint [id_zadacha] primary key clustered
 	([id_zadacha]ASC) on [Primary]
 )
@@ -46,8 +46,8 @@ CONSTRAINT [FK_Zadacha7_id] FOREIGN KEY ([Zadacha_id])
 create table [dbo].[Fenom1]
 (
 [id_Fenom1] int not null identity (1,1),
-[RB] varchar(max) not null,
-[RBText] varchar(max) not null,
+[RB] nvarchar(max) not null,
+[RBText] nvarchar(max) not null,
 [zadacha_id] int not null
 constraint [id_Fenom1] primary key clustered
 	([id_fenom1]ASC) on [primary],
@@ -58,7 +58,7 @@ CONSTRAINT [FK_Zadacha_id] FOREIGN KEY ([Zadacha_id])
 create table [dbo].[Fenom2]
 (
 [id_Fenom2] int not null identity (1,1),
-[CB] varchar(max) not null,
+[CB] nvarchar(max) not null,
 [zadacha_id] int not null
 constraint [id_Fenom2] primary key clustered
 	([id_fenom2]ASC) on [primary],
@@ -69,7 +69,7 @@ CONSTRAINT [FK_Zadachaa_id] FOREIGN KEY ([Zadacha_id])
 create table [dbo].[teor]
 (
 [id_teor] int not null identity (1,1),
-[CB] varchar(max) not null,
+[CB] nvarchar(max) not null,
 [zadacha_id] int not null
 constraint [id_teor] primary key clustered
 	([id_teor]ASC) on [primary],
@@ -80,11 +80,11 @@ CONSTRAINT [FK_Zadacha1_id] FOREIGN KEY ([Zadacha_id])
 create table [dbo].[dpo]
 (
 [id_dpo] int not null identity (1,1),
-[lb_small] varchar(max) null,	
-[lb] varchar(max) not null,
-[lbtext] varchar(max) not null,
-[lb_image] varchar(max) null,
-[lb_image2] varchar(max) null,
+[lb_small] nvarchar(max) null,	
+[lb] nvarchar(max) not null,
+[lbtext] nvarchar(max) not null,
+[lb_image] nvarchar(max) null,
+[lb_image2] nvarchar(max) null,
 [zadacha_id] int not null
 constraint [id_dpo] primary key clustered
 	([id_dpo]ASC) on [primary],
@@ -95,7 +95,7 @@ CONSTRAINT [FK_Zadacha2_id] FOREIGN KEY ([Zadacha_id])
 create table [dbo].[dz]
 (
 [id_dz] int not null identity (1,1),
-[CB] varchar(max) not null,
+[CB] nvarchar(max) not null,
 [zadacha_id] int not null
 constraint [id_dz] primary key clustered
 	([id_dz]ASC) on [primary],
@@ -106,7 +106,7 @@ CONSTRAINT [FK_Zadacha3_id] FOREIGN KEY ([Zadacha_id])
 create table [dbo].[vernotv]
 (
 [id_vernotv] int not null identity (1,1),
-[otv] varchar(max) not null,
+[otv] nvarchar(max) not null,
 [zadacha_id] int not null
 constraint [id_vernotv] primary key clustered
 	([id_vernotv]ASC) on [primary],
@@ -117,7 +117,7 @@ CONSTRAINT [FK_Zadacha6_id] FOREIGN KEY ([Zadacha_id])
 create table [dbo].[meropr]
 (
 [id_meropr] int not null identity (1,1),
-[meroprtext] varchar(max) not null,
+[meroprtext] nvarchar(max) not null,
 [zadacha_id] int not null
 constraint [id_meropr] primary key clustered
 	([id_meropr]ASC) on [primary],
@@ -128,7 +128,7 @@ CONSTRAINT [FK_Zadacha4_id] FOREIGN KEY ([Zadacha_id])
 create table [dbo].[katamnez]
 (
 [id_katamnez] int not null identity (1,1),
-[katamneztext] varchar(max) not null,
+[katamneztext] nvarchar(max) not null,
 [zadacha_id] int not null
 constraint [id_katamnez] primary key clustered
 	([id_katamnez]ASC) on [primary],
@@ -144,8 +144,8 @@ go
 
 CREATE PROCEDURE [DBO].[users_add]
 (
-@User_Login varchar(max),
-@User_Password varchar(max),
+@User_Login nvarchar(max),
+@User_Password nvarchar(max),
 @isadmin int
 )
 AS
@@ -155,8 +155,8 @@ go
 CREATE PROCEDURE [DBO].[users_update]
 (
 @id_user int,
-@User_Login varchar(max),
-@User_Password varchar(max),
+@User_Login nvarchar(max),
+@User_Password nvarchar(max),
 @isadmin int
 )
 AS

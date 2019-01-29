@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SqlConn;
 
 namespace Psico
 {
     public partial class meropriyatiya1 : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-38O7FKR\\FILESBD;initial catalog=psico; Persist Security info = True; User ID = sa; Password = D6747960f");
+        SqlConnection con = DBUtils.GetDBConnection();
 
         public meropriyatiya1()
         {
@@ -22,15 +23,13 @@ namespace Psico
 
         private void meropriyatiya1_Load(object sender, EventArgs e)
         {
-            label2.Text = Convert.ToString(Program.NomerZadachi) + "  -";
-
             con.Open(); // подключение к БД
 
             SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
             SqlDataReader dr = Zaprosi.ExecuteReader();
             dr.Read();
             label3.Text = dr["Zapros"].ToString();
-            label7.Text = dr["sved"].ToString();
+            label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
         }
 

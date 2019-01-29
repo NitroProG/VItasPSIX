@@ -24,6 +24,17 @@ namespace Psico
             richTextBox3.Text = "Место работы и стаж";
             richTextBox4.Text = "Год обучения";
             richTextBox5.Text = "Возраст";
+
+            Rectangle screen = Screen.PrimaryScreen.Bounds;
+            if (Convert.ToInt32(screen.Size.Width) < 1366)
+            {
+                Width = 1024;
+                Height = 768;
+                panel2.Width = 1024;
+                panel2.Height = 768;
+            }
+            panel1.Left = Width / 2 - panel1.Width / 2;
+            Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
         }
 
         private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)

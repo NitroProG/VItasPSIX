@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SqlConn;
 
 namespace Psico
 {
@@ -31,7 +32,7 @@ namespace Psico
 
         private void SpisokZadach_Load(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-38O7FKR\\FILESBD;initial catalog=psico; Persist Security info = True; User ID = sa; Password = D6747960f");
+            SqlConnection con = DBUtils.GetDBConnection();
             con.Open(); // подключение к БД
 
             SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from resh where users_id = " + Program.user + "", con);
@@ -67,6 +68,17 @@ namespace Psico
             Program.zaklOTV = 0;
             Program.NeVernOtv = 0;
             Program.diagnoz = 0;
+
+            Rectangle screen = Screen.PrimaryScreen.Bounds;
+            if (Convert.ToInt32(screen.Size.Width) < 1366)
+            {
+                Width = 1024;
+                Height = 768;
+                panel2.Width = 1024;
+                panel2.Height = 768;
+            }
+            panel1.Left = Width / 2 - panel1.Width / 2;
+            Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
         }
 
         private void button1_Click(object sender, EventArgs e)

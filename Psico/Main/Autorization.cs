@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SqlConn;
 
 namespace Psico
 {
@@ -22,11 +23,24 @@ namespace Psico
         {
             richTextBox1.Text = "Введите логин";
             richTextBox2.Text = "Введите пароль";
+
+            Rectangle screen = Screen.PrimaryScreen.Bounds;
+            MessageBox.Show("" + Convert.ToInt32(screen.Size.Width + ""));
+            if (Convert.ToInt32(screen.Size.Width) < 1366)
+            {
+                Width = 1024;
+                Height = 768;
+                panel2.Width = 1024;
+                panel2.Height = 768;
+            }
+            panel1.Left = Width/2 - panel1.Width/2;
+            Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            SqlConnection con = new SqlConnection("Data Source=DESKTOP-38O7FKR\\FILESBD;initial catalog=psico; Persist Security info = True; User ID = sa; Password = D6747960f");
+            
+            SqlConnection con = DBUtils.GetDBConnection();
             con.Open(); // подключение к БД
 
             SqlCommand sc = new SqlCommand("Select * from users where[User_Login] = '" + richTextBox1.Text + "' and[User_Password] = '" + richTextBox2.Text + "'and [isadmin]='1'", con); //выбор данных из таблицы БД 
@@ -58,11 +72,10 @@ namespace Psico
                 dr1.Close();
 
                 SqlCommand sc2 = new SqlCommand("select id_user from users where[User_Login] = '" + richTextBox1.Text + "' and[User_Password] = '" + richTextBox2.Text + "'", con);
-                Program.user = sc2.ExecuteScalar().ToString();
 
                 if (count1 == 1)
                 {
-                    
+                    Program.user = sc2.ExecuteScalar().ToString();
                     Anketa anketa = new Anketa();
                     anketa.Show();
                     Hide();
@@ -70,6 +83,8 @@ namespace Psico
                 else
                 {
                     MessageBox.Show("Данные введены не верно");
+                    richTextBox1.Text = "";
+                    richTextBox2.Text = "";
                 }
             }
         }

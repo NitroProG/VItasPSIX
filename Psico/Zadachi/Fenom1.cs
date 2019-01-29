@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SqlConn;
 
 namespace Psico
 {
     public partial class Fenom1 : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-38O7FKR\\FILESBD;initial catalog=psico; Persist Security info = True; User ID = sa; Password = D6747960f");
+        SqlConnection con = DBUtils.GetDBConnection();
         int kolvoRb;
         DataGridView datagr = new DataGridView();
 
@@ -36,8 +37,6 @@ namespace Psico
 
         private void Fenom1_Load(object sender, EventArgs e)
         {
-            label2.Text = Convert.ToString(Program.NomerZadachi) + "  -";
-
             richTextBox2.Text = Program.fenomenologiya;
             richTextBox3.Text = Program.glavsved;
 
@@ -47,7 +46,7 @@ namespace Psico
             SqlDataReader dr = Zaprosi.ExecuteReader();
             dr.Read();
             label3.Text = dr["Zapros"].ToString();
-            label6.Text = dr["sved"].ToString();
+            label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
 
             SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from fenom1 where zadacha_id = " + Program.NomerZadachi + "", con);
@@ -79,6 +78,43 @@ namespace Psico
                 panel1.Controls.Add(radioButton);
                 y = y + 30;
             }
+
+            Rectangle screen = Screen.PrimaryScreen.Bounds;
+            if (Convert.ToInt32(screen.Size.Width) < 1366)
+            {
+                Width = 1024;
+                Height = 768;
+
+                panel2.Width = 1024;
+                panel2.Height = 768;
+
+                panel1.Width = 1003;
+                panel1.Height = 747;
+
+                richTextBox1.Width = 450;
+                richTextBox2.Width = 450;
+                richTextBox3.Width = 450;
+
+                label3.MaximumSize = new Size(950, 64);
+                label3.AutoSize = true;
+                label5.Width = 450;
+
+                button3.Left = button3.Left - 350;
+                button1.Left = button1.Left - 340;
+                label4.Left = label4.Left - 170;
+                richTextBox1.Left = richTextBox1.Left - 170;
+                richTextBox2.Left = richTextBox2.Left - 170;
+
+                foreach (Control ctrl in panel1.Controls)
+                {
+                    int newFontSize = 12; //размер
+                    ctrl.Font = new Font(ctrl.Font.FontFamily, newFontSize);
+                }
+            }
+            panel1.Left = Width / 2 - panel1.Width / 2;
+            Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
+            label1.Left = panel1.Width / 2 - label1.Width / 2;
+            label3.Left = panel1.Width / 2 - label3.Width / 2;
         }
 
         public void radiobutton_checkedchanged(object sender, EventArgs e)

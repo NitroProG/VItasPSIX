@@ -61,10 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="administrator.cs">
+    <Compile Include="DBSQLServerUtils.cs" />
+    <Compile Include="DBUtils.cs" />
+    <Compile Include="Main\administrator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="administrator.Designer.cs">
+    <Compile Include="Main\administrator.Designer.cs">
       <DependentUpon>administrator.cs</DependentUpon>
     </Compile>
     <Compile Include="Zadachi\dpo.cs">
@@ -159,7 +161,7 @@
     <Compile Include="Zadachi\Zadacha.Designer.cs">
       <DependentUpon>Zadacha.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="administrator.resx">
+    <EmbeddedResource Include="Main\administrator.resx">
       <DependentUpon>administrator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Anketa.resx">

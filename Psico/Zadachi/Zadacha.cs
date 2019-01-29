@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SqlConn;
+using System.IO;
 
 namespace Psico
 {
     public partial class Zadacha : Form
     {
         string podzadacha;
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-38O7FKR\\FILESBD;initial catalog=psico; Persist Security info = True; User ID = sa; Password = D6747960f");
+        SqlConnection con = DBUtils.GetDBConnection();
 
         public Zadacha()
         {
@@ -35,11 +37,6 @@ namespace Psico
 
                 if (result == DialogResult.OK)
                 {
-                    SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
-                    StrPrc1.CommandType = CommandType.StoredProcedure;
-                    StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
-                    StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
-                    StrPrc1.ExecuteNonQuery();
                     SpisokZadach spisokZadach = new SpisokZadach();
                     spisokZadach.Show();
                     Close();
@@ -55,13 +52,13 @@ namespace Psico
 
         private void Zadacha_Load(object sender, EventArgs e)
         {
-            label2.Text = Convert.ToString(Program.NomerZadachi) + "  -";
             con.Open(); // подключение к БД
             SqlCommand get_otd_name = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
             SqlDataReader dr = get_otd_name.ExecuteReader();
+
             dr.Read();
             label3.Text = dr["Zapros"].ToString();
-            label5.Text = dr["sved"].ToString();
+            label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
 
             switch (Program.diagnoz)
@@ -77,6 +74,13 @@ namespace Psico
                 case 3:
                     label4.Text = "Диагноз верный";
                     label4.ForeColor = Color.Lime;
+
+                    SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
+                    StrPrc1.CommandType = CommandType.StoredProcedure;
+                    StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
+                    StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
+                    StrPrc1.ExecuteNonQuery();
+
                     radioButton3.Enabled = true;
                     radioButton6.Enabled = true;
                     break;
@@ -84,6 +88,20 @@ namespace Psico
                     label4.Text = "";
                     break;
             }
+
+            Rectangle screen = Screen.PrimaryScreen.Bounds;
+            if (Convert.ToInt32(screen.Size.Width) < 1366)
+            {
+                Width = 1024;
+                Height = 768;
+                panel2.Width = 1024;
+                panel2.Height = 768;
+            }
+            panel1.Left = Width / 2 - panel1.Width / 2;
+            Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
+            label1.Left = panel1.Width / 2 - label1.Width / 2;
+            label3.Left = panel1.Width / 2 - label3.Width / 2;
+            label4.Left = panel1.Width / 2 - label4.Width / 2;
         }
 
         private void button1_Click(object sender, EventArgs e)

@@ -8,12 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using SqlConn;
 
 namespace Psico
 {
     public partial class dz2 : Form
     {
-        SqlConnection con = new SqlConnection("Data Source=DESKTOP-38O7FKR\\FILESBD;initial catalog=psico; Persist Security info = True; User ID = sa; Password = D6747960f");
+        SqlConnection con = DBUtils.GetDBConnection();
         int kolvoCb;
         int kolvootv;
         DataGridView datagr = new DataGridView();
@@ -31,8 +32,6 @@ namespace Psico
             Program.zaklOTV = 0;
             Program.NeVernOtv = 0;
 
-            label2.Text = Convert.ToString(Program.NomerZadachi) + "  -";
-
             con.Open(); // подключение к БД
 
             richTextBox1.Text = Program.zakluch;
@@ -41,7 +40,7 @@ namespace Psico
             SqlDataReader dr = Zaprosi.ExecuteReader();
             dr.Read();
             label3.Text = dr["Zapros"].ToString();
-            label5.Text = dr["sved"].ToString();
+            label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
 
             SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from dz where zadacha_id = " + Program.NomerZadachi + "", con);
@@ -158,8 +157,5 @@ namespace Psico
             zadacha.Show();
             Close();
         }
-
-        private void button4_Click(object sender, EventArgs e)
-        {    }
     }
 }
