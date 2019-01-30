@@ -70,7 +70,7 @@ namespace Psico
             Program.diagnoz = 0;
 
             Rectangle screen = Screen.PrimaryScreen.Bounds;
-            if (Convert.ToInt32(screen.Size.Width) < 1366)
+            if (Convert.ToInt32(screen.Size.Width) < 1300)
             {
                 Width = 1024;
                 Height = 768;

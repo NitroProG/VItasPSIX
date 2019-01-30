@@ -55,7 +55,32 @@ namespace Psico
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (Program.diagnoz == 3)
+            {
+                DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.OK)
+                {
+                    SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
+                    StrPrc1.CommandType = CommandType.StoredProcedure;
+                    StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
+                    StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
+                    StrPrc1.ExecuteNonQuery();
+
+                    Application.Exit();
+                }
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.OK)
+                {
+                    Application.Exit();
+                }
+            }
         }
     }
 }

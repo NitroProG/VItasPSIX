@@ -32,7 +32,7 @@ namespace Psico
         private void Vstuplenie_Load(object sender, EventArgs e)
         {
             Rectangle screen = Screen.PrimaryScreen.Bounds;
-            if (Convert.ToInt32(screen.Size.Width) < 1366)
+            if (Convert.ToInt32(screen.Size.Width) < 1300)
             {
                 Width = 1024;
                 Height = 768;

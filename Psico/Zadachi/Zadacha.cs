@@ -25,7 +25,32 @@ namespace Psico
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            if (Program.diagnoz == 3)
+            {
+                DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.OK)
+                {
+                    SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
+                    StrPrc1.CommandType = CommandType.StoredProcedure;
+                    StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
+                    StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
+                    StrPrc1.ExecuteNonQuery();
+
+                    Application.Exit();
+                }
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+                if (result == DialogResult.OK)
+                {
+                    Application.Exit();
+                }
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -37,6 +62,12 @@ namespace Psico
 
                 if (result == DialogResult.OK)
                 {
+                    SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
+                    StrPrc1.CommandType = CommandType.StoredProcedure;
+                    StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
+                    StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
+                    StrPrc1.ExecuteNonQuery();
+
                     SpisokZadach spisokZadach = new SpisokZadach();
                     spisokZadach.Show();
                     Close();
@@ -74,13 +105,6 @@ namespace Psico
                 case 3:
                     label4.Text = "Диагноз верный";
                     label4.ForeColor = Color.Lime;
-
-                    SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
-                    StrPrc1.CommandType = CommandType.StoredProcedure;
-                    StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
-                    StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
-                    StrPrc1.ExecuteNonQuery();
-
                     radioButton3.Enabled = true;
                     radioButton6.Enabled = true;
                     break;
@@ -90,12 +114,15 @@ namespace Psico
             }
 
             Rectangle screen = Screen.PrimaryScreen.Bounds;
-            if (Convert.ToInt32(screen.Size.Width) < 1366)
+            if (Convert.ToInt32(screen.Size.Width) < 1300)
             {
                 Width = 1024;
                 Height = 768;
                 panel2.Width = 1024;
                 panel2.Height = 768;
+
+                label3.MaximumSize = new Size(950, 64);
+                label3.AutoSize = true;
             }
             panel1.Left = Width / 2 - panel1.Width / 2;
             Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;

@@ -26,7 +26,7 @@ namespace Psico
 
             Rectangle screen = Screen.PrimaryScreen.Bounds;
             MessageBox.Show("" + Convert.ToInt32(screen.Size.Width + ""));
-            if (Convert.ToInt32(screen.Size.Width) < 1366)
+            if (Convert.ToInt32(screen.Size.Width) < 1300)
             {
                 Width = 1024;
                 Height = 768;
