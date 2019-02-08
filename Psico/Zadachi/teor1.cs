@@ -9,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SqlConn;
+using InsertWord;
+using System.Threading;
 
 namespace Psico
 {
     public partial class teor1 : Form
     {
         SqlConnection con = DBUtils.GetDBConnection();
+        WordInsert wordinsert = new WordInsert();
 
         public teor1()
         {
@@ -36,9 +39,36 @@ namespace Psico
                     StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
                     StrPrc1.ExecuteNonQuery();
 
-                    Application.Exit();
+                    // Запись данных в ворд документ
+                    try
+                    {
+
+                        timer1.Enabled = false;
+                        Program.AllT = Program.AllT + Program.gip1T;
+                        Program.gipotezi = richTextBox2.Text;
+
+                        if (Program.gipotezi !="")
+                        {
+                            Program.Insert = "Гипотезы:" + Program.gipotezi + "";
+                            wordinsert.Ins();
+                        }
+
+                        Program.Insert = "Время на гипотезах 1:" + Program.gip1T + " сек";
+                        wordinsert.Ins();
+
+                        // Выход из программы
+                        Application.Exit();
+                    }
+
+                    // При возникновении ошибки при записи данных в ворд документ
+                    catch
+                    {
+                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+                    }
                 }
             }
+
             else
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
@@ -46,29 +76,108 @@ namespace Psico
 
                 if (result == DialogResult.OK)
                 {
-                    Application.Exit();
+                    // Запись данных в ворд документ
+                    try
+                    {
+
+                        timer1.Enabled = false;
+                        Program.AllT = Program.AllT + Program.gip1T;
+                        Program.gipotezi = richTextBox2.Text;
+
+                        if (Program.gipotezi != "")
+                        {
+                            Program.Insert = "Гипотезы:" + Program.gipotezi + "";
+                            wordinsert.Ins();
+                        }
+
+                        Program.Insert = "Время на гипотезах 1:" + Program.gip1T + " сек";
+                        wordinsert.Ins();
+
+                        // Выход из программы
+                        Application.Exit();
+                    }
+
+                    // При возникновении ошибки при записи данных в ворд документ
+                    catch
+                    {
+                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+                    }
                 }
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Zadacha zadacha = new Zadacha();
-            zadacha.Show();
-            Close();
+            // Запись данных в ворд документ
+            try
+            {
+
+                timer1.Enabled = false;
+                Program.AllT = Program.AllT + Program.gip1T;
+                Program.gipotezi = richTextBox2.Text;
+
+                if (Program.gipotezi != "")
+                {
+                    Program.Insert = "Гипотезы:" + Program.gipotezi + "";
+                    wordinsert.Ins();
+                }
+
+                Program.Insert = "Время на гипотезах 1:" + Program.gip1T + " сек";
+                wordinsert.Ins();
+
+                // Переход обратно
+                Zadacha zadacha = new Zadacha();
+                zadacha.Show();
+                Close();
+            }
+
+            // При возникновении ошибки при записи данных в ворд документ
+            catch
+            {
+                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Program.gipotezi = richTextBox2.Text;
+            // Запись данных в ворд документ
+            try
+            {
 
-            teor2 teor2 = new teor2();
-            teor2.Show();
-            Close();
+                timer1.Enabled = false;
+                Program.AllT = Program.AllT + Program.gip1T;
+                Program.gipotezi = richTextBox2.Text;
+
+                if (Program.gipotezi != "")
+                {
+                    Program.Insert = "Гипотезы:" + Program.gipotezi + "";
+                    wordinsert.Ins();
+                }
+
+                Program.Insert = "Время на гипотезах 1:" + Program.gip1T + " сек";
+                wordinsert.Ins();
+
+                // Переход на следующую форму
+                teor2 teor2 = new teor2();
+                teor2.Show();
+                Close();
+            }
+
+            // При возникновении ошибки при записи данных в ворд документ
+            catch
+            {
+                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+            }
         }
 
         private void teor1_Load(object sender, EventArgs e)
         {
+            Program.gip1T = 0; // Переменная времени на фореме
+            timer1.Enabled = true; // Счётчик времени на форме
+
             richTextBox1.Text = Program.fenomenologiya;
             richTextBox2.Text = Program.gipotezi;
 
@@ -80,6 +189,12 @@ namespace Psico
             label3.Text = dr["Zapros"].ToString();
             label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // Счётчик времени на форме
+            Program.gip1T = Program.gip1T + 1;
         }
     }
 }

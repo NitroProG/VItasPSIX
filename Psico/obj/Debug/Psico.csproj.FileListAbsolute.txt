@@ -69,8 +69,6 @@ C:\Users\Батискаф\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.cspro
 C:\Users\Батискаф\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.csproj.CoreCompileInputs.cache
 C:\Users\Батискаф\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.exe
 C:\Users\Батискаф\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.pdb
-C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\bin\Debug\Database1.mdf
-C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\bin\Debug\Database1_log.ldf
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\bin\Debug\Psico.exe.config
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\bin\Debug\Psico.exe
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\bin\Debug\Psico.pdb

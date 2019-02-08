@@ -19,6 +19,7 @@ namespace Psico
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Открытие формы со списком задач
             SpisokZadach spisokZadach = new SpisokZadach();
             spisokZadach.Show();
             Close();
@@ -26,11 +27,12 @@ namespace Psico
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            Application.Exit(); // Выход из программы
         }
 
         private void Vstuplenie_Load(object sender, EventArgs e)
         {
+            // Адаптация разрешения экрана пользователя
             Rectangle screen = Screen.PrimaryScreen.Bounds;
             if (Convert.ToInt32(screen.Size.Width) < 1300)
             {
@@ -42,6 +44,8 @@ namespace Psico
                 richTextBox1.Font = new Font(richTextBox1.Font.FontFamily, newFontSize);
                 button3.Left = button3.Left - 350;
             }
+
+            // Позиционирование элементов формы пользователя
             panel1.Left = Width / 2 - panel1.Width / 2;
             Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;  
             label1.Left = Width / 2 - label1.Width / 2;

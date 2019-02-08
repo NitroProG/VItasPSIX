@@ -21,6 +21,21 @@ constraint [id_user] PRIMARY KEY CLUSTERED
 	([id_user] ASC) on [PRIMARY]
 )
 
+create table [dbo].[InfoUser]
+(
+[id_Info] int not null identity (1,1),
+[FIO] nvarchar(max) null,
+[Study] nvarchar(max) null,
+[Work] nvarchar(max) null,
+[Year] nvarchar(max) null,
+[Old] nvarchar(max) null,
+[user_id] int not null
+constraint [id_info] primary key clustered
+	([id_info]ASC) on [Primary],
+CONSTRAINT [FK_userr_id] FOREIGN KEY ([user_id])
+	REFERENCES [DBO].[users]([id_user])
+)
+
 create table [dbo].[Zadacha]
 (
 [id_zadacha] int not null identity(1,1),

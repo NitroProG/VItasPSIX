@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SqlConn;
+using InsertWord;
+using System.Threading;
 
 namespace Psico
 {
@@ -19,6 +21,7 @@ namespace Psico
         DataGridView datagr = new DataGridView();
         int kolvotext;
         int stolb = 0;
+        WordInsert wordinsert = new WordInsert();
 
         public teor2()
         {
@@ -40,9 +43,29 @@ namespace Psico
                     StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
                     StrPrc1.ExecuteNonQuery();
 
-                    Application.Exit();
+                    // Запись данных в ворд документ
+                    try
+                    {
+
+                        timer1.Enabled = false;
+                        Program.AllT = Program.AllT + Program.gip2T;
+                        Program.Insert = "Время на гипотезах 2:" + Program.gip2T + " сек";
+
+                        wordinsert.Ins();
+
+                        // Выход из программы
+                        Application.Exit();
+                    }
+
+                    // При возникновении ошибки при записи данных в ворд документ
+                    catch
+                    {
+                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+                    }
                 }
             }
+
             else
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
@@ -50,27 +73,87 @@ namespace Psico
 
                 if (result == DialogResult.OK)
                 {
-                    Application.Exit();
+                    // Запись данных в ворд документ
+                    try
+                    {
+
+                        timer1.Enabled = false;
+                        Program.AllT = Program.AllT + Program.gip2T;
+                        Program.Insert = "Время на гипотезах 2:" + Program.gip2T + " сек";
+
+                        wordinsert.Ins();
+
+                        // Выход из программы
+                        Application.Exit();
+                    }
+
+                    // При возникновении ошибки при записи данных в ворд документ
+                    catch
+                    {
+                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+                    }
                 }
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            teor1 teor1 = new teor1();
-            teor1.Show();
-            Close();
+            // Запись данных в ворд документ
+            try
+            {
+
+                timer1.Enabled = false;
+                Program.AllT = Program.AllT + Program.gip2T;
+                Program.Insert = "Время на гипотезах 2:" + Program.gip2T + " сек";
+
+                wordinsert.Ins();
+
+                // Переход на предыдущую форму
+                teor1 teor1 = new teor1();
+                teor1.Show();
+                Close();
+            }
+
+            // При возникновении ошибки при записи данных в ворд документ
+            catch
+            {
+                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Zadacha zadacha = new Zadacha();
-            zadacha.Show();
-            Close();
+            // Запись данных в ворд документ
+            try
+            {
+
+                timer1.Enabled = false;
+                Program.AllT = Program.AllT + Program.gip2T;
+                Program.Insert = "Время на гипотезах 2:" + Program.gip2T + " сек";
+
+                wordinsert.Ins();
+
+                // Переход на главную форму задачи
+                Zadacha zadacha = new Zadacha();
+                zadacha.Show();
+                Close();
+            }
+
+            // При возникновении ошибки при записи данных в ворд документ
+            catch
+            {
+                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+            }
         }
 
         private void teor2_Load(object sender, EventArgs e)
         {
+            Program.gip2T = 0; // Переменная времени на форме
+            timer1.Enabled = true; // Счётчик времени на форме
+
             richTextBox1.Text = Program.gipotezi;
 
             con.Open(); // подключение к БД
@@ -107,6 +190,7 @@ namespace Psico
                 checkBox.Name = "checkbox" + i + "";
                 checkBox.Text = Convert.ToString(datagr.Rows[i - 1].Cells[0].Value);
                 checkBox.Location = new Point(x, y);
+                checkBox.CheckedChanged += checkBox_CheckedChanged;
                 panel1.Controls.Add(checkBox);
                 kolvotext = checkBox.Text.Length;
 
@@ -129,6 +213,46 @@ namespace Psico
                     y = 246;
                 }
             }
+        }
+
+        public void checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            // Выбор всех checkbox на форме
+            CheckBox checkBox = (CheckBox)sender;
+
+            // Переборка checkbox по их количеству
+            for (int x = 1; x < kolvoCb; x++)
+            {
+                // При выборе определённого checkbox
+                if (checkBox.Name == "checkbox" + x + "")
+                {
+
+                    if (checkBox.Checked == true)
+                    {
+                        // Запись данных в ворд документ
+                        try
+                        {
+                            // Запись данных о выборе checkbox
+                            Program.Insert = "Выбран: " + checkBox.Text + "";
+
+                            wordinsert.Ins();
+                        }
+
+                        // При возникновении ошибки при записи данных в ворд документ
+                        catch
+                        {
+                            MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+                        }
+                    }
+                }
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // Счётчик времени на форме
+            Program.gip2T = Program.gip2T + 1; 
         }
     }
 }
