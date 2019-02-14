@@ -291,7 +291,8 @@ namespace Psico
                         {
                             // Запись данных о нажатии на radiobutton
                             Program.Insert = "Просмотрено: " + radiobtn.Text + "";
-                            wordinsert.Ins();
+
+                            wordinsert.CBIns();
                         }
 
                         // При возникновении ошибки при записи данных в ворд документ

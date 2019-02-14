@@ -19,7 +19,9 @@ namespace Psico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            UpdateZadacha updateZadacha = new UpdateZadacha();
+            updateZadacha.Show();
+            Close();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -31,12 +33,26 @@ namespace Psico
         {
             Autorization autorization = new Autorization();
             autorization.Show();
-            this.Close();
+            Close();
         }
 
         private void button5_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddZadacha addZadacha = new AddZadacha();
+            addZadacha.Show();
+            Close();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            DeleteZadacha deleteZadacha = new DeleteZadacha();
+            deleteZadacha.Show();
+            Close();
         }
     }
 }

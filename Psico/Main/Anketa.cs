@@ -21,7 +21,7 @@ namespace Psico
 
         private void ReplaceWord(string stubToReplace, string text, word.Document worddocument)
         {
-            // замена переменных в ворд документе
+            // Замена переменных в ворд документе
             var range = worddocument.Content;
             range.Find.ClearFormatting();
             range.Find.Execute(FindText: stubToReplace, ReplaceWith: text);
@@ -29,12 +29,6 @@ namespace Psico
 
         private void Anketa_Load(object sender, EventArgs e)
         {
-            // Заполнение подсказок 
-            richTextBox1.Text = "ФИО";
-            richTextBox2.Text = "Образование";
-            richTextBox3.Text = "Место работы и стаж";
-            richTextBox4.Text = "Год обучения";
-            richTextBox5.Text = "Возраст";
 
             // Адаптация разрешения экрана пользователя
             Rectangle screen = Screen.PrimaryScreen.Bounds;
@@ -51,48 +45,48 @@ namespace Psico
             Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
         }
 
-        private void richTextBox1_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Удаление подсказки
-            if (richTextBox1.Text == "ФИО")
+            if (textBox1.Text == "ФИО")
             {
-                richTextBox1.Text = "";
+                textBox1.Text = "";
             }
         }
 
-        private void richTextBox2_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Удаление подсказки
-            if (richTextBox2.Text == "Образование")
+            if (textBox2.Text == "Образование")
             {
-                richTextBox2.Text = "";
+                textBox2.Text = "";
             }
         }
 
-        private void richTextBox3_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Удаление подсказки
-            if (richTextBox3.Text == "Место работы и стаж")
+            if (textBox3.Text == "Место работы и стаж")
             {
-                richTextBox3.Text = "";
+                textBox3.Text = "";
             }
         }
 
-        private void richTextBox4_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Удаление подсказки
-            if (richTextBox4.Text == "Год обучения")
+            if (textBox4.Text == "Год обучения")
             {
-                richTextBox4.Text = "";
+                textBox4.Text = "";
             }
         }
 
-        private void richTextBox5_KeyPress(object sender, KeyPressEventArgs e)
+        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
         {
             // Удаление подсказки
-            if (richTextBox5.Text == "Возраст")
+            if (textBox5.Text == "Возраст")
             {
-                richTextBox5.Text = "";
+                textBox5.Text = "";
             }
         }
 
@@ -106,31 +100,31 @@ namespace Psico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var date = DateTime.Now.ToString("dd.MM.yyyy"); // Дата 
-            var timeProtokol = DateTime.Now.ToString("hh.mm.ss"); // Время
+            // Присвоение переменным даты и времени
+            var date = DateTime.Now.ToString("dd.MM.yyyy");
+            var timeProtokol = DateTime.Now.ToString("HH.mm.ss");
 
             // проверка на заполнение данных
             if (
-                (richTextBox1.Text != "") && (richTextBox1.Text != "ФИО") &&
-                (richTextBox2.Text != "") && (richTextBox2.Text != "Образование") &&
-                (richTextBox3.Text != "") && (richTextBox3.Text != "Место работы и стаж") &&
-                (richTextBox4.Text != "") && (richTextBox4.Text != "Год обучения") &&
-                (richTextBox5.Text != "") && (richTextBox5.Text != "Возраст")
+                (textBox1.Text != "") && (textBox1.Text != "ФИО") &&
+                (textBox2.Text != "") && (textBox2.Text != "Образование") &&
+                (textBox3.Text != "") && (textBox3.Text != "Место работы и стаж") &&
+                (textBox4.Text != "") && (textBox4.Text != "Год обучения") &&
+                (textBox5.Text != "") && (textBox5.Text != "Возраст")
                 )
             {
                 // Присвоение переменным, заполенными данными
-                Program.FIO = richTextBox1.Text;
-                Program.Study = richTextBox2.Text;
-                Program.Work = richTextBox3.Text;
-                Program.Year = richTextBox4.Text;
-                Program.Old = richTextBox5.Text;
+                Program.FIO = textBox1.Text;
+                Program.Study = textBox2.Text;
+                Program.Work = textBox3.Text;
+                Program.Year = textBox4.Text;
+                Program.Old = textBox5.Text;
 
-                // Подключение процесса ворд
                 var wordApp = new word.Application();
 
                 try
                 {
-                    // Открытие ворд документа
+                    // Открытие Word документа
                     var wordDocument = wordApp.Documents.Open("\\Protokol.docx");
 
                     // Замена данных в ворд документе
@@ -142,35 +136,39 @@ namespace Psico
                     ReplaceWord("{Year}", Convert.ToString(Program.Year), wordDocument);
                     ReplaceWord("{Old}", Convert.ToString(Program.Old), wordDocument);
 
-                    Program.doc = "C:\\Users\\Batya\\Desktop\\" + Program.FIO + "   " + date + "   " 
-                        + timeProtokol + ".docx"; // Присовение переменной путь к файлу
-                    wordDocument.SaveAs2(Program.doc); // Сохранение файла 
-                    wordApp.Quit(); // Освобождение процесса
+                    // Сохранение документа
+                    Program.doc = "C:\\Users\\Batya\\Desktop\\Protokol\\" + Program.FIO + "   " + date + "   " 
+                        + timeProtokol + ".docx";
+                    wordDocument.SaveAs2(Program.doc); 
+                    wordApp.Quit();
 
                     // Открытие формы вступления
                     Vstuplenie vstuplenie = new Vstuplenie();
                     vstuplenie.Show();
                     Close();
                 }
+
                 // Если возникла ошибка в замене данных в ворд документе
                 catch
-                {
+
+                {   // Вывод сообщения об ошибке
                     MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    wordApp.Quit(); // Освобождение процесса ворд
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    wordApp.Quit();
                 }
             }
 
-            // Если заполнены не все поля на форме
+            // Если заполнены не все поля на форме вывод сообщения
             else
             {
-                MessageBox.Show("Не все поля заполнены!"); // Вывод сообщения
+                MessageBox.Show("Не все поля заполнены!");
             }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Application.Exit(); // Выход из программы
+            // Выход из программы
+            Application.Exit(); 
         }
     }
 }

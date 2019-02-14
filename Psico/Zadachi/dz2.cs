@@ -19,8 +19,10 @@ namespace Psico
         SqlConnection con = DBUtils.GetDBConnection(); // Создания подключения к БД
         int kolvoCb; // Количество checkbox на форму
         int kolvootv; // Количество правильных ответов у задачи
+        int kolvovibor = 0; // Количество выбранных ответов
         DataGridView datagr = new DataGridView(); // Создание таблицы
         DataGridView datagr1 = new DataGridView(); // Создание таблицы
+        DataGridView datagr2 = new DataGridView(); // Создание таблицы
         int kolvotext; // Количество символов в названии checkbox
         int stolb = 0; // Переменная для уравнивания столбцов на форме
         WordInsert wordinsert = new WordInsert(); // Запись данных в ворд документ
@@ -88,6 +90,18 @@ namespace Psico
             panel1.Controls.Add(datagr1);
             datagr1.Visible = false;
 
+            // Создание таблицы с данными из БД
+            datagr2.Name = "datagrview2";
+            datagr2.Location = new Point(400, 400);
+            SqlDataAdapter da3 = new SqlDataAdapter("select name_otv from otvDiag", con);
+            SqlCommandBuilder cb3 = new SqlCommandBuilder(da3);
+            DataSet ds3 = new DataSet();
+            da3.Fill(ds3, "otvDiag");
+            datagr2.DataSource = ds3.Tables[0];
+            datagr2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            panel1.Controls.Add(datagr2);
+            datagr2.Visible = false;
+
             // Динамическое создание checkbox 
             for (int x = 242, y = 246, i = 1; i < kolvoCb; i++)
             {
@@ -95,7 +109,6 @@ namespace Psico
                 checkBox.Name = "checkbox" + i + "";
                 checkBox.Text = Convert.ToString(datagr.Rows[i - 1].Cells[0].Value);
                 checkBox.Location = new Point(x, y);
-                checkBox.CheckedChanged += checkBox_CheckedChanged;
                 panel1.Controls.Add(checkBox);
                 kolvotext = checkBox.Text.Length;
 
@@ -122,36 +135,30 @@ namespace Psico
                     y = 246;
                 }
             }
-        }
 
-        public void checkBox_CheckedChanged(object sender, EventArgs e)
-        {
-            // Выбор всех checkbox на форме
-            CheckBox checkBox = (CheckBox)sender;
+            // Выбор количества правильных ответов у задачи
+            SqlCommand kolotvo = new SqlCommand("select count(*) as 'kolvo' from otvDiag", con);
+            SqlDataReader dr2 = kolotvo.ExecuteReader();
+            dr2.Read();
+            kolvovibor = Convert.ToInt32(dr2["kolvo"].ToString());
+            dr2.Close();
 
-            // Переборка checkbox по их количеству
-            for (int x = 1; x < kolvoCb; x++)
+            if (datagr2.Rows.Count != 0)
             {
-                // При выборе определённого checkbox
-                if (checkBox.Name == "checkbox" + x + "")
+                // выбор всех checkbox
+                foreach (var checkBox in panel1.Controls.OfType<CheckBox>())
                 {
 
-                    if (checkBox.Checked == true)
+                    // Переборка checkbox по их количеству
+                    for (int x = 1; x < kolvoCb; x++)
                     {
-                        // Запись данных в ворд документ
-                        try
+                        for (int i = 0; i < kolvovibor; i++)
                         {
-                            // Запись данных о выборе checkbox
-                            Program.Insert = "Выбран: " + checkBox.Text + "";
-
-                            wordinsert.Ins();
-                        }
-
-                        // При возникновении ошибки при записи данных в ворд документ
-                        catch
-                        {
-                            MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+                            // При выборе определённого checkbox
+                            if (checkBox.Name == Convert.ToString(datagr2.Rows[i].Cells[0].Value))
+                            {
+                                checkBox.Checked = true;
+                            }
                         }
                     }
                 }
@@ -265,6 +272,10 @@ namespace Psico
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Обновление выбранных ответов
+            SqlCommand delete = new SqlCommand("delete from otvDiag", con);
+            delete.ExecuteNonQuery();
+
             int otv = 0; // Объявление переменной
             otv = kolvootv - 1; // Переменная отвечающая за количество правильных ответов у задачи
 
@@ -289,6 +300,28 @@ namespace Psico
                     }
 
                     Program.NeVernOtv = Program.NeVernOtv - otv;
+
+                    // Добавление данных о решении задачи пользователем
+                    SqlCommand StrPrc2 = new SqlCommand("otvDiag_add", con);
+                    StrPrc2.CommandType = CommandType.StoredProcedure;
+                    StrPrc2.Parameters.AddWithValue("@name_otv", (panel1.Controls["checkbox" + i + ""] as CheckBox).Name);
+                    StrPrc2.ExecuteNonQuery();
+
+                    // Запись данных в ворд документ
+                    try
+                    {
+                        // Запись данных о выборе checkbox
+                        Program.Insert = "Выбран: " + (panel1.Controls["checkbox" + i + ""] as CheckBox).Text + "";
+
+                        wordinsert.CBIns();
+                    }
+
+                    // При возникновении ошибки при записи данных в ворд документ
+                    catch
+                    {
+                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+                    }
                 }
             }
 

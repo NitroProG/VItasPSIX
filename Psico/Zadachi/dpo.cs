@@ -80,7 +80,7 @@ namespace Psico
             rtb.ReadOnly = true;
 
             // Если в задаче есть рисунки
-            if (Convert.ToString(datagr.Rows[1].Cells[2].Value) != "")
+            if (Convert.ToString(datagr.Rows[1].Cells[3].Value) != "")
             {
                 // Уменьшение richtextbox
                 rtb.Height = 200;
@@ -318,7 +318,7 @@ namespace Psico
                 {
                     Program.Insert = "Просмотрено: " + listBox1.SelectedItem.ToString() + "";
 
-                    wordinsert.Ins();
+                    wordinsert.CBIns();
                 }
             }
 

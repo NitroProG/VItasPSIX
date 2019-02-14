@@ -27,7 +27,8 @@ namespace Psico
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Application.Exit(); // Выход из программы
+            // Выход из программы
+            Application.Exit();
         }
 
         private void Vstuplenie_Load(object sender, EventArgs e)
@@ -40,7 +41,7 @@ namespace Psico
                 Height = 768;
                 panel2.Width = 1024;
                 panel2.Height = 768;
-                int newFontSize = 12; //размер
+                int newFontSize = 12;
                 richTextBox1.Font = new Font(richTextBox1.Font.FontFamily, newFontSize);
                 button3.Left = button3.Left - 350;
             }

@@ -141,7 +141,7 @@ namespace Psico
             // Если задача решена или диагноз поставлен не верно
             else
             {
-                DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
+                DialogResult result = MessageBox.Show("Если вы перейдёте к списку задач, ваши данные не сохранятся!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning); // Вывод сообщения
 
                 if (result == DialogResult.OK) // Если пользователь нажимает кнопку ОК

@@ -11,6 +11,30 @@ GO
 USE [psico]
 GO
 
+create table [dbo].[otvFenom]
+(
+[id_otvFenom] int not null identity (1,1),
+[name_otv] nvarchar(max) null
+constraint [id_otvFenom] primary key clustered
+	([id_otvFenom] ASC) on [Primary]
+)
+
+create table [dbo].[otvGip]
+(
+[id_otvGip] int not null identity (1,1),
+[name_otv] nvarchar(max) null
+constraint [id_otvGip] primary key clustered
+	([id_otvGip] ASC) on [Primary]
+)
+
+create table [dbo].[otvDiag]
+(
+[id_otvDiag] int not null identity (1,1),
+[name_otv] nvarchar(max) null
+constraint [id_otvDiag] primary key clustered
+	([id_otvDiag] ASC) on [Primary]
+)
+
 CREATE TABLE [DBO].[users]
 (
 [id_user] INT NOT NULL IDENTITY (1,1),
@@ -190,4 +214,55 @@ CREATE PROCEDURE [DBO].[resh_add]
 )
 AS
 	insert into [dbo].[resh]([users_id],[zadacha_id]) values((@Users_id),(@Zadacha_id));
+go
+
+CREATE PROCEDURE [DBO].[otvFenom_add]
+(
+@name_otv nvarchar(max)
+)
+AS
+	insert into [dbo].[otvFenom]([name_otv]) values((@name_otv));
+go
+
+CREATE PROCEDURE [DBO].[otvDiag_add]
+(
+@name_otv nvarchar(max)
+)
+AS
+	insert into [dbo].[otvDiag]([name_otv]) values((@name_otv));
+go
+
+CREATE PROCEDURE [DBO].[otvGip_add]
+(
+@name_otv nvarchar(max)
+)
+AS
+	insert into [dbo].[otvGip]([name_otv]) values((@name_otv));
+go
+
+CREATE PROCEDURE [DBO].[otvFenom_delete]
+(
+@id_otvFenom int
+)
+AS
+	DELETE from [dbo].[otvFenom]
+	where id_otvFenom=@id_otvFenom;
+go
+
+CREATE PROCEDURE [DBO].[otvDiag_delete]
+(
+@id_otvDiag int
+)
+AS
+	DELETE from [dbo].[otvDiag]
+	where id_otvDiag=@id_otvDiag;
+go
+
+CREATE PROCEDURE [DBO].[otvGip_delete]
+(
+@id_otvGip int
+)
+AS
+	DELETE from [dbo].[otvGip]
+	where id_otvGip=@id_otvGip;
 go

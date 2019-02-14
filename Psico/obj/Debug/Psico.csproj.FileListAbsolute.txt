@@ -94,3 +94,6 @@ C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.csproj.GenerateR
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.csproj.CoreCompileInputs.cache
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.exe
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.pdb
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.AddZadacha.resources
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.DeleteZadacha.resources
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.UpdateZadacha.resources

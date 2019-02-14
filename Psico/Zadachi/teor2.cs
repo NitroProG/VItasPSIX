@@ -19,6 +19,8 @@ namespace Psico
         SqlConnection con = DBUtils.GetDBConnection();
         int kolvoCb;
         DataGridView datagr = new DataGridView();
+        DataGridView datagr1 = new DataGridView();
+        int kolvovibor = 0; // Количество выбранных ответов
         int kolvotext;
         int stolb = 0;
         WordInsert wordinsert = new WordInsert();
@@ -125,6 +127,49 @@ namespace Psico
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Обновление выбранных ответов
+            SqlCommand delete = new SqlCommand("delete from otvGip", con);
+            delete.ExecuteNonQuery();
+
+            // Запись данных о выбранных checkbox
+            foreach (var checkBox in panel1.Controls.OfType<CheckBox>())
+            {
+
+                // Переборка checkbox по их количеству
+                for (int x = 1; x < kolvoCb; x++)
+                {
+                    // При выборе определённого checkbox
+                    if (checkBox.Name == "checkbox" + x + "")
+                    {
+
+                        if (checkBox.Checked == true)
+                        {
+                            // Добавление данных о решении задачи пользователем
+                            SqlCommand StrPrc2 = new SqlCommand("otvGip_add", con);
+                            StrPrc2.CommandType = CommandType.StoredProcedure;
+                            StrPrc2.Parameters.AddWithValue("@name_otv", checkBox.Name);
+                            StrPrc2.ExecuteNonQuery();
+
+                            // Запись данных в ворд документ
+                            try
+                            {
+                                // Запись данных о выборе checkbox
+                                Program.Insert = "Выбран: " + checkBox.Text + "";
+
+                                wordinsert.CBIns();
+                            }
+
+                            // При возникновении ошибки при записи данных в ворд документ
+                            catch
+                            {
+                                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+                            }
+                        }
+                    }
+                }
+            }
+
             // Запись данных в ворд документ
             try
             {
@@ -184,13 +229,24 @@ namespace Psico
             panel1.Controls.Add(datagr);
             datagr.Visible = false;
 
+            // Создание таблицы с данными из БД
+            datagr1.Name = "datagrview1";
+            datagr1.Location = new Point(400, 400);
+            SqlDataAdapter da2 = new SqlDataAdapter("select name_otv from otvGip", con);
+            SqlCommandBuilder cb2 = new SqlCommandBuilder(da2);
+            DataSet ds2 = new DataSet();
+            da2.Fill(ds2, "otvGip");
+            datagr1.DataSource = ds2.Tables[0];
+            datagr1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            panel1.Controls.Add(datagr1);
+            datagr1.Visible = false;
+
             for (int x = 242, y = 246, i = 1; i < kolvoCb; i++)
             {
                 CheckBox checkBox = new CheckBox();
                 checkBox.Name = "checkbox" + i + "";
                 checkBox.Text = Convert.ToString(datagr.Rows[i - 1].Cells[0].Value);
                 checkBox.Location = new Point(x, y);
-                checkBox.CheckedChanged += checkBox_CheckedChanged;
                 panel1.Controls.Add(checkBox);
                 kolvotext = checkBox.Text.Length;
 
@@ -213,36 +269,30 @@ namespace Psico
                     y = 246;
                 }
             }
-        }
 
-        public void checkBox_CheckedChanged(object sender, EventArgs e)
-        {
-            // Выбор всех checkbox на форме
-            CheckBox checkBox = (CheckBox)sender;
+            // Выбор количества правильных ответов у задачи
+            SqlCommand kolotv = new SqlCommand("select count(*) as 'kolvo' from otvGip", con);
+            SqlDataReader dr1 = kolotv.ExecuteReader();
+            dr1.Read();
+            kolvovibor = Convert.ToInt32(dr1["kolvo"].ToString());
+            dr1.Close();
 
-            // Переборка checkbox по их количеству
-            for (int x = 1; x < kolvoCb; x++)
+            if (datagr1.Rows.Count != 0)
             {
-                // При выборе определённого checkbox
-                if (checkBox.Name == "checkbox" + x + "")
+                // выбор всех checkbox
+                foreach (var checkBox in panel1.Controls.OfType<CheckBox>())
                 {
 
-                    if (checkBox.Checked == true)
+                    // Переборка checkbox по их количеству
+                    for (int x = 1; x < kolvoCb; x++)
                     {
-                        // Запись данных в ворд документ
-                        try
+                        for (int i = 0; i < kolvovibor; i++)
                         {
-                            // Запись данных о выборе checkbox
-                            Program.Insert = "Выбран: " + checkBox.Text + "";
-
-                            wordinsert.Ins();
-                        }
-
-                        // При возникновении ошибки при записи данных в ворд документ
-                        catch
-                        {
-                            MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+                            // При выборе определённого checkbox
+                            if (checkBox.Name == Convert.ToString(datagr1.Rows[i].Cells[0].Value))
+                            {
+                                checkBox.Checked = true;
+                            }
                         }
                     }
                 }

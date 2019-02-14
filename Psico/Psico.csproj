@@ -65,13 +65,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DBSQLServerUtils.cs" />
-    <Compile Include="DBUtils.cs" />
-    <Compile Include="Main\administrator.cs">
+    <Compile Include="Admin\AddZadacha.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main\administrator.Designer.cs">
+    <Compile Include="Admin\AddZadacha.Designer.cs">
+      <DependentUpon>AddZadacha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBSQLServerUtils.cs" />
+    <Compile Include="DBUtils.cs" />
+    <Compile Include="Admin\administrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\administrator.Designer.cs">
       <DependentUpon>administrator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DeleteZadacha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\DeleteZadacha.Designer.cs">
+      <DependentUpon>DeleteZadacha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UpdateZadacha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\UpdateZadacha.Designer.cs">
+      <DependentUpon>UpdateZadacha.cs</DependentUpon>
     </Compile>
     <Compile Include="WordInsert.cs" />
     <Compile Include="Zadachi\dpo.cs">
@@ -166,8 +184,17 @@
     <Compile Include="Zadachi\Zadacha.Designer.cs">
       <DependentUpon>Zadacha.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Main\administrator.resx">
+    <EmbeddedResource Include="Admin\AddZadacha.resx">
+      <DependentUpon>AddZadacha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\administrator.resx">
       <DependentUpon>administrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\DeleteZadacha.resx">
+      <DependentUpon>DeleteZadacha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\UpdateZadacha.resx">
+      <DependentUpon>UpdateZadacha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Anketa.resx">
       <DependentUpon>Anketa.cs</DependentUpon>
