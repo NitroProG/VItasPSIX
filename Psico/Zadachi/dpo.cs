@@ -16,25 +16,31 @@ namespace Psico
 {
     public partial class dpo : Form
     {
-        SqlConnection con = DBUtils.GetDBConnection(); // Подключение к БД
-        int kolvolb; // Количество данных в listbox
-        DataGridView datagr = new DataGridView(); // Создание таблицы
-        int kolvotext; // Длина названия в listbox
-        string smalltext; // Уменьшение длина названия в listbox
-        WordInsert wordinsert = new WordInsert(); // Запись в ворд документ
+        SqlConnection con = DBUtils.GetDBConnection();
+        DataGridView datagr = new DataGridView();
+        WordInsert wordinsert = new WordInsert();
+        ExitProgram exitProgram = new ExitProgram();
+        int kolvoProsmotrMetodik;
+        int kolvolb;
+        int kolvotext;
+        string smalltext;
 
         public dpo()
         {
             InitializeComponent();
         }
 
-        private void dpo_Load(object sender, EventArgs e)
+        private void FormLoad(object sender, EventArgs e)
         {
-            Program.dpoT = 0; // Переменная времени на форме
-            timer1.Enabled = true; // Счётчик времени на форме
+            Program.dpoT = 0;
+            Program.infochekT = 0;
+            timer1.Enabled = true;
+            timer2.Enabled = false;
             richTextBox1.Text = Program.gipotezi;
+            kolvoProsmotrMetodik = 0;
 
-            con.Open(); // подключение к БД
+            // подключение к БД
+            con.Open();
 
             // Запись данных на форму из БД
             SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
@@ -77,12 +83,12 @@ namespace Psico
             rtb.Location = new Point(636, 180);
             rtb.Width = 680;
             panel1.Controls.Add(rtb);
+            rtb.ShortcutsEnabled = false;
             rtb.ReadOnly = true;
 
             // Если в задаче есть рисунки
             if (Convert.ToString(datagr.Rows[1].Cells[3].Value) != "")
             {
-                // Уменьшение richtextbox
                 rtb.Height = 200;
 
                 // Динамическое создание picturebox
@@ -92,7 +98,8 @@ namespace Psico
                 pb.Width = 680;
                 pb.Height = 250;
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
-                pb.Click += pb_click;
+                pb.Enabled = false;
+                pb.Click += PbClick;
                 panel1.Controls.Add(pb);
                 pb.Cursor = Cursors.SizeNESW;
 
@@ -106,9 +113,9 @@ namespace Psico
             }
 
             // Если рисунков в задаче нет
-            else rtb.Height = 500; // Увеличение richtextbox
+            else rtb.Height = 500;
 
-            //Запись данных из таблицы БД в listbox
+            //Запись данных из БД в listbox
             for (int i = 1; i < kolvolb; i++)
             {
                 smalltext = Convert.ToString(datagr.Rows[i - 1].Cells[0].Value);
@@ -120,12 +127,16 @@ namespace Psico
 
                 else listBox1.Items.Add(Convert.ToString(datagr.Rows[i - 1].Cells[1].Value));
             }
+
+            // Запись данных в протокол
+            Program.Insert = "Окно - Обследования:";
+            wordinsert.Ins();
         }
 
-        private void pb_click(object sender, EventArgs e)
+        private void PbClick(object sender, EventArgs e)
         {
             // Изменение размера рисунка
-            if (((panel1.Controls["picturebox"] as PictureBox).Width == 680)&& ((panel1.Controls["picturebox"] as PictureBox).Height == 250))// Если маленький
+            if (((panel1.Controls["picturebox"] as PictureBox).Width == 680)&& ((panel1.Controls["picturebox"] as PictureBox).Height == 250))
             {
                 // Увеличить
                 (panel1.Controls["picturebox"] as PictureBox).Location = new Point(0,0);
@@ -134,7 +145,6 @@ namespace Psico
                 (panel1.Controls["picturebox"] as PictureBox).BringToFront();
             }
 
-            // Если большой
             else
             {
                 // Уменьшить
@@ -144,14 +154,13 @@ namespace Psico
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ExitProgram(object sender, EventArgs e)
         {
-
             // Если задача решена
             if (Program.diagnoz == 3)
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning); // Вывод сообщения
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
                 // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
@@ -163,35 +172,13 @@ namespace Psico
                     StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
                     StrPrc1.ExecuteNonQuery();
 
-                    // Запись данных в ворд документ
-                    try
-                    {
+                    ExitFromThisForm();
 
-                        timer1.Enabled = false;
-                        Program.AllT = Program.AllT + Program.dpoT;
-                        Program.obsledovaniya = richTextBox2.Text;
+                    exitProgram.ExProgr();
 
-                        Program.Insert = "Время на обследовании методик: " + Program.dpoT + " сек";
+                    exitProgram.ProtokolSent();
 
-                        wordinsert.Ins();
-
-                        if (Program.obsledovaniya !="")
-                        {
-                            Program.Insert = "Данные по обследованиям методик: " + Program.obsledovaniya + "";
-
-                            wordinsert.Ins();
-                        }
-
-                        // Выход из программы
-                        Application.Exit();
-                    }
-
-                    // При возникновении ошибки при записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
+                    Application.Exit();
                 }
             }
 
@@ -199,146 +186,62 @@ namespace Psico
             else
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning); // Вывод сообщения
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
                 // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
-                    // Запись данных в ворд документ
-                    try
-                    {
+                    ExitFromThisForm();
 
-                        timer1.Enabled = false;
-                        Program.AllT = Program.AllT + Program.dpoT;
-                        Program.obsledovaniya = richTextBox2.Text;
+                    exitProgram.ExProgr();
 
-                        Program.Insert = "Время на обследовании методик: " + Program.dpoT + " сек";
+                    exitProgram.ProtokolSent();
 
-                        wordinsert.Ins();
-
-                        if (Program.obsledovaniya != "")
-                        {
-                            Program.Insert = "Данные по обследованиям методик: " + Program.obsledovaniya + "";
-
-                            wordinsert.Ins();
-                        }
-
-                        // Выход из программы
-                        Application.Exit();
-                    }
-
-                    // При возникновении ошибки при записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
+                    Application.Exit();
                 }
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void OpenMainForm(object sender, EventArgs e)
         {
-            // Запись данных в ворд документ
-            try
+            ExitFromThisForm();
+
+            Zadacha zadacha = new Zadacha();
+            zadacha.Show();
+            Close();
+        }
+
+        private void ShowListBoxInfo(object sender, EventArgs e)
+        {
+            if (Program.infochekT != 0)
             {
-
-                timer1.Enabled = false;
-                Program.AllT = Program.AllT + Program.dpoT;
-                Program.obsledovaniya = richTextBox2.Text;
-
-                Program.Insert = "Время на обследовании методик: " + Program.dpoT + " сек";
-
+                // Запись данных в протокол
+                Program.Insert = "Время просмотра: " + Program.infochekT + " сек";
                 wordinsert.Ins();
 
-                if (Program.obsledovaniya != "")
-                {
-                    Program.Insert = "Данные по обследованиям методик: " + Program.obsledovaniya + "";
-
-                    wordinsert.Ins();
-                }
-
-                // Переход на главную форму задачи
-                Zadacha zadacha = new Zadacha();
-                zadacha.Show();
-                Close();
+                kolvoProsmotrMetodik = kolvoProsmotrMetodik + 1;
+                Program.infochekT = 0;
             }
 
-            // При возникновении ошибки при записи данных в ворд документ
-            catch
+            else
             {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Запись данных в ворд документ
-            try
-            {
-
-                timer1.Enabled = false;
-                Program.AllT = Program.AllT + Program.dpoT;
-                Program.obsledovaniya = richTextBox2.Text;
-
-                Program.Insert = "Время на обследовании методик: " + Program.dpoT + " сек";
-
-                wordinsert.Ins();
-
-                if (Program.obsledovaniya != "")
-                {
-                    Program.Insert = "Данные по обследованиям методик: " + Program.obsledovaniya + "";
-
-                    wordinsert.Ins();
-                }
-
-                // Переход на главную форму задачи
-                Zadacha zadacha = new Zadacha();
-                zadacha.Show();
-                Close();
+                timer2.Enabled = true;
             }
 
-            // При возникновении ошибки при записи данных в ворд документ
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-            }
-        }
+            (panel1.Controls["picturebox"] as PictureBox).Enabled = true;
 
-        private void button4_Click(object sender, EventArgs e)
-        {
+            // Запись данных в протокол
+            Program.Insert = "Просмотрено: " + listBox1.SelectedItem.ToString() + "";
+            wordinsert.CBIns();
 
-            // Запись данных в ворд документ
-            try
-            {
-
-                if (listBox1.SelectedItem.ToString() != "")
-                {
-                    Program.Insert = "Просмотрено: " + listBox1.SelectedItem.ToString() + "";
-
-                    wordinsert.CBIns();
-                }
-            }
-
-            // При возникновении ошибки при записи данных в ворд документ
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-            }
-
-            // Перебор всех данных в listbox'е
+            // При выборе данных в listbox
             for (int i = 1; i < kolvolb; i++)
             {
-
                 if (listBox1.SelectedIndex == i-1)
                 {
                     // Если в таблице есть рисунок
                     if (Convert.ToString(datagr.Rows[1].Cells[3].Value) != "")
                     {
-                        //загрузка рисунок
                         (panel1.Controls["picturebox"] as PictureBox).Load("" + Convert.ToString(datagr.Rows[i - 1].Cells[3].Value + ""));
                     }
 
@@ -357,11 +260,12 @@ namespace Psico
                         (panel1.Controls["label"] as Label).Height = 40;
                     }
 
+                    button4.Visible = false;
+
                     // Если есть ещё рисунок, то показ дополнительной кнопки
                     if (Convert.ToString(datagr.Rows[i - 1].Cells[4].Value) != "")
                     {
                         button5.Visible = true;
-                        button4.Visible = false;
                     }
 
                     else button5.Visible = false;
@@ -369,8 +273,9 @@ namespace Psico
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void OpenNextPictureBox(object sender, EventArgs e)
         {
+            // Смена рисунков
             if (button5.Text == "Следующий рисунок")
             {
                 for (int i = 1; i < kolvolb; i++)
@@ -396,15 +301,60 @@ namespace Psico
             }
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListBoxItemChanged(object sender, EventArgs e)
         {
             button5.Visible = false;
             button4.Visible = true;
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void TimeOnForm(object sender, EventArgs e)
         {
+            // Счётчик времени на форме
             Program.dpoT = Program.dpoT + 1;
+        }
+
+        private void TimeOnSeeListboxInfo(object sender, EventArgs e)
+        {
+            // Счётчик времени на форме
+            Program.infochekT = Program.infochekT + 1;
+        }
+
+        private void TimeWithoutKatamnez()
+        {
+            // Если задача не решена
+            if (Program.diagnoz != 3)
+            {
+                Program.AllTBezK = Program.AllTBezK + Program.dpoT;
+            }
+        }
+
+        private void ExitFromThisForm()
+        {
+            timer1.Enabled = false;
+            Program.AllT = Program.AllT + Program.dpoT;
+            Program.FullAllDpo = Program.FullAllDpo + Program.dpoT;
+            Program.obsledovaniya = richTextBox2.Text;
+
+            if (Program.infochekT != 0)
+            {
+                // Запись данных в протокол
+                Program.Insert = "Время просмотра: " + Program.infochekT + " сек";
+                wordinsert.Ins();
+
+                kolvoProsmotrMetodik = kolvoProsmotrMetodik + 1;
+                Program.infochekT = 0;
+            }
+
+            // Время до решения задачи
+            TimeWithoutKatamnez();
+
+            // Запись данных в протокол
+            Program.Insert = "Данные по обследованиям методик: " + Program.obsledovaniya + "";
+            wordinsert.Ins();
+            Program.Insert = "Количество просмотренных методик: " + kolvoProsmotrMetodik + "";
+            wordinsert.Ins();
+            Program.Insert = "Время на обследовании методик: " + Program.dpoT + " сек";
+            wordinsert.Ins();
         }
     }
 }

@@ -18,183 +18,146 @@ namespace Psico
     {
         SqlConnection con = DBUtils.GetDBConnection();
         WordInsert wordinsert = new WordInsert();
+        ExitProgram exitProgram = new ExitProgram();
 
         public teor1()
         {
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ExitProgram(object sender, EventArgs e)
         {
+            // Если задача решена
             if (Program.diagnoz == 3)
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
+                // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
+                    // Запись данных о решении задачи
                     SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
                     StrPrc1.CommandType = CommandType.StoredProcedure;
                     StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
                     StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
                     StrPrc1.ExecuteNonQuery();
 
-                    // Запись данных в ворд документ
-                    try
-                    {
-
-                        timer1.Enabled = false;
-                        Program.AllT = Program.AllT + Program.gip1T;
-                        Program.gipotezi = richTextBox2.Text;
-
-                        if (Program.gipotezi !="")
-                        {
-                            Program.Insert = "Гипотезы:" + Program.gipotezi + "";
-                            wordinsert.Ins();
-                        }
-
-                        Program.Insert = "Время на гипотезах 1:" + Program.gip1T + " сек";
-                        wordinsert.Ins();
-
-                        // Выход из программы
-                        Application.Exit();
-                    }
-
-                    // При возникновении ошибки при записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
+                    ExitFromProgram();
                 }
             }
 
+            // Если задача не решена
             else
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
+                // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
-                    // Запись данных в ворд документ
-                    try
-                    {
-
-                        timer1.Enabled = false;
-                        Program.AllT = Program.AllT + Program.gip1T;
-                        Program.gipotezi = richTextBox2.Text;
-
-                        if (Program.gipotezi != "")
-                        {
-                            Program.Insert = "Гипотезы:" + Program.gipotezi + "";
-                            wordinsert.Ins();
-                        }
-
-                        Program.Insert = "Время на гипотезах 1:" + Program.gip1T + " сек";
-                        wordinsert.Ins();
-
-                        // Выход из программы
-                        Application.Exit();
-                    }
-
-                    // При возникновении ошибки при записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
+                    ExitFromProgram();
                 }
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void OpenMainForm(object sender, EventArgs e)
         {
-            // Запись данных в ворд документ
-            try
-            {
+            ExitFromThisForm();
 
-                timer1.Enabled = false;
-                Program.AllT = Program.AllT + Program.gip1T;
-                Program.gipotezi = richTextBox2.Text;
+            Program.Insert = "Время общее на этапе гипотезы:" + Program.AllGip + " сек";
+            wordinsert.Ins();
 
-                if (Program.gipotezi != "")
-                {
-                    Program.Insert = "Гипотезы:" + Program.gipotezi + "";
-                    wordinsert.Ins();
-                }
+            Program.FullAllGip = Program.FullAllGip + Program.AllGip;
+            Program.AllGip = 0;
 
-                Program.Insert = "Время на гипотезах 1:" + Program.gip1T + " сек";
-                wordinsert.Ins();
-
-                // Переход обратно
-                Zadacha zadacha = new Zadacha();
-                zadacha.Show();
-                Close();
-            }
-
-            // При возникновении ошибки при записи данных в ворд документ
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-            }
+            Zadacha zadacha = new Zadacha();
+            zadacha.Show();
+            Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OpenNextForm(object sender, EventArgs e)
         {
-            // Запись данных в ворд документ
-            try
-            {
+            ExitFromThisForm();
 
-                timer1.Enabled = false;
-                Program.AllT = Program.AllT + Program.gip1T;
-                Program.gipotezi = richTextBox2.Text;
-
-                if (Program.gipotezi != "")
-                {
-                    Program.Insert = "Гипотезы:" + Program.gipotezi + "";
-                    wordinsert.Ins();
-                }
-
-                Program.Insert = "Время на гипотезах 1:" + Program.gip1T + " сек";
-                wordinsert.Ins();
-
-                // Переход на следующую форму
-                teor2 teor2 = new teor2();
-                teor2.Show();
-                Close();
-            }
-
-            // При возникновении ошибки при записи данных в ворд документ
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-            }
+            teor2 teor2 = new teor2();
+            teor2.Show();
+            Close();
         }
 
-        private void teor1_Load(object sender, EventArgs e)
+        private void FormLoad(object sender, EventArgs e)
         {
-            Program.gip1T = 0; // Переменная времени на фореме
-            timer1.Enabled = true; // Счётчик времени на форме
+            Program.gip1T = 0;
+            timer1.Enabled = true;
 
             richTextBox1.Text = Program.fenomenologiya;
             richTextBox2.Text = Program.gipotezi;
 
-            con.Open(); // подключение к БД
+            // подключение к БД
+            con.Open();
 
+            // Выбор данных из БД
             SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
             SqlDataReader dr = Zaprosi.ExecuteReader();
             dr.Read();
             label3.Text = dr["Zapros"].ToString();
             label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
+
+            // Запись данных в протокол
+            Program.Insert = "Окно - Гипотезы (Свободная форма):";
+            wordinsert.Ins();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer(object sender, EventArgs e)
         {
             // Счётчик времени на форме
             Program.gip1T = Program.gip1T + 1;
+        }
+
+        private void TimeWithoutKatamnez()
+        {
+            // Если задача не решена
+            if (Program.diagnoz != 3)
+            {
+                Program.AllTBezK = Program.AllTBezK + Program.gip1T;
+            }
+        }
+
+        private void ExitFromThisForm()
+        {
+            timer1.Enabled = false;
+
+            Program.AllT = Program.AllT + Program.gip1T;
+            Program.AllGip = Program.gip1T + Program.AllGip;
+            Program.gipotezi = richTextBox2.Text;
+
+            // Время до решения задачи
+            TimeWithoutKatamnez();
+
+            // Запись данных в протокол
+            Program.Insert = "Гипотезы:" + Program.gipotezi + "";
+            wordinsert.Ins();
+            Program.Insert = "Время на гипотезах (Свободная форма):" + Program.gip1T + " сек";
+            wordinsert.Ins();
+            timer1.Enabled = false;
+        }
+
+        private void ExitFromProgram()
+        {
+            ExitFromThisForm();
+
+            Program.Insert = "Время общее на этапе гипотезы:" + Program.AllGip + " сек";
+            wordinsert.Ins();
+
+            Program.FullAllGip = Program.FullAllGip + Program.AllGip;
+            Program.AllGip = 0;
+
+            exitProgram.ExProgr();
+
+            exitProgram.ProtokolSent();
+
+            Application.Exit();
         }
     }
 }

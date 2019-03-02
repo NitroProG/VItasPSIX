@@ -11,28 +11,12 @@ GO
 USE [psico]
 GO
 
-create table [dbo].[otvFenom]
+create table [dbo].[defender]
 (
-[id_otvFenom] int not null identity (1,1),
-[name_otv] nvarchar(max) null
-constraint [id_otvFenom] primary key clustered
-	([id_otvFenom] ASC) on [Primary]
-)
-
-create table [dbo].[otvGip]
-(
-[id_otvGip] int not null identity (1,1),
-[name_otv] nvarchar(max) null
-constraint [id_otvGip] primary key clustered
-	([id_otvGip] ASC) on [Primary]
-)
-
-create table [dbo].[otvDiag]
-(
-[id_otvDiag] int not null identity (1,1),
-[name_otv] nvarchar(max) null
-constraint [id_otvDiag] primary key clustered
-	([id_otvDiag] ASC) on [Primary]
+[id_defend] int not null identity(1,1),
+[DefenderKey] nvarchar(16) not null,
+constraint [id_defend] primary key clustered
+	([id_defend] ASC) on [primary] 
 )
 
 CREATE TABLE [DBO].[users]
@@ -40,9 +24,57 @@ CREATE TABLE [DBO].[users]
 [id_user] INT NOT NULL IDENTITY (1,1),
 [User_Login] nvarchar(max) NOT NULL,
 [User_Password] nvarchar(max) NOT NULL,
+[User_Mail] nvarchar(max) not null,
+[Kolvo_students] int not null,
 [isAdmin] int NOT NULL
 constraint [id_user] PRIMARY KEY CLUSTERED
 	([id_user] ASC) on [PRIMARY]
+)
+
+create table [dbo].[students]
+(
+[id_students] int not null identity(1,1),
+[Student_login] nvarchar(max) not null,
+[Student_Password] nvarchar(max) not null,
+[Student_Mail] nvarchar(max) not null,
+[users_id] int not null
+constraint [id_students] PRIMARY KEY CLUSTERED
+	([id_students] ASC) on [PRIMARY],
+CONSTRAINT [FK_userstudents_id] FOREIGN KEY ([users_id])
+	REFERENCES [DBO].[users]([id_user])
+)
+
+create table [dbo].[otvFenom]
+(
+[id_otvFenom] int not null identity (1,1),
+[name_otv] nvarchar(max) null,
+[users_id] int not null
+constraint [id_otvFenom] primary key clustered
+	([id_otvFenom] ASC) on [Primary],
+CONSTRAINT [FK_userrr_id] FOREIGN KEY ([users_id])
+	REFERENCES [DBO].[users]([id_user])
+)
+
+create table [dbo].[otvGip]
+(
+[id_otvGip] int not null identity (1,1),
+[name_otv] nvarchar(max) null,
+[users_id] int not null
+constraint [id_otvGip] primary key clustered
+	([id_otvGip] ASC) on [Primary],
+CONSTRAINT [FK_userrrr_id] FOREIGN KEY ([users_id])
+	REFERENCES [DBO].[users]([id_user])
+)
+
+create table [dbo].[otvDiag]
+(
+[id_otvDiag] int not null identity (1,1),
+[name_otv] nvarchar(max) null,
+[users_id] int not null
+constraint [id_otvDiag] primary key clustered
+	([id_otvDiag] ASC) on [Primary],
+CONSTRAINT [FK_userrrrr_id] FOREIGN KEY ([users_id])
+	REFERENCES [DBO].[users]([id_user])
 )
 
 create table [dbo].[InfoUser]
@@ -51,12 +83,12 @@ create table [dbo].[InfoUser]
 [FIO] nvarchar(max) null,
 [Study] nvarchar(max) null,
 [Work] nvarchar(max) null,
-[Year] nvarchar(max) null,
+[YearUser] nvarchar(max) null,
 [Old] nvarchar(max) null,
-[user_id] int not null
+[users_id] int not null
 constraint [id_info] primary key clustered
 	([id_info]ASC) on [Primary],
-CONSTRAINT [FK_userr_id] FOREIGN KEY ([user_id])
+CONSTRAINT [FK_userr_id] FOREIGN KEY ([users_id])
 	REFERENCES [DBO].[users]([id_user])
 )
 
@@ -142,7 +174,7 @@ CONSTRAINT [FK_Zadacha3_id] FOREIGN KEY ([Zadacha_id])
 	REFERENCES [DBO].[Zadacha]([id_Zadacha])
 )
 
-create table [dbo].[vernotv]
+create table [dbo].[vernotv_Fenom]
 (
 [id_vernotv] int not null identity (1,1),
 [otv] nvarchar(max) not null,
@@ -150,6 +182,28 @@ create table [dbo].[vernotv]
 constraint [id_vernotv] primary key clustered
 	([id_vernotv]ASC) on [primary],
 CONSTRAINT [FK_Zadacha6_id] FOREIGN KEY ([Zadacha_id])
+	REFERENCES [DBO].[Zadacha]([id_Zadacha])
+)
+
+create table [dbo].[vernotv_Gip]
+(
+[id_vernotv] int not null identity (1,1),
+[otv] nvarchar(max) not null,
+[zadacha_id] int not null
+constraint [id_vernotvGip] primary key clustered
+	([id_vernotv]ASC) on [primary],
+CONSTRAINT [FK_Zadacha8_id] FOREIGN KEY ([Zadacha_id])
+	REFERENCES [DBO].[Zadacha]([id_Zadacha])
+)
+
+create table [dbo].[vernotv_Diag]
+(
+[id_vernotv] int not null identity (1,1),
+[otv] nvarchar(max) not null,
+[zadacha_id] int not null
+constraint [id_vernotvDiag] primary key clustered
+	([id_vernotv]ASC) on [primary],
+CONSTRAINT [FK_Zadacha9_id] FOREIGN KEY ([Zadacha_id])
 	REFERENCES [DBO].[Zadacha]([id_Zadacha])
 )
 
@@ -175,94 +229,35 @@ CONSTRAINT [FK_Zadacha5_id] FOREIGN KEY ([Zadacha_id])
 	REFERENCES [DBO].[Zadacha]([id_Zadacha])
 )
 
-INSERT into dbo.users(User_Login,User_Password,isAdmin)
-	Values ('admin','admin','1');
-INSERT into dbo.users(User_Login,User_Password,isAdmin)
-	Values ('test','test','0');
-go
-
-CREATE PROCEDURE [DBO].[users_add]
+create table [dbo].[DpoSelected]
 (
-@User_Login nvarchar(max),
-@User_Password nvarchar(max),
-@isadmin int
+[id_dposelected] int not null identity(1,1),
+[InfoSelected] nvarchar(max) not null,
+[users_id] int not null
+constraint [id_dposelected] primary key clustered
+	([id_dposelected]ASC) on [Primary],
+CONSTRAINT [FK_userrrs_id] FOREIGN KEY ([users_id])
+	REFERENCES [DBO].[users]([id_user])
 )
-AS
-	insert into [dbo].[users]([User_Login],[User_Password],[isadmin]) values((@User_Login),(@User_Password),(@isadmin));
-go
 
-CREATE PROCEDURE [DBO].[users_update]
+create table [dbo].[FenomSelected]
 (
-@id_user int,
-@User_Login nvarchar(max),
-@User_Password nvarchar(max),
-@isadmin int
+[id_fenomselected] int not null identity(1,1),
+[InfoSelected] nvarchar(max) not null,
+[users_id] int not null
+constraint [id_fenomselected] primary key clustered
+	([id_fenomselected]ASC) on [Primary],
+CONSTRAINT [FK_userrrrs_id] FOREIGN KEY ([users_id])
+	REFERENCES [DBO].[users]([id_user])
 )
-AS
-	update [dbo].users
-	set
-	User_Login=@User_Login,
-	User_Password=@User_Password,
-	isAdmin=@isadmin
-	where id_user=@id_user
-go
 
-CREATE PROCEDURE [DBO].[resh_add]
+create table [dbo].[TeorSelected]
 (
-@Users_id int,
-@Zadacha_id int
+[id_teorselected] int not null identity(1,1),
+[InfoSelected] nvarchar(max) not null,
+[users_id] int not null
+constraint [id_teorselected] primary key clustered
+	([id_teorselected]ASC) on [Primary],
+CONSTRAINT [FK_userrrrrs_id] FOREIGN KEY ([users_id])
+	REFERENCES [DBO].[users]([id_user])
 )
-AS
-	insert into [dbo].[resh]([users_id],[zadacha_id]) values((@Users_id),(@Zadacha_id));
-go
-
-CREATE PROCEDURE [DBO].[otvFenom_add]
-(
-@name_otv nvarchar(max)
-)
-AS
-	insert into [dbo].[otvFenom]([name_otv]) values((@name_otv));
-go
-
-CREATE PROCEDURE [DBO].[otvDiag_add]
-(
-@name_otv nvarchar(max)
-)
-AS
-	insert into [dbo].[otvDiag]([name_otv]) values((@name_otv));
-go
-
-CREATE PROCEDURE [DBO].[otvGip_add]
-(
-@name_otv nvarchar(max)
-)
-AS
-	insert into [dbo].[otvGip]([name_otv]) values((@name_otv));
-go
-
-CREATE PROCEDURE [DBO].[otvFenom_delete]
-(
-@id_otvFenom int
-)
-AS
-	DELETE from [dbo].[otvFenom]
-	where id_otvFenom=@id_otvFenom;
-go
-
-CREATE PROCEDURE [DBO].[otvDiag_delete]
-(
-@id_otvDiag int
-)
-AS
-	DELETE from [dbo].[otvDiag]
-	where id_otvDiag=@id_otvDiag;
-go
-
-CREATE PROCEDURE [DBO].[otvGip_delete]
-(
-@id_otvGip int
-)
-AS
-	DELETE from [dbo].[otvGip]
-	where id_otvGip=@id_otvGip;
-go

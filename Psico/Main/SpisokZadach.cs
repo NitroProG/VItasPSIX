@@ -17,48 +17,31 @@ namespace Psico
 {
     public partial class SpisokZadach : Form
     {
-        DataGridView datagr = new DataGridView(); // Создание таблицы 
-        int error; // Переменная ошибки
-        int kolvoreshzadach; // Количество решённых задач
-        WordInsert wordinsert = new WordInsert(); // Подключение класса
+        DataGridView datagr = new DataGridView();
+        WordInsert wordinsert = new WordInsert();
+        ExitProgram exprg = new ExitProgram();
+        int error;
+        int kolvoreshzadach;
 
         public SpisokZadach()
         {
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void OpenAutorizationForm(object sender, EventArgs e)
         {
-            // Окрытие формы авторизации
+            exprg.ProtokolSent();
+
             Autorization autorization = new Autorization();
             autorization.Show();
             Close();
         }
 
-        private void SpisokZadach_Load(object sender, EventArgs e)
+        private void FormLoad(object sender, EventArgs e)
         {
-
-            // Запись данных в ворд документ
-            try
-            {
-                if (Program.AllT !=0)
-                {
-                    Program.Insert = "Время работы с задачей: " + Program.AllT + " сек";
-
-                    wordinsert.Ins();
-                }
-            }
-
-            // Если возникла ошибка во время записи данных в ворд документ
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-            }
-
-            // создание подключения к БД
+            // Подключение к БД
             SqlConnection con = DBUtils.GetDBConnection();
-            con.Open(); // подключение к БД
+            con.Open();
 
             // Выбор количества решённых задач пользователем
             SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from resh where users_id = " + Program.user + "", con);
@@ -114,68 +97,96 @@ namespace Psico
             Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OpenNextForm(object sender, EventArgs e)
         {
-            error = 0; // Присвоение переменной
-            Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedIndex) + 1; // Присвоение переменной номера выбранной задачи
-            for (int i = 1; i < kolvoreshzadach; i++) // Цикл проверяющий решена ли выбранная задача
+            // Подключение к БД
+            SqlConnection con = DBUtils.GetDBConnection();
+            con.Open();
+
+            error = 0;
+            Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedIndex) + 1;
+
+            // Проверка данных о решении задачи
+            for (int i = 1; i < kolvoreshzadach; i++)
             {
-                if (Convert.ToString(Program.NomerZadachi) == Convert.ToString(datagr.Rows[i-1].Cells[0].Value)) // Если в таблице решённых задач есть выбранная задача
+                if (Convert.ToString(Program.NomerZadachi) == Convert.ToString(datagr.Rows[i-1].Cells[0].Value))
                 {
                     DialogResult result = MessageBox.Show("Данная диагностическая задача была уже решена!", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения 
-                    error = 1; // Пприсвоение переменной
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    error = 1;
                 }
             }
 
             // Если выбранная задача не решена
             if (error == 0)
             {
-
-                // Запись данных в ворд документ
+                // Запись данных в протокол
                 try
                 {
-                    Program.Insert = "Диагностическая задача №" + Program.NomerZadachi + ""; // Присвоение переменной данных, которые необходимо записать в ворд документ
-
+                    Program.Insert = "Диагностическая задача №" + Program.NomerZadachi + "";
                     wordinsert.Ins();
 
-                    // Переход на главную форму задачи
+                    try
+                    {
+                        // Обнуление выбранных ответов пользователем
+                        SqlCommand delete = new SqlCommand("delete from otvGip where users_id = " + Program.user + "", con);
+                        delete.ExecuteNonQuery();
+                        SqlCommand delete1 = new SqlCommand("delete from otvDiag where users_id = " + Program.user + "", con);
+                        delete1.ExecuteNonQuery();
+                        SqlCommand delete2 = new SqlCommand("delete from otvFenom where users_id = " + Program.user + "", con);
+                        delete2.ExecuteNonQuery();
+                        SqlCommand delete3 = new SqlCommand("delete from DpoSelected where users_id = " + Program.user + "", con);
+                        delete3.ExecuteNonQuery();
+                        SqlCommand delete4 = new SqlCommand("delete from FenomSelected where users_id = " + Program.user + "", con);
+                        delete4.ExecuteNonQuery();
+                        SqlCommand delete5 = new SqlCommand("delete from TeorSelected where users_id = " + Program.user + "", con);
+                        delete5.ExecuteNonQuery();
+                    }
+
+                    catch
+                    {
+                        MessageBox.Show("Ошибка в БД, обратитесь к администратору","Ошибка!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    }
+
+
                     Zadacha zadacha = new Zadacha();
                     zadacha.Show();
                     Close();
                 }
 
-                // Если возникла ошибка во время записи данных в ворд документ
                 catch
                 {
                     MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ExitFromProgram(object sender, EventArgs e)
         {
-            Application.Exit(); // Выход из программы
+            exprg.ProtokolSent();
+
+            Application.Exit();
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void CBCheckedChanged(object sender, EventArgs e)
         {
-            error = 0; // Присвоение переменной
-            Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedIndex) + 1; // Присовоение переменной выбранной задачи
-            for (int i = 1; i < kolvoreshzadach; i++) // Цикл проверяющий решена ли выбранная задача
+            error = 0;
+            Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedIndex) + 1;
+
+            // Проверка данных о решении задачи
+            for (int i = 1; i < kolvoreshzadach; i++)
             {
-                if (Convert.ToString(Program.NomerZadachi) == Convert.ToString(datagr.Rows[i - 1].Cells[0].Value)) // Если выбранная задача есть в таблице решённых задач
+                if (Convert.ToString(Program.NomerZadachi) == Convert.ToString(datagr.Rows[i - 1].Cells[0].Value))
                 {
-                    label3.Visible = true; // Вывод label 
-                    error = 1; // Присвоение переменной
+                    label3.Visible = true;
+                    error = 1;
                 }
             }
 
-            // Если выбранной задачи нет в таблице решённых задач
             if (error == 0)
             {
-                label3.Visible = false; // Скрытие label
+                label3.Visible = false;
             }
         }
     }

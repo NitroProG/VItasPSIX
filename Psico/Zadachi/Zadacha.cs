@@ -18,170 +18,105 @@ namespace Psico
 {
     public partial class Zadacha : Form
     {
-        string podzadacha; // переменная подзадачи
-        SqlConnection con = DBUtils.GetDBConnection(); // Класс подключения к бд
-        WordInsert wordinsert = new WordInsert(); // Класс вставки данных в ворд
+        SqlConnection con = DBUtils.GetDBConnection();
+        WordInsert wordinsert = new WordInsert();
+        ExitProgram exitProgram = new ExitProgram();
+        string podzadacha;
 
         public Zadacha()
         {
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ExitProgram(object sender, EventArgs e)
         {
-            if (Program.diagnoz == 3) // Если диагноз верный
+            // Если задача решена верно
+            if (Program.diagnoz == 3)
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning); // Вывод сообщения
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
-                if (result == DialogResult.OK) // Если пользователь нажимает кнопку ОК
+                // Если пользователь нажал ОК
+                if (result == DialogResult.OK)
                 {
-                    // Добавление данных о решении задачи пользователем
-                    SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
-                    StrPrc1.CommandType = CommandType.StoredProcedure;
-                    StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
-                    StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
-                    StrPrc1.ExecuteNonQuery();
+                    ExitFromReshZadacha();
 
-                    //Добавление данных в ворд
-                    try
-                    {
+                    exitProgram.ProtokolSent();
 
-                        timer1.Enabled = false; // Отключение таймера времени на форме
-                        Program.AllT = Program.AllT + Program.MainT; // Общее время работы на задаче
-                        Program.Insert = "Время на основной форме:" + Program.MainT + " сек"; // Данные, которые нужно вывести в ворд документ
-
-                        wordinsert.Ins();
-
-                        Application.Exit(); // Выход из программы
-                    }
-
-                    // Если возникла ошибка во время записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
+                    Application.Exit();
                 }
             }
 
-            // Если задача ещё не решена или диагноз поставлен не верно
+            // Если задача не решена
             else
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning); // Вывод сообщения
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
-                if (result == DialogResult.OK) // Если пользователь нажимает кнопку ОК
+                // Если пользователь нажал ОК
+                if (result == DialogResult.OK)
                 {
 
-                    // Запись данных в ворд документ
-                    try
-                    {
+                    timer1.Enabled = false;
 
-                        timer1.Enabled = false; // Отключение таймера времени на форме
-                        Program.AllT = Program.AllT + Program.MainT; // Общее время выполнения задачи
-                        Program.Insert = "Время на основной форме:" + Program.MainT + " сек"; // Данные, которые необходимо занести в ворд документ
+                    exitProgram.ExProgr();
 
-                        wordinsert.Ins();
+                    exitProgram.ProtokolSent();
 
-                        Application.Exit(); // Выход из программа
-                    }
-
-                    // Если возникла ошибка во время записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
+                    Application.Exit();
                 }
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void OpenSpisokZadach(object sender, EventArgs e)
         {
-            if (Program.diagnoz == 3) // Если диагноз верный
+            // Если задача решена верно
+            if (Program.diagnoz == 3)
             {
-                DialogResult result = MessageBox.Show("Если вы перейдёте к списку задач, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning); // Вывод сообщения
+                DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
-                if (result == DialogResult.OK) // Если пользователь нажал кнопку ОК
+                // Если пользователь нажал ОК
+                if (result == DialogResult.OK)
                 {
-                    // Добавление данных о решении задачи пользователем
-                    SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
-                    StrPrc1.CommandType = CommandType.StoredProcedure;
-                    StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
-                    StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
-                    StrPrc1.ExecuteNonQuery();
+                    ExitFromReshZadacha();
 
-                    // Запись данных в ворд документ
-                    try
-                    {
-                        Program.AllT = Program.AllT + Program.MainT;
-                        Program.Insert = "Время на основной форме:" + Program.MainT + " сек";
-
-                        timer1.Enabled = false;
-
-                        wordinsert.Ins();
-
-                        // Закрытие формы и переход на форму со списком задач
-                        SpisokZadach spisokZadach = new SpisokZadach();
-                        spisokZadach.Show();
-                        Close();
-                    }
-
-                    // Если возникла ошибка во время записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
+                    SpisokZadach spisokZadach = new SpisokZadach();
+                    spisokZadach.Show();
+                    Close();
                 }
             }
 
-            // Если задача решена или диагноз поставлен не верно
+            // Если задача не решена
             else
             {
-                DialogResult result = MessageBox.Show("Если вы перейдёте к списку задач, ваши данные не сохранятся!", "Внимание!",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning); // Вывод сообщения
+                DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
-                if (result == DialogResult.OK) // Если пользователь нажимает кнопку ОК
+                // Если пользователь нажал ОК
+                if (result == DialogResult.OK)
                 {
 
-                    // Запись данных в ворд документ
-                    try
-                    {
-                        Program.AllT = Program.AllT + Program.MainT;
-                        Program.Insert = "Время на основной форме:" + Program.MainT + " сек";
+                    timer1.Enabled = false;
 
-                        timer1.Enabled = false;
+                    exitProgram.ExProgr();
 
-                        wordinsert.Ins();
-
-                        // Переход на форму со списком задач
-                        SpisokZadach spisokZadach = new SpisokZadach();
-                        spisokZadach.Show();
-                        Close();
-                    }
-
-                    // Если возникла ошибка во время записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
+                    SpisokZadach spisokZadach = new SpisokZadach();
+                    spisokZadach.Show();
+                    Close();
                 }
             }
         }
 
-        private void Zadacha_Load(object sender, EventArgs e)
+        private void FormLoad(object sender, EventArgs e)
         {
-            Program.MainT = 0; // Переменная времени на форме
-            timer1.Enabled = true; // Счётчик времени на форме
+            // Счётчик времени на форме
+            timer1.Enabled = true;
 
             //Выбор данных из БД
-            con.Open(); // подключение к БД
-            SqlCommand get_otd_name = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con); // Выбор данных из БД
-            SqlDataReader dr = get_otd_name.ExecuteReader(); // Считывание данных из БД
+            con.Open();
+            SqlCommand get_otd_name = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
+            SqlDataReader dr = get_otd_name.ExecuteReader();
 
             // Запись данных из БД
             dr.Read();
@@ -232,102 +167,98 @@ namespace Psico
             label4.Left = panel1.Width / 2 - label4.Width / 2;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OpenCheckForm(object sender, EventArgs e)
         {
+            timer1.Enabled = false;
 
-            // Запись данных в ворд документ
-            try
+            // Переход на выбранную форму
+            switch (podzadacha)
             {
-
-                timer1.Enabled = false;
-                Program.AllT = Program.AllT + Program.MainT;
-                Program.Insert = "Время на основной форме:" + Program.MainT + " сек";
-
-                wordinsert.Ins();
-
-                // Переход на выбранную форму
-                switch (podzadacha)
-                {
-                    case "1":
-                        Fenom1 fenom1 = new Fenom1();
-                        fenom1.Show();
-                        Close();
-                        break;
-                    case "2":
-                        teor1 teor1 = new teor1();
-                        teor1.Show();
-                        Close();
-                        break;
-                    case "3":
-                        dpo dpo = new dpo();
-                        dpo.Show();
-                        Close();
-                        break;
-                    case "4":
-                        dz1 dz1 = new dz1();
-                        dz1.Show();
-                        Close();
-                        break;
-                    case "5":
-                        meropriyatiya1 meropriyatiya1 = new meropriyatiya1();
-                        meropriyatiya1.Show();
-                        Close();
-                        break;
-                    case "6":
-                        katamnez katamnez = new katamnez();
-                        katamnez.Show();
-                        Close();
-                        break;
-                }
+                case "1":
+                   Fenom1 fenom1 = new Fenom1();
+                   fenom1.Show();
+                   Close();
+                   break;
+                case "2":
+                   teor1 teor1 = new teor1();
+                   teor1.Show();
+                   Close();
+                   break;
+                case "3":
+                   dpo dpo = new dpo();
+                   dpo.Show();
+                   Close();
+                   break;
+                case "4":
+                   dz1 dz1 = new dz1();
+                   dz1.Show();
+                   Close();
+                   break;
+                case "5":
+                   meropriyatiya1 meropriyatiya1 = new meropriyatiya1();
+                   meropriyatiya1.Show();
+                   Close();
+                   break;
+                case "6":
+                   katamnez katamnez = new katamnez();
+                   katamnez.Show();
+                   Close();
+                   break;
+                default:
+                    MessageBox.Show("Вы ничего не выбрали!","Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    break;
             }
 
-            // Если возникла ошибка при записи данных в ворд докуменрт
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-            }
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            // Присвоение переменной значение выбранного radiobutton
             podzadacha = "1";
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
-            // Присвоение переменной значение выбранного radiobutton
             podzadacha = "2";
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            // Присвоение переменной значение выбранного radiobutton
             podzadacha = "3";
         }
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
-            // Присвоение переменной значение выбранного radiobutton
             podzadacha = "4";
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            // Присвоение переменной значение выбранного radiobutton
             podzadacha = "5";
         }
 
         private void radioButton6_CheckedChanged(object sender, EventArgs e)
         {
-            // Присвоение переменной значение выбранного radiobutton
             podzadacha = "6";
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer(object sender, EventArgs e)
         {
-            Program.MainT = Program.MainT + 1; // Счётчик времени на форме
+            // Счётчик времени на форме
+            Program.MainT = Program.MainT + 1;
+        }
+
+        private void ExitFromReshZadacha()
+        {
+            // Добавление данных о решении задачи пользователем
+            SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
+            StrPrc1.CommandType = CommandType.StoredProcedure;
+            StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
+            StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
+            StrPrc1.ExecuteNonQuery();
+
+            timer1.Enabled = false;
+
+            exitProgram.ExProgr();
         }
     }
 }

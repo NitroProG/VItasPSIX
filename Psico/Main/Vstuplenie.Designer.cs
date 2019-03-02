@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Vstuplenie));
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -36,6 +37,7 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.hint = new System.Windows.Forms.ToolTip(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -76,8 +78,9 @@
             this.button3.Size = new System.Drawing.Size(29, 28);
             this.button3.TabIndex = 34;
             this.button3.Text = "Х";
+            this.hint.SetToolTip(this.button3, "Выход из программы");
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.ExitFromProgram);
             // 
             // label2
             // 
@@ -98,6 +101,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(24, 65);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.ShortcutsEnabled = false;
             this.richTextBox1.Size = new System.Drawing.Size(1292, 553);
             this.richTextBox1.TabIndex = 6;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
@@ -125,7 +129,13 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "ДАЛЕЕ";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.OpenNextForm);
+            // 
+            // hint
+            // 
+            this.hint.AutoPopDelay = 5000;
+            this.hint.InitialDelay = 1;
+            this.hint.ReshowDelay = 100;
             // 
             // Vstuplenie
             // 
@@ -139,7 +149,7 @@
             this.Name = "Vstuplenie";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Vstuplenie";
-            this.Load += new System.EventHandler(this.Vstuplenie_Load);
+            this.Load += new System.EventHandler(this.FormLoad);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -156,5 +166,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ToolTip hint;
     }
 }

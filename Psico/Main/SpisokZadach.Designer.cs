@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -37,6 +38,7 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.hint = new System.Windows.Forms.ToolTip(this.components);
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -92,8 +94,9 @@
             this.button3.Size = new System.Drawing.Size(29, 28);
             this.button3.TabIndex = 34;
             this.button3.Text = "Х";
+            this.hint.SetToolTip(this.button3, "Выход из программы");
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.ExitFromProgram);
             // 
             // comboBox1
             // 
@@ -105,7 +108,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(65, 32);
             this.comboBox1.TabIndex = 4;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.CBCheckedChanged);
             // 
             // label1
             // 
@@ -130,8 +133,9 @@
             this.button2.Size = new System.Drawing.Size(84, 35);
             this.button2.TabIndex = 1;
             this.button2.Text = "НАЗАД";
+            this.hint.SetToolTip(this.button2, "Назад на окно авторизации");
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.OpenAutorizationForm);
             // 
             // button1
             // 
@@ -146,8 +150,9 @@
             this.button1.Size = new System.Drawing.Size(109, 35);
             this.button1.TabIndex = 0;
             this.button1.Text = "ВЫБРАТЬ";
+            this.hint.SetToolTip(this.button1, "Начать решение задачи");
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.OpenNextForm);
             // 
             // panel2
             // 
@@ -158,6 +163,12 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1366, 768);
             this.panel2.TabIndex = 4;
+            // 
+            // hint
+            // 
+            this.hint.AutoPopDelay = 5000;
+            this.hint.InitialDelay = 1;
+            this.hint.ReshowDelay = 100;
             // 
             // SpisokZadach
             // 
@@ -170,7 +181,7 @@
             this.Name = "SpisokZadach";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SpisokZadach";
-            this.Load += new System.EventHandler(this.SpisokZadach_Load);
+            this.Load += new System.EventHandler(this.FormLoad);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -189,5 +200,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ToolTip hint;
     }
 }

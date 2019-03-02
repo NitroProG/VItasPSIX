@@ -97,3 +97,5 @@ C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.pdb
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.AddZadacha.resources
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.DeleteZadacha.resources
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.UpdateZadacha.resources
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.WaitingForm.resources
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.Registration.resources

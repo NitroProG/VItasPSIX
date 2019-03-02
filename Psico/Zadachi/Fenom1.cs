@@ -17,69 +17,42 @@ namespace Psico
 {
     public partial class Fenom1 : Form
     {
-        SqlConnection con = DBUtils.GetDBConnection(); // Класс подключения к БД
-        int kolvoRb; // Количество radiobutton
-        DataGridView datagr = new DataGridView(); // Создание datagridview
-        WordInsert wordinsert = new WordInsert(); // Класс записи данных в ворд документ
+        SqlConnection con = DBUtils.GetDBConnection();
+        int kolvoRb;
+        DataGridView datagr = new DataGridView();
+        WordInsert wordinsert = new WordInsert();
+        ExitProgram exitProgram = new ExitProgram();
 
         public Fenom1()
         {
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void OpenMainForm(object sender, EventArgs e)
         {
-            // Запись данных в ворд документ
-            try
-            {
-                //Отключение счётчика времени на форме
-                timer1.Enabled = false;
+            ExitFromThisForm();
 
-                // Присвоение переменных
-                Program.AllT = Program.AllT + Program.Fenom1T; // Общее время выполнения задачи
-                Program.fenomenologiya = richTextBox2.Text; // Данные о резюме по феноменологии
-                Program.glavsved = richTextBox3.Text; // Общие сведения по феноменологии
+            Program.Insert = "Время общее на этапе феноменологии:" + Program.AllFenom + " сек";
+            wordinsert.Ins();
 
-                if (Program.glavsved != "")
-                {
-                    // Данные, которые нужно записать в ворд документ
-                    Program.Insert = "Главные сведения по феноменологии: " + Program.glavsved + "";
-                    wordinsert.Ins();
-                }
+            Program.FullAllFenom = Program.FullAllFenom + Program.AllFenom;
+            Program.AllFenom = 0;
 
-                if (Program.fenomenologiya !="")
-                {
-                    // Данные, которые нужно записать в ворд документ
-                    Program.Insert = "Резюме по феноменологии: " + Program.fenomenologiya + "";
-                    wordinsert.Ins();
-                }
-
-                // Данные, которые нужно записать в ворд документ
-                Program.Insert = "Время на феноменологии 1:" + Program.Fenom1T + " сек";
-                wordinsert.Ins();
-
-                // Переход на главную форму задачи
-                Zadacha zadacha = new Zadacha();
-                zadacha.Show();
-                Close();
-            }
-
-            // Если возникла ошибка при записи данных в ворд документ
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-            }
+            Zadacha zadacha = new Zadacha();
+            zadacha.Show();
+            Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ExitProgram(object sender, EventArgs e)
         {
-            if (Program.diagnoz == 3) // Если диагноз верный
+            // Если задача решена 
+            if (Program.diagnoz == 3)
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning); // Вывод сообщения
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
-                if (result == DialogResult.OK) // Если пользователь нажал ОК
+                // Если пользователь нажал ОК
+                if (result == DialogResult.OK)
                 {
                     // Запись данных о решении задачи
                     SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
@@ -88,105 +61,34 @@ namespace Psico
                     StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
                     StrPrc1.ExecuteNonQuery();
 
-                    // Запись данных в ворд документ
-                    try
-                    {
-
-                        timer1.Enabled = false;
-
-                        Program.AllT = Program.AllT + Program.Fenom1T;
-                        Program.fenomenologiya = richTextBox2.Text;
-                        Program.glavsved = richTextBox3.Text;
-
-                        if (Program.glavsved != "")
-                        {
-                            // Данные, которые нужно записать в ворд документ
-                            Program.Insert = "Главные сведения по феноменологии: " + Program.glavsved + "";                  
-                            wordinsert.Ins();
-                        }
-
-                        if (Program.fenomenologiya != "")
-                        {
-                            // Данные, которые нужно записать в ворд документ
-                            Program.Insert = "Резюме по феноменологии: " + Program.fenomenologiya + "";
-                            wordinsert.Ins();
-                        }
-
-                        Program.Insert = "Время на феноменологии 1:" + Program.Fenom1T + " сек";
-                        wordinsert.Ins();
-
-                        // Выход из программы
-                        Application.Exit();
-                    }
-
-                    // Если возникла ошибка при записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
+                    ExitFromProgram();
                 }
             }
 
-            // Если задача не решена или диагноз неверный
+            // Если задача не решена
             else
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning); // Вывод сообщение
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
-                if (result == DialogResult.OK) // Если пользователь нажал ОК
+                // Если пользователь нажал ОК
+                if (result == DialogResult.OK)
                 {
-
-                    // Запись данных
-                    try
-                    {
-
-                        timer1.Enabled = false;
-
-                        Program.AllT = Program.AllT + Program.Fenom1T;
-                        Program.fenomenologiya = richTextBox2.Text;
-                        Program.glavsved = richTextBox3.Text;
-
-                        if (Program.glavsved != "")
-                        {
-                            // Данные, которые нужно записать в ворд документ
-                            Program.Insert = "Главные сведения по феноменологии: " + Program.glavsved + "";
-                            wordinsert.Ins();
-                        }
-
-                        if (Program.fenomenologiya != "")
-                        {
-                            // Данные, которые нужно записать в ворд документ
-                            Program.Insert = "Резюме по феноменологии: " + Program.fenomenologiya + "";
-                            wordinsert.Ins();
-                        }
-
-                        Program.Insert = "Время на феноменологии 1:" + Program.Fenom1T + " сек";
-                        wordinsert.Ins();
-
-                        // Выход из программы
-                        Application.Exit();
-                    }
-
-                    // Если возникла ошибка при записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
+                    ExitFromProgram();
                 }
             }
         }
 
-        private void Fenom1_Load(object sender, EventArgs e)
+        private void FormLoad(object sender, EventArgs e)
         {
-            Program.Fenom1T = 0; // Переменная времени на фореме
-            timer1.Enabled = true; // Счётчик времени на форме
+            Program.Fenom1T = 0;
+            timer1.Enabled = true;
 
-            richTextBox2.Text = Program.fenomenologiya; // Запись данных о резюме по феноменологии
-            richTextBox3.Text = Program.glavsved; // Запись данных о главных сведения по феноменологии
+            richTextBox2.Text = Program.fenomenologiya;
+            richTextBox3.Text = Program.glavsved;
 
-            con.Open(); // подключение к БД
+            // Открытие подключения к БД
+            con.Open();
 
             // Выбор данных из БД
             SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
@@ -224,7 +126,7 @@ namespace Psico
                 radioButton.Text = Convert.ToString(datagr.Rows[i-1].Cells[0].Value);
                 radioButton.Location = new Point(17, y);
                 radioButton.AutoSize = true;
-                radioButton.CheckedChanged += radiobutton_checkedchanged;
+                radioButton.CheckedChanged += RbChanged;
                 panel1.Controls.Add(radioButton);
                 y = y + 30;
             }
@@ -258,7 +160,7 @@ namespace Psico
 
                 foreach (Control ctrl in panel1.Controls)
                 {
-                    int newFontSize = 12; //размер
+                    int newFontSize = 12;
                     ctrl.Font = new Font(ctrl.Font.FontFamily, newFontSize);
                 }
             }
@@ -268,89 +170,95 @@ namespace Psico
             Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
             label1.Left = panel1.Width / 2 - label1.Width / 2;
             label3.Left = panel1.Width / 2 - label3.Width / 2;
+
+            // Запись данных в протокол
+            Program.Insert = "Окно - Феноменология (Свободная форма):";
+            wordinsert.Ins();
         }
 
-        public void radiobutton_checkedchanged(object sender, EventArgs e)
+        public void RbChanged(object sender, EventArgs e)
         {
             // Выбор всех radiobutton на форме
             RadioButton radiobtn = (RadioButton)sender;
 
-            // Переборка radiobutton по их количеству
+            // Перебор radiobutton
             for (int x = 1; x < kolvoRb; x++)
             {
                 // При выборе определённого radiobutton
                 if (radiobtn.Name == "radiobutton" + x + "")
                 {
-                    //Запись данных в richtextbox о выбранном radiobutton
-                    richTextBox1.Text = Convert.ToString(datagr.Rows[x-1].Cells[1].Value);
+                    richTextBox1.Text = Convert.ToString(datagr.Rows[x - 1].Cells[1].Value);
 
                     if (radiobtn.Checked == true)
                     {
-                        // Запись данных в ворд документ
-                        try
-                        {
-                            // Запись данных о нажатии на radiobutton
-                            Program.Insert = "Просмотрено: " + radiobtn.Text + "";
-
-                            wordinsert.CBIns();
-                        }
-
-                        // При возникновении ошибки при записи данных в ворд документ
-                        catch
-                        {
-                            MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                        }
+                        // Запись данных о нажатии на radiobutton
+                        Program.Insert = "Просмотрено: " + radiobtn.Text + "";
+                        wordinsert.CBIns();
                     }
                 }
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OpenNextForm(object sender, EventArgs e)
         {
-            // Запись данных в ворд документ
-            try
+            ExitFromThisForm();
+
+            Fenom2 fenom2 = new Fenom2();
+            fenom2.Show();
+            Close();
+        }
+
+        private void Timer(object sender, EventArgs e)
+        {
+            // Счётчик времени на форме
+            Program.Fenom1T = Program.Fenom1T + 1;
+        }
+
+        private void TimeWithoutKatamnez()
+        {
+            // Если задача не решена
+            if (Program.diagnoz != 3)
             {
-
-                timer1.Enabled = false;
-                Program.AllT = Program.AllT + Program.Fenom1T;
-                Program.fenomenologiya = richTextBox2.Text;
-                Program.glavsved = richTextBox3.Text;
-
-                if (Program.glavsved != "")
-                {
-                    // Данные, которые нужно записать в ворд документ
-                    Program.Insert = "Главные сведения по феноменологии: " + Program.glavsved + "";
-                    wordinsert.Ins();
-                }
-
-                if (Program.fenomenologiya != "")
-                {
-                    // Данные, которые нужно записать в ворд документ
-                    Program.Insert = "Резюме по феноменологии: " + Program.fenomenologiya + "";
-                    wordinsert.Ins();
-                }
-
-                Program.Insert = "Время на феноменологии 1: " + Program.Fenom1T + " сек";
-                wordinsert.Ins();
-
-                // Переход на следующую форму
-                Fenom2 fenom2 = new Fenom2();
-                fenom2.Show();
-                Close();
-            }
-
-            // При возникновении ошибки при записи данных в ворд документ
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+                Program.AllTBezK = Program.AllTBezK + Program.Fenom1T;
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void ExitFromThisForm()
         {
-            Program.Fenom1T = Program.Fenom1T + 1; // Счётчик времени на форме
+            timer1.Enabled = false;
+
+            Program.AllT = Program.AllT + Program.Fenom1T;
+            Program.AllFenom = Program.Fenom1T + Program.AllFenom;
+            Program.fenomenologiya = richTextBox2.Text;
+            Program.glavsved = richTextBox3.Text;
+
+            // Время до решения задачи
+            TimeWithoutKatamnez();
+
+            // Запись данных в протокол
+            Program.Insert = "Главные сведения по феноменологии: " + Program.glavsved + "";
+            wordinsert.Ins();
+            Program.Insert = "Резюме по феноменологии: " + Program.fenomenologiya + "";
+            wordinsert.Ins();
+            Program.Insert = "Время на феноменологии (Свободная форма):" + Program.Fenom1T + " сек";
+            wordinsert.Ins();
+        }
+
+        private void ExitFromProgram()
+        {
+            ExitFromThisForm();
+
+            Program.Insert = "Время общее на этапе феноменологии:" + Program.AllFenom + " сек";
+            wordinsert.Ins();
+
+            Program.FullAllFenom = Program.FullAllFenom + Program.AllFenom;
+            Program.AllFenom = 0;
+
+            exitProgram.ExProgr();
+
+            exitProgram.ProtokolSent();
+
+            Application.Exit();
         }
     }
 }

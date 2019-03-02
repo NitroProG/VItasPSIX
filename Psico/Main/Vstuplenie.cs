@@ -17,21 +17,19 @@ namespace Psico
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OpenNextForm(object sender, EventArgs e)
         {
-            // Открытие формы со списком задач
             SpisokZadach spisokZadach = new SpisokZadach();
             spisokZadach.Show();
             Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ExitFromProgram(object sender, EventArgs e)
         {
-            // Выход из программы
             Application.Exit();
         }
 
-        private void Vstuplenie_Load(object sender, EventArgs e)
+        private void FormLoad(object sender, EventArgs e)
         {
             // Адаптация разрешения экрана пользователя
             Rectangle screen = Screen.PrimaryScreen.Bounds;

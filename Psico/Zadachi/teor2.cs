@@ -17,192 +17,100 @@ namespace Psico
     public partial class teor2 : Form
     {
         SqlConnection con = DBUtils.GetDBConnection();
-        int kolvoCb;
         DataGridView datagr = new DataGridView();
         DataGridView datagr1 = new DataGridView();
-        int kolvovibor = 0; // Количество выбранных ответов
+        DataGridView datagr2 = new DataGridView();
+        WordInsert wordinsert = new WordInsert();
+        ExitProgram exitProgram = new ExitProgram();
+        int kolvootv;
+        int kolvoCb;
+        int kolvovibor = 0;
         int kolvotext;
         int stolb = 0;
-        WordInsert wordinsert = new WordInsert();
 
         public teor2()
         {
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ExitProgram(object sender, EventArgs e)
         {
+            // Если задача решена
             if (Program.diagnoz == 3)
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
+                // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
+                    GetCBChecked();
+
+                    // Добавление данных о решении задачи пользователем
                     SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
                     StrPrc1.CommandType = CommandType.StoredProcedure;
                     StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
                     StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
                     StrPrc1.ExecuteNonQuery();
 
-                    // Запись данных в ворд документ
-                    try
-                    {
-
-                        timer1.Enabled = false;
-                        Program.AllT = Program.AllT + Program.gip2T;
-                        Program.Insert = "Время на гипотезах 2:" + Program.gip2T + " сек";
-
-                        wordinsert.Ins();
-
-                        // Выход из программы
-                        Application.Exit();
-                    }
-
-                    // При возникновении ошибки при записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
+                    ExitFromProgram();
                 }
             }
-
+            
+            // если задача не решена
             else
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
+                // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
-                    // Запись данных в ворд документ
-                    try
-                    {
+                    GetCBChecked();
 
-                        timer1.Enabled = false;
-                        Program.AllT = Program.AllT + Program.gip2T;
-                        Program.Insert = "Время на гипотезах 2:" + Program.gip2T + " сек";
-
-                        wordinsert.Ins();
-
-                        // Выход из программы
-                        Application.Exit();
-                    }
-
-                    // При возникновении ошибки при записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
+                    ExitFromProgram();
                 }
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void OpenPreviousForm(object sender, EventArgs e)
         {
-            // Запись данных в ворд документ
-            try
-            {
+            GetCBChecked();
 
-                timer1.Enabled = false;
-                Program.AllT = Program.AllT + Program.gip2T;
-                Program.Insert = "Время на гипотезах 2:" + Program.gip2T + " сек";
+            ExitFromThisForm();
 
-                wordinsert.Ins();
-
-                // Переход на предыдущую форму
-                teor1 teor1 = new teor1();
-                teor1.Show();
-                Close();
-            }
-
-            // При возникновении ошибки при записи данных в ворд документ
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-            }
+            teor1 teor1 = new teor1();
+            teor1.Show();
+            Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OpenMainForm(object sender, EventArgs e)
         {
-            // Обновление выбранных ответов
-            SqlCommand delete = new SqlCommand("delete from otvGip", con);
-            delete.ExecuteNonQuery();
+            GetCBChecked();
 
-            // Запись данных о выбранных checkbox
-            foreach (var checkBox in panel1.Controls.OfType<CheckBox>())
-            {
+            ExitFromThisForm();
 
-                // Переборка checkbox по их количеству
-                for (int x = 1; x < kolvoCb; x++)
-                {
-                    // При выборе определённого checkbox
-                    if (checkBox.Name == "checkbox" + x + "")
-                    {
+            Program.Insert = "Время общее на этапе гипотезы:" + Program.AllGip + " сек";
+            wordinsert.Ins();
 
-                        if (checkBox.Checked == true)
-                        {
-                            // Добавление данных о решении задачи пользователем
-                            SqlCommand StrPrc2 = new SqlCommand("otvGip_add", con);
-                            StrPrc2.CommandType = CommandType.StoredProcedure;
-                            StrPrc2.Parameters.AddWithValue("@name_otv", checkBox.Name);
-                            StrPrc2.ExecuteNonQuery();
+            Program.FullAllGip = Program.FullAllGip + Program.AllGip;
+            Program.AllGip = 0;
 
-                            // Запись данных в ворд документ
-                            try
-                            {
-                                // Запись данных о выборе checkbox
-                                Program.Insert = "Выбран: " + checkBox.Text + "";
-
-                                wordinsert.CBIns();
-                            }
-
-                            // При возникновении ошибки при записи данных в ворд документ
-                            catch
-                            {
-                                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                            }
-                        }
-                    }
-                }
-            }
-
-            // Запись данных в ворд документ
-            try
-            {
-
-                timer1.Enabled = false;
-                Program.AllT = Program.AllT + Program.gip2T;
-                Program.Insert = "Время на гипотезах 2:" + Program.gip2T + " сек";
-
-                wordinsert.Ins();
-
-                // Переход на главную форму задачи
-                Zadacha zadacha = new Zadacha();
-                zadacha.Show();
-                Close();
-            }
-
-            // При возникновении ошибки при записи данных в ворд документ
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-            }
+            Zadacha zadacha = new Zadacha();
+            zadacha.Show();
+            Close();
         }
 
-        private void teor2_Load(object sender, EventArgs e)
+        private void FormLoad(object sender, EventArgs e)
         {
-            Program.gip2T = 0; // Переменная времени на форме
-            timer1.Enabled = true; // Счётчик времени на форме
-
+            Program.gip2T = 0;
+            timer1.Enabled = true;
             richTextBox1.Text = Program.gipotezi;
 
-            con.Open(); // подключение к БД
+            // подключение к БД
+            con.Open();
 
+            // Вывод данных из БД
             SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
             SqlDataReader dr = Zaprosi.ExecuteReader();
             dr.Read();
@@ -210,14 +118,25 @@ namespace Psico
             label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
 
+            // Определение количества checkbox на форме
             SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from teor where zadacha_id = " + Program.NomerZadachi + "", con);
             SqlDataReader dr0 = kolvo.ExecuteReader();
             dr0.Read();
             kolvoCb = Convert.ToInt32(dr0["kolvo"].ToString());
             dr0.Close();
             kolvoCb = kolvoCb + 1;
+
+            // Определение переменной для равномерных колонок с checkbox
             stolb = kolvoCb / 2;
 
+            // Выбор количества правильных ответов у задачи
+            SqlCommand kolotv = new SqlCommand("select count(*) as 'kolvo' from vernotv_Gip where zadacha_id = " + Program.NomerZadachi + "", con);
+            SqlDataReader dr1 = kolotv.ExecuteReader();
+            dr1.Read();
+            kolvootv = Convert.ToInt32(dr1["kolvo"].ToString());
+            dr1.Close();
+
+            // Создание таблицы с данными из БД
             datagr.Name = "datagrview";
             datagr.Location = new Point(300, 300);
             SqlDataAdapter da1 = new SqlDataAdapter("select CB from teor where zadacha_id = " + Program.NomerZadachi + "", con);
@@ -229,10 +148,21 @@ namespace Psico
             panel1.Controls.Add(datagr);
             datagr.Visible = false;
 
+            // Динамическое создание таблицы
+            datagr2.Name = "datagrview2";
+            SqlDataAdapter da3 = new SqlDataAdapter("select otv from vernotv_Gip where zadacha_id = " + Program.NomerZadachi + "", con);
+            SqlCommandBuilder cb3 = new SqlCommandBuilder(da3);
+            DataSet ds3 = new DataSet();
+            da3.Fill(ds3, "vernotv_Gip");
+            datagr2.DataSource = ds3.Tables[0];
+            datagr2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            panel1.Controls.Add(datagr2);
+            datagr2.Visible = false;
+
             // Создание таблицы с данными из БД
             datagr1.Name = "datagrview1";
             datagr1.Location = new Point(400, 400);
-            SqlDataAdapter da2 = new SqlDataAdapter("select name_otv from otvGip", con);
+            SqlDataAdapter da2 = new SqlDataAdapter("select name_otv from otvGip where users_id = "+Program.user+"", con);
             SqlCommandBuilder cb2 = new SqlCommandBuilder(da2);
             DataSet ds2 = new DataSet();
             da2.Fill(ds2, "otvGip");
@@ -241,6 +171,7 @@ namespace Psico
             panel1.Controls.Add(datagr1);
             datagr1.Visible = false;
 
+            //Динамическое создание checkbox
             for (int x = 242, y = 246, i = 1; i < kolvoCb; i++)
             {
                 CheckBox checkBox = new CheckBox();
@@ -263,6 +194,7 @@ namespace Psico
                     y = y + 20;
                 }
 
+                // Создание 2 столбца с checkbox
                 if (i == stolb)
                 {
                     x = 750;
@@ -271,24 +203,21 @@ namespace Psico
             }
 
             // Выбор количества правильных ответов у задачи
-            SqlCommand kolotv = new SqlCommand("select count(*) as 'kolvo' from otvGip", con);
-            SqlDataReader dr1 = kolotv.ExecuteReader();
-            dr1.Read();
-            kolvovibor = Convert.ToInt32(dr1["kolvo"].ToString());
-            dr1.Close();
+            SqlCommand kolotvetov = new SqlCommand("select count(*) as 'kolvo' from otvGip where users_id = " + Program.user + "", con);
+            SqlDataReader dr3 = kolotvetov.ExecuteReader();
+            dr3.Read();
+            kolvovibor = Convert.ToInt32(dr3["kolvo"].ToString());
+            dr3.Close();
 
+            // Выбор checkbox которые были выбраны в предыдущий раз на форме
             if (datagr1.Rows.Count != 0)
             {
-                // выбор всех checkbox
                 foreach (var checkBox in panel1.Controls.OfType<CheckBox>())
                 {
-
-                    // Переборка checkbox по их количеству
                     for (int x = 1; x < kolvoCb; x++)
                     {
                         for (int i = 0; i < kolvovibor; i++)
                         {
-                            // При выборе определённого checkbox
                             if (checkBox.Name == Convert.ToString(datagr1.Rows[i].Cells[0].Value))
                             {
                                 checkBox.Checked = true;
@@ -297,12 +226,109 @@ namespace Psico
                     }
                 }
             }
+
+            // Запись данных в протокол
+            Program.Insert = "Окно - Гипотезы (Машинный выбор):";
+            wordinsert.Ins();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void timer(object sender, EventArgs e)
         {
             // Счётчик времени на форме
             Program.gip2T = Program.gip2T + 1; 
+        }
+
+        private void TimeWithoutKatamnez()
+        {
+            // Если задача не решена
+            if (Program.diagnoz != 3)
+            {
+                Program.AllTBezK = Program.AllTBezK + Program.gip2T;
+            }
+        }
+
+        private void ExitFromThisForm()
+        {
+            // Запись данных в протокол
+            Program.Insert = "Правильных ответов: " + Program.zaklOTV + " из " + kolvootv + "";
+            wordinsert.CBIns();
+
+            timer1.Enabled = false;
+            Program.AllT = Program.AllT + Program.gip2T;
+            Program.AllGip = Program.gip2T + Program.AllGip;
+
+            // Время до решения задачи
+            TimeWithoutKatamnez();
+
+            // Запись данных в протокол
+            Program.Insert = "Время на гипотезах (Машинный выбор):" + Program.gip2T + " сек";
+            wordinsert.Ins();
+        }
+
+        private void ExitFromProgram()
+        {
+            ExitFromThisForm();
+
+            Program.Insert = "Время общее на этапе гипотезы:" + Program.AllGip + " сек";
+            wordinsert.Ins();
+
+            Program.FullAllGip = Program.FullAllGip + Program.AllGip;
+            Program.AllGip = 0;
+
+            exitProgram.ExProgr();
+
+            exitProgram.ProtokolSent();
+
+            Application.Exit();
+        }
+
+        private void GetCBChecked()
+        {
+            // Обновление выбранных ответов
+            SqlCommand delete = new SqlCommand("delete from otvGip where users_id = " + Program.user + "", con);
+            delete.ExecuteNonQuery();
+
+            int otvchek = 0;
+            Program.zaklOTV = 0;
+
+            // Перебор всех checkbox
+            for (int i = 1; i < kolvoCb; i++)
+            {
+                // Если checkbox выбран
+                if ((panel1.Controls["checkbox" + i + ""] as CheckBox).Checked == true)
+                {
+                    otvchek = 0;
+
+                    // Перебор всех правильных ответов у задачи
+                    for (int a = 0; a < kolvootv; a++)
+                    {
+                        // Если выбранный checkbox правильный 
+                        if ((panel1.Controls["checkbox" + i + ""] as CheckBox).Text == Convert.ToString(datagr2.Rows[a].Cells[0].Value))
+                        {
+                            // Запись данных в протокол
+                            Program.Insert = "Выбран: " + (panel1.Controls["checkbox" + i + ""] as CheckBox).Text + " ✔";
+                            wordinsert.CBIns();
+
+                            Program.zaklOTV = Program.zaklOTV + 1;
+                            otvchek = 1;
+                        }
+                    }
+
+                    if (otvchek != 1)
+                    {
+                        // Запись данных в протокол
+                        Program.Insert = "Выбран: " + (panel1.Controls["checkbox" + i + ""] as CheckBox).Text + " ☒";
+                        wordinsert.CBIns();
+                    }
+
+                    // Добавление данных о решении задачи пользователем
+                    SqlCommand StrPrc2 = new SqlCommand("otvGip_add", con);
+                    StrPrc2.CommandType = CommandType.StoredProcedure;
+                    StrPrc2.Parameters.AddWithValue("@name_otv", (panel1.Controls["checkbox" + i + ""] as CheckBox).Name);
+                    StrPrc2.Parameters.AddWithValue("@user_id", Program.user);
+                    StrPrc2.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

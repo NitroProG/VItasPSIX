@@ -44,6 +44,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.hint = new System.Windows.Forms.ToolTip(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -91,9 +93,10 @@
             this.button5.Size = new System.Drawing.Size(216, 34);
             this.button5.TabIndex = 44;
             this.button5.Text = "Следующий рисунок";
+            this.hint.SetToolTip(this.button5, "Показать следующий рисунок");
             this.button5.UseVisualStyleBackColor = false;
             this.button5.Visible = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.button5.Click += new System.EventHandler(this.OpenNextPictureBox);
             // 
             // button4
             // 
@@ -107,8 +110,9 @@
             this.button4.Size = new System.Drawing.Size(121, 34);
             this.button4.TabIndex = 43;
             this.button4.Text = "Посмотреть";
+            this.hint.SetToolTip(this.button4, "Просмотреть данные по выбранной методике");
             this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.button4.Click += new System.EventHandler(this.ShowListBoxInfo);
             // 
             // label5
             // 
@@ -141,7 +145,7 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(606, 214);
             this.listBox1.TabIndex = 40;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.ListBoxItemChanged);
             // 
             // label4
             // 
@@ -176,8 +180,9 @@
             this.button3.Size = new System.Drawing.Size(29, 28);
             this.button3.TabIndex = 33;
             this.button3.Text = "Х";
+            this.hint.SetToolTip(this.button3, "Выход из программы");
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.ExitProgram);
             // 
             // button2
             // 
@@ -191,8 +196,9 @@
             this.button2.Size = new System.Drawing.Size(156, 35);
             this.button2.TabIndex = 32;
             this.button2.Text = "НАЗАД";
+            this.hint.SetToolTip(this.button2, "Переход на главную форму");
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.OpenMainForm);
             // 
             // label3
             // 
@@ -226,14 +232,26 @@
             this.button1.Size = new System.Drawing.Size(156, 35);
             this.button1.TabIndex = 0;
             this.button1.Text = "ПРОДОЛЖИТЬ";
+            this.hint.SetToolTip(this.button1, "Переход на главную форму");
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.OpenMainForm);
             // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 1000;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.timer1.Tick += new System.EventHandler(this.TimeOnForm);
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.TimeOnSeeListboxInfo);
+            // 
+            // hint
+            // 
+            this.hint.AutoPopDelay = 5000;
+            this.hint.InitialDelay = 1;
+            this.hint.ReshowDelay = 100;
             // 
             // dpo
             // 
@@ -246,7 +264,7 @@
             this.Name = "dpo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "dpo";
-            this.Load += new System.EventHandler(this.dpo_Load);
+            this.Load += new System.EventHandler(this.FormLoad);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -271,5 +289,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.ToolTip hint;
     }
 }

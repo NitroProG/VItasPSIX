@@ -22,6 +22,7 @@ namespace SqlConn
             string password = "D6747960f";
             string datasource = "IWANTTOSAYHELLO\\FILESBD";
             string database = "psico";
+
             // Возвращение данных о подключении
             return DBSQLServerUtils.GetDBConnection(username, password, datasource, database);
         }

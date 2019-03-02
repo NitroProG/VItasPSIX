@@ -16,22 +16,24 @@ namespace Psico
 {
     public partial class meropriyatiya2 : Form
     {
-        SqlConnection con = DBUtils.GetDBConnection(); // Подключение к БД
-        WordInsert wordinsert = new WordInsert(); // Запись данных в ворд документ
+        SqlConnection con = DBUtils.GetDBConnection();
+        WordInsert wordinsert = new WordInsert();
+        ExitProgram exitProgram = new ExitProgram();
 
         public meropriyatiya2()
         {
             InitializeComponent();
         }
 
-        private void meropriyatiya2_Load(object sender, EventArgs e)
+        private void FormLoad(object sender, EventArgs e)
         {
-            Program.meropr2T = 0; // Переменная времени на фореме
-            timer1.Enabled = true; // Счётчик времени на форме
+            Program.meropr2T = 0;
+            timer1.Enabled = true;
 
-            con.Open(); // подключение к БД
+            // подключение к БД
+            con.Open();
 
-            // Запись данных из БД на форму
+            // Запись данных из БД
             SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
             SqlDataReader dr = Zaprosi.ExecuteReader();
             dr.Read();
@@ -39,152 +41,93 @@ namespace Psico
             label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
 
-            // Запись данных из БД на форму
+            // Запись данных из БД
             SqlCommand text = new SqlCommand("select meroprtext from meropr where zadacha_id = " + Program.NomerZadachi + "", con);
             SqlDataReader dr1 = text.ExecuteReader();
             dr1.Read();
             richTextBox1.Text = dr1["meroprtext"].ToString();
             dr1.Close();
+
+            // Запись данных в протокол
+            Program.Insert = "Окно - Мероприятия (Общие сведения):";
+            wordinsert.Ins();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void OpenPreviousForm(object sender, EventArgs e)
         {
-            // Запись данных в ворд документ
-            try
-            {
+            ExitFromThisForm();
 
-                timer1.Enabled = false;
-
-                Program.AllT = Program.AllT + Program.meropr2T;
-
-                Program.Insert = "Время на мероприятиях 2: " + Program.meropr2T + " сек";
-
-                wordinsert.Ins();
-
-                // Переход на первую форму мероприятий
-                meropriyatiya1 meropriyatiya1 = new meropriyatiya1();
-                meropriyatiya1.Show();
-                Close();
-            }
-
-            // Если возникла ошибка при записи данных в ворд документ
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-            }
+            meropriyatiya1 meropriyatiya1 = new meropriyatiya1();
+            meropriyatiya1.Show();
+            Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OpenMainForm(object sender, EventArgs e)
         {
-            // Запись данных в ворд документ
-            try
-            {
+            ExitFromThisForm();
 
-                timer1.Enabled = false;
+            Program.Insert = "Время общее на этапе мероприятий:" + Program.AllMeropr + " сек";
+            wordinsert.Ins();
 
-                Program.AllT = Program.AllT + Program.meropr2T;
+            Program.FullAllMeropr = Program.FullAllMeropr + Program.AllMeropr;
+            Program.AllMeropr = 0;
 
-                Program.Insert = "Время на мероприятиях 2: " + Program.meropr2T + " сек";
-
-                wordinsert.Ins();
-
-                // Переход на главную форму задачи
-                Zadacha zadacha = new Zadacha();
-                zadacha.Show();
-                Close();
-            }
-
-            // Если возникла ошибка при записи данных в ворд документ
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-            }
+            Zadacha zadacha = new Zadacha();
+            zadacha.Show();
+            Close();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ExitProgram(object sender, EventArgs e)
         {
-            // Если задача решена
-            if (Program.diagnoz == 3)
+            DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            // Если пользователь нажал ОК
+            if (result == DialogResult.OK)
             {
-                DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning); // Вывод сообщения
+                // Запись данных о решении задачи в БД
+                SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
+                StrPrc1.CommandType = CommandType.StoredProcedure;
+                StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
+                StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
+                StrPrc1.ExecuteNonQuery();
 
-                // Если пользователь нажал ОК
-                if (result == DialogResult.OK)
-                {
-                    // Запись данных о решении задачи в БД
-                    SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
-                    StrPrc1.CommandType = CommandType.StoredProcedure;
-                    StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
-                    StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
-                    StrPrc1.ExecuteNonQuery();
-
-                    // Запись данных в ворд документ
-                    try
-                    {
-
-                        timer1.Enabled = false;
-
-                        Program.AllT = Program.AllT + Program.meropr2T;
-
-                        Program.Insert = "Время на мероприятиях 2: " + Program.meropr2T + " сек";
-
-                        wordinsert.Ins();
-
-                        // Выход из программы
-                        Application.Exit();
-                    }
-
-                    // Если возникла ошибка при записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
-                }
-            }
-
-            //Если задача не решена
-            else
-            {
-                DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning); // Вывод сообщения
-
-                // Если пользователь нажал ОК
-                if (result == DialogResult.OK)
-                {
-                    // Запись данных в ворд документ
-                    try
-                    {
-
-                        timer1.Enabled = false;
-
-                        Program.AllT = Program.AllT + Program.meropr2T;
-
-                        Program.Insert = "Время на мероприятиях 2: " + Program.meropr2T + " сек";
-
-                        wordinsert.Ins();
-
-                        // Выход из программы
-                        Application.Exit();
-                    }
-
-                    // Если возникла ошибка при записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
-                }
+                ExitFromProgram();
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer(object sender, EventArgs e)
         {
             //  Счётчик времени на форме
             Program.meropr2T = Program.meropr2T + 1; 
+        }
+
+        private void ExitFromThisForm()
+        {
+            timer1.Enabled = false;
+            Program.AllT = Program.AllT + Program.meropr2T;
+            Program.AllMeropr = Program.meropr2T + Program.AllMeropr;
+
+            // Запись данных в протокол
+            Program.Insert = "Время на мероприятиях (Общие сведения): " + Program.meropr2T + " сек";
+            wordinsert.Ins();
+        }
+
+        private void ExitFromProgram()
+        {
+            ExitFromThisForm();
+
+            Program.Insert = "Время общее на этапе мероприятий:" + Program.AllMeropr + " сек";
+            wordinsert.Ins();
+
+            Program.FullAllMeropr = Program.FullAllMeropr + Program.AllMeropr;
+            Program.AllMeropr = 0;
+
+            exitProgram.ExProgr();
+
+            exitProgram.ProtokolSent();
+
+            Application.Exit();
         }
     }
 }

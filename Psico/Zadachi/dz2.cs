@@ -16,33 +16,34 @@ namespace Psico
 {
     public partial class dz2 : Form
     {
-        SqlConnection con = DBUtils.GetDBConnection(); // Создания подключения к БД
-        int kolvoCb; // Количество checkbox на форму
-        int kolvootv; // Количество правильных ответов у задачи
-        int kolvovibor = 0; // Количество выбранных ответов
-        DataGridView datagr = new DataGridView(); // Создание таблицы
-        DataGridView datagr1 = new DataGridView(); // Создание таблицы
-        DataGridView datagr2 = new DataGridView(); // Создание таблицы
-        int kolvotext; // Количество символов в названии checkbox
-        int stolb = 0; // Переменная для уравнивания столбцов на форме
-        WordInsert wordinsert = new WordInsert(); // Запись данных в ворд документ
+        SqlConnection con = DBUtils.GetDBConnection();
+        DataGridView datagr = new DataGridView();
+        DataGridView datagr1 = new DataGridView();
+        DataGridView datagr2 = new DataGridView();
+        WordInsert wordinsert = new WordInsert();
+        ExitProgram exitProgram = new ExitProgram();
+        int kolvoCb;
+        int kolvootv;
+        int kolvovibor = 0;
+        int kolvotext;
+        int stolb = 0;
 
         public dz2()
         {
             InitializeComponent();
         }
 
-        private void dz2_Load(object sender, EventArgs e)
+        private void FormLoad(object sender, EventArgs e)
         {
-            Program.zakl2T = 0; // Переменная времени на фореме
-            timer1.Enabled = true; // Счётчик времени на форме
+            Program.zakl2T = 0;
+            timer1.Enabled = true;
+            richTextBox1.Text = Program.zakluch;
 
-            Program.zaklOTV = 0; // Переменная отвечающая за правильные ответы
-            Program.NeVernOtv = 0; // Переменная отвечающая за неправильные ответы
+            Program.zaklOTV = 0;
+            Program.NeVernOtv = 0;
 
-            con.Open(); // подключение к БД
-
-            richTextBox1.Text = Program.zakluch; // Запись данных на форму данных пользователя
+            // подключение к БД
+            con.Open();
 
             // Запись данных на форму из БД
             SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
@@ -62,7 +63,7 @@ namespace Psico
             stolb = kolvoCb / 2;
 
             // Выбор количества правильных ответов у задачи
-            SqlCommand kolotv = new SqlCommand("select count(*) as 'kolvo' from vernotv where zadacha_id = " + Program.NomerZadachi + "", con);
+            SqlCommand kolotv = new SqlCommand("select count(*) as 'kolvo' from vernotv_Diag where zadacha_id = " + Program.NomerZadachi + "", con);
             SqlDataReader dr1 = kolotv.ExecuteReader();
             dr1.Read();
             kolvootv = Convert.ToInt32(dr1["kolvo"].ToString());
@@ -81,7 +82,7 @@ namespace Psico
 
             // Динамическое создание таблицы
             datagr1.Name = "datagrview1";
-            SqlDataAdapter da2 = new SqlDataAdapter("select otv from vernotv where zadacha_id = " + Program.NomerZadachi + "", con);
+            SqlDataAdapter da2 = new SqlDataAdapter("select otv from vernotv_Diag where zadacha_id = " + Program.NomerZadachi + "", con);
             SqlCommandBuilder cb2 = new SqlCommandBuilder(da2);
             DataSet ds2 = new DataSet();
             da2.Fill(ds2, "vernotv");
@@ -93,7 +94,7 @@ namespace Psico
             // Создание таблицы с данными из БД
             datagr2.Name = "datagrview2";
             datagr2.Location = new Point(400, 400);
-            SqlDataAdapter da3 = new SqlDataAdapter("select name_otv from otvDiag", con);
+            SqlDataAdapter da3 = new SqlDataAdapter("select name_otv from otvDiag where users_id = " + Program.user + "", con);
             SqlCommandBuilder cb3 = new SqlCommandBuilder(da3);
             DataSet ds3 = new DataSet();
             da3.Fill(ds3, "otvDiag");
@@ -112,7 +113,6 @@ namespace Psico
                 panel1.Controls.Add(checkBox);
                 kolvotext = checkBox.Text.Length;
 
-                // Если название у checkbox слишком длинное перенос на следующую строку
                 if (kolvotext > 70)
                 {
                     checkBox.AutoSize = false;
@@ -121,7 +121,6 @@ namespace Psico
                     y = y + 40;
                 }
 
-                // Если название не длинное
                 else
                 {
                     checkBox.AutoSize = true;
@@ -137,24 +136,21 @@ namespace Psico
             }
 
             // Выбор количества правильных ответов у задачи
-            SqlCommand kolotvo = new SqlCommand("select count(*) as 'kolvo' from otvDiag", con);
+            SqlCommand kolotvo = new SqlCommand("select count(*) as 'kolvo' from otvDiag where users_id = " + Program.user + "", con);
             SqlDataReader dr2 = kolotvo.ExecuteReader();
             dr2.Read();
             kolvovibor = Convert.ToInt32(dr2["kolvo"].ToString());
             dr2.Close();
 
+            // Выбор checkbox которые были выбраны в предыдущий раз на форме
             if (datagr2.Rows.Count != 0)
             {
-                // выбор всех checkbox
                 foreach (var checkBox in panel1.Controls.OfType<CheckBox>())
                 {
-
-                    // Переборка checkbox по их количеству
                     for (int x = 1; x < kolvoCb; x++)
                     {
                         for (int i = 0; i < kolvovibor; i++)
                         {
-                            // При выборе определённого checkbox
                             if (checkBox.Name == Convert.ToString(datagr2.Rows[i].Cells[0].Value))
                             {
                                 checkBox.Checked = true;
@@ -163,121 +159,177 @@ namespace Psico
                     }
                 }
             }
+
+            // Запись данных в протокол
+            Program.Insert = "Окно - Заключение (Машинный выбор):";
+            wordinsert.Ins();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ExitProgram(object sender, EventArgs e)
         {
             // Если задача решена
             if (Program.diagnoz == 3)
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning); // Вывод сообщения
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
                 // Если пользователь нажал кнопку ОК
                 if (result == DialogResult.OK)
                 {
+                    GetCBChecked();
+
+                    // Запись данных в БД о решении задачи пользователем
                     SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
                     StrPrc1.CommandType = CommandType.StoredProcedure;
                     StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
                     StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
                     StrPrc1.ExecuteNonQuery();
 
-                    // Запись данных в ворд документ
-                    try
-                    {
-
-                        timer1.Enabled = false;
-
-                        Program.AllT = Program.AllT + Program.zakl2T;
-
-                        Program.Insert = "Время на заключении 2:" + Program.zakl2T + " сек";
-
-                        wordinsert.Ins();
-
-                        // Выход из программы
-                        Application.Exit();
-                    }
-
-                    // Если возникла ошибка при записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
+                    ExitFromProgram();
                 }
             }
 
-            // Если задача ещё не решена
+            // Если задача не решена
             else
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
-                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning); // Вывод сообщения
+                MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
                 // Если пользователь нажал кнопку ОК
                 if (result == DialogResult.OK)
                 {
-                    // Запись данных в ворд документ
-                    try
-                    {
+                    GetCBChecked();
 
-                        timer1.Enabled = false;
-
-                        Program.AllT = Program.AllT + Program.zakl2T;
-
-                        Program.Insert = "Время на заключении 2:" + Program.zakl2T + " сек";
-
-                        wordinsert.Ins();
-
-                        // Выход из программы
-                        Application.Exit();
-                    }
-
-                    // Если возникла ошибка при записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
+                    ExitFromProgram();
                 }
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void OpenPreviousForm(object sender, EventArgs e)
         {
-            // Запись данных в ворд документ
-            try
+            GetCBChecked();
+
+            ExitFromThisForm();
+
+            dz1 dz1 = new dz1();
+            dz1.Show();
+            Close();
+        }
+
+        private void OpenMainForm(object sender, EventArgs e)
+        {
+            GetCBChecked();
+
+            ExitFromThisForm();
+
+            Program.Insert = "Время общее на этапе заключения:" + Program.AllZakl + " сек";
+            wordinsert.Ins();
+
+            Program.FullAllZakl = Program.FullAllZakl + Program.AllZakl;
+            Program.AllZakl = 0;
+
+            Zadacha zadacha = new Zadacha();
+            zadacha.Show();
+            Close();
+
+        }
+
+        private void Timer(object sender, EventArgs e)
+        {
+            // Счётчик времени на форме
+            Program.zakl2T = Program.zakl2T + 1;
+        }
+
+        private void TimeWithoutKatamnez()
+        {
+            // Если задача не решена
+            if (Program.diagnoz != 3)
             {
-
-                timer1.Enabled = false;
-
-                Program.AllT = Program.AllT + Program.zakl2T;
-
-                Program.Insert = "Время на заключении 2:" + Program.zakl2T + " сек";
-
-                wordinsert.Ins();
-
-                // Переход на предыдущую форму
-                dz1 dz1 = new dz1();
-                dz1.Show();
-                Close();
-            }
-
-            // Если возникла ошибка при записи данных в ворд документ
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+                Program.AllTBezK = Program.AllTBezK + Program.zakl2T;
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void ExitFromThisForm()
+        {
+            // Запись данных в протокол
+            Program.Insert = "Правильных ответов: " + Program.zaklOTV + " из " + kolvootv + "";
+            wordinsert.CBIns();
+
+            // Условия итогов решения задачи
+            if (Program.zaklOTV == kolvootv && Program.NeVernOtv == 0)
+            {
+                // Задача решена
+                Program.diagnoz = 3;
+            }
+
+            else if (Program.zaklOTV <= kolvootv && Program.zaklOTV != 0 && Program.NeVernOtv == 0)
+            {
+                // Задача частично решена
+                Program.diagnoz = 2;
+            }
+
+            else
+            {
+                // Задача не решена
+                Program.diagnoz = 1;
+            }
+
+            // Запись данных в протокол
+            // Проверка решения задачи
+            switch (Program.diagnoz)
+            {
+                case 1:
+                    Program.Insert = "Диагноз неверный";
+                    wordinsert.Ins();
+                    break;
+                case 2:
+                    Program.Insert = "Диагноз частично верный";
+                    wordinsert.Ins();
+                    break;
+                case 3:
+                    Program.Insert = "Диагноз верный";
+                    wordinsert.Ins();
+                    break;
+            }
+
+            timer1.Enabled = false;
+            Program.AllT = Program.AllT + Program.zakl2T;
+            Program.AllZakl = Program.zakl2T + Program.AllZakl;
+
+            // Время до решения задачи
+            TimeWithoutKatamnez();
+
+            Program.Insert = "Время на заключении (Машинный выбор):" + Program.zakl2T + " сек";
+            wordinsert.Ins();
+        }
+
+        private void ExitFromProgram()
+        {
+            ExitFromThisForm();
+
+            Program.Insert = "Время общее на этапе заключения:" + Program.AllZakl + " сек";
+            wordinsert.Ins();
+
+            Program.FullAllZakl = Program.FullAllZakl + Program.AllZakl;
+            Program.AllZakl = 0;
+
+            exitProgram.ExProgr();
+
+            exitProgram.ProtokolSent();
+
+            Application.Exit();
+        }
+
+        private void GetCBChecked()
         {
             // Обновление выбранных ответов
-            SqlCommand delete = new SqlCommand("delete from otvDiag", con);
+            SqlCommand delete = new SqlCommand("delete from otvDiag where users_id = " + Program.user + "", con);
             delete.ExecuteNonQuery();
 
-            int otv = 0; // Объявление переменной
-            otv = kolvootv - 1; // Переменная отвечающая за количество правильных ответов у задачи
+            int otvchek = 0;
+            int otv = 0;
+            otv = kolvootv - 1;
+            Program.zaklOTV = 0;
 
             // Перебор всех checkbox
             for (int i = 1; i < kolvoCb; i++)
@@ -285,18 +337,34 @@ namespace Psico
                 // Если checkbox выбран
                 if ((panel1.Controls["checkbox" + i + ""] as CheckBox).Checked == true)
                 {
+                    otvchek = 0;
+
                     // Перебор всех правильных ответов у задачи
                     for (int a = 0; a < kolvootv; a++)
                     {
                         // Если выбранный checkbox правильный 
                         if ((panel1.Controls["checkbox" + i + ""] as CheckBox).Text == Convert.ToString(datagr1.Rows[a].Cells[0].Value))
                         {
-                            // Запись данных о правильном выборе checkbox
                             Program.zaklOTV = Program.zaklOTV + 1;
+
+                            // Запись данных в протокол
+                            Program.Insert = "Выбран: " + (panel1.Controls["checkbox" + i + ""] as CheckBox).Text + " ✔";
+                            wordinsert.CBIns();
+
+                            otvchek = 1;
                         }
 
-                        // Запись даннных о неправильном выборе checkbox
-                        else Program.NeVernOtv = Program.NeVernOtv + 1;
+                        else
+                        {
+                            Program.NeVernOtv = Program.NeVernOtv + 1;
+                        }
+                    }
+
+                    if (otvchek != 1)
+                    {
+                        // Запись данных в протокол
+                        Program.Insert = "Выбран: " + (panel1.Controls["checkbox" + i + ""] as CheckBox).Text + " ☒";
+                        wordinsert.CBIns();
                     }
 
                     Program.NeVernOtv = Program.NeVernOtv - otv;
@@ -305,73 +373,10 @@ namespace Psico
                     SqlCommand StrPrc2 = new SqlCommand("otvDiag_add", con);
                     StrPrc2.CommandType = CommandType.StoredProcedure;
                     StrPrc2.Parameters.AddWithValue("@name_otv", (panel1.Controls["checkbox" + i + ""] as CheckBox).Name);
+                    StrPrc2.Parameters.AddWithValue("@user_id", Program.user);
                     StrPrc2.ExecuteNonQuery();
-
-                    // Запись данных в ворд документ
-                    try
-                    {
-                        // Запись данных о выборе checkbox
-                        Program.Insert = "Выбран: " + (panel1.Controls["checkbox" + i + ""] as CheckBox).Text + "";
-
-                        wordinsert.CBIns();
-                    }
-
-                    // При возникновении ошибки при записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
                 }
             }
-
-            // Если количество выбранных правильных ответов равно количество правильных ответов у задачи и пользователь не выбрал ни одного неправильного ответа
-            if (Program.zaklOTV == kolvootv && Program.NeVernOtv == 0)
-            {
-                Program.diagnoz = 3; // Задача решена
-            }
-
-            // Если количество выбранных правильных ответов меньше количества правильных ответов у задачи и не равняется 0, а также пользователь не выбрал ни одного неправильного ответа
-            else if (Program.zaklOTV <= kolvootv && Program.zaklOTV != 0 && Program.NeVernOtv == 0)
-            {
-                Program.diagnoz = 2; // Задача частично решена
-            }
-
-            // Иначе
-            else
-            {
-                Program.diagnoz = 1; // Задача не решена
-            }
-
-            // Запись данных в ворд документ
-            try
-            {
-
-                timer1.Enabled = false;
-
-                Program.AllT = Program.AllT + Program.zakl2T;
-
-                Program.Insert = "Время на заключении 2:" + Program.zakl2T + " сек";
-
-                wordinsert.Ins();
-
-                // Переход на главную форму задачи
-                Zadacha zadacha = new Zadacha();
-                zadacha.Show();
-                Close();
-            }
-
-            // Если возникла ошибка при записи данных в ворд документ
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-            }
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            Program.zakl2T = Program.zakl2T + 1; // Счётчик времени на форме
         }
     }
 }

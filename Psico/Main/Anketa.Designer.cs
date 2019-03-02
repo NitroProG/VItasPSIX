@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -39,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.hint = new System.Windows.Forms.ToolTip(this.components);
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -65,7 +67,7 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(421, 133);
+            this.panel1.Location = new System.Drawing.Point(433, 133);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(500, 478);
             this.panel1.TabIndex = 2;
@@ -74,56 +76,61 @@
             // 
             this.textBox5.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox5.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox5.Location = new System.Drawing.Point(46, 308);
+            this.textBox5.Location = new System.Drawing.Point(52, 308);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(395, 31);
             this.textBox5.TabIndex = 39;
             this.textBox5.Text = "Возраст";
-            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox5_KeyPress);
+            this.hint.SetToolTip(this.textBox5, "Возраст");
+            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OldHint);
             // 
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox4.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox4.Location = new System.Drawing.Point(46, 251);
+            this.textBox4.Location = new System.Drawing.Point(52, 251);
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(395, 31);
             this.textBox4.TabIndex = 38;
             this.textBox4.Text = "Год обучения";
-            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
+            this.hint.SetToolTip(this.textBox4, "Год обучения");
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.YearHint);
             // 
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox3.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox3.Location = new System.Drawing.Point(46, 202);
+            this.textBox3.Location = new System.Drawing.Point(52, 196);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(395, 31);
             this.textBox3.TabIndex = 37;
             this.textBox3.Text = "Место работы и стаж";
-            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
+            this.hint.SetToolTip(this.textBox3, "Место работы и стаж");
+            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WorkHint);
             // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(46, 146);
+            this.textBox2.Location = new System.Drawing.Point(52, 146);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(395, 31);
             this.textBox2.TabIndex = 36;
             this.textBox2.Text = "Образование";
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            this.hint.SetToolTip(this.textBox2, "Образование");
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StudyHint);
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(46, 98);
+            this.textBox1.Location = new System.Drawing.Point(52, 98);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(395, 31);
             this.textBox1.TabIndex = 35;
             this.textBox1.Text = "ФИО";
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.hint.SetToolTip(this.textBox1, "ФИО");
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FIOHint);
             // 
             // button3
             // 
@@ -137,14 +144,15 @@
             this.button3.Size = new System.Drawing.Size(29, 28);
             this.button3.TabIndex = 34;
             this.button3.Text = "Х";
+            this.hint.SetToolTip(this.button3, "Выход из программы");
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.Click += new System.EventHandler(this.ExitFromProgram);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(76, 14);
+            this.label1.Location = new System.Drawing.Point(82, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(326, 34);
             this.label1.TabIndex = 3;
@@ -163,7 +171,7 @@
             this.button2.TabIndex = 1;
             this.button2.Text = "НАЗАД";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.OpenFormAutorization);
             // 
             // button1
             // 
@@ -178,7 +186,13 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "ДАЛЕЕ";
             this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.OpenNextForm);
+            // 
+            // hint
+            // 
+            this.hint.AutoPopDelay = 5000;
+            this.hint.InitialDelay = 1;
+            this.hint.ReshowDelay = 100;
             // 
             // Anketa
             // 
@@ -192,7 +206,7 @@
             this.Name = "Anketa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Anketa";
-            this.Load += new System.EventHandler(this.Anketa_Load);
+            this.Load += new System.EventHandler(this.FormLoad);
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -213,5 +227,6 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ToolTip hint;
     }
 }

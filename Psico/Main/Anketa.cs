@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using word = Microsoft.Office.Interop.Word;
+using System.Data.SqlClient;
+using SqlConn;
 
 namespace Psico
 {
     public partial class Anketa : Form
     {
+        SqlConnection con = DBUtils.GetDBConnection();
 
         public Anketa()
         {
@@ -27,8 +30,10 @@ namespace Psico
             range.Find.Execute(FindText: stubToReplace, ReplaceWith: text);
         }
 
-        private void Anketa_Load(object sender, EventArgs e)
+        private void FormLoad(object sender, EventArgs e)
         {
+            // Подключение к БД
+            con.Open();
 
             // Адаптация разрешения экрана пользователя
             Rectangle screen = Screen.PrimaryScreen.Bounds;
@@ -45,60 +50,54 @@ namespace Psico
             Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
         }
 
-        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        private void FIOHint(object sender, KeyPressEventArgs e)
         {
-            // Удаление подсказки
             if (textBox1.Text == "ФИО")
             {
                 textBox1.Text = "";
             }
         }
 
-        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        private void StudyHint(object sender, KeyPressEventArgs e)
         {
-            // Удаление подсказки
             if (textBox2.Text == "Образование")
             {
                 textBox2.Text = "";
             }
         }
 
-        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
+        private void WorkHint(object sender, KeyPressEventArgs e)
         {
-            // Удаление подсказки
             if (textBox3.Text == "Место работы и стаж")
             {
                 textBox3.Text = "";
             }
         }
 
-        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        private void YearHint(object sender, KeyPressEventArgs e)
         {
-            // Удаление подсказки
             if (textBox4.Text == "Год обучения")
             {
                 textBox4.Text = "";
             }
         }
 
-        private void textBox5_KeyPress(object sender, KeyPressEventArgs e)
+        private void OldHint(object sender, KeyPressEventArgs e)
         {
-            // Удаление подсказки
             if (textBox5.Text == "Возраст")
             {
                 textBox5.Text = "";
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void OpenFormAutorization(object sender, EventArgs e)
         {
-            // Открытие формы авторизации
             Autorization autorization = new Autorization();
             autorization.Show();
             Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OpenNextForm(object sender, EventArgs e)
         {
             // Присвоение переменным даты и времени
             var date = DateTime.Now.ToString("dd.MM.yyyy");
@@ -137,35 +136,32 @@ namespace Psico
                     ReplaceWord("{Old}", Convert.ToString(Program.Old), wordDocument);
 
                     // Сохранение документа
-                    Program.doc = "C:\\Users\\Batya\\Desktop\\Protokol\\" + Program.FIO + "   " + date + "   " 
+                    Program.doc = "C:\\Protokol\\" + Program.FIO + "   " + date + "   " 
                         + timeProtokol + ".docx";
                     wordDocument.SaveAs2(Program.doc); 
                     wordApp.Quit();
 
-                    // Открытие формы вступления
                     Vstuplenie vstuplenie = new Vstuplenie();
                     vstuplenie.Show();
                     Close();
                 }
 
-                // Если возникла ошибка в замене данных в ворд документе
                 catch
 
-                {   // Вывод сообщения об ошибке
+                { 
                     MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     wordApp.Quit();
                 }
             }
 
-            // Если заполнены не все поля на форме вывод сообщения
             else
             {
                 MessageBox.Show("Не все поля заполнены!");
             }
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ExitFromProgram(object sender, EventArgs e)
         {
             // Выход из программы
             Application.Exit(); 

@@ -18,177 +18,82 @@ namespace Psico
     {
         SqlConnection con = DBUtils.GetDBConnection();
         WordInsert wordinsert = new WordInsert();
+        ExitProgram exitProgram = new ExitProgram();
 
         public dz1()
         {
             InitializeComponent();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void ExitProgram(object sender, EventArgs e)
         {
+            // Если задача решена
             if (Program.diagnoz == 3)
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
+                // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
+                    // Запись данных в БД о решении задачи
                     SqlCommand StrPrc1 = new SqlCommand("resh_add", con);
                     StrPrc1.CommandType = CommandType.StoredProcedure;
                     StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
                     StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
                     StrPrc1.ExecuteNonQuery();
 
-                    // Запись данных в ворд документ
-                    try
-                    {
+                    ExitFromProgram();
 
-                        timer1.Enabled = false;
-
-                        Program.AllT = Program.AllT + Program.zakl1T;
-                        Program.zakluch = richTextBox4.Text;
-
-                        if (Program.zakluch != "")
-                        {
-                            // Данные, которые нужно записать в ворд документ
-                            Program.Insert = "Заключение" + Program.zakluch + "";
-                            wordinsert.Ins();
-                        }
-
-                        Program.Insert = "Время на заключении 1:" + Program.zakl1T + " сек";
-                        wordinsert.Ins();
-
-                        // Выход из программы
-                        Application.Exit();
-                    }
-
-                    // Если возникла ошибка при записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
                 }
             }
 
+            // Если задача не решена
             else
             {
                 DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
+                // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
-                    // Запись данных в ворд документ
-                    try
-                    {
-
-                        timer1.Enabled = false;
-
-                        Program.AllT = Program.AllT + Program.zakl1T;
-                        Program.zakluch = richTextBox4.Text;
-
-                        if (Program.zakluch != "")
-                        {
-                            // Данные, которые нужно записать в ворд документ
-                            Program.Insert = "Заключение" + Program.zakluch + "";
-                            wordinsert.Ins();
-                        }
-
-                        Program.Insert = "Время на заключении 1:" + Program.zakl1T + " сек";
-                        wordinsert.Ins();
-
-                        // Выход из программы
-                        Application.Exit();
-                    }
-
-                    // Если возникла ошибка при записи данных в ворд документ
-                    catch
-                    {
-                        MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-                    }
+                    ExitFromProgram();
                 }
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void OpenMainForm(object sender, EventArgs e)
         {
-            // Запись данных в ворд документ
-            try
-            {
+            ExitFromThisForm();
 
-                timer1.Enabled = false;
+            Program.Insert = "Время общее на этапе заключения:" + Program.AllZakl + " сек";
+            wordinsert.Ins();
 
-                Program.AllT = Program.AllT + Program.zakl1T;
-                Program.zakluch = richTextBox4.Text;
+            Program.FullAllZakl = Program.FullAllZakl + Program.AllZakl;
+            Program.AllZakl = 0;
 
-                if (Program.zakluch != "")
-                {
-                    // Данные, которые нужно записать в ворд документ
-                    Program.Insert = "Заключение" + Program.zakluch + "";
-                    wordinsert.Ins();
-                }
-
-                Program.Insert = "Время на заключении 1:" + Program.zakl1T + " сек";
-                wordinsert.Ins();
-
-                // Переход на главную форму задачи
-                Zadacha zadacha = new Zadacha();
-                zadacha.Show();
-                Close();
-            }
-
-            // Если возникла ошибка при записи данных в ворд документ
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-            }
+            Zadacha zadacha = new Zadacha();
+            zadacha.Show();
+            Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void OpenNextForm(object sender, EventArgs e)
         {
-            // Запись данных в ворд документ
-            try
-            {
+            ExitFromThisForm();
 
-                timer1.Enabled = false;
-
-                Program.AllT = Program.AllT + Program.zakl1T;
-                Program.zakluch = richTextBox4.Text;
-
-                if (Program.zakluch != "")
-                {
-                    // Данные, которые нужно записать в ворд документ
-                    Program.Insert = "Заключение: " + Program.zakluch + "";
-                    wordinsert.Ins();
-                }
-
-                Program.Insert = "Время на заключении 1: " + Program.zakl1T + " сек";
-                wordinsert.Ins();
-
-                // Переход на следующую форму
-                dz2 dz2 = new dz2();
-                dz2.Show();
-                Close();
-            }
-
-            // Если возникла ошибка при записи данных в ворд документ
-            catch
-            {
-                MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
-            }
+            dz2 dz2 = new dz2();
+            dz2.Show();
+            Close();
         }
 
-        private void dz1_Load(object sender, EventArgs e)
+        private void FormLoad(object sender, EventArgs e)
         {
-            Program.zakl1T = 0; // Переменная времени на фореме
-            timer1.Enabled = true; // Счётчик времени на форме
+            Program.zakl1T = 0;
+            timer1.Enabled = true;
 
-            con.Open(); // подключение к БД
+            // подключение к БД
+            con.Open();
 
-            // Присвоение переменным данные записанные на форме
             richTextBox1.Text = Program.fenomenologiya;
             richTextBox2.Text = Program.gipotezi;
             richTextBox3.Text = Program.obsledovaniya;
@@ -201,11 +106,60 @@ namespace Psico
             label3.Text = dr["Zapros"].ToString();
             label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
+
+            // Запись данных в протокол
+            Program.Insert = "Окно - Заключение (Свободная форма):";
+            wordinsert.Ins();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void Timer(object sender, EventArgs e)
         {
-            Program.zakl1T = Program.zakl1T + 1; // Счётчик времени на форме
+            // Счётчик времени на форме
+            Program.zakl1T = Program.zakl1T + 1;
+        }
+
+        private void TimeWithoutKatamnez()
+        {
+            // Если задача не решена
+            if (Program.diagnoz != 3)
+            {
+                Program.AllTBezK = Program.AllTBezK + Program.zakl1T;
+            }
+        }
+
+        private void ExitFromThisForm()
+        {
+            timer1.Enabled = false;
+
+            Program.AllT = Program.AllT + Program.zakl1T;
+            Program.AllZakl = Program.zakl1T + Program.AllZakl;
+            Program.zakluch = richTextBox4.Text;
+
+            // Время до решения задачи
+            TimeWithoutKatamnez();
+
+            // Запись данных в протокол
+            Program.Insert = "Заключение:" + Program.zakluch + "";
+            wordinsert.Ins();
+            Program.Insert = "Время на заключении (Свободная форма):" + Program.zakl1T + " сек";
+            wordinsert.Ins();
+        }
+
+        private void ExitFromProgram()
+        {
+            ExitFromThisForm();
+
+            Program.Insert = "Время общее на этапе заключения:" + Program.AllZakl + " сек";
+            wordinsert.Ins();
+
+            Program.FullAllZakl = Program.FullAllZakl + Program.AllZakl;
+            Program.AllZakl = 0;
+
+            exitProgram.ExProgr();
+
+            exitProgram.ProtokolSent();
+
+            Application.Exit();
         }
     }
 }
