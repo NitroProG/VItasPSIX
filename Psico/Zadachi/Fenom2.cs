@@ -21,8 +21,10 @@ namespace Psico
         DataGridView datagr = new DataGridView();
         DataGridView datagr1 = new DataGridView();
         DataGridView datagr2 = new DataGridView();
+        DataGridView datagr5 = new DataGridView();
         WordInsert wordinsert = new WordInsert();
         ExitProgram exitProgram = new ExitProgram();
+        int AllProsmotrMerodiks;
         int kolvoCb;
         int kolvootv;
         int stolb = 0;
@@ -90,7 +92,7 @@ namespace Psico
 
             ExitFromThisForm();
 
-            Program.Insert = "Время общее на этапе феноменологии:" + Program.AllFenom + " сек";
+            Program.Insert = "Время общее на этапе феноменологии: " + Program.AllFenom + " сек";
             wordinsert.Ins();
 
             Program.FullAllFenom = Program.FullAllFenom + Program.AllFenom;
@@ -119,7 +121,7 @@ namespace Psico
             dr.Close();
 
             // Определение количества checkbox на форме
-            SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from fenom2 where zadacha_id = " + Program.NomerZadachi + "", con);
+            SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from CBFormFill where zadacha_id = " + Program.NomerZadachi + " and FormCB ='Fenom'", con);
             SqlDataReader dr0 = kolvo.ExecuteReader();
             dr0.Read();
             kolvoCb = Convert.ToInt32(dr0["kolvo"].ToString());
@@ -130,19 +132,26 @@ namespace Psico
             stolb = kolvoCb / 2;
 
             // Выбор количества правильных ответов у задачи
-            SqlCommand kolotv = new SqlCommand("select count(*) as 'kolvo' from vernotv_Fenom where zadacha_id = " + Program.NomerZadachi + "", con);
+            SqlCommand kolotv = new SqlCommand("select count(*) as 'kolvo' from vernotv where zadacha_id = " + Program.NomerZadachi + " and FormVernOtv = 'Fenom'", con);
             SqlDataReader dr1 = kolotv.ExecuteReader();
             dr1.Read();
             kolvootv = Convert.ToInt32(dr1["kolvo"].ToString());
             dr1.Close();
 
+            // Выбор количества данных в таблице БД
+            SqlCommand kolvoProsmotr = new SqlCommand("select count(*) as 'kolvo' from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Fenom'", con);
+            SqlDataReader dr2 = kolvoProsmotr.ExecuteReader();
+            dr2.Read();
+            AllProsmotrMerodiks = Convert.ToInt32(dr2["kolvo"].ToString());
+            dr2.Close();
+
             // Создание таблицы с данными из БД
             datagr.Name = "datagrview";
             datagr.Location = new Point(300, 300);
-            SqlDataAdapter da1 = new SqlDataAdapter("select CB from fenom2 where zadacha_id = " + Program.NomerZadachi + "", con);
+            SqlDataAdapter da1 = new SqlDataAdapter("select CB from CBFormFill where zadacha_id = " + Program.NomerZadachi + " and FormCB = 'Fenom'", con);
             SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
             DataSet ds1 = new DataSet();
-            da1.Fill(ds1, "fenom2");
+            da1.Fill(ds1, "CBFormFill");
             datagr.DataSource = ds1.Tables[0];
             datagr.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             panel1.Controls.Add(datagr);
@@ -150,10 +159,10 @@ namespace Psico
 
             // Динамическое создание таблицы
             datagr2.Name = "datagrview2";
-            SqlDataAdapter da3 = new SqlDataAdapter("select otv from vernotv_Fenom where zadacha_id = " + Program.NomerZadachi + "", con);
+            SqlDataAdapter da3 = new SqlDataAdapter("select otv from vernotv where zadacha_id = " + Program.NomerZadachi + " and FormVernOtv = 'Fenom'", con);
             SqlCommandBuilder cb3 = new SqlCommandBuilder(da3);
             DataSet ds3 = new DataSet();
-            da3.Fill(ds3, "vernotv_Fenom");
+            da3.Fill(ds3, "vernotv");
             datagr2.DataSource = ds3.Tables[0];
             datagr2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             panel1.Controls.Add(datagr2);
@@ -162,14 +171,26 @@ namespace Psico
             // Создание таблицы с данными из БД
             datagr1.Name = "datagrview1";
             datagr1.Location = new Point(400, 400);
-            SqlDataAdapter da2 = new SqlDataAdapter("select name_otv from otvFenom where users_id = " + Program.user + "", con);
+            SqlDataAdapter da2 = new SqlDataAdapter("select name_otv from Lastotv where users_id = " + Program.user + " and Form_otv = 'Fenom'", con);
             SqlCommandBuilder cb2 = new SqlCommandBuilder(da2);
             DataSet ds2 = new DataSet();
-            da2.Fill(ds2, "otvFenom");
+            da2.Fill(ds2, "Lastotv");
             datagr1.DataSource = ds2.Tables[0];
             datagr1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             panel1.Controls.Add(datagr1);
             datagr1.Visible = false;
+
+            // Динамическое создание таблицы
+            datagr5.Name = "datagrview5";
+            datagr5.Location = new Point(300, 300);
+            SqlDataAdapter da5 = new SqlDataAdapter("select InfoSelected from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Fenom'", con);
+            SqlCommandBuilder cb5 = new SqlCommandBuilder(da5);
+            DataSet ds5 = new DataSet();
+            da5.Fill(ds5, "OtvSelected");
+            datagr5.DataSource = ds5.Tables[0];
+            datagr5.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            panel1.Controls.Add(datagr5);
+            datagr5.Visible = false;
 
             //Динамическое создание checkbox
             for (int x = 200, y = 246, i = 1; i < kolvoCb; i++)
@@ -232,7 +253,7 @@ namespace Psico
             label3.AutoSize = true;
 
             // Выбор количества правильных ответов у задачи
-            SqlCommand kolotvetov = new SqlCommand("select count(*) as 'kolvo' from otvFenom where users_id = " + Program.user + "", con);
+            SqlCommand kolotvetov = new SqlCommand("select count(*) as 'kolvo' from Lastotv where users_id = " + Program.user + " and Form_otv = 'Fenom'", con);
             SqlDataReader dr3 = kolotvetov.ExecuteReader();
             dr3.Read();
             kolvovibor = Convert.ToInt32(dr3["kolvo"].ToString());
@@ -257,7 +278,7 @@ namespace Psico
             }
 
             // Запись данных в протокол
-            Program.Insert = "Окно - Феноменология (Машинный выбор):";
+            Program.Insert = "Окно - Феноменология (Машинный выбор): ";
             wordinsert.Ins();
         }
 
@@ -290,7 +311,7 @@ namespace Psico
             TimeWithoutKatamnez();
 
             // Запись данных в протокол
-            Program.Insert = "Время на феноменологии (Машинный выбор):" + Program.Fenom2T + " сек";
+            Program.Insert = "Время на феноменологии (Машинный выбор): " + Program.Fenom2T + " сек";
             wordinsert.Ins();
         }
 
@@ -298,7 +319,7 @@ namespace Psico
         {
             ExitFromThisForm();
 
-            Program.Insert = "Время общее на этапе феноменологии:" + Program.AllFenom + " сек";
+            Program.Insert = "Время общее на этапе феноменологии: " + Program.AllFenom + " сек";
             wordinsert.Ins();
 
             Program.FullAllFenom = Program.FullAllFenom + Program.AllFenom;
@@ -306,7 +327,7 @@ namespace Psico
 
             exitProgram.ExProgr();
 
-            exitProgram.ProtokolSent();
+            exitProgram.ExProtokolSent();
 
             Application.Exit();
         }
@@ -314,7 +335,7 @@ namespace Psico
         private void GetCBChecked()
         {
             // Обнуление выбранных ответов пользователем
-            SqlCommand delete2 = new SqlCommand("delete from otvFenom where users_id = " + Program.user + "", con);
+            SqlCommand delete2 = new SqlCommand("delete from Lastotv where users_id = " + Program.user + " and Form_otv = 'Fenom'", con);
             delete2.ExecuteNonQuery();
 
             int otvchek = 0;
@@ -327,6 +348,7 @@ namespace Psico
                 if ((panel1.Controls["checkbox" + i + ""] as CheckBox).Checked == true)
                 {
                     otvchek = 0;
+                    int checkProsmotrmetodik = 0;
 
                     // Перебор всех правильных ответов у задачи
                     for (int a = 0; a < kolvootv; a++)
@@ -351,12 +373,48 @@ namespace Psico
                     }
 
                     // Добавление данных о решении задачи пользователем
-                    SqlCommand StrPrc2 = new SqlCommand("otvFenom_add", con);
+                    SqlCommand StrPrc2 = new SqlCommand("Lastotv_add", con);
                     StrPrc2.CommandType = CommandType.StoredProcedure;
                     StrPrc2.Parameters.AddWithValue("@name_otv", (panel1.Controls["checkbox" + i + ""] as CheckBox).Name);
+                    StrPrc2.Parameters.AddWithValue("@Form_otv", "Fenom");
                     StrPrc2.Parameters.AddWithValue("@user_id", Program.user);
                     StrPrc2.ExecuteNonQuery();
-                }
+
+                    if (datagr5.Rows.Count > 1)
+                    {
+                        for (int y = 0; y < AllProsmotrMerodiks; y++)
+                        {
+                            if ((panel1.Controls["checkbox" + i + ""] as CheckBox).Text == datagr5.Rows[y].Cells[0].Value.ToString())
+                            {
+                                checkProsmotrmetodik = 1;
+                            }
+                        }
+                    }
+
+                    if (checkProsmotrmetodik == 0)
+                    {
+                        // Запись данных в БД
+                        SqlCommand StrPrc1 = new SqlCommand("OtvSelected_add", con);
+                        StrPrc1.CommandType = CommandType.StoredProcedure;
+                        StrPrc1.Parameters.AddWithValue("@InfoSelected", (panel1.Controls["checkbox" + i + ""] as CheckBox).Text);
+                        StrPrc1.Parameters.AddWithValue("@FormOtvSelected", "Fenom");
+                        StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
+                        StrPrc1.ExecuteNonQuery();
+
+                        SqlDataAdapter da2 = new SqlDataAdapter("select InfoSelected from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Fenom'", con);
+                        SqlCommandBuilder cb2 = new SqlCommandBuilder(da2);
+                        DataSet ds2 = new DataSet();
+                        da2.Fill(ds2, "OtvSelected");
+                        datagr5.DataSource = ds2.Tables[0];
+
+                        // Выбор количества данных в таблице БД
+                        SqlCommand kolvoProsmotr = new SqlCommand("select count(*) as 'kolvo' from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Fenom'", con);
+                        SqlDataReader dr1 = kolvoProsmotr.ExecuteReader();
+                        dr1.Read();
+                        AllProsmotrMerodiks = Convert.ToInt32(dr1["kolvo"].ToString());
+                        dr1.Close();
+                    }
+                }                
             }
         }
     }

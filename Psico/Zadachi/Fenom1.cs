@@ -32,7 +32,7 @@ namespace Psico
         {
             ExitFromThisForm();
 
-            Program.Insert = "Время общее на этапе феноменологии:" + Program.AllFenom + " сек";
+            Program.Insert = "Время общее на этапе феноменологии: " + Program.AllFenom + " сек";
             wordinsert.Ins();
 
             Program.FullAllFenom = Program.FullAllFenom + Program.AllFenom;
@@ -172,7 +172,7 @@ namespace Psico
             label3.Left = panel1.Width / 2 - label3.Width / 2;
 
             // Запись данных в протокол
-            Program.Insert = "Окно - Феноменология (Свободная форма):";
+            Program.Insert = "Окно - Феноменология (Свободная форма): ";
             wordinsert.Ins();
         }
 
@@ -240,7 +240,7 @@ namespace Psico
             wordinsert.Ins();
             Program.Insert = "Резюме по феноменологии: " + Program.fenomenologiya + "";
             wordinsert.Ins();
-            Program.Insert = "Время на феноменологии (Свободная форма):" + Program.Fenom1T + " сек";
+            Program.Insert = "Время на феноменологии (Свободная форма): " + Program.Fenom1T + " сек";
             wordinsert.Ins();
         }
 
@@ -248,7 +248,7 @@ namespace Psico
         {
             ExitFromThisForm();
 
-            Program.Insert = "Время общее на этапе феноменологии:" + Program.AllFenom + " сек";
+            Program.Insert = "Время общее на этапе феноменологии: " + Program.AllFenom + " сек";
             wordinsert.Ins();
 
             Program.FullAllFenom = Program.FullAllFenom + Program.AllFenom;
@@ -256,7 +256,7 @@ namespace Psico
 
             exitProgram.ExProgr();
 
-            exitProgram.ProtokolSent();
+            exitProgram.ExProtokolSent();
 
             Application.Exit();
         }

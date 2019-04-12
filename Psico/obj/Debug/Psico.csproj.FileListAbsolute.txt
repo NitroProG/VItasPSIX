@@ -99,3 +99,7 @@ C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.DeleteZadacha.re
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.UpdateZadacha.resources
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.WaitingForm.resources
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.Registration.resources
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.ExitProtokol.resources
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.AddUser.resources
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.DeleteUser.resources
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.UpdateUser.resources

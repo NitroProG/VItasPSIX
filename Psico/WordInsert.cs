@@ -32,6 +32,7 @@ namespace InsertWord
                     string proverka1 = "Диагностическая";
                     string proverka2 = "Время";
                     string proverka3 = "Окно";
+                    string proverka4 = "Диагноз";
 
                     // Проверка записанных данных
                     if (Program.Insert.IndexOf(proverka1) == 0)
@@ -61,11 +62,21 @@ namespace InsertWord
                     }
 
                     // Проверка записанных данных
+                    else if (Program.Insert.IndexOf(proverka4) == 0)
+                    {
+                        para1.Range.Text = "          → " + Program.Insert;
+                        para1.Range.Font.Size = 16;
+                        para1.Range.Font.Color = word.WdColor.wdColorDarkGreen;
+                        para1.Range.ParagraphFormat.Alignment = word.WdParagraphAlignment.wdAlignParagraphJustify;
+                    }
+
+                    // Проверка записанных данных
                     else
                     {
                         para1.Range.Text = "          → " + Program.Insert;
                         para1.Range.Font.Size = 12;
                         para1.Range.Font.Color = word.WdColor.wdColorDarkGreen;
+                        para1.Range.ParagraphFormat.Alignment = word.WdParagraphAlignment.wdAlignParagraphJustify;
                     }
 
                     para1.Range.Font.Name = "Times New Roman";

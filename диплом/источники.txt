@@ -1,0 +1,6 @@
+http://wladm.narod.ru/C_Sharp/comword.html#1 - Word 
+http://rsdn.org - сайт, посвященный разработке программного обеспечения
+http://michaelsmirnov.blogspot.com/2011/01/c.html - оформление кода
+https://docs.microsoft.com/ru-ru/dotnet/csharp/language-reference/keywords/while
+http://www.mysql.ru/docs/man/SELECT.html - mysql справочник
+

@@ -20,9 +20,9 @@ namespace Psico
         int Registr;
         int student;
         int teacher;
+        int checkteacherUniqueNaim;
         string KeyCheck;
         string LoginCheck;
-        DataGridView datagr = new DataGridView();
 
         public Registration()
         {
@@ -102,7 +102,7 @@ namespace Psico
                         case 1:
                             textbox.Size = new Size(230, 40);
                             textbox.Location = new Point(250, 57);
-                            textbox.PasswordChar = '*';
+                            //textbox.PasswordChar = '*';
                             textbox.ShortcutsEnabled = false;
                             break;
                         case 2:
@@ -133,7 +133,7 @@ namespace Psico
             if (teacher == 0)
             {
                 // Заполнение Panel1
-                for (int i = 4; i < 8; i++)
+                for (int i = 4; i < 9; i++)
                 {
                     // Создание label
                     Label label = new Label();
@@ -142,19 +142,23 @@ namespace Psico
                     {
                         case 4:
                             label.Text = "Ключ регистрации:";
-                            label.Location = new Point(42, 60);
+                            label.Location = new Point(42, 20);
                             break;
                         case 5:
                             label.Text = "Логин преподавателя:";
-                            label.Location = new Point(8, 120);
+                            label.Location = new Point(8, 70);
                             break;
                         case 6:
                             label.Text = "Почта преподавателя:";
-                            label.Location = new Point(8, 180);
+                            label.Location = new Point(6, 120);
                             break;
                         case 7:
                             label.Text = "Количество студентов:";
-                            label.Location = new Point(2, 240);
+                            label.Location = new Point(0, 170);
+                            break;
+                        case 8:
+                            label.Text = "Уникальное имя:";
+                            label.Location = new Point(62, 220);
                             break;
                     }
                     label.AutoSize = true;
@@ -168,23 +172,27 @@ namespace Psico
                     {
                         case 4:
                             textbox.Size = new Size(230, 40);
-                            textbox.Location = new Point(250, 57);
-                            textbox.PasswordChar = '*';
+                            textbox.Location = new Point(250, 17);
+                            //textbox.PasswordChar = '*';
                             textbox.ShortcutsEnabled = false;
                             break;
                         case 5:
                             textbox.Size = new Size(230, 40);
-                            textbox.Location = new Point(250, 117);
+                            textbox.Location = new Point(250, 67);
                             break;
                         case 6:
                             textbox.Size = new Size(230, 40);
-                            textbox.Location = new Point(250, 177);
+                            textbox.Location = new Point(250, 117);
                             break;
                         case 7:
                             textbox.Size = new Size(50, 40);
-                            textbox.Location = new Point(250, 237);
+                            textbox.Location = new Point(250, 167);
                             textbox.MaxLength = 3;
                             textbox.KeyPress += NumberCheck;
+                            break;
+                        case 8:
+                            textbox.Size = new Size(230, 40);
+                            textbox.Location = new Point(250, 217);
                             break;
                     }
                     textbox.Font = new Font(textbox.Font.Name, 16);
@@ -208,6 +216,8 @@ namespace Psico
 
         private void GetRegistretion(object sender, EventArgs e)
         {
+            int TeacherId = 0;
+
             // Подключение к БД
             SqlConnection con = DBUtils.GetDBConnection();
             con.Open();
@@ -219,61 +229,76 @@ namespace Psico
                 case 1:
                     if ((panel3.Controls["textbox1"] as TextBox).Text != "")
                     {
-                        try
+                        // Проверка введённых данных
+                        if ((panel3.Controls["textbox2"] as TextBox).Text != "" && (panel3.Controls["textbox3"] as TextBox).Text != "")
                         {
-                            // Динамическое создание таблицы
-                            datagr.Name = "datagrview";
-                            datagr.Location = new Point(0, 0);
-                            datagr.Size = new Size(300,300);
-                            SqlDataAdapter da1 = new SqlDataAdapter("select * from users where User_Login = '" + (panel3.Controls["textbox1"] as TextBox).Text + "'", con);
-                            SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
-                            DataSet ds1 = new DataSet();
-                            da1.Fill(ds1, "users");
-                            datagr.DataSource = ds1.Tables[0];
-                            datagr.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-                            panel2.Controls.Add(datagr);
-                            datagr.Visible = false;
+                            // Выбор количества данных в таблице БД
+                            SqlCommand GetTeacherId = new SqlCommand("select id_user as 'id' from users where User_Login = '" + (panel3.Controls["textbox1"] as TextBox).Text + "'", con);
+                            SqlDataReader dr2 = GetTeacherId.ExecuteReader();
 
-                            if (Convert.ToInt32(datagr.Rows[0].Cells[4].Value) != 0)
+                            try
                             {
-                                if ((panel3.Controls["textbox2"] as TextBox).Text != "" && (panel3.Controls["textbox3"] as TextBox).Text != "")
+                                dr2.Read();
+                                TeacherId = Convert.ToInt32(dr2["id"].ToString());
+                                dr2.Close();
+                            }
+
+                            catch
+                            {
+                                TeacherId = 0;
+                                dr2.Close();
+                            }
+
+                            if (TeacherId != 0)
+                            {
+                                //Выбор данных из БД
+                                SqlCommand CheckUserLogin = new SqlCommand("select User_Mail from users where User_Login='" + (panel3.Controls["textbox2"].Text) + "'", con);
+                                SqlDataReader dr1 = CheckUserLogin.ExecuteReader();
+
+                                try
                                 {
-                                    //Выбор данных из БД
-                                    SqlCommand CheckStudentLogin = new SqlCommand("select Student_Mail from students where Student_Login='"+(panel3.Controls["textbox2"].Text)+"'", con);
-                                    SqlDataReader dr = CheckStudentLogin.ExecuteReader();
+                                    // Запись данных из БД
+                                    dr1.Read();
+                                    LoginCheck = dr1["User_Mail"].ToString();
+                                    dr1.Close();
+                                }
+                                catch
+                                {
+                                    LoginCheck = "";
+                                    dr1.Close();
+                                }
 
-                                    try
+                                if (LoginCheck == "")
+                                {
+                                    // Выбор количества данных в таблице БД
+                                    SqlCommand CheckRoleName = new SqlCommand("select Naim as 'RoleName' from Role where users_id = '" + TeacherId + "'", con);
+                                    SqlDataReader dr3 = CheckRoleName.ExecuteReader();
+                                    dr3.Read();
+                                    string CheckRole = dr3["RoleName"].ToString();
+                                    dr3.Close();
+
+                                    if (CheckRole == "Teacher")
                                     {
-                                        // Запись данных из БД
-                                        dr.Read();
-                                        LoginCheck = dr["Student_Mail"].ToString();
-                                        dr.Close();
-                                    }
-                                    catch
-                                    {
-                                        LoginCheck = "";
-                                        dr.Close();
-                                    }
+                                        // Выбор количества данных в таблице БД
+                                        SqlCommand GetPrepodId = new SqlCommand("select Teacher_id as 'ID' from users where id_user = '" + TeacherId + "'", con);
+                                        SqlDataReader dr4 = GetPrepodId.ExecuteReader();
+                                        dr4.Read();
+                                        int PrepodID = Convert.ToInt32(dr4["ID"].ToString());
+                                        dr4.Close();
 
-                                    if (LoginCheck =="")
-                                    {
-                                        // изменение данных в БД
-                                        SqlCommand StrPrc1 = new SqlCommand("users_update", con);
-                                        StrPrc1.CommandType = CommandType.StoredProcedure;
-                                        StrPrc1.Parameters.AddWithValue("@id_user", Convert.ToInt32(datagr.Rows[0].Cells[0].Value));
-                                        StrPrc1.Parameters.AddWithValue("@User_Login", datagr.Rows[0].Cells[1].Value.ToString());
-                                        StrPrc1.Parameters.AddWithValue("@User_Password", datagr.Rows[0].Cells[2].Value.ToString());
-                                        StrPrc1.Parameters.AddWithValue("@User_Mail", datagr.Rows[0].Cells[3].Value.ToString());
-                                        StrPrc1.Parameters.AddWithValue("@Kolvo_students", Convert.ToInt32(datagr.Rows[0].Cells[4].Value) - 1);
-                                        StrPrc1.Parameters.AddWithValue("@isadmin", Convert.ToInt32(datagr.Rows[0].Cells[5].Value));
-                                        StrPrc1.ExecuteNonQuery();
+                                        // Выбор количества данных в таблице БД
+                                        SqlCommand GetKolvoStudent = new SqlCommand("select KolvoNeRegStudents as 'kolvostudents' from Teachers where id_teacher = '" + PrepodID + "'", con);
+                                        SqlDataReader dr5 = GetKolvoStudent.ExecuteReader();
+                                        dr5.Read();
+                                        int studentkolvo = Convert.ToInt32(dr5["kolvostudents"].ToString());
+                                        dr5.Close();
 
-                                        string password = GetPassword();
-
-                                        try
+                                        if (studentkolvo > 0)
                                         {
+                                            string password = GetPassword();
+
                                             // Отправка пароля по почте
-                                            MailMessage mail = new MailMessage("ProgrammPsicotest", (panel3.Controls["textbox3"] as TextBox).Text, "Пароль для программы Psico", password);
+                                            MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", (panel3.Controls["textbox3"] as TextBox).Text, "Пароль для программы Psico", password);
                                             SmtpClient client = new SmtpClient("smtp.yandex.ru");
                                             client.Port = 587;
                                             client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
@@ -281,43 +306,72 @@ namespace Psico
                                             client.Send(mail);
 
                                             // Запись данных В БД
-                                            SqlCommand StrPrc2 = new SqlCommand("Students_add", con);
+                                            SqlCommand StrPrc2 = new SqlCommand("users_add", con);
                                             StrPrc2.CommandType = CommandType.StoredProcedure;
-                                            StrPrc2.Parameters.AddWithValue("@Student_Login", (panel3.Controls["textbox2"] as TextBox).Text);
-                                            StrPrc2.Parameters.AddWithValue("@Student_Password", password);
-                                            StrPrc2.Parameters.AddWithValue("@Student_Mail", (panel3.Controls["textbox3"] as TextBox).Text);
-                                            StrPrc2.Parameters.AddWithValue("@users_id", Convert.ToInt32(datagr.Rows[0].Cells[0].Value));
+                                            StrPrc2.Parameters.AddWithValue("@User_Login", (panel3.Controls["textbox2"] as TextBox).Text);
+                                            StrPrc2.Parameters.AddWithValue("@User_Password", password);
+                                            StrPrc2.Parameters.AddWithValue("@User_Mail", (panel3.Controls["textbox3"] as TextBox).Text);
+                                            StrPrc2.Parameters.AddWithValue("@Teacher_id", PrepodID);
                                             StrPrc2.ExecuteNonQuery();
+
+                                            // Выбор данных в таблице БД
+                                            SqlCommand GetUniqueNaim = new SqlCommand("select Unique_Naim as 'UniqueNaim' from Teachers where id_teacher = '" + PrepodID + "'", con);
+                                            SqlDataReader dr6 = GetUniqueNaim.ExecuteReader();
+                                            dr6.Read();
+                                            string UniqueNaim = dr6["UniqueNaim"].ToString();
+                                            dr6.Close();
+
+                                            // Изменение ключа активации программы
+                                            SqlCommand StrPrc4 = new SqlCommand("Teachers_update", con);
+                                            StrPrc4.CommandType = CommandType.StoredProcedure;
+                                            StrPrc4.Parameters.AddWithValue("@id_teacher", PrepodID);
+                                            StrPrc4.Parameters.AddWithValue("@Unique_Naim", UniqueNaim);
+                                            StrPrc4.Parameters.AddWithValue("@KolvoNeRegStudents", studentkolvo - 1);
+                                            StrPrc4.ExecuteNonQuery();
+
+                                            // Выбор количества данных в таблице БД
+                                            SqlCommand GetUserID = new SqlCommand("select id_user as 'id' from users where User_Login = '" + (panel3.Controls["textbox2"] as TextBox).Text + "'", con);
+                                            SqlDataReader dr7 = GetUserID.ExecuteReader();
+                                            dr7.Read();
+                                            int UserId = Convert.ToInt32(dr7["id"].ToString());
+                                            dr7.Close();
+
+                                            // Запись данных В БД
+                                            SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
+                                            StrPrc3.CommandType = CommandType.StoredProcedure;
+                                            StrPrc3.Parameters.AddWithValue("@Naim", "Student");
+                                            StrPrc3.Parameters.AddWithValue("@Users_id", UserId);
+                                            StrPrc3.Parameters.AddWithValue("@Dostup_id", 3);
+                                            StrPrc3.ExecuteNonQuery();
 
                                             MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                             OpenAutorizationForm();
                                         }
-                                        catch
+                                        else
                                         {
-                                            MessageBox.Show("Сообщение с вашим паролем не было отправлено!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            MessageBox.Show("Превышено максимально возможное число студентов у преподавателя!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }                                    
+                                        MessageBox.Show("Преподавателя с таким логином не существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Заполнены не все поля для успешной регистрации! Пожалуйста заполните все необходимые поля для регистрации.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Превышено максимально возможное число студентов у преподавателя!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                                MessageBox.Show("Преподавателя с таким логином не существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }                       
                         }
-                        catch
+                        else
                         {
-                            MessageBox.Show("Введённый логин преподавателя не существует! Убедитесь в правильности ввода логина и попытайтесь снова.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            (panel3.Controls["textbox1"] as TextBox).Text = "";
-                        }
+                            MessageBox.Show("Заполнены не все поля для успешной регистрации! Пожалуйста заполните все необходимые поля для регистрации.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }                        
                     }
                     else
                     {
@@ -345,69 +399,121 @@ namespace Psico
                             if ((panel3.Controls["textbox5"] as TextBox).Text != "" && (panel3.Controls["textbox6"] as TextBox).Text != "" && (panel3.Controls["textbox7"] as TextBox).Text != "")
                             {
                                 //Выбор данных из БД
-                                SqlCommand CheckUserLogin = new SqlCommand("select User_Mail from users where User_Login='" + (panel3.Controls["textbox5"].Text) + "'", con);
-                                SqlDataReader dr1 = CheckUserLogin.ExecuteReader();
+                                SqlCommand CheckUniqueName = new SqlCommand("select id_teacher from Teachers where Unique_Naim='" + (panel3.Controls["textbox8"].Text) + "'", con);
+                                SqlDataReader dr1 = CheckUniqueName.ExecuteReader();
 
                                 try
                                 {
                                     // Запись данных из БД
                                     dr1.Read();
-                                    LoginCheck = dr1["User_Mail"].ToString();
+                                    checkteacherUniqueNaim = Convert.ToInt32(dr1["id_teacher"].ToString());
                                     dr1.Close();
                                 }
                                 catch
                                 {
-                                    LoginCheck = "";
+                                    checkteacherUniqueNaim = 0;
                                     dr1.Close();
                                 }
 
-                                if (LoginCheck == "")
+                                if (checkteacherUniqueNaim ==0)
                                 {
-                                    string password = GetPassword();
+                                    //Выбор данных из БД
+                                    SqlCommand CheckUserLogin = new SqlCommand("select User_Mail from users where User_Login='" + (panel3.Controls["textbox5"].Text) + "'", con);
+                                    SqlDataReader dr2 = CheckUserLogin.ExecuteReader();
 
-                                    // Регистрация
                                     try
                                     {
-                                        // Отправка пароля по почте
-                                        MailMessage mail = new MailMessage("ProgrammPsicotest", (panel3.Controls["textbox6"] as TextBox).Text, "Пароль для программы Psico", password);
-                                        SmtpClient client = new SmtpClient("smtp.yandex.ru");
-                                        client.Port = 587;
-                                        client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
-                                        client.EnableSsl = true;
-                                        client.Send(mail);
-
-                                        // Запись данных В БД
-                                        SqlCommand StrPrc1 = new SqlCommand("users_add", con);
-                                        StrPrc1.CommandType = CommandType.StoredProcedure;
-                                        StrPrc1.Parameters.AddWithValue("@User_Login", (panel3.Controls["textbox5"] as TextBox).Text);
-                                        StrPrc1.Parameters.AddWithValue("@User_Password", password);
-                                        StrPrc1.Parameters.AddWithValue("@User_Mail", (panel3.Controls["textbox6"] as TextBox).Text);
-                                        StrPrc1.Parameters.AddWithValue("@Kolvo_students", (panel3.Controls["textbox7"] as TextBox).Text);
-                                        StrPrc1.Parameters.AddWithValue("@isadmin", 0);
-                                        StrPrc1.ExecuteNonQuery();
-
-                                        // Генерация нового ключа активации
-                                        string key = GetKey();
-
-                                        // Изменение ключа активации программы
-                                        SqlCommand StrPrc2 = new SqlCommand("defend_update", con);
-                                        StrPrc2.CommandType = CommandType.StoredProcedure;
-                                        StrPrc2.Parameters.AddWithValue("@id_defend", 1);
-                                        StrPrc2.Parameters.AddWithValue("@DefenderKey", key);
-                                        StrPrc2.ExecuteNonQuery();
-
-                                        MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                        OpenAutorizationForm();
+                                        // Запись данных из БД
+                                        dr2.Read();
+                                        LoginCheck = dr2["User_Mail"].ToString();
+                                        dr2.Close();
                                     }
                                     catch
                                     {
-                                        MessageBox.Show("Сообщение с вашим паролем не было отправлено!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        LoginCheck = "";
+                                        dr2.Close();
+                                    }
+
+                                    if (LoginCheck == "")
+                                    {
+                                        string password = GetPassword();
+
+                                        // Регистрация
+                                        try
+                                        {
+                                            // Отправка пароля по почте
+                                            MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", (panel3.Controls["textbox6"] as TextBox).Text, "Пароль для программы Psico", password);
+                                            SmtpClient client = new SmtpClient("smtp.yandex.ru");
+                                            client.Port = 587;
+                                            client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
+                                            client.EnableSsl = true;
+                                            client.Send(mail);
+
+                                            // Запись данных В БД
+                                            SqlCommand StrPrc1 = new SqlCommand("Teachers_add", con);
+                                            StrPrc1.CommandType = CommandType.StoredProcedure;
+                                            StrPrc1.Parameters.AddWithValue("@Unique_Naim", (panel3.Controls["textbox8"] as TextBox).Text);
+                                            StrPrc1.Parameters.AddWithValue("@KolvoNeRegStudents", Convert.ToInt32((panel3.Controls["textbox7"] as TextBox).Text));
+                                            StrPrc1.ExecuteNonQuery();
+
+                                            // Выбор количества данных в таблице БД
+                                            SqlCommand GetTeacherId = new SqlCommand("select id_teacher as 'id' from Teachers where Unique_Naim='" + (panel3.Controls["textbox8"] as TextBox).Text + "'", con);
+                                            SqlDataReader dr4 = GetTeacherId.ExecuteReader();
+                                            dr4.Read();
+                                            TeacherId = Convert.ToInt32(dr4["id"].ToString());
+                                            dr4.Close();
+
+                                            // Запись данных В БД
+                                            SqlCommand StrPrc2 = new SqlCommand("users_add", con);
+                                            StrPrc2.CommandType = CommandType.StoredProcedure;
+                                            StrPrc2.Parameters.AddWithValue("@User_Login", (panel3.Controls["textbox5"] as TextBox).Text);
+                                            StrPrc2.Parameters.AddWithValue("@User_Password", password);
+                                            StrPrc2.Parameters.AddWithValue("@User_Mail", (panel3.Controls["textbox6"] as TextBox).Text);
+                                            StrPrc2.Parameters.AddWithValue("@Teacher_id", TeacherId);
+                                            StrPrc2.ExecuteNonQuery();
+
+                                            // Выбор количества данных в таблице БД
+                                            SqlCommand GetUserID = new SqlCommand("select id_user as 'id' from users where User_Login = '" + (panel3.Controls["textbox5"] as TextBox).Text + "'", con);
+                                            SqlDataReader dr3 = GetUserID.ExecuteReader();
+                                            dr3.Read();
+                                            int UserId = Convert.ToInt32(dr3["id"].ToString());
+                                            dr3.Close();
+
+                                            // Запись данных В БД
+                                            SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
+                                            StrPrc3.CommandType = CommandType.StoredProcedure;
+                                            StrPrc3.Parameters.AddWithValue("@Naim", "Teacher");
+                                            StrPrc3.Parameters.AddWithValue("@Users_id", UserId);
+                                            StrPrc3.Parameters.AddWithValue("@Dostup_id", 2);
+                                            StrPrc3.ExecuteNonQuery();
+
+                                            // Генерация нового ключа активации
+                                            string key = GetKey();
+
+                                            // Изменение ключа активации программы
+                                            SqlCommand StrPrc4 = new SqlCommand("defend_update", con);
+                                            StrPrc4.CommandType = CommandType.StoredProcedure;
+                                            StrPrc4.Parameters.AddWithValue("@id_defend", 1);
+                                            StrPrc4.Parameters.AddWithValue("@DefenderKey", key);
+                                            StrPrc4.ExecuteNonQuery();
+
+                                            MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                            OpenAutorizationForm();
+                                        }
+                                        catch
+                                        {
+                                            MessageBox.Show("Сообщение с вашим паролем не было отправлено!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Введённое уникальное имя уже существует, выберите другое.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                             else
@@ -503,10 +609,12 @@ namespace Psico
                         (panel3.Controls["label5"] as Label).Visible = false;
                         (panel3.Controls["label6"] as Label).Visible = false;
                         (panel3.Controls["label7"] as Label).Visible = false;
+                        (panel3.Controls["label8"] as Label).Visible = false;
                         (panel3.Controls["textbox4"] as TextBox).Visible = false;
                         (panel3.Controls["textbox5"] as TextBox).Visible = false;
                         (panel3.Controls["textbox6"] as TextBox).Visible = false;
                         (panel3.Controls["textbox7"] as TextBox).Visible = false;
+                        (panel3.Controls["textbox8"] as TextBox).Visible = false;
 
                         if (student !=0)
                         {
@@ -537,10 +645,12 @@ namespace Psico
                             (panel3.Controls["label5"] as Label).Visible = true;
                             (panel3.Controls["label6"] as Label).Visible = true;
                             (panel3.Controls["label7"] as Label).Visible = true;
+                            (panel3.Controls["label8"] as Label).Visible = true;
                             (panel3.Controls["textbox4"] as TextBox).Visible = true;
                             (panel3.Controls["textbox5"] as TextBox).Visible = true;
                             (panel3.Controls["textbox6"] as TextBox).Visible = true;
                             (panel3.Controls["textbox7"] as TextBox).Visible = true;
+                            (panel3.Controls["textbox8"] as TextBox).Visible = true;
                         }
                     }
                 break;

@@ -49,7 +49,7 @@ namespace Psico
             dr1.Close();
 
             // Запись данных в протокол
-            Program.Insert = "Окно - Мероприятия (Общие сведения):";
+            Program.Insert = "Окно - Мероприятия (Общие сведения): ";
             wordinsert.Ins();
         }
 
@@ -66,7 +66,7 @@ namespace Psico
         {
             ExitFromThisForm();
 
-            Program.Insert = "Время общее на этапе мероприятий:" + Program.AllMeropr + " сек";
+            Program.Insert = "Время общее на этапе мероприятий: " + Program.AllMeropr + " сек";
             wordinsert.Ins();
 
             Program.FullAllMeropr = Program.FullAllMeropr + Program.AllMeropr;
@@ -92,7 +92,19 @@ namespace Psico
                 StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
                 StrPrc1.ExecuteNonQuery();
 
-                ExitFromProgram();
+                ExitFromThisForm();
+
+                Program.Insert = "Время общее на этапе мероприятий: " + Program.AllMeropr + " сек";
+                wordinsert.Ins();
+
+                Program.FullAllMeropr = Program.FullAllMeropr + Program.AllMeropr;
+                Program.AllMeropr = 0;
+
+                exitProgram.ExProgr();
+
+                exitProgram.ExProtokolSent();
+
+                Application.Exit();
             }
         }
 
@@ -111,23 +123,6 @@ namespace Psico
             // Запись данных в протокол
             Program.Insert = "Время на мероприятиях (Общие сведения): " + Program.meropr2T + " сек";
             wordinsert.Ins();
-        }
-
-        private void ExitFromProgram()
-        {
-            ExitFromThisForm();
-
-            Program.Insert = "Время общее на этапе мероприятий:" + Program.AllMeropr + " сек";
-            wordinsert.Ins();
-
-            Program.FullAllMeropr = Program.FullAllMeropr + Program.AllMeropr;
-            Program.AllMeropr = 0;
-
-            exitProgram.ExProgr();
-
-            exitProgram.ProtokolSent();
-
-            Application.Exit();
         }
     }
 }

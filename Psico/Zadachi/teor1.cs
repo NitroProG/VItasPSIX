@@ -65,7 +65,7 @@ namespace Psico
         {
             ExitFromThisForm();
 
-            Program.Insert = "Время общее на этапе гипотезы:" + Program.AllGip + " сек";
+            Program.Insert = "Время общее на этапе гипотезы: " + Program.AllGip + " сек";
             wordinsert.Ins();
 
             Program.FullAllGip = Program.FullAllGip + Program.AllGip;
@@ -105,7 +105,7 @@ namespace Psico
             dr.Close();
 
             // Запись данных в протокол
-            Program.Insert = "Окно - Гипотезы (Свободная форма):";
+            Program.Insert = "Окно - Гипотезы (Свободная форма): ";
             wordinsert.Ins();
         }
 
@@ -136,9 +136,9 @@ namespace Psico
             TimeWithoutKatamnez();
 
             // Запись данных в протокол
-            Program.Insert = "Гипотезы:" + Program.gipotezi + "";
+            Program.Insert = "Гипотезы: " + Program.gipotezi + "";
             wordinsert.Ins();
-            Program.Insert = "Время на гипотезах (Свободная форма):" + Program.gip1T + " сек";
+            Program.Insert = "Время на гипотезах (Свободная форма): " + Program.gip1T + " сек";
             wordinsert.Ins();
             timer1.Enabled = false;
         }
@@ -147,7 +147,7 @@ namespace Psico
         {
             ExitFromThisForm();
 
-            Program.Insert = "Время общее на этапе гипотезы:" + Program.AllGip + " сек";
+            Program.Insert = "Время общее на этапе гипотезы: " + Program.AllGip + " сек";
             wordinsert.Ins();
 
             Program.FullAllGip = Program.FullAllGip + Program.AllGip;
@@ -155,7 +155,7 @@ namespace Psico
 
             exitProgram.ExProgr();
 
-            exitProgram.ProtokolSent();
+            exitProgram.ExProtokolSent();
 
             Application.Exit();
         }

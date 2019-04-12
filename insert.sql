@@ -2,12 +2,34 @@
 	values('1234567887654321');
 go
 
-INSERT into dbo.users(User_Login,User_Password,User_Mail,Kolvo_students,isAdmin)
-	Values ('admin','admin','vit.sax@yandex.ru',999,'1');
-INSERT into dbo.users(User_Login,User_Password,User_Mail,Kolvo_students,isAdmin)
-	Values ('test','test','hogfhogf@gmail.com',10,'0');
-INSERT into dbo.users(User_Login,User_Password,User_Mail,Kolvo_students,isAdmin)
-	Values ('test2','test2','i_v.r.saharov@mpt.ru',0,'0');
+insert into dbo.Teachers(Unique_Naim,KolvoNeRegStudents)
+	values ('MPT',999);
+insert into dbo.Teachers(Unique_Naim,KolvoNeRegStudents)
+	values ('MPGU',10);
+go
+
+INSERT into dbo.users(User_Login,User_Password,User_Mail,Teacher_id)
+	Values ('admin','admin','vit.sax@yandex.ru',1);
+INSERT into dbo.users(User_Login,User_Password,User_Mail,Teacher_id)
+	Values ('test','test','hogfhogf@gmail.com',2);
+INSERT into dbo.users(User_Login,User_Password,User_Mail,Teacher_id)
+	Values ('student','student','vit.sax@yandex.ru',2);
+go
+
+insert into dbo.Dostup(UpdateZadach,UpdateUsers,WorkZadach)
+	values (1,1,1);
+insert into dbo.Dostup(UpdateZadach,UpdateUsers,WorkZadach)
+	values (0,1,1);
+insert into dbo.Dostup(UpdateZadach,UpdateUsers,WorkZadach)
+	values (0,0,1);
+go
+
+insert into [dbo].[Role](Naim,users_id,Dostup_id)
+	values ('Admin',1,1);
+insert into [dbo].[Role](Naim,users_id,Dostup_id)
+	values ('Teacher',2,2);
+	insert into [dbo].[Role](Naim,users_id,Dostup_id)
+	values ('Student',3,3);
 go
 
 insert into dbo.Zadacha(Zapros,sved)
@@ -767,2808 +789,2808 @@ insert into dbo.Fenom1(RB,RBText,zadacha_id)
 ',16)
 go
 
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Перепады настроения',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Педагогическая запущенность со стороны матери',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ревность к брату',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Воровство',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Проблемы в общении со сверстниками',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Низкий социальный статус в классе',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Привязанность к матери',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Чрезмерное увлечение компьютерными играми',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Делинквентное поведение',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Скачкообразная успеваемость',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Лень',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Отсутствие постоянного общения со сверстниками',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ранняя алкоголизация',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Общая педагогическая запущенность',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Противоречие в воспитании',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Отсутствие интереса к учёбе',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ложь',1)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Разборчивость к еде',1)
-go
-
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Перепады настроения',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Педагогическая запущенность со стороны матери',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ревность к брату',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Воровство',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Проблемы в общении со сверстниками',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Низкий социальный статус в классе',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Привязанность к матери',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Чрезмерное увлечение компьютерными играми',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Делинквентное поведение',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Скачкообразная успеваемость',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Лень',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Отсутствие постоянного общения со сверстниками',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ранняя алкоголизация',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Общая педагогическая запущенность',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Противоречие в воспитании',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Отсутствие интереса к учёбе',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ложь',2)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Разборчивость к еде',2)
-go
-
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Перепады настроения',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Педагогическая запущенность со стороны матери',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ревность к брату',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Воровство',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Проблемы в общении со сверстниками',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Низкий социальный статус в классе',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Привязанность к матери',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Чрезмерное увлечение компьютерными играми',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Делинквентное поведение',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Скачкообразная успеваемость',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Лень',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Отсутствие постоянного общения со сверстниками',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ранняя алкоголизация',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Общая педагогическая запущенность',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Противоречие в воспитании',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Отсутствие интереса к учёбе',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ложь',3)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Разборчивость к еде',3)
-go
-
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Перепады настроения',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Педагогическая запущенность со стороны матери',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ревность к брату',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Воровство',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Проблемы в общении со сверстниками',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Низкий социальный статус в классе',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Привязанность к матери',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Чрезмерное увлечение компьютерными играми',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Делинквентное поведение',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Скачкообразная успеваемость',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Лень',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Отсутствие постоянного общения со сверстниками',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ранняя алкоголизация',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Общая педагогическая запущенность',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Противоречие в воспитании',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Отсутствие интереса к учёбе',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ложь',4)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Разборчивость к еде',4)
-go
-
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Перепады настроения',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Педагогическая запущенность со стороны матери',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ревность к брату',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Воровство',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Проблемы в общении со сверстниками',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Низкий социальный статус в классе',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Привязанность к матери',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Чрезмерное увлечение компьютерными играми',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Делинквентное поведение',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Скачкообразная успеваемость',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Лень',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Отсутствие постоянного общения со сверстниками',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ранняя алкоголизация',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Общая педагогическая запущенность',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Противоречие в воспитании',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Отсутствие интереса к учёбе',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ложь',5)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Разборчивость к еде',5)
-go
-
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Раздельное с братом общение в школе',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие постоянных друзей',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'ссоры со сверстниками',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'обидчивость в школе',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'болезненное переживание удач брата',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'излишняя похвала в семье',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'конфликты в семье',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'благополучие в семье',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'стремление быть лучше брата',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'вспышки гнева',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'нехватка общения',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'выдумывание «мифических» друзей',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'любовь к шахматам',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'склонность все рисовать черным цветом',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'стремление во всем видеть плохое',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'нарушение отношений в семье',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'сильное переживание своих неудач',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'обвинение учителей в проблемах',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'не посещение детского сада',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'наличие няни',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'волнения по поводу беседы с психологом',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'проговаривание вслух своих действий',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'тяжелые роды',6)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'худое телосложение',6)
-go
-
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Нелюбовь к школе',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'злоба на замечания учителей',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'потребность в хорошем учителе',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'занятия каратэ',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'интерес к машинам',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'увлечение компьютерными играми',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'чрезмерная подвижность',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'общительность Никиты',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'стремление задавать много вопросов',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'открытость Никиты',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'любознательность Никиты',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'крупное телосложение',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'болезненность',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'единственный ребенок в семье',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'властная бабушка',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'проблемы в семье',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'унижение бабушкой родителей Никиты',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'подрыв авторитета родителей',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'требовательность воспитании',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'неусидчивость ребенка',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие желания учиться',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'плохая успеваемость',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отставание от класса в плане успеваемости;',7)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'желание родителей перевести ребенка в другой класс',7)
-go
-
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Слабое здоровье Лизы',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'поздний ребенок в семье',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'строгость в воспитании',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'робость во взаимоотношениях со сверстниками',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие друзей',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие увлечений',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'требовательность в воспитании',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'воспитание без отца',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'низкая успеваемость',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'равнодушие к оценкам',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'трудности в школе со сверстниками',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'худое телосложение',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'болезненность',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие желания делать домашнюю работу',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'боязнь неправильного ответа',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'любовь к рисованию',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отказ от выполнения поручений мамы',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'любовь к рукоделию',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'страх ответа у доски',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'трудность в привыкании к коллективу',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'выраженное желание учиться',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'высокая успеваемость',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'проблемы со здоровьем в детстве',8)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'неусидчивость',8)
-go
-
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ранняя запись в школу',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отставание по учебным предметам',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'усталость',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'оставление после уроков',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'посещение группы продленного дня',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'внимательность родителей по отношению к Сереже',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'сильные переживания за ребенка родителей',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'дисциплинированность на уроках',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'сильное влияние сверстников на Сережу',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'беготня по коридору',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'излишняя чувствительность',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'полное телосложение',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'болезненность',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие желания делать домашнюю работу',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'боязнь неправильного ответа',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'расхождение между требованиями родителей и занижающей Сергея позиции учителя',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'утомляемость',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'посещение детского сада',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'трудности в адаптации в детском саду',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'проблемы в семье Сергея',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'необщительность',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'замкнутость',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'пропуск уроков без уважительной причины',9)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'пропуск занятий по каратэ',9)
-go
-
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Разные взгляды родителей на воспитание Влада',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'неоднократные обращения к психологу',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие реакции на наказания',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'любовь к компьютерным играм',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'конфликты в семье',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'посещение секции каратэ',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие реакции на замечания учителя',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'избалованность мальчика',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'наличие подруги',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'любовь к чтению',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'негативное отношение к математике',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'бездействие на уроках',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'крупное телосложение',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'частая смена школ',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'низкая успеваемость',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'неполная семья',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отвержение со стороны одноклассников',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'выполнение домашних заданий только с мамой',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'наличие брата',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'наркотическая зависимость у брата Влада',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'заторможенность в ответах',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'посещение кинотеатра с папой',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'негативное отношение к учебной деятельности',10)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'неуклюжесть',10)
-go
-
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Неполная семья',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'наличие постоянных друзей',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'конфликты с одноклассниками',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'властная бабушка',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'высокая ответственность',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'излишняя похвала в семье',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'конфликты в семье',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'повышение голоса учителями',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'сниженная контактность',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'вспышки гнева',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'трудности в преодолении стрессовых ситуаций',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие хобби',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'наличие подруги',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'грубость',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'стремление во всем видеть плохое',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'обвинение семье в своих проблемах',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'сильное переживание своих неудач',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'обвинение учителей в проблемах',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'посещение детского сада',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'чувствительность',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'волнения по поводу беседы с психологом',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'наличие сестры',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'тяжелые роды',11)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'сильное чувство вины перед учителями',11)
-go
-
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Нелюбовь к школе',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'обвинение учителей',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'негативные отношения в семье',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'перемены настроения',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'нелюбовь к учебе',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'нежелание работать с психологом',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'медленность движений',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'боязнь выглядеть плохо в глазах сверстников',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'стремление задавать много вопросов',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'худощавое телосложение',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'увлечение компьютерными играми',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'послушность',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'болезненность',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'единственный ребенок в семье',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие контактов со сверстниками',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'непонимание социальных норм',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'конфликты с учителями',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'подрыв авторитета родителей',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'требовательность в воспитании',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'капризное поведение',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие желания учиться',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'плохая успеваемость',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'невозможность усидеть на одном месте',12)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'спутанность речи',12)
-go
-
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Полная семья',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'боязнь отца',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'незнание последствий определенных ситуаций',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'конфликты в семье',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'низкая ответственность',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'участие в олимпиадах',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'высокая ответственность',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'безалаберное отношение к учебе',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'подорванное доверие к людям',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'вспышки гнева по отношению к учителям',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'трудности в преодолении стрессовых ситуаций',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'обвинение во всем учителей',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'наличие подруг',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'зажатость и избирательность социальных контактов',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'стремление во всем видеть хорошее',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'сбивчивая речь',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'худое телосложение',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'прогулы в школе',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'нежное отношение к матери',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'самоорганизованность',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'волнения по поводу беседы с психологом',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'наличие брата',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие вредных привычек',13)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'сильное чувство вины перед учителями',13)
-go
-
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Ранняя запись в школу',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отставание по учебным предметам',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'ленивость',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие успехов в учебной деятельности',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'теплое отношение к брату',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'проблемы в отношениях с отцом',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'обвинение учителей в своих проблемах',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'дисциплинированность на уроках',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'сильное влияние сверстников',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'плохое поведение',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'сильное переживание неудач',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'полное телосложение',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'педагогическая запущенность со стороны родителей',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие желания делать домашнюю работу',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'боязнь быть неуспешным в глазах учителей',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'конфликты со сверстниками',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'сильная утомляемость',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие чувства долга по отношению к учебной деятельности',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'нарушение сна',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'излишняя общительность',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'перепады настроения',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'нежелание учиться и негативное отношение к учителям',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'пропуск уроков без уважительной причины',14)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'наличие хобби',14)
-go
-
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Наличие у Льва хобби',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие друзей',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'конфликты с одноклассниками',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'давление отца на Льва',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'нежелание Льва решать учебные вопросы',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'нелюбовь к школе',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'любовь к монтированию фильмов',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'компьютерная зависимость',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'желание дистанцироваться от семьи',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'вспышки гнева',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'трудности в преодолении стрессовых ситуаций',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'плохая успеваемость по всем предметам',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'наличие близкого друга',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'непоследовательный характер запретов на любимые занятия Льва',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'давление на Льва со стороны родителей',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'наличие маленькой сестренки',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'теплое отношение к сестре',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'нежелание решать свои проблемы',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'доминирующая роль отца в семье',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'плохое поведение Льва на уроках',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'нежелание работать с психологом',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'наличие чувства вины',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'невозможность Льва контролировать свою жизнь',15)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'сильное чувство вины перед родителями',15)
-go
-
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'Желание общаться со всеми',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'страх плохо выглядеть в глазах сверстников',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'интерес к учебе в колледже',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'интерес к юриспруденции',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'одиночество',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'участие в олимпиадах',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'высокая ответственность',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'вспышки гнева',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'подорванное доверие к людям',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'вспышки гнева по отношению к учителям',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'легкость в преодолении стрессовых ситуаций',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'обвинение во всем мамы',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'наличие нескольких друзей',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'зажатость',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'стремление во всем видеть хорошее',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'настороженное отношение к тем, кому Саша не доверяет',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'полное телосложение',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'прогулы занятий',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'боязнь людей',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'напряденные отношения с матерью',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'волнения по поводу беседы с психологом',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'низкая эмоциональность',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'отсутствие вредных привычек',16)
-insert into dbo.Fenom2(CB,zadacha_id)
-	values (N'желание все делать самостоятельно',16)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неадекватная самооценка',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неадекватный уровень притязаний',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Трудности поло-ролевой идентификации',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Эмоциональный конфликт с матерью и отцом',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Отсутствие мотивации общения',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Несформированность мотивов учебной деятельности',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Потребность в поиске сильных ощущений',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неадекватный способ самовыражения',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Особенности локуса контроля',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неустойчивая акцентуация характера',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Лабильная акцентуация характера',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Флегматический тип темперамента',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Эгоцентрический тип личности с независимым характером',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Агрессивность как устойчивая особенность личности',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Несформированность коммуникативных навыков',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Гипертимно-неустойчивая акцентуация характера',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Общие проблемы в знаниях',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Недостаточная сформированность логических связей',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Недостаточная произвольная регуляция деятельности',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Наличие чувства вины',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Высокий уровень школьной тревожности',1)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Сильный страх самовыражения',1)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неадекватная самооценка',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неадекватный уровень притязаний',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Трудности поло-ролевой идентификации',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Эмоциональный конфликт с матерью и отцом',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Отсутствие мотивации общения',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Несформированность мотивов учебной деятельности',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Потребность в поиске сильных ощущений',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неадекватный способ самовыражения',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Особенности локуса контроля',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неустойчивая акцентуация характера',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Лабильная акцентуация характера',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Флегматический тип темперамента',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Эгоцентрический тип личности с независимым характером',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Агрессивность как устойчивая особенность личности',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Несформированность коммуникативных навыков',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Гипертимно-неустойчивая акцентуация характера',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Общие проблемы в знаниях',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Недостаточная сформированность логических связей',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Недостаточная произвольная регуляция деятельности',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Наличие чувства вины',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Высокий уровень школьной тревожности',2)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Сильный страх самовыражения',2)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неадекватная самооценка',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неадекватный уровень притязаний',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Трудности поло-ролевой идентификации',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Эмоциональный конфликт с матерью и отцом',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Отсутствие мотивации общения',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Несформированность мотивов учебной деятельности',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Потребность в поиске сильных ощущений',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неадекватный способ самовыражения',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Особенности локуса контроля',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неустойчивая акцентуация характера',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Лабильная акцентуация характера',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Флегматический тип темперамента',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Эгоцентрический тип личности с независимым характером',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Агрессивность как устойчивая особенность личности',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Несформированность коммуникативных навыков',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Гипертимно-неустойчивая акцентуация характера',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Общие проблемы в знаниях',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Недостаточная сформированность логических связей',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Недостаточная произвольная регуляция деятельности',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Наличие чувства вины',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Высокий уровень школьной тревожности',3)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Сильный страх самовыражения',3)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неадекватная самооценка',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неадекватный уровень притязаний',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Трудности поло-ролевой идентификации',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Эмоциональный конфликт с матерью и отцом',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Отсутствие мотивации общения',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Несформированность мотивов учебной деятельности',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Потребность в поиске сильных ощущений',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неадекватный способ самовыражения',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Особенности локуса контроля',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неустойчивая акцентуация характера',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Лабильная акцентуация характера',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Флегматический тип темперамента',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Эгоцентрический тип личности с независимым характером',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Агрессивность как устойчивая особенность личности',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Несформированность коммуникативных навыков',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Гипертимно-неустойчивая акцентуация характера',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Общие проблемы в знаниях',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Недостаточная сформированность логических связей',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Недостаточная произвольная регуляция деятельности',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Наличие чувства вины',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Высокий уровень школьной тревожности',4)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Сильный страх самовыражения',4)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неадекватная самооценка',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неадекватный уровень притязаний',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Трудности поло-ролевой идентификации',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Эмоциональный конфликт с матерью и отцом',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Отсутствие мотивации общения',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Несформированность мотивов учебной деятельности',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Потребность в поиске сильных ощущений',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неадекватный способ самовыражения',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Особенности локуса контроля',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Неустойчивая акцентуация характера',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Лабильная акцентуация характера',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Флегматический тип темперамента',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Эгоцентрический тип личности с независимым характером',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Агрессивность как устойчивая особенность личности',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Несформированность коммуникативных навыков',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Гипертимно-неустойчивая акцентуация характера',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Общие проблемы в знаниях',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Недостаточная сформированность логических связей',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Недостаточная произвольная регуляция деятельности',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Наличие чувства вины',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Высокий уровень школьной тревожности',5)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Сильный страх самовыражения',5)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Высокая тревожность',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая самооценка',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'пессимизм',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'доминантность',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень развития восприятия',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень концентрации внимания',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень притязаний',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая вербальная агрессия',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая депрессия',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'импульсивность',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'неуравновешенность',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'эмоциональная возбудимость',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'склонность к риску',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'мечтательность',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'сниженное настроение',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'интровертная направленность',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая уверенность в себе',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень переключения внимания',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень познавательного развития',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень общей школьной тревожности',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'истероидность (ревность, демонстративность);',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень социальной адекватности поведения',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'отгороженность',6)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'психологические барьеры в общении со сверстниками',6)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Низкий уровень развития словесной (слуховой памяти);',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень общей тревожности',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'тревожность как устойчивая черта личности',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая мотивация на приобретение знаний',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'экстравертированная направленность',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая мотивационная направленность на отметку',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая школьная тревожность',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая вербальная агрессия',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень самоконтроля своего поведения',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая самооценка',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая познавательная компетентность',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'депрессивные тенденции',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'отсутствие склонности к риску',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий авторитет родителей в глазах ребенка',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая уверенность в себе',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'интровертная направленность',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая независимость',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень коммуникативной компетентности',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень смелости',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'истероидность',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'пессимизм',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая доминантность',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'оптимизм',7)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень развития внимания (устойчивости, объема, переключения)',7)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Высокий уровень устойчивости внимания',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий интеллект',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень познавательного развития',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'интровертированная направленность',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень компетентности в общении',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокое самоприятие',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень притязаний',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая самооценка',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень самоконтроля своего поведения',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'депрессивные тенденции',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая агрессивность',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'ярко выраженная склонность к риску',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая уверенность в себе',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'демонстративность',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'сниженный фон настроения',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая тревожность',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая благоразумность',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'уступчивость',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая самооценка',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'пессимизм',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая доминантность',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'мечтательность',8)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень закрытости',8)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Низкий объем внимания',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'строгость в воспитании',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень развития вербально-логического мышления',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'интровертированная направленность',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень  общения со сверстниками',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень межличностной тревожности',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая агрессивность',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'уступчивость и сенситивность Сережи',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'проблемы и страхи в отношениях с учителями',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'страх ситуации проверки знаний',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'склонность к депрессии',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая школьная мотивация',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая самооценка',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень притязаний',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'демостративность',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая вербальная агрессия',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая уверенность в себе',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий самоконтроль',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'пессимизм',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень социальной адекватности поведения',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'личностный конфликт',9)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'доминирующий тип поведения',9)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Низкий уровень развития восприятия',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень общей школьной тревожности',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень развития вербально-логического мышления',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень концентрации внимания',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень самооценочной тревожности',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень физиологической сопротивляемости стрессу',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая самооценка',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень притязаний',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'демонстративность',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая самооценка',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'несформированность коммуникативных навыков',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'интровертная направленность',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая уверенность к себе',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая самооценка',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'эмоциональной невозбудимость',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень  независимости',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'противоречивые требования в воспитательном процессе',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'безответственность',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'отсутствие мотивации к учебной деятельности',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'недостаточность произвольной регуляции деятельности',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень доминантности',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая агрессивность',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень депрессии',10)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'стремление к избеганию неудач',10)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Повышенная чувствительность как характерологическая черта',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая самооценка',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий оптимизм',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'стремление к избеганию неудач',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая уверенность в себе',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень запоминания',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень притязаний',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая вербальная агрессия',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая депрессия',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'самостоятельность',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'стремление к избеганию неудач',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'ригидность мышления',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая избирательность внимания',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'мечтательность',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'повышенная чувствительность как особенность темперамента',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'интровертная направленность',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень принятия других',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень способности прощать',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень доверия к близким',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая жизнестойкость',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень субъективного благополучия',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'доминирование негативных эмоций',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая физиологическая сопротивляемость стрессу как особенность темперамента',11)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая интернальность',11)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Недопонимание социальных норм или асоциальность',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень интеллектуального развития',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'мотивация, направленная на избегание неудач',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'мотивация, направленная на успех',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'экстравертированная направленность',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая мотивация к учебной деятельности',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая школьная тревожность',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая вербальная агрессия',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая мстительность',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая самооценка',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая способность прощать',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'истероидные черты характера',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'страх не соответствовать ожиданиям сверстников',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'непринятие других',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая уверенность в себе',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'агрессивный тип воспитания',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая зависимость от родителей',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень коммуникативной компетентности',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'недоверие к окружающим',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'гиперактивность (дефицит внимания, импульсивность)',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'попустительский тип воспитания',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень субъективного благополучия',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'оптимизм',12)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'слабое развитие всех познавательных процессов',12)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Высокое чувство вины за свои поступки',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий интеллект',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень познавательного развития',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая толерантность к неопределенности',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень компетентности в общении',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокое самопринятие',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая школьная тревожность',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'страх самовыражения',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень гибкости мышления',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень ответственности и морального сознания',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень внимания',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокое принятие других',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая способность прощать',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень доверия к учителям',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'стратегия избегания в конфликтах',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'сниженная уверенность в себе',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'стремление к избеганию неудач',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'комфортность',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая самооценка',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'страх не соответствовать ожиданиям окружения',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'ведомость',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая социальная смелость',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень закрытости',13)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'стратегия соперничества в конфликтах',13)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Высокое принятие риска',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'нарушенное в смысловом плане воспитание, обесценивающее учебную деятельность',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень переключения внимания',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая жизнестойкость',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая толерантность к неопределенности',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень школьной тревожности',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая агрессивность',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'неправильная педагогическая позиция учителей',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'нарушенные смысловые установки относительно ценности учебной деятельности',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень доверия к учителям',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень позитивных эмоций по отношению к учителям',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'склонность к депрессии',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая мстительность',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'очень высокая самооценка',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'отсутствие мотивации на успех в ситуации учебы',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень моральных качеств по отношению к учебе',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая компетентность в общении',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая уверенность в себе',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий самоконтроль',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'выраженный оптимизм',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень социальной адекватности поведения',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкое субъективное благополучие',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'непринятие других',14)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'обиды на учителей',14)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Эмоциональная неустойчивость',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'сверхреакция даже на слабые стимулы',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'аггравация',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень концентрации внимания',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень развития всех познавательных процессов',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'фрустрация потребностей Льва в самоактуализации, безопасности и теплых отношениях',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая агрессивность',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'злопамятность',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'агрессивность в общении',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'несформированность коммуникативных навыков',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'негативное отношение к критике',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'пренебрежительность',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая напряженность',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'эмоциональной возбудимость',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'враждебность',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'автономный тип воспитания',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'непоследовательные воспитательные воздействия',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'циклоидность',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'недостаточность произвольной регуляции деятельности',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень позитивных состояний по отношению к своей семье',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая агрессивность',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень депрессии',15)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая позитивная атмосфера в семье',15)
-go
-
-insert into dbo.teor(CB,zadacha_id)
-	values (N'Высокие депрессивные тенденции',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий интеллект',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокий уровень познавательного развития',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкая толерантность к неопределенности',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая экстернальность',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'эмоциональная нестабильность',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая агрессивность',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'избирательность доверия',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень гибкости мышления',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень позитивных эмоций',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкое субъективное благополучие',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкое принятие других',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая способность прощать',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая уверенность в необходимости принятия самостоятельных решений',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'стратегия соперничества в конфликтах',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'высокая тревожность',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'стремление к избеганию неудач',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'доминантность как характерологическая особенность',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'определенные особенности социального интеллекта',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'страх не соответствовать ожиданиям окружения',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'тип личности, сложившийся на фоне холерически-флегматического темперамента',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'низкий уровень развития переключения внимания',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'плохое развитие логического запоминания',16)
-insert into dbo.teor(CB,zadacha_id)
-	values (N'авторитарные черты личности',16)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неадекватная самооценка',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неадекватный уровень притязаний',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Трудности поло-ролевой идентификации',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Эмоциональный конфликт с матерью и отцом',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Отсутствие мотивации общения',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Несформированность мотивов учебной деятельности',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Потребность в поиске сильных ощущений',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неадекватный способ самовыражения',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Особенности локуса контроля',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неустойчивая акцентуация характера',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Лабильная акцентуация характера',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Флегматический тип темперамента',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Эгоцентрический тип личности с независимым характером',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Агрессивность как устойчивая особенность личности',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Несформированность коммуникативных навыков',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Гипертимно-неустойчивая акцентуация характера',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Общие проблемы в знаниях',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Недостаточная сформированность логических связей',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Недостаточная произвольная регуляция деятельности',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Наличие чувства вины',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень школьной тревожности',1)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Сильный страх самовыражения',1)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неадекватная самооценка',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неадекватный уровень притязаний',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Трудности поло-ролевой идентификации',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Эмоциональный конфликт с матерью и отцом',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Отсутствие мотивации общения',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Несформированность мотивов учебной деятельности',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Потребность в поиске сильных ощущений',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неадекватный способ самовыражения',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Особенности локуса контроля',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неустойчивая акцентуация характера',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Лабильная акцентуация характера',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Флегматический тип темперамента',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Эгоцентрический тип личности с независимым характером',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Агрессивность как устойчивая особенность личности',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Несформированность коммуникативных навыков',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Гипертимно-неустойчивая акцентуация характера',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Общие проблемы в знаниях',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Недостаточная сформированность логических связей',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Недостаточная произвольная регуляция деятельности',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Наличие чувства вины',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень школьной тревожности',2)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Сильный страх самовыражения',2)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неадекватная самооценка',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неадекватный уровень притязаний',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Трудности поло-ролевой идентификации',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Эмоциональный конфликт с матерью и отцом',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Отсутствие мотивации общения',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Несформированность мотивов учебной деятельности',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Потребность в поиске сильных ощущений',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неадекватный способ самовыражения',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Особенности локуса контроля',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неустойчивая акцентуация характера',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Лабильная акцентуация характера',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Флегматический тип темперамента',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Эгоцентрический тип личности с независимым характером',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Агрессивность как устойчивая особенность личности',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Несформированность коммуникативных навыков',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Гипертимно-неустойчивая акцентуация характера',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Общие проблемы в знаниях',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Недостаточная сформированность логических связей',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Недостаточная произвольная регуляция деятельности',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Наличие чувства вины',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень школьной тревожности',3)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Сильный страх самовыражения',3)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неадекватная самооценка',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неадекватный уровень притязаний',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Трудности поло-ролевой идентификации',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Эмоциональный конфликт с матерью и отцом',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Отсутствие мотивации общения',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Несформированность мотивов учебной деятельности',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Потребность в поиске сильных ощущений',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неадекватный способ самовыражения',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Особенности локуса контроля',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неустойчивая акцентуация характера',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Лабильная акцентуация характера',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Флегматический тип темперамента',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Эгоцентрический тип личности с независимым характером',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Агрессивность как устойчивая особенность личности',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Несформированность коммуникативных навыков',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Гипертимно-неустойчивая акцентуация характера',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Общие проблемы в знаниях',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Недостаточная сформированность логических связей',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Недостаточная произвольная регуляция деятельности',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Наличие чувства вины',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень школьной тревожности',4)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Сильный страх самовыражения',4)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неадекватная самооценка',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неадекватный уровень притязаний',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Трудности поло-ролевой идентификации',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Эмоциональный конфликт с матерью и отцом',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Отсутствие мотивации общения',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Несформированность мотивов учебной деятельности',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Потребность в поиске сильных ощущений',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неадекватный способ самовыражения',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Особенности локуса контроля',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неустойчивая акцентуация характера',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Лабильная акцентуация характера',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Флегматический тип темперамента',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Эгоцентрический тип личности с независимым характером',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Агрессивность как устойчивая особенность личности',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Несформированность коммуникативных навыков',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Гипертимно-неустойчивая акцентуация характера',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Общие проблемы в знаниях',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Недостаточная сформированность логических связей',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Недостаточная произвольная регуляция деятельности',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Наличие чувства вины',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень школьной тревожности',5)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Сильный страх самовыражения',5)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая тревожность',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая самооценка',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Пессимизм',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Доминантность',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень развития восприятия',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень концентрации внимания',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень притязаний',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая вербальная агрессия',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая депрессия',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Импульсивность',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неуравновешенность',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Эмоциональная возбудимость',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Склонность к риску',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Мечтательность',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Сниженное настроение',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Интровертная направленность',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая уверенность в себе',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень переключения внимания',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень познавательного развития',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень общей школьной тревожности',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Истероидность (ревность, демонстративность);',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень социальной адекватности поведения',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Отгороженность',6)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Психологические барьеры в общении со сверстниками',6)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень развития словесной (слуховой памяти)',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень общей тревожности',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Тревожность как устойчивая черта личности',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая мотивация на приобретение знаний',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Экстравертированная направленность',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая мотивационная направленность на отметку',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая школьная тревожность',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая вербальная агрессия',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень самоконтроля своего поведения',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая самооценка',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая познавательная компетентность',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Депрессивные тенденции',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Отсутствие склонности к риску',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий авторитет родителей в глазах ребенка',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая уверенность в себе',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Интровертная направленность',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая независимость',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень коммуникативной компетентности',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень смелости',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Истероидность',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Пессимизм',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая доминантность',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Оптимизм',7)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень развития внимания (устойчивости, объема, переключения)',7)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень устойчивости внимания',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий интеллект',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень познавательного развития',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Интровертированная направленность',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень компетентности в общении',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокое самоприятие',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень притязаний',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая самооценка',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень самоконтроля своего поведения',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Депрессивные тенденции',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая агрессивность',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Ярко выраженная склонность к риску',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая уверенность в себе',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Демонстративность',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Сниженный фон настроения',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая тревожность',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая благоразумность',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Уступчивость',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая самооценка',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Пессимизм',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая доминантность',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Мечтательность',8)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень закрытости',8)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий объем внимания',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Строгость в воспитании',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень развития вербально-логического мышления',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Интровертированная направленность',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень  общения со сверстниками',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень межличностной тревожности',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая агрессивность',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Уступчивость и сенситивность Сережи',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Проблемы и страхи в отношениях с учителями',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Страх ситуации проверки знаний',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Склонность к депрессии',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая школьная мотивация',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая самооценка',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень притязаний',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Демостративность',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая вербальная агрессия',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая уверенность в себе',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий самоконтроль',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Пессимизм',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень социальной адекватности поведения',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Личностный конфликт',9)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Доминирующий тип поведения',9)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень развития восприятия',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень общей школьной тревожности',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень развития вербально-логического мышления',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень концентрации внимания',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень самооценочной тревожности',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень физиологической сопротивляемости стрессу',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая самооценка',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень притязаний',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Демонстративность',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая самооценка',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Несформированность коммуникативных навыков',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Интровертная направленность',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая уверенность к себе',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая самооценка',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Эмоциональной невозбудимость',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень  независимости',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Противоречивые требования в воспитательном процессе',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Безответственность',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Отсутствие мотивации к учебной деятельности',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Недостаточность произвольной регуляции деятельности',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень доминантности',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая агрессивность',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень депрессии',10)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стремление к избеганию неудач',10)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Повышенная чувствительность как характерологическая черта',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая самооценка',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий оптимизм',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стремление к избеганию неудач',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая уверенность в себе',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень запоминания',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень притязаний',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая вербальная агрессия',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая депрессия',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Самостоятельность',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стремление к избеганию неудач',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Ригидность мышления',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая избирательность внимания',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Мечтательность',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Повышенная чувствительность как особенность темперамента',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Интровертная направленность',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень принятия других',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень способности прощать',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень доверия к близким',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая жизнестойкость',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень субъективного благополучия',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Доминирование негативных эмоций',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая физиологическая сопротивляемость стрессу как особенность темперамента',11)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая интернальность',11)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Недопонимание социальных норм или асоциальность',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень интеллектуального развития',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Мотивация, направленная на избегание неудач',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Мотивация, направленная на успех',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Экстравертированная направленность',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая мотивация к учебной деятельности',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая школьная тревожность',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая вербальная агрессия',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая мстительность',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая самооценка',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая способность прощать',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Истероидные черты характера',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Страх не соответствовать ожиданиям сверстников',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Непринятие других',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая уверенность в себе',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Агрессивный тип воспитания',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая зависимость от родителей',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень коммуникативной компетентности',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Недоверие к окружающим',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Гиперактивность (дефицит внимания, импульсивность)',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Попустительский тип воспитания',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень субъективного благополучия',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Оптимизм',12)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Слабое развитие всех познавательных процессов',12)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокое чувство вины за свои поступки',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий интеллект',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень познавательного развития',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая толерантность к неопределенности',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень компетентности в общении',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокое самопринятие',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая школьная тревожность',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Страх самовыражения',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень гибкости мышления',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень ответственности и морального сознания',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень внимания',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокое принятие других',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая способность прощать',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень доверия к учителям',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стратегия избегания в конфликтах',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Сниженная уверенность в себе',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стремление к избеганию неудач',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Комфортность',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая самооценка',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Страх не соответствовать ожиданиям окружения',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Ведомость',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая социальная смелость',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень закрытости',13)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стратегия соперничества в конфликтах',13)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокое принятие риска',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Нарушенное в смысловом плане воспитание, обесценивающее учебную деятельность',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень переключения внимания',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая жизнестойкость',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая толерантность к неопределенности',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень школьной тревожности',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая агрессивность',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Неправильная педагогическая позиция учителей',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Нарушенные смысловые установки относительно ценности учебной деятельности',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень доверия к учителям',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень позитивных эмоций по отношению к учителям',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Склонность к депрессии',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая мстительность',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Очень высокая самооценка',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Отсутствие мотивации на успех в ситуации учебы',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень моральных качеств по отношению к учебе',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая компетентность в общении',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая уверенность в себе',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий самоконтроль',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Выраженный оптимизм',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень социальной адекватности поведения',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкое субъективное благополучие',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Непринятие других',14)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Обиды на учителей',14)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Эмоциональная неустойчивость',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Сверхреакция даже на слабые стимулы',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Аггравация',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень концентрации внимания',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень развития всех познавательных процессов',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Фрустрация потребностей Льва в самоактуализации, безопасности и теплых отношениях',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая агрессивность',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Злопамятность',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Агрессивность в общении',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Несформированность коммуникативных навыков',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Негативное отношение к критике',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Пренебрежительность',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая напряженность',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Эмоциональной возбудимость',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Враждебность',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Автономный тип воспитания',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Непоследовательные воспитательные воздействия',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Циклоидность',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Недостаточность произвольной регуляции деятельности',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень позитивных состояний по отношению к своей семье',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая агрессивность',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень депрессии',15)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая позитивная атмосфера в семье',15)
-go
-
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокие депрессивные тенденции',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий интеллект',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокий уровень познавательного развития',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкая толерантность к неопределенности',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая экстернальность',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Эмоциональная нестабильность',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая агрессивность',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Избирательность доверия',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень гибкости мышления',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень позитивных эмоций',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкое субъективное благополучие',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкое принятие других',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая способность прощать',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая уверенность в необходимости принятия самостоятельных решений',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стратегия соперничества в конфликтах',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Высокая тревожность',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Стремление к избеганию неудач',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Доминантность как характерологическая особенность',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Определенные особенности социального интеллекта',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Страх не соответствовать ожиданиям окружения',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Тип личности, сложившийся на фоне холерически-флегматического темперамента',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Низкий уровень развития переключения внимания',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Плохое развитие логического запоминания',16)
-insert into dbo.dz(CB,zadacha_id)
-	values (N'Авторитарные черты личности',16)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Противоречие в воспитании',1)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Проблемы в общении со сверстниками',1)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Привязанность к матери',1)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Перепады настроения',2)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Ревность к брату',2)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Отсутствие постоянного общения со сверстниками',2)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Разборчивость в еде',2)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Скачкообразная успеваемость',3)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Лень',3)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Отсутствие интереса к учебе',3)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Педагогическая запущенность со стороны матери',4)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Воровство',4)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Чрезмерное увлечение компьютерными играми',4)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Лень',4)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Ложь',4)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Низкий социальный статус в классе',5)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Делинкветное поведение',5)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Противоречие в воспитании',5)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Общая педагогическая запущенность',5)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'болезненное переживание удач брата',6)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'стремление быть лучше брата',6)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'сильное переживание своих неудач',6)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'злоба на замечания учителей',7)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'чрезмерная подвижность',7)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'подрыв авторитета родителей',7)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'неусидчивость ребенка',7)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'робость во взаимоотношениях со сверстниками',8)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'боязнь неправильного ответа',8)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'страх ответа у доски',8)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'сильное влияние сверстников на Сережу',9)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'излишняя чувствительность',9)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'расхождение между требованиями родителей и занижающей Сергея позиции учителя',9)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'пропуск уроков без уважительной причины',9)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'Разные взгляды родителей на воспитание Влада',10)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'бездействие на уроках',10)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'отвержение со стороны одноклассников',10)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'выполнение домашних заданий только с мамой',10)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'трудности в преодолении стрессовых ситуаций',11)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'чувствительность',11)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'боязнь выглядеть плохо в глазах сверстников',12)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'непонимание социальных норм',12)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'капризное поведение',12)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'невозможность усидеть на одном месте',12)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'высокая ответственность',13)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'подорванное доверие к людям',13)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'зажатость и избирательность социальных контактов',13)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'отсутствие успехов в учебной деятельности',14)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'педагогическая запущенность со стороны родителей',14)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'отсутствие чувства долга по отношению к учебной деятельности',14)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'нежелание учиться и негативное отношение к учителям',14)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'желание дистанцироваться от семьи',15)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'непоследовательный характер запретов на любимые занятия Льва',15)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'давление на Льва со стороны родителей',15)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'невозможность Льва контролировать свою жизнь',15)
-go
-
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'вспышки гнева',16)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'настороженное отношение к тем, кому Саша не доверяет',16)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'низкая эмоциональность',16)
-insert into dbo.vernotv_Fenom(otv,zadacha_id)
-	values(N'желание все делать самостоятельно',16)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Флегматический тип темперамента',1)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Эгоцентрический тип личности с независимым характером',1)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',1)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Эмоциональный конфликт с матерью и отцом',2)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Лабильная акцентуация характера',2)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Лабильная акцентуация характера',3)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Недостаточная сформированность логических связей',3)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Неустойчивая акцентуация характера',4)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',4)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Потребность в поиске сильных ощущений',4)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Сильный страх самовыражения',5)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Высокий уровень школьной тревожности',5)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Гипертимно-неустойчивая акцентуация характера',5)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',5)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'высокая самооценка',6)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'высокий уровень притязаний',6)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'истероидность (ревность, демонстративность);',6)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'высокая вербальная агрессия',7)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'низкий уровень самоконтроля своего поведения',7)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'низкий авторитет родителей в глазах ребенка',7)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'низкий уровень развития внимания (устойчивости, объема, переключения',7)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'высокая тревожность',8)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'уступчивость',8)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'низкая самооценка',8)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'неправильная педагогическая позиция родителей и учителя',9)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'уступчивость и сенситивность Сережи',9)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'низкая школьная мотивация',9)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'личностный конфликт',9)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'несформированность коммуникативных навыков',10)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'противерочивые требования в воспитательном процессе',10)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'отсутствие мотивации к учебной деятельности',10)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'недостаточность произвольной регуляции деятельности',10)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Повышенная чувствительность как характерологическая черта;',11)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'повышенная чувствительность как особенность темперамента;',11)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'низкая физиологическая сопротивляемость стрессу как особенность темперамента;',11)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'Недопонимание социальных норм или асоциальность;',12)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'истероидные черты характера;',12)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'страх не соответствовать ожиданиям сверстников;',12)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'гиперактивность (дефицит внимания, импульсивность);',12)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'попустительский тип воспитания;',12)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'высокий уровень ответственности и морального сознания;',13)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'низкий уровень доверия к учителям;',13)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'сниженная уверенность в себе;',13)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'низкая социальная смелость;',13)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'нарушенное в смысловом плане воспитание, обесценивающее учебную деятельность;',14)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'нарушенные смысловые установки относительно ценности учебной деятельности;',14)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'отсутствие мотивации на успех в ситуации учебы;',14)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'низкий уровень моральных качеств по отношению к учебе;',14)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'фрустрация потребностей Льва в самоактуализации, безопасности и теплых отношениях;',15)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'непоследовательные воспитательные воздействия;',15)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'низкий уровень позитивных состояний по отношению к своей семье;',15)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'низкая позитивная атмосфера в семье.',15)
-go
-
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'избирательность доверия;',16)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'высокая уверенность в необходимости принятия самостоятельных решений;',16)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'определенные особенности социального интеллекта;',16)
-insert into dbo.vernotv_Gip(otv,zadacha_id)
-	values(N'тип личности, сложившийся на фоне холерически-флегматического темперамента;',16)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',1)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Флегматический тип темперамента',1)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Эгоцентрический тип личности с независимым характером',1)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Эмоциональный конфликт с матерью и отцом',2)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Лабильная акцентуация характера',2)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Лабильная акцентуация характера',3)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Недостаточная сформированность логических связей',3)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Неустойчивая акцентуация характера',4)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',4)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Потребность в поиске сильных ощущений',4)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Сильный страх самовыражения',5)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Высокий уровень школьной тревожности',5)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Гипертимно-неустойчивая акцентуация характера',5)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',5)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Высокая самооценка',6)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Высокий уровень притязаний',6)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Истероидность (ревность, демонстративность);',6)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Высокая вербальная агрессия',7)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Низкий авторитет родителей в глазах ребенка',7)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Низкий уровень развития внимания (устойчивости, объема, переключения)',7)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Низкий уровень самоконтроля своего поведения',7)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Высокая тревожность',8)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Низкая самооценка',8)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Уступчивость',8)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Личностный конфликт',9)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Неправильная педагогическая позиция родителей и учителя',9)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Низкая школьная мотивация',9)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Уступчивость и сенситивность Сережи',9)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Недостаточность произвольной регуляции деятельности',10)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Несформированность коммуникативных навыков',10)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Отсутствие мотивации к учебной деятельности',10)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Противоречивые требования в воспитательном процессе',10)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Низкая физиологическая сопротивляемость стрессу как особенность темперамента',11)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Повышенная чувствительность как особенность темперамента',11)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Повышенная чувствительность как характерологическая черта',11)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Гиперактивность (дефицит внимания, импульсивность)',12)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Истероидные черты характера',12)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Недопонимание социальных норм или асоциальность',12)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Попустительский тип воспитания',12)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Страх не соответствовать ожиданиям сверстников',12)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Высокий уровень ответственности и морального сознания',13)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Низкая социальная смелость',13)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Низкий уровень доверия к учителям',13)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Сниженная уверенность в себе',13)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Нарушенное в смысловом плане воспитание, обесценивающее учебную деятельность',14)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Нарушенные смысловые установки относительно ценности учебной деятельности',14)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Низкий уровень моральных качеств по отношению к учебе',14)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Отсутствие мотивации на успех в ситуации учебы',14)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Непоследовательные воспитательные воздействия',15)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Низкая позитивная атмосфера в семье',15)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Низкий уровень позитивных состояний по отношению к своей семье',15)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Фрустрация потребностей Льва в самоактуализации, безопасности и теплых отношениях',15)
-go
-
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Высокая уверенность в необходимости принятия самостоятельных решений',16)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Избирательность доверия',16)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Определенные особенности социального интеллекта',16)
-insert into dbo.vernotv_Diag(otv,zadacha_id)
-	values(N'Тип личности, сложившийся на фоне холерически-флегматического темперамента',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Перепады настроения',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Педагогическая запущенность со стороны матери',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ревность к брату',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Воровство',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Проблемы в общении со сверстниками',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий социальный статус в классе',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Привязанность к матери',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Чрезмерное увлечение компьютерными играми',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Делинквентное поведение',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Скачкообразная успеваемость',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Лень',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие постоянного общения со сверстниками',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ранняя алкоголизация',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Общая педагогическая запущенность',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Противоречие в воспитании',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие интереса к учёбе',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ложь',N'Fenom',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Разборчивость к еде',N'Fenom',1)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Перепады настроения',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Педагогическая запущенность со стороны матери',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ревность к брату',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Воровство',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Проблемы в общении со сверстниками',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий социальный статус в классе',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Привязанность к матери',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Чрезмерное увлечение компьютерными играми',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Делинквентное поведение',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Скачкообразная успеваемость',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Лень',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие постоянного общения со сверстниками',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ранняя алкоголизация',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Общая педагогическая запущенность',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Противоречие в воспитании',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие интереса к учёбе',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ложь',N'Fenom',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Разборчивость к еде',N'Fenom',2)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Перепады настроения',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Педагогическая запущенность со стороны матери',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ревность к брату',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Воровство',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Проблемы в общении со сверстниками',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий социальный статус в классе',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Привязанность к матери',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Чрезмерное увлечение компьютерными играми',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Делинквентное поведение',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Скачкообразная успеваемость',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Лень',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие постоянного общения со сверстниками',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ранняя алкоголизация',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Общая педагогическая запущенность',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Противоречие в воспитании',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие интереса к учёбе',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ложь',N'Fenom',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Разборчивость к еде',N'Fenom',3)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Перепады настроения',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Педагогическая запущенность со стороны матери',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ревность к брату',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Воровство',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Проблемы в общении со сверстниками',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий социальный статус в классе',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Привязанность к матери',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Чрезмерное увлечение компьютерными играми',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Делинквентное поведение',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Скачкообразная успеваемость',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Лень',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие постоянного общения со сверстниками',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ранняя алкоголизация',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Общая педагогическая запущенность',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Противоречие в воспитании',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие интереса к учёбе',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ложь',N'Fenom',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Разборчивость к еде',N'Fenom',4)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Перепады настроения',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Педагогическая запущенность со стороны матери',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ревность к брату',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Воровство',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Проблемы в общении со сверстниками',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий социальный статус в классе',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Привязанность к матери',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Чрезмерное увлечение компьютерными играми',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Делинквентное поведение',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Скачкообразная успеваемость',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Лень',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие постоянного общения со сверстниками',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ранняя алкоголизация',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Общая педагогическая запущенность',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Противоречие в воспитании',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие интереса к учёбе',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ложь',N'Fenom',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Разборчивость к еде',N'Fenom',5)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Раздельное с братом общение в школе',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие постоянных друзей',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'ссоры со сверстниками',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'обидчивость в школе',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'болезненное переживание удач брата',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'излишняя похвала в семье',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'конфликты в семье',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'благополучие в семье',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'стремление быть лучше брата',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'вспышки гнева',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'нехватка общения',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'выдумывание «мифических» друзей',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'любовь к шахматам',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'склонность все рисовать черным цветом',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'стремление во всем видеть плохое',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'нарушение отношений в семье',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сильное переживание своих неудач',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'обвинение учителей в проблемах',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'не посещение детского сада',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'наличие няни',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'волнения по поводу беседы с психологом',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'проговаривание вслух своих действий',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'тяжелые роды',N'Fenom',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'худое телосложение',N'Fenom',6)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Нелюбовь к школе',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'злоба на замечания учителей',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'потребность в хорошем учителе',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'занятия каратэ',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'интерес к машинам',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'увлечение компьютерными играми',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'чрезмерная подвижность',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'общительность Никиты',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'стремление задавать много вопросов',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'открытость Никиты',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'любознательность Никиты',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'крупное телосложение',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'болезненность',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'единственный ребенок в семье',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'властная бабушка',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'проблемы в семье',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'унижение бабушкой родителей Никиты',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'подрыв авторитета родителей',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'требовательность воспитании',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'неусидчивость ребенка',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие желания учиться',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'плохая успеваемость',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отставание от класса в плане успеваемости;',N'Fenom',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'желание родителей перевести ребенка в другой класс',N'Fenom',7)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Слабое здоровье Лизы',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'поздний ребенок в семье',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'строгость в воспитании',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'робость во взаимоотношениях со сверстниками',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие друзей',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие увлечений',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'требовательность в воспитании',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'воспитание без отца',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая успеваемость',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'равнодушие к оценкам',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'трудности в школе со сверстниками',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'худое телосложение',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'болезненность',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие желания делать домашнюю работу',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'боязнь неправильного ответа',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'любовь к рисованию',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отказ от выполнения поручений мамы',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'любовь к рукоделию',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'страх ответа у доски',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'трудность в привыкании к коллективу',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'выраженное желание учиться',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая успеваемость',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'проблемы со здоровьем в детстве',N'Fenom',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'неусидчивость',N'Fenom',8)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ранняя запись в школу',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отставание по учебным предметам',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'усталость',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'оставление после уроков',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'посещение группы продленного дня',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'внимательность родителей по отношению к Сереже',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сильные переживания за ребенка родителей',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'дисциплинированность на уроках',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сильное влияние сверстников на Сережу',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'беготня по коридору',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'излишняя чувствительность',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'полное телосложение',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'болезненность',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие желания делать домашнюю работу',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'боязнь неправильного ответа',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'расхождение между требованиями родителей и занижающей Сергея позиции учителя',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'утомляемость',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'посещение детского сада',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'трудности в адаптации в детском саду',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'проблемы в семье Сергея',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'необщительность',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'замкнутость',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'пропуск уроков без уважительной причины',N'Fenom',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'пропуск занятий по каратэ',N'Fenom',9)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Разные взгляды родителей на воспитание Влада',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'неоднократные обращения к психологу',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие реакции на наказания',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'любовь к компьютерным играм',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'конфликты в семье',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'посещение секции каратэ',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие реакции на замечания учителя',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'избалованность мальчика',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'наличие подруги',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'любовь к чтению',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'негативное отношение к математике',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'бездействие на уроках',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'крупное телосложение',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'частая смена школ',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая успеваемость',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'неполная семья',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отвержение со стороны одноклассников',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'выполнение домашних заданий только с мамой',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'наличие брата',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'наркотическая зависимость у брата Влада',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'заторможенность в ответах',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'посещение кинотеатра с папой',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'негативное отношение к учебной деятельности',N'Fenom',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'неуклюжесть',N'Fenom',10)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неполная семья',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'наличие постоянных друзей',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'конфликты с одноклассниками',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'властная бабушка',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая ответственность',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'излишняя похвала в семье',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'конфликты в семье',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'повышение голоса учителями',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сниженная контактность',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'вспышки гнева',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'трудности в преодолении стрессовых ситуаций',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие хобби',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'наличие подруги',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'грубость',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'стремление во всем видеть плохое',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'обвинение семье в своих проблемах',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сильное переживание своих неудач',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'обвинение учителей в проблемах',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'посещение детского сада',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'чувствительность',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'волнения по поводу беседы с психологом',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'наличие сестры',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'тяжелые роды',N'Fenom',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сильное чувство вины перед учителями',N'Fenom',11)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Нелюбовь к школе',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'обвинение учителей',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'негативные отношения в семье',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'перемены настроения',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'нелюбовь к учебе',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'нежелание работать с психологом',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'медленность движений',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'боязнь выглядеть плохо в глазах сверстников',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'стремление задавать много вопросов',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'худощавое телосложение',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'увлечение компьютерными играми',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'послушность',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'болезненность',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'единственный ребенок в семье',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие контактов со сверстниками',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'непонимание социальных норм',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'конфликты с учителями',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'подрыв авторитета родителей',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'требовательность в воспитании',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'капризное поведение',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие желания учиться',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'плохая успеваемость',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'невозможность усидеть на одном месте',N'Fenom',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'спутанность речи',N'Fenom',12)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Полная семья',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'боязнь отца',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'незнание последствий определенных ситуаций',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'конфликты в семье',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая ответственность',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'участие в олимпиадах',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая ответственность',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'безалаберное отношение к учебе',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'подорванное доверие к людям',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'вспышки гнева по отношению к учителям',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'трудности в преодолении стрессовых ситуаций',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'обвинение во всем учителей',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'наличие подруг',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'зажатость и избирательность социальных контактов',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'стремление во всем видеть хорошее',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сбивчивая речь',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'худое телосложение',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'прогулы в школе',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'нежное отношение к матери',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'самоорганизованность',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'волнения по поводу беседы с психологом',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'наличие брата',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие вредных привычек',N'Fenom',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сильное чувство вины перед учителями',N'Fenom',13)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ранняя запись в школу',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отставание по учебным предметам',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'ленивость',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие успехов в учебной деятельности',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'теплое отношение к брату',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'проблемы в отношениях с отцом',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'обвинение учителей в своих проблемах',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'дисциплинированность на уроках',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сильное влияние сверстников',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'плохое поведение',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сильное переживание неудач',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'полное телосложение',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'педагогическая запущенность со стороны родителей',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие желания делать домашнюю работу',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'боязнь быть неуспешным в глазах учителей',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'конфликты со сверстниками',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сильная утомляемость',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие чувства долга по отношению к учебной деятельности',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'нарушение сна',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'излишняя общительность',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'перепады настроения',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'нежелание учиться и негативное отношение к учителям',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'пропуск уроков без уважительной причины',N'Fenom',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'наличие хобби',N'Fenom',14)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Наличие у Льва хобби',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие друзей',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'конфликты с одноклассниками',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'давление отца на Льва',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'нежелание Льва решать учебные вопросы',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'нелюбовь к школе',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'любовь к монтированию фильмов',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'компьютерная зависимость',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'желание дистанцироваться от семьи',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'вспышки гнева',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'трудности в преодолении стрессовых ситуаций',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'плохая успеваемость по всем предметам',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'наличие близкого друга',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'непоследовательный характер запретов на любимые занятия Льва',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'давление на Льва со стороны родителей',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'наличие маленькой сестренки',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'теплое отношение к сестре',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'нежелание решать свои проблемы',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'доминирующая роль отца в семье',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'плохое поведение Льва на уроках',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'нежелание работать с психологом',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'наличие чувства вины',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'невозможность Льва контролировать свою жизнь',N'Fenom',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сильное чувство вины перед родителями',N'Fenom',15)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Желание общаться со всеми',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'страх плохо выглядеть в глазах сверстников',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'интерес к учебе в колледже',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'интерес к юриспруденции',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'одиночество',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'участие в олимпиадах',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая ответственность',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'вспышки гнева',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'подорванное доверие к людям',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'вспышки гнева по отношению к учителям',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'легкость в преодолении стрессовых ситуаций',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'обвинение во всем мамы',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'наличие нескольких друзей',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'зажатость',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'стремление во всем видеть хорошее',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'настороженное отношение к тем, кому Саша не доверяет',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'полное телосложение',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'прогулы занятий',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'боязнь людей',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'напряденные отношения с матерью',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'волнения по поводу беседы с психологом',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая эмоциональность',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие вредных привычек',N'Fenom',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'желание все делать самостоятельно',N'Fenom',16)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватная самооценка',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный уровень притязаний',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Трудности поло-ролевой идентификации',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональный конфликт с матерью и отцом',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие мотивации общения',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность мотивов учебной деятельности',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Потребность в поиске сильных ощущений',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный способ самовыражения',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Особенности локуса контроля',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неустойчивая акцентуация характера',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Лабильная акцентуация характера',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Флегматический тип темперамента',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эгоцентрический тип личности с независимым характером',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Агрессивность как устойчивая особенность личности',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность коммуникативных навыков',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Гипертимно-неустойчивая акцентуация характера',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Общие проблемы в знаниях',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная сформированность логических связей',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная произвольная регуляция деятельности',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Наличие чувства вины',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень школьной тревожности',N'Teor',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Сильный страх самовыражения',N'Teor',1)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватная самооценка',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный уровень притязаний',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Трудности поло-ролевой идентификации',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональный конфликт с матерью и отцом',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие мотивации общения',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность мотивов учебной деятельности',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Потребность в поиске сильных ощущений',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный способ самовыражения',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Особенности локуса контроля',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неустойчивая акцентуация характера',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Лабильная акцентуация характера',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Флегматический тип темперамента',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эгоцентрический тип личности с независимым характером',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Агрессивность как устойчивая особенность личности',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность коммуникативных навыков',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Гипертимно-неустойчивая акцентуация характера',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Общие проблемы в знаниях',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная сформированность логических связей',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная произвольная регуляция деятельности',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Наличие чувства вины',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень школьной тревожности',N'Teor',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Сильный страх самовыражения',N'Teor',2)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватная самооценка',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный уровень притязаний',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Трудности поло-ролевой идентификации',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональный конфликт с матерью и отцом',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие мотивации общения',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность мотивов учебной деятельности',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Потребность в поиске сильных ощущений',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный способ самовыражения',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Особенности локуса контроля',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неустойчивая акцентуация характера',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Лабильная акцентуация характера',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Флегматический тип темперамента',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эгоцентрический тип личности с независимым характером',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Агрессивность как устойчивая особенность личности',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность коммуникативных навыков',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Гипертимно-неустойчивая акцентуация характера',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Общие проблемы в знаниях',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная сформированность логических связей',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная произвольная регуляция деятельности',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Наличие чувства вины',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень школьной тревожности',N'Teor',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Сильный страх самовыражения',N'Teor',3)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватная самооценка',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный уровень притязаний',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Трудности поло-ролевой идентификации',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональный конфликт с матерью и отцом',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие мотивации общения',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность мотивов учебной деятельности',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Потребность в поиске сильных ощущений',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный способ самовыражения',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Особенности локуса контроля',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неустойчивая акцентуация характера',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Лабильная акцентуация характера',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Флегматический тип темперамента',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эгоцентрический тип личности с независимым характером',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Агрессивность как устойчивая особенность личности',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность коммуникативных навыков',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Гипертимно-неустойчивая акцентуация характера',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Общие проблемы в знаниях',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная сформированность логических связей',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная произвольная регуляция деятельности',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Наличие чувства вины',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень школьной тревожности',N'Teor',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Сильный страх самовыражения',N'Teor',4)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватная самооценка',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный уровень притязаний',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Трудности поло-ролевой идентификации',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональный конфликт с матерью и отцом',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие мотивации общения',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность мотивов учебной деятельности',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Потребность в поиске сильных ощущений',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный способ самовыражения',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Особенности локуса контроля',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неустойчивая акцентуация характера',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Лабильная акцентуация характера',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Флегматический тип темперамента',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эгоцентрический тип личности с независимым характером',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Агрессивность как устойчивая особенность личности',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность коммуникативных навыков',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Гипертимно-неустойчивая акцентуация характера',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Общие проблемы в знаниях',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная сформированность логических связей',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная произвольная регуляция деятельности',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Наличие чувства вины',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень школьной тревожности',N'Teor',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Сильный страх самовыражения',N'Teor',5)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая тревожность',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая самооценка',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'пессимизм',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'доминантность',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень развития восприятия',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень концентрации внимания',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень притязаний',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая вербальная агрессия',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая депрессия',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'импульсивность',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'неуравновешенность',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'эмоциональная возбудимость',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'склонность к риску',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'мечтательность',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сниженное настроение',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'интровертная направленность',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая уверенность в себе',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень переключения внимания',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень познавательного развития',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень общей школьной тревожности',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'истероидность (ревность, демонстративность);',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень социальной адекватности поведения',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отгороженность',N'Teor',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'психологические барьеры в общении со сверстниками',N'Teor',6)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень развития словесной (слуховой памяти);',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень общей тревожности',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'тревожность как устойчивая черта личности',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая мотивация на приобретение знаний',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'экстравертированная направленность',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая мотивационная направленность на отметку',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая школьная тревожность',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая вербальная агрессия',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень самоконтроля своего поведения',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая самооценка',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая познавательная компетентность',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'депрессивные тенденции',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие склонности к риску',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий авторитет родителей в глазах ребенка',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая уверенность в себе',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'интровертная направленность',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая независимость',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень коммуникативной компетентности',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень смелости',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'истероидность',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'пессимизм',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая доминантность',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'оптимизм',N'Teor',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень развития внимания (устойчивости, объема, переключения)',N'Teor',7)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень устойчивости внимания',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий интеллект',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень познавательного развития',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'интровертированная направленность',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень компетентности в общении',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокое самоприятие',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень притязаний',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая самооценка',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень самоконтроля своего поведения',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'депрессивные тенденции',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая агрессивность',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'ярко выраженная склонность к риску',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая уверенность в себе',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'демонстративность',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сниженный фон настроения',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая тревожность',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая благоразумность',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'уступчивость',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая самооценка',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'пессимизм',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая доминантность',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'мечтательность',N'Teor',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень закрытости',N'Teor',8)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий объем внимания',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'строгость в воспитании',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень развития вербально-логического мышления',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'интровертированная направленность',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень  общения со сверстниками',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень межличностной тревожности',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая агрессивность',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'уступчивость и сенситивность Сережи',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'проблемы и страхи в отношениях с учителями',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'страх ситуации проверки знаний',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'склонность к депрессии',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая школьная мотивация',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая самооценка',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень притязаний',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'демостративность',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая вербальная агрессия',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая уверенность в себе',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий самоконтроль',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'пессимизм',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень социальной адекватности поведения',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'личностный конфликт',N'Teor',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'доминирующий тип поведения',N'Teor',9)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень развития восприятия',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень общей школьной тревожности',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень развития вербально-логического мышления',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень концентрации внимания',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень самооценочной тревожности',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень физиологической сопротивляемости стрессу',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая самооценка',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень притязаний',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'демонстративность',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая самооценка',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'несформированность коммуникативных навыков',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'интровертная направленность',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая уверенность к себе',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая самооценка',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'эмоциональной невозбудимость',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень  независимости',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'противоречивые требования в воспитательном процессе',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'безответственность',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие мотивации к учебной деятельности',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'недостаточность произвольной регуляции деятельности',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень доминантности',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая агрессивность',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень депрессии',N'Teor',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'стремление к избеганию неудач',N'Teor',10)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Повышенная чувствительность как характерологическая черта',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая самооценка',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий оптимизм',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'стремление к избеганию неудач',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая уверенность в себе',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень запоминания',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень притязаний',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая вербальная агрессия',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая депрессия',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'самостоятельность',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'стремление к избеганию неудач',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'ригидность мышления',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая избирательность внимания',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'мечтательность',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'повышенная чувствительность как особенность темперамента',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'интровертная направленность',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень принятия других',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень способности прощать',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень доверия к близким',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая жизнестойкость',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень субъективного благополучия',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'доминирование негативных эмоций',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая физиологическая сопротивляемость стрессу как особенность темперамента',N'Teor',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая интернальность',N'Teor',11)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недопонимание социальных норм или асоциальность',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень интеллектуального развития',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'мотивация, направленная на избегание неудач',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'мотивация, направленная на успех',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'экстравертированная направленность',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая мотивация к учебной деятельности',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая школьная тревожность',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая вербальная агрессия',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая мстительность',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая самооценка',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая способность прощать',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'истероидные черты характера',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'страх не соответствовать ожиданиям сверстников',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'непринятие других',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая уверенность в себе',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'агрессивный тип воспитания',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая зависимость от родителей',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень коммуникативной компетентности',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'недоверие к окружающим',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'гиперактивность (дефицит внимания, импульсивность)',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'попустительский тип воспитания',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень субъективного благополучия',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'оптимизм',N'Teor',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'слабое развитие всех познавательных процессов',N'Teor',12)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокое чувство вины за свои поступки',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий интеллект',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень познавательного развития',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая толерантность к неопределенности',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень компетентности в общении',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокое самопринятие',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая школьная тревожность',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'страх самовыражения',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень гибкости мышления',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень ответственности и морального сознания',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень внимания',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокое принятие других',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая способность прощать',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень доверия к учителям',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'стратегия избегания в конфликтах',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сниженная уверенность в себе',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'стремление к избеганию неудач',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'комфортность',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая самооценка',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'страх не соответствовать ожиданиям окружения',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'ведомость',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая социальная смелость',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень закрытости',N'Teor',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'стратегия соперничества в конфликтах',N'Teor',13)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокое принятие риска',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'нарушенное в смысловом плане воспитание, обесценивающее учебную деятельность',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень переключения внимания',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая жизнестойкость',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая толерантность к неопределенности',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень школьной тревожности',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая агрессивность',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'неправильная педагогическая позиция учителей',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'нарушенные смысловые установки относительно ценности учебной деятельности',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень доверия к учителям',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень позитивных эмоций по отношению к учителям',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'склонность к депрессии',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая мстительность',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'очень высокая самооценка',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'отсутствие мотивации на успех в ситуации учебы',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень моральных качеств по отношению к учебе',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая компетентность в общении',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая уверенность в себе',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий самоконтроль',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'выраженный оптимизм',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень социальной адекватности поведения',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкое субъективное благополучие',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'непринятие других',N'Teor',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'обиды на учителей',N'Teor',14)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональная неустойчивость',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'сверхреакция даже на слабые стимулы',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'аггравация',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень концентрации внимания',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень развития всех познавательных процессов',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'фрустрация потребностей Льва в самоактуализации, безопасности и теплых отношениях',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая агрессивность',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'злопамятность',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'агрессивность в общении',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'несформированность коммуникативных навыков',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'негативное отношение к критике',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'пренебрежительность',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая напряженность',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'эмоциональной возбудимость',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'враждебность',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'автономный тип воспитания',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'непоследовательные воспитательные воздействия',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'циклоидность',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'недостаточность произвольной регуляции деятельности',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень позитивных состояний по отношению к своей семье',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая агрессивность',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень депрессии',N'Teor',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая позитивная атмосфера в семье',N'Teor',15)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокие депрессивные тенденции',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий интеллект',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокий уровень познавательного развития',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкая толерантность к неопределенности',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая экстернальность',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'эмоциональная нестабильность',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая агрессивность',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'избирательность доверия',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень гибкости мышления',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень позитивных эмоций',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкое субъективное благополучие',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкое принятие других',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая способность прощать',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая уверенность в необходимости принятия самостоятельных решений',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'стратегия соперничества в конфликтах',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'высокая тревожность',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'стремление к избеганию неудач',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'доминантность как характерологическая особенность',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'определенные особенности социального интеллекта',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'страх не соответствовать ожиданиям окружения',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'тип личности, сложившийся на фоне холерически-флегматического темперамента',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'низкий уровень развития переключения внимания',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'плохое развитие логического запоминания',N'Teor',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'авторитарные черты личности',N'Teor',16)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватная самооценка',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный уровень притязаний',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Трудности поло-ролевой идентификации',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональный конфликт с матерью и отцом',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие мотивации общения',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность мотивов учебной деятельности',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Потребность в поиске сильных ощущений',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный способ самовыражения',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Особенности локуса контроля',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неустойчивая акцентуация характера',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Лабильная акцентуация характера',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Флегматический тип темперамента',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эгоцентрический тип личности с независимым характером',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Агрессивность как устойчивая особенность личности',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность коммуникативных навыков',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Гипертимно-неустойчивая акцентуация характера',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Общие проблемы в знаниях',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная сформированность логических связей',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная произвольная регуляция деятельности',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Наличие чувства вины',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень школьной тревожности',N'Diag',1)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Сильный страх самовыражения',N'Diag',1)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватная самооценка',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный уровень притязаний',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Трудности поло-ролевой идентификации',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональный конфликт с матерью и отцом',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие мотивации общения',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность мотивов учебной деятельности',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Потребность в поиске сильных ощущений',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный способ самовыражения',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Особенности локуса контроля',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неустойчивая акцентуация характера',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Лабильная акцентуация характера',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Флегматический тип темперамента',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эгоцентрический тип личности с независимым характером',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Агрессивность как устойчивая особенность личности',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность коммуникативных навыков',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Гипертимно-неустойчивая акцентуация характера',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Общие проблемы в знаниях',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная сформированность логических связей',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная произвольная регуляция деятельности',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Наличие чувства вины',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень школьной тревожности',N'Diag',2)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Сильный страх самовыражения',N'Diag',2)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватная самооценка',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный уровень притязаний',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Трудности поло-ролевой идентификации',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональный конфликт с матерью и отцом',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие мотивации общения',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность мотивов учебной деятельности',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Потребность в поиске сильных ощущений',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный способ самовыражения',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Особенности локуса контроля',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неустойчивая акцентуация характера',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Лабильная акцентуация характера',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Флегматический тип темперамента',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эгоцентрический тип личности с независимым характером',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Агрессивность как устойчивая особенность личности',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность коммуникативных навыков',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Гипертимно-неустойчивая акцентуация характера',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Общие проблемы в знаниях',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная сформированность логических связей',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная произвольная регуляция деятельности',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Наличие чувства вины',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень школьной тревожности',N'Diag',3)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Сильный страх самовыражения',N'Diag',3)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватная самооценка',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный уровень притязаний',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Трудности поло-ролевой идентификации',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональный конфликт с матерью и отцом',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие мотивации общения',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность мотивов учебной деятельности',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Потребность в поиске сильных ощущений',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный способ самовыражения',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Особенности локуса контроля',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неустойчивая акцентуация характера',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Лабильная акцентуация характера',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Флегматический тип темперамента',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эгоцентрический тип личности с независимым характером',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Агрессивность как устойчивая особенность личности',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность коммуникативных навыков',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Гипертимно-неустойчивая акцентуация характера',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Общие проблемы в знаниях',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная сформированность логических связей',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная произвольная регуляция деятельности',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Наличие чувства вины',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень школьной тревожности',N'Diag',4)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Сильный страх самовыражения',N'Diag',4)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватная самооценка',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный уровень притязаний',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Трудности поло-ролевой идентификации',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональный конфликт с матерью и отцом',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие мотивации общения',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность мотивов учебной деятельности',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Потребность в поиске сильных ощущений',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неадекватный способ самовыражения',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Особенности локуса контроля',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неустойчивая акцентуация характера',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Лабильная акцентуация характера',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Флегматический тип темперамента',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эгоцентрический тип личности с независимым характером',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Агрессивность как устойчивая особенность личности',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность коммуникативных навыков',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Гипертимно-неустойчивая акцентуация характера',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Общие проблемы в знаниях',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень познавательных способностей – памяти, внимания и т.п.',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная сформированность логических связей',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточная произвольная регуляция деятельности',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Наличие чувства вины',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень школьной тревожности',N'Diag',5)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Сильный страх самовыражения',N'Diag',5)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая тревожность',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая самооценка',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Пессимизм',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Доминантность',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень развития восприятия',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень концентрации внимания',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень притязаний',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая вербальная агрессия',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая депрессия',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Импульсивность',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неуравновешенность',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональная возбудимость',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Склонность к риску',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Мечтательность',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Сниженное настроение',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Интровертная направленность',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая уверенность в себе',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень переключения внимания',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень познавательного развития',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень общей школьной тревожности',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Истероидность (ревность, демонстративность);',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень социальной адекватности поведения',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отгороженность',N'Diag',6)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Психологические барьеры в общении со сверстниками',N'Diag',6)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень развития словесной (слуховой памяти)',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень общей тревожности',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Тревожность как устойчивая черта личности',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая мотивация на приобретение знаний',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Экстравертированная направленность',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая мотивационная направленность на отметку',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая школьная тревожность',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая вербальная агрессия',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень самоконтроля своего поведения',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая самооценка',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая познавательная компетентность',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Депрессивные тенденции',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие склонности к риску',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий авторитет родителей в глазах ребенка',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая уверенность в себе',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Интровертная направленность',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая независимость',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень коммуникативной компетентности',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень смелости',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Истероидность',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Пессимизм',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая доминантность',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Оптимизм',N'Diag',7)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень развития внимания (устойчивости, объема, переключения)',N'Diag',7)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень устойчивости внимания',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий интеллект',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень познавательного развития',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Интровертированная направленность',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень компетентности в общении',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокое самоприятие',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень притязаний',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая самооценка',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень самоконтроля своего поведения',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Депрессивные тенденции',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая агрессивность',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ярко выраженная склонность к риску',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая уверенность в себе',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Демонстративность',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Сниженный фон настроения',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая тревожность',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая благоразумность',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Уступчивость',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая самооценка',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Пессимизм',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая доминантность',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Мечтательность',N'Diag',8)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень закрытости',N'Diag',8)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий объем внимания',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Строгость в воспитании',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень развития вербально-логического мышления',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Интровертированная направленность',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень  общения со сверстниками',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень межличностной тревожности',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая агрессивность',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Уступчивость и сенситивность Сережи',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Проблемы и страхи в отношениях с учителями',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Страх ситуации проверки знаний',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Склонность к депрессии',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая школьная мотивация',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая самооценка',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень притязаний',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Демостративность',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая вербальная агрессия',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая уверенность в себе',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий самоконтроль',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Пессимизм',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень социальной адекватности поведения',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Личностный конфликт',N'Diag',9)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Доминирующий тип поведения',N'Diag',9)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень развития восприятия',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень общей школьной тревожности',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень развития вербально-логического мышления',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень концентрации внимания',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень самооценочной тревожности',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень физиологической сопротивляемости стрессу',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая самооценка',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень притязаний',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Демонстративность',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая самооценка',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность коммуникативных навыков',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Интровертная направленность',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая уверенность к себе',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая самооценка',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональной невозбудимость',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень  независимости',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Противоречивые требования в воспитательном процессе',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Безответственность',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие мотивации к учебной деятельности',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточность произвольной регуляции деятельности',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень доминантности',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая агрессивность',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень депрессии',N'Diag',10)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стремление к избеганию неудач',N'Diag',10)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Повышенная чувствительность как характерологическая черта',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая самооценка',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий оптимизм',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стремление к избеганию неудач',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая уверенность в себе',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень запоминания',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень притязаний',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая вербальная агрессия',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая депрессия',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Самостоятельность',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стремление к избеганию неудач',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ригидность мышления',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая избирательность внимания',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Мечтательность',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Повышенная чувствительность как особенность темперамента',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Интровертная направленность',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень принятия других',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень способности прощать',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень доверия к близким',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая жизнестойкость',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень субъективного благополучия',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Доминирование негативных эмоций',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая физиологическая сопротивляемость стрессу как особенность темперамента',N'Diag',11)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая интернальность',N'Diag',11)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недопонимание социальных норм или асоциальность',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень интеллектуального развития',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Мотивация, направленная на избегание неудач',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Мотивация, направленная на успех',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Экстравертированная направленность',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая мотивация к учебной деятельности',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая школьная тревожность',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая вербальная агрессия',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая мстительность',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая самооценка',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая способность прощать',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Истероидные черты характера',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Страх не соответствовать ожиданиям сверстников',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Непринятие других',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая уверенность в себе',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Агрессивный тип воспитания',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая зависимость от родителей',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень коммуникативной компетентности',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недоверие к окружающим',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Гиперактивность (дефицит внимания, импульсивность)',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Попустительский тип воспитания',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень субъективного благополучия',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Оптимизм',N'Diag',12)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Слабое развитие всех познавательных процессов',N'Diag',12)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокое чувство вины за свои поступки',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий интеллект',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень познавательного развития',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая толерантность к неопределенности',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень компетентности в общении',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокое самопринятие',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая школьная тревожность',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Страх самовыражения',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень гибкости мышления',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень ответственности и морального сознания',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень внимания',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокое принятие других',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая способность прощать',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень доверия к учителям',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стратегия избегания в конфликтах',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Сниженная уверенность в себе',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стремление к избеганию неудач',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Комфортность',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая самооценка',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Страх не соответствовать ожиданиям окружения',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Ведомость',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая социальная смелость',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень закрытости',N'Diag',13)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стратегия соперничества в конфликтах',N'Diag',13)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокое принятие риска',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Нарушенное в смысловом плане воспитание, обесценивающее учебную деятельность',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень переключения внимания',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая жизнестойкость',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая толерантность к неопределенности',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень школьной тревожности',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая агрессивность',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Неправильная педагогическая позиция учителей',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Нарушенные смысловые установки относительно ценности учебной деятельности',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень доверия к учителям',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень позитивных эмоций по отношению к учителям',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Склонность к депрессии',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая мстительность',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Очень высокая самооценка',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Отсутствие мотивации на успех в ситуации учебы',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень моральных качеств по отношению к учебе',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая компетентность в общении',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая уверенность в себе',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий самоконтроль',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Выраженный оптимизм',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень социальной адекватности поведения',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкое субъективное благополучие',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Непринятие других',N'Diag',14)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Обиды на учителей',N'Diag',14)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональная неустойчивость',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Сверхреакция даже на слабые стимулы',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Аггравация',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень концентрации внимания',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень развития всех познавательных процессов',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Фрустрация потребностей Льва в самоактуализации, безопасности и теплых отношениях',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая агрессивность',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Злопамятность',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Агрессивность в общении',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Несформированность коммуникативных навыков',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Негативное отношение к критике',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Пренебрежительность',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая напряженность',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональной возбудимость',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Враждебность',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Автономный тип воспитания',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Непоследовательные воспитательные воздействия',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Циклоидность',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Недостаточность произвольной регуляции деятельности',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень позитивных состояний по отношению к своей семье',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая агрессивность',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень депрессии',N'Diag',15)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая позитивная атмосфера в семье',N'Diag',15)
+go
+
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокие депрессивные тенденции',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий интеллект',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокий уровень познавательного развития',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкая толерантность к неопределенности',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая экстернальность',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Эмоциональная нестабильность',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая агрессивность',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Избирательность доверия',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень гибкости мышления',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень позитивных эмоций',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкое субъективное благополучие',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкое принятие других',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая способность прощать',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая уверенность в необходимости принятия самостоятельных решений',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стратегия соперничества в конфликтах',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Высокая тревожность',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Стремление к избеганию неудач',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Доминантность как характерологическая особенность',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Определенные особенности социального интеллекта',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Страх не соответствовать ожиданиям окружения',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Тип личности, сложившийся на фоне холерически-флегматического темперамента',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Низкий уровень развития переключения внимания',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Плохое развитие логического запоминания',N'Diag',16)
+insert into dbo.CBFormFill(CB,FormCB,zadacha_id)
+	values (N'Авторитарные черты личности',N'Diag',16)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Противоречие в воспитании',N'Fenom',1)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Проблемы в общении со сверстниками',N'Fenom',1)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Привязанность к матери',N'Fenom',1)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Перепады настроения',N'Fenom',2)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Ревность к брату',N'Fenom',2)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Отсутствие постоянного общения со сверстниками',N'Fenom',2)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Разборчивость в еде',N'Fenom',2)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Скачкообразная успеваемость',N'Fenom',3)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Лень',N'Fenom',3)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Отсутствие интереса к учебе',N'Fenom',3)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Педагогическая запущенность со стороны матери',N'Fenom',4)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Воровство',N'Fenom',4)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Чрезмерное увлечение компьютерными играми',N'Fenom',4)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Лень',N'Fenom',4)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Ложь',N'Fenom',4)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Низкий социальный статус в классе',N'Fenom',5)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Делинкветное поведение',N'Fenom',5)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Противоречие в воспитании',N'Fenom',5)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Общая педагогическая запущенность',N'Fenom',5)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'болезненное переживание удач брата',N'Fenom',6)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'стремление быть лучше брата',N'Fenom',6)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'сильное переживание своих неудач',N'Fenom',6)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'злоба на замечания учителей',N'Fenom',7)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'чрезмерная подвижность',N'Fenom',7)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'подрыв авторитета родителей',N'Fenom',7)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'неусидчивость ребенка',N'Fenom',7)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'робость во взаимоотношениях со сверстниками',N'Fenom',8)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'боязнь неправильного ответа',N'Fenom',8)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'страх ответа у доски',N'Fenom',8)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'сильное влияние сверстников на Сережу',N'Fenom',9)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'излишняя чувствительность',N'Fenom',9)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'расхождение между требованиями родителей и занижающей Сергея позиции учителя',N'Fenom',9)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'пропуск уроков без уважительной причины',N'Fenom',9)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Разные взгляды родителей на воспитание Влада',N'Fenom',10)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'бездействие на уроках',N'Fenom',10)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'отвержение со стороны одноклассников',N'Fenom',10)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'выполнение домашних заданий только с мамой',N'Fenom',10)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'трудности в преодолении стрессовых ситуаций',N'Fenom',11)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'чувствительность',N'Fenom',11)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'боязнь выглядеть плохо в глазах сверстников',N'Fenom',12)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'непонимание социальных норм',N'Fenom',12)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'капризное поведение',N'Fenom',12)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'невозможность усидеть на одном месте',N'Fenom',12)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'высокая ответственность',N'Fenom',13)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'подорванное доверие к людям',N'Fenom',13)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'зажатость и избирательность социальных контактов',N'Fenom',13)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'отсутствие успехов в учебной деятельности',N'Fenom',14)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'педагогическая запущенность со стороны родителей',N'Fenom',14)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'отсутствие чувства долга по отношению к учебной деятельности',N'Fenom',14)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'нежелание учиться и негативное отношение к учителям',N'Fenom',14)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'желание дистанцироваться от семьи',N'Fenom',15)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'непоследовательный характер запретов на любимые занятия Льва',N'Fenom',15)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'давление на Льва со стороны родителей',N'Fenom',15)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'невозможность Льва контролировать свою жизнь',N'Fenom',15)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'вспышки гнева',N'Fenom',16)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'настороженное отношение к тем, кому Саша не доверяет',N'Fenom',16)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'низкая эмоциональность',N'Fenom',16)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'желание все делать самостоятельно',N'Fenom',16)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Флегматический тип темперамента',N'Teor',1)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Эгоцентрический тип личности с независимым характером',N'Teor',1)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',N'Teor',1)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Эмоциональный конфликт с матерью и отцом',N'Teor',2)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Лабильная акцентуация характера',N'Teor',2)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Лабильная акцентуация характера',N'Teor',3)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Недостаточная сформированность логических связей',N'Teor',3)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Неустойчивая акцентуация характера',N'Teor',4)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',N'Teor',4)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Потребность в поиске сильных ощущений',N'Teor',4)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Сильный страх самовыражения',N'Teor',5)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Высокий уровень школьной тревожности',N'Teor',5)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Гипертимно-неустойчивая акцентуация характера',N'Teor',5)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',N'Teor',5)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'высокая самооценка',N'Teor',6)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'высокий уровень притязаний',N'Teor',6)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'истероидность (ревность, демонстративность);',N'Teor',6)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'высокая вербальная агрессия',N'Teor',7)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'низкий уровень самоконтроля своего поведения',N'Teor',7)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'низкий авторитет родителей в глазах ребенка',N'Teor',7)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'низкий уровень развития внимания (устойчивости, объема, переключения',N'Teor',7)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'высокая тревожность',N'Teor',8)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'уступчивость',N'Teor',8)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'низкая самооценка',N'Teor',8)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'неправильная педагогическая позиция родителей и учителя',N'Teor',9)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'уступчивость и сенситивность Сережи',N'Teor',9)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'низкая школьная мотивация',N'Teor',9)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'личностный конфликт',N'Teor',9)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'несформированность коммуникативных навыков',N'Teor',10)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'противерочивые требования в воспитательном процессе',N'Teor',10)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'отсутствие мотивации к учебной деятельности',N'Teor',10)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'недостаточность произвольной регуляции деятельности',N'Teor',10)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Повышенная чувствительность как характерологическая черта;',N'Teor',11)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'повышенная чувствительность как особенность темперамента;',N'Teor',11)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'низкая физиологическая сопротивляемость стрессу как особенность темперамента;',N'Teor',11)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Недопонимание социальных норм или асоциальность;',N'Teor',12)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'истероидные черты характера;',N'Teor',12)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'страх не соответствовать ожиданиям сверстников;',N'Teor',12)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'гиперактивность (дефицит внимания, импульсивность);',N'Teor',12)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'попустительский тип воспитания;',N'Teor',12)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'высокий уровень ответственности и морального сознания;',N'Teor',13)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'низкий уровень доверия к учителям;',N'Teor',13)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'сниженная уверенность в себе;',N'Teor',13)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'низкая социальная смелость;',N'Teor',13)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'нарушенное в смысловом плане воспитание, обесценивающее учебную деятельность;',N'Teor',14)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'нарушенные смысловые установки относительно ценности учебной деятельности;',N'Teor',14)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'отсутствие мотивации на успех в ситуации учебы;',N'Teor',14)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'низкий уровень моральных качеств по отношению к учебе;',N'Teor',14)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'фрустрация потребностей Льва в самоактуализации, безопасности и теплых отношениях;',N'Teor',15)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'непоследовательные воспитательные воздействия;',N'Teor',15)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'низкий уровень позитивных состояний по отношению к своей семье;',N'Teor',15)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'низкая позитивная атмосфера в семье.',N'Teor',15)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'избирательность доверия;',N'Teor',16)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'высокая уверенность в необходимости принятия самостоятельных решений;',N'Teor',16)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'определенные особенности социального интеллекта;',N'Teor',16)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'тип личности, сложившийся на фоне холерически-флегматического темперамента;',N'Teor',16)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Стиль семейного воспитания по принципу «Повышенная моральная ответственность»',N'Diag',1)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Флегматический тип темперамента',N'Diag',1)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Эгоцентрический тип личности с независимым характером',N'Diag',1)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Эмоциональный конфликт с матерью и отцом',N'Diag',2)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Лабильная акцентуация характера',N'Diag',2)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Лабильная акцентуация характера',N'Diag',3)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Недостаточная сформированность логических связей',N'Diag',3)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Неустойчивая акцентуация характера',N'Diag',4)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Стиль семейного воспитания по типу "Гипоопека" или "Потворствующая гиперпротекция"',N'Diag',4)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Потребность в поиске сильных ощущений',N'Diag',4)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Сильный страх самовыражения',N'Diag',5)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Высокий уровень школьной тревожности',N'Diag',5)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Гипертимно-неустойчивая акцентуация характера',N'Diag',5)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Стиль семейного воспитания по типу "Потворствующая гиперпротекция"',N'Diag',5)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Высокая самооценка',N'Diag',6)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Высокий уровень притязаний',N'Diag',6)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Истероидность (ревность, демонстративность);',N'Diag',6)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Высокая вербальная агрессия',N'Diag',7)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Низкий авторитет родителей в глазах ребенка',N'Diag',7)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Низкий уровень развития внимания (устойчивости, объема, переключения)',N'Diag',7)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Низкий уровень самоконтроля своего поведения',N'Diag',7)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Высокая тревожность',N'Diag',8)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Низкая самооценка',N'Diag',8)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Уступчивость',N'Diag',8)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Личностный конфликт',N'Diag',9)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Неправильная педагогическая позиция родителей и учителя',N'Diag',9)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Низкая школьная мотивация',N'Diag',9)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Уступчивость и сенситивность Сережи',N'Diag',9)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Недостаточность произвольной регуляции деятельности',N'Diag',10)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Несформированность коммуникативных навыков',N'Diag',10)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Отсутствие мотивации к учебной деятельности',N'Diag',10)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Противоречивые требования в воспитательном процессе',N'Diag',10)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Низкая физиологическая сопротивляемость стрессу как особенность темперамента',N'Diag',11)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Повышенная чувствительность как особенность темперамента',N'Diag',11)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Повышенная чувствительность как характерологическая черта',N'Diag',11)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Гиперактивность (дефицит внимания, импульсивность)',N'Diag',12)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Истероидные черты характера',N'Diag',12)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Недопонимание социальных норм или асоциальность',N'Diag',12)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Попустительский тип воспитания',N'Diag',12)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Страх не соответствовать ожиданиям сверстников',N'Diag',12)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Высокий уровень ответственности и морального сознания',N'Diag',13)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Низкая социальная смелость',N'Diag',13)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Низкий уровень доверия к учителям',N'Diag',13)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Сниженная уверенность в себе',N'Diag',13)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Нарушенное в смысловом плане воспитание, обесценивающее учебную деятельность',N'Diag',14)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Нарушенные смысловые установки относительно ценности учебной деятельности',N'Diag',14)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Низкий уровень моральных качеств по отношению к учебе',N'Diag',14)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Отсутствие мотивации на успех в ситуации учебы',N'Diag',14)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Непоследовательные воспитательные воздействия',N'Diag',15)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Низкая позитивная атмосфера в семье',N'Diag',15)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Низкий уровень позитивных состояний по отношению к своей семье',N'Diag',15)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Фрустрация потребностей Льва в самоактуализации, безопасности и теплых отношениях',N'Diag',15)
+go
+
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Высокая уверенность в необходимости принятия самостоятельных решений',N'Diag',16)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Избирательность доверия',N'Diag',16)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Определенные особенности социального интеллекта',N'Diag',16)
+insert into dbo.vernotv(otv,FormVernOtv,zadacha_id)
+	values(N'Тип личности, сложившийся на фоне холерически-флегматического темперамента',N'Diag',16)
 go
 
 insert into dbo.meropr(meroprtext,zadacha_id)
@@ -4077,7 +4099,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: высокое умственное развитие (75,4%).
 
     Гуревич, К.М.  Психологическая коррекция умственного развития учащихся / К.М.Гуревич, И.В.Дубровина. -  М, 1990. - С. 33-35.'
-	,'Kortinki\\Zadacha1\\1.1.png',N'Kortinki\\Zadacha1\\1.2.png',1)
+	,'C:\\Program Files\\Kortinki\\Zadacha1\\1.1.png',N'C:\\Program Files\\Kortinki\\Zadacha1\\1.2.png',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Цветовой тест" М. Люшера.',
     N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики испытуемый хорошо работает в сотрудничестве с другими людьми. Ему необходима личная жизнь, основанная на взаимопонимании и отсутствии разногласий. Стремится к откровенным отношениям, основанным на взаимном доверии и понимании. Старается действовать только в согласии со своими убеждениями. Требует свободы принимать решения самостоятельно, без всякого вмешательства со стороны, внешнего влияния или необходимости идти на компромисс. Хочет почувствовать себя эмоционально вовлеченным, способным получать удовлетворение в сексуальной активности, но пытается избегать конфликтов. Нуждается в признании. Честолюбив, стремится производить  впечатление. Хочет, чтобы на него смотрели снизу вверх, ищет популярности, восхищения со стороны окружающих. Стремится ликвидировать разрыв, который, как он считает, отделяет его от других.  Оказывает сильное сопротивление внешним воздействиям и любому посягательству на его свободу, чтобы самостоятельно принимать решения и строить планы. Старается утвердить свое положение и упрочить  его. Считает, что ему не дают двигаться вперед и ограничивают  это продвижение. Ищет решения, которое снимет подобные ограничения.
@@ -4093,7 +4115,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:	обследуемый независим и честен в ведении дел. Честолюбив, с высокой самооценкой. Тревожность в пределах нормы.
 	
     Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизнь-XXIвек. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.'
-	,'Kortinki\\Zadacha1\\2.png',N'',1)
+	,'C:\\Program Files\\Kortinki\\Zadacha1\\2.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'16 Личностных Факторов Р.Б. Кеттелла.',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данный тип личности обладает  коммуникативными свойствами личности, которые характеризуются сдержанностью и рассудительностью в выборе партнёров по общению. В поведении проявляются независимость характера: ориентация на собственные решения и стремление иметь своё мнение, самостоятельность, уравновешенность, направленность на реальную действительность, настойчивость, упрямство, напористость, иногда конфликтность, агрессивность, отказ от признания внешней власти, склонность к  авторитарному поведению, жажда восхищения. Потворствует своим желаниям, не делает усилий по выполнению групповых требований и норм. Отсутствует согласие с общепринятыми моральными правилами и стандартами, а также свобода от их влияния. Развитые волевые качества.     Эмоциональная сфера характеризуется уверенностью в себе и в своих силах, спокойным, адекватным восприятием действительности, умением контролировать свои эмоции и поведение, стрессоустойчивость. Интеллектуальная сфера характеризуется оперативностью, подвижностью мышления, высоким уровнем общей культуры, развитой аналитичностью, интересом и интеллектуальным знанием. Склонность к свободомыслию, радикализму, широта взглядов, высокая эрудированность, стремление к новым знаниям. Склонность к самостоятельным оригинальным решениям интеллектуальных задач. В целом личность можно диагностировать как человека сдержанного и рассудительного в выборе партнёров по общению. Он имеет независимый характер: уверен в себе и в своих силах, ориентируется на собственные решения и стремится иметь своё мнение, самостоятельный, уравновешенный, настойчивый, упрямый, склонный к авторитарному поведению, жаждущий восхищения. Он потворствует своим желаниям, не делает усилий по выполнению групповых требований и норм, а также свободен от их влияния. Личность относится к мыслительному типу: имеет оперативность и подвижность мышления, с развитой аналитичностью. Склонен к свободомыслию и радикализму, а также к самостоятельным оригинальным решениям интеллектуальных задач.
@@ -4111,7 +4133,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     •факторы  D,  G,  и Q2 соответствуют норме.
 	
     Головей, Л.А. Практикум по возрастной психологии: Учеб. пособие / Л.А. Головей , Е.Ф. Рыбалко. − СПб.: Речь, 2002. С. 578-588.'
-	,'Kortinki\\Zadacha1\\3.1.png',N'Kortinki\\Zadacha1\\3.2.png',1)
+	,'C:\\Program Files\\Kortinki\\Zadacha1\\3.1.png',N'C:\\Program Files\\Kortinki\\Zadacha1\\3.2.png',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Тест рисуночных ассоциаций" С. Розенцвейга.',
 	N'    Полученные данные:
@@ -4121,7 +4143,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод: обследуемый не достаточно адаптирован к социальному окружению.
 	
 	Дементий, Л.И. Фрустрация: Понятие и диагностика. Учеб. метод. пособие для студентов специальности «Психология» / Л.И. Дементий. ОмГУ, 2004. – 68 с.'
-	,'Kortinki\\Zadacha1\\net.png',N'',1)
+	,'C:\\Program Files\\Kortinki\\Zadacha1\\net.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Тест руки" (Hand-тест) А. Вагнера.',
 	N'    Полученные данные:
@@ -4140,7 +4162,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:  у испытуемого существует тенденция агрессивного поведения. Нежелание приспосабливаться к внешнему окружению выражена в средней степени. Склонность к открытому агрессивному поведению низкая. Испытуемый преимущественно воспринимает руку как ведущую, оказывающую влияние на другого, а также как просто выполняющую какие-то действия.
 	
 	Елисеев, О.П. Практикум по психологии личности / О.П. Елисеев. СПб., 2003. С.310-327.'
-	,'Kortinki\\Zadacha1\\net.png',N'',1)
+	,'C:\\Program Files\\Kortinki\\Zadacha1\\net.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Диагностика межличностных отношений" Т. Лири.',
 	N'    Полученные данные: (в цифровом виде не представлены)
@@ -4152,7 +4174,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:   тип личности испытуемого независимо-доминирующий и властно-лидирующий с большой независимостью своего мнения.
 	
 	Собчик, Л.Н.  Психология индивидуальности. Теория и практика психодиагностики / Л.Н. Собчик. СПб.: Речь, 2005. 624 с. '
-	,'Kortinki\\Zadacha1\\6.png',N'',1)
+	,'C:\\Program Files\\Kortinki\\Zadacha1\\6.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Диагностика уровня субъективного контроля УСК" Дж. Роттера.',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, испытуемому свойственен высокий уровень субъективного контроля над любыми значимыми ситуациями, событиями и достижениями. В области здоровья внутренний контроль особенно высокий. В области неудач испытуемый склонен приписывать ответственность за события, происходящие с ним другим людям или считать их результатом невезения.
@@ -4162,7 +4184,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод: высокий уровень субъективного контроля над любыми значимыми ситуациями, событиями и достижениями.
 	
 	Грецов, А.Г. Психологические тесты для старшеклассников и студентов / А.Г. Грецов, А.А. Азбель. СПб.: Питер, 2012. 208 с.'
-	,'Kortinki\\Zadacha1\\7.1.png',N'Kortinki\\Zadacha1\\7.2.png',1)
+	,'C:\\Program Files\\Kortinki\\Zadacha1\\7.1.png',N'C:\\Program Files\\Kortinki\\Zadacha1\\7.2.png',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Исследование волевой саморегуляции ВСК" А. Зверков, Е.В. Эйдман.',
 	N'    Полученные данные:
@@ -4177,7 +4199,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод: волевая саморегуляция очень высокая.
 	
 	Пашукова, Т.И. Психологические исследования. Практикум по общей психологии для студентов педагогических вузов / Т.И. Пашукова, А.И. Допира, Г.В. Дьяконов.  М.: ИПП, 1996. - 177 с.'
-	,'Kortinki\\Zadacha1\\8.png',N'',1)
+	,'C:\\Program Files\\Kortinki\\Zadacha1\\8.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Диагностика предрасположенности личности к конфликтному поведению" Томаса',
 	N'    Полученные данные:
@@ -4192,7 +4214,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:  выражены такие формы поведения в конфликтных ситуациях как    избегание и приспособление.
 	
 	Истратова, О.Н. Психодиагностика. Коллекция лучших тестов / О.Н. Истратова, Т.В. Эксакусто. РнД.: Феникс, 2006. 375 с.'
-	,'Kortinki\\Zadacha1\\9.png',N'',1)
+	,'C:\\Program Files\\Kortinki\\Zadacha1\\9.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Методика выявления коммуникативных и организаторских склонностей" КОС-2.',
 	N'    Полученные данные:
@@ -4204,7 +4226,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:  очень хорошие организаторские и коммуникативные способности
 	
 	Фетискин, Н. П. Социально-психологическая диагностика развития личности и малых групп / Н. П. Фетискин, В. В. Козлов, Г. М. Майнулов. – М.: Институт Психотерапии, 2002. – C.263-265.'
-	,'Kortinki\\Zadacha1\\10.png',N'',1)
+	,'C:\\Program Files\\Kortinki\\Zadacha1\\10.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Диагностика социально-психологических установок личности.',N'Тест "Диагностика социально-психологических установок личности в мотивационно-потребностной сфере" О.Ф.Потемкиной.',
 	N'    Полученные данные:
@@ -4227,7 +4249,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:  у испытуемого наиболее ярко выражены следующие социально-психологические установки: ориентация на труд, результат, процесс и свободу, ориентация на эгоизм. Установки ориентация на альтруизм, власть и деньги выражены слабо.
 	
 	Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001. – С.641-648.'
-	,'Kortinki\\Zadacha1\\net.png',N'',1)
+	,'C:\\Program Files\\Kortinki\\Zadacha1\\net.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала искренности Марлоу-Крауна.',
 	N'    Полученные данные:  общий итоговый показатель “мотивации одобрения” 6 баллов
@@ -4242,7 +4264,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод: у испытуемого мотивация одобрения выражена в низкой степени.
 	
 	Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001.  – С.635-636.'
-	,'Kortinki\\Zadacha1\\net.png',N'',1)
+	,'C:\\Program Files\\Kortinki\\Zadacha1\\net.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Опросник мотивации достижения А.Мехрабиана',
 	N'    Полученные данные: мотивация стремления к успеху 160 баллов, мотивация избегания неудач 145 баллов
@@ -4257,7 +4279,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод: у испытуемого мотивация стремления к успеху выражена в высокой степени. Мотивация избегания неудач выражена также в высокой степени.
 	
 	Фетискин,  Н.П.  Социально-психологическая диагностика развития личности и малых групп. / Н.П. Фетискин, В.В. Козлов, Г.М. Мануйлов  – М, 2002. – C.98-102.'
-	,'Kortinki\\Zadacha1\\net.png',N'',1)
+	,'C:\\Program Files\\Kortinki\\Zadacha1\\net.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика изучения мотивации к избеганию неудач Т. Элерса.',
 	N'    Полученные данные: 20 баллов
@@ -4273,7 +4295,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:  у испытуемого мотивация к избеганию неудач выражена в высокой степени.
 	
 	Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.630-632.'
-	,'Kortinki\\Zadacha1\\net.png',N'',1)
+	,'C:\\Program Files\\Kortinki\\Zadacha1\\net.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика изучения мотивации успеха Т. Элерса.',
 	N'    Полученные данные: 20 баллов. 
@@ -4289,7 +4311,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод: у испытуемого мотивация стремления к успеху выражена в высокой степени. Это проявляется в низкой степени готовности к риску, а также в высокой степени выраженности мотивации избегания неудач (защите).
 	
 	Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.626-629.'
-	,'Kortinki\\Zadacha1\\net.png',N'',1)
+	,'C:\\Program Files\\Kortinki\\Zadacha1\\net.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика диагностики оперативной оценки самочувствия, активности и настроения (САН).',
 	N'    Норма: 
@@ -4300,7 +4322,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:  у испытуемого самочувствие, настроение и активность в норме.
 	
 	Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.17-21.'
-,'Kortinki\\Zadacha1\\16.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\16.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Самооценка психических состояний по Айзенку.',
 	N'    Полученные данные:
@@ -4324,7 +4346,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:  у обслдеуемого уровень тревожности и фрустрации средний, уровень агрессивности – низкий. Испытуемый спокоен и выдержан. Ригидность сильно выражена. Обследуемому свойственны неизменность поведения, убеждений, и взглядов.
 	
 	Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С. 141-145.'
-,'Kortinki\\Zadacha1\\net.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\net.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'ПДО "Патохарактерологический диагностический опросник для подростков".',N'ПДО "Патохарактерологический диагностический опросник для подростков" А.Е. Личко, Н.Я. Иванова.',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: отношение испытуемого к исследованию позитивное. Степень его откровенности не выявлена. У испытуемого преобладают черты мужественности. В умеренной степени выражены конформность и реакция эмансипации. Склонность к диссимуляции и делинквентности, а также психологическая склонность к алкоголю и употреблению психоактивных веществ отсутствует. Риск депрессии не определен.
@@ -4359,7 +4381,7 @@ d — психологической склонности к делинквен�
     Вывод:  по результатам исследования акцентуация не выявлена.
 
     Личко, А.Е. Патохарактерологический диагностический опросник для подростков / А.Е. Личко, Н.Я. Иванов. - 2-е изд. — М.: Фолиум, 1995 – 64 с.'
-,'Kortinki\\Zadacha1\\18.1.png',N'Kortinki\\Zadacha1\\18.2.png',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\18.1.png',N'C:\\Program Files\\Kortinki\\Zadacha1\\18.2.png',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Сокращённый многофакторный опросник для исследования личности СМОЛ.',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: испытуемый уверен в себе, стремится доминировать и частично контролирует свои эмоции. Испытуемый эгоцентричен, настойчив, склонен к ревности. У него отмечаются трудности в коммуникативных контактах.
@@ -4400,7 +4422,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:    испытуемый находится в относительно конформном состоянии, способен отражать и раскрывать свои моральные и психические дефекты. 
 
     Большая энциклопедия психологических тестов /Составитель А. Карелин. — М.: ЭКСМО, 2009. — С. 76-79.'
-,'Kortinki\\Zadacha1\\19.1.png',N'Kortinki\\Zadacha1\\19.2.png',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\19.1.png',N'C:\\Program Files\\Kortinki\\Zadacha1\\19.2.png',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика "Родителей оценивают дети" (РОД).',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: при таком стиле воспитания требования к подростку слишком велики, непомерны, не соответствующие его возможностям, что представляет риск, психотравматизации. Но в то же время подростку все можно. Он сам определяет, например время возвращения домой вечером, круг друзей, ни за что не отчитываться перед родителями, т.е. подросток сам определяет свой способ поведения.
@@ -4410,7 +4432,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	Вывод:  по мнению подростка, его родители допускают ошибки в стиле семейного воспитания по типу "повышенная моральная ответственность" (чрезмерность требований - обязанностей (Т+) и недостаточность требований - запретов (З-) к сыну).
 	
 	Фурманов,  И.А. Психологическая работа с детьми, лишенными родительского попечительства: Книга для психологов / И.А. Фурманов,  А.А. Аладьин,  Н.В. Фурманова  – МН.: ТЕСЕЙ, 1999. – С. 174, 210 – 216.'
-,'Kortinki\\Zadacha1\\20.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\20.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика "Анализ семейного воспитания" (АСВ) Э.Г. Эйдемиллер, В.В. Юстицкиса.)',
 	N'    Полученные данные: чрезмерность требований (обязанностей) – шкала Т+;
@@ -4434,7 +4456,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: Диагностируется неправильный стиль семейного воспитания "повышенная моральная ответственность"
 
     Детская психодиагностика и профориентация / Под ред. Л.Д. Столяренко – Ростов н/Д: Феникс, 1999. – С. 289-301.'
-,'Kortinki\\Zadacha1\\21.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\21.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика "Кинетический рисунок семьи" (КРС) Р.Бернса и С.Кауфмана.',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, наблюдается негативное отношение к отцу в сочетании с неадекватным самовосприятием и ощущением собственной робости, замкнутости. Существенная разобщенность между членами семьи.
@@ -4453,7 +4475,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 - эмоционально позитивное отношение к матери.
 
     Корнилова, Т.В. Подростковая группа риска / Т.В. Корнилова, Е.Л. Григоренко, С.Д. Смирнов. – СПб.: Питер, 2005. – 336 с.'
-,'Kortinki\\Zadacha1\\22.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\22.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Несуществующее животное".',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, испытуемый - уверенный в себе человек, увлеченный своей деятельностью и стремящийся завоевать себе соответствующее место в социуме. Ему свойственен сильный эгоцентризм. К собственным поступкам, действиям, размышлениям и решениям относится положительно. Основательно, рационально и обдумано относится к принятию любых решений. Но эта основательность по отношению к собственной жизни вызывает тревогу. Для обследуемого характерны также наличие вербальной агрессии, направленной на окружающих, и самообвинения.
@@ -4479,7 +4501,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Выводы: сильная устойчивая личность со склонностью к вербальной агрессии.
 
     Кочубеева, Л.А. Применение проективной рисуночной методики "Несуществующее животное" для определения ТИМ / Л.А. Кочубеева, М.Л. Стоялова // Соционика, ментология и психология личности. – № 6. – 2002. – С. 5-18.'
-,'Kortinki\\Zadacha1\\23.1.png',N'Kortinki\\Zadacha1\\23.2.png',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\23.1.png',N'C:\\Program Files\\Kortinki\\Zadacha1\\23.2.png',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Дом-Дерево-Человек" Дж. Бука (ДДЧ).',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого благополучное психологическое состояние. Все психологические черты сбалансированы. Психологическая защита сильная, поэтому, тревожность и агрессивность слабые. Он уверен в себе. У него нет чувства неполноценности и конфликтности. Фон настроения позитивный. Имеются трудности в общении.
@@ -4492,7 +4514,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Выводы: у испытуемого благополучное психологическое состояние, однако имеются трудности в общении.
 
     Романова, Е.С. Графические методы в практической психологии / Е.С.  Романова. – СПб.: Речь, 2001. – 529 с.'
-,'Kortinki\\Zadacha1\\24.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\24.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Незаконченные предложения" Сакса, Леви.',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, Сергей воспринимает себя и свою мать как одну семью. Образцом женственности для него является его мать. Она ему нравится, но он отмечает, что иногда она бывает просто невыносима. Считает, что большинство матерей поначалу в шоке от ребенка. Отношение к отцу позитивное. Сергей отмечает, что отец редко выпивает вне дома, но и недостаточно часто выполняет работу по дому. Хочет, чтобы отец имел больший авторитет на работе и более высокую оплату своего труда.
@@ -4507,7 +4529,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: отклонений в отношении к родителям нет.
 
     Казачкова, В.Г. Метод незаконченных предложений при изучении отношений личности / В.Г. Казачкова // Вопросы психологии. – 1989. – N 3. – С. 154-157.'
-,'Kortinki\\Zadacha1\\25.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\25.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Тест школьной тревожности" Филипса.',
 	N'    Факторы:
@@ -4532,7 +4554,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: результат в пределах нормы.
 
     Психологические тесты для профессионалов / авт. сост Н.Ф. Гребень. – Минск: Современная школа, 2007. – С. 162-165.'
-,'Kortinki\\Zadacha1\\26.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\26.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика Ч.Д. Спилберга и Ю.Л. Ханина.',
 	N'    Полученные результаты.
@@ -4552,7 +4574,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: результаты в пределах нормы.
 
     Диагностика эмоционально-нравственного развития / Ред. и сост. Дерманова И.Б. – СПб.: 2002. – С.124-126.'
-,'Kortinki\\Zadacha1\\net.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\net.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Самооценка личности" по Дембо-Рубинштейн в модификации А.М.Прихожан.',
 	N'    Полученные результаты.
@@ -4568,7 +4590,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: результаты в пределах нормы.
 
     Практическая психодиагностика. Методики и тесты. / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — 672 с.'
-,'Kortinki\\Zadacha1\\28.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\28.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Теппинг-тест" Е.П. Ильина.',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого сильная НС. Он способен выдерживать большую по величине и длительности нагрузку. Он обладает такими качествами, как выносливость и работоспособность. У него высокая концентрация внимания и активность.
@@ -4583,7 +4605,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: у испытуемого сильная НС. 
 
     Практическая психодиагностика. Методики и тесты. / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — С. 528-530.'
-,'Kortinki\\Zadacha1\\29.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\29.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'«Опросник Айзенка по определению темперамента и характера EPI» Т.В.Матолиной',
 	N'    Полученные данные: 
@@ -4604,7 +4626,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод. Испытуемому свойственны следующие черты характера: спокойствие, молчаливость, рассудительность. Он замедленно деятельный, независимый, кропотливый, беспристрастный, скромный, низко-эмоциональный. Иногда может быть отвлечен от реальности. 
 
     Фетискин, Н. П. Экспресс-диагностика характерологических особенностей личности / Н. П. Фетискин, В. В. Козлов,  Г. М. Мануйлов. –  М., 2002. –  C. 35-44.'
-,'Kortinki\\Zadacha1\\30.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\30.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'ОФДСИ «Опросник формально-динамических свойств индивидуальности» В.М.Русалова',
 	N'    Полученные данные: 
@@ -4633,7 +4655,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод. У испытуемого общая адаптивность ниже нормы. В психомоторной и интеллектуальной сферах диагностируется флегматический тип темперамента. В коммуникативной сфере - смешанный низко эмоциональный тип. Общий тип темперамента флегматический.
 
     Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 118-130.'
-,'Kortinki\\Zadacha1\\31.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\31.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Ориентировочно-диагностическая анкета познавательных процессов (ДДО)',
 	N'    Полученные данные: 
@@ -4645,7 +4667,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 
     Вывод. Направленность личности испытуемого преимущественно на профессиональную область "человек-природа". В нее входят все профессии связанные с растениеводством, животноводством и лесным хозяйством. Также ему интересна профессиональная область "человек-знак". В нее входят все профессии, связанные с расчетами, цифровыми и буквенными знаками, в том числе и музыкальные специальности.
     Райгородский, Д. Я. Практическая психодиагностика. Методики и тесты / Самара: Бахра-М., 2015. – C. 569-573.'
-,'Kortinki\\Zadacha1\\32.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\32.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест «Карта интересов «Голомштока»',
 	N'    Полученные данные: наибольшее количество знаков «+» набрали виды деятельности: техника, биология, география, геология, история.
@@ -4657,7 +4679,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод. Интересы испытуемого направлены преимущественно на области: техника, биология, география, геология и история.
     
 	Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М., 2015. – C. 516-521.'
-,'Kortinki\\Zadacha1\\net.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\net.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест «Исследование объема эмоциональной памяти»',
 	N'    Полученные данные: 47%
@@ -4673,7 +4695,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод. У испытуемого объем эмоциональной памяти в норме. Им преимущественно запоминаются слова положительной модальности. Слова нейтральной модальности запоминаются в меньшей степени.
 
     Изучение основных закономерностей познавательных процессов в период взрослости [Электронный ресурс] / Экспериментальное изучение памяти // Режим доступа:http://studbooks.net/1613171/psihologiya/eksperimentalnaya_chast'
-,'Kortinki\\Zadacha1\\net.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\net.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'"Исследование объема кратковременной памяти" с помощью субтеста Векслера.',N'"Исследование объема кратковременной памяти" с помощью субтеста "Повторение цифр" из теста Векслера.',
 	N'    Полученные данные.
@@ -4695,7 +4717,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: у испытуемого объем кратковременной памяти в норме. Концентрация внимания в норме.
 
     Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C.325-403.'
-,'Kortinki\\Zadacha1\\net.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\net.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "10 слов" (оценка состояния памяти, утомляемости, особенностей мышления).',
 	N'    Полученные данные 
@@ -4710,7 +4732,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: у испытуемого память и активность внимания в норме. Утомляемость низкая.
 
     Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М., 2015. – C. 202-203. '
-,'Kortinki\\Zadacha1\\net.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\net.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Сложные аналогии"',
 	N'    Полученные данные: 8 баллов (18 ответов)
@@ -4720,7 +4742,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: показатель понимания сложных логических отношений и выделение абстрактных связей у испытуемого выше нормы.
 
     Касьянов, С. Психологические тесты / С. Касьянов. – М.: Эксмо, 2006. –  608 с.'
-,'Kortinki\\Zadacha1\\37.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\37.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Выделение существенных признаков".',
 	N'    Полученные данные: 6 баллов (36 слов)
@@ -4732,7 +4754,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: операции мышления анализ, сравнение, обобщение и классификация развиты выше средних показателей. 
 
     Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 61-62.'
-,'Kortinki\\Zadacha1\\38.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\38.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Корректурная проба Бурдона".',
 	N'    Полученные данные.
@@ -4755,7 +4777,7 @@ A = S / t, где
     Вывод: у испытуемого концентрация  и устойчивость внимания в норме. 
 
     Корректурная проба (Тест Бурдона) / Альманах психологических тестов. – М., 1995. –  С.107-111.'
-,'Kortinki\\Zadacha1\\39.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\39.png',N'',1)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Опросник для изучения познавательных интересов Юркевича.',
 	N'    Полученные данные:  21 балл
@@ -4771,7 +4793,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: у испытуемого познавательная потребность выражена сильно.
 
     Диагностика познавательной потребности [Электронный ресурс] // Режим доступа: http://docpsy.ru/testy/diagnostika-motivatsii/5047-metodika-poznavatelnaya-potrebnost.html'
-,'Kortinki\\Zadacha1\\net.png',N'',1)
+,'C:\\Program Files\\Kortinki\\Zadacha1\\net.png',N'',1)
 go
 
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
@@ -4781,7 +4803,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:  умственное развитие  в норме (34,8%).
 
     Гуревич, К.М.  Психологическая коррекция умственного развития учащихся / К.М.Гуревич, И.В.Дубровина. −  М, 1990. – С. 33-35.'
-,'Kortinki\\Zadacha2\\1_1.png',N'Kortinki\\Zadacha2\\1_2.png',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\1_1.png',N'C:\\Program Files\\Kortinki\\Zadacha2\\1_2.png',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Цветовой тест" М. Люшера.',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики испытуемый старается улучшить представления о себе других людей, чтобы они пошли на уступки и считались с его потребностями и  желаниями. Он хочет избавиться от ощущения пустоты и устранить разрыв, который по его мнению, отделяет его от других. Озабочен тем, чтобы узнать жизнь со всех сторон, использовать предоставленные ею возможности и прожить её во всей полноте. Поэтому он возмущается по поводу любых ограничений и рамок, накладываемых на него, и настаивает на том, чтобы ему предоставили свободу и не чинили препятствий. Он способен достигать физического удовлетворения через  сексуальную активность, но склонен оставаться эмоционально замкнутым, что ограждает его от глубокой вовлеченности. Он жаждет успеха, волнений, и жизни полной впечатлений. Хочет свободно развиваться, сбросить оковы неуверенности в себе, побеждать и жить насыщенной жизнью. Любит общаться с людьми. Энтузиаст по натуре. Восприимчив ко всему новому, современному и увлекательному. У него много интересов, и он хочет расширить сферы своей деятельности. На  будущее смотрит оптимистично. Он борется с ограничениями и запретами и настаивает на том, чтобы ему дали возможность свободно развиваться, прилагая собственные  усилия.  Он считает, что ему не дают двигаться вперед и ограничивают  это продвижение. Ищет решения, которое снимет подобные ограничения. Этот человек придаёт особенное значение общительности. Он жаждет успеха и жизни полной впечатлений, восприимчив ко всему новому, современному и увлекательному. Для этого хочет сбросить существующие оковы неуверенности в себе, ощущение пустоты и устранить разрыв, который как ему кажется, отделяет его от других. Для этого он старается улучшить представление о себе у людей, чтобы они пошли на уступки и считались с его потребностями. Но вместе с тем он склонен оставаться эмоционально замкнутым. Он чувствителен в  отношении критических замечаний в свой адрес. У него много интересов и на жизнь он смотрит оптимистично. Но его не устраивают существующие запреты и ограничения. Ищет решения, как освободиться от них для того, чтобы развиваться свободно. 
@@ -4794,7 +4816,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:  уровень  работоспособности достаточный, средняя степень гибкости, тревожность в норме
 
     Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизнь-XXI век. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.'
-,'Kortinki\\Zadacha2\\2.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\2.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'16 ЛФ Р.Б. Кеттелла.',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данный тип личности обладает коммуникативными свойствами личности, которые  характеризуются открытостью, общительностью, активностью в установлении как межличностных, так и  социальных контактов. Направленность вовне, на людей. По отношению к людям он открыт и прямолинеен. Экстраверсия.
@@ -4814,7 +4836,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •факторы  B,E,G, I  и Q3, Q4 соответствуют норме.
 
     Головей, Л.А. Практикум по возрастной психологии: Учеб. пособие / Л.А. Головей , Е.Ф. Рыбалко. − СПб.: Речь, 2002. - С. 578-588.'
-,'Kortinki\\Zadacha2\\3_1.png',N'Kortinki\\Zadacha2\\3_2.png',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\3_1.png',N'C:\\Program Files\\Kortinki\\Zadacha2\\3_2.png',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Тест рисуночных ассоциаций" С. Розенцвейга.',
 	N'    Полученные данные:
@@ -4824,7 +4846,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: не достаточно хорошо (чуть ниже нормы) адаптирован  к социальному окружению. 
 
     Дементий, Л.И. Фрустрация: Понятие и диагностика. Учеб. метод. пособие для студентов специальности «Психология»/ Л.И. Дементий. - ОмГУ, 2004. – 68 с.'
-,'Kortinki\\Zadacha2\\net.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\net.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Тест руки" (Hand-тест) А. Вагнера.',
 	N'    Полученные данные:
@@ -4843,7 +4865,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:   у испытуемого существует тенденция к агрессивному поведению. Нежелание приспосабливаться к внешнему окружению выражена в средней степени. Испытуемый преимущественно воспринимает руку как ведущую, оказывающую влияние на другого, а также как просто выполняющую какие-то действия. 
 
     Елисеев, О.П. Практикум по психологии личности / О.П. Елисеев. - СПб., 2003. - С.310-327.'
-,'Kortinki\\Zadacha2\\net.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\net.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Диагностика межличностных отношений" Т. Лири.',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, тип личности испытуемого независимо-доминирующий и прямолинейно-агрессивный с выраженным чувством собственного превосходства над окружающими и с тенденцией иметь свое, особе мнение, отличное от большинства. У него имеется стремление занимать обособленную позицию в группе, которая может сопровождаться чрезмерным упорством, недружелюбием, несдержанностью и вспыльчивостью.
@@ -4853,7 +4875,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:  тип личности испытуемого независимо-доминирующий и прямолинейно-агрессивный. 
 
     Собчик, Л.Н.  Психология индивидуальности. Теория и практика психодиагностики / Л.Н. Собчик. -  СПб.: Речь, 2005. - 624 с.'
-,'Kortinki\\Zadacha2\\6.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\6.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Диагностика уровня субъективного контроля УСК" Дж. Роттера.',
 	N'    Полученные данные: 
@@ -4872,7 +4894,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:  высокий уровень субъективного контроля над любыми значимыми ситуациями, событиями и достижениями.
 
     Грецов, А.Г. Психологические тесты для старшеклассников и студентов / А.Г. Грецов, А.А. Азбель. - СПб.: Питер, 2012. - 208 с.'
-,'Kortinki\\Zadacha2\\7_1.png',N'Kortinki\\Zadacha2\\7_2.png',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\7_1.png',N'C:\\Program Files\\Kortinki\\Zadacha2\\7_2.png',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Исследование волевой саморегуляции ВСК" А. Зверков, Е.В. Эйдман.',
 	N'    Полученные данные:
@@ -4887,7 +4909,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: волевая саморегуляция довольно низкая.  
 
     Пашукова, Т.И. Психологические исследования. Практикум по общей психологии для студентов педагогических вузов / Т.И. Пашукова, А.И. Допира, Г.В. Дьяконов. -  М.: ИПП, 1996. - 177 с.'
-,'Kortinki\\Zadacha2\\8.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\8.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Диагностика предрасположенности личности к конфликтному поведению" Томаса',
 	N'    Полученные данные: 
@@ -4902,7 +4924,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:  ярко выраженное соперничество, оптимальная  выраженность  проявления  сотрудничества и компромисса в конфликтных ситуациях.
 
     Истратова, О.Н. Психодиагностика. Коллекция лучших тестов / О.Н. Истратова, Т.В. Эксакусто. - РнД.: Феникс, 2006. - 375 с.'
-,'Kortinki\\Zadacha2\\9.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\9.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Методика выявления коммуникативных и организаторских склонностей" КОС-2.',
 	N'    Полученные данные: 
@@ -4914,7 +4936,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:   очень хорошие организаторские и коммуникативные способности
 
     Фетискин, Н. П. Социально-психологическая диагностика развития личности и малых групп / Н. П. Фетискин, В. В. Козлов, Г. М. Майнулов. – М.: Институт Психотерапии, 2002. – C.263-265.'
-,'Kortinki\\Zadacha2\\10.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\10.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Диагностика социально-психологических установок личности.',N'Тест "Диагностика социально-психологических установок личности в мотивационно-потребностой сфере" О.Ф.Потемкиной.',
 	N'    Полученные данные:
@@ -4937,7 +4959,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: по результатам исследования у испытуемого средние показатели по выраженности  следующих социально-психологических установок: ориентация на процесс, альтруизм, труд и свободу, ориентация на результат. Такие установки, как ориентация на эгоизм, власть и деньги выражены слабо.
 
     Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001. – С.641-648. '
-,'Kortinki\\Zadacha2\\net.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\net.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала искренности Марлоу-Крауна.',
 	N'    Полученные данные:  общий итоговый показатель “мотивации одобрения” 6 баллов
@@ -4953,7 +4975,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: У испытуемого мотивация одобрения  выражена в низкой степени.
 
     Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001.  – С.635-636.'
-,'Kortinki\\Zadacha2\\net.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\net.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Опросник мотивации достижения А.Мехрабиана',
 	N'    Полученные данные: мотивация стремления к  успеху 110 баллов, мотивация избегания неудач  90 баллов
@@ -4968,7 +4990,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:  у испытуемого мотивация стремления к  успеху  выражена в средней степени. Мотивация избегания неудач  выражена в средней степени .
 
     Фетискин,  Н.П.  Социально-психологическая диагностика развития личности и малых групп. / Н.П. Фетискин, В.В. Козлов, Г.М. Мануйлов  – М, 2002. – C.98-102.'
-,'Kortinki\\Zadacha2\\net.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\net.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика изучения мотивации к избеганию неудач Т. Элерса.',
 	N'    Полученные данные: 15 баллов
@@ -4984,7 +5006,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:  у испытуемого мотивация к избеганию неудач выражена в средней степени.
 
     Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.630-632.'
-,'Kortinki\\Zadacha2\\net.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\net.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика изучения мотивации успеха Т. Элерса.',
 	N'    Полученные данные: 11 баллов
@@ -5000,7 +5022,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:  у испытуемого мотивация стремления к  успеху выражена в средней степени.   Это проявляется в средней степени готовности к риску, а также в средней степени выраженности  мотивации избегания неудач (защите).
 
     Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.626-629.'
-,'Kortinki\\Zadacha2\\net.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\net.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика диагностики оперативной оценки самочувствия, активности и настроения (САН).',
 	N'    Норма: 
@@ -5011,7 +5033,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:  у испытуемого снижено настроение и активность. Плохое самочувствие. На момент исследования он был болен.
 
     Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.17-21.'
-,'Kortinki\\Zadacha2\\16.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\16.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Самооценка психических состояний по Айзенку.',
 	N'    Полученные данные:
@@ -5034,7 +5056,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:  у испытуемого средний уровень тревожности, фрустрации, агрессивности и ригидности.
 
     Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С. 141-145.'
-,'Kortinki\\Zadacha2\\net.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\net.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'ПДО "Патохарактерологический диагностический опросник для подростков"".',N'ПДО "Патохарактерологический диагностический опросник для подростков" А.Е. Личко, Н.Я. Иванова".',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: у испытуемого позитивное отношение к исследованию. Откровенность испытуемого в норме. Выявлена высокая конформность и низкая диссимуляция. Слабая реакция эмансипации и низкая склонность к делинквентности. Преобладание мужественных или женственных черт не выявлено. Имеется психологическая склонность к алкоголизации, а также умеренный риск к употреблению психоактивных средств. Риск депрессии не определен.
@@ -5069,7 +5091,7 @@ d — психологической склонности к делинквен�
     Вывод: по результатам исследования диагностируется лабильная акцентуация.
 
     Личко, А.Е. Патохарактерологический диагностический опросник для подростков / А.Е. Личко, Н.Я. Иванов. - 2-е изд. — М.: Фолиум, 1995 – 64 с.'
-,'Kortinki\\Zadacha2\\18_1.png',N'Kortinki\\Zadacha2\\18_2.png',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\18_1.png',N'C:\\Program Files\\Kortinki\\Zadacha2\\18_2.png',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Сокращённый многофакторный опросник для исследования личности СМОЛ.',
 	N'    Полученные данные:
@@ -5112,7 +5134,7 @@ L<40 Т-баллов, К=51 Т-балл, пик по шкале 9 (61 Т-бал�
     Вывод:  по результатам исследования испытуемый находится в относительно конформном состоянии, способен отражать и раскрывать свои моральные и психические дефекты. 
 
     Большая энциклопедия психологических тестов /Составитель А. Карелин. — М.: ЭКСМО, 2009. — С. 76-79.'
-,'Kortinki\\Zadacha2\\19_1.png',N'Kortinki\\Zadacha2\\19_2.png',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\19_1.png',N'C:\\Program Files\\Kortinki\\Zadacha2\\19_2.png',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика "Родителей оценивают дети" (РОД).',
 	N'    Полученные данные: числовых данные отсутствуют
@@ -5124,7 +5146,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:  по мнению подростка, ошибок со стороны родителей в стиле его семейного воспитания нет.
 
     Фурманов,  И.А. Психологическая работа с детьми, лишенными родительского попечительства: Книга для психологов / И.А. Фурманов,  А.А. Аладьин,  Н.В. Фурманова  – МН.: ТЕСЕЙ, 1999. – С. 174, 210 – 216.'
-,'Kortinki\\Zadacha2\\20_1.png',N'Kortinki\\Zadacha2\\20_2.png',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\20_1.png',N'C:\\Program Files\\Kortinki\\Zadacha2\\20_2.png',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика "Анализ семейного воспитания" (АСВ) Э.Г. Эйдемиллер, В.В. Юстицкиса.',
 	N'    Полученные данные:
@@ -5149,7 +5171,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: диагностируется  неправильный стиль семейного воспитания «повышенная моральная ответственность» и «потворствующая гиперпротекция».
 
     Детская психодиагностика и профориентация / Под ред. Л.Д. Столяренко –Ростов н/Д: «Феникс», 1999. – С. 289-301.'
-,'Kortinki\\Zadacha2\\21.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\21.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика "Кинетический рисунок семьи" (КРС).',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, полученные результаты не противоречат друг другу. Зона возможных проблем - "агрессия членов семьи по отношению к Диме".
@@ -5169,7 +5191,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 - у Димы эмоционально позитивное отношение к маме.
 
     Корнилова, Т.В. Подростковая группа риска / Т.В. Корнилова, Е.Л. Григоренко, С.Д. Смирнов. – СПб.: Питер, 2005. – 336 с.'
-,'Kortinki\\Zadacha2\\22.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\22.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Несуществующее животное".',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, диагностируется готовность к контролируемой коммуникации. Обследуемый ценит эрудицию в себе и окружающих. Ему свойственна рациональность при принятии решения путем опоры на существующие положение и значимую информацию. У него высокой контроль за рассуждениями, выводами и решениями. Имеется тенденция к замкнутости, закрытости своего внутреннего мира. Тревожность связана с поло-сексуальной проблемой. Отношение к своему "Я" нейтральное. Для обследуемого свойственен эгоцентризм.  Для него значимо мнение окружающих его близких людей.
@@ -5197,7 +5219,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: устойчивая личность с высоким уровнем самоконтроля и коммуникации.
 
     Кочубеева, Л.А. Применение проективной рисуночной методики "Несуществующее животное" для определения ТИМ / Л.А. Кочубеева, М.Л. Стоялова // Соционика, ментология и психология личности. – № 6. – 2002. –  С. 5-18.'
-,'Kortinki\\Zadacha2\\23_1.png',N'Kortinki\\Zadacha2\\23_2.png',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\23_1.png',N'C:\\Program Files\\Kortinki\\Zadacha2\\23_2.png',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Дом-Дерево-Человек" Дж. Бука (ДДЧ).',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого все психологические черты сбалансированы. Психологическая защита сильная, поэтому тревожность слабая. Для него характерна уверенность в себе, отсутствие чувства неполноценности, слабая агрессивность, слабая конфликтность. Нет трудностей общения и пониженного фона настроения.
@@ -5210,7 +5232,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: у испытуемого благополучное психологическое состояние.
 
     Романова, Е.С. Графические методы в практической психологии / Е.С.  Романова. – СПб.: Речь, 2001. – 529 с. '
-,'Kortinki\\Zadacha2\\24.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\24.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Незаконченные предложения" Сакса, Леви.',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, Дима любит мать, но отмечает у себя некоторое непослушание и иногда обижается на неё. У Димы позитивное отношение к членам своей семьи. Он доверяет настоящему другу и считает, что он должен тоже ценить дружбу и быть надежным. Дима относится к сверстникам позитивно и считает, что они такие же, как и он. Не любит, когда его обсуждают. Отношение к взрослым в целом позитивное, но считает, что взрослые губят себя вредными привычками - курением и спиртным. Не любит, когда взрослые ему не верят и не понимают его. Отношение к учебе и учителям позитивное. Считает, что он прилагает усилия для учебы и таким образом выполняет требования взрослых. В школе проявляет старательность. В конфликте Дима выбирает стиль поведения - соперничество. У людей он выделяет такие отрицательные черты как злость, жадность и несправедливость. Сейчас Дима ощущает чувство вины за непослушание. Отмечает у себя наличие такой отрицательной черты как нехватка терпения. Своей положительной чертой он считает способность к самоконтролю и честность. Считает, что в жизни будет соблюдать законы. О своем будущем Дима пока не думает. Надеется, что в будущем все будет хорошо, исполнятся его мечты, и он не будет курить. Жалеет о том, что не слушается родителей. Хочет забыть тот день, когда ему причинили зло. Хочет, чтобы все люди были счастливы и добры, а также, исполнение своей мечты.
@@ -5233,7 +5255,7 @@ D. Уровень реальности: Дима в своих рассужде�
 E. В какой манере выражаются конфликты: конфликты выражаются в потребности того, чтобы взрослые верили ему и  понимали его. А также при наличии конфликтной ситуации у Димы имеется потребность в отстаивании своего мнения. У людей он выделяет такие отрицательные черты как злость, жадность и несправедливость.
 
     Казачкова В.Г. Метод незаконченных предложений при изучении отношений личности // Вопросы психологии. - 1989. - N 3. - С. 154-157. '
-,'Kortinki\\Zadacha2\\25.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\25.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Тест школьной тревожности" Филипса.',
 	N'    Факторы:
@@ -5257,7 +5279,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: уровень школьной тревожности в норме.
 
     Психологические тесты для профессионалов / авт. сост Н.Ф. Гребень. – Минск: Современная школа, 2007. – С. 162-165.'
-,'Kortinki\\Zadacha2\\26.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\26.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика Ч.Д. Спилберга и Ю.Л. Ханина.',
 	N'    Полученные результаты:
@@ -5276,7 +5298,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: личностная тревожность низкая, реактивная тревожность умеренная.
 
     Диагностика эмоционально-нравственного развития / Ред. и сост. Дерманова И.Б. – СПб.: 2002. – С.124-126.'
-,'Kortinki\\Zadacha2\\net.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\net.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Самооценка личности" по Дембо-Рубинштейн в модификации А.М.Прихожан.',
 	N'    Полученные результаты:
@@ -5292,7 +5314,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: результаты выше нормы.
 
     Практическая психодиагностика. Методики и тесты / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — 672 с.'
-,'Kortinki\\Zadacha2\\28.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\28.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Теппинг-тест" Е.П. Ильина.',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого средне-слабая НС. Он плохо выдерживает большую по величине и длительности нагрузку. У него быстро наступает утомление.
@@ -5307,7 +5329,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: у испытуемого средне-слабая НС. 
 
     Практическая психодиагностика. Методики и тесты / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — С. 528-530.'
-,'Kortinki\\Zadacha2\\29_1.png',N'Kortinki\\Zadacha2\\29_2.png',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\29_1.png',N'C:\\Program Files\\Kortinki\\Zadacha2\\29_2.png',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Опросник Айзенка по определению темперамента и характера EPI" Т.В.Матолиной',
 	N'    Полученные данные.
@@ -5327,7 +5349,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод. Испытуемому свойственны следующие черты характера: общительность, открытость, инициативность, активность, разговорчивость, доступность, живость, беззаботность. Он любит удобства, легко соглашается на риск, не всегда разборчив в друзьях и средствах достижения цели. Часто эгоистичен, обаятелен, имеет организаторские способности. Непостоянен и наивен.
 
     Фетискин, Н. П. Экспресс-диагностика характерологических особенностей личности / Н. П. Фетискин, В. В. Козлов,  Г. М. Мануйлов. –  М., 2002. –  C. 35-44.'
-,'Kortinki\\Zadacha2\\30.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\30.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'ОФДСИ «Опросник формально-динамических свойств индивидуальности» В.М.Русалова',
 	N'    Полученные данные: 
@@ -5356,7 +5378,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Выводы:  у испытуемого адаптивность в норме. В коммуникативной и психомоторной сферах диагностируется смешанный, высоко активный тип темперамента. В интеллектуальной сфере – смешанный, высоко эмоциональный тип. Общий тип темперамента диагностируется как неопределенный.
 
     Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 118-130.'
-,'Kortinki\\Zadacha2\\31_1.png',N'Kortinki\\Zadacha2\\31_2.png',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\31_1.png',N'C:\\Program Files\\Kortinki\\Zadacha2\\31_2.png',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Ориентировочно-диагностическая анкета познавательных процессов (ДДО)',
 	N'    Полученные данные.
@@ -5369,7 +5391,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Выводы. Направленность личности испытуемого преимущественно на профессиональную область "человек-человек". В данную область входят все профессии, связанные с человеческим общением. Также ему свойственны интересы в области "человек-техника”, т.е. все профессии, связанные с техникой, ее обслуживанием и эксплуатацией.
 
     Райгородский, Д. Я. Практическая психодиагностика. Методики и тесты / Самара: Бахра-М, 2015. – C. 569-573'
-,'Kortinki\\Zadacha2\\32.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\32.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Карта интересов Голомштока"',
 	N'    Полученные данные: наибольшее количество знаков «+» набрали виды деятельности: Техника, транспорт, сфера обслуживания, общественная работа.
@@ -5382,7 +5404,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: интересы испытуемого направлены преимущественно на области: техника, транспорт, сфера обслуживания и торговля, общественная деятельность.
 
     Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 516-521.'
-,'Kortinki\\Zadacha2\\net.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\net.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Исследование объема эмоциональной памяти"',
 	N'    Полученные данные: 42%
@@ -5398,7 +5420,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод. У испытуемого объем эмоциональной памяти в норме. Им преимущественно запоминаются слова положительной модальности. Слова отрицательной модальности запоминаются в меньшей степени.
 
     Изучение основных закономерностей познавательных процессов в период взрослости [Электронный ресурс] / Экспериментальное изучение памяти // Режим доступа : http://studbooks.net/1613171/psihologiya/eksperimentalnaya_chast'
-,'Kortinki\\Zadacha2\\net.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\net.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'"Исследование объема кратковременной памяти" с помощью субтеста Векслера.',N'"Исследование объема кратковременной памяти" с помощью субтеста "Повторение цифр" из теста Векслера.',
 	N'    Полученные данные.
@@ -5420,7 +5442,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод. У испытуемого объем кратковременной памяти в норме. Концентрация внимания в норме.
 
     Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C.325-403.'
-,'Kortinki\\Zadacha2\\net.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\net.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "10 слов" (оценка состояния памяти, утомляемости, особенностей мышления).',
 	N'    Полученные данные.
@@ -5437,7 +5459,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: у испытуемого память и активность внимания в норме. Утомляемость низкая.
 
     Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 202-203. '
-,'Kortinki\\Zadacha2\\net.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\net.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Сложные аналогии"',
 	N'    Полученные данные: 5 баллов (13 ответов)
@@ -5447,7 +5469,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Касьянов, С. Психологические тесты / С. Касьянов. – М.: Эксмо, 2006. –  608 с.
 '
-,'Kortinki\\Zadacha2\\37.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\37.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Выделение существенных признаков".',
 	N'Полученные данные: 5 баллов (33 слова)  
@@ -5460,7 +5482,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: операции мышления анализ, сравнение, обобщение и классификация развиты в норме. 
 
     Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 61-62.'
-,'Kortinki\\Zadacha2\\38.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\38.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Корректурная проба Бурдона".',
 	N'    Полученные данные.
@@ -5483,7 +5505,7 @@ A = S / t, где
     Вывод: у испытуемого концентрация  и устойчивость внимания в норме. 
 
     Корректурная проба (Тест Бурдона) / Альманах психологических тестов. – М., 1995. –  С.107-111.'
-,'Kortinki\\Zadacha2\\39.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\39.png',N'',2)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Опросник для изучения познавательных интересов Юркевича.',
 	N'    Полученные данные:  10 балл
@@ -5499,7 +5521,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 Диагностика познавательной потребности [Электронный ресурс] // Режим доступа: http://docpsy.ru/testy/diagnostika-motivatsii/5047-metodika-poznavatelnaya-potrebnost.html
 '
-,'Kortinki\\Zadacha2\\net.png',N'',2)
+,'C:\\Program Files\\Kortinki\\Zadacha2\\net.png',N'',2)
 go
 
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
@@ -5509,7 +5531,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:  умственное развитие  в норме (34,8%).
 
     Гуревич, К.М.  Психологическая коррекция умственного развития учащихся / К.М.Гуревич, И.В.Дубровина. −  М, 1990. – С. 33-35.'
-,'Kortinki\\Zadacha3\\1_1.png',N'Kortinki\\Zadacha3\\1_2.png',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\1_1.png',N'C:\\Program Files\\Kortinki\\Zadacha3\\1_2.png',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Цветовой тест" М. Люшера.',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики испытуемый старается улучшить представления о себе других людей, чтобы они пошли на уступки и считались с его потребностями и  желаниями. Он хочет избавиться от ощущения пустоты и устранить разрыв, который по его мнению, отделяет его от других. Озабочен тем, чтобы узнать жизнь со всех сторон, использовать предоставленные ею возможности и прожить её во всей полноте. Поэтому он возмущается по поводу любых ограничений и рамок, накладываемых на него, и настаивает на том, чтобы ему предоставили свободу и не чинили препятствий. Он способен достигать физического удовлетворения через  сексуальную активность, но склонен оставаться эмоционально замкнутым, что ограждает его от глубокой вовлеченности. Он жаждет успеха, волнений, и жизни полной впечатлений. Хочет свободно развиваться, сбросить оковы неуверенности в себе, побеждать и жить насыщенной жизнью. Любит общаться с людьми. Энтузиаст по натуре. Восприимчив ко всему новому, современному и увлекательному. У него много интересов, и он хочет расширить сферы своей деятельности. На  будущее смотрит оптимистично. Он борется с ограничениями и запретами и настаивает на том, чтобы ему дали возможность свободно развиваться, прилагая собственные  усилия.  Он считает, что ему не дают двигаться вперед и ограничивают  это продвижение. Ищет решения, которое снимет подобные ограничения. Этот человек придаёт особенное значение общительности. Он жаждет успеха и жизни полной впечатлений, восприимчив ко всему новому, современному и увлекательному. Для этого хочет сбросить существующие оковы неуверенности в себе, ощущение пустоты и устранить разрыв, который как ему кажется, отделяет его от других. Для этого он старается улучшить представление о себе у людей, чтобы они пошли на уступки и считались с его потребностями. Но вместе с тем он склонен оставаться эмоционально замкнутым. Он чувствителен в  отношении критических замечаний в свой адрес. У него много интересов и на жизнь он смотрит оптимистично. Но его не устраивают существующие запреты и ограничения. Ищет решения, как освободиться от них для того, чтобы развиваться свободно. 
@@ -5522,7 +5544,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:  уровень  работоспособности достаточный, средняя степень гибкости, тревожность в норме
 
     Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизнь-XXI век. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.'
-,'Kortinki\\Zadacha3\\2.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\2.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'16 ЛФ Р.Б. Кеттелла.',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данный тип личности обладает коммуникативными свойствами личности, которые  характеризуются открытостью, общительностью, активностью в установлении как межличностных, так и  социальных контактов. Направленность вовне, на людей. По отношению к людям он открыт и прямолинеен. Экстраверсия.
@@ -5541,7 +5563,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •факторы  B,E,G, I  и Q3, Q4 соответствуют норме.
 
     Головей, Л.А. Практикум по возрастной психологии: Учеб. пособие / Л.А. Головей , Е.Ф. Рыбалко. − СПб.: Речь, 2002. - С. 578-588.'
-,'Kortinki\\Zadacha3\\3_1.png',N'Kortinki\\Zadacha3\\3_2.png',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\3_1.png',N'C:\\Program Files\\Kortinki\\Zadacha3\\3_2.png',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Тест рисуночных ассоциаций" С. Розенцвейга.',
 	N'    Полученные данные:
@@ -5551,7 +5573,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод: не достаточно хорошо (чуть ниже нормы) адаптирован  к социальному окружению. 
 
     Дементий, Л.И. Фрустрация: Понятие и диагностика. Учеб. метод. пособие для студентов специальности «Психология»/ Л.И. Дементий. - ОмГУ, 2004. – 68 с.'
-,'Kortinki\\Zadacha3\\net.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\net.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Тест руки" (Hand-тест) А. Вагнера.',
 	N'    Полученные данные:
@@ -5570,7 +5592,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:   у испытуемого существует тенденция к агрессивному поведению. Нежелание приспосабливаться к внешнему окружению выражена в средней степени. Испытуемый преимущественно воспринимает руку как ведущую, оказывающую влияние на другого, а также как просто выполняющую какие-то действия. 
 
     Елисеев, О.П. Практикум по психологии личности / О.П. Елисеев. - СПб., 2003. - С.310-327.'
-	,'Kortinki\\Zadacha3\\net.png',N'',3)
+	,'C:\\Program Files\\Kortinki\\Zadacha3\\net.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Диагностика межличностных отношений" Т. Лири.',
 	N'    Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, тип личности испытуемого независимо-доминирующий и прямолинейно-агрессивный с выраженным чувством собственного превосходства над окружающими и с тенденцией иметь свое, особе мнение, отличное от большинства. У него имеется стремление занимать обособленную позицию в группе, которая может сопровождаться чрезмерным упорством, недружелюбием, несдержанностью и вспыльчивостью.
@@ -5580,7 +5602,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
     Вывод:  тип личности испытуемого независимо-доминирующий и прямолинейно-агрессивный. 
 
     Собчик, Л.Н.  Психология индивидуальности. Теория и практика психодиагностики / Л.Н. Собчик. -  СПб.: Речь, 2005. - 624 с. '
-	,'Kortinki\\Zadacha3\\6.png',N'',3)
+	,'C:\\Program Files\\Kortinki\\Zadacha3\\6.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Диагностика уровня субъективного контроля УСК" Дж. Роттера.',
 	N'   Полученные данные: 
@@ -5599,7 +5621,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  высокий уровень субъективного контроля над любыми значимыми ситуациями, событиями и достижениями.
 
    Грецов, А.Г. Психологические тесты для старшеклассников и студентов / А.Г. Грецов, А.А. Азбель. - СПб.: Питер, 2012. - 208 с.'
-,'Kortinki\\Zadacha3\\7_1.png',N'Kortinki\\Zadacha3\\7_2.png',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\7_1.png',N'C:\\Program Files\\Kortinki\\Zadacha3\\7_2.png',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Исследование волевой саморегуляции ВСК" А. Зверков, Е.В. Эйдман.',
 	N'   Полученные данные:
@@ -5614,7 +5636,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: волевая саморегуляция довольно низкая.  
 
    Пашукова, Т.И. Психологические исследования. Практикум по общей психологии для студентов педагогических вузов / Т.И. Пашукова, А.И. Допира, Г.В. Дьяконов. -  М.: ИПП, 1996. - 177 с.'
-,'Kortinki\\Zadacha3\\8.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\8.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Диагностика предрасположенности личности к конфликтному поведению" Томаса',
 	N'   Полученные данные: 
@@ -5629,7 +5651,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  ярко выраженное соперничество, оптимальная  выраженность  проявления  сотрудничества и компромисса в конфликтных ситуациях.
 
    Истратова, О.Н. Психодиагностика. Коллекция лучших тестов / О.Н. Истратова, Т.В. Эксакусто. - РнД.: Феникс, 2006. - 375 с.'
-,'Kortinki\\Zadacha3\\9.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\9.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Методика выявления коммуникативных и организаторских склонностей" КОС-2.',
 	N'   Полученные данные: 
@@ -5641,7 +5663,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:   очень хорошие организаторские и коммуникативные способности
 
    Фетискин, Н. П. Социально-психологическая диагностика развития личности и малых групп / Н. П. Фетискин, В. В. Козлов, Г. М. Майнулов. – М.: Институт Психотерапии, 2002. – C.263-265.'
-,'Kortinki\\Zadacha3\\10.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\10.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Диагностика социально-психологических установок личности.',N'Тест "Диагностика социально-психологических установок личности в мотивационно-потребностной сфере" О.Ф.Потемкиной.',
 	N'   Полученные данные:
@@ -5664,7 +5686,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: по результатам исследования у испытуемого средние показатели по выраженности  следующих социально-психологических установок: ориентация на процесс, альтруизм, труд и свободу, ориентация на результат. Такие установки, как ориентация на эгоизм, власть и деньги выражены слабо.
 
    Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001. – С.641-648. '
-,'Kortinki\\Zadacha3\\net.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\net.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала искренности Марлоу-Крауна.',
 	N'   Полученные данные:  общий итоговый показатель “мотивации одобрения” 6 баллов
@@ -5680,7 +5702,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: У испытуемого мотивация одобрения  выражена в низкой степени.
 
    Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001.  – С.635-636.'
-,'Kortinki\\Zadacha3\\net.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\net.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Опросник мотивации достижения А.Мехрабиана',
 	N'   Полученные данные: мотивация стремления к  успеху 110 баллов, мотивация избегания неудач  90 баллов
@@ -5695,7 +5717,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  у испытуемого мотивация стремления к  успеху  выражена в средней степени. Мотивация избегания неудач  выражена в средней степени .
 
    Фетискин,  Н.П.  Социально-психологическая диагностика развития личности и малых групп. / Н.П. Фетискин, В.В. Козлов, Г.М. Мануйлов  – М, 2002. – C.98-102.'
-,'Kortinki\\Zadacha3\\net.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\net.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика изучения мотивации к избеганию неудач Т. Элерса.',
 	N'   Полученные данные: 15 баллов
@@ -5711,7 +5733,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  у испытуемого мотивация к избеганию неудач выражена в средней степени.
    
    Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.630-632.'
-,'Kortinki\\Zadacha3\\net.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\net.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика изучения мотивации успеха Т. Элерса.',
 	N'   Полученные данные: 11 баллов
@@ -5727,7 +5749,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  у испытуемого мотивация стремления к  успеху выражена в средней степени.   Это проявляется в средней степени готовности к риску, а также в средней степени выраженности  мотивации избегания неудач (защите).
 
    Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.626-629.'
-,'Kortinki\\Zadacha3\\net.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\net.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика диагностики оперативной оценки самочувствия, активности и настроения (САН).',
 	N'   Норма: 
@@ -5738,7 +5760,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  у испытуемого снижено настроение и активность. Плохое самочувствие. На момент исследования он был болен.
 
    Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.17-21.'
-,'Kortinki\\Zadacha3\\16.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\16.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Самооценка психических состояний по Айзенку.',
 	N'   Полученные данные:
@@ -5761,7 +5783,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  у испытуемого средний уровень тревожности, фрустрации, агрессивности и ригидности.
 
    Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С. 141-145.'
-,'Kortinki\\Zadacha3\\net.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\net.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'ПДО "Патохарактерологический диагностический опросник для подростков".',N'ПДО "Патохарактерологический диагностический опросник для подростков" А.Е. Личко, Н.Я. Иванова.',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: у испытуемого позитивное отношение к исследованию. Откровенность испытуемого в норме. Выявлена высокая конформность и низкая диссимуляция. Слабая реакция эмансипации и низкая склонность к делинквентности. Преобладание мужественных или женственных черт не выявлено. Имеется психологическая склонность к алкоголизации, а также умеренный риск к употреблению психоактивных средств. Риск депрессии не определен.
@@ -5796,7 +5818,7 @@ d — психологической склонности к делинквен�
    Вывод: по результатам исследования диагностируется лабильная акцентуация.
 
    Личко, А.Е. Патохарактерологический диагностический опросник для подростков / А.Е. Личко, Н.Я. Иванов. - 2-е изд. — М.: Фолиум, 1995 – 64 с.'
-,'Kortinki\\Zadacha3\\18_1.png',N'Kortinki\\Zadacha3\\18_2.png',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\18_1.png',N'C:\\Program Files\\Kortinki\\Zadacha3\\18_2.png',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Сокращённый многофакторный опросник для исследования личности СМОЛ.',
 	N'   Полученные данные:
@@ -5839,7 +5861,7 @@ L<40 Т-баллов, К=51 Т-балл, пик по шкале 9 (61 Т-бал�
    Вывод:  по результатам исследования испытуемый находится в относительно конформном состоянии, способен отражать и раскрывать свои моральные и психические дефекты. 
 
    Большая энциклопедия психологических тестов /Составитель А. Карелин. — М.: ЭКСМО, 2009. — С. 76-79.'
-,'Kortinki\\Zadacha3\\19_1.png',N'Kortinki\\Zadacha3\\19_2.png',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\19_1.png',N'C:\\Program Files\\Kortinki\\Zadacha3\\19_2.png',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика "Родителей оценивают дети" (РОД).',
 	N'   Полученные данные: числовых данные отсутствуют
@@ -5851,7 +5873,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  по мнению подростка, ошибок со стороны родителей в стиле его семейного воспитания нет.
 
    Фурманов,  И.А. Психологическая работа с детьми, лишенными родительского попечительства: Книга для психологов / И.А. Фурманов,  А.А. Аладьин,  Н.В. Фурманова  – МН.: ТЕСЕЙ, 1999. – С. 174, 210 – 216.'
-,'Kortinki\\Zadacha3\\20_1.png',N'Kortinki\\Zadacha3\\20_2.png',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\20_1.png',N'C:\\Program Files\\Kortinki\\Zadacha3\\20_2.png',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика "Анализ семейного воспитания" (АСВ) Э.Г. Эйдемиллер, В.В. Юстицкиса.',
 	N'   Полученные данные:
@@ -5876,7 +5898,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется  неправильный стиль семейного воспитания «повышенная моральная ответственность» и «потворствующая гиперпротекция».
 
    Детская психодиагностика и профориентация / Под ред. Л.Д. Столяренко –Ростов н/Д: «Феникс», 1999. – С. 289-301.'
-,'Kortinki\\Zadacha3\\21.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\21.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика "Кинетический рисунок семьи" (КРС).',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, полученные результаты не противоречат друг другу. Зона возможных проблем - "агрессия членов семьи по отношению к Диме".
@@ -5896,7 +5918,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 - у Димы эмоционально позитивное отношение к маме.
 
    Корнилова, Т.В. Подростковая группа риска / Т.В. Корнилова, Е.Л. Григоренко, С.Д. Смирнов. – СПб.: Питер, 2005. – 336 с.'
-,'Kortinki\\Zadacha3\\22.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\22.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Несуществующее животное".',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, диагностируется готовность к контролируемой коммуникации. Обследуемый ценит эрудицию в себе и окружающих. Ему свойственна рациональность при принятии решения путем опоры на существующие положение и значимую информацию. У него высокой контроль за рассуждениями, выводами и решениями. Имеется тенденция к замкнутости, закрытости своего внутреннего мира. Тревожность связана с поло-сексуальной проблемой. Отношение к своему "Я" нейтральное. Для обследуемого свойственен эгоцентризм.  Для него значимо мнение окружающих его близких людей.
@@ -5924,7 +5946,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: устойчивая личность с высоким уровнем самоконтроля и коммуникации.
 
    Кочубеева, Л.А. Применение проективной рисуночной методики "Несуществующее животное" для определения ТИМ / Л.А. Кочубеева, М.Л. Стоялова // Соционика, ментология и психология личности. – № 6. – 2002. –  С. 5-18.'
-,'Kortinki\\Zadacha3\\23_1.png',N'Kortinki\\Zadacha3\\23_2.png',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\23_1.png',N'C:\\Program Files\\Kortinki\\Zadacha3\\23_2.png',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Дом-Дерево-Человек" Дж. Бука (ДДЧ).',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого все психологические черты сбалансированы. Психологическая защита сильная, поэтому тревожность слабая. Для него характерна уверенность в себе, отсутствие чувства неполноценности, слабая агрессивность, слабая конфликтность. Нет трудностей общения и пониженного фона настроения.
@@ -5937,7 +5959,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого благополучное психологическое состояние.
 
    Романова, Е.С. Графические методы в практической психологии / Е.С.  Романова. – СПб.: Речь, 2001. – 529 с. '
-,'Kortinki\\Zadacha3\\24.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\24.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Незаконченные предложения" Сакса, Леви.',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, Дима любит мать, но отмечает у себя некоторое непослушание и иногда обижается на неё. У Димы позитивное отношение к членам своей семьи. Он доверяет настоящему другу и считает, что он должен тоже ценить дружбу и быть надежным. Дима относится к сверстникам позитивно и считает, что они такие же, как и он. Не любит, когда его обсуждают. Отношение к взрослым в целом позитивное, но считает, что взрослые губят себя вредными привычками - курением и спиртным. Не любит, когда взрослые ему не верят и не понимают его. Отношение к учебе и учителям позитивное. Считает, что он прилагает усилия для учебы и таким образом выполняет требования взрослых. В школе проявляет старательность. В конфликте Дима выбирает стиль поведения - соперничество. У людей он выделяет такие отрицательные черты как злость, жадность и несправедливость. Сейчас Дима ощущает чувство вины за непослушание. Отмечает у себя наличие такой отрицательной черты как нехватка терпения. Своей положительной чертой он считает способность к самоконтролю и честность. Считает, что в жизни будет соблюдать законы. О своем будущем Дима пока не думает. Надеется, что в будущем все будет хорошо, исполнятся его мечты, и он не будет курить. Жалеет о том, что не слушается родителей. Хочет забыть тот день, когда ему причинили зло. Хочет, чтобы все люди были счастливы и добры, а также, исполнение своей мечты.
@@ -5960,7 +5982,7 @@ D. Уровень реальности: Дима в своих рассужде�
 E. В какой манере выражаются конфликты: конфликты выражаются в потребности того, чтобы взрослые верили ему и  понимали его. А также при наличии конфликтной ситуации у Димы имеется потребность в отстаивании своего мнения. У людей он выделяет такие отрицательные черты как злость, жадность и несправедливость.
 
    Казачкова В.Г. Метод незаконченных предложений при изучении отношений личности // Вопросы психологии. - 1989. - N 3. - С. 154-157. '
-,'Kortinki\\Zadacha3\\25.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\25.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Тест школьной тревожности" Филипса.',
 	N'   Факторы:
@@ -5984,7 +6006,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: уровень школьной тревожности в норме.
 
    Психологические тесты для профессионалов / авт. сост Н.Ф. Гребень. – Минск: Современная школа, 2007. – С. 162-165.'
-,'Kortinki\\Zadacha3\\26.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\26.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика Ч.Д. Спилберга и Ю.Л. Ханина.',
 	N'   Полученные результаты:
@@ -6003,7 +6025,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: личностная тревожность низкая, реактивная тревожность умеренная.
 
    Диагностика эмоционально-нравственного развития / Ред. и сост. Дерманова И.Б. – СПб.: 2002. – С.124-126.'
-,'Kortinki\\Zadacha3\\net.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\net.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Самооценка личности" по Дембо-Рубинштейн в модификации А.М.Прихожан.',
 	N'   Полученные результаты:
@@ -6019,7 +6041,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: результаты выше нормы.
 
    Практическая психодиагностика. Методики и тесты / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — 672 с.'
-,'Kortinki\\Zadacha3\\28.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\28.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Теппинг-тест" Е.П. Ильина.',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого средне-слабая НС. Он плохо выдерживает большую по величине и длительности нагрузку. У него быстро наступает утомление.
@@ -6034,7 +6056,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого средне-слабая НС. 
 
    Практическая психодиагностика. Методики и тесты / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — С. 528-530.'
-,'Kortinki\\Zadacha3\\29_1.png',N'Kortinki\\Zadacha3\\29_2.png',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\29_1.png',N'C:\\Program Files\\Kortinki\\Zadacha3\\29_2.png',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Опросник Айзенка по определению темперамента и характера EPI" Т.В.Матолиной',
 	N'   Полученные данные.
@@ -6055,7 +6077,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Испытуемому свойственны следующие черты характера: общительность, открытость, инициативность, активность, разговорчивость, доступность, живость, беззаботность. Он любит удобства, легко соглашается на риск, не всегда разборчив в друзьях и средствах достижения цели. Часто эгоистичен, обаятелен, имеет организаторские способности. Непостоянен и наивен.
 
    Фетискин, Н. П. Экспресс-диагностика характерологических особенностей личности / Н. П. Фетискин, В. В. Козлов,  Г. М. Мануйлов. –  М., 2002. –  C. 35-44.'
-,'Kortinki\\Zadacha3\\30.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\30.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'ОФДСИ «Опросник формально-динамических свойств индивидуальности» В.М.Русалова',
 	N'   Полученные данные: 
@@ -6084,7 +6106,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Выводы:  у испытуемого адаптивность в норме. В коммуникативной и психомоторной сферах диагностируется смешанный, высоко активный тип темперамента. В интеллектуальной сфере – смешанный, высоко эмоциональный тип. Общий тип темперамента диагностируется как неопределенный.
 
    Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 118-130.'
-,'Kortinki\\Zadacha3\\31_1.png',N'Kortinki\\Zadacha3\\31_2.png',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\31_1.png',N'C:\\Program Files\\Kortinki\\Zadacha3\\31_2.png',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Ориентировочно-диагностическая анкета познавательных процессов (ДДО)',
 	N'   Полученные данные.
@@ -6097,7 +6119,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Выводы. Направленность личности испытуемого преимущественно на профессиональную область "человек-человек". В данную область входят все профессии, связанные с человеческим общением. Также ему свойственны интересы в области "человек-техника”, т.е. все профессии, связанные с техникой, ее обслуживанием и эксплуатацией.
 
    Райгородский, Д. Я. Практическая психодиагностика. Методики и тесты / Самара: Бахра-М, 2015. – C. 569-573'
-,'Kortinki\\Zadacha3\\32.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\32.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Карта интересов Голомштока"',
 	N'   Полученные данные: наибольшее количество знаков «+» набрали виды деятельности: Техника, транспорт, сфера обслуживания, общественная работа.
@@ -6110,7 +6132,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: интересы испытуемого направлены преимущественно на области: техника, транспорт, сфера обслуживания и торговля, общественная деятельность.
 
    Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 516-521.'
-,'Kortinki\\Zadacha3\\net.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\net.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Исследование объема эмоциональной памяти"',
 	N'   Полученные данные: 42%
@@ -6126,7 +6148,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. У испытуемого объем эмоциональной памяти в норме. Им преимущественно запоминаются слова положительной модальности. Слова отрицательной модальности запоминаются в меньшей степени.
 
    Изучение основных закономерностей познавательных процессов в период взрослости [Электронный ресурс] / Экспериментальное изучение памяти // Режим доступа : http://studbooks.net/1613171/psihologiya/eksperimentalnaya_chast'
-,'Kortinki\\Zadacha3\\net.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\net.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'"Исследование объема кратковременной памяти" с помощью субтеста Векслера.',N'"Исследование объема кратковременной памяти" с помощью субтеста "Повторение цифр" из теста Векслера.',
 	N'   Полученные данные.
@@ -6148,7 +6170,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. У испытуемого объем кратковременной памяти в норме. Концентрация внимания в норме.
 
    Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C.325-403.'
-,'Kortinki\\Zadacha3\\net.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\net.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "10 слов" (оценка состояния памяти, утомляемости, особенностей мышления).',
 	N'   Полученные данные.
@@ -6163,7 +6185,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого память и активность внимания в норме. Утомляемость низкая.
 
    Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 202-203. '
-,'Kortinki\\Zadacha3\\net.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\net.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Сложные аналогии"',
 	N'   Полученные данные: 5 баллов (13 ответов)
@@ -6173,7 +6195,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: испытуемый недостаточно хорошо понимает сложные логические отношения и выделяет абстрактные связи.
 
    Касьянов, С. Психологические тесты / С. Касьянов. – М.: Эксмо, 2006. –  608 с.'
-,'Kortinki\\Zadacha3\\37.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\37.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Выделение существенных признаков".',
 	N'   Полученные данные: 5 баллов (33 слова)  
@@ -6185,7 +6207,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: операции мышления анализ, сравнение, обобщение и классификация развиты в норме. 
 
    Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 61-62.'
-,'Kortinki\\Zadacha3\\38.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\38.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Корректурная проба Бурдона".',
 	N'   Полученные данные.
@@ -6208,7 +6230,7 @@ A = S / t, где
    Вывод: у испытуемого концентрация  и устойчивость внимания в норме. 
 
    Корректурная проба (Тест Бурдона) / Альманах психологических тестов. – М., 1995. –  С.107-111.'
-,'Kortinki\\Zadacha3\\39.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\39.png',N'',3)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Опросник для изучения познавательных интересов Юркевича.',
 	N'   Полученные данные:  10 балл
@@ -6223,7 +6245,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого диагностируются низкие познавательные процессы.
 
    Диагностика познавательной потребности [Электронный ресурс] // Режим доступа: http://docpsy.ru/testy/diagnostika-motivatsii/5047-metodika-poznavatelnaya-potrebnost.html'
-,'Kortinki\\Zadacha3\\net.png',N'',3)
+,'C:\\Program Files\\Kortinki\\Zadacha3\\net.png',N'',3)
 go
 
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
@@ -6233,7 +6255,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  умственное развитие  низкое  (32%).
 
    Гуревич, К.М.  Психологическая коррекция умственного развития учащихся / К.М.Гуревич, И.В.Дубровина. −  М, 1990. – С. 33-35.'
-,'Kortinki\\Zadacha4\\1_1.png',N'Kortinki\\Zadacha4\\1_2.png',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\1_1.png',N'C:\\Program Files\\Kortinki\\Zadacha4\\1_2.png',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Цветовой тест" М. Люшера.',
 	N'   Полученные данные: цветовой выбор
@@ -6248,7 +6270,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  средняя степень гибкости своего мнения, тревожность  в норме.
 
    Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизнь-XXI век. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.'
-,'Kortinki\\Zadacha4\\2.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\2.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'16 ЛФ Р.Б. Кеттелла.',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данный тип личности обладает  коммуникативными свойствами личности, которые  характеризуются сдержанностью  в непосредственных межличностных контактах, активностью,  экспрессивностью в социальном общении, готовностью к вступлению в  новые группы, склонностью к лидерству. Склонен к экстраверсии. В поведении проявляются мягкость, доверчивость, уступчивость, прямолинейность. В социальном поведении отмечаются нонконформные реакции: противопоставление себя группе, свободное отношение к  общепринятым моральным правилам и нормам. Можно предполагать  личностную и социальную незрелость.   Эмоциональная сфера характеризуется уверенностью в себе, спокойным, адекватным восприятием действительности. Такой человек не нуждается в волевой регуляции своих эмоций и поведения, стрессоустойчив, ригиден. В поведении может быть уравновешен, спокоен. У него наблюдается удовлетворённость самим собой, внутренняя расслабленность и низкая мотивация (это сказывается на недостаточной эффективности профессиональной деятельности). Интеллектуальная сфера характеризуется невысокой оперативностью мышления, с недостаточно развитым уровнем общей культуры. Такой человек обладает развитой аналитичностью мышления, интеллектуальными интересами, умением оперировать абстрактными понятиями, развитым воображением. Склонен принимать самостоятельные оригинальные решения. Низкие оценки по фактору "В", при таком сочетании факторов могут объясняться рядом причин: недостаточным уровнем образования; фрустрированностью; ситуативной тревожностью; плохим физическим самочувствием на момент выполнения теста.        В целом личность можно диагностировать как человека, склонного к экстраверсии и лидерству: сдержанного в межличностных контактах, активного и экспрессивного в социальном общении. В социальном поведении у него отмечаются нонконформные реакции: противопоставление себя группе, свободное отношение к общепринятым моральным правилам и нормам. Он уверен в себе, спокойный, с адекватным восприятием действительности. Такой человек стрессоустойчив и ригиден. В поведении может быть уравновешен и спокоен. Он имеет невысокую оперативность и подвижность мышления, с недостаточно развитым уровнем общей культуры, но хорошо развитую аналитичностью мышления и интеллектуальные интересы. Склонен к самостоятельным оригинальным решениям. Возможно у него недостаточный уровень образования или он фрустрирован, а также имеет ситуативную тревожность.
@@ -6265,7 +6287,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •факторы A, E, G, J и Q1 соответствуют норме.
 
    Головей, Л.А. Практикум по возрастной психологии: Учеб. пособие / Л.А. Головей , Е.Ф. Рыбалко. − СПб.: Речь, 2002. - С. 578-588.'
-,'Kortinki\\Zadacha4\\3_1.png',N'Kortinki\\Zadacha4\\3_2.png',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\3_1.png',N'C:\\Program Files\\Kortinki\\Zadacha4\\3_2.png',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Тест рисуночных ассоциаций" С. Розенцвейга.',
 	N'   Полученные данные:
@@ -6275,7 +6297,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: уровень социальной адаптации – низкий. 
 
    Дементий, Л.И. Фрустрация: Понятие и диагностика. Учеб. метод. пособие для студентов специальности «Психология»/ Л.И. Дементий. - ОмГУ, 2004. – 68 с.'
-,'Kortinki\\Zadacha4\\net.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\net.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Тест руки" (Hand-тест) А. Вагнера.',
 	N'   Полученные данные:
@@ -6295,7 +6317,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: испытуемый не является агрессивно устремленным. Его агрессивность существует потенциально, в формах страха или зависимости. Доминирующее восприятие руки - активно-безразличное и как покалеченная. 
 
    Елисеев, О.П. Практикум по психологии личности / О.П. Елисеев. - СПб., 2003. - С.310-327.'
-,'Kortinki\\Zadacha4\\net.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\net.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Диагностика межличностных отношений" Т. Лири.',
 	N'   Полученные данные: (в цифровом значении не представлены)
@@ -6307,7 +6329,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: тип личности испытуемого независимо-доминирующий и недоверчиво-скептический, в средней степени выражено чувство собственного превосходства над окружающими. 
 
    Собчик, Л.Н.  Психология индивидуальности. Теория и практика психодиагностики / Л.Н. Собчик. -  СПб.: Речь, 2005. - 624 с. '
-,'Kortinki\\Zadacha4\\6.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\6.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Диагностика уровня субъективного контроля УСК" Дж. Роттера.',
 	N'   Полученные данные: 
@@ -6326,7 +6348,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  низкий уровень субъективного контроля.
 
    Грецов, А.Г. Психологические тесты для старшеклассников и студентов /А. Г. Грецов, А.А. Азбель. - СПб.: Питер, 2012. - 208 с.'
-,'Kortinki\\Zadacha4\\7_1.png',N'Kortinki\\Zadacha4\\7_2.png',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\7_1.png',N'C:\\Program Files\\Kortinki\\Zadacha4\\7_2.png',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Исследование волевой саморегуляции ВСК" А. Зверков, Е.В. Эйдман.',
 	N'   Полученные данные:
@@ -6341,7 +6363,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: волевая саморегуляция довольно 
 
    Пашукова, Т.И. Психологические исследования. Практикум по общей психологии для студентов педагогических вузов / Т.И. Пашукова, А.И. Допира, Г.В. Дьяконов. -  М.: ИПП, 1996. - 177 с.'
-,'Kortinki\\Zadacha4\\8.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\8.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Диагностика предрасположенности личности к конфликтному поведению" Томаса',
 	N'   Полученные данные: 
@@ -6356,7 +6378,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  ярко выраженное соперничество, приспособление и избегание в конфликтных ситуациях.
 
    Истратова, О.Н. Психодиагностика. Коллекция лучших тестов / О.Н. Истратова, Т.В. Эксакусто. - РнД.: Феникс, 2006. - 375 с.'
-,'Kortinki\\Zadacha4\\9.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\9.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Методика выявления коммуникативных и организаторских склонностей" КОС-2.',
 	N'   Полученные данные: 
@@ -6368,7 +6390,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: достаточно хорошие организаторские и коммуникативные способности.
 
    Фетискин, Н. П. Социально-психологическая диагностика развития личности и малых групп / Н. П. Фетискин, В. В. Козлов, Г. М. Майнулов. – М.: Институт Психотерапии, 2002. – C.263-265.'
-,'Kortinki\\Zadacha4\\10.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\10.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Диагностика социально-психологических установок личности',N'Тест "Диагностика социально-психологических установок личности в мотивационно-потребностной сфере" О.Ф.Потемкиной.',
 	N'   Полученные данные:
@@ -6391,7 +6413,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого выражены ярко следующие социально-психологические установки: ориентация на процесс и  свободу.  Ориентация на труд и эгоизм выражены в средней степени .Так же как и  установки, ориентация на результат, альтруизм, власть и деньги.
 
    Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001. – С.641-648. '
-,'Kortinki\\Zadacha4\\net.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\net.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала искренности Марлоу-Крауна.',
 	N'   Полученные данные: общий итоговый показатель “мотивации одобрения” 11 баллов
@@ -6406,7 +6428,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 
    Вывод:  у испытуемого мотивация одобрения выражена в средней степени.
    Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001.  – С.635-636.'
-,'Kortinki\\Zadacha4\\net.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\net.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Опросник мотивации достижения А.Мехрабиана',
 	N'   Полученные данные: мотивация стремления к успеху 60 баллов, мотивация избегания неудач  170 баллов
@@ -6421,7 +6443,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого низкая мотивация стремления к успеху.  Мотивация избегания неудач  выражена в высокой степени.
    
    Фетискин,  Н.П.  Социально-психологическая диагностика развития личности и малых групп. / Н.П. Фетискин, В.В. Козлов, Г.М. Мануйлов  – М, 2002. – C.98-102.'
-,'Kortinki\\Zadacha4\\net.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\net.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика изучения мотивации к избеганию неудач Т. Элерса.',
 	N'   Полученные данные: 20 баллов
@@ -6437,7 +6459,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого мотивация к избеганию  неудач выражена в высокой степени.
 
    Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.630-632.'
-,'Kortinki\\Zadacha4\\net.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\net.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика изучения мотивации успеха Т. Элерса.',
 	N'   Полученные данные: 8 баллов
@@ -6453,7 +6475,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:   у испытуемого мотивация стремления к успеху выражена в низкой степени. Это проявляется в страхе перед неудачами. Такие люди имеют малый или наоборот слишком большой уровень риска.
 
    Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.626-629.'
-,'Kortinki\\Zadacha4\\net.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\net.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика диагностики оперативной оценки самочувствия, активности и настроения (САН).',
 	N'   Норма: 
@@ -6464,7 +6486,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  у испытуемого настроение, активность и самочувствие выражены в нормальной степени.
 
    Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.17-21.'
-,'Kortinki\\Zadacha4\\16.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\16.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Самооценка психических состояний по Айзенку.',
 	N'   Полученные данные:
@@ -6489,7 +6511,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у обследуемого уровень тревожности и фрустрации средний, уровень агрессивности - повышенный. Есть трудности при общении и в учебе. Ригидность низкая, легкая переключаемость.
 
    Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С. 141-145.'
-,'Kortinki\\Zadacha4\\net.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\net.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'ПДО "Патохарактерологический диагностический опросник для подростков".',N'ПДО "Патохарактерологический диагностический опросник для подростков" А.Е. Личко, Н.Я. Иванова.',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: имеется риск дезадаптации. У испытуемого позитивное отношение к исследованию. Выявлена низкая конформность и возможность диссимуляции. Реакция эмансипации умеренная. Преобладают черты мужественности. Нет психологической склонности к алкоголизации, но имеется выраженный риск к употреблению психоактивных средств. Риск депрессии отрицается.
@@ -6524,7 +6546,7 @@ d — психологической склонности к делинквен�
    Вывод:  по результатам исследования диагностируется неустойчивый тип акцентуации характера.
    
    Личко, А.Е. Патохарактерологический диагностический опросник для подростков / А.Е. Личко, Н.Я. Иванов. - 2-е изд. — М.: Фолиум, 1995. – 64 с.'
-,'Kortinki\\Zadacha4\\18_1.png',N'Kortinki\\Zadacha4\\18_2.png',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\18_1.png',N'C:\\Program Files\\Kortinki\\Zadacha4\\18_2.png',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Сокращённый многофакторный опросник для исследования личности СМОЛ.',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: у него имеется отклонение от нормальных личностных реакций. Испытуемый амбоверт.   По сочетанию пиков в шкалах 3 и 4 диагностируется наличие проблемы импульсивности. Т.е. имеются проблема с контролем и сдерживанием социально неприемлемых импульсов в поведении.
@@ -6560,7 +6582,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: по результатам исследования у испытуемого недостаточно выражено самопонимание, низкие адаптационные возможности и отмечается неправильное толкование утверждений теста. 
 
    Большая энциклопедия психологических тестов /Составитель А. Карелин. — М.: ЭКСМО, 2009. — С. 76-79.'
-,'Kortinki\\Zadacha4\\19_1.png',N'Kortinki\\Zadacha4\\19_2.png',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\19_1.png',N'C:\\Program Files\\Kortinki\\Zadacha4\\19_2.png',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика "Родителей оценивают дети" (РОД).',
 	N'   Полученные данные: (в числовом виде отсутствуют) 
@@ -6572,7 +6594,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: в представлениях подростка его матерью допускаются ошибки в стиле семейного воспитания по типу "гипоопека" или "потворствующая гиперпротекция" (гиперпротекция (Г+), потворствование (У+), чрезмерность требований-запретов (З+), минимальность санкций (С-) и неустойчивость стиля семейного воспитания (Н)).
 
    Фурманов,  И.А. Психологическая работа с детьми, лишенными родительского попечительства: Книга для психологов / И.А. Фурманов,  А.А. Аладьин,  Н.В. Фурманова  – МН.: ТЕСЕЙ, 1999. – С. 174, 210 – 216.'
-,'Kortinki\\Zadacha4\\20.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\20.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика "Анализ семейного воспитания" (АСВ) Э.Г. Эйдемиллер, В.В. Юстицкиса.',
 	N'   Полученные данные:
@@ -6598,7 +6620,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется нарушение стиля семейного воспитания по типу  "потворствующая гипопротекция".
 
    Детская психодиагностика и профориентация / Под ред. Л.Д. Столяренко. –Ростов н/Д: «Феникс», 1999. – С. 289-301.'
-,'Kortinki\\Zadacha4\\21.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\21.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика "Кинетический рисунок семьи" (КРС).',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, прослеживается тенденция к ухудшению семейной ситуации. Пока она воспринимается испытуемым как благополучная, но наблюдается рост таких черт, как тревожность и чувство неполноценности.
@@ -6617,7 +6639,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 - эмоциональная напряженность и тревожность в семейной ситуации.
 
    Корнилова, Т.В. Подростковая группа риска / Т.В. Корнилова, Е.Л. Григоренко, С.Д. Смирнов. – СПб.: Питер, 2005. – 336 с. '
-,'Kortinki\\Zadacha4\\22.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\22.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Несуществующее животное".',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, испытуемому свойственна вербальная агрессия и эгоцентризм, он заинтересован в информации от окружающих. Относится к своему "Я" нейтрально, имеется тенденция к замкнутости и нежеланию давать информацию о себе окружающим. Инфантилен, конформен в суждениях и установках. Импульсивен в принятии решений. Средняя степень астеничности.
@@ -6643,7 +6665,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Выводы: диагностируется неуверенность в себе, низкая самооценка, подавленность, нерешительность, отсутствие тенденции к самоутверждению и незаинтересованность в своем положении в социуме.
 
    Кочубеева, Л.А. Применение проективной рисуночной методики "Несуществующее животное" для определения ТИМ / Л.А. Кочубеева, М.Л. Стоялова // Соционика, ментология и психология личности. – № 6. – 2002. – С. 5-18.'
-,'Kortinki\\Zadacha4\\23_1.png',N'Kortinki\\Zadacha4\\23_2.png',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\23_1.png',N'C:\\Program Files\\Kortinki\\Zadacha4\\23_2.png',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Дом-Дерево-Человек" Дж. Бука (ДДЧ).',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, в жизненной ситуации испытуемого происходят события, ослабляющие его психологическую защиту и это влияет на появление неуверенности и чувства неполноценности (он видит свои отличия от других и воспринимает их как недостаток).
@@ -6656,7 +6678,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Выводы: у испытуемого неблагополучное психологическое состояние, очень ярко выражены неуверенность в себе и чувство неполноценности.
 
    Романова, Е.С. Графические методы в практической психологии / Е.С.  Романова. – СПб.: Речь, 2001. – 529 с.'
-,'Kortinki\\Zadacha4\\24.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\24.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Незаконченные предложения" Сакса, Леви.',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у Димы отношение к матери позитивное, он любит и считает её красивой. Убежден, что его мать и он сам - нормальные. Юра думает, что большинство матерей счастливы со своим ребенком. Но не любит своего отца. Юра отмечает, что с отцом он не встречается. Ребенок его не хочет видеть и считает его плохим. Юра считает свою семью лучше других. Отмечают, что мать с ним обращается как с сыном. Помнит, что в детстве его окружали взрослые. Юра считает, что у него есть настоящий, хороший друг. Его друзья помнят о нем. Но он не любит плохих людей. Отношение к сверстникам у Юры позитивное. Но он не любит, когда они играют не по правилам в какие-нибудь игры, например в футбол. Юра любит хороших людей. Считает, что большинство юношей и девушек нюхают наркотики, а взрослые не работают. Ему не нравится, когда взрослые отзываются о нем плохо. Юра при воспоминании о школе ощущает свою беспомощность, хотя отмечает, что в школе он учится. Свою учебу он оценивает как среднюю, а учителей - хорошими. Юра считает, что если люди будут настроены против него, то им надо отвечать тем же - настроем против них. Идеалом женщины он видит свою маму. И отмечает, что плохих людей он не любит. Юра считает, что он способен учиться на пятерки, но у него имеется большая слабость - лень. Когда ему не везет, он огорчается. Но если люди будут настроены против него, то и он будет настроен против них. Свое детство Юра не помнит, но считает, что если бы оно повторилось, то он не сделал бы ничего плохого. Будущее кажется Юре светлым и счастливым. Он ждет день окончания школы и мечтает стать юристом или футболистом. Юра жалеет о том, что в семье он один ребенок. Он хочет забыть все плохое. Считает, что самой большой ошибкой мамы было "жениться на" папе, а его самого - обидеть маму. В детстве испытывал чувство вины, если "гадил в штанишки". Юра хочет быть умным и иметь джина, который бы ему помогал. Хочет быть счастливым.
@@ -6679,7 +6701,7 @@ C. Зрелость: наблюдается некоторая незрелос�
 D. Уровень реальности: Юра в своих рассуждениях не достаточно реалистичен.
 E. В какой манере выражаются конфликты: эмоциональные конфликты у Юры выражаются в наличии чувства страдания из-за отца. Из-за чего люди разделились на плохих и хороших. А  также в негативном отношении к людям, которые, по мнению Юры относятся к нему тоже негативно.
 Казачкова В.Г. Метод незаконченных предложений при изучении отношений личности // Вопросы психологии. - 1989. - N 3. - С. 154-157.'
-,'Kortinki\\Zadacha4\\25.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\25.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Тест школьной тревожности" Филипса.',
 	N'   Факторы.
@@ -6704,7 +6726,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: уровень школьной тревожности в норме.
 
    Психологические тесты для профессионалов / авт. сост Н.Ф. Гребень. – Минск: Современная школа, 2007. – С. 162-165.'
-,'Kortinki\\Zadacha4\\26.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\26.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика Ч.Д. Спилберга и Ю.Л. Ханина.',
 	N'   Полученные результаты:
@@ -6721,7 +6743,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: результаты в пределах нормы.
 
    Диагностика эмоционально-нравственного развития / Ред. и сост. Дерманова И.Б. – СПб.: 2002. – С.124-126.'
-,'Kortinki\\Zadacha4\\net.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\net.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Самооценка личности" по Дембо-Рубинштейн в модификации А.М.Прихожан.',
 	N'   Полученные результаты:
@@ -6737,7 +6759,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: результаты в пределах нормы.
 
    Практическая психодиагностика. Методики и тесты. / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — 672 с.'
-,'Kortinki\\Zadacha4\\28.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\28.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Теппинг-тест" Е.П. Ильина.',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого сильная НС. Он способен выдерживать большую по величине и длительности нагрузку. Он обладает такими качествами, как выносливость и работоспособность. У него высокая концентрация внимания и активность.
@@ -6752,7 +6774,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого сильная НС
 
    Практическая психодиагностика. Методики и тесты. / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — С. 528-530.'
-,'Kortinki\\Zadacha4\\29.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\29.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Опросник Айзенка по определению темперамента и характера EPI" Т.В.Матолиной',
 	N'   Полученные данные:
@@ -6773,7 +6795,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Испытуемому свойственны следующие черты характера: очень демонстративен, не умеет сопереживать, эмоционально беден. Противопоставляет себя коллективу. Очень напорист в достижении значимых для себя целей.  Престижен, часто фальшив, практичен. Жестоко требователен к окружающим: упрям, горд, очень честолюбив. Энергичен, общителен, настроение чаще боевое. Неудачи скрывает, хладнокровен.
 
    Фетискин, Н. П. Экспресс-диагностика характерологических особенностей личности / Н. П. Фетискин, В. В. Козлов,  Г. М. Мануйлов. –  М., 2002. –  C. 35-44.'
-,'Kortinki\\Zadacha4\\30.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\30.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'ОФДСИ «Опросник формально-динамических свойств индивидуальности» В.М.Русалова',
 	N'   Полученные данные: 
@@ -6800,7 +6822,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Выводы. У испытуемого общая адаптивность ниже нормы. В психомоторной сфере диагностируется смешанный, высокоактивный тип темперамента. В интеллектуальной и коммуникативной сферах – неопределенный тип. Общий тип темперамента диагностируется как неопределенный.
 
    Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 118-130.'
-,'Kortinki\\Zadacha4\\31_1.png',N'Kortinki\\Zadacha4\\31_2.png',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\31_1.png',N'C:\\Program Files\\Kortinki\\Zadacha4\\31_2.png',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Ориентировочно-диагностическая анкета познавательных процессов (ДДО)',
 	N'   Полученные данные:
@@ -6812,7 +6834,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Выводы. Направленность личности испытуемого преимущественно на профессиональную область "человек-человек". В нее входят все профессии связанные с человеческим общением. Также ему интересна профессиональная область "человек-художественный образ". В нее входят все профессии, связанные с творчеством.
 
    Райгородский, Д. Я. Практическая психодиагностика. Методики и тесты / Самара: Бахра-М, 2015. – C. 569-573.'
-,'Kortinki\\Zadacha4\\32.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\32.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Карта интересов Голомштока"',
 	N'   Полученные данные: наибольшее количество знаков «+» набрали виды деятельности: география, геология, литература и история.
@@ -6823,7 +6845,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: интересы испытуемого направлены преимущественно на области: география, геология, литература и история.
 
    Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 516-521.'
-,'Kortinki\\Zadacha4\\net.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\net.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Исследование объема эмоциональной памяти"',
 	N'   Полученные данные: 30%
@@ -6839,7 +6861,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. У испытуемого объем эмоциональной памяти в норме. Им преимущественно запоминаются слова нейтральной модальности. Слова отрицательной модальности запоминаются в меньшей степени.
 
    Изучение основных закономерностей познавательных процессов в период взрослости [Электронный ресурс] / Экспериментальное изучение памяти // Режим доступа : http://studbooks.net/1613171/psihologiya/eksperimentalnaya_chast'
-,'Kortinki\\Zadacha4\\net.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\net.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'"Исследование объема кратковременной памяти" с помощью субтеста Векслера.',N'"Исследование объема кратковременной памяти" с помощью субтеста "Повторение цифр" из теста Векслера.',
 	N'   Полученные данные.
@@ -6859,7 +6881,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. У испытуемого объем кратковременной памяти в норме. Концентрация внимания в норме.
 
    Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C.325-403.'
-,'Kortinki\\Zadacha4\\net.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\net.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "10 слов" (оценка состояния памяти, утомляемости, особенностей мышления).',
 	N'   Полученные данные.
@@ -6874,7 +6896,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого память и активность внимания в норме. Утомляемость низкая.
 
    Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 202-203. '
-,'Kortinki\\Zadacha4\\net.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\net.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Сложные аналогии"',
 	N'   Полученные данные: 4 балла (10 ответов)
@@ -6884,7 +6906,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: испытуемый не достаточно хорошо понимает сложные логические отношения и выделяет абстрактные связи.
 
    Касьянов, С. Психологические тесты / С. Касьянов. – М.: Эксмо, 2006. –  608 с.'
-,'Kortinki\\Zadacha4\\37.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\37.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Выделение существенных признаков".',
 	N'   Полученные данные: 3 балла (25 слов)  
@@ -6896,7 +6918,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: операции мышления анализ, сравнение, обобщение и классификация развиты ниже нормы. 
 
    Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 61-62.'
-,'Kortinki\\Zadacha4\\38.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\38.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Корректурная проба Бурдона".',
 	N'   Полученные данные: 
@@ -6919,7 +6941,7 @@ A = S / t, где
    Вывод: у испытуемого концентрация  и устойчивость внимания в норме. 
 
    Корректурная проба (Тест Бурдона) / Альманах психологических тестов. – М., 1995. –  С.107-111.'
-,'Kortinki\\Zadacha4\\39.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\39.png',N'',4)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Опросник для изучения познавательных интересов Юркевича.',
 	N'   Полученные данные:  10 балл
@@ -6935,7 +6957,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого диагностируются низкие познавательные интересы.
 
    Диагностика познавательной потребности [Электронный ресурс] // Режим доступа: http://docpsy.ru/testy/diagnostika-motivatsii/5047-metodika-poznavatelnaya-potrebnost.html'
-,'Kortinki\\Zadacha4\\net.png',N'',4)
+,'C:\\Program Files\\Kortinki\\Zadacha4\\net.png',N'',4)
 go
 
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
@@ -6945,7 +6967,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  умственное развитие  очень низкое  (18,8%).
 
    Гуревич, К.М.  Психологическая коррекция умственного развития учащихся / К.М.Гуревич, И.В.Дубровина. −  М, 1990. – С. 33-35.'
-,'Kortinki\\Zadacha5\\1_1.png',N'Kortinki\\Zadacha5\\1_2.png',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\1_1.png',N'C:\\Program Files\\Kortinki\\Zadacha5\\1_2.png',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Цветовой тест" М. Люшера.',
 	N'   Полученные данные: не представлены.
@@ -6965,7 +6987,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 
    Вывод:  способен работать довольно хорошо, но с перерывами, средняя степень гибкости, тревожность сильная,
    Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин / Химия и жизнь-XXI век. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.'
-,'Kortinki\\Zadacha5\\net.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\net.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'16 ЛФ Р.Б. Кеттелла.',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данный тип личности обладает  коммуникативными свойствами личности, которые  характеризуются независимостью характера, проявляющейся в свободном отношении к общепринятым моральным нормам и правилам, не выраженным чувством долга и ответственности. В поведении отмечаются конформные реакции, зависимость от мнения и требований группы, открытость и прямолинейность в отношении к людям, некоторая социальная незрелость. Эмоциональная сфера характеризуется генетической эмоциональной стабильностью, низким контролем эмоций и поведения, низкой саморегуляцией, порождающей неуверенность в себе, сомнения и мнительность, недовольство собой. Но в экстремальных ситуациях проявляются природные качества, обеспечивающие стрессоустойчивость и достаточную уравновешенность поведения. Отмечается эмоционально-волевая незрелость личности. Интеллектуальная сфера характеризуется невысокой оперативностью мышления, неумением актуализировать свои знания, низкой общей культурой и эрудированностью, консерватизмом и критичностью в принятии новых интеллектуальных знаний, сниженными интеллектуальными процессами, конкретностью воображения и направленностью на практическую, конкретную деятельность. (Высокие оценки по факторам Е и N не влияют на интеллектуальные, но обостряют негативные свойства личности: доминированность, житейская изворотливость, упрямство). В целом личность можно диагностировать как человека, стремящегося к неформальному лидерству. Для этого он может свободно пренебрегать общепринятым моральным нормам и правилам. Его чувство долга и ответственности плохо развиты. Такой лидер будет стараться удовлетворять потребности группы и полностью соответствовать её принципам. А в отношениях с другими людьми он может быть прямолинеен, что характеризует его некоторую социальную незрелость.  Он имеет незрелую эмоционально-волевую сферу, проявляющуюся в низком контроле эмоций, поведения и низкой саморегуляции. В силу чего он становится неуверенным и недовольным собой. Его интеллектуальные процессы снижены, а воображение направлено на практическую и конкретную деятельность.
@@ -6982,7 +7004,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •фактор  Q3 соответствует норме.
 
    Головей, Л.А. Практикум по возрастной психологии: Учеб. пособие / Л.А. Головей , Е.Ф. Рыбалко. − СПб.: Речь, 2002. - С. 578-588.'
-,'Kortinki\\Zadacha5\\3_1.png',N'Kortinki\\Zadacha5\\3_1.png',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\3_1.png',N'C:\\Program Files\\Kortinki\\Zadacha5\\3_1.png',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Тест рисуночных ассоциаций" С. Розенцвейга.',
 	N'   Полученные данные:
@@ -6991,7 +7013,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 
    Вывод:  слишком низкий уровень социальной адаптации
    Дементий, Л.И. Фрустрация: Понятие и диагностика. Учеб. метод. пособие для студентов специальности «Психология»/ Л.И. Дементий. - ОмГУ, 2004. – 68 с.'
-,'Kortinki\\Zadacha5\\net.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\net.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Тест руки" (Hand-тест) А. Вагнера.',
 	N'   Полученные данные:
@@ -7010,7 +7032,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:    у испытуемого существует тенденция агрессивного поведения  Нежелание приспосабливаться к внешнему окружению выражена в высокой степени. Испытуемый преимущественно воспринимает руку как ведущую, оказывающую влияние на другого, и как демонстративную, показывающую окружающим свою красоту. 
 
    Елисеев, О.П. Практикум по психологии личности / О.П. Елисеев. - СПб., 2003. - С.310-327.'
-,'Kortinki\\Zadacha5\\net.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\net.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Диагностика межличностных отношений" Т. Лири.',
 	N'   Полученные данные: (в цифровом виде не представлены)
@@ -7022,7 +7044,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: тип личности испытуемого независимо-доминирующий с независимым и стремящимся к соперничеству, самодовольным стилем межличностных взаимоотношений. 
 
    Собчик, Л.Н.  Психология индивидуальности. Теория и практика психодиагностики / Л.Н. Собчик. -  СПб.: Речь, 2005. - 624 с. '
-,'Kortinki\\Zadacha5\\6.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\6.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Диагностика уровня субъективного контроля УСК" Дж. Роттера.',
 	N'   Полученные данные: 
@@ -7041,7 +7063,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  низкий уровень субъективного контроля.
 
    Грецов, А.Г., Психологические тесты для старшеклассников и студентов / А.Г. Грецов, А.А. Азбель. - СПб.: Питер, 2012. - 208 с.'
-,'Kortinki\\Zadacha5\\7_1.png',N'Kortinki\\Zadacha5\\7_2.png',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\7_1.png',N'C:\\Program Files\\Kortinki\\Zadacha5\\7_2.png',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Исследование волевой саморегуляции ВСК" А. Зверков, Е.В. Эйдман.',
 	N'   Полученные данные:
@@ -7056,7 +7078,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: волевая саморегуляция - очень низкая
 
    Пашукова, Т.И. Психологические исследования. Практикум по общей психологии для студентов педагогических вузов / Т.И. Пашукова, А.И. Допира, Г.В. Дьяконов. -  М.: ИПП, 1996. - 177 с.'
-,'Kortinki\\Zadacha5\\8.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\8.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Диагностика предрасположенности личности к конфликтному поведению" Томаса',
 	N'   Полученные данные: 
@@ -7071,7 +7093,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  в конфликтных ситуациях ярко выражены такие формы поведения как избегание и  приспособление,  оптимально  выраженно соперничество. 
 
    Истратова, О.Н. Психодиагностика. Коллекция лучших тестов / О.Н. Истратова, Т.В. Эксакусто. - РнД.: Феникс, 2006. - 375 с.'
-,'Kortinki\\Zadacha5\\9.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\9.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Методика выявления коммуникативных и организаторских склонностей" КОС-2.',
 	N'   Полученные данные: 
@@ -7083,7 +7105,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  очень хорошие  организаторские и коммуникативные способности.
 
    Фетискин, Н. П. Социально-психологическая диагностика развития личности и малых групп / Н. П. Фетискин, В. В. Козлов, Г. М. Майнулов. – М.: Институт Психотерапии, 2002. – C.263-265.'
-,'Kortinki\\Zadacha5\\10.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\10.png',N'',5)
 	insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Диагностика социально-психологических установок личности',N'Тест "Диагностика социально-психологических установок личности в мотивационно-потребностной сфере" О.Ф.Потемкиной.',
 	N'   Полученные данные:
@@ -7106,7 +7128,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого наиболее ярко выражены  следующие социально-психологические установки: ориентация на свободу, эгоизм, деньги и власть. Ориентация на процесс, альтруизм и результат выражены средне. Такая установка, как ориентация на труд выражена слабо.
 
    Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001. – С.641-648. '
-,'Kortinki\\Zadacha5\\net.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\net.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала искренности Марлоу-Крауна.',
 	N'   Полученные данные: общий итоговый показатель “мотивации одобрения” 12 баллов
@@ -7122,7 +7144,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого мотивация одобрения выражена в средней степени.
 
    Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский – Самара, 2001.  – С.635-636.'
-,'Kortinki\\Zadacha5\\net.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\net.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Опросник мотивации достижения А.Мехрабиана',
 	N'   Полученные данные: мотивация стремления к успеху 45 баллов, мотивация избегания неудач 35 баллов
@@ -7137,7 +7159,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:    у испытуемого мотивация стремления к успеху и мотивация избегания неудач  выражена в низкой степени.  .
 
    Фетискин,  Н.П.  Социально-психологическая диагностика развития личности и малых групп. / Н.П. Фетискин, В.В. Козлов, Г.М. Мануйлов  – М, 2002. – C.98-102.'
-,'Kortinki\\Zadacha5\\net.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\net.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика изучения мотивации к избеганию неудач Т. Элерса.',
 	N'   Полученные данные: 5 баллов
@@ -7153,7 +7175,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  у испытуемого мотивация к избеганию  неудач выражена в низкой степени.
 
    Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.630-632.'
-,'Kortinki\\Zadacha5\\net.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\net.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика изучения мотивации успеха Т. Элерса.',
 	N'   Полученные данные: 5 баллов
@@ -7169,7 +7191,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого мотивация стремления к  успеху выражена в низкой степени.  Это проявляется в низкой степени готовности к риску, а также в низкой степени выраженности мотивации избегания неудач (защите).
 
    Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.626-629.'
-,'Kortinki\\Zadacha5\\net.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\net.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика диагностики оперативной оценки самочувствия, активности и настроения (САН).',
 	N'   Норма: 
@@ -7180,7 +7202,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого благоприятное состояние: у него хорошее самочувствие, настроение и высокая активность.
 
    Райгородский,  Д.Я.  Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С.17-21.'
-,'Kortinki\\Zadacha5\\16.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\16.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Самооценка психических состояний по Айзенку.',
 	N'   Полученные данные:
@@ -7206,7 +7228,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  у обследуемого уровень тревожности высокий, фрустрации – низкий, агрессивности и ригидности – средний. 
 
    Райгородский,  Д.Я. Практическая психодиагностика. Методики и тесты. Учебное пособие /  Д.Я. Райгородский.  – Самара, 2001. – С. 141-145.'
-,'Kortinki\\Zadacha5\\net.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\net.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'ПДО "Патохарактерологический диагностический опросник для подростков".',N'ПДО "Патохарактерологический диагностический опросник для подростков" А.Е. Личко, Н.Я. Иванова.',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: имеется  риск дезадаптации.  У испытуемого позитивное отношение к исследованию. Выявлена высокая конформность. Диссимуляция отрицается. Реакция  эмансипации сильная. Преобладают черты мужественности. Имеется психологическая склонность к алкоголизации.
@@ -7240,7 +7262,7 @@ d — психологической склонности к делинквен�
    Вывод: диагностируется гипертимно-неустойчивый тип акцентуации характера.
 
    Личко, А.Е. Патохарактерологический диагностический опросник для подростков / А.Е. Личко, Н.Я. Иванов. - 2-е изд. — М.: Фолиум, 1995. – 64 с.'
-,'Kortinki\\Zadacha5\\18_1.png',N'Kortinki\\Zadacha5\\18_2.png',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\18_1.png',N'C:\\Program Files\\Kortinki\\Zadacha5\\18_2.png',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Сокращённый многофакторный опросник для исследования личности СМОЛ.',
 	N'   Полученные данные: L=47 Т-баллов, К=53 Т-балла, пик по шкале 9 -73 Т-балла
@@ -7278,7 +7300,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: испытуемому диагностируется гипертимный тип личности с повышенной активностью и асоциальными тенденциями.
 
    Большая энциклопедия психологических тестов /Составитель А. Карелин. — М.: ЭКСМО, 2009. — С. 76-79.'
-,'Kortinki\\Zadacha5\\19_1.png',N'Kortinki\\Zadacha5\\19_2.png',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\19_1.png',N'C:\\Program Files\\Kortinki\\Zadacha5\\19_2.png',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика "Родителей оценивают дети" (РОД).',
 	N'   Полученные данные: числовых значений нет
@@ -7288,7 +7310,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: в представлениях подростка его матерью допускаются ошибки в стиле семейного воспитания по типу  потворствующая гиперпротекция.
 
    Фурманов,  И.А. Психологическая работа с детьми, лишенными родительского попечительства: Книга для психологов / И.А. Фурманов,  А.А. Аладьин,  Н.В. Фурманова  – МН.: ТЕСЕЙ, 1999. – С. 174, 210 – 216.'
-,'Kortinki\\Zadacha5\\20.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\20.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика "Анализ семейного воспитания" (АСВ) Э.Г. Эйдемиллер, В.В. Юстицкиса.',
 	N'   Полученные данные:
@@ -7312,7 +7334,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется нарушение стиля семейного воспитания по типу «потворствующая гиперпротекция».
 
    Детская психодиагностика и профориентация / Под ред. Л.Д. Столяренко –Ростов н/Д: Феникс, 1999. –  С. 289-301.'
-,'Kortinki\\Zadacha5\\21.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\21.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика "Кинетический рисунок семьи" (КРС).',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, диагностируется фактор психического неблагополучия испытуемого, связанный с отсутствием эмоционального тепла, нарушением межличностных отношений и нарастанием тревожности в семье. У испытуемого эмоциональная нестабильность. Его агрессивные мотивы направлены к матери и отцу. Он не подчиняется родителям и пренебрегает ими. Сомневается в своей интеллектуальной полноценности.
@@ -7331,7 +7353,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 - нарастание тревожности в семье.
 
    Корнилова, Т.В. Подростковая группа риска / Т.В. Корнилова, Е.Л. Григоренко, С.Д. Смирнов. – СПб.: Питер, 2005. – 336 с. '
-,'Kortinki\\Zadacha5\\22.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\22.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Несуществующее животное".',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, в момент проявления негативизма испытуемому свойственна легкомысленность, поверхностность и необоснованность суждений, а также импульсивность в принятии решений. Его суждения конформны. К собственным действиям, поступкам, решениям и вербальной информации он относится позитивно и стремится защитить себя от чужого мнения. Он заинтересован в позитивном мнении окружающих о нем. Имеющиеся у испытуемого навязчивые влечения вызывают у него сильную тревогу.
@@ -7357,7 +7379,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется склонность к негативизму или сопротивлению в сочетании с завышенной самооценкой и тенденцией к самоутверждению.
 
    Кочубеева, Л.А. Применение проективной рисуночной методики "Несуществующее животное" для определения ТИМ / Л.А. Кочубеева, М.Л. Стоялова // Соционика, ментология и психология личности. – № 6. – 2002. – С. 5-18.'
-,'Kortinki\\Zadacha5\\23_1.png',N'Kortinki\\Zadacha5\\23_2.png',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\23_1.png',N'C:\\Program Files\\Kortinki\\Zadacha5\\23_2.png',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Дом-Дерево-Человек" Дж. Бука (ДДЧ).',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, зона возможных проблем связана с негативным самоощущением и сильной неуверенностью в себе, с имеющимися трудностями в общении и неадекватным отношением к своей семье.Испытуемый находится в состоянии тревоги и сильной фрустрации. Тревога имеет тенденцию увеличиваться. Психологическая защита сильная, чувство неполноценности, агрессивность и депрессивность выражены слабо. Пониженный фон настроения отсутствует.
@@ -7370,7 +7392,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого неблагополучное психологическое состояние.
 
    Романова, Е.С. Графические методы в практической психологии / Е.С.  Романова. – СПб.: Речь, 2001. – 529 с.'
-,'Kortinki\\Zadacha5\\24.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\24.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Незаконченные предложения" Сакса, Леви.',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого отношение к матери негативное. Он считает, что она виновата в том, что у него сейчас нет отца. Денис считает, что его отец пьет из-за не сложившихся отношений с матерью. Он считает отца безвольной "тряпкой". Денис считает свою семью обычной, а также, что у него есть настоящие, хорошие друзья в компании. Они понимают и уважают его. Отношение к сверстникам у Дениса позитивное. Он считает, что каждый может дружить с кем хочет. Важно, чтобы вместе было весело. Денис к взрослым относится позитивно. Считает, что у них больше возможностей для развлечений и отдыха. Никто их не контролирует. Денис считает, что в школе ему скучно, его не понимают и сверстники относятся к нему негативно. Он считает, что если люди будут настроены против него, то с ними не надо общаться. Денис считает, что он мог бы учиться хорошо. Но учителя и сверстники считают его "дебилом". Возможно он глупый на самом деле, иначе бы он учился хорошо. Свое детство Денис считает обычным, как у большинства других детей. Будущее кажется Денису светлым и счастливым. Он ждет, когда станет свободным и сможет много времени проводить с друзьями в компании. Денис не о чем не жалеет и никакого чувства вины у него нет. Денис хочет быть успешным и богатым, чтобы были деньги для хорошего отдыха.
@@ -7394,7 +7416,7 @@ D. Уровень реальности: Денис в своих рассужд�
 E. В какой манере выражаются конфликты: эмоциональные конфликты у Дениса выражаются в наличии переживания из-за отношений отца и матери. А также в негативном отношении к учителям, которые, считают Дениса неполноценным. Формируется отрицательное отношение к школе.
 
    Казачкова В.Г. Метод незаконченных предложений при изучении отношений личности // Вопросы психологии. - 1989. - N 3. - С. 154-157.'
-,'Kortinki\\Zadacha5\\25.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\25.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Тест школьной тревожности" Филипса.',
 	N'   Факторы.
@@ -7418,7 +7440,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: уровень школьной тревожности выше нормы.
 
    Психологические тесты для профессионалов / авт. сост Н.Ф. Гребень. – Минск: Современная школа, 2007. – С. 162-165.'
-,'Kortinki\\Zadacha5\\26.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\26.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика Ч.Д. Спилберга и Ю.Л. Ханина.',
 	N'   Полученные результаты:
@@ -7438,7 +7460,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: результаты в пределах нормы.
 
    Диагностика эмоционально-нравственного развития / Ред. и сост. Дерманова И.Б. – СПб.: 2002. – С.124-126.'
-,'Kortinki\\Zadacha5\\net.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\net.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Самооценка личности" по Дембо-Рубинштейн в модификации А.М.Прихожан.',
 	N'   Полученные результаты: 
@@ -7454,7 +7476,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: результаты выше нормы.
 
    Практическая психодиагностика. Методики и тесты. / Ред. и сост. Райгородский Д. Я. — Самара: БАХРАХ-М, 2001. — 672 с.'
-,'Kortinki\\Zadacha5\\28.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\28.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Теппинг-тест" Е.П. Ильина.',
 	N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, у испытуемого НС средней силы. Большую по величине и длительности нагрузку он выдерживает достаточно долго и примерно на одном уровне. У него долго не наступает утомление.
@@ -7469,7 +7491,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого НС средней силы. 
 
    Практическая психодиагностика. Методики и тесты. / Ред. и сост. Райгородский Д.Я. — Самара: БАХРАХ-М, 2001. — С. 528-530.'
-,'Kortinki\\Zadacha5\\29.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\29.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'"Опросник Айзенка по определению темперамента и характера EPI" Т.В.Матолиной',
 	N'   Полученные данные:
@@ -7490,7 +7512,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Испытуемому диагностируется сангвинистический тип темперамента. Ему свойственны следующие черты характера: активность, жизнерадостность, общительность, В общении неразборчив. Легко попадает в асоциальные группировки, вследствие плохой сопротивляемости. Склонен к новизне, любознательный. Социальный интеллект развит слабо. Нет умения строить адекватные оценки и самооценки. Нет твердых принципиальных установок. Энергичен, доверчив.  
 
    Фетискин, Н. П. Экспресс-диагностика характерологических особенностей личности / Н. П. Фетискин, В. В. Козлов,  Г. М. Мануйлов. –  М., 2002. –  C. 35-44.'
-,'Kortinki\\Zadacha5\\30.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\30.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'ОФДСИ «Опросник формально-динамических свойств индивидуальности» В.М.Русалова',
 	N'   Полученные данные: 
@@ -7517,7 +7539,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Выводы: у испытуемого адаптивность ниже нормы. В психомоторной и коммуникативной сферах диагностируется сангвинистический тип темперамента. В интеллектуальной сфере - холерический тип. Общий тип темперамента сангвинистический.
 
    Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 118-130.'
-,'Kortinki\\Zadacha5\\31_1.png',N'Kortinki\\Zadacha5\\31_2.png',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\31_1.png',N'C:\\Program Files\\Kortinki\\Zadacha5\\31_2.png',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Ориентировочно-диагностическая анкета познавательных процессов (ДДО)',
 	N'   Полученные данные:
@@ -7529,7 +7551,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Выводы. Направленность личности испытуемого преимущественно на профессиональную область "человек-человек". В нее входят все профессии связанные с человеческим общением.
 
    Райгородский, Д. Я. Практическая психодиагностика. Методики и тесты / Самара: Бахра-М, 2015. – C. 569-573'
-,'Kortinki\\Zadacha5\\32.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\32.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Карта интересов Голомштока"',
 	N'   Полученные данные: наибольшее количество знаков «+» набрали виды деятельности: физкультура и спорт, военные специальности, сфера обслуживания и торговля.
@@ -7541,7 +7563,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: интересы испытуемого направлены преимущественно на области: физкультура и спорт, военные специальности, сфера обслуживания и торговля.
 
    Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 516-521.'
-,'Kortinki\\Zadacha5\\net.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\net.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Исследование объема эмоциональной памяти"',
 	N'   Полученные данные: 15%
@@ -7557,7 +7579,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. У испытуемого объем эмоциональной памяти низкий. Им преимущественно запоминаются слова отрицательной модальности. Слова положительной модальности запоминаются в меньшей степени.
 
    Изучение основных закономерностей познавательных процессов в период взрослости [Электронный ресурс] / Экспериментальное изучение памяти // Режим доступа : http://studbooks.net/1613171/psihologiya/eksperimentalnaya_chast'
-,'Kortinki\\Zadacha5\\net.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\net.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'"Исследование объема кратковременной памяти" с помощью субтеста Векслера.',N'"Исследование объема кратковременной памяти" с помощью субтеста "Повторение цифр" из теста Векслера.',
 	N'   Полученные данные.
@@ -7577,7 +7599,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. У испытуемого объем кратковременной памяти ниже нормы. Концентрация внимания ниже нормы.
 
    Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C.325-403.'
-,'Kortinki\\Zadacha5\\net.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\net.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "10 слов" (оценка состояния памяти, утомляемости, особенностей мышления).',
 	N'   Полученные данные.
@@ -7592,7 +7614,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого память и активность внимания ниже нормы. Утомляемость средняя.
 
    Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика детей / Д. Я. Райгородский –  Самара: Бахра-М, 2015. – C. 202-203 '
-,'Kortinki\\Zadacha5\\net.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\net.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Сложные аналогии"',
 	N'   Полученные данные: 0 баллов
@@ -7602,7 +7624,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: испытуемый плохо понимает сложные логические отношения и выделяет абстрактные связи.
 
    Касьянов, С. Психологические тесты / С. Касьянов. – М.: Эксмо, 2006. –  608 с.'
-,'Kortinki\\Zadacha5\\37.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\37.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Выделение существенных признаков".',
 	N'   Полученные данные: 1 балл (18 слов)  
@@ -7613,7 +7635,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: операции мышления анализ, сравнение, обобщение и классификация развиты ниже нормы. 
 
    Райгородский, Д.Я. Энциклопедия психодиагностики. Психодиагностика взрослых / Д. Я. Райгородский. –  Самара: Бахра-М, 2015. – C. 61-62.'
-,'Kortinki\\Zadacha5\\38.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\38.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест "Корректурная проба Бурдона".',
 	N'   Полученные данные.
@@ -7636,7 +7658,7 @@ A = S / t, где
    Вывод: у испытуемого концентрация  и устойчивость внимания ниже нормы. 
 
    Корректурная проба (Тест Бурдона) / Альманах психологических тестов. – М., 1995. –  С.107-111.'
-,'Kortinki\\Zadacha5\\39.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\39.png',N'',5)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Опросник для изучения познавательных интересов Юркевича.',
 	N'   Полученные данные:  7 баллов
@@ -7652,7 +7674,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: у испытуемого диагностируются очень низкие познавательные процессы.
 
    Диагностика познавательной потребности [Электронный ресурс] // Режим доступа: http://docpsy.ru/testy/diagnostika-motivatsii/5047-metodika-poznavatelnaya-potrebnost.html'
-,'Kortinki\\Zadacha5\\net.png',N'',5)
+,'C:\\Program Files\\Kortinki\\Zadacha5\\net.png',N'',5)
 go
 
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
@@ -11569,7 +11591,7 @@ go
 
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Данные об успеваемости.',N'   Успеваемость: У Влады хорошая успеваемость по всем гуманитарным предметам и удовлетворительная по точным наукам (математика, физика и т.д.).
-',N'Kortinki\\Zadacha11\\net.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\net.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика Мюнстерберга.',N'   Полученные данные:
 22 слова за 136 сек, т.е.
@@ -11582,7 +11604,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: уровень избирательности внимания ниже среднего.
 
    Бруннер Е.Ю. Лучше, чем супервнимание: Методики диагностики и психокоррекции. – Ростов н/Д: Феникс, 2006. –  С. 42-45.
-',N'Kortinki\\Zadacha11\\2.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\2.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика «10 слов» А.Р.Лурия.',N'   Полученные данные:
 проведено 5 попыток 
@@ -11604,7 +11626,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  уровень концентрации и кратковременной памяти низкий.
 
    Устинов, Д. Сила концентрации или Главное качество великих людей: Методическое пособие [Электронный ресурс] / Д. Устинов // Тренинг центр Синтон. – 2010. – Режим доступа: http://www.syntone.ru. – 01.02.2013.
-',N'Kortinki\\Zadacha11\\net.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\net.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Числовые ряды Липмана.',N'   Полученные данные.
 Время выполнения: 5.30 мин;
@@ -11615,7 +11637,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: уровень логического мышления – ниже среднего.
 
    Основы психологии: Практикум /под ред. Столяренко Л.Д. – Изд. 7-е. – Ростов н/Д: Феникс, 2006 – С.58-59.
-',N'Kortinki\\Zadacha11\\4.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\4.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика «Словесный лабиринт».',N'   Среднеарифметическое по всем заданиям – 95 секунд.
 * на графике представлены не 10, а 9 карточек, т.к. в 8 карточке испытуемая не знала самого слова.
@@ -11633,7 +11655,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 
    Практикум по общей, экспериментальной и прикладной психологии /Под ред. Крылова А.А., Маничева С.А. – 2-е изд., доп. и перераб. – СПб.: 2003. – С. 145-147.
-',N'Kortinki\\Zadacha11\\5.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\5.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Многофакторный личностный опросник Р. Кеттелла (юношеский вариант—14PF), фактор В.',N'   Полученные данные:
 6 стенов.
@@ -11645,7 +11667,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  средний уровень интеллекта.
 
    Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 578-588.
-',N'Kortinki\\Zadacha11\\6.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\6.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест смысложизненных ориентаций.',N'   Полученные данные:
 •	наличие целей – 27 баллов;
@@ -11663,7 +11685,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	общая осмысленность жизни соответствует норме.
 
    Леонтьев Д.А. Тест смысложизненных ориентаций: Психодиагностическая серия. – М: Смысл, 2006. –  18 с.
-',N'Kortinki\\Zadacha11\\7.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\7.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест жизнестойкости (методика С. Мадди в адаптации Д.А. Леонтьева).',N'   Полученные данные:
 •	вовлеченность в жизнь – 31 балл;
@@ -11680,7 +11702,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	общая жизнестойкость в пределах нормы.
 
    Леонтьев Д.А., Рассказова Е.И. Тест жизнестойкости. — М.: Смысл, 2006. — 63 с.
-',N'Kortinki\\Zadacha11\\8.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\8.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Мотивация успеха и боязнь неудачи (опросник А.А. Реана).',N'   Полученные данные:
 10 баллов.
@@ -11694,7 +11716,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: мотивационный полюс ярко не выражен.
 
    Малкина-Пых И.Г. Психосоматика: Справочник практического психолога. — М.: Эксмо, 2005. — С. 124-126.
-',N'Kortinki\\Zadacha11\\net.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\net.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Экспресс-диагностика характерологических особенностей личности.',N'Экспресс-диагностика характерологических особенностей личности (Н. Айзенк в модификации Т.В. Матолиной).',N'   Полученные данные:
 Экстраверсия – 7 баллов;
@@ -11712,7 +11734,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	тип темперамента Влады ближе всего к меланхоличному.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
-',N'Kortinki\\Zadacha11\\10.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\10.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Индивидуально-типологический детский опросник.',N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, вышеизложенное сочетание результатов говорит о переменчивое поведение, конформное поведение.
 
@@ -11732,7 +11754,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	экстраверсия, ригидность и сензитивность в норме.
 
    Собчик Л.Н. Индивидуально-типологический опросник. – М.: Боргес, 2008. – 190 с.
-',N'Kortinki\\Zadacha11\\11.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\11.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Многофакторный личностный опросник Р. Кеттелла (юношеский вариант—14PF).',N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данный тип личности эмоционально устойчив, уравновешен, мягкосердечен, чувствителен, может быть как индивидуален, так, и склонен к коллективной работе, с нормальным уровнем самоконтроля. Влада совестлива и в меру самостоятельна. Ей присуща тенденция к зависимости и уступчивости. С одной стороны диагностируется уверенность в себе, а с другой, склонность к замкнутости и обособленности, свидетельствуют о сдержанности, озабоченности, склонности все усложнять, ко всему подходить слишком серьезно и осторожно.
 
@@ -11768,7 +11790,7 @@ Q4	Нефрустрированность 	Фрустрированность
 •	факторы B, C, D, J, Q3 соответствуют норме.
 
    Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 578-588.
-',N'Kortinki\\Zadacha11\\12_1.png',N'Kortinki\\Zadacha11\\12_2.png',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\12_1.png',N'C:\\Program Files\\Kortinki\\Zadacha11\\12_2.png',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Многофакторный личностный опросник «Мини-мульт».',N'Многофакторный личностный опросник «Мини-мульт» (адаптация Ф.Б. Березинина и М.П. Мирошникова).',N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, вышеизложенные показатели говорят о сохранении постоянных интересов и тенденции к сниженной контактности с окружающими.
 
@@ -11783,7 +11805,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	в пределах нормы следующие шкалы: шкала ипохондрии, депрессии, истерии, психопатии, паранойяльности, психастении, шизоидности.
 
    Менделевич В.Д. Психология девиантного поведения: Учебное пособие. –  СПб.: Речь, 2005. – С.409-411.
-',N'Kortinki\\Zadacha11\\13_1.png',N'Kortinki\\Zadacha11\\13_2',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\13_1.png',N'C:\\Program Files\\Kortinki\\Zadacha11\\13_2',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Компьютерный Цветовой тест Люшера (адаптация А. Ласточкина).',N'   Полученные данные: по мнению автора методики, при сделанной испытуемой частоте выбора цветов, диагностируется следующее.
 
@@ -11815,7 +11837,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Измерительная шкала: с учетом того, что данный тест представлен в компьютерной форме, нормативы в него уже заложены (анализ частоты выбора цветов).
 
    Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизнь-XXIвек. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.
-',N'Kortinki\\Zadacha11\\net.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\net.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'«Толерантность к неопределенности» (Методика С. Баднера в адаптации Г.У. Солдатовой).',N'   Полученные данные:
 •	новизна проблемы – 21 балл;
@@ -11831,7 +11853,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	общий показатель толерантности на высоком уровне.
 
    Психодиагностика толерантности личности /Под ред. Г.У. Солдатовой, Л.А. Шайгеровой. – М.: Смысл, 2008. – С. 94-97.
-',N'Kortinki\\Zadacha11\\15.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\15.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Шкала «Толерантность к двусмысленности».',N'   Шкала «Толерантность к двусмысленности»  (методика Родника, Хезера и др. в адаптации Н.А. Бажановой и Г.Л. Бардиер).',N'Полученные данные:
 •	страстность (энергичность) – 12 баллов;  
@@ -11850,7 +11872,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	Страстность (понимается как энергичность, неутомимость, повышенный жизненный тонус), находчивость и смелость имеют выраженность ниже среднего.
 •	Уровень толерантности к двусмысленности высокий.
 18 программ тренингов: Руководство для профессионалов /под ред. В.А. Чикер. – СПб.: Речь, 2007. — С. 322-325.
-',N'Kortinki\\Zadacha11\\16.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\16.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Уровень школьной тревожности Филипса.',N'   Измерительная шкала: 
 •	если показатель больше 50 процентов, можно говорить о его повышенной выраженности;
@@ -11863,7 +11885,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	в пределах нормы оказались следующие показатели: общая тревожность, тревожность в школе, переживание социального стресса, фрустрация потребности в достижение успеха, страх самовыражения, страх несоответствия ожиданиям окружающих.
    
    Альманах психологических тестов. – Издание 2-е. – М.: КСП, 1996. – С. 165-171.
-',N'Kortinki\\Zadacha11\\17.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\17.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест уверенности в себе (В.Г. Ромек).',N'   Полученные данные:
 •	уверенность в себе – 7 стенов;
@@ -11878,7 +11900,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	инициатива в социальных контактах снижена (ниже среднего).
    
    Практическая психодиагностика и психологическое консультирование. – Ростов-на-Дону: ЮРГИ, 1998. – С. 87-108.
-',N'Kortinki\\Zadacha11\\18.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\18.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Диагностика Доброжелательности (по шкале Кемпбелла).',N'   Полученные данные:
 4 балла
@@ -11893,7 +11915,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: средний показатель принятия других.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 113-114.
-',N'Kortinki\\Zadacha11\\net.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\net.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Экспресс диагностика доверия (по шкале Розенберга).',N'   Полученные данные:
 0 баллов. 
@@ -11909,7 +11931,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
-',N'Kortinki\\Zadacha11\\net.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\net.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика оценки доверия/недоверия личности другим людям (А.Б. Купрейченко).',N'   Содержательные характеристики при указанном сочетании параметров личности:
 •	Влада чувствует общность интересов и приязнь даже к тому, кому не доверяет. Также из вышеупомянутого следует, что она считает, что хорошо знает то лицо, которому не доверяет;
@@ -11923,7 +11945,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	критериями доверия для Влады служат надежность и в меньшей степени расчет.
 
    Купрейченко А.Б. Психология доверия и недоверия. – М.: Институт психологии РАН, 2008. – С. 224-301.
-',N'Kortinki\\Zadacha11\\21_1.png',N'Kortinki\\Zadacha11\\21_2.png',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\21_1.png',N'C:\\Program Files\\Kortinki\\Zadacha11\\21_2.png',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест на благодарность.',N'   Полученные данные: 35 баллов. 
 
@@ -11939,7 +11961,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется средний уровень способности благодарить.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 102.
-',N'Kortinki\\Zadacha11\\net.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\net.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест на трансгрессивную мотивацию (умение прощать), (Мак-Куллоу).',N'   Полученные данные:
 •	стремление избежать обидчика – 22 балла;
@@ -11957,7 +11979,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется высокий уровень обидчивости и мстительности.
 
 Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 111.
-',N'Kortinki\\Zadacha11\\net.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\net.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест коммуникативных навыков (Методика Л. Михельсона в адаптации Ю.З. Гильбуха).',N'   Полученные данные:
 •	уровень компетентности – 19 баллов;
@@ -11969,7 +11991,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  диагностируется высокий уровень компетентности в общении. При этом агрессивность и зависимость имеют низкий уровень выраженности.
 
    Колмогорова, Н. С. Коммуникативная компетентность как условие и следствие становления направленности личности: дис. ... канд. психол. наук: 19.00.01 / Наталья Степановна Колмогорова. – Барнаул, 2004. – 228 с.
-',N'Kortinki\\Zadacha11\\net.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\net.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест описания поведения К. Томаса (адаптация Н.В. Гришиной).',N'   Полученные данные:
 •	стратегия соперничества – 5 стенов; 
@@ -11986,7 +12008,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	наименее используемые стратегии – компромисс (ниже среднего) и соперничество (низкий уровень выраженности).
 
    Большая энциклопедия психологических тестов /Под ред. А.А. Карелина – М.: Эксмо, 2007. — С. 270-273.
-',N'Kortinki\\Zadacha11\\25.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\25.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Тест «Поведение родителей и отношение подростков к ним».',N'Тест «Поведение родителей и отношение подростков к ним» (методика Е. Шафера в адаптации Э. Матейчика и П. Ржичана).',N'   Полученные данные.
 
@@ -12014,7 +12036,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 Со стороны бабушки к Владе: все элементы воспитания (позитивный интерес, враждебность, автономность, директивность и непоследовательность в воспитании) выражены средне.
 
    Сонин В.А. Психодиагностическое познание профессиональной деятельности. — СПб.: Речь, 2004. – С. 169-178.
-',N'Kortinki\\Zadacha11\\26.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\26.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Выявление самооценки по методике Дембо-Рубинштейн в модификации А.М. Прихожан.',N'   Полученные данные: 
 •	среднее арифметическое по самооценке – 45 баллов;
@@ -12041,7 +12063,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	по шкалам ум, характер и авторитет у сверстников показатели уровня притязаний на границе среднего и высокого.
 
    Практикум по возрастной психологии: Учеб. пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. - СПб.: Речь, 2002. – С. 559-561.
-',N'Kortinki\\Zadacha11\\27.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\27.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала самоуважения Розенберга.',N'   Полученные данные: 5 стенов.
 
@@ -12062,7 +12084,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  диагностируется высокий уровень удовлетворённости жизнью.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 92.
-',N'Kortinki\\Zadacha11\\28.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\28.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Эмоциональный тест Фордайса.',N'   Полученные данные:
 •	уровень счастья – 7 баллов;
@@ -12083,7 +12105,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	уровень переживания нейтрального состояния выше среднего.
    
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 30.
-',N'Kortinki\\Zadacha11\\net.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\net.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала субъективного благополучия (методика Мендельсона и др. в адаптации М.В. Соколовой).',N'   Полученные данные: уровень субъективного благополучия – 4 стена.
    
@@ -12092,7 +12114,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется сниженное субъективное благополучие.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – C. 467-470.
-',N'Kortinki\\Zadacha11\\net.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\net.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Шкала активности и оптимизма.',N'Шкала активности и оптимизма (методика И.С. Шуллера и А.Л. Комуниана в адаптации Г.С. Никифорова).',N'   Полученные данные: 
 •	уровень активности – 18 баллов;
@@ -12103,7 +12125,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: Влада активный пессимист.
 
    Практикум по психологии менеджмента и профессиональной деятельности /Под редакцией Г.С. Никифорова, М.А. Дмитриевой, В.М. Снеткова – СПб.: Речь, 2003. – С 287-293.
-',N'Kortinki\\Zadacha11\\31.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\31.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Самооценка силы воли (Н.Н. Обозов).',N'   Полученные данные: 24 балла. 
 
@@ -12117,7 +12139,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Диагностируется высокий уровень силы воли.
 
    Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 523-524.
-',N'Kortinki\\Zadacha11\\32.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\32.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Уровень субъективного контроля (УСК).',N'Уровень субъективного контроля (УСК) (методика Дж. Роттера в адаптацииЕ.Ф. Бажина, Е.А. Голынкиной, А.М. Эткинда).',N'   Полученные данные: 
 •	общий показатель субъективного контроля – 32 балла;
@@ -12131,7 +12153,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	в области неудач наблюдается высокий уровень интернальности.
 
    Немов Р.С. Психология. Учебник для студентов высших педагогических учебных заведений: В 3-х ч. Ч.3. Психодиагностика. –4-е изд. – М.:  Владос, 2001. – С. 480-483.
-',N'Kortinki\\Zadacha11\\net.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\net.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Моментальный тест на позитивную и негативную аффективность 
 (по отношению к учителям).',N'   Полученные данные: 
@@ -12150,7 +12172,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Сумма баллов по негативным эмоциям в два раза превосходит сумму позитивных, что говорит о негативном эмоциональном фоне по отношению к нежелательным для Влады учителям. 
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 53.
-',N'Kortinki\\Zadacha11\\34.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\34.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Диагностика принятия других (по шкале Фейя).',N'   Полученные данные: 55 баллов.
 
@@ -12165,17 +12187,17 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется средний показатель принятия других с тенденцией к высокому.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 112-113.
-',N'Kortinki\\Zadacha11\\net.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\net.png',N'',11)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Результаты Влады по методу беседы на тему чувства вины по отношению к учителям.',N'   Влада: «Я стараюсь ответственно подходить к заданиям в школе. Почти все задания я делаю на высоком уровне, однако есть учителя, которые меня недолюбливают и я их тоже, по отношению к ним я не чувствую себя виноватой или обязанной им чем-то. Им как не сделай работу, все равно найдут к чему придраться».
 
    Вывод: чувство вины отсутствует. 
-',N'Kortinki\\Zadacha11\\net.png',N'',11)
+',N'C:\\Program Files\\Kortinki\\Zadacha11\\net.png',N'',11)
 go
 
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Данные об успеваемости.',N'   Успеваемость: у Бори плохая успеваемость по всем предметам.
-',N'Kortinki\\Zadacha12\\net.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\net.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика Мюнстерберга.',N'   Полученные данные:
 21 слово (+1 ошибочное) за 284 сек, т.е.
@@ -12188,7 +12210,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: уровень избирательности внимания очень низкий.
 
    Бруннер Е.Ю. Лучше, чем супервнимание: Методики диагностики и психокоррекции. – Ростов н/Д: Феникс, 2006. –  С. 42-45.
-',N'Kortinki\\Zadacha12\\2.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\2.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Детский личностный опросника Р. Кеттелла (Адаптирован Э.М. Александровской). Фактор В.',N'   Полученные данные:
 4 стена.
@@ -12201,7 +12223,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  уровень интеллекта ниже среднего.
 
    Адаптированный модифицированный вариант детского личностного опросника Р. Кеттелла (Адаптирован Э.М. Александровской) / Э.М. Александровская, И.Н. Гильяшева: Методические рекомендации. – М.: Фолиум, 1993. – 40 с.
-',N'Kortinki\\Zadacha12\\3.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\3.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика диагностики мотивации одобрения (методика Д. Марлоу и Д. Крауна в адаптации Ю.Л. Ханина).',N'   Полученные данные:
 12 баллов.
@@ -12214,7 +12236,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется средняя мотивация одобрения.
 
    Психологические тесты /Ред. и сост. С. Касьянов. – М.: Эксмо, 2006. – С. 358-360.
-',N'Kortinki\\Zadacha12\\net.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\net.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Мотивация успеха и боязнь неудачи (опросник А.А. Реана).',N'   Полученные данные:
 16 баллов.
@@ -12228,7 +12250,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: выражена мотивация на достижение успеха.
 
    Малкина-Пых И.Г. Психосоматика: Справочник практического психолога. — М.: Эксмо, 2005. — С. 124-126.
-',N'Kortinki\\Zadacha12\\net.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\net.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Модифицированный вариант анкеты школьной мотивации Н.Г. Лускановой.',N'Модифицированный вариант анкеты школьной мотивации Н.Г. Лускановой (модификация Е.И. Даниловой).',N'   Полученные данные:
 10 баллов.
@@ -12243,7 +12265,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется низкий уровень школьной мотивации.
 
    Коблик Е.Г. Первый раз в пятый класс! Программа адаптации детей к средней школе. – 2-е изд. – М.: Генезис, 2007.  – С. 56-62.
-',N'Kortinki\\Zadacha12\\net.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\net.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Экспресс-диагностика характерологических особенностей личности.',N'Экспресс-диагностика характерологических особенностей личности (Н. Айзенк в модификации Т.В. Матолиной).',N'   Полученные данные:
 Экстраверсия – 16 баллов;
@@ -12262,7 +12284,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	анализ графика показывает, что тип темперамента Бори ближе всего к холерическому.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
-',N'Kortinki\\Zadacha12\\7.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\7.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Индивидуально-типологический детский опросник.',N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, при таких показателях, имеется склонность к замкнутости, отгороженности, ранимости, обидчивости, депрессии при неудачах, ведомости. Также выражена эмоциональная неустойчивость и тревожность. Это дети, у которых настроение легко меняется - от избыточной веселости, болтливости, смешливости до резко пониженного настроения со слезами, с бурными реакциями огорчения. Такие дети любят быть в центре внимания, им важно, чтобы мнение других о них было положительным, могут проявлять истероидные реакции.
    
@@ -12282,7 +12304,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	экстраверсия практически не выражена. 
    
    Собчик Л.Н. Индивидуально-типологический опросник. – М.: Боргес, 2008. – 190 с.
-',N'Kortinki\\Zadacha12\\8.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\8.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Детский личностный опросника Р. Кеттелла (Адаптирован Э.М. Александровской).',N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данные характеристики свидетельствуют об открытости, доброжелательности, общительности, реактивности, легкой возбудимости, чувствительности, нежности, зависимости от других, тревожности. Присутствует также о неуверенность в себе, ранимость, неустойчивость, уступчивость,  низкий самоконтроль, плохое понимание социальных нормативов.
 •	Если по какому-либо фактору набрано 5-6, это говорит о том, что полюс данного фактора четко не выражен;
@@ -12299,7 +12321,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	фактор F соответствуют норме.
    
    Александровская Э.М., Гильяшева И.Н. Адаптированный модифицированный вариант детского личностного опросника Р. Кеттелла Методические рекомендации. – М.: Фолиум, 1993. – 40 с.
-',N'Kortinki\\Zadacha12\\9_1.png',N'Kortinki\\Zadacha12\\9_2.png',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\9_1.png',N'C:\\Program Files\\Kortinki\\Zadacha12\\9_2.png',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Рисунок Несуществующего животного.',N'   Рассказ Бори о животном. Его зовут Тарсакорс. Он травоядный, будет нападать, только если на него первого нападут. Все друг друга защищают (эти существа). Живут около ста лет. Они откладывают яйца. Родители, отложив яйцо, покидают его. А далее вылупившись, животное само ищет себе новых родителей и потом меняет их каждые 5 лет. Потому что так лучше, выбирать себе родителей, т.к. в основном те родители, которые есть изначально, не обращают на животное внимание. Ищут себе только миролюбивых друзей. Живут под землей, однако в 9 утра и до 10 вечера обитают на поверхности, лазают по деревьям и быстро бегают (как леопарды).
    
@@ -12322,7 +12344,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: налицо отражение на рисунке холодности в семье, животное призывает обратить на него внимание.
    
    Яньшин П.В. Клиническая психодиагностика личности: Учебно методическое пособие – 2-е изд., испр. – СПб: Речь, 2007. – С. 190-258.
-',N'Kortinki\\Zadacha12\\10.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\10.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Уровень школьной тревожности Филипса.',N'   Измерительная шкала: 
 •	если показатель больше 50 процентов, можно говорить о его повышенной выраженности;
@@ -12336,7 +12358,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	в пределах нормы оказались следующие показатели: общий уровень тревожности, переживание социального стресса, фрустрация потребности в достижение успеха и страхи в отношениях с учителями.
    
    Альманах психологических тестов. – Издание 2-е. – М.: КСП, 1996. – С. 165-171.
-',N'Kortinki\\Zadacha12\\11.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\11.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест уверенности в себе (В.Г. Ромек).',N'   Полученные данные:
 •	уверенность в себе – 6 стенов;
@@ -12348,7 +12370,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: показатели уверенности в себе, социальной смелости и инициативы в социальных контактах в пределах нормы.
 
    Практическая психодиагностика и психологическое консультирование. – Ростов-на-Дону: ЮРГИ, 1998. – С. 87-108.
-',N'Kortinki\\Zadacha12\\12.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\12.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Диагностика принятия других  (по шкале Фейя).',N'   Полученные данные:
 63 балла
@@ -12364,7 +12386,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: высокий показатель принятия других.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 112-113.
-',N'Kortinki\\Zadacha12\\net.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\net.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Экспресс диагностика доверия (по шкале Розенберга).',N'   Полученные данные:
 2 балла.
@@ -12378,7 +12400,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  диагностируется средний показатель доверия.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
-',N'Kortinki\\Zadacha12\\net.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\net.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика оценки доверия/недоверия личности другим людям (А.Б. Купрейченко).',N'   Содержательные характеристики при указанном сочетании параметров личности:
 •	Боря склонен намного острее замечать недостатки тех людей, которым он не доверяет;
@@ -12391,7 +12413,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	критериями доверия для Бори служат надежность и в меньшей степени знание.
 
    Купрейченко А.Б. Психология доверия и недоверия. – М.: Институт психологии РАН, 2008. – С. 224-301.
-',N'Kortinki\\Zadacha12\\15_1.png',N'Kortinki\\Zadacha12\\15_2.png',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\15_1.png',N'C:\\Program Files\\Kortinki\\Zadacha12\\15_2.png',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест на благодарность.',N'   Полученные данные: 42 балла. 
 
@@ -12407,7 +12429,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется высокий уровень способности благодарить.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 102.
-',N'Kortinki\\Zadacha12\\net.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\net.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест на трансгрессивную мотивацию (умение прощать), (Мак-Куллоу).',N'   Полученные данные:
 •	стремление избежать обидчика – 16 баллов;
@@ -12426,7 +12448,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется  уровень обидчивости и мстительности выше среднего.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 111.
-',N'Kortinki\\Zadacha12\\net.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\net.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест описания поведения К. Томаса (адаптация Н.В. Гришиной).',N'   Полученные данные:
 •	стратегия соперничества – 7 стенов; 
@@ -12444,7 +12466,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	выраженность стратегий сотрудничества  и избегания в пределах нормы.
    
    Большая энциклопедия психологических тестов /Под ред. А.А. Карелина – М.: Эксмо, 2007. — С. 270-273.
-',N'Kortinki\\Zadacha12\\18.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\18.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Диагностика социально-психологической адаптации.',N'Диагностика социально-психологической адаптации (методика К. Роджерса и Р. Даймонда, адаптирована на факультет СПб государственного университета).',N'   Полученные данные: 
 
@@ -12464,7 +12486,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	на низком уровне конфликтность и ведомость.
 
    Широкова И.Б. Тренинг самопознания для подростков: Общение. Память: 8-10 классы. – М.: Генезис, 2005. – 169 с.
-',N'Kortinki\\Zadacha12\\19.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\19.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Выявление самооценки по методике Дембо-Рубинштейн в модификации А.М. Прихожан.',N'   Полученные данные: 
 •	среднее арифметическое по самооценке – 59 баллов;
@@ -12495,14 +12517,14 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	уровень притязаний соответствует норме по показателю авторитета у сверстников.
 
    Яньшин П.В. Клиническая психодиагностика личности: Учебно-методическое пособие – 2-е изд., испр. – СПб: Речь, 2007. – С. 29-54.
-',N'Kortinki\\Zadacha12\\20.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\20.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала самоуважения Розенберга.',N'   Полученные данные: 9 стенов.
    
    Вывод: диагностируется высокий уровень самоуважения.
 
    Бодалев А.А., Столин В.В. Общая психодиагностика. – СПб.: Речь, 2000. – С. 308.
-',N'Kortinki\\Zadacha12\\21.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\21.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест на удовлетворенность жизнью.',N'   Полученные данные: 29 баллов. 
 
@@ -12516,14 +12538,14 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  диагностируется высокая удовлетворённость жизнью.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 92.
-',N'Kortinki\\Zadacha12\\net.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\net.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала субъективного благополучия (методика Мендельсона и др. в адаптации М.В. Соколовой).',N'   Полученные данные: уровень субъективного благополучия – 3 стена.
    
    Вывод: диагностируется высокое субъективное благополучие.
 
 Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – C. 467-470.
-',N'Kortinki\\Zadacha12\\23.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\23.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Самооценка силы воли (Н.Н. Обозов).',N'   Полученные данные: 21 балл. 
 
@@ -12537,7 +12559,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Диагностируется нормальный уровень силы воли.
 
    Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 523-524.
-',N'Kortinki\\Zadacha12\\net.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\net.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Уровень субъективного контроля (УСК).',N'Уровень субъективного контроля (УСК) (методика Дж. Роттера в адаптации Е.Ф. Бажина, Е.А. Голынкиной, А.М. Эткинда).',N'   Полученные данные: 
 •	общий показатель субъективного контроля – 22 балла;
@@ -12547,7 +12569,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: общий показатель субъективного контроля, уровня интернальности в отношении достижений и в области неудач средний (соответствует норме).
 
    Немов Р.С. Психология. Учебник для студентов высших педагогических учебных заведений: В 3-х ч. Ч.3. Психодиагностика. –4-е изд. – М.:  Владос, 2001. – С. 480-483.
-',N'Kortinki\\Zadacha12\\25.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\25.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Моментальный тест на позитивную и негативную аффективность (по отношению к учителям).',N'   Полученные данные: 
 •	сумма негативных эмоций – 24 (доминирующие негативные эмоции: испуг, тревога и огорчение – 5 баллов);
@@ -12564,22 +12586,22 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Сумма баллов по позитивным эмоциям значительно превосходит сумму негативных, что говорит о доминировании позитивного эмоционального фона в момент тестирования.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 53.
-',N'Kortinki\\Zadacha12\\net.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\net.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Наблюдение психолога за поведением Бори перед началом психологического тренинга.',N'   Перед началом тренинга, необходимо были провести с Борей пару методик. Однако только что веселый Боря вдруг изменился в лице (резкие перемены настроения) и сказал, что не хочет ничего делать. При попытке еще раз попросить Борю, он расплакался и упал на парту и с возгласами не хочу так и лежал на ней. Как только от него отстали, он немедленно вскочил и уже веселый начал быстро бегать по классу.
 
    Вывод: истероидность и демонстративность, импульсивность и гиперактивность.
-',N'Kortinki\\Zadacha12\\net.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\net.png',N'',12)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Наблюдение психолога на очередной психологической сессии поведения Бори.',N'Так получилось, что Боря и другой мальчик Лев работали одновременно с рядом тестов, сидя за разными столами. Лев вел себя тихо, а Боря постоянно пытался привлечь к себе внимание. Когда школьный психолог отвечал на вопросы Льва, он тут же начинал говорить что-то или также подзывать психолога. Кроме того, Боря часто вмешивался в разговор психолога со Львом, отпуская шутки и колкости относительно данного разговора.
 
    Вывод: диагностируются истероидные черты характера.
-',N'Kortinki\\Zadacha12\\net.png',N'',12)
+',N'C:\\Program Files\\Kortinki\\Zadacha12\\net.png',N'',12)
 go
 
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Данные об успеваемости.',N'   Успеваемость: высокий уровень практически по всем предметам, участие во множестве олимпиад от школы.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика Мюнстерберга.',N'   Полученные данные:
 22 слова за 90 сек, т.е.
@@ -12593,7 +12615,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: уровень избирательности внимания средний с тенденцией к высокому.
 
    Бруннер Е.Ю. Лучше, чем супервнимание: Методики диагностики и психокоррекции. – Ростов н/Д: Феникс, 2006. –  С. 42-45.
-',N'Kortinki\\Zadacha13\\2.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\2.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика «10 слов» А.Р.Лурия.',N'   Полученные данные:
 Проведено 5 попыток 
@@ -12616,7 +12638,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  уровень концентрации внимания и кратковременной памяти выше среднего.
 
    Устинов, Д. Сила концентрации или Главное качество великих людей: Методическое пособие [Электронный ресурс] / Д. Устинов // Тренинг центр Синтон. – 2010. – Режим доступа: http://www.syntone.ru. – 01.02.2013.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Числовые ряды Липмана.',N'   Полученные данные.
 Время выполнения: 8 мин;
@@ -12627,7 +12649,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: уровень логического мышления – низкая норма.
 
    Основы психологии: Практикум /под ред. Столяренко Л.Д. – Изд. 7-е. – Ростов н/Д: Феникс, 2006 – С.58-59.
-',N'Kortinki\\Zadacha13\\4.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\4.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика «Словесный лабиринт».',N'   Среднеарифметическое по всем заданиям – 72 секунды.
 * На графике представлены не 10, а 9 карточек, т.к. в 8 карточке испытуемая не знала самого слова.
@@ -12644,7 +12666,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: после научения, мышление испытуемой способно к пластичности.
 
    Практикум по общей, экспериментальной и прикладной психологии /Под ред. Крылова А.А., Маничева С.А. – 2-е изд., доп. и перераб. – СПб.: 2003. – С. 145-147.
-',N'Kortinki\\Zadacha13\\5.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\5.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Многофакторный личностный опросник Р. Кеттелла (юношеский вариант—14PF), фактор В.',N'   Полученные данные:
 9 стенов.
@@ -12657,7 +12679,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  высокий уровень интеллекта.
 
    Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 578-588.
-',N'Kortinki\\Zadacha13\\6.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\6.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест интеллектуального потенциала (П. Ржичан).',N'   Полученные данные.
 123 балла. 
@@ -12667,7 +12689,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: уровень интеллекта на высоком уровень.
 
    Резапкина Г.В. Отбор в профильные классы. – М.: Генезис, 2006. – С. 62-69.
-',N'Kortinki\\Zadacha13\\7.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\7.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест умственного развития (методика ШТУР в модификации Г. Резапкиной).',N'   Полученные данные
 69 баллов. 
@@ -12685,7 +12707,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: уровень умственного развития – выше среднего.
 
    Резапкина Г.В. Отбор в профильные классы. – М.: Генезис, 2006. – С. 74-95.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Краткий тест творческого мышления (Тест Торренса в адаптации Е.И. Щебланова, И.С. Аверина).',N'   Показатель беглости – 10 баллов;
 оригинальность – 14.
@@ -12697,7 +12719,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	оригинальность  –  выше среднего.
 
    Краткий тест творческого мышления. Фигурная форма: Пособие для школьных психологов. – М.: ИНТОР, 1995. – 48 с.
-',N'Kortinki\\Zadacha13\\9_1.png',N'Kortinki\\Zadacha13\\9_2.png',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\9_1.png',N'C:\\Program Files\\Kortinki\\Zadacha13\\9_2.png',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Методика диагностики уровня творческой активности учащихся.',N'Методика диагностики уровня творческой активности учащихся (М.И. Рожков, Ю.С Тюнников, Б.С Алишев, Л.А. Волович).',N'   Полученные данные:
 •	чувство новизны – 1,7 баллов;
@@ -12721,7 +12743,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	общий уровень творческой активности  – высокий.
 
    Методика диагностики уровня творческой активности учащихся [Электронный ресурс] / М. И. Рожков [и др.] // Ваш психолог. – 2009. – Режим доступа: http://www.vashpsixolog.ru. – 21.09.2013.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест смысложизненных ориентаций.',N'   Полученные данные:
 •	наличие целей – 17 баллов;
@@ -12741,7 +12763,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	общая осмысленность жизни снижена.
    
    Леонтьев Д.А. Тест смысложизненных ориентаций: Психодиагностическая серия. – М: Смысл, 2006. –  18 с.
-',N'Kortinki\\Zadacha13\\11.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\11.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест жизнестойкости (методика С. Мадди в адаптации Д.А. Леонтьева).',N'   Полученные данные:
 •	вовлеченность в жизнь – 38 баллов;
@@ -12756,7 +12778,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	общий уровень жизнестойкости в норме.
    
    Леонтьев Д.А., Рассказова Е.И. Тест жизнестойкости. — М.: Смысл, 2006. — 63 с.
-',N'Kortinki\\Zadacha13\\12.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\12.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Мотивация успеха и боязнь неудачи (опросник А.А. Реана).',N'   Полученные данные:
 15 баллов.
@@ -12770,7 +12792,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: выражена мотивация к достижению успеха.
 
    Малкина-Пых И.Г. Психосоматика: Справочник практического психолога. — М.: Эксмо, 2005. — С. 124-126.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Экспресс-диагностика характерологических особенностей личности.',N'Экспресс-диагностика характерологических особенностей личности (Н. Айзенк в модификации Т.В. Матолиной).',N'   Полученные данные:
 Экстраверсия – 12 баллов;
@@ -12788,7 +12810,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	анализ графика показывает, что тип темперамента Саши находится на границе всех четырех типов темперамента.
    
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
-',N'Kortinki\\Zadacha13\\14.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\14.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Индивидуально-типологический детский опросник.',N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, у испытуемой выражено стремление преувеличивать свою вину в случившемся, диагностируется высокая ответственность и ведомость. Саше присущи нерешительность, внутренняя потребность соответствовать установкам окружения – преподавателей, родителей, класса, мнительность, боязливость, склонность к необоснованным страхам.
    
@@ -12807,7 +12829,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	экстраверсия и сензитивность в норме.
 
    Собчик Л.Н. Индивидуально-типологический опросник. – М.: Боргес, 2008. – 190 с.
-',N'Kortinki\\Zadacha13\\15.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\15.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Многофакторный личностный опросник Р. Кеттелла (юношеский вариант—14PF).',N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, данный тип личности склонен к недоверчивости другим людям. Такая личность уделяет много внимания планированию своего поведения, задумываются над своими ошибками и способами их исправления, способна отстаивать свою точку зрения. Она старается самостоятельно решать свои проблемы. Также присутствует жизнерадостность. Влада совестлива и в меру самостоятельна. Ей присуща тенденция к зависимости и уступчивости. С одной стороны диагностируется уверенность в себе, а с другой, склонность к замкнутости и обособленности, свидетельствуют о сдержанности, озабоченности, склонности все усложнять, ко всему подходить слишком серьезно и осторожно.
 •	Если по какому-либо фактору набрано 5-6, это говорит о том, что полюс данного фактора четко не выражен;
@@ -12823,7 +12845,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	факторы C, D, E, F, G, H, I и Q3 соответствуют норме.
    
    Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 578-588.
-',N'Kortinki\\Zadacha13\\16_1.png',N'Kortinki\\Zadacha13\\16_2.png',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\16_1.png',N'C:\\Program Files\\Kortinki\\Zadacha13\\16_2.png',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Многофакторный личностный опросник «Мини-мульт».',N'Многофакторный личностный опросник «Мини-мульт» (адаптация Ф.Б. Березинина и М.П. Мирошникова).',N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, вышеуказанные данные говорят о том, что испытуемая – человек благоразумный, доброжелательный, общительный, имеет широкий круг интересов. Она конвенциональная личность, с высоким уровнем идентификации со своим социальным статусом, ей присуща тенденции к сохранению постоянных интересов, установок, целей. Она решительна в принятии решений.
 
@@ -12839,7 +12861,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	в пределах нормы следующие шкалы: шкала депрессии, паранойяльности и гипотонии.
    
    Менделевич В.Д. Психология девиантного поведения: Учебное пособие. –  СПб.: Речь, 2005. – С.409-411.
-',N'Kortinki\\Zadacha13\\17_1.png',N'Kortinki\\Zadacha13\\17_2.png',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\17_1.png',N'C:\\Program Files\\Kortinki\\Zadacha13\\17_2.png',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Компьютерный Цветовой тест Люшера (адаптация А. Ласточкина).',N'   Полученные данные: по мнению автора методики, при сделанной испытуемой частоте выбора цветов, диагностируется следующее.
 
@@ -12890,7 +12912,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Измерительная шкала: с учетом того, что данный тест представлен в компьютерной форме, нормативы в него уже заложены (анализ частоты выбора цветов).
 
    Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизнь-XXIвек. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'«Толерантность к неопределенности» (Методика С. Баднера в адаптации Г.У. Солдатовой).',N'   Полученные данные:
 •	новизна проблемы – 25 баллов;
@@ -12906,7 +12928,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	общий показатель толерантности к неопределенности на высоком уровне.
    
    Психодиагностика толерантности личности /Под ред. Г.У. Солдатовой, Л.А. Шайгеровой. – М.: Смысл, 2008. – С. 94-97.
-',N'Kortinki\\Zadacha13\\19.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\19.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Шкала «Толерантность к двусмысленности».',N'Шкала «Толерантность к двусмысленности»  (методика Родника, Хезера и др. в адаптации Н.А. Бажановой и Г.Л. Бардиер).',N'   Полученные данные:
 •	страстность (энергичность) – 23 балла;  
@@ -12926,7 +12948,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	Уровень толерантности к двусмысленности – низкая норма.
 
    18 программ тренингов: Руководство для профессионалов /под ред. В.А. Чикер. – СПб.: Речь, 2007. — С. 322-325.
-',N'Kortinki\\Zadacha13\\20.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\20.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Уровень школьной тревожности Филипса.',N'   Измерительная шкала: 
 •	если показатель больше 50 процентов, можно говорить о его повышенной выраженности;
@@ -12939,7 +12961,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	в пределах нормы оказались следующие показатели: общая тревожность, тревожность в школе, фрустрация потребности в достижение успеха, тревожность относительно проверки знаний, физиологическая сопротивляемость стрессу и страх несоответствия ожиданиям окружающих.
    
    Альманах психологических тестов. – Издание 2-е. – М.: КСП, 1996. – С. 165-171.
-',N'Kortinki\\Zadacha13\\21.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\21.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест уверенности в себе (В.Г. Ромек).',N'   Полученные данные:
 •	уверенность в себе – 4 стена;
@@ -12953,7 +12975,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	социальная смелость и инициатива в социальных контактах – низкий уровень. 
    
    Практическая психодиагностика и психологическое консультирование. – Ростов-на-Дону: ЮРГИ, 1998. – С. 87-108.
-',N'Kortinki\\Zadacha13\\22.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\22.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Диагностика Доброжелательности (по шкале Кемпбелла).',N'   Полученные данные:
 5 баллов
@@ -12968,7 +12990,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: средний показатель принятия других.
 
     Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 113-114.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Экспресс диагностика доверия (по шкале Розенберга).',N'   Доверие к окружающим
  
@@ -12989,7 +13011,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  диагностируется низкий показатель доверия.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика оценки доверия/недоверия личности другим людям (А.Б. Купрейченко).',N'   Содержательные характеристики при указанном сочетании параметров личности:
 •	тех людей, которым Саша доверяет, по её мнению, она знает и считает их надежными. Она стремится не сильно обращать внимания на их недостатки. При этом доверие к ним она основывает не на вере, а на конкретных данных;
@@ -13004,7 +13026,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	критериями доверия для Саши служат надежность человека и в меньшей степени единство с ним.
 
    Купрейченко А.Б. Психология доверия и недоверия. – М.: Институт психологии РАН, 2008. – С. 224-301.
-',N'Kortinki\\Zadacha13\\25_1.png',N'Kortinki\\Zadacha13\\25_2.png',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\25_1.png',N'C:\\Program Files\\Kortinki\\Zadacha13\\25_2.png',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест на благодарность.',N'   Полученные данные: 37 баллов. 
 
@@ -13020,7 +13042,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется средний уровень способности благодарить.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 102.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест на трансгрессивную мотивацию (умение прощать), (Мак-Куллоу).',N'   Полученные данные:
 •	стремление избежать обидчика – 12 баллов;
@@ -13039,7 +13061,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: уровень обидчивости и мстительности соответствующий норме.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 111.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест коммуникативных навыков (Методика Л. Михельсона в адаптации Ю.З. Гильбуха).',N'   Полученные данные:
 •	уровень компетентности – 24 балла;
@@ -13051,7 +13073,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  диагностируется высокий уровень компетентности в общении. Зависимость в общении практически не выражена. Агрессивность в общении отсутствует.
 
    Колмогорова, Н. С. Коммуникативная компетентность как условие и следствие становления направленности личности: дис. ... канд. психол. наук: 19.00.01 / Наталья Степановна Колмогорова. – Барнаул, 2004. – 228 с.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест описания поведения К. Томаса (адаптация Н.В. Гришиной).',N'   Полученные данные:
 •	стратегия соперничества – 3 стена; 
@@ -13068,7 +13090,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	выраженность стратегий уступки и избегания в пределах нормы.
    
    Большая энциклопедия психологических тестов /Под ред. А.А. Карелина – М.: Эксмо, 2007. — С. 270-273.
-',N'Kortinki\\Zadacha13\\29.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\29.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Тест «Поведение родителей и отношение подростков к ним».',N'Тест «Поведение родителей и отношение подростков к ним» (методика Е. Шафера в адаптации Э. Матейчика и П. Ржичана).',N'   Полученные данные.
 Оценка Владой воспитательных методов мамы:
@@ -13097,7 +13119,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	враждебность в пределах нормы.
    
    Сонин В.А. Психодиагностическое познание профессиональной деятельности. — СПб.: Речь, 2004. – С. 169-178.
-',N'Kortinki\\Zadacha13\\30.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\30.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Выявление самооценки по методике Дембо-Рубинштейн в модификации А.М. Прихожан.',N'   Полученные данные: 
 •	среднее арифметическое по самооценке – 64 балла;
@@ -13125,14 +13147,14 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	уровень притязаний относительно доверия к окружающим на границе высокого и среднего.
 
    Яньшин П.В. Клиническая психодиагностика личности: Учебно-методическое пособие – 2-е изд., испр. – СПб: Речь, 2007. – С. 29-54.
-',N'Kortinki\\Zadacha13\\31.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\31.png',N'',13)
 	insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала самоуважения Розенберга.',N'   Полученные данные: 4 стена.
    
    Вывод: диагностируется уровень самоуважения ниже среднего.
 
    Бодалев А.А., Столин В.В. Общая психодиагностика. – СПб.: Речь, 2000. – С. 308.
-',N'Kortinki\\Zadacha13\\32.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\32.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест на удовлетворенность жизнью.',N'   Полученные данные: 16 баллов. 
 
@@ -13146,7 +13168,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  диагностируется уровень удовлетворённости жизнью ниже среднего.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 92.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Эмоциональный тест Фордайса.',N'   Полученные данные:
 •	уровень счастья – 7 баллов;
@@ -13167,7 +13189,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	высокий уровень переживания нейтрального состояния. 
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 30.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала субъективного благополучия (методика Мендельсона и др. в адаптации М.В. Соколовой).',N'   Полученные данные: уровень субъективного благополучия – 7 стенов.
 Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, лица с такими оценками характеризуются умеренным субъективным благополучием, серьезные проблемы у них отсутствуют, но и о полном эмоциональном комфорте говорить нельзя.
@@ -13175,7 +13197,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется сниженное субъективное благополучие, близкое к полному эмоциональному дискомфорту.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – C. 467-470.
-',N'Kortinki\\Zadacha13\\35.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\35.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Шкала активности и оптимизма.',N'Шкала активности и оптимизма (методика И.С. Шуллера и А.Л. Комуниана в адаптации Г.С. Никифорова).',N'   Полученные данные: 
 •	уровень активности – 18 баллов;
@@ -13186,7 +13208,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: Саша реалист.
 
    Практикум по психологии менеджмента и профессиональной деятельности /Под редакцией Г.С. Никифорова, М.А. Дмитриевой, В.М. Снеткова – СПб.: Речь, 2003. – С 287-293.
-',N'Kortinki\\Zadacha13\\36.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\36.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Самооценка силы воли (Н.Н. Обозов).',N'   Полученные данные: 21 балл. 
 
@@ -13200,7 +13222,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Диагностируется средний уровень силы воли.
 
    Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 523-524.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Уровень субъективного контроля (УСК).',N'Уровень субъективного контроля (УСК) (методика Дж. Роттера в адаптации Е.Ф. Бажина, Е.А. Голынкиной, А.М. Эткинда).',N'   Полученные данные: 
 •	общий показатель субъективного контроля – 37 баллов;
@@ -13211,7 +13233,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: общий показатель субъективного контроля, уровня интернальности в отношении достижений и в области неудач высокий.
 
    Немов Р.С. Психология. Учебник для студентов высших педагогических учебных заведений: В 3-х ч. Ч.3. Психодиагностика. –4-е изд. – М.:  Владос, 2001. – С. 480-483.
-',N'Kortinki\\Zadacha13\\38.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\38.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Моментальный тест на позитивную и негативную аффективность (по отношению к учителям).',N'   Полученные данные: 
 Вначале психолог попросил Сашу оценить свой эмоциональный фон в данный момент (первое тестирование), а затем, через 2 дня, попросил её оценить эмоциональное отношение к тем учителям, которых она боится.
@@ -13236,7 +13258,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Сумма баллов по позитивным эмоциям в обоих случаях превосходит сумму негативных, однако по отношению к учителям данное превосходство минимально, что говорит, что при данной ситуации выражаются практически в равной степени и позитивные, и негативные эмоции. 
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 53.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Диагностика морального сознания (Дилеммы Л. Кольберга).',N'   Содержательные характеристики:
 •	Саша не следует в своих ответах принципу удовольствия и не следует во всем за нормами общества (по её словам, закон и мораль иногда расходятся) (см. Дилемму 1 и 4, 8). Т.е. Наблюдается гибкость моральных суждений, когда соблюдение законов общества сочетается с выполнением норм не писаной морали (при этом Саша все же признает, что закон – главный ориентир общества (Дилемма 8, 9));
@@ -13252,7 +13274,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Моральные установки имеют степень выраженности близкую к постконвенциональному.
 
    Диагностика эмоционально-нравственного развития: Сборник /Ред. и сост. И.Б. Дерманова. – СПб.: Речь, 2002. – С.103-112.
-',N'Kortinki\\Zadacha13\\40_1.png',N'Kortinki\\Zadacha13\\40_2.png',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\40_1.png',N'C:\\Program Files\\Kortinki\\Zadacha13\\40_2.png',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Рисунок Несуществующего животного.',N'   Рассказ Саши о животном. Данное животное не одиноко, оно живет с себе подобными, однако, на определенном моменте (совершеннолетие) оно должно уйти далеко для создания собственной семьи, повинуясь чувству долга. Данное событие не вызывает тревог, уже заложено генетически. Данные животные потом редко видятся с семьей. Также Саша почеркнула, что животные рождаются серыми, а потом расцветают. У них нет врагов и им незачем тревожиться. У них много друзей, которые всегда их по достоинству оценят. Пол у Сашиного животного – женский, имя Анфелия.
    
@@ -13281,7 +13303,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	общая красота и нарядность рисунка, оригинальность изображенного животного (и даже его имя) – свидетельство высокой креативности Саши.
    
    Яньшин П.В. Клиническая психодиагностика личности: Учебно методическое пособие – 2-е изд., испр. – СПб: Речь, 2007. – С. 190-258.
-',N'Kortinki\\Zadacha13\\41.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\41.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Диагностика принятия других (по шкале Фейя).',N'   Полученные данные: 48 баллов.
 
@@ -13296,17 +13318,17 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется средний показатель принятия других с тенденцией к высокому.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 112-113.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Определение степени ответственности Саши с помощью наблюдения психолога.',N'Определение степени ответственности Саши с помощью наблюдения психолога за Сашей в течение психологических сессий.',N'   В течение всей работы на сессиях, Саша проявила себя как человек высоко ответственный. Если она не могла прийти в какой-то день, обязательно уведомляла об этом. Кроме того, если она что-то обещала, всегда держала слово. 
 
    Вывод: наблюдается высокая ответственность.
-',N'Kortinki\\Zadacha13\\net.png',N'',13)
+',N'C:\\Program Files\\Kortinki\\Zadacha13\\net.png',N'',13)
 go
 
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Данные об успеваемости.',N'   Успеваемость: Успеваемость крайне низкая по всем предметам, не аттестован по итогам второй четверти.
-',N'Kortinki\\Zadacha14\\net.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\net.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Детский личностный опросника Р. Кеттелла (Адаптирован Э.М. Александровской). Фактор В.',N'   Полученные данные:
 4 стена.
@@ -13326,7 +13348,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  уровень интеллекта ниже среднего.
 
    Адаптированный модифицированный вариант детского личностного опросника Р. Кеттелла (Адаптирован Э.М. Александровской) / Э.М. Александровская, И.Н. Гильяшева: Методические рекомендации. – М.: Фолиум, 1993. – 40 с.
-',N'Kortinki\\Zadacha14\\2.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\2.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест смысложизненных ориентаций.',N'   Полученные данные:
 •	наличие целей – 30 баллов;
@@ -13346,7 +13368,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	общая осмысленность жизни средняя.
    
    Леонтьев Д.А. Тест смысложизненных ориентаций: Психодиагностическая серия. – М: Смысл, 2006. –  18 с.
-',N'Kortinki\\Zadacha14\\3.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\3.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Мотивация успеха и боязнь неудачи (опросник А.А. Реана).',N'   Полученные данные:
 Для оценки данного стремления, психолог сначала попросил Никиту заполнить опросник, ссылаясь на занятие спортом (Никитино хобби). А далее попросил Никиту заполнить этот же опросник, но в ситуациях, представленных в вопросах, он должен был представлять учебную деятельность.
@@ -13365,7 +13387,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	тенденция к избеганию неудач по отношению к учебной деятельности.
 
    Малкина-Пых И.Г. Психосоматика: Справочник практического психолога. — М.: Эксмо, 2005. — С. 124-126.
-',N'Kortinki\\Zadacha14\\net.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\net.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест жизнестойкости (методика С. Мадди в адаптации Д.А. Леонтьева).',N'   Полученные данные:
 •	вовлеченность в жизнь – 26 баллов;
@@ -13382,7 +13404,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	уровень общей жизнестойкости в норме.
    
    Леонтьев Д.А., Рассказова Е.И. Тест жизнестойкости. — М.: Смысл, 2006. — 63 с.
-',N'Kortinki\\Zadacha14\\5.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\5.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Морфологический тест жизненных ценностей.',N'Морфологический тест жизненных ценностей (В.Ф. Сопов и Л.В. Кармушина), с пояснениями Никиты.',N'   Полученные данные.
 Перечень жизненных ценностей:
@@ -13424,7 +13446,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	более всего Никита стремится к реализации имеющихся у него ценностей в следующих сферах: сфера профессиональной жизни, сфера общественной активности и сфера физической активности (средний уровень).
 
    Сопов В.Ф. Морфологический тест жизненных ценностей: руководство по применению /Ред. Б.М. Петров, И.Н. Сидоров. – Самара: СамИКП, 2002. – 56 с.
-',N'Kortinki\\Zadacha14\\6.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\6.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'«Толерантность к неопределенности» (Методика С. Баднера в адаптации Г.У. Солдатовой).',N'   Полученные данные:
 •	новизна проблемы – 9 баллов;
@@ -13440,7 +13462,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	общий показатель толерантности к неопределенности соответствует норме.
    
    Психодиагностика толерантности личности /Под ред. Г.У. Солдатовой, Л.А. Шайгеровой. – М.: Смысл, 2008. – С. 94-97.
-',N'Kortinki\\Zadacha14\\7.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\7.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Шкала «Толерантность к двусмысленности».',N'Шкала «Толерантность к двусмысленности»  (методика Родника, Хезера и др. в адаптации Н.А. Бажановой и Г.Л. Бардиер).',N'   Полученные данные:
 •	страстность (энергичность) – 21 балл;  
@@ -13459,7 +13481,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	уровень толерантности к двусмысленности – соответствует норме.
    
    18 программ тренингов: Руководство для профессионалов /под ред. В.А. Чикер. – СПб.: Речь, 2007. — С. 322-325.
-',N'Kortinki\\Zadacha14\\8.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\8.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Экспресс диагностика доверия (по шкале Розенберга).',N'   Полученные данные:
 2 балла. 
@@ -13473,7 +13495,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  диагностируется средний показатель доверия.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
-',N'Kortinki\\Zadacha14\\net.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\net.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика оценки доверия/недоверия личности другим людям (А.Б. Купрейченко).',N'   Содержательные характеристики при указанном сочетании параметров личности:
 •	с теми людьми, которым Никита доверяет, он чувствует единство. Он стремится не сильно обращать внимания на их недостатки. Таких людей он считает не сильно расчетливыми;
@@ -13487,7 +13509,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	критериями доверия для Никиты служат единство и в меньшей степени приязнь.
 
    Купрейченко А.Б. Психология доверия и недоверия. – М.: Институт психологии РАН, 2008. – С. 224-301.
-',N'Kortinki\\Zadacha14\\10_1.png',N'Kortinki\\Zadacha14\\10_2.png',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\10_1.png',N'C:\\Program Files\\Kortinki\\Zadacha14\\10_2.png',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест на трансгрессивную мотивацию (умение прощать), (Мак-Куллоу).',N'   Полученные данные:
 •	стремление избежать обидчика – 19 баллов;
@@ -13508,7 +13530,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	уровень мстительности выражен очень высоко.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 111.
-',N'Kortinki\\Zadacha14\\net.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\net.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест коммуникативных навыков (Методика Л. Михельсона в адаптации Ю.З. Гильбуха).',N'   Полученные данные:
 •	уровень компетентности – 7 баллов;
@@ -13522,7 +13544,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	компетентность в общении низкая.
 
    Колмогорова, Н. С. Коммуникативная компетентность как условие и следствие становления направленности личности: дис. ... канд. психол. наук: 19.00.01 / Наталья Степановна Колмогорова. – Барнаул, 2004. – 228 с.
-',N'Kortinki\\Zadacha14\\net.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\net.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала субъективного благополучия (методика Мендельсона и др. в адаптации М.В. Соколовой).',N'   Полученные данные: уровень субъективного благополучия – 4 стена.
 Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, лица с такими оценками характеризуются умеренным субъективным благополучием, серьезные проблемы у них отсутствуют, но и полном эмоциональном комфорте говорить нельзя.
@@ -13530,7 +13552,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется сниженное субъективное благополучие.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – C. 467-470.
-',N'Kortinki\\Zadacha14\\13.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\13.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Шкала активности и оптимизма.',N'Шкала активности и оптимизма (методика И.С. Шуллера и А.Л. Комуниана в адаптации Г.С. Никифорова).',N'   Полученные данные: 
 •	уровень активности – 32 балла;
@@ -13541,7 +13563,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: Никита активный оптимист.
 
    Практикум по психологии менеджмента и профессиональной деятельности /Под редакцией Г.С. Никифорова, М.А. Дмитриевой, В.М. Снеткова – СПб.: Речь, 2003. – С 287-293.
-',N'Kortinki\\Zadacha14\\14.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\14.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Самооценка силы воли (Н.Н. Обозов).',N'   Полученные данные: 20 баллов. 
 
@@ -13555,7 +13577,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Диагностируется средний уровень силы воли.
 
    Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 523-524.
-',N'Kortinki\\Zadacha14\\net.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\net.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Моментальный тест на позитивную и негативную аффективность (по отношению к учителям).',N'   Полученные данные: 
 •	сумма негативных эмоций по отношению к учителям – 33 (доминирующие негативные эмоции: огорчение, тревога, чувство вины, враждебность, стыд, беспокойство – 4 балла);
@@ -13572,23 +13594,23 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Сумма отрицательных эмоций превосходит сумму положительных, что означает низкий позитивный эмоциональный фон по отношению к учителям.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 53.
-',N'Kortinki\\Zadacha14\\net.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\net.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Беседа психолога с Никитой на тему морального долга по отношению к учебе.',N'   По словам Никиты, его достали почти все учителя, у него нет желания выполнять никаких данных обещаний по отношению к школе. «Я готов держать обещания в среде друзей, но по отношению к школе у меня нет такого желания».
 
    Вывод: чувство морального долга по отношению к школе, учителям и самой учебе не выражено.
-',N'Kortinki\\Zadacha14\\net.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\net.png',N'',14)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Данные наблюдения психолога за поведением Никиты в течение психологических сессий.',N'- После четырех-пяти сессий и полученных данных по поводу отношения родителей к проблеме Никиты, он начал активно пропускать сессии под различными предлогами. 
 - После 6-7 сессий Никита больше ни разу не пришел. Каждый раз, когда школьный психолог его встречал, у него возникала новая причина не прийти. При этом он обещал прийти на следующую сессию. Таких ситуаций было около четырех. В итоге, он так ни разу и не пришел.
 
    Вывод: чувство морального долга по отношению к школе, учителям и самой учебе не выражено.
-',N'Kortinki\\Zadacha14\\net.png',N'',14)
+',N'C:\\Program Files\\Kortinki\\Zadacha14\\net.png',N'',14)
 go
 
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Данные об успеваемости.',N'   Успеваемость: успеваемость по большинству предметов удовлетворительная.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика Мюнстерберга.',N'   Полученные данные:
 21 слово за 180 сек, т.е.
@@ -13602,7 +13624,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: уровень избирательности внимания низкий.
 
    Бруннер Е.Ю. Лучше, чем супервнимание: Методики диагностики и психокоррекции. – Ростов н/Д: Феникс, 2006. –  С. 42-45.
-',N'Kortinki\\Zadacha15\\2.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\2.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Заучивание 10 слов (А.Р. Лурия).',N'   Содержательные характеристики при указанном сочетании параметров личности: 
 •	изгиб вначале (1-3 серия) означает неустойчивость внимания и быструю утомляемость, уровень памяти колеблется от сниженного до нормального;
@@ -13618,7 +13640,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  развитие памяти и внимания на уровне ниже среднего.
 
    Альманах психологических тестов /Сост. С. Римский, Р.Р. Римская. – М.: КСП+, 1995. – С. 92-94. 
-',N'Kortinki\\Zadacha15\\3.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\3.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Простые аналогии.',N'   Полученные данные.
 •	наблюдается широкий разброс ошибок по всему тесту (из 32 заданий, ошибки допущены в 16). В основном в ошибках наблюдаются конкретные связи, реже категориальные вместо логических; 
@@ -13637,7 +13659,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	в конце теста наблюдается утомляемость и хрупкость мышления Льва.
 
    Сборник психологических тестов. Ч.2: Пособие /Сост. Е.Е. Миронова – Мн.: Женский институт ЭНВИЛА, 2006. – С. 38-40.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Детский личностный опросника Р. Кеттелла (Адаптирован Э.М. Александровской). Фактор В.',N'   Полученные данные:
 5 стенов.
@@ -13651,7 +13673,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  средний уровень интеллекта.
 
    Адаптированный модифицированный вариант детского личностного опросника Р. Кеттелла (Адаптирован Э.М. Александровской) / Э.М. Александровская, И.Н. Гильяшева: Методические рекомендации. – М.: Фолиум, 1993. – 40 с.
-',N'Kortinki\\Zadacha15\\5.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\5.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест смысложизненных ориентаций.',N'   Полученные данные:
 •	наличие целей – 24 балла;
@@ -13671,7 +13693,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	общая осмысленность жизни низкая.
 
    Леонтьев Д.А. Тест смысложизненных ориентаций: Психодиагностическая серия. – М: Смысл, 2006. –  18 с.
-',N'Kortinki\\Zadacha15\\6.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\6.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест жизнестойкости (методика С. Мадди в адаптации Д.А. Леонтьева).',N'   Полученные данные:
 •	вовлеченность в жизнь – 13 баллов;
@@ -13688,7 +13710,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	уровень общей жизнестойкости также низкий.
 
    Леонтьев Д.А., Рассказова Е.И. Тест жизнестойкости. — М.: Смысл, 2006. — 63 с.
-',N'Kortinki\\Zadacha15\\7.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\7.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Мотивация успеха и боязнь неудачи (опросник А.А. Реана).',N'   Полученные данные:
 11 баллов.
@@ -13702,7 +13724,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: мотивационный полюс ярко не выражен.
 
    Малкина-Пых И.Г. Психосоматика: Справочник практического психолога. — М.: Эксмо, 2005. — С. 124-126.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Экспресс-диагностика характерологических особенностей личности.',N'Экспресс-диагностика характерологических особенностей личности (Н. Айзенк в модификации Т.В. Матолиной).',N'   Полученные данные:
 Экстраверсия – 19 баллов;
@@ -13721,7 +13743,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	анализ графика показывает, что тип темперамента Льва ближе всего к холерическому.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
-',N'Kortinki\\Zadacha15\\9.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\9.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Индивидуально-типологический детский опросник.',N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, показатели испытуемого говорят об эмоциональной неустойчивости, циклоидности, зависимости в поведении. Имеется тенденция преувеличивать свои проблемы.
 
@@ -13743,7 +13765,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	тревожность в пределах нормы.
 
    Собчик Л.Н. Индивидуально-типологический опросник. – М.: Боргес, 2008. – 190 с.
-',N'Kortinki\\Zadacha15\\10.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\10.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Детский личностный опросника Р. Кеттелла (Адаптирован Э.М. Александровской).',N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, при такой выраженности факторов присутствует тенденции к уединению, скрытности, также выражен сниженный самоконтроль, застенчивость, неспособность справиться с жизненными трудностями. Имеется повышенная импульсивность или сверхреактивность на слабые провоцирующие стимулы. Лев склонен к печальным размышлениям в одиночестве, легко подвержен различным страхам и тяжело переживает любые жизненные неудачи. Он не верит в себя, склонен к самоупрекам, недооценивает свои возможности, знания, способности. Он постоянно находится в состоянии возбуждения, с большим трудом успокаивается, чувствует себя разбитым, усталым и не может оставаться без дела даже в обстановке, способствующей отдыху. Для него характерна эмоциональная неустойчивость с преобладанием пониженного настроения, раздражительность, проблемы со сном, негативное отношение к критике.
 •	Если по какому-либо фактору набрано 5-6, это говорит о том, что полюс данного фактора четко не выражен;
@@ -13761,7 +13783,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	факторы B, G соответствуют норме.
    
    Александровская Э.М., Гильяшева И.Н. Адаптированный модифицированный вариант детского личностного опросника Р. Кеттелла Методические рекомендации. – М.: Фолиум, 1993. – 40 с.
-',N'Kortinki\\Zadacha15\\11_1.png',N'Kortinki\\Zadacha15\\11_2.png',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\11_1.png',N'C:\\Program Files\\Kortinki\\Zadacha15\\11_2.png',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Многофакторный личностный опросник «Мини-мульт».',N'Многофакторный личностный опросник «Мини-мульт» (адаптация Ф.Б. Березинина и М.П. Мирошникова).',N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению авторов методики, показатели испытуемого говорят о тенденции к злопамятности.
 Измерительная шкала: определяются по профилю (см. график), с учетом которого все результаты от 40 до 70 T баллов признаются нормой. Соответственно отклонение от нормы вниз – низкий балл, вверх – высокая выраженность.
@@ -13776,7 +13798,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	в пределах нормы оказались шкалы ипохондрии и психастении.
 
    Менделевич В.Д. Психология девиантного поведения: Учебное пособие. –  СПб.: Речь, 2005. – С.409-411.
-',N'Kortinki\\Zadacha15\\12_1.png',N'Kortinki\\Zadacha15\\12_2.png',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\12_1.png',N'C:\\Program Files\\Kortinki\\Zadacha15\\12_2.png',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Компьютерный Цветовой тест Люшера (адаптация А. Ласточкина).',N'   Полученные данные: по мнению автора методики, при сделанной испытуемой частоте выбора цветов, диагностируется следующее.
 
@@ -13818,7 +13840,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 
 
    Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизнь-XXIвек. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Рисунок Несуществующего животного.',N'   Рассказ Льва о животном. Его имя Динозаврус. Это большое животное, живет в стае, это подросток – один из самых молодых в данной стае. Везде угроза, чтобы выжить эти животные объединяются. У них нет родителей, они от них отбились – военным путем, т.к. те были тиранами. Данные животные охотятся, ведут инстинктивный образ жизни. Подчиняясь им (инстинктам), они не испытывают радость в человеческом понимании.
    
@@ -13836,7 +13858,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: имеется четко прослеживаемое негативное отношение к семье.
    
    Яньшин П.В. Клиническая психодиагностика личности: Учебно методическое пособие – 2-е изд., испр. – СПб: Речь, 2007. – С. 190-258.
-',N'Kortinki\\Zadacha15\\14.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\14.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Шкала «Толерантность к двусмысленности».',N'Шкала «Толерантность к двусмысленности»  (методика Родника, Хезера и др. в адаптации Н.А. Бажановой и Г.Л. Бардиер).',N'   Полученные данные:
 •	страстность (энергичность) – 25 баллов;  
@@ -13855,7 +13877,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	уровень толерантности к двусмысленности низкий.
    
    18 программ тренингов: Руководство для профессионалов /под ред. В.А. Чикер. – СПб.: Речь, 2007. — С. 322-325.
-',N'Kortinki\\Zadacha15\\15.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\15.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Уровень школьной тревожности Филипса.',N'   Измерительная шкала: 
 •	если показатель больше 50 процентов, можно говорить о его повышенной выраженности;
@@ -13865,7 +13887,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 
    Вывод. В пределах нормы оказались все показатели теста: общая тревожность, тревожность в школе, переживание социального стресса, фрустрация потребности в достижение успеха, страх самовыражения, тревожность относительно проверки знаний, страхи в отношениях с учителями, физиологическая сопротивляемость стрессу и страх несоответствия ожиданиям окружающих.
 Альманах психологических тестов. – Издание 2-е. – М.: КСП, 1996. – С. 165-171.
-',N'Kortinki\\Zadacha15\\16.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\16.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест уверенности в себе (В.Г. Ромек).',N'   Полученные данные:
 •	уверенность в себе – 6 стенов;
@@ -13877,7 +13899,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: показатели уверенности в себе, социальной смелости и инициативы в социальных контактах в пределах нормы.
 
    Практическая психодиагностика и психологическое консультирование. – Ростов-на-Дону: ЮРГИ, 1998. – С. 87-108.
-',N'Kortinki\\Zadacha15\\17.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\17.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Диагностика Доброжелательности (по шкале Кемпбелла).',N'   Полученные данные:
 3 балла
@@ -13892,7 +13914,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: низкий показатель принятия других.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 113-114.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Экспресс диагностика доверия (по шкале Розенберга).',N'   Полученные данные:
 1 балл. 
@@ -13907,7 +13929,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  диагностируется низкий показатель доверия.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика оценки доверия/недоверия личности другим людям (А.Б. Купрейченко).',N'   Содержательные характеристики при указанном сочетании параметров личности:
 •	человека, которому Лев доверяет, он считает в первую очередь надежным и склонен не сильно замечать его недостатки;
@@ -13922,7 +13944,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	критерием доверия для Льва выступает надежность.
 
    Купрейченко А.Б. Психология доверия и недоверия. – М.: Институт психологии РАН, 2008. – С. 224-301.
-',N'Kortinki\\Zadacha15\\20_1.png',N'Kortinki\\Zadacha15\\20_2.png',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\20_1.png',N'C:\\Program Files\\Kortinki\\Zadacha15\\20_2.png',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест на благодарность.',N'   Полученные данные: 15 баллов. 
 
@@ -13938,7 +13960,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется низкий уровень способности благодарить.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 102.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест на трансгрессивную мотивацию (умение прощать), (Мак-Куллоу).',N'   Полученные данные:
 •	стремление избежать обидчика – 23 балла;
@@ -13957,7 +13979,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется высокое стремление избежать обидчика (обидчивость) и очень высокая мстительность.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 111.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест коммуникативных навыков (Методика Л. Михельсона в адаптации Ю.З. Гильбуха).',N'   Полученные данные:
 •	уровень компетентности – 13 баллов;
@@ -13973,7 +13995,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	зависимость в общении практически не выражена.
 
    Колмогорова, Н. С. Коммуникативная компетентность как условие и следствие становления направленности личности: дис. ... канд. психол. наук: 19.00.01 / Наталья Степановна Колмогорова. – Барнаул, 2004. – 228 с.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Методика диагностики степени удовлетворенности основных потребностей.',N'Методика диагностики степени удовлетворенности основных потребностей (адаптация В.В. Скворцова).',N'   Полученные данные.
    
@@ -13998,7 +14020,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	в признании – слегка неудовлетворенная.
    
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 53-54.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Тест «Поведение родителей и отношение подростков к ним».',N'Тест «Поведение родителей и отношение подростков к ним» (методика Е. Шафера в адаптации Э. Матейчика и П. Ржичана).',N'   Полученные данные.
    
@@ -14030,7 +14052,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	директивность в пределах нормы.
 
    Сонин В.А. Психодиагностическое познание профессиональной деятельности. — СПб.: Речь, 2004. – С. 169-178.
-',N'Kortinki\\Zadacha15\\25.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\25.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Выявление самооценки по методике Дембо-Рубинштейн в модификации А.М. Прихожан.',N'   Полученные данные: 
 •	среднее арифметическое по самооценке – 45 баллов;
@@ -14061,12 +14083,12 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	уровень притязаний относительно характера – низкий.
 
    Яньшин П.В. Клиническая психодиагностика личности: Учебно-методическое пособие – 2-е изд., испр. – СПб: Речь, 2007. – С. 29-54.
-',N'Kortinki\\Zadacha15\\26.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\26.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала самоуважения Розенберга.',N'Полученные данные: 5 стенов.',N'   Вывод: диагностируется нормальный уровень самоуважения.
 
    Бодалев А.А., Столин В.В. Общая психодиагностика. – СПб.: Речь, 2000. – С. 308.
-',N'Kortinki\\Zadacha15\\27.png',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\27.png',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест на удовлетворенность жизнью.',N'   Полученные данные: 5 баллов. 
 
@@ -14080,7 +14102,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  диагностируется низкая удовлетворённость жизнью.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 92.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Эмоциональный тест Фордайса.',N'   Полученные данные:
 •	уровень счастья – 1 балл;
@@ -14101,7 +14123,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	высокий уровень переживания несчастного состояния.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 30.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала субъективного благополучия (методика Мендельсона и др. в адаптации М.В. Соколовой).',N'   Полученные данные: уровень субъективного благополучия – 10 стенов.
 
@@ -14110,7 +14132,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется очень низкое субъективное благополучие, полный эмоциональный дискомфорт.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – C. 467-470.
-',N'Kortinki\\Zadacha15\\30.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\30.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Шкала активности и оптимизма.',N'Шкала активности и оптимизма (методика И.С. Шуллера и А.Л. Комуниана в адаптации Г.С. Никифорова).',N'   Полученные данные: 
 •	уровень активности – 25 баллов;
@@ -14121,7 +14143,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: Лев активный пессимист.
 
    Практикум по психологии менеджмента и профессиональной деятельности /Под редакцией Г.С. Никифорова, М.А. Дмитриевой, В.М. Снеткова – СПб.: Речь, 2003. – С 287-293.
-',N'Kortinki\\Zadacha15\\31.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\31.png',N'',15)
 	insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Самооценка силы воли (Н.Н. Обозов).',N'   Полученные данные: 10 баллов. 
 
@@ -14135,7 +14157,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Диагностируется низкий уровень силы воли.
 
    Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 523-524.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Уровень субъективного контроля (УСК).',N'Уровень субъективного контроля (УСК) (методика Дж. Роттера в адаптации Е.Ф. Бажина, Е.А. Голынкиной, А.М. Эткинда).',N'   Полученные данные: 
 •	общий показатель субъективного контроля – 12 баллов;
@@ -14147,7 +14169,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: общий показатель субъективного контроля, уровня интернальности в отношении достижений и в области неудач средний низкий.
 
    Немов Р.С. Психология. Учебник для студентов высших педагогических учебных заведений: В 3-х ч. Ч.3. Психодиагностика. –4-е изд. – М.:  Владос, 2001. – С. 480-483.
-',N'Kortinki\\Zadacha15\\33.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\33.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Моментальный тест на позитивную и негативную аффективность (по отношению к учителям).',N'   Полученные данные: 
 •	сумма негативных эмоций по отношению к матери – 23 балла (доминирующие негативные эмоции: чувство вины и беспокойство – 5 баллов);
@@ -14164,7 +14186,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Сумма баллов по позитивным эмоциям  по отношению к матери значительно превосходит сумму негативных, что означает доминирование положительного эмоционального фона.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 53.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Диагностика социально-психологической адаптации.',N'Диагностика социально-психологической адаптации (методика К. Роджерса и Р. Даймонда, адаптирована на факультет СПб государственного университета).',N'   Полученные данные: 
 
@@ -14188,7 +14210,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	на низком уровне конфликтность и ведомость.
 
    Широкова И.Б. Тренинг самопознания для подростков: Общение. Память: 8-10 классы. – М.: Генезис, 2005. – 169 с.
-',N'Kortinki\\Zadacha15\\35.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\35.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Диагностика принятия других (по шкале Фейя).',N'   Полученные данные: 46 баллов.
 
@@ -14203,22 +14225,22 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется средний показатель принятия других с тенденцией к высокому.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 112-113.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Определение воспитательных мер в отношении Льва.',N'   Лев: «Какое-то время до 2012 года, родители мне позволяли играть в компьютер по 5-6 часов, а сейчас резко запретили! За это я вообще ничего делать не буду. Они пытаются загнать меня в жесткие рамки, и я буду с эти бороться».
 
    Вывод: непоследовательность воспитательных мер.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Выявление образа родителей методом беседы.',N'Выявление образа родителей методом беседы (беседа психолога со Львом на тему книги, которую он пишет).',N'   Лев: «В моей «книге» герой, в конце концов, добился всего и стал жить счастливо. У него были жестокие родители, убивали насекомых и других животных, но сын не поддался на такое воспитание, не стал убийцей. Сын продолжает бороться со своими родителями, но не их методами».
 
    Вывод: наблюдается образ жестоких родителей.
-',N'Kortinki\\Zadacha15\\net.png',N'',15)
+',N'C:\\Program Files\\Kortinki\\Zadacha15\\net.png',N'',15)
 go
 
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Данные об успеваемости.',N'   Успеваемость: высокий уровень по всем предметам.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика Мюнстерберга.',N'   Полученные данные:
 27 слов за 117 сек, т.е.
@@ -14232,7 +14254,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: уровень избирательности внимания высокий.
 
    Бруннер Е.Ю. Лучше, чем супервнимание: Методики диагностики и психокоррекции. – Ростов н/Д: Феникс, 2006. –  С. 42-45.
-',N'Kortinki\\Zadacha16\\2.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\2.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика заучивания «10 слов» (А.Р. Лурия).',N'   Содержательные характеристики при указанном сочетании параметров личности:
 •	сильных изгибов на графике не наблюдается;
@@ -14248,7 +14270,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  уровень развития памяти и внимания соответствует норме. 
 
    Альманах психологических тестов /Сост. С. Римский, Р.Р. Римская. – М.: КСП+, 1995. – С. 92-94.
-',N'Kortinki\\Zadacha16\\3.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\3.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Перепутанные линии (тест Риса).',N'   Из 25 линий правильно найдено 11. Время выполнения, 6 мин 50 секунд, что соответствует 3 баллам.
 
@@ -14262,7 +14284,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: уровень концентрации внимания хороший.
 
    Марищук В.Л. Методики психодиагностики в спорте: учебное пособие /В.Л. Марищук, Ю.М. Блудов, В.А. Плахтиенко, Л.К. Серова. – М.: Просвещение, 1984. – 191 с.
-',N'Kortinki\\Zadacha16\\4_1.png',N'Kortinki\\Zadacha16\\4_2.png',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\4_1.png',N'C:\\Program Files\\Kortinki\\Zadacha16\\4_2.png',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика «Словесный лабиринт».',N'   Среднеарифметическое всех заданий – 45 сек. 
 Содержательные характеристики при указанном сочетании параметров личности:
@@ -14278,7 +14300,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: лабильность мышления средняя.
 
    Практикум по общей, экспериментальной и прикладной психологии /Под ред. Крылова А.А., Маничева С.А. – 2-е изд., доп. и перераб. – СПб.: 2003. – С. 145-147.
-',N'Kortinki\\Zadacha16\\5.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\5.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Опросник на эмоциональный интеллект ЭмИн: новые психометрические данные (Д.В. Люсин).',N'   Полученные данные:
 •	МП – 23 балла;
@@ -14297,7 +14319,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	контроль экспрессии – средний уровень.
 
    Социальный и эмоциональный интеллект: от процессов к измерениям /Под ред. Д.В. Люсина, Д.В. Ушакова. М.: Институт психологии РАН, 2009. С. 264 – 278.
-',N'Kortinki\\Zadacha16\\6.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\6.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Диагностика социального интеллекта. Тест Дж. Гилфорда и М. Салливена.',N'Диагностика социального интеллекта. Тест Дж. Гилфорда и М. Салливена (адаптация Михайловой Е.С.).',N'   Полученные данные.
 •	Субтест 1 истории с завершением  – 2 балла;
@@ -14312,7 +14334,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется социальный интеллект на уровне ниже среднего.
 
    Михайлова Е.С. Тест Дж. Гилфорда и М. Салливена. Диагностика социального интеллекта: Методическое руководство. –  СПб.: ИМАТОН, 2006. – 56 с.
-',N'Kortinki\\Zadacha16\\7.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\7.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест смысложизненных ориентаций.',N'   Полученные данные:
 •	наличие целей – 42 балла;
@@ -14330,7 +14352,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	общий показатель осмысленности жизни – высокий.
    
    Леонтьев Д.А. Тест смысложизненных ориентаций: Психодиагностическая серия. – М: Смысл, 2006. –  18 с.
-',N'Kortinki\\Zadacha16\\8.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\8.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест жизнестойкости (методика С. Мадди в адаптации Д.А. Леонтьева).',N'   Полученные данные:
 •	вовлеченность в жизнь – 38 баллов;
@@ -14349,7 +14371,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	общий уровень жизнестойкости высокий.
    
    Леонтьев Д.А., Рассказова Е.И. Тест жизнестойкости. — М.: Смысл, 2006. — 63 с.
-',N'Kortinki\\Zadacha16\\9.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\9.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Мотивация успеха и боязнь неудачи (опросник А.А. Реана).',N'   Полученные данные:
 16 баллов.
@@ -14363,7 +14385,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: выражена мотивация к достижению успеха.
 
    Малкина-Пых И.Г. Психосоматика: Справочник практического психолога. — М.: Эксмо, 2005. — С. 124-126.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Тест психологической диагностики копинг-механизмов.',N'Тест психологической диагностики копинг-механизмов (тест Э. Хайма в адаптации Л.И. Вассермана).',N'   Полученные данные:
 •	когнитивная стратегия – «Я стараюсь проанализировать, все взвесить  и   объяснить себе, что же случилось»;
@@ -14384,7 +14406,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  все коппинг стратегии испытуемого продуктивны.
 
    Набиуллина Р.Р., Тухтарова И.В. Механизмы психологической защиты и совладания со стрессом (определение, структура, функции, виды, психотерапевтическая коррекция). – Казань: Казанская государственная медицинская академия, 2003. — 99 с.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Индивидуально-типологический опросник.',N'   Содержательные характеристики при указанном сочетании параметров личности: по мнению автора методики, при данных показателях, у испытуемого могут наблюдаться периодически вспышки агрессии и гнева, эмоциональные взрывы. Саша проявляет себя сдержано в новой обстановке и с новыми людьми. Присутствует также решительность, лидерские черты, стремление поступать по-своему, самостоятельность выбора.
 
@@ -14405,7 +14427,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	экстраверсия, сензитивность и тревожность в пределах нормы.
    
    Собчик Л.Н. Индивидуально-типологический опросник. – М.: Боргес, 2008. – 190 с.
-',N'Kortinki\\Zadacha16\\12.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\12.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест на склонность к любопытству и исследованию.',N'   Полученные данные: 32 балла. 
 
@@ -14422,7 +14444,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: средняя склонность к любопытству и исследованию
 
    Психометрические показатели русскоязычной версии теста «Склонность к любопытству и исследованию» (CEI-II) / С. П. Елшанский, А. Ф. Ануфриев, З. Ф. Камалетдинова [и др.] //Вестник Костромского государственного университета им. Р.А. Некрасова. Серия: Педагогика. Психология. Социальная работа. Ювенология. Социокинетика. – 2016. – Том 22., № 2. – C.113-118.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Методика диагностики мотивации одобрения.',N'Методика диагностики мотивации одобрения (методика Д. Марлоу и Д. Крауна в адаптации Ю.Л. Ханина).',N'   Полученные данные: 12 баллов. 
    
@@ -14436,7 +14458,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется средняя мотивация одобрения.
 
    Психологические тесты /Ред. и сост. С. Касьянов. – М.: Эксмо, 2006. – С. 358-360.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Компьютерный Цветовой тест Люшера (адаптация А. Ласточкина).',N'   Полученные данные: по мнению автора методики, при сделанной испытуемой частоте выбора цветов, диагностируется следующее.
 
@@ -14474,7 +14496,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Измерительная шкала: с учетом того, что данный тест представлен в компьютерной форме, нормативы в него уже заложены (анализ частоты выбора цветов).
 
    Люшер, М. Цветовой тест [Электронный ресурс] / М. Люшер, адаптация электронной версии А. Ласточкин // Химия и жизнь-XXIвек. – 2002. – Режим доступа: https://www.aha.ru/~las. – 01.07.2014.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Опросник структуры темперамента (В.М. Русалов).',N'   Полученные данные:
 •	эргичность – 6 баллов;
@@ -14499,7 +14521,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	показатели по шкалам эргичности и социальной пластичности также соответствуют норме.
    
    Русалов В.М. Опросник структуры темперамента (ОСТ). –  М.: ИП АН СССР, 1990. — 50 с.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Шкала «Толерантность к двусмысленности».',N'Шкала «Толерантность к двусмысленности»  (методика Родника, Хезера и др. в адаптации Н.А. Бажановой и Г.Л. Бардиер).',N'   Полученные данные:
 •	страстность (энергичность) – 25 баллов;  
@@ -14518,7 +14540,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	уровень толерантности к двусмысленности низкий.
    
    18 программ тренингов: Руководство для профессионалов /под ред. В.А. Чикер. – СПб.: Речь, 2007. — С. 322-325.
-',N'Kortinki\\Zadacha16\\17.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\17.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест уверенности в себе (В.Г. Ромек).',N'   Полученные данные:
 •	уверенность в себе – 10 стенов;
@@ -14533,7 +14555,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	инициативность в социальных контактах – средняя.
 
    Практическая психодиагностика и психологическое консультирование. – Ростов-на-Дону: ЮРГИ, 1998. – С. 87-108.
-',N'Kortinki\\Zadacha16\\18.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\18.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Диагностика Доброжелательности (по шкале Кемпбелла).',N'   Полученные данные:
 5 баллов.
@@ -14548,7 +14570,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется средний уровень доброжелательности.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 113-114.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Экспресс диагностика доверия (по шкале Розенберга).',N'   Полученные данные:
 1 балл. 
@@ -14563,7 +14585,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  диагностируется низкий показатель доверия.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 24-31.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Методика оценки доверия/недоверия личности другим людям (А.Б. Купрейченко).',N'   Содержательные характеристики при указанном сочетании параметров личности:
 •	тех людей, которым Саша доверяет, он считает приятными и готов верить им на слово, т.к. знает их. Также он не склонен замечать их недостатки;
@@ -14578,7 +14600,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	критерием доверия для Саши служит надежность человека.
    
    Купрейченко А.Б. Психология доверия и недоверия. – М.: Институт психологии РАН, 2008. – С. 224-301.
-',N'Kortinki\\Zadacha16\\21_1.png',N'Kortinki\\Zadacha16\\21_2.png',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\21_1.png',N'C:\\Program Files\\Kortinki\\Zadacha16\\21_2.png',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала чувства благодарности.',N'   Полученные данные: 38 баллов. 
 
@@ -14594,7 +14616,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется высокий уровень способности благодарить.
 
    Психометрические показатели русскоязычной версии шкалы чувства благодарности / С. П. Елшанский, А. Ф. Ануфриев, З. Ф. Камалетдинова [и др.]  // Теоретическая и экспериментальная психология. – 2015. – Т. 8. – № 3. – С. 23-30.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест на трансгрессивную мотивацию (умение прощать), (Мак-Куллоу).',N'   Полученные данные:
 •	стремление избежать обидчика – 20 баллов;
@@ -14613,7 +14635,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется высокий уровень обидчивости и мстительности.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 111.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест коммуникативных навыков (Методика Л. Михельсона в адаптации Ю.З. Гильбуха).',N'   Полученные данные:
 •	уровень компетентности – 19 баллов;
@@ -14628,7 +14650,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	агрессивность в общении практически отсутствует.
 
    Колмогорова, Н. С. Коммуникативная компетентность как условие и следствие становления направленности личности: дис. ... канд. психол. наук: 19.00.01 / Наталья Степановна Колмогорова. – Барнаул, 2004. – 228 с.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Методика диагностики степени удовлетворенности основных потребностей.',N'Методика диагностики степени удовлетворенности основных потребностей (адаптация В.В. Скворцова).',N'   Полученные данные.
    
@@ -14654,7 +14676,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	признание – зона неудовлетворенности.
    
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 53-54.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест описания поведения К. Томаса (адаптация Н.В. Гришиной).',N'   Полученные данные.
 •	Стратегия соперничества – 7 стенов; 
@@ -14672,7 +14694,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	стратегия избегания практически отсутствует (уровень низкий);
 •	выраженность стратегии сотрудничества – среднее.
    Большая энциклопедия психологических тестов /Под ред. А.А. Карелина – М.: Эксмо, 2007. — С. 270-273.
-',N'Kortinki\\Zadacha16\\26.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\26.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Выявление самооценки по методике Дембо-Рубинштейн в модификации А.М. Прихожан.',N'   Полученные данные: 
 •	среднее арифметическое по самооценке – 71 балл;
@@ -14702,14 +14724,14 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	доверие к окружающим – низкий уровень.
    
    Яньшин П.В. Клиническая психодиагностика личности: Учебно-методическое пособие – 2-е изд., испр. – СПб: Речь, 2007. – С. 29-54.
-',N'Kortinki\\Zadacha16\\27.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\27.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала самоуважения Розенберга.',N'   Полученные данные: 9 стенов. 
    
    Вывод: диагностируется высокий уровень самоуважения.
 
    Бодалев А.А., Столин В.В. Общая психодиагностика. – СПб.: Речь, 2000. – С. 308.
-',N'Kortinki\\Zadacha16\\28.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\28.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Тест на удовлетворенность жизнью.',N'   Полученные данные: 27 баллов.
 
@@ -14718,7 +14740,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод:  диагностируется очень высокая удовлетворенность жизнью.
 
    Психометрические показатели русскоязычной версии шкалы удовлетворенности жизнью [Электронный ресурс] / С. П. Елшанский, А. Ф. Ануфриев, З. Ф. Камалетдинова [и др.] // Современные исследования социальных проблем. – 2015. – № 9 (53). – С. 444-458. – Режим доступа: http:// sisp.nkras.ru. – 09.12.2015.
-',N'Kortinki\\Zadacha16\\29.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\29.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Эмоциональный тест Фордайса.',N'   Полученные данные:
 •	уровень счастья – 8;
@@ -14739,7 +14761,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	низкий уровень переживания нейтрального и несчастного состояния.
    
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 30.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала субъективного благополучия (методика Мендельсона и др. в адаптации М.В. Соколовой).',N'   Полученные данные: уровень субъективного благополучия – 3 стена.
 
@@ -14748,7 +14770,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется высокое субъективное благополучие.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – C. 467-470.
-',N'Kortinki\\Zadacha16\\31.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\31.png',N'',16)
 	insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Шкала активности и оптимизма.',N'Шкала активности и оптимизма (методика И.С. Шуллера и А.Л. Комуниана в адаптации Г.С. Никифорова).',N'   Полученные данные: 
 •	уровень активности – 17 баллов;
@@ -14759,7 +14781,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: Саша активный пессимист.
 
    Практикум по психологии менеджмента и профессиональной деятельности /Под редакцией Г.С. Никифорова, М.А. Дмитриевой, В.М. Снеткова – СПб.: Речь, 2003. – С 287-293.
-',N'Kortinki\\Zadacha16\\32.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\32.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Самооценка силы воли (Н.Н. Обозов).',N'   Полученные данные: 23 балла. 
 
@@ -14773,7 +14795,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Диагностируется высокий уровень силы воли.
 
    Практикум по возрастной психологии: Учеб. Пособие /Под ред. Л.А. Головей, Е.Ф. Рыбалко. — СПб.: Речь, 2002. — С. 523-524.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'Уровень субъективного контроля (УСК).',N'Уровень субъективного контроля (УСК) (методика Дж. Роттера в адаптации Е.Ф. Бажина, Е.А. Голынкиной, А.М. Эткинда).',N'   Полученные данные: 
 •	общий показатель субъективного контроля – 34 балла;
@@ -14788,7 +14810,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	уровень общей интернальности субъективного контроля – высокий. 
 
    Немов Р.С. Психология. Учебник для студентов высших педагогических учебных заведений: В 3-х ч. Ч.3. Психодиагностика. –4-е изд. – М.:  Владос, 2001. – С. 480-483.
-',N'Kortinki\\Zadacha16\\34.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\34.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Опросник стиля саморегуляции поведения (В.И. Моросанова).',N'   Полученные данные: 
 •	планирование – 7 баллов;
@@ -14807,7 +14829,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	общий уровень саморегуляции поведения –высокий уровень.
 
    Моросанова В.И. Опросник Стиль саморегуляции поведения (ССПМ) –  М.: Когито-Центр, 2004. – 44 с.
-',N'Kortinki\\Zadacha16\\35.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\35.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Моментальный тест на позитивную и негативную аффективность (по отношению к учителям).',N'   Полученные данные.
 Психолог попросил Сашу оценить проанализировать эмоции по отношению к тем людям, которым Саша не доверяет и к тем, кому доверяет.
@@ -14833,7 +14855,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 •	эмоциональное отношение к тем людям, которым Саша не доверяет значительно менее позитивно и более негативно, чем к тем, которым Саша доверяет.
 
    Селигман М. Новая позитивная психология: Научный взгляд на счастье и смысл жизни. — М.: София, 2006. – С. 53.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Диагностика принятия других (по шкале Фейя).',N'   Полученные данные: 52 балла.
 
@@ -14848,7 +14870,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод: диагностируется средний показатель принятия других с тенденцией к высокому.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 112-113.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Диагностика лидерских способностей  (Е. Жариков, Е. Крушельницкий).',N'   Полученные данные: 33 балла.
 
@@ -14864,7 +14886,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Средняя выраженность лидерских способностей.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 222-226.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Коммуникативные и организаторские склонности (Кос-2), (В.В. Синявский, В.А. Федорошин).',N'   Полученные данные: 0,9 баллов.
 
@@ -14890,7 +14912,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Диагностируется высокий уровень коммуникативных и организаторских склонностей.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 184-186.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Диагностика стилей руководства (А.Л. Журавлев).',N'   Полученные данные: соотношение стилей, следующее 0,2 (Д) - 5,1 (К) - 0,9 (Л).
 
@@ -14902,7 +14924,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Доминирует коллегиальный (демократический) стиль управления.
 
    Фетискин Н.П., Козлов В.В., Мануйлов Г.М. Социально-психологическая диагностика развития личности и малых групп. – М.: Институт Психотерапии, 2002. – С. 215-218.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала осознания настоящего (текущего) момента.',N'   Полученные данные: 123 балла.
 
@@ -14911,7 +14933,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Испытуемый обладает высокой степенью осознания настоящего (текущего) момента жизни.
 
    Психометрические показатели русскоязычной версии шкалы осознания настоящего (текущего) момента М. Аткинсона / С. П. Елшанский, А. Ф. Ануфриев, З. Ф. Камалетдинова [и др.] //Alma mater (Вестник высшей школы). – 2016. – № 3. – С. 43–49.
-',N'Kortinki\\Zadacha16\\41.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\41.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала эмоциональной зрелости М. Аткинсона.',N'   Полученные данные: 120 баллов.
 
@@ -14920,7 +14942,7 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Испытуемый обладает высокой эмоциональной зрелостью.
 
    Психометрические показатели русскоязычной версии шкалы эмоциональной зрелости М. Аткинсона / С. П. Елшанский, А. Ф. Ануфриев, З. Ф. Камалетдинова [и др.] // Современные научные исследования и инновации. – 2015. – № 10 (54). – С. 547-558. – Режим доступа: http://web.snauka.ru/issues/2015/10/58552. – 21.11.2016.
-',N'Kortinki\\Zadacha16\\42.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\42.png',N'',16)
 insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
 	values(N'',N'Шкала «Наличие смысла жизни».',N'   Полученные данные: 31 балл.
 
@@ -14936,5 +14958,5 @@ insert into dbo.dpo(lb_small,lb,lbtext,lb_image,lb_image2,zadacha_id)
    Вывод. Испытуемый четко осознает смысл своей жизни, ставит себе конкретные жизненные цели и имеет высокую осмысленность жизни.
 
    Психометрические показатели русскоязычной версии теста «Опросник смысла жизни» (MLQ) / С. П. Елшанский, А. Ф. Ануфриев, З. Ф. Камалетдинова [и др.] // Психология, социология и педагогика. – 2015. – № 10 (49). – С. 85–96.
-',N'Kortinki\\Zadacha16\\net.png',N'',16)
+',N'C:\\Program Files\\Kortinki\\Zadacha16\\net.png',N'',16)
 go

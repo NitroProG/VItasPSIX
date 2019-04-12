@@ -38,6 +38,7 @@ namespace Psico
             Program.zakl2T = 0;
             timer1.Enabled = true;
             richTextBox1.Text = Program.zakluch;
+            Program.KolvoOpenZakl += 1;
 
             Program.zaklOTV = 0;
             Program.NeVernOtv = 0;
@@ -54,7 +55,7 @@ namespace Psico
             dr.Close();
 
             // Выбор количества checkbox необходимых для заполнения формы
-            SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from dz where zadacha_id = " + Program.NomerZadachi + "", con);
+            SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from CBFormFill where zadacha_id = " + Program.NomerZadachi + " and FormCB = 'Diag'", con);
             SqlDataReader dr0 = kolvo.ExecuteReader();
             dr0.Read();
             kolvoCb = Convert.ToInt32(dr0["kolvo"].ToString());
@@ -63,7 +64,7 @@ namespace Psico
             stolb = kolvoCb / 2;
 
             // Выбор количества правильных ответов у задачи
-            SqlCommand kolotv = new SqlCommand("select count(*) as 'kolvo' from vernotv_Diag where zadacha_id = " + Program.NomerZadachi + "", con);
+            SqlCommand kolotv = new SqlCommand("select count(*) as 'kolvo' from vernotv where zadacha_id = " + Program.NomerZadachi + " and FormVernOtv = 'Diag'", con);
             SqlDataReader dr1 = kolotv.ExecuteReader();
             dr1.Read();
             kolvootv = Convert.ToInt32(dr1["kolvo"].ToString());
@@ -71,10 +72,10 @@ namespace Psico
 
             // Динамическое создание таблицы
             datagr.Name = "datagrview";
-            SqlDataAdapter da1 = new SqlDataAdapter("select CB from dz where zadacha_id = " + Program.NomerZadachi + "", con);
+            SqlDataAdapter da1 = new SqlDataAdapter("select CB from CBFormFill where zadacha_id = " + Program.NomerZadachi + " and FormCB = 'Diag'", con);
             SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
             DataSet ds1 = new DataSet();
-            da1.Fill(ds1, "dz");
+            da1.Fill(ds1, "CBFormFill");
             datagr.DataSource = ds1.Tables[0];
             datagr.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             panel1.Controls.Add(datagr);
@@ -82,7 +83,7 @@ namespace Psico
 
             // Динамическое создание таблицы
             datagr1.Name = "datagrview1";
-            SqlDataAdapter da2 = new SqlDataAdapter("select otv from vernotv_Diag where zadacha_id = " + Program.NomerZadachi + "", con);
+            SqlDataAdapter da2 = new SqlDataAdapter("select otv from vernotv where zadacha_id = " + Program.NomerZadachi + " and FormVernOtv = 'Diag'", con);
             SqlCommandBuilder cb2 = new SqlCommandBuilder(da2);
             DataSet ds2 = new DataSet();
             da2.Fill(ds2, "vernotv");
@@ -94,10 +95,10 @@ namespace Psico
             // Создание таблицы с данными из БД
             datagr2.Name = "datagrview2";
             datagr2.Location = new Point(400, 400);
-            SqlDataAdapter da3 = new SqlDataAdapter("select name_otv from otvDiag where users_id = " + Program.user + "", con);
+            SqlDataAdapter da3 = new SqlDataAdapter("select name_otv from Lastotv where users_id = " + Program.user + " and Form_otv = 'Diag'", con);
             SqlCommandBuilder cb3 = new SqlCommandBuilder(da3);
             DataSet ds3 = new DataSet();
-            da3.Fill(ds3, "otvDiag");
+            da3.Fill(ds3, "Lastotv");
             datagr2.DataSource = ds3.Tables[0];
             datagr2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             panel1.Controls.Add(datagr2);
@@ -136,7 +137,7 @@ namespace Psico
             }
 
             // Выбор количества правильных ответов у задачи
-            SqlCommand kolotvo = new SqlCommand("select count(*) as 'kolvo' from otvDiag where users_id = " + Program.user + "", con);
+            SqlCommand kolotvo = new SqlCommand("select count(*) as 'kolvo' from Lastotv where users_id = " + Program.user + " and Form_otv = 'Diag'", con);
             SqlDataReader dr2 = kolotvo.ExecuteReader();
             dr2.Read();
             kolvovibor = Convert.ToInt32(dr2["kolvo"].ToString());
@@ -161,7 +162,7 @@ namespace Psico
             }
 
             // Запись данных в протокол
-            Program.Insert = "Окно - Заключение (Машинный выбор):";
+            Program.Insert = "Окно - Заключение (Машинный выбор): ";
             wordinsert.Ins();
         }
 
@@ -222,7 +223,7 @@ namespace Psico
 
             ExitFromThisForm();
 
-            Program.Insert = "Время общее на этапе заключения:" + Program.AllZakl + " сек";
+            Program.Insert = "Время общее на этапе заключения: " + Program.AllZakl + " сек";
             wordinsert.Ins();
 
             Program.FullAllZakl = Program.FullAllZakl + Program.AllZakl;
@@ -299,7 +300,7 @@ namespace Psico
             // Время до решения задачи
             TimeWithoutKatamnez();
 
-            Program.Insert = "Время на заключении (Машинный выбор):" + Program.zakl2T + " сек";
+            Program.Insert = "Время на заключении (Машинный выбор): " + Program.zakl2T + " сек";
             wordinsert.Ins();
         }
 
@@ -307,7 +308,7 @@ namespace Psico
         {
             ExitFromThisForm();
 
-            Program.Insert = "Время общее на этапе заключения:" + Program.AllZakl + " сек";
+            Program.Insert = "Время общее на этапе заключения: " + Program.AllZakl + " сек";
             wordinsert.Ins();
 
             Program.FullAllZakl = Program.FullAllZakl + Program.AllZakl;
@@ -315,7 +316,7 @@ namespace Psico
 
             exitProgram.ExProgr();
 
-            exitProgram.ProtokolSent();
+            exitProgram.ExProtokolSent();
 
             Application.Exit();
         }
@@ -323,7 +324,7 @@ namespace Psico
         private void GetCBChecked()
         {
             // Обновление выбранных ответов
-            SqlCommand delete = new SqlCommand("delete from otvDiag where users_id = " + Program.user + "", con);
+            SqlCommand delete = new SqlCommand("delete from Lastotv where users_id = " + Program.user + " and Form_otv = 'Diag'", con);
             delete.ExecuteNonQuery();
 
             int otvchek = 0;
@@ -370,9 +371,10 @@ namespace Psico
                     Program.NeVernOtv = Program.NeVernOtv - otv;
 
                     // Добавление данных о решении задачи пользователем
-                    SqlCommand StrPrc2 = new SqlCommand("otvDiag_add", con);
+                    SqlCommand StrPrc2 = new SqlCommand("Lastotv_add", con);
                     StrPrc2.CommandType = CommandType.StoredProcedure;
                     StrPrc2.Parameters.AddWithValue("@name_otv", (panel1.Controls["checkbox" + i + ""] as CheckBox).Name);
+                    StrPrc2.Parameters.AddWithValue("@Form_otv", "Diag");
                     StrPrc2.Parameters.AddWithValue("@user_id", Program.user);
                     StrPrc2.ExecuteNonQuery();
                 }

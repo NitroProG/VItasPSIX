@@ -118,7 +118,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(251, 40);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Учитель";
+            this.label3.Text = "Преподаватель";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label3.Click += new System.EventHandler(this.GetTeacherInfoRegistration);
             // 

@@ -70,69 +70,75 @@ AS
 	where id_dpo=@dpo_id
 go
 
-CREATE PROCEDURE [DBO].[DpoSelected_delete]
+CREATE PROCEDURE [DBO].[OtvSelected_delete]
 (
-@id_dposelected int
+@id_otvselected int
 )
 AS
-	DELETE from [dbo].[DpoSelected]
-	where id_dposelected=@id_dposelected;
+	DELETE from [dbo].[OtvSelected]
+	where id_otvselected=@id_otvselected;
 go
 
-CREATE PROCEDURE [DBO].[DpoSelected_add]
+CREATE PROCEDURE [DBO].[OtvSelected_add]
 (
 @InfoSelected nvarchar(max),
+@FormOtvSelected nvarchar(max),
 @users_id int
 )
 AS
-	insert into [dbo].[DpoSelected]([InfoSelected],[users_id]) 
-		   values((@InfoSelected),(@users_id));
+	insert into [dbo].[OtvSelected]([InfoSelected],[FormOtvSelected],[users_id]) 
+		   values((@InfoSelected),(@FormOtvSelected),(@users_id));
 go
 
-CREATE PROCEDURE [DBO].[DpoSelected_update]
+CREATE PROCEDURE [DBO].[OtvSelected_update]
 (
-@id_dposelected int,
+@id_otvselected int,
 @InfoSelected nvarchar(max),
+@FormOtvSelected nvarchar(max),
 @users_id int
 )
 AS
-	update [dbo].DpoSelected
+	update [dbo].OtvSelected
 	set
 	InfoSelected=@InfoSelected,
+	FormOtvSelected=@FormOtvSelected,
 	users_id=@users_id
-	where id_dposelected=@id_dposelected
+	where id_otvselected=@id_otvselected
 go
 
-CREATE PROCEDURE [DBO].[dz_delete]
+CREATE PROCEDURE [DBO].[CBFormFill_delete]
 (
-@id_dz int
+@id_CBFormFill int
 )
 AS
-	DELETE from [dbo].[dz]
-	where id_dz=@id_dz;
+	DELETE from [dbo].[CBFormFill]
+	where id_CBFormFill=@id_CBFormFill;
 go
 
-CREATE PROCEDURE [DBO].[dz_add]
+CREATE PROCEDURE [DBO].[CBFormFill_add]
 (
 @cb nvarchar(max),
+@FormCB nvarchar(max),
 @zadacha_id int
 )
 AS
-	insert into [dbo].[dz]([CB],[zadacha_id]) values((@cb),(@zadacha_id));
+	insert into [dbo].[FormCB]([CB],[FormCB],[zadacha_id]) values((@cb),(@FormCB),(@zadacha_id));
 go
 
-CREATE PROCEDURE [DBO].[dz_update]
+CREATE PROCEDURE [DBO].[CBFormFill_update]
 (
-@id_dz int,
+@id_CBFormFill int,
 @cb nvarchar(max),
+@FormCB nvarchar(max),
 @zadacha_id int
 )
 AS
-	update [dbo].dz
+	update [dbo].CBFormFill
 	set
 	CB=@cb,
+	FormCB=@FormCB,
 	zadacha_id=@zadacha_id
-	where id_dz=@id_dz
+	where id_CBFormFill=@id_CBFormFill
 go
 
 CREATE PROCEDURE [DBO].[Fenom1_delete]
@@ -168,71 +174,6 @@ AS
 	RBText=@rbtext,
 	zadacha_id=@zadacha_id
 	where id_Fenom1=@id_fenom1
-go
-
-CREATE PROCEDURE [DBO].[Fenom2_delete]
-(
-@id_fenom2 int
-)
-AS
-	DELETE from [dbo].[Fenom2]
-	where id_Fenom2=@id_fenom2;
-go
-
-CREATE PROCEDURE [DBO].[Fenom2_add]
-(
-@cb nvarchar(max),
-@zadacha_id int
-)
-AS
-	insert into [dbo].[Fenom2]([CB],[zadacha_id]) values((@cb),(@zadacha_id));
-go
-
-CREATE PROCEDURE [DBO].[Fenom2_update]
-(
-@id_fenom2 int,
-@cb nvarchar(max),
-@zadacha_id int
-)
-AS
-	update [dbo].Fenom2
-	set
-	CB=@cb,
-	zadacha_id=@zadacha_id
-	where id_Fenom2=@id_fenom2
-go
-
-CREATE PROCEDURE [DBO].[FenomSelected_delete]
-(
-@id_fenomselected int
-)
-AS
-	DELETE from [dbo].[FenomSelected]
-	where id_fenomselected=@id_fenomselected;
-go
-
-CREATE PROCEDURE [DBO].[fenomSelected_add]
-(
-@InfoSelected nvarchar(max),
-@users_id int
-)
-AS
-	insert into [dbo].[FenomSelected]([InfoSelected],[users_id]) 
-		   values((@InfoSelected),(@users_id));
-go
-
-CREATE PROCEDURE [DBO].[fenomSelected_update]
-(
-@id_fenomselected int,
-@InfoSelected nvarchar(max),
-@users_id int
-)
-AS
-	update [dbo].FenomSelected
-	set
-	InfoSelected=@InfoSelected,
-	users_id=@users_id
-	where id_fenomselected=@id_fenomselected
 go
 
 CREATE PROCEDURE [DBO].[Infouser_delete]
@@ -344,101 +285,41 @@ AS
 	where id_meropr=@id_meropr
 go
 
-CREATE PROCEDURE [DBO].[otvDiag_delete]
+CREATE PROCEDURE [DBO].[Lastotv_delete]
 (
-@id_otvDiag int
+@id_Last_otv int
 )
 AS
-	DELETE from [dbo].[otvDiag]
-	where id_otvDiag=@id_otvDiag;
+	DELETE from [dbo].[Lastotv]
+	where id_Last_otv=@id_Last_otv;
 go
 
-CREATE PROCEDURE [DBO].[otvDiag_add]
+CREATE PROCEDURE [DBO].[Lastotv_add]
 (
 @name_otv nvarchar(max),
+@Form_otv nvarchar(max),
 @User_id int
 )
 AS
-	insert into [dbo].[otvDiag]([name_otv],[users_id]) values((@name_otv),(@User_id));
+	insert into [dbo].[Lastotv]([name_otv],[Form_otv],[users_id]) values((@name_otv),(@Form_otv),(@User_id));
 go
 
-CREATE PROCEDURE [DBO].[otvDiag_update]
+CREATE PROCEDURE [DBO].[Lastotv_update]
 (
-@id_otvDiag int,
+@id_Last_otv int,
 @name_otv nvarchar(max),
+@Form_otv nvarchar(max),
 @User_id int
 )
 AS
-	update [dbo].otvDiag
+	update [dbo].Lastotv
 	set
 	name_otv=@name_otv,
+	Form_otv=@Form_otv,
 	users_id=@User_id
-	where id_otvDiag=@id_otvDiag
+	where id_Last_otv=@id_Last_otv
 go
 
-CREATE PROCEDURE [DBO].[otvFenom_delete]
-(
-@id_otvFenom int
-)
-AS
-	DELETE from [dbo].[otvFenom]
-	where id_otvFenom=@id_otvFenom;
-go
-
-CREATE PROCEDURE [DBO].[otvFenom_add]
-(
-@name_otv nvarchar(max),
-@User_id int
-)
-AS
-	insert into [dbo].[otvFenom]([name_otv],[users_id]) values((@name_otv),(@User_id));
-go
-
-CREATE PROCEDURE [DBO].[otvFenom_update]
-(
-@id_otvFenom int,
-@name_otv nvarchar(max),
-@User_id int
-)
-AS
-	update [dbo].otvFenom
-	set
-	name_otv=@name_otv,
-	users_id=@User_id
-	where id_otvFenom=@id_otvFenom
-go
-
-CREATE PROCEDURE [DBO].[otvGip_delete]
-(
-@id_otvGip int
-)
-AS
-	DELETE from [dbo].[otvGip]
-	where id_otvGip=@id_otvGip;
-go
-
-CREATE PROCEDURE [DBO].[otvGip_add]
-(
-@name_otv nvarchar(max),
-@User_id int
-)
-AS
-	insert into [dbo].[otvGip]([name_otv],[users_id]) values((@name_otv),(@User_id));
-go
-
-CREATE PROCEDURE [DBO].[otvGip_update]
-(
-@id_otvGip int,
-@name_otv nvarchar(max),
-@User_id int
-)
-AS
-	update [dbo].otvGip
-	set
-	name_otv=@name_otv,
-	users_id=@User_id
-	where id_otvGip=@id_otvGip
-go
 
 CREATE PROCEDURE [DBO].[Resh_delete]
 (
@@ -472,110 +353,6 @@ AS
 	where id_resh=@id_resh
 go
 
-CREATE PROCEDURE [DBO].[Students_delete]
-(
-@id_students int
-)
-AS
-	DELETE from [dbo].[Students]
-	where id_students=@id_students;
-go
-
-CREATE PROCEDURE [DBO].[Students_add]
-(
-@Student_Login nvarchar(max),
-@Student_Password nvarchar(max),
-@Student_Mail nvarchar(max),
-@users_id int
-)
-AS
-	insert into [dbo].[Students]([Student_login],[Student_Password],[Student_Mail],[users_id]) 
-		   values((@Student_Login),(@Student_Password),(@Student_Mail),(@users_id));
-go
-
-CREATE PROCEDURE [DBO].[Students_update]
-(
-@id_students int,
-@Student_Login nvarchar(max),
-@Student_Password nvarchar(max),
-@Student_Mail nvarchar(max),
-@users_id int
-)
-AS
-	update [dbo].Students
-	set
-	Student_login=@Student_Login,
-	Student_Password=@Student_Password,
-	Student_Mail=@Student_Mail,
-	users_id=@users_id
-	where id_students=@id_students
-go
-
-CREATE PROCEDURE [DBO].[teor_delete]
-(
-@id_teor int
-)
-AS
-	DELETE from [dbo].[teor]
-	where id_teor=@id_teor;
-go
-
-CREATE PROCEDURE [DBO].[teor_add]
-(
-@cb nvarchar(max),
-@Zadacha_id int
-)
-AS
-	insert into [dbo].[teor]([CB],[zadacha_id]) values((@cb),(@Zadacha_id));
-go
-
-CREATE PROCEDURE [DBO].[teor_update]
-(
-@id_teor int,
-@cb nvarchar(max),
-@Zadacha_id int
-)
-AS
-	update [dbo].teor
-	set
-	CB=@cb,
-	zadacha_id=@Zadacha_id
-	where id_teor=@id_teor
-go
-
-CREATE PROCEDURE [DBO].[TeorSelected_delete]
-(
-@id_teorselected int
-)
-AS
-	DELETE from [dbo].[TeorSelected]
-	where id_teorselected=@id_teorselected;
-go
-
-CREATE PROCEDURE [DBO].[teorSelected_add]
-(
-@InfoSelected nvarchar(max),
-@users_id int
-)
-AS
-	insert into [dbo].[TeorSelected]([InfoSelected],[users_id]) 
-		   values((@InfoSelected),(@users_id));
-go
-
-CREATE PROCEDURE [DBO].[teorSelected_update]
-(
-@id_teorselected int,
-@InfoSelected nvarchar(max),
-@users_id int
-)
-AS
-	update [dbo].TeorSelected
-	set
-	InfoSelected=@InfoSelected,
-	users_id=@users_id
-	where id_teorselected=@id_teorselected
-go
-
 CREATE PROCEDURE [DBO].[Users_delete]
 (
 @id_user int
@@ -590,12 +367,11 @@ CREATE PROCEDURE [DBO].[users_add]
 @User_Login nvarchar(max),
 @User_Password nvarchar(max),
 @User_Mail nvarchar(max),
-@Kolvo_students int,
-@isadmin int
+@Teacher_id int
 )
 AS
-	insert into [dbo].[users]([User_Login],[User_Password],[User_Mail],[Kolvo_students],[isadmin])
-		   values((@User_Login),(@User_Password),(@User_Mail),(@Kolvo_students),(@isadmin));
+	insert into [dbo].[users]([User_Login],[User_Password],[User_Mail],[Teacher_id])
+		   values((@User_Login),(@User_Password),(@User_Mail),(@Teacher_id));
 go
 
 CREATE PROCEDURE [DBO].[users_update]
@@ -604,8 +380,7 @@ CREATE PROCEDURE [DBO].[users_update]
 @User_Login nvarchar(max),
 @User_Password nvarchar(max),
 @User_Mail nvarchar(max),
-@Kolvo_students int,
-@isadmin int
+@Teacher_id int
 )
 AS
 	update [dbo].users
@@ -613,103 +388,41 @@ AS
 	User_Login=@User_Login,
 	User_Password=@User_Password,
 	User_Mail=@User_Mail,
-	Kolvo_students=@Kolvo_students,
-	isAdmin=@isadmin
+	Teacher_id=@Teacher_id
 	where id_user=@id_user
 go
 
-CREATE PROCEDURE [DBO].[vernotvDiag_delete]
+CREATE PROCEDURE [DBO].[vernotv_delete]
 (
 @id_vernotv int
 )
 AS
-	DELETE from [dbo].[vernotv_Diag]
+	DELETE from [dbo].[vernotv]
 	where id_vernotv=@id_vernotv;
 go
 
-CREATE PROCEDURE [DBO].[vernotvDiag_add]
+CREATE PROCEDURE [DBO].[vernotv_add]
 (
 @otv nvarchar(max),
+@FormVernOtv nvarchar(max),
 @zadacha_id int
 )
 AS
-	insert into [dbo].[vernotv_Diag]([otv],[zadacha_id]) values((@otv),(@Zadacha_id));
+	insert into [dbo].[vernotv]([otv],[FormVernOtv],[zadacha_id]) values((@otv),(@FormVernOtv),(@Zadacha_id));
 go
 
-CREATE PROCEDURE [DBO].[vernotvDiag_update]
+CREATE PROCEDURE [DBO].[vernotv_update]
 (
 @id_vernotv int,
 @otv nvarchar(max),
+@FormVernOtv nvarchar(max),
 @zadacha_id int
 )
 AS
-	update [dbo].vernotv_Diag
+	update [dbo].vernotv
 	set
 	otv=@otv,
-	zadacha_id=@zadacha_id
-	where id_vernotv=@id_vernotv
-go
-
-CREATE PROCEDURE [DBO].[vernotvFenom_delete]
-(
-@id_vernotv int
-)
-AS
-	DELETE from [dbo].[vernotv_Fenom]
-	where id_vernotv=@id_vernotv;
-go
-
-CREATE PROCEDURE [DBO].[vernotvFenom_add]
-(
-@otv nvarchar(max),
-@zadacha_id int
-)
-AS
-	insert into [dbo].[vernotv_Fenom]([otv],[zadacha_id]) values((@otv),(@Zadacha_id));
-go
-
-CREATE PROCEDURE [DBO].[vernotvFenom_update]
-(
-@id_vernotv int,
-@otv nvarchar(max),
-@zadacha_id int
-)
-AS
-	update [dbo].vernotv_Fenom
-	set
-	otv=@otv,
-	zadacha_id=@zadacha_id
-	where id_vernotv=@id_vernotv
-go
-
-CREATE PROCEDURE [DBO].[vernotvGip_delete]
-(
-@id_vernotv int
-)
-AS
-	DELETE from [dbo].[vernotv_Gip]
-	where id_vernotv=@id_vernotv;
-go
-
-CREATE PROCEDURE [DBO].[vernotvGip_add]
-(
-@otv nvarchar(max),
-@zadacha_id int
-)
-AS
-	insert into [dbo].[vernotv_Gip]([otv],[zadacha_id]) values((@otv),(@Zadacha_id));
-go
-
-CREATE PROCEDURE [DBO].[vernotvGip_update]
-(
-@id_vernotv int,
-@otv nvarchar(max),
-@zadacha_id int
-)
-AS
-	update [dbo].vernotv_Gip
-	set
-	otv=@otv,
+	FormVernOtv=@FormVernOtv,
 	zadacha_id=@zadacha_id
 	where id_vernotv=@id_vernotv
 go
@@ -744,4 +457,106 @@ AS
 	Zapros=@Zapros,
 	sved=@sved
 	where id_zadacha=@id_zadacha
+go
+
+CREATE PROCEDURE [DBO].[Dostup_delete]
+(
+@id_Dostup int
+)
+AS
+	DELETE from [dbo].[Dostup]
+	where id_Dostup=@id_Dostup;
+go
+
+CREATE PROCEDURE [DBO].[Dostup_add]
+(
+@UpdateZadach int,
+@UpdateUsers int,
+@WorkZadach int
+)
+AS
+	insert into [dbo].[Dostup]([UpdateZadach],[UpdateUsers],[WorkZadach]) values((@UpdateZadach),(@UpdateUsers),(@WorkZadach));
+go
+
+CREATE PROCEDURE [DBO].[Dostup_update]
+(
+@id_Dostup int,
+@UpdateZadach int,
+@UpdateUsers int,
+@WorkZadach int
+)
+AS
+	update [dbo].Dostup
+	set
+	UpdateZadach=@UpdateZadach,
+	UpdateUsers=@UpdateUsers,
+	WorkZadach=@WorkZadach
+	where id_Dostup=@id_Dostup
+go
+
+CREATE PROCEDURE [DBO].[Role_delete]
+(
+@id_role int
+)
+AS
+	DELETE from [dbo].[Role]
+	where id_role=@id_role;
+go
+
+CREATE PROCEDURE [DBO].[Role_add]
+(
+@Naim nvarchar(max),
+@users_id int,
+@Dostup_id int
+)
+AS
+	insert into [dbo].[Role]([Naim],[users_id],[Dostup_id]) values((@Naim),(@users_id),(@Dostup_id));
+go
+
+CREATE PROCEDURE [DBO].[Role_update]
+(
+@id_role int,
+@Naim nvarchar(max),
+@users_id int,
+@Dostup_id int
+)
+AS
+	update [dbo].[Role]
+	set
+	naim=@Naim,
+	users_id=@users_id,
+	Dostup_id=@Dostup_id
+	where id_role=@id_role
+go
+
+CREATE PROCEDURE [DBO].[Teachers_delete]
+(
+@id_teacher int
+)
+AS
+	DELETE from [dbo].[Teachers]
+	where id_teacher=@id_teacher;
+go
+
+CREATE PROCEDURE [DBO].[Teachers_add]
+(
+@Unique_Naim nvarchar(max),
+@KolvoNeRegStudents int
+)
+AS
+	insert into [dbo].[Teachers]([Unique_Naim],[KolvoNeRegStudents]) values((@Unique_Naim),(@KolvoNeRegStudents));
+go
+
+CREATE PROCEDURE [DBO].[Teachers_update]
+(
+@id_teacher int,
+@Unique_Naim nvarchar(max),
+@KolvoNeRegStudents int
+)
+AS
+	update [dbo].[Teachers]
+	set
+	Unique_Naim=@Unique_Naim,
+	KolvoNeRegStudents=@KolvoNeRegStudents
+	where id_teacher=@id_teacher
 go

@@ -16,6 +16,7 @@ namespace Psico
     public partial class Anketa : Form
     {
         SqlConnection con = DBUtils.GetDBConnection();
+        DataGridView datagr = new DataGridView();
 
         public Anketa()
         {
@@ -48,6 +49,24 @@ namespace Psico
             // Позиционирование элементов формы пользователя
             panel1.Left = Width / 2 - panel1.Width / 2;
             Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
+
+            // Динамическое создание таблицы
+            SqlDataAdapter da1 = new SqlDataAdapter("select * from InfoUser where users_id = " + Program.user + "", con);
+            SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
+            DataSet ds1 = new DataSet();
+            da1.Fill(ds1, "InfoUser");
+            datagr.DataSource = ds1.Tables[0];
+            panel2.Controls.Add(datagr);
+            datagr.Visible = false;
+
+            if (datagr.Rows.Count > 1)
+            {
+                textBox1.Text = datagr.Rows[0].Cells[1].Value.ToString();
+                textBox2.Text = datagr.Rows[0].Cells[2].Value.ToString();
+                textBox3.Text = datagr.Rows[0].Cells[3].Value.ToString();
+                textBox4.Text = datagr.Rows[0].Cells[4].Value.ToString();
+                textBox5.Text = datagr.Rows[0].Cells[5].Value.ToString();
+            }
         }
 
         private void FIOHint(object sender, KeyPressEventArgs e)
@@ -118,6 +137,41 @@ namespace Psico
                 Program.Work = textBox3.Text;
                 Program.Year = textBox4.Text;
                 Program.Old = textBox5.Text;
+
+                if (datagr.Rows.Count <= 1)
+                {
+                    // Запись данных о решении задачи в БД
+                    SqlCommand StrPrc1 = new SqlCommand("InfoUser_add", con);
+                    StrPrc1.CommandType = CommandType.StoredProcedure;
+                    StrPrc1.Parameters.AddWithValue("@FIO", Program.FIO);
+                    StrPrc1.Parameters.AddWithValue("@Study", Program.Study);
+                    StrPrc1.Parameters.AddWithValue("@Work", Program.Work);
+                    StrPrc1.Parameters.AddWithValue("@Year", Program.Year);
+                    StrPrc1.Parameters.AddWithValue("@Old", Program.Old);
+                    StrPrc1.Parameters.AddWithValue("@User_id", Program.user);
+                    StrPrc1.ExecuteNonQuery();
+                }
+                else
+                {
+                    // Выбор количества данных в таблице БД
+                    SqlCommand GetTeacherId = new SqlCommand("select id_info as 'id' from InfoUser where users_id=" + Program.user + "", con);
+                    SqlDataReader dr4 = GetTeacherId.ExecuteReader();
+                    dr4.Read();
+                    int Infoid = Convert.ToInt32(dr4["id"].ToString());
+                    dr4.Close();
+
+                    // Изменение данных о решении задачи в БД
+                    SqlCommand StrPrc1 = new SqlCommand("InfoUser_update", con);
+                    StrPrc1.CommandType = CommandType.StoredProcedure;
+                    StrPrc1.Parameters.AddWithValue("@id_info", Infoid);
+                    StrPrc1.Parameters.AddWithValue("@FIO", Program.FIO);
+                    StrPrc1.Parameters.AddWithValue("@Study", Program.Study);
+                    StrPrc1.Parameters.AddWithValue("@Work", Program.Work);
+                    StrPrc1.Parameters.AddWithValue("@Year", Program.Year);
+                    StrPrc1.Parameters.AddWithValue("@Old", Program.Old);
+                    StrPrc1.Parameters.AddWithValue("@User_id", Program.user);
+                    StrPrc1.ExecuteNonQuery();
+                }
 
                 var wordApp = new word.Application();
 

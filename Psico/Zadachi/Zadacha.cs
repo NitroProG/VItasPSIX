@@ -41,7 +41,7 @@ namespace Psico
                 {
                     ExitFromReshZadacha();
 
-                    exitProgram.ProtokolSent();
+                    exitProgram.ExProtokolSent();
 
                     Application.Exit();
                 }
@@ -56,12 +56,9 @@ namespace Psico
                 // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
-
-                    timer1.Enabled = false;
-
                     exitProgram.ExProgr();
 
-                    exitProgram.ProtokolSent();
+                    exitProgram.ExProtokolSent();
 
                     Application.Exit();
                 }
@@ -96,9 +93,6 @@ namespace Psico
                 // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
-
-                    timer1.Enabled = false;
-
                     exitProgram.ExProgr();
 
                     SpisokZadach spisokZadach = new SpisokZadach();
@@ -110,9 +104,6 @@ namespace Psico
 
         private void FormLoad(object sender, EventArgs e)
         {
-            // Счётчик времени на форме
-            timer1.Enabled = true;
-
             //Выбор данных из БД
             con.Open();
             SqlCommand get_otd_name = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
@@ -169,8 +160,6 @@ namespace Psico
 
         private void OpenCheckForm(object sender, EventArgs e)
         {
-            timer1.Enabled = false;
-
             // Переход на выбранную форму
             switch (podzadacha)
             {
@@ -241,12 +230,6 @@ namespace Psico
             podzadacha = "6";
         }
 
-        private void Timer(object sender, EventArgs e)
-        {
-            // Счётчик времени на форме
-            Program.MainT = Program.MainT + 1;
-        }
-
         private void ExitFromReshZadacha()
         {
             // Добавление данных о решении задачи пользователем
@@ -255,8 +238,6 @@ namespace Psico
             StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
             StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
             StrPrc1.ExecuteNonQuery();
-
-            timer1.Enabled = false;
 
             exitProgram.ExProgr();
         }

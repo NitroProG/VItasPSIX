@@ -18,8 +18,10 @@ namespace Psico
     {
         SqlConnection con = DBUtils.GetDBConnection();
         DataGridView datagr = new DataGridView();
+        DataGridView datagr1 = new DataGridView();
         WordInsert wordinsert = new WordInsert();
         ExitProgram exitProgram = new ExitProgram();
+        int AllProsmotrMerodiks;
         int kolvoProsmotrMetodik;
         int kolvolb;
         int kolvotext;
@@ -37,7 +39,6 @@ namespace Psico
             timer1.Enabled = true;
             timer2.Enabled = false;
             richTextBox1.Text = Program.gipotezi;
-            kolvoProsmotrMetodik = 0;
 
             // подключение к БД
             con.Open();
@@ -58,6 +59,13 @@ namespace Psico
             dr0.Close();
             kolvolb = kolvolb + 1;
 
+            // Выбор количества данных в таблице БД
+            SqlCommand kolvoProsmotr = new SqlCommand("select count(*) as 'kolvo' from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Dpo'", con);
+            SqlDataReader dr1 = kolvoProsmotr.ExecuteReader();
+            dr1.Read();
+            AllProsmotrMerodiks = Convert.ToInt32(dr1["kolvo"].ToString());
+            dr1.Close();
+
             // Динамическое создание таблицы
             datagr.Name = "datagrview";
             datagr.Location = new Point(300, 300);
@@ -69,6 +77,18 @@ namespace Psico
             datagr.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             panel1.Controls.Add(datagr);
             datagr.Visible = false;
+
+            // Динамическое создание таблицы
+            datagr1.Name = "datagrview1";
+            datagr1.Location = new Point(300, 300);
+            SqlDataAdapter da2 = new SqlDataAdapter("select InfoSelected from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Dpo'", con);
+            SqlCommandBuilder cb2 = new SqlCommandBuilder(da2);
+            DataSet ds2 = new DataSet();
+            da2.Fill(ds2, "OtvSelected");
+            datagr1.DataSource = ds2.Tables[0];
+            datagr1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            panel1.Controls.Add(datagr1);
+            datagr1.Visible = false;
 
             // Динамическое создание label
             Label lb = new Label();
@@ -129,7 +149,7 @@ namespace Psico
             }
 
             // Запись данных в протокол
-            Program.Insert = "Окно - Обследования:";
+            Program.Insert = "Окно - Обследование: ";
             wordinsert.Ins();
         }
 
@@ -176,7 +196,7 @@ namespace Psico
 
                     exitProgram.ExProgr();
 
-                    exitProgram.ProtokolSent();
+                    exitProgram.ExProtokolSent();
 
                     Application.Exit();
                 }
@@ -195,7 +215,7 @@ namespace Psico
 
                     exitProgram.ExProgr();
 
-                    exitProgram.ProtokolSent();
+                    exitProgram.ExProtokolSent();
 
                     Application.Exit();
                 }
@@ -213,63 +233,110 @@ namespace Psico
 
         private void ShowListBoxInfo(object sender, EventArgs e)
         {
-            if (Program.infochekT != 0)
-            {
+            if (listBox1.SelectedIndex >= 0)
+            {  
+                int checkProsmotrmetodik = 0;
+
+                if (Program.infochekT != 0)
+                {
+                    // Запись данных в протокол
+                    Program.Insert = "Время просмотра: " + Program.infochekT + " сек";
+                    wordinsert.Ins();
+
+                    kolvoProsmotrMetodik = kolvoProsmotrMetodik + 1;
+                    Program.infochekT = 0;
+                }
+                else
+                {
+                    timer2.Enabled = true;
+                }
+
+                // Если в задаче есть рисунки
+                if (Convert.ToString(datagr.Rows[1].Cells[3].Value) != "")
+                {
+                    (panel1.Controls["picturebox"] as PictureBox).Enabled = true;
+                }
+
                 // Запись данных в протокол
-                Program.Insert = "Время просмотра: " + Program.infochekT + " сек";
-                wordinsert.Ins();
+                Program.Insert = "Просмотрено: " + listBox1.SelectedItem.ToString() + "";
+                wordinsert.CBIns();
 
-                kolvoProsmotrMetodik = kolvoProsmotrMetodik + 1;
-                Program.infochekT = 0;
+                if (datagr1.Rows.Count > 1)
+                {
+                    for (int y = 0; y < AllProsmotrMerodiks; y++)
+                    {
+                        if (listBox1.SelectedItem.ToString() == datagr1.Rows[y].Cells[0].Value.ToString())
+                        {
+                            checkProsmotrmetodik = 1;
+                        }
+                    }
+                }
+
+                if (checkProsmotrmetodik == 0)
+                {
+                    // Запись данных в БД
+                    SqlCommand StrPrc1 = new SqlCommand("OtvSelected_add", con);
+                    StrPrc1.CommandType = CommandType.StoredProcedure;
+                    StrPrc1.Parameters.AddWithValue("@InfoSelected", listBox1.SelectedItem.ToString());
+                    StrPrc1.Parameters.AddWithValue("@FormOtvSelected", "Dpo");
+                    StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
+                    StrPrc1.ExecuteNonQuery();
+
+                    SqlDataAdapter da2 = new SqlDataAdapter("select InfoSelected from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Dpo'", con);
+                    SqlCommandBuilder cb2 = new SqlCommandBuilder(da2);
+                    DataSet ds2 = new DataSet();
+                    da2.Fill(ds2, "OtvSelected");
+                    datagr1.DataSource = ds2.Tables[0];
+
+                    // Выбор количества данных в таблице БД
+                    SqlCommand kolvoProsmotr = new SqlCommand("select count(*) as 'kolvo' from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Dpo'", con);
+                    SqlDataReader dr1 = kolvoProsmotr.ExecuteReader();
+                    dr1.Read();
+                    AllProsmotrMerodiks = Convert.ToInt32(dr1["kolvo"].ToString());
+                    dr1.Close();
+                }
+
+                // При выборе данных в listbox
+                for (int i = 1; i < kolvolb; i++)
+                {
+                    if (listBox1.SelectedIndex == i - 1)
+                    {
+                        // Если в таблице есть рисунок
+                        if (Convert.ToString(datagr.Rows[1].Cells[3].Value) != "")
+                        {
+                            (panel1.Controls["picturebox"] as PictureBox).Load("" + Convert.ToString(datagr.Rows[i - 1].Cells[3].Value + ""));
+                        }
+
+                        // Запись данных в richtextbox
+                        panel1.Controls["richtextbox"].Text = Convert.ToString(datagr.Rows[i - 1].Cells[2].Value);
+
+                        // Запись данных в label
+                        panel1.Controls["label"].Text = Convert.ToString(datagr.Rows[i - 1].Cells[1].Value);
+                        kolvotext = panel1.Controls["label"].Text.Length;
+
+                        // Если название длинное, то перенос на следующую строчку
+                        if (kolvotext > 70)
+                        {
+                            (panel1.Controls["label"] as Label).AutoSize = false;
+                            (panel1.Controls["label"] as Label).Width = 680;
+                            (panel1.Controls["label"] as Label).Height = 40;
+                        }
+
+                        button4.Visible = false;
+
+                        // Если есть ещё рисунок, то показ дополнительной кнопки
+                        if (Convert.ToString(datagr.Rows[i - 1].Cells[4].Value) != "")
+                        {
+                            button5.Visible = true;
+                        }
+
+                        else button5.Visible = false;
+                    }
+                }
             }
-
             else
             {
-                timer2.Enabled = true;
-            }
-
-            (panel1.Controls["picturebox"] as PictureBox).Enabled = true;
-
-            // Запись данных в протокол
-            Program.Insert = "Просмотрено: " + listBox1.SelectedItem.ToString() + "";
-            wordinsert.CBIns();
-
-            // При выборе данных в listbox
-            for (int i = 1; i < kolvolb; i++)
-            {
-                if (listBox1.SelectedIndex == i-1)
-                {
-                    // Если в таблице есть рисунок
-                    if (Convert.ToString(datagr.Rows[1].Cells[3].Value) != "")
-                    {
-                        (panel1.Controls["picturebox"] as PictureBox).Load("" + Convert.ToString(datagr.Rows[i - 1].Cells[3].Value + ""));
-                    }
-
-                    // Запись данных в richtextbox
-                    panel1.Controls["richtextbox"].Text = Convert.ToString(datagr.Rows[i-1].Cells[2].Value);
-
-                    // Запись данных в label
-                    panel1.Controls["label"].Text = Convert.ToString(datagr.Rows[i - 1].Cells[1].Value);
-                    kolvotext = panel1.Controls["label"].Text.Length;
-
-                    // Если название длинное, то перенос на следующую строчку
-                    if (kolvotext > 70)
-                    {
-                        (panel1.Controls["label"] as Label).AutoSize = false;
-                        (panel1.Controls["label"] as Label).Width = 680;
-                        (panel1.Controls["label"] as Label).Height = 40;
-                    }
-
-                    button4.Visible = false;
-
-                    // Если есть ещё рисунок, то показ дополнительной кнопки
-                    if (Convert.ToString(datagr.Rows[i - 1].Cells[4].Value) != "")
-                    {
-                        button5.Visible = true;
-                    }
-
-                    else button5.Visible = false;
-                }
+                MessageBox.Show("Вы не выбрали данные, которые хотите посмотреть, они представленны выше!","Ошибка!",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
         }
 

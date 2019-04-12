@@ -33,8 +33,7 @@ namespace Psico
         public static string rekRukovod; // Рекомендации классному руководителю
 
         // Перевод на машинный язык
-        public static string user; // Код пользователя в программе
-        public static string student; // Код пользователя в программе
+        public static int user; // Код пользователя в программе
         public static int zaklOTV; // Правильные ответы
         public static int NeVernOtv; // Неправильные ответы
         public static int diagnoz; // Итоговый диагноз
@@ -54,8 +53,6 @@ namespace Psico
         public static int AllT; // Общее время на задаче
         public static int AllTBezK; // Общее время на задаче без катамнеза
 
-        public static int MainT; // Время на главной форме задачи
-
         public static int Fenom1T; // Время на первой форме феноменологии
         public static int Fenom2T; // Время на второй форме феноменологии
         public static int AllFenom; // Общее время на этапе феноменологии
@@ -74,6 +71,7 @@ namespace Psico
         public static int zakl2T; // Время на второй форме заключения
         public static int AllZakl; // Общее время на этапе феноменологии
         public static int FullAllZakl; // Всё время на этапе заключения
+        public static int KolvoOpenZakl; // Количество попыток поставить диагноз
 
         public static int meropr1T; // Время на первой форме мероприятий
         public static int meropr2T; // Время на второй форме мероприятий

@@ -35,7 +35,7 @@ namespace Psico
             {
                 ExitFromProgram();
 
-                exitProgram.ProtokolSent();
+                exitProgram.ExProtokolSent();
 
                 Application.Exit();
             }

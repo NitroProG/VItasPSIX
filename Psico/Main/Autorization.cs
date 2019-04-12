@@ -40,131 +40,75 @@ namespace Psico
 
         private void ClientAutorization(object sender, EventArgs e)
         {
-            //try
-            //{
+            string UserRole = "";
+
+            try
+            {
                 // Подключение к БД
                 SqlConnection con = DBUtils.GetDBConnection();
                 con.Open();
 
-                // Разгранечение прав
-                SqlCommand sc = new SqlCommand("Select * from users where[User_Login] = '" + textBox1.Text + "' and[User_Password] = '"
-                    + textBox2.Text + "'and [isadmin]='1'", con);
-                SqlDataReader dr;
-                dr = sc.ExecuteReader();
-
-                int count = 0;
-
-                while (dr.Read())
+                if (textBox1.Text != "" && textBox2.Text != "")
                 {
-                    count += 1;
-                }
+                    // Выбор количества данных в таблице БД
+                    SqlCommand GetUserId = new SqlCommand("select id_user as 'id' from users where User_Login = '" + textBox1.Text + "' and User_Password = '"+textBox2.Text+"'", con);
+                    SqlDataReader dr1 = GetUserId.ExecuteReader();
 
-                dr.Close();
-
-                if (count == 1)
-                {
-                    administrator administrator = new administrator();
-                    administrator.Show();
-                    Hide();
-                }
-
-                else
-                {
-                    SqlCommand sc1 = new SqlCommand("Select * from users where[User_Login] = '" + textBox1.Text + "' and[User_Password] = '"
-                        + textBox2.Text + "'and [isadmin]='0'", con);
-                    SqlDataReader dr1;
-                    dr1 = sc1.ExecuteReader();
-
-                    int count1 = 0;
-
-                    while (dr1.Read())
+                    try
                     {
-                        count1 += 1;
+                        dr1.Read();
+                        Program.user = Convert.ToInt32(dr1["id"].ToString());
+                        dr1.Close();
+                    }
+                    catch
+                    {
+                        Program.user = 0;
+                        dr1.Close();
                     }
 
-                    dr1.Close();
-
-                    // Проверка введённых данных
-                    SqlCommand sc2 = new SqlCommand("select id_user from users where[User_Login] = '" + textBox1.Text + "' and[User_Password] = '" + textBox2.Text + "'", con);
-
-                    // Если данные верны
-                    if (count1 == 1)
+                    if (Program.user != 0)
                     {
-                        // Запись в переменную номер пользователя
-                        Program.user = sc2.ExecuteScalar().ToString();
+                        // Выбор количества данных в таблице БД
+                        SqlCommand GetUserRole = new SqlCommand("select Naim as 'Role' from Role where users_id = '" + Program.user + "'", con);
+                        SqlDataReader dr2 = GetUserRole.ExecuteReader();
 
-                        try
+                        dr2.Read();
+                        UserRole = dr2["Role"].ToString();
+                        dr2.Close();
+
+                        switch (UserRole)
                         {
-                            MailMessage mail = new MailMessage("ProgrammPsicotest", "vit.sax@yandex.ru", "Вход пользователя", "Пользователь " + textBox1.Text + " вошёл в систему!");
-                            SmtpClient client = new SmtpClient("smtp.yandex.ru");
-                            client.Port = 587;
-                            client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
-                            client.EnableSsl = true;
-                            client.Send(mail);
+                            case "Admin":
+                                    administrator FormAdmin = new administrator();
+                                    FormAdmin.Show();
+                                    Hide();
+                                break;
+                            case "Teacher":
+                                    Anketa anketa1 = new Anketa();
+                                    anketa1.Show();
+                                    Hide();
+                                break;
+                            case "Student":
+                                    Anketa anketa2 = new Anketa();
+                                    anketa2.Show();
+                                    Hide();
+                                break;
                         }
-                        catch { }
-
-                        Anketa anketa = new Anketa();
-                        anketa.Show();
-                        Hide();
                     }
-
                     else
                     {
-                        SqlCommand sc3 = new SqlCommand("Select * from students where[Student_Login] = '" + textBox1.Text + "' and[Student_Password] = '"+ textBox2.Text +"'", con);
-                        SqlDataReader dr3;
-                        dr3 = sc3.ExecuteReader();
-
-                        int count3 = 0;
-
-                        while (dr3.Read())
-                        {
-                            count3 += 1;
-                        }
-
-                        dr3.Close();
-
-                        // Проверка введённых данных
-                        SqlCommand sc4 = new SqlCommand("select id_students from students where[Student_Login] = '" + textBox1.Text + "' and[Student_Password] = '" + textBox2.Text + "'", con);
-
-                        // Если данные верны
-                        if (count3 == 1)
-                        {
-                            // Запись в переменную номер пользователя
-                            Program.student = sc4.ExecuteScalar().ToString();
-
-                            try
-                            {
-                                MailMessage mail = new MailMessage("ProgrammPsicotest", "vit.sax@yandex.ru", "Вход пользователя", "Пользователь " + textBox1.Text + " вошёл в систему!");
-                                SmtpClient client = new SmtpClient("smtp.yandex.ru");
-                                client.Port = 587;
-                                client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
-                                client.EnableSsl = true;
-                                client.Send(mail);
-                            }
-                            catch { }
-
-                            Anketa anketa = new Anketa();
-                            anketa.Show();
-                            Hide();
-                        }
-                        // Если данные не верны
-                        else
-                        {
-
-                            MessageBox.Show("Данные введены не верно", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                            textBox1.Text = "";
-                            textBox2.Text = "";
-                        }
+                        MessageBox.Show("Пользователя с такими данными не существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-            //}
-
-            //catch
-            //{
-            //    MessageBox.Show("Отсутствует подключение к БД","Внимание!",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-            //}
+                else
+                {
+                    MessageBox.Show("Заполнены не все поля для авторизации!", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Отсутствует подключение к БД", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon. Error);
+            }
         }
 
         private void OpenFormRegistration(object sender, EventArgs e)

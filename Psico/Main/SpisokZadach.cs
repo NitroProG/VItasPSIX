@@ -30,7 +30,10 @@ namespace Psico
 
         private void OpenAutorizationForm(object sender, EventArgs e)
         {
-            exprg.ProtokolSent();
+            if (Program.diagnoz != 0)
+            {
+                exprg.ExProtokolSent();
+            }
 
             Autorization autorization = new Autorization();
             autorization.Show();
@@ -71,17 +74,6 @@ namespace Psico
             comboBox1.DataSource = dt;
             comboBox1.ValueMember = "ido";
 
-            // Обнуление переменных
-            Program.AllT = 0;
-            Program.fenomenologiya = "";
-            Program.glavsved = "";
-            Program.gipotezi = "";
-            Program.obsledovaniya = "";
-            Program.zakluch = "";
-            Program.zaklOTV = 0;
-            Program.NeVernOtv = 0;
-            Program.diagnoz = 0;
-
             // Адаптация разрешения экрана пользователя
             Rectangle screen = Screen.PrimaryScreen.Bounds;
             if (Convert.ToInt32(screen.Size.Width) < 1300)
@@ -103,8 +95,19 @@ namespace Psico
             SqlConnection con = DBUtils.GetDBConnection();
             con.Open();
 
+            // Обнуление переменных
+            Program.AllT = 0;
+            Program.fenomenologiya = "";
+            Program.glavsved = "";
+            Program.gipotezi = "";
+            Program.obsledovaniya = "";
+            Program.zakluch = "";
+            Program.zaklOTV = 0;
+            Program.NeVernOtv = 0;
+            Program.diagnoz = 0;
+
             error = 0;
-            Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedIndex) + 1;
+            Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedValue);
 
             // Проверка данных о решении задачи
             for (int i = 1; i < kolvoreshzadach; i++)
@@ -129,18 +132,10 @@ namespace Psico
                     try
                     {
                         // Обнуление выбранных ответов пользователем
-                        SqlCommand delete = new SqlCommand("delete from otvGip where users_id = " + Program.user + "", con);
+                        SqlCommand delete = new SqlCommand("delete from Lastotv where users_id = " + Program.user + "", con);
                         delete.ExecuteNonQuery();
-                        SqlCommand delete1 = new SqlCommand("delete from otvDiag where users_id = " + Program.user + "", con);
-                        delete1.ExecuteNonQuery();
-                        SqlCommand delete2 = new SqlCommand("delete from otvFenom where users_id = " + Program.user + "", con);
-                        delete2.ExecuteNonQuery();
-                        SqlCommand delete3 = new SqlCommand("delete from DpoSelected where users_id = " + Program.user + "", con);
+                        SqlCommand delete3 = new SqlCommand("delete from OtvSelected where users_id = " + Program.user + "", con);
                         delete3.ExecuteNonQuery();
-                        SqlCommand delete4 = new SqlCommand("delete from FenomSelected where users_id = " + Program.user + "", con);
-                        delete4.ExecuteNonQuery();
-                        SqlCommand delete5 = new SqlCommand("delete from TeorSelected where users_id = " + Program.user + "", con);
-                        delete5.ExecuteNonQuery();
                     }
 
                     catch
@@ -164,7 +159,10 @@ namespace Psico
 
         private void ExitFromProgram(object sender, EventArgs e)
         {
-            exprg.ProtokolSent();
+            if (Program.diagnoz !=0)
+            {
+                exprg.ExProtokolSent();
+            }
 
             Application.Exit();
         }

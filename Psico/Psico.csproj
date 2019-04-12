@@ -47,6 +47,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>
+    </ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
@@ -65,6 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin\AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\AddZadacha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,7 +101,19 @@
     <Compile Include="Admin\UpdateZadacha.Designer.cs">
       <DependentUpon>UpdateZadacha.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\DeleteUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\DeleteUser.Designer.cs">
+      <DependentUpon>DeleteUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="ExitProgram.cs" />
+    <Compile Include="Main\ExitProtokol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\ExitProtokol.Designer.cs">
+      <DependentUpon>ExitProtokol.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main\WaitingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +125,12 @@
     </Compile>
     <Compile Include="Main\Registration.Designer.cs">
       <DependentUpon>Registration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UpdateUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\UpdateUser.Designer.cs">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
     </Compile>
     <Compile Include="WordInsert.cs" />
     <Compile Include="Zadachi\dpo.cs">
@@ -197,17 +225,29 @@
     <Compile Include="Zadachi\Zadacha.Designer.cs">
       <DependentUpon>Zadacha.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Admin\AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\AddZadacha.resx">
       <DependentUpon>AddZadacha.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\administrator.resx">
       <DependentUpon>administrator.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\DeleteUser.resx">
+      <DependentUpon>DeleteUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\DeleteZadacha.resx">
       <DependentUpon>DeleteZadacha.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\UpdateUser.resx">
+      <DependentUpon>UpdateUser.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\UpdateZadacha.resx">
       <DependentUpon>UpdateZadacha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\ExitProtokol.resx">
+      <DependentUpon>ExitProtokol.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main\Anketa.resx">
       <DependentUpon>Anketa.cs</DependentUpon>

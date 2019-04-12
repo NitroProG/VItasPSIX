@@ -19,62 +19,50 @@ constraint [id_defend] primary key clustered
 	([id_defend] ASC) on [primary] 
 )
 
+create table [dbo].[Teachers]
+(
+[id_teacher] int not null identity(1,1),
+[Unique_Naim] nvarchar(max) not null,
+[KolvoNeRegStudents] int not null
+constraint [id_teacher] primary key clustered
+	([id_teacher] ASC) on [Primary]
+)
+
 CREATE TABLE [DBO].[users]
 (
 [id_user] INT NOT NULL IDENTITY (1,1),
 [User_Login] nvarchar(max) NOT NULL,
 [User_Password] nvarchar(max) NOT NULL,
 [User_Mail] nvarchar(max) not null,
-[Kolvo_students] int not null,
-[isAdmin] int NOT NULL
+[Teacher_id] int not null
 constraint [id_user] PRIMARY KEY CLUSTERED
-	([id_user] ASC) on [PRIMARY]
+	([id_user] ASC) on [PRIMARY],
+CONSTRAINT [FK_teacher_id] FOREIGN KEY ([teacher_id])
+	REFERENCES [DBO].[teachers]([id_teacher])
 )
 
-create table [dbo].[students]
+create table [dbo].[Dostup]
 (
-[id_students] int not null identity(1,1),
-[Student_login] nvarchar(max) not null,
-[Student_Password] nvarchar(max) not null,
-[Student_Mail] nvarchar(max) not null,
-[users_id] int not null
-constraint [id_students] PRIMARY KEY CLUSTERED
-	([id_students] ASC) on [PRIMARY],
-CONSTRAINT [FK_userstudents_id] FOREIGN KEY ([users_id])
-	REFERENCES [DBO].[users]([id_user])
+[Id_Dostup] int not null identity (1,1),
+[UpdateZadach] int not null,
+[UpdateUsers] int not null,
+[WorkZadach] int not null
+constraint [id_Dostup] primary key clustered
+    ([id_Dostup] ASC) on [primary]
 )
 
-create table [dbo].[otvFenom]
+create table [dbo].[Role]
 (
-[id_otvFenom] int not null identity (1,1),
-[name_otv] nvarchar(max) null,
-[users_id] int not null
-constraint [id_otvFenom] primary key clustered
-	([id_otvFenom] ASC) on [Primary],
-CONSTRAINT [FK_userrr_id] FOREIGN KEY ([users_id])
-	REFERENCES [DBO].[users]([id_user])
-)
-
-create table [dbo].[otvGip]
-(
-[id_otvGip] int not null identity (1,1),
-[name_otv] nvarchar(max) null,
-[users_id] int not null
-constraint [id_otvGip] primary key clustered
-	([id_otvGip] ASC) on [Primary],
-CONSTRAINT [FK_userrrr_id] FOREIGN KEY ([users_id])
-	REFERENCES [DBO].[users]([id_user])
-)
-
-create table [dbo].[otvDiag]
-(
-[id_otvDiag] int not null identity (1,1),
-[name_otv] nvarchar(max) null,
-[users_id] int not null
-constraint [id_otvDiag] primary key clustered
-	([id_otvDiag] ASC) on [Primary],
-CONSTRAINT [FK_userrrrr_id] FOREIGN KEY ([users_id])
-	REFERENCES [DBO].[users]([id_user])
+[id_role] int not null identity(1,1),
+[Naim] nvarchar(max) not null,
+[users_id] int not null,
+[Dostup_id] int not null
+constraint [id_role] primary key clustered
+	([id_role] asc) on [primary],
+CONSTRAINT [FK_userssss_id] FOREIGN KEY ([users_id])
+	REFERENCES [DBO].[users]([id_user]),
+CONSTRAINT [FK_Dostup_id] FOREIGN KEY ([Dostup_id])
+	REFERENCES [DBO].[Dostup]([id_Dostup])
 )
 
 create table [dbo].[InfoUser]
@@ -89,6 +77,30 @@ create table [dbo].[InfoUser]
 constraint [id_info] primary key clustered
 	([id_info]ASC) on [Primary],
 CONSTRAINT [FK_userr_id] FOREIGN KEY ([users_id])
+	REFERENCES [DBO].[users]([id_user])
+)
+
+create table [dbo].[Lastotv]
+(
+[id_Last_otv] int not null identity (1,1),
+[name_otv] nvarchar(max) null,
+[Form_otv] nvarchar(max) null,
+[users_id] int not null
+constraint [id_Last_otv] primary key clustered
+	([id_Last_otv] ASC) on [Primary],
+CONSTRAINT [FK_userrr_id] FOREIGN KEY ([users_id])
+	REFERENCES [DBO].[users]([id_user])
+)
+
+create table [dbo].[OtvSelected]
+(
+[id_otvselected] int not null identity(1,1),
+[InfoSelected] nvarchar(max) not null,
+[FormOtvSelected] nvarchar(max) not null,
+[users_id] int not null
+constraint [id_otvselected] primary key clustered
+	([id_otvselected]ASC) on [Primary],
+CONSTRAINT [FK_userrrs_id] FOREIGN KEY ([users_id])
 	REFERENCES [DBO].[users]([id_user])
 )
 
@@ -110,7 +122,7 @@ constraint [id_resh] primary key clustered
 	([id_resh]ASC) on [Primary],
 CONSTRAINT [FK_users_id] FOREIGN KEY ([users_id])
 	REFERENCES [DBO].[users]([id_user]),
-CONSTRAINT [FK_Zadacha7_id] FOREIGN KEY ([Zadacha_id])
+CONSTRAINT [FK_Zadachaaaaa11_id] FOREIGN KEY ([Zadacha_id])
 	REFERENCES [DBO].[Zadacha]([id_Zadacha])
 )
 
@@ -126,25 +138,15 @@ CONSTRAINT [FK_Zadacha_id] FOREIGN KEY ([Zadacha_id])
 	REFERENCES [DBO].[Zadacha]([id_Zadacha])
 )
 
-create table [dbo].[Fenom2]
+create table [dbo].[CBFormFill]
 (
-[id_Fenom2] int not null identity (1,1),
+[id_CBFormFill] int not null identity (1,1),
 [CB] nvarchar(max) not null,
+[FormCB] nvarchar(max) not null,
 [zadacha_id] int not null
-constraint [id_Fenom2] primary key clustered
-	([id_fenom2]ASC) on [primary],
+constraint [id_CBFormFill] primary key clustered
+	([id_CBFormFill]ASC) on [primary],
 CONSTRAINT [FK_Zadachaa_id] FOREIGN KEY ([Zadacha_id])
-	REFERENCES [DBO].[Zadacha]([id_Zadacha])
-)
-
-create table [dbo].[teor]
-(
-[id_teor] int not null identity (1,1),
-[CB] nvarchar(max) not null,
-[zadacha_id] int not null
-constraint [id_teor] primary key clustered
-	([id_teor]ASC) on [primary],
-CONSTRAINT [FK_Zadacha1_id] FOREIGN KEY ([Zadacha_id])
 	REFERENCES [DBO].[Zadacha]([id_Zadacha])
 )
 
@@ -163,47 +165,15 @@ CONSTRAINT [FK_Zadacha2_id] FOREIGN KEY ([Zadacha_id])
 	REFERENCES [DBO].[Zadacha]([id_Zadacha])
 )
 
-create table [dbo].[dz]
-(
-[id_dz] int not null identity (1,1),
-[CB] nvarchar(max) not null,
-[zadacha_id] int not null
-constraint [id_dz] primary key clustered
-	([id_dz]ASC) on [primary],
-CONSTRAINT [FK_Zadacha3_id] FOREIGN KEY ([Zadacha_id])
-	REFERENCES [DBO].[Zadacha]([id_Zadacha])
-)
-
-create table [dbo].[vernotv_Fenom]
+create table [dbo].[vernotv]
 (
 [id_vernotv] int not null identity (1,1),
 [otv] nvarchar(max) not null,
+[FormVernOtv] nvarchar(max) not null,
 [zadacha_id] int not null
 constraint [id_vernotv] primary key clustered
 	([id_vernotv]ASC) on [primary],
 CONSTRAINT [FK_Zadacha6_id] FOREIGN KEY ([Zadacha_id])
-	REFERENCES [DBO].[Zadacha]([id_Zadacha])
-)
-
-create table [dbo].[vernotv_Gip]
-(
-[id_vernotv] int not null identity (1,1),
-[otv] nvarchar(max) not null,
-[zadacha_id] int not null
-constraint [id_vernotvGip] primary key clustered
-	([id_vernotv]ASC) on [primary],
-CONSTRAINT [FK_Zadacha8_id] FOREIGN KEY ([Zadacha_id])
-	REFERENCES [DBO].[Zadacha]([id_Zadacha])
-)
-
-create table [dbo].[vernotv_Diag]
-(
-[id_vernotv] int not null identity (1,1),
-[otv] nvarchar(max) not null,
-[zadacha_id] int not null
-constraint [id_vernotvDiag] primary key clustered
-	([id_vernotv]ASC) on [primary],
-CONSTRAINT [FK_Zadacha9_id] FOREIGN KEY ([Zadacha_id])
 	REFERENCES [DBO].[Zadacha]([id_Zadacha])
 )
 
@@ -228,36 +198,21 @@ constraint [id_katamnez] primary key clustered
 CONSTRAINT [FK_Zadacha5_id] FOREIGN KEY ([Zadacha_id])
 	REFERENCES [DBO].[Zadacha]([id_Zadacha])
 )
+go
 
-create table [dbo].[DpoSelected]
-(
-[id_dposelected] int not null identity(1,1),
-[InfoSelected] nvarchar(max) not null,
-[users_id] int not null
-constraint [id_dposelected] primary key clustered
-	([id_dposelected]ASC) on [Primary],
-CONSTRAINT [FK_userrrs_id] FOREIGN KEY ([users_id])
-	REFERENCES [DBO].[users]([id_user])
-)
+create view CreateTableForUpdateUsers
+as select id_user as 'Номер пользователя', User_Login as 'Логин', User_Password as 'Пароль', User_Mail as 'Почта', Teacher_id as 'Номер преподавателя',
+id_teacher as 'Код преподавателя', Unique_Naim as 'Уникальное имя', KolvoNeRegStudents as 'Количество оставшихся регистраций студентов', id_role as 'Номер роли',
+Naim as 'Статус', users_id as 'Код пользователя', Dostup_id as 'Номер доступа'
+from
+users INNER JOIN
+role on users.id_user = Role.users_id INNER JOIN
+Teachers on users.Teacher_id = Teachers.id_teacher
+go
 
-create table [dbo].[FenomSelected]
-(
-[id_fenomselected] int not null identity(1,1),
-[InfoSelected] nvarchar(max) not null,
-[users_id] int not null
-constraint [id_fenomselected] primary key clustered
-	([id_fenomselected]ASC) on [Primary],
-CONSTRAINT [FK_userrrrs_id] FOREIGN KEY ([users_id])
-	REFERENCES [DBO].[users]([id_user])
-)
-
-create table [dbo].[TeorSelected]
-(
-[id_teorselected] int not null identity(1,1),
-[InfoSelected] nvarchar(max) not null,
-[users_id] int not null
-constraint [id_teorselected] primary key clustered
-	([id_teorselected]ASC) on [Primary],
-CONSTRAINT [FK_userrrrrs_id] FOREIGN KEY ([users_id])
-	REFERENCES [DBO].[users]([id_user])
-)
+create view CreateTableForDeleteUsers
+as select id_user as '№   пользователя', User_Login as 'Логин', Naim as 'Статус'
+from
+users INNER JOIN
+Role on users.id_user = Role.users_id
+go

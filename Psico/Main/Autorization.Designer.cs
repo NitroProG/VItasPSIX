@@ -32,12 +32,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button3 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.hint = new System.Windows.Forms.ToolTip(this.components);
-            this.button3 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -89,6 +89,22 @@
             this.panel1.Size = new System.Drawing.Size(500, 300);
             this.panel1.TabIndex = 2;
             // 
+            // button3
+            // 
+            this.button3.AutoSize = true;
+            this.button3.BackColor = System.Drawing.Color.PowderBlue;
+            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button3.Location = new System.Drawing.Point(294, 200);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(140, 35);
+            this.button3.TabIndex = 8;
+            this.button3.Text = "Регистрация";
+            this.hint.SetToolTip(this.button3, "Авторизироваться");
+            this.button3.UseVisualStyleBackColor = false;
+            this.button3.Click += new System.EventHandler(this.OpenFormRegistration);
+            // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.PowderBlue;
@@ -96,6 +112,7 @@
             this.textBox2.Location = new System.Drawing.Point(61, 155);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
+            this.textBox2.ShortcutsEnabled = false;
             this.textBox2.Size = new System.Drawing.Size(373, 31);
             this.textBox2.TabIndex = 7;
             this.hint.SetToolTip(this.textBox2, "Пароль");
@@ -134,22 +151,6 @@
             this.hint.AutoPopDelay = 5000;
             this.hint.InitialDelay = 1;
             this.hint.ReshowDelay = 100;
-            // 
-            // button3
-            // 
-            this.button3.AutoSize = true;
-            this.button3.BackColor = System.Drawing.Color.PowderBlue;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(294, 200);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(140, 35);
-            this.button3.TabIndex = 8;
-            this.button3.Text = "Регистрация";
-            this.hint.SetToolTip(this.button3, "Авторизироваться");
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.OpenFormRegistration);
             // 
             // Autorization
             // 

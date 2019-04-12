@@ -69,8 +69,9 @@
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(165, 46);
             this.button5.TabIndex = 36;
-            this.button5.Text = "Выход";
+            this.button5.Text = "Добавить";
             this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.AddZadachaa);
             // 
             // button4
             // 
@@ -85,16 +86,17 @@
             this.button4.TabIndex = 35;
             this.button4.Text = "Назад";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.OpenMainForm);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(381, 15);
+            this.label1.Location = new System.Drawing.Point(393, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(474, 31);
+            this.label1.Size = new System.Drawing.Size(557, 31);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Меню администрирования - добавление";
+            this.label1.Text = "Меню администрирования - добавление задачи";
             // 
             // AddZadacha
             // 

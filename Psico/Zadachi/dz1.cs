@@ -66,7 +66,7 @@ namespace Psico
         {
             ExitFromThisForm();
 
-            Program.Insert = "Время общее на этапе заключения:" + Program.AllZakl + " сек";
+            Program.Insert = "Время общее на этапе заключения: " + Program.AllZakl + " сек";
             wordinsert.Ins();
 
             Program.FullAllZakl = Program.FullAllZakl + Program.AllZakl;
@@ -108,7 +108,7 @@ namespace Psico
             dr.Close();
 
             // Запись данных в протокол
-            Program.Insert = "Окно - Заключение (Свободная форма):";
+            Program.Insert = "Окно - Заключение (Свободная форма): ";
             wordinsert.Ins();
         }
 
@@ -139,9 +139,9 @@ namespace Psico
             TimeWithoutKatamnez();
 
             // Запись данных в протокол
-            Program.Insert = "Заключение:" + Program.zakluch + "";
+            Program.Insert = "Заключение: " + Program.zakluch + "";
             wordinsert.Ins();
-            Program.Insert = "Время на заключении (Свободная форма):" + Program.zakl1T + " сек";
+            Program.Insert = "Время на заключении (Свободная форма): " + Program.zakl1T + " сек";
             wordinsert.Ins();
         }
 
@@ -149,7 +149,7 @@ namespace Psico
         {
             ExitFromThisForm();
 
-            Program.Insert = "Время общее на этапе заключения:" + Program.AllZakl + " сек";
+            Program.Insert = "Время общее на этапе заключения: " + Program.AllZakl + " сек";
             wordinsert.Ins();
 
             Program.FullAllZakl = Program.FullAllZakl + Program.AllZakl;
@@ -157,7 +157,7 @@ namespace Psico
 
             exitProgram.ExProgr();
 
-            exitProgram.ProtokolSent();
+            exitProgram.ExProtokolSent();
 
             Application.Exit();
         }

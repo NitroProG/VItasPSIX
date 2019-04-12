@@ -16,5 +16,19 @@ namespace Psico
         {
             InitializeComponent();
         }
+
+        private void OpenMainForm(object sender, EventArgs e)
+        {
+            administrator admin = new administrator();
+            admin.Show();
+            Close();
+        }
+
+        private void AddZadachaa(object sender, EventArgs e)
+        {
+            administrator admin = new administrator();
+            admin.Show();
+            Close();
+        }
     }
 }
