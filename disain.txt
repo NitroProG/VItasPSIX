@@ -1,4 +1,0 @@
-Шрифт - MS Reference Sans Serif
-Цвет текста - Control text
-Размер формы - 1024:768
-Цвет формы - Powder blue

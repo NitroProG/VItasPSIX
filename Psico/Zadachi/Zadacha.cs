@@ -137,6 +137,12 @@ namespace Psico
                     break;
             }
 
+            // Выравнивание
+            label1.Left = panel1.Width / 2 - label1.Width / 2;
+            label3.TextAlign = ContentAlignment.TopCenter;
+            label4.Width = panel1.Width;
+            label4.TextAlign = ContentAlignment.MiddleCenter;
+
             // Адаптация разрешения экрана пользователя
             Rectangle screen = Screen.PrimaryScreen.Bounds;
             if (Convert.ToInt32(screen.Size.Width) < 1300)
@@ -150,12 +156,18 @@ namespace Psico
                 label3.AutoSize = true;
             }
 
-            // Позиционирование элементов на форме
-            panel1.Left = Width / 2 - panel1.Width / 2;
-            Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
-            label1.Left = panel1.Width / 2 - label1.Width / 2;
-            label3.Left = panel1.Width / 2 - label3.Width / 2;
-            label4.Left = panel1.Width / 2 - label4.Width / 2;
+            // Позиционирование элементов формы пользователя
+            WindowState = FormWindowState.Maximized;
+            BackColor = Color.PowderBlue;
+            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
+            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
+
+            //// Позиционирование элементов на форме
+            //panel1.Left = Width / 2 - panel1.Width / 2;
+            //Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
+            //label1.Left = panel1.Width / 2 - label1.Width / 2;
+            //label3.Left = panel1.Width / 2 - label3.Width / 2;
+            //label4.Left = panel1.Width / 2 - label4.Width / 2;
         }
 
         private void OpenCheckForm(object sender, EventArgs e)
@@ -240,6 +252,13 @@ namespace Psico
             StrPrc1.ExecuteNonQuery();
 
             exitProgram.ExProgr();
+        }
+
+        private void WindowDrag(object sender, MouseEventArgs e)
+        {
+            panel2.Capture = false;
+            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+            WndProc(ref n);
         }
     }
 }

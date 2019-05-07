@@ -48,7 +48,7 @@ namespace Psico
                     StrPrc1.ExecuteNonQuery();
 
                     GetSelectFenom1Stage();
-                    MessageBox.Show("Данные успешно изменены!","Отлично!",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    CreateInfo("Данные успешно изменены!", "lime");
                     break;
 
                 case "Fenom2":
@@ -61,7 +61,7 @@ namespace Psico
                     StrPrc2.ExecuteNonQuery();
 
                     GetSelectFenom2Stage();
-                    MessageBox.Show("Данные успешно изменены!", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CreateInfo("Данные успешно изменены!", "lime");
                     break;
 
                 case "Gip":
@@ -74,7 +74,7 @@ namespace Psico
                     StrPrc3.ExecuteNonQuery();
 
                     GetSelectGipStage();
-                    MessageBox.Show("Данные успешно изменены!", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CreateInfo("Данные успешно изменены!", "lime");
                     break;
 
                 case "Dpo":
@@ -90,7 +90,7 @@ namespace Psico
                     StrPrc4.ExecuteNonQuery();
 
                     GetSelectDpoStage();
-                    MessageBox.Show("Данные успешно изменены!", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CreateInfo("Данные успешно изменены!", "lime");
                     break;
 
                 case "Zakl":
@@ -103,7 +103,7 @@ namespace Psico
                     StrPrc5.ExecuteNonQuery();
 
                     GetSelectZaklStage();
-                    MessageBox.Show("Данные успешно изменены!", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CreateInfo("Данные успешно изменены!", "lime");
                     break;
 
                 case "Meropr":
@@ -115,7 +115,7 @@ namespace Psico
                     StrPrc6.ExecuteNonQuery();
 
                     GetSelectMeroprStage();
-                    MessageBox.Show("Данные успешно изменены!", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CreateInfo("Данные успешно изменены!", "lime");
                     break;
 
                 case "Katamnez":
@@ -127,69 +127,38 @@ namespace Psico
                     StrPrc7.ExecuteNonQuery();
 
                     GetSelectKatamnezStage();
-                    MessageBox.Show("Данные успешно изменены!", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    CreateInfo("Данные успешно изменены!", "lime");
                     break;
 
                 case "VernOtv":
+
+                    string VernOtvStage = "";
+
+                    switch (comboBox2.SelectedItem)
+                    {
+                        case "Феноменология":
+                            VernOtvStage = "Fenom";
+                            break;
+                        case "Гипотезы":
+                            VernOtvStage = "Teor";
+                            break;
+                        case "Диагноз":
+                            VernOtvStage = "Diag";
+                            break;
+                    }
+
                     SqlCommand StrPrc8 = new SqlCommand("vernotv_update", con);
                     StrPrc8.CommandType = CommandType.StoredProcedure;
                     StrPrc8.Parameters.AddWithValue("@id_vernotv", Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value));
                     StrPrc8.Parameters.AddWithValue("@otv", richTextBox1.Text);
-                    StrPrc8.Parameters.AddWithValue("@FormVernOtv", datagr1.CurrentRow.Cells[2].Value.ToString());
+                    StrPrc8.Parameters.AddWithValue("@FormVernOtv", VernOtvStage);
                     StrPrc8.Parameters.AddWithValue("@zadacha_id", SelectedZadacha);
                     StrPrc8.ExecuteNonQuery();
 
                     GetSelectVernOtvStage();
-                    MessageBox.Show("Данные успешно изменены!", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-
-                default:
-                    MessageBox.Show("Вы не выбрали этап задачи, который хотите изменить","Ошибка!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    CreateInfo("Данные успешно изменены!", "lime");
                     break;
             }
-
-            con.Close();
-        }
-
-        private void FormLoad(object sender, EventArgs e)
-        {
-            // Подключение к БД
-            con.Open();
-
-            // Динамическое создание label
-            Label label = new Label();
-            label.Name = "label";
-            label.Text = "Выберите задачу, которую хотите изменить";
-            label.Location = new Point(label2.Location.X-80,label2.Location.Y-50);
-            label.AutoSize = true;
-            label.Font = new Font(label.Font.FontFamily,14);
-            panel1.Controls.Add(label);
-
-            // Создание списка задач 
-            SqlCommand get_otd_name = new SqlCommand("select id_zadacha as \"ido\" from zadacha", con);
-            SqlDataReader dr = get_otd_name.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Load(dr);
-            comboBox1.DataSource = dt;
-            comboBox1.ValueMember = "ido";
-
-            // Динамическое создание таблицы
-            datagr1.Name = "datagrview1";
-            datagr1.Size = new Size(panel1.Width/2,panel1.Height/2);
-            datagr1.Location = new Point(panel1.Width/50, panel1.Height/4);
-            datagr1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            datagr1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            datagr1.CellClick += SelectInfoFromDatagr;         
-            datagr1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            panel1.Controls.Add(datagr1);
-            datagr1.ReadOnly = true;
-            datagr1.AllowUserToResizeColumns = false;
-            datagr1.AllowUserToResizeRows = false;
-            datagr1.AllowUserToAddRows = false;
-            datagr1.AllowUserToDeleteRows = false;
-            datagr1.AllowUserToOrderColumns = false;
-            datagr1.RowHeadersVisible = false;
-            datagr1.Visible = false;
 
             con.Close();
         }
@@ -233,10 +202,26 @@ namespace Psico
 
                 case "VernOtv":
                     richTextBox1.Text = datagr1.CurrentRow.Cells[1].Value.ToString();
+
+                    switch (datagr1.CurrentRow.Cells[2].Value.ToString())
+                    {
+                        case "Fenom":
+                            comboBox2.SelectedIndex = 0;
+                            comboBox2.SelectedItem = "Феноменология";
+                            break;
+                        case "Teor":
+                            comboBox2.SelectedIndex = 1;
+                            comboBox2.SelectedItem = "Гипотезы";
+                            break;
+                        case "Diag":
+                            comboBox2.SelectedIndex = 2;
+                            comboBox2.SelectedItem = "Диагноз";
+                            break;
+                    }
                     break;
 
                 default:
-                    MessageBox.Show("Вы не выбрали этап задачи, который хотите изменить", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    CreateInfo("Вы не выбрали этап задачи, который хотите изменить!", "red");
                     break;
             }
         }
@@ -249,6 +234,7 @@ namespace Psico
             button1.Visible = false;
             button2.Visible = true;
             button3.Visible = true;
+            button4.Visible = false;
             button6.Visible = true;
             button7.Visible = true;
             button8.Visible = true;
@@ -267,10 +253,15 @@ namespace Psico
             (panel1.Controls["datagrview1"] as DataGridView).Visible = false;
             label2.Visible = true;
             comboBox1.Visible = true;
+            comboBox2.Visible = false;
             button1.Visible = true;
             button2.Visible = false;
             button3.Visible = false;
+            button4.Visible = true;
             button5.Visible = false;
+            button12.Visible = false;
+            button14.Visible = false;
+            button15.Visible = false;
             button6.Visible = false;
             button7.Visible = false;
             button8.Visible = false;
@@ -290,16 +281,26 @@ namespace Psico
             (panel1.Controls["label"] as Label).Visible = false;
             (panel1.Controls["datagrview1"] as DataGridView).Visible = true;
             button5.Visible = true;
+            button12.Visible = true;
+            button14.Visible = true;
+            button15.Visible = true;
             richTextBox1.Visible = false;
             richTextBox2.Visible = false;
             richTextBox3.Visible = false;
             richTextBox4.Visible = false;
             richTextBox5.Visible = false;
+            comboBox2.Visible = false;
         }
 
         private void SelectFenom1Stage(object sender, EventArgs e)
         {
             GetSelectFenom1Stage();
+            datagr1.Columns[0].Visible = false;
+            datagr1.Columns[2].Visible = true;
+            datagr1.Columns[1].HeaderText = "От кого сведения";
+            datagr1.Columns[2].HeaderText = "Сведения";
+            datagr1.Columns[3].HeaderText = "Номер задачи";
+            richTextBox1.MaxLength = 50;
         }
 
         private void GetSelectFenom1Stage()
@@ -316,16 +317,22 @@ namespace Psico
             richTextBox1.Visible = true;
             richTextBox1.Location = new Point(panel1.Width / 2 + 50, datagr1.Location.Y);
             richTextBox1.Size = new Size(panel1.Width / 2 - 100, 30);
-            richTextBox1.Text = "Название сведений";
+            new ToolTip().SetToolTip(richTextBox1, "Название сведений");
+
             richTextBox2.Visible = true;
             richTextBox2.Location = new Point(panel1.Width / 2 + 50, datagr1.Location.Y + 50);
             richTextBox2.Size = new Size(panel1.Width / 2 - 100, panel1.Height / 3);
-            richTextBox2.Text = "Описание сведений";
+            new ToolTip().SetToolTip(richTextBox2, "Описание сведений");
         }
 
         private void SelectFenom2Stage(object sender, EventArgs e)
         {
             GetSelectFenom2Stage();
+            datagr1.Columns[0].Visible = false;
+            datagr1.Columns[2].Visible = false;
+            datagr1.Columns[1].HeaderText = "Вариант ответа";
+            datagr1.Columns[3].HeaderText = "Номер задачи";
+            richTextBox1.MaxLength = 2147483647;
         }
 
         private void GetSelectFenom2Stage()
@@ -342,12 +349,17 @@ namespace Psico
             richTextBox1.Visible = true;
             richTextBox1.Location = new Point(panel1.Width / 2 + 50, datagr1.Location.Y);
             richTextBox1.Size = new Size(panel1.Width / 2 - 100, 100);
-            richTextBox1.Text = "Название вариантов ответов";
+            new ToolTip().SetToolTip(richTextBox1, "Название вариантов ответов");
         }
 
         private void SelectGipStage(object sender, EventArgs e)
         {
             GetSelectGipStage();
+            datagr1.Columns[0].Visible = false;
+            datagr1.Columns[2].Visible = false;
+            datagr1.Columns[1].HeaderText = "Вариант ответа";
+            datagr1.Columns[3].HeaderText = "Номер задачи";
+            richTextBox1.MaxLength = 2147483647;
         }
 
         private void GetSelectGipStage()
@@ -364,12 +376,21 @@ namespace Psico
             richTextBox1.Visible = true;
             richTextBox1.Location = new Point(panel1.Width / 2 + 50, datagr1.Location.Y);
             richTextBox1.Size = new Size(panel1.Width / 2 - 100, 100);
-            richTextBox1.Text = "Название вариантов ответов";
+            new ToolTip().SetToolTip(richTextBox1, "Название вариантов ответов");
         }
 
         private void SelectDpoStage(object sender, EventArgs e)
         {
             GetSelectDpoStage();
+            datagr1.Columns[0].Visible = false;
+            datagr1.Columns[2].Visible = true;
+            datagr1.Columns[1].HeaderText = "Краткое наименование методики";
+            datagr1.Columns[2].HeaderText = "Полное наименование методики";
+            datagr1.Columns[3].HeaderText = "Данные";
+            datagr1.Columns[4].HeaderText = "Путь к файлу с 1 рисунком";
+            datagr1.Columns[5].HeaderText = "Путь к файлу со 2 рисунком";
+            datagr1.Columns[6].HeaderText = "Номер задачи";
+            richTextBox1.MaxLength = 100;
         }
 
         private void GetSelectDpoStage()
@@ -386,28 +407,37 @@ namespace Psico
             richTextBox1.Visible = true;
             richTextBox1.Location = new Point(panel1.Width / 2 + 50, datagr1.Location.Y);
             richTextBox1.Size = new Size(panel1.Width / 2 - 100, 30);
-            richTextBox1.Text = "Краткое название методик";
+            new ToolTip().SetToolTip(richTextBox1, "Краткое название методик");
+
             richTextBox2.Visible = true;
             richTextBox2.Location = new Point(panel1.Width / 2 + 50, datagr1.Location.Y + 40);
             richTextBox2.Size = new Size(panel1.Width / 2 - 100, 30);
-            richTextBox2.Text = "Полное название методик";
+            new ToolTip().SetToolTip(richTextBox2, "Полное название методик");
+
             richTextBox3.Visible = true;
             richTextBox3.Location = new Point(panel1.Width / 2 + 50, datagr1.Location.Y + 80);
             richTextBox3.Size = new Size(panel1.Width / 2 - 100, panel1.Height / 4);
-            richTextBox3.Text = "Описание методик";
+            new ToolTip().SetToolTip(richTextBox3, "Описание методик");
+
             richTextBox4.Visible = true;
             richTextBox4.Location = new Point(panel1.Width / 2 + 50, datagr1.Location.Y + 280);
             richTextBox4.Size = new Size(panel1.Width / 2 - 100, 30);
-            richTextBox4.Text = "Путь к файлу с картинкой";
+            new ToolTip().SetToolTip(richTextBox4, "Путь к файлу с картинкой");
+
             richTextBox5.Visible = true;
             richTextBox5.Location = new Point(panel1.Width / 2 + 50, datagr1.Location.Y + 320);
             richTextBox5.Size = new Size(panel1.Width / 2 - 100, 30);
-            richTextBox5.Text = "Путь к файлу со второй картинкой, если она есть";
+            new ToolTip().SetToolTip(richTextBox5, "Путь к файлу со второй картинкой, если она есть");
         }
 
         private void SelectZaklStage(object sender, EventArgs e)
         {
             GetSelectZaklStage();
+            datagr1.Columns[0].Visible = false;
+            datagr1.Columns[2].Visible = false;
+            datagr1.Columns[1].HeaderText = "Вариант ответа";
+            datagr1.Columns[3].HeaderText = "Номер задачи";
+            richTextBox1.MaxLength = 2147483647;
         }
 
         private void GetSelectZaklStage()
@@ -424,12 +454,17 @@ namespace Psico
             richTextBox1.Visible = true;
             richTextBox1.Location = new Point(panel1.Width / 2 + 50, datagr1.Location.Y);
             richTextBox1.Size = new Size(panel1.Width / 2 - 100, 100);
-            richTextBox1.Text = "Название вариантов ответов";
+            new ToolTip().SetToolTip(richTextBox1, "Название вариантов ответов");
         }
 
         private void SelectMeroprStage(object sender, EventArgs e)
         {
             GetSelectMeroprStage();
+            datagr1.Columns[0].Visible = false;
+            datagr1.Columns[2].Visible = true;
+            datagr1.Columns[1].HeaderText = "Данные по мероприятиям";
+            datagr1.Columns[2].HeaderText = "Номер задачи";
+            richTextBox1.MaxLength = 2147483647;
         }
 
         private void GetSelectMeroprStage()
@@ -446,12 +481,17 @@ namespace Psico
             richTextBox1.Visible = true;
             richTextBox1.Location = new Point(panel1.Width / 2 + 50, datagr1.Location.Y);
             richTextBox1.Size = new Size(panel1.Width / 2 - 100, panel1.Height / 2);
-            richTextBox1.Text = "Описание проводимых мероприятий";
+            new ToolTip().SetToolTip(richTextBox1, "Описание проводимых мероприятий");
         }
 
         private void SelectKatamnezStage(object sender, EventArgs e)
         {
             GetSelectKatamnezStage();
+            datagr1.Columns[0].Visible = false;
+            datagr1.Columns[2].Visible = true;
+            datagr1.Columns[1].HeaderText = "Данные по катамнезу";
+            datagr1.Columns[2].HeaderText = "Номер задачи";
+            richTextBox1.MaxLength = 2147483647;
         }
 
         private void GetSelectKatamnezStage()
@@ -468,12 +508,16 @@ namespace Psico
             richTextBox1.Visible = true;
             richTextBox1.Location = new Point(panel1.Width / 2 + 50, datagr1.Location.Y);
             richTextBox1.Size = new Size(panel1.Width / 2 - 100, panel1.Height / 2);
-            richTextBox1.Text = "Описание катамнеза";
+            new ToolTip().SetToolTip(richTextBox1, "Описание катамнеза");
         }
 
         private void SelectVernOtvStage(object sender, EventArgs e)
         {
             GetSelectVernOtvStage();
+            datagr1.Columns[0].Visible = false;
+            datagr1.Columns[1].HeaderText = "Вариант ответа";
+            datagr1.Columns[2].HeaderText = "Этап";
+            datagr1.Columns[3].HeaderText = "Номер задачи";
         }
 
         private void GetSelectVernOtvStage()
@@ -490,7 +534,433 @@ namespace Psico
             richTextBox1.Visible = true;
             richTextBox1.Location = new Point(panel1.Width / 2 + 50, datagr1.Location.Y);
             richTextBox1.Size = new Size(panel1.Width / 2 - 100, 100);
-            richTextBox1.Text = "Название вариантов ответов";
+            new ToolTip().SetToolTip(richTextBox1, "Название верных ответов");
+
+            comboBox2.Visible = true;
+            comboBox2.Location = new Point(richTextBox1.Location.X,richTextBox1.Location.Y + 120);
+        }
+
+        private void WindowDrag(object sender, MouseEventArgs e)
+        {
+            panel2.Capture = false;
+            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+            WndProc(ref n);
+        }
+
+        private void DeleteFromZadacha(object sender, EventArgs e)
+        {
+            // Подключение к БД
+            con.Open();
+
+            switch (SelectedStage)
+            {
+                case "Fenom1":
+                    SqlCommand delete1 = new SqlCommand("delete from Fenom1 where id_Fenom1 = " + Convert.ToInt16(datagr1.CurrentRow.Cells[0].Value) + " and zadacha_id = "+SelectedZadacha+"", con);
+                    delete1.ExecuteNonQuery();
+
+                    GetSelectFenom1Stage();
+                    CreateInfo("Данные успешно удалены!", "lime");
+                    break;
+
+                case "Fenom2":
+                    SqlCommand delete2 = new SqlCommand("delete from CBFormFill where id_CBFormFill = " + Convert.ToInt16(datagr1.CurrentRow.Cells[0].Value) + "and FormCB = 'Fenom' and zadacha_id = " + SelectedZadacha + "", con);
+                    delete2.ExecuteNonQuery();
+
+                    GetSelectFenom2Stage();
+                    CreateInfo("Данные успешно удалены!", "lime");
+                    break;
+
+                case "Gip":
+                    SqlCommand delete3 = new SqlCommand("delete from CBFormFill where id_CBFormFill = " + Convert.ToInt16(datagr1.CurrentRow.Cells[0].Value) + "and FormCB = 'Teor' and zadacha_id = " + SelectedZadacha + "", con);
+                    delete3.ExecuteNonQuery();
+
+                    GetSelectGipStage();
+                    CreateInfo("Данные успешно удалены!", "lime");
+                    break;
+
+                case "Dpo":
+                    SqlCommand delete4 = new SqlCommand("delete from dpo where id_dpo = " + Convert.ToInt16(datagr1.CurrentRow.Cells[0].Value) + " and zadacha_id = " + SelectedZadacha + "", con);
+                    delete4.ExecuteNonQuery();
+
+                    GetSelectDpoStage();
+                    CreateInfo("Данные успешно удалены!", "lime");
+                    break;
+
+                case "Zakl":
+                    SqlCommand delete5 = new SqlCommand("delete from CBFormFill where id_CBFormFill = " + Convert.ToInt16(datagr1.CurrentRow.Cells[0].Value) + "and FormCB = 'Diag' and zadacha_id = " + SelectedZadacha + "", con);
+                    delete5.ExecuteNonQuery();
+
+                    GetSelectZaklStage();
+                    CreateInfo("Данные успешно удалены!", "lime");
+                    break;
+
+                case "Meropr":
+                    SqlCommand delete6 = new SqlCommand("delete from meropr where id_meropr = " + Convert.ToInt16(datagr1.CurrentRow.Cells[0].Value) + " and zadacha_id = " + SelectedZadacha + "", con);
+                    delete6.ExecuteNonQuery();
+
+                    GetSelectMeroprStage();
+                    CreateInfo("Данные успешно удалены!", "lime");
+                    break;
+
+                case "Katamnez":
+                    SqlCommand delete7 = new SqlCommand("delete from katamnez where id_katamnez = " + Convert.ToInt16(datagr1.CurrentRow.Cells[0].Value) + " and zadacha_id = " + SelectedZadacha + "", con);
+                    delete7.ExecuteNonQuery();
+
+                    GetSelectKatamnezStage();
+                    CreateInfo("Данные успешно удалены!", "lime");
+                    break;
+
+                case "VernOtv":
+                    SqlCommand delete8 = new SqlCommand("delete from vernotv where id_vernotv = " + Convert.ToInt16(datagr1.CurrentRow.Cells[0].Value) + " and zadacha_id = " + SelectedZadacha + "", con);
+                    delete8.ExecuteNonQuery();
+
+                    GetSelectVernOtvStage();
+                    CreateInfo("Данные успешно удалены!", "lime");
+                    break;
+            }
+
+            con.Close();
+        }
+
+        private void AddToZadacha(object sender, EventArgs e)
+        {
+            // Подключение к БД
+            con.Open();
+
+            switch (SelectedStage)
+            {
+                case "Fenom1":
+                    SqlCommand StrPrc1 = new SqlCommand("Fenom1_add", con);
+                    StrPrc1.CommandType = CommandType.StoredProcedure;
+                    StrPrc1.Parameters.AddWithValue("@rb", richTextBox1.Text);
+                    StrPrc1.Parameters.AddWithValue("@rbtext", richTextBox2.Text);
+                    StrPrc1.Parameters.AddWithValue("@zadacha_id", SelectedZadacha);
+                    StrPrc1.ExecuteNonQuery();
+
+                    GetSelectFenom1Stage();
+                    CreateInfo("Данные успешно добавлены!", "lime");
+                    break;
+
+                case "Fenom2":
+                    SqlCommand StrPrc2 = new SqlCommand("CBFormFill_add", con);
+                    StrPrc2.CommandType = CommandType.StoredProcedure;
+                    StrPrc2.Parameters.AddWithValue("@cb", richTextBox1.Text);
+                    StrPrc2.Parameters.AddWithValue("@FormCB", "Fenom");
+                    StrPrc2.Parameters.AddWithValue("@zadacha_id", SelectedZadacha);
+                    StrPrc2.ExecuteNonQuery();
+
+                    GetSelectFenom2Stage();
+                    CreateInfo("Данные успешно добавлены!", "lime");
+                    break;
+
+                case "Gip":
+                    SqlCommand StrPrc3 = new SqlCommand("CBFormFill_add", con);
+                    StrPrc3.CommandType = CommandType.StoredProcedure;
+                    StrPrc3.Parameters.AddWithValue("@cb", richTextBox1.Text);
+                    StrPrc3.Parameters.AddWithValue("@FormCB", "Teor");
+                    StrPrc3.Parameters.AddWithValue("@zadacha_id", SelectedZadacha);
+                    StrPrc3.ExecuteNonQuery();
+
+                    GetSelectGipStage();
+                    CreateInfo("Данные успешно добавлены!", "lime");
+                    break;
+
+                case "Dpo":
+                    SqlCommand StrPrc4 = new SqlCommand("dpo_add", con);
+                    StrPrc4.CommandType = CommandType.StoredProcedure;
+                    StrPrc4.Parameters.AddWithValue("@lb_small", richTextBox1.Text);
+                    StrPrc4.Parameters.AddWithValue("@lb", richTextBox2.Text);
+                    StrPrc4.Parameters.AddWithValue("@lbtext", richTextBox3.Text);
+                    StrPrc4.Parameters.AddWithValue("@lb_image", richTextBox4.Text);
+                    StrPrc4.Parameters.AddWithValue("@lb_image2", richTextBox5.Text);
+                    StrPrc4.Parameters.AddWithValue("@zadacha_id", SelectedZadacha);
+                    StrPrc4.ExecuteNonQuery();
+
+                    GetSelectDpoStage();
+                    CreateInfo("Данные успешно добавлены!", "lime");
+                    break;
+
+                case "Zakl":
+                    SqlCommand StrPrc5 = new SqlCommand("CBFormFill_add", con);
+                    StrPrc5.CommandType = CommandType.StoredProcedure;
+                    StrPrc5.Parameters.AddWithValue("@cb", richTextBox1.Text);
+                    StrPrc5.Parameters.AddWithValue("@FormCB", "Diag");
+                    StrPrc5.Parameters.AddWithValue("@zadacha_id", SelectedZadacha);
+                    StrPrc5.ExecuteNonQuery();
+
+                    GetSelectZaklStage();
+                    CreateInfo("Данные успешно добавлены!", "lime");
+                    break;
+
+                case "Meropr":
+                    SqlCommand StrPrc6 = new SqlCommand("meropr_add", con);
+                    StrPrc6.CommandType = CommandType.StoredProcedure;
+                    StrPrc6.Parameters.AddWithValue("@meroprtext", richTextBox1.Text);
+                    StrPrc6.Parameters.AddWithValue("@zadacha_id", SelectedZadacha);
+                    StrPrc6.ExecuteNonQuery();
+
+                    GetSelectMeroprStage();
+                    CreateInfo("Данные успешно добавлены!", "lime");
+                    break;
+
+                case "Katamnez":
+                    SqlCommand StrPrc7 = new SqlCommand("katamnez_add", con);
+                    StrPrc7.CommandType = CommandType.StoredProcedure;
+                    StrPrc7.Parameters.AddWithValue("@katamneztext", richTextBox1.Text);
+                    StrPrc7.Parameters.AddWithValue("@zadacha_id", SelectedZadacha);
+                    StrPrc7.ExecuteNonQuery();
+
+                    GetSelectKatamnezStage();
+                    CreateInfo("Данные успешно добавлены!", "lime");
+                    break;
+
+                case "VernOtv":
+
+                    string VernOtvStage = "";
+
+                    switch (comboBox2.SelectedItem)
+                    {
+                        case "Феноменология":
+                            VernOtvStage = "Fenom";
+                            break;
+                        case "Гипотезы":
+                            VernOtvStage = "Teor";
+                            break;
+                        case "Диагноз":
+                            VernOtvStage = "Diag";
+                            break;
+                    }
+
+                    SqlCommand StrPrc8 = new SqlCommand("vernotv_add", con);
+                    StrPrc8.CommandType = CommandType.StoredProcedure;
+                    StrPrc8.Parameters.AddWithValue("@otv", richTextBox1.Text);
+                    StrPrc8.Parameters.AddWithValue("@FormVernOtv", VernOtvStage);
+                    StrPrc8.Parameters.AddWithValue("@zadacha_id", SelectedZadacha);
+                    StrPrc8.ExecuteNonQuery();
+
+                    GetSelectVernOtvStage();
+                    CreateInfo("Данные успешно добавлены!", "lime");
+                    break;
+            }
+
+            con.Close();
+        }
+
+        private void CreateInfo(string labelinfo, string color)
+        {
+            Timer timer = new Timer();
+            timer.Tick += TimerTick;
+            timer.Start();
+
+            Panel panel = new Panel();
+            panel.Name = "panel";
+            panel.Size = new Size(600, 100);
+            panel.Location = new Point(panel1.Width / 2 - panel.Width / 2, panel1.Height / 2 - panel.Height / 2);
+            panel.BackColor = Color.LightGray;
+            panel.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(panel);
+            panel.BringToFront();
+
+            Label label = new Label();
+            label.Name = "label";
+            label.Text = labelinfo;
+            label.Size = new Size(panel.Width, panel.Height);
+            label.Font = new Font(label.Font.FontFamily, 16);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+
+            switch (color)
+            {
+                case "red":
+                    label.ForeColor = Color.Red;
+                    timer.Interval = 5000;
+                    break;
+                case "lime":
+                    label.ForeColor = Color.LimeGreen;
+                    timer.Interval = 2000;
+                    break;
+                default:
+                    label.ForeColor = Color.Black;
+                    timer.Interval = 5000;
+                    break;
+            }
+
+            label.Location = new Point(0, 0);
+            panel.Controls.Add(label);
+            label.BringToFront();
+        }
+
+        private void TimerTick(object sender, EventArgs e)
+        {
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                (sender as Timer).Stop();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void FormLoad(object sender, EventArgs e)
+        {
+            // Подключение к БД
+            con.Open();
+
+            // Динамическое создание label
+            Label label = new Label();
+            label.Name = "label";
+            label.Text = "Выберите задачу, которую хотите изменить";
+            label.AutoSize = true;
+            label.Font = new Font(label.Font.FontFamily, 14);
+            panel1.Controls.Add(label);
+
+            // Создание списка задач 
+            SqlCommand get_otd_name = new SqlCommand("select id_zadacha as \"ido\" from zadacha", con);
+            SqlDataReader dr = get_otd_name.ExecuteReader();
+            DataTable dt = new DataTable();
+            dt.Load(dr);
+            comboBox1.DataSource = dt;
+            comboBox1.ValueMember = "ido";
+
+            // Динамическое создание таблицы
+            datagr1.Name = "datagrview1";
+            datagr1.Size = new Size(panel1.Width / 2, panel1.Height / 2);
+            datagr1.Location = new Point(panel1.Width / 50, panel1.Height / 4);
+            datagr1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            datagr1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            datagr1.CellClick += SelectInfoFromDatagr;
+            datagr1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            datagr1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCellsExceptHeaders;
+            panel1.Controls.Add(datagr1);
+
+            datagr1.BackgroundColor = Color.White;
+            datagr1.ColumnHeadersDefaultCellStyle.BackColor = Color.PowderBlue;
+            datagr1.EnableHeadersVisualStyles = false;
+
+            datagr1.ReadOnly = true;
+            datagr1.AllowUserToResizeColumns = false;
+            datagr1.AllowUserToResizeRows = false;
+            datagr1.AllowUserToAddRows = false;
+            datagr1.AllowUserToDeleteRows = false;
+            datagr1.AllowUserToOrderColumns = false;
+            datagr1.RowHeadersVisible = false;
+            datagr1.Visible = false;
+
+            con.Close();
+
+            FormAlignment();
+        }
+
+
+        private void FormAlignment()
+        {
+            // Адаптация разрешения экрана пользователя
+            Rectangle screen = Screen.PrimaryScreen.Bounds;
+
+            if (screen.Width < 1360 && screen.Width > 1000)
+            {
+                panel2.Width = 1024;
+                panel1.Width = 1000;
+
+                button3.Font = new Font(button3.Font.FontFamily, 12);
+                button3.Width = 100;
+                button3.Left = 50;
+
+                button6.Font = new Font(button6.Font.FontFamily, 12);
+                button6.Width = 100;
+                button6.Left = button3.Left + button3.Width+10;
+
+                button7.Font = new Font(button7.Font.FontFamily, 12);
+                button7.Width = 100;
+                button7.Left = button6.Left + button6.Width + 10;
+
+                button10.Font = new Font(button10.Font.FontFamily, 12);
+                button10.Width = 100;
+                button10.Left = button7.Left + button7.Width + 10;
+
+                button11.Font = new Font(button11.Font.FontFamily, 12);
+                button11.Width = 100;
+                button11.Location = new Point(button3.Left+button3.Width/2-button11.Width/2,button3.Location.Y+40);
+
+                button13.Font = new Font(button13.Font.FontFamily, 12);
+                button13.Width = 100;
+                button13.Location = new Point(button6.Left+button6.Width/2-button13.Width/2, button6.Location.Y + 40);
+
+                button9.Font = new Font(button9.Font.FontFamily, 12);
+                button9.Width = 100;
+                button9.Location = new Point(button7.Left+button7.Width/2-button9.Width/2, button7.Location.Y + 40);
+
+                button8.Font = new Font(button8.Font.FontFamily, 12);
+                button8.Width = 100;
+                button8.Location = new Point(button10.Left+button10.Width/2-button8.Width/2, button10.Location.Y + 40);
+
+                datagr1.Width = panel1.Width / 2;
+            }
+
+            // Позиционирование элементов формы пользователя
+            WindowState = FormWindowState.Maximized;
+            BackColor = Color.PowderBlue;
+            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
+            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
+
+            label1.Left = panel1.Width / 2 - label1.Width / 2;
+            label2.Left = panel1.Width / 2 - label2.Width / 2 - comboBox1.Width/2;
+            (panel1.Controls["label"] as Label).Location = new Point(panel1.Width / 2 - (panel1.Controls["label"] as Label).Width / 2, label2.Location.Y - 50);
+
+            comboBox1.Location = new Point(label2.Location.X + label2.Width + 5, label2.Location.Y+2);
+
+            button1.Left = panel1.Width / 2 - button1.Width / 2;
+
+            button2.Location = new Point(30, panel1.Height - 70);
+            button4.Location = new Point(30, panel1.Height - 70);
+            button5.Location = new Point(panel1.Width - button5.Width - 30, panel1.Height - 70);
+            button15.Location = new Point(button5.Location.X, button5.Location.Y-button15.Height - 10);
+            button12.Location = new Point(button5.Location.X- button12.Width-10, panel1.Height - 70);
+            button14.Location = new Point(button12.Location.X-button14.Width-10, panel1.Height - 70);
+        }
+
+        private void CleanRichTextBox(object sender, EventArgs e)
+        {
+            switch (SelectedStage)
+            {
+                case "Fenom1":
+                    richTextBox1.Text = "";
+                    richTextBox2.Text = "";
+                    break;
+
+                case "Fenom2":
+                    richTextBox1.Text = "";
+                    break;
+
+                case "Gip":
+                    richTextBox1.Text = "";
+                    break;
+
+                case "Dpo":
+                    richTextBox1.Text = "";
+                    richTextBox2.Text = "";
+                    richTextBox3.Text = "";
+                    richTextBox4.Text = "";
+                    richTextBox5.Text = "";
+                    break;
+
+                case "Zakl":
+                    richTextBox1.Text = "";
+                    break;
+
+                case "Meropr":
+                    richTextBox1.Text = "";
+                    break;
+
+                case "Katamnez":
+                    richTextBox1.Text = "";
+                    break;
+
+                case "VernOtv":
+                    richTextBox1.Text = "";
+                    break;
+            }
         }
     }
 }

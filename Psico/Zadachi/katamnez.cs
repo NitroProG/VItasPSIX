@@ -82,6 +82,10 @@ namespace Psico
             label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
 
+            // Выравнивание
+            label1.Left = panel1.Width / 2 - label1.Width / 2;
+            label3.TextAlign = ContentAlignment.TopCenter;
+
             // Запись данных из БД
             SqlCommand text = new SqlCommand("select katamneztext from katamnez where zadacha_id = " + Program.NomerZadachi + "", con);
             SqlDataReader dr1 = text.ExecuteReader();
@@ -92,6 +96,14 @@ namespace Psico
             // Запись данных в протокол
             Program.Insert = "Окно - Катамнез:";
             wordinsert.Ins();
+
+            // Адаптация разрешения экрана пользователя
+            Rectangle screen = Screen.PrimaryScreen.Bounds;
+            // Позиционирование элементов формы пользователя
+            WindowState = FormWindowState.Maximized;
+            BackColor = Color.PowderBlue;
+            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
+            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
         }
 
         private void Timer(object sender, EventArgs e)
@@ -109,6 +121,10 @@ namespace Psico
             // Запись данных в протокол
             Program.Insert = "Время на катамнезе:" + Program.katamT + " сек";
             wordinsert.Ins();
+
+            Program.StageName.Add("К");
+            Program.StageSec.Add(Program.katamT);
+            Program.NumberStage.Add(6);
         }
 
         private void ExitFromProgram()
@@ -123,6 +139,13 @@ namespace Psico
             ExitFromThisForm();
 
             exitProgram.ExProgr();
+        }
+
+        private void WindowDrag(object sender, MouseEventArgs e)
+        {
+            panel2.Capture = false;
+            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+            WndProc(ref n);
         }
     }
 }

@@ -51,6 +51,10 @@ namespace Psico
             label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
 
+            // Выравнивание
+            label1.Left = panel1.Width / 2 - label1.Width / 2;
+            label3.TextAlign = ContentAlignment.TopCenter;
+
             // Выбор количества данных, необходимых для записи в listbox
             SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from dpo where zadacha_id = " + Program.NomerZadachi + "", con);
             SqlDataReader dr0 = kolvo.ExecuteReader();
@@ -151,6 +155,14 @@ namespace Psico
             // Запись данных в протокол
             Program.Insert = "Окно - Обследование: ";
             wordinsert.Ins();
+
+            // Адаптация разрешения экрана пользователя
+            Rectangle screen = Screen.PrimaryScreen.Bounds;
+            // Позиционирование элементов формы пользователя
+            WindowState = FormWindowState.Maximized;
+            BackColor = Color.PowderBlue;
+            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
+            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
         }
 
         private void PbClick(object sender, EventArgs e)
@@ -402,6 +414,8 @@ namespace Psico
             Program.FullAllDpo = Program.FullAllDpo + Program.dpoT;
             Program.obsledovaniya = richTextBox2.Text;
 
+            StageInfo();
+
             if (Program.infochekT != 0)
             {
                 // Запись данных в протокол
@@ -422,6 +436,20 @@ namespace Psico
             wordinsert.Ins();
             Program.Insert = "Время на обследовании методик: " + Program.dpoT + " сек";
             wordinsert.Ins();
+        }
+
+        private void StageInfo()
+        {
+            Program.StageName.Add("О");
+            Program.StageSec.Add(Program.dpoT);
+            Program.NumberStage.Add(3);
+        }
+
+        private void WindowDrag(object sender, MouseEventArgs e)
+        {
+            panel2.Capture = false;
+            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+            WndProc(ref n);
         }
     }
 }

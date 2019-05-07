@@ -95,6 +95,8 @@ namespace Psico
             Program.Insert = "Время общее на этапе феноменологии: " + Program.AllFenom + " сек";
             wordinsert.Ins();
 
+            StageInfo();
+
             Program.FullAllFenom = Program.FullAllFenom + Program.AllFenom;
             Program.AllFenom = 0;
 
@@ -119,6 +121,10 @@ namespace Psico
             label3.Text = dr["Zapros"].ToString();
             label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
+
+            // Выравнивание
+            label1.Left = panel1.Width / 2 - label1.Width / 2;
+            label3.TextAlign = ContentAlignment.TopCenter;
 
             // Определение количества checkbox на форме
             SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from CBFormFill where zadacha_id = " + Program.NomerZadachi + " and FormCB ='Fenom'", con);
@@ -210,47 +216,55 @@ namespace Psico
                 }
             }
 
+            //// Адаптация разрешения экрана пользователя
+            //Rectangle screen = Screen.PrimaryScreen.Bounds;
+            //if (Convert.ToInt32(screen.Size.Width) < 1300)
+            //{
+            //    Width = 1024;
+            //    Height = 768;
+
+            //    panel2.Width = 1024;
+            //    panel2.Height = 768;
+
+            //    panel1.Width = 1003;
+            //    panel1.Height = 747;
+
+            //    label3.MaximumSize = new Size(950, 64);
+
+            //    button3.Left = button3.Left - 350;
+            //    button1.Left = button1.Left - 340;
+            //    label4.Left = label4.Left - 170;
+            //    richTextBox1.Left = richTextBox1.Left - 170;
+
+            //    foreach (Control ctrl in panel1.Controls)
+            //    {
+            //        int newFontSize = 12;
+            //        ctrl.Font = new Font(ctrl.Font.FontFamily, newFontSize);
+
+            //        if (ctrl is CheckBox)
+            //        {
+            //            ctrl.Left = ctrl.Left - 130;
+            //            int nFontSize = 8;
+            //            ctrl.Font = new Font(ctrl.Font.FontFamily, nFontSize);
+            //        }
+            //    }
+            //}
+
+            //// Позиционирование элементов формы пользователя
+            //panel1.Left = Width / 2 - panel1.Width / 2;
+            //Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
+            //label1.Left = panel1.Width / 2 - label1.Width / 2;
+            //label3.Left = panel1.Width / 2 - label3.Width / 2;
+            //label3.MaximumSize = new Size(1300, 64);
+            //label3.AutoSize = true;
+
             // Адаптация разрешения экрана пользователя
             Rectangle screen = Screen.PrimaryScreen.Bounds;
-            if (Convert.ToInt32(screen.Size.Width) < 1300)
-            {
-                Width = 1024;
-                Height = 768;
-
-                panel2.Width = 1024;
-                panel2.Height = 768;
-
-                panel1.Width = 1003;
-                panel1.Height = 747;
-
-                label3.MaximumSize = new Size(950, 64);
-
-                button3.Left = button3.Left - 350;
-                button1.Left = button1.Left - 340;
-                label4.Left = label4.Left - 170;
-                richTextBox1.Left = richTextBox1.Left - 170;
-
-                foreach (Control ctrl in panel1.Controls)
-                {
-                    int newFontSize = 12;
-                    ctrl.Font = new Font(ctrl.Font.FontFamily, newFontSize);
-
-                    if (ctrl is CheckBox)
-                    {
-                        ctrl.Left = ctrl.Left - 130;
-                        int nFontSize = 8;
-                        ctrl.Font = new Font(ctrl.Font.FontFamily, nFontSize);
-                    }
-                }
-            }
-
             // Позиционирование элементов формы пользователя
-            panel1.Left = Width / 2 - panel1.Width / 2;
-            Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
-            label1.Left = panel1.Width / 2 - label1.Width / 2;
-            label3.Left = panel1.Width / 2 - label3.Width / 2;
-            label3.MaximumSize = new Size(1300, 64);
-            label3.AutoSize = true;
+            WindowState = FormWindowState.Maximized;
+            BackColor = Color.PowderBlue;
+            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
+            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
 
             // Выбор количества правильных ответов у задачи
             SqlCommand kolotvetov = new SqlCommand("select count(*) as 'kolvo' from Lastotv where users_id = " + Program.user + " and Form_otv = 'Fenom'", con);
@@ -321,6 +335,8 @@ namespace Psico
 
             Program.Insert = "Время общее на этапе феноменологии: " + Program.AllFenom + " сек";
             wordinsert.Ins();
+
+            StageInfo();
 
             Program.FullAllFenom = Program.FullAllFenom + Program.AllFenom;
             Program.AllFenom = 0;
@@ -416,6 +432,20 @@ namespace Psico
                     }
                 }                
             }
+        }
+
+        private void StageInfo()
+        {
+            Program.StageName.Add("Ф");
+            Program.StageSec.Add(Program.AllFenom);
+            Program.NumberStage.Add(1);
+        }
+
+        private void WindowDrag(object sender, MouseEventArgs e)
+        {
+            panel2.Capture = false;
+            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+            WndProc(ref n);
         }
     }
 }

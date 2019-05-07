@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Anketa));
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -53,11 +56,14 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1366, 768);
             this.panel2.TabIndex = 5;
+            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WindowDrag);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.textBox7);
+            this.panel1.Controls.Add(this.textBox6);
             this.panel1.Controls.Add(this.textBox5);
             this.panel1.Controls.Add(this.textBox4);
             this.panel1.Controls.Add(this.textBox3);
@@ -67,70 +73,82 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(433, 133);
+            this.panel1.Location = new System.Drawing.Point(378, 133);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 478);
+            this.panel1.Size = new System.Drawing.Size(555, 478);
             this.panel1.TabIndex = 2;
+            // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.Color.PowderBlue;
+            this.textBox7.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox7.Location = new System.Drawing.Point(79, 186);
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(395, 31);
+            this.textBox7.TabIndex = 36;
+            this.hint.SetToolTip(this.textBox7, "Отчество");
+            // 
+            // textBox6
+            // 
+            this.textBox6.BackColor = System.Drawing.Color.PowderBlue;
+            this.textBox6.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox6.Location = new System.Drawing.Point(79, 149);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(395, 31);
+            this.textBox6.TabIndex = 40;
+            this.hint.SetToolTip(this.textBox6, "Имя");
             // 
             // textBox5
             // 
             this.textBox5.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox5.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox5.Location = new System.Drawing.Point(52, 308);
+            this.textBox5.Location = new System.Drawing.Point(79, 334);
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(395, 31);
             this.textBox5.TabIndex = 39;
-            this.textBox5.Text = "Возраст";
             this.hint.SetToolTip(this.textBox5, "Возраст");
-            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.OldHint);
             // 
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox4.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox4.Location = new System.Drawing.Point(52, 251);
+            this.textBox4.Location = new System.Drawing.Point(79, 297);
+            this.textBox4.MaxLength = 1;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(395, 31);
             this.textBox4.TabIndex = 38;
-            this.textBox4.Text = "Год обучения";
             this.hint.SetToolTip(this.textBox4, "Год обучения");
-            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.YearHint);
             // 
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox3.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox3.Location = new System.Drawing.Point(52, 196);
+            this.textBox3.Location = new System.Drawing.Point(79, 260);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(395, 31);
             this.textBox3.TabIndex = 37;
-            this.textBox3.Text = "Место работы и стаж";
             this.hint.SetToolTip(this.textBox3, "Место работы и стаж");
-            this.textBox3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WorkHint);
             // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(52, 146);
+            this.textBox2.Location = new System.Drawing.Point(79, 223);
+            this.textBox2.MaxLength = 30;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(395, 31);
             this.textBox2.TabIndex = 36;
-            this.textBox2.Text = "Образование";
             this.hint.SetToolTip(this.textBox2, "Образование");
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.StudyHint);
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(52, 98);
+            this.textBox1.Location = new System.Drawing.Point(79, 112);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(395, 31);
             this.textBox1.TabIndex = 35;
-            this.textBox1.Text = "ФИО";
-            this.hint.SetToolTip(this.textBox1, "ФИО");
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FIOHint);
+            this.hint.SetToolTip(this.textBox1, "Фамилия");
             // 
             // button3
             // 
@@ -139,7 +157,7 @@
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(466, 3);
+            this.button3.Location = new System.Drawing.Point(521, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(29, 28);
             this.button3.TabIndex = 34;
@@ -152,7 +170,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(82, 14);
+            this.label1.Location = new System.Drawing.Point(109, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(326, 34);
             this.label1.TabIndex = 3;
@@ -165,7 +183,7 @@
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(46, 421);
+            this.button2.Location = new System.Drawing.Point(79, 421);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(113, 35);
             this.button2.TabIndex = 1;
@@ -180,7 +198,7 @@
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(328, 421);
+            this.button1.Location = new System.Drawing.Point(361, 421);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 35);
             this.button1.TabIndex = 0;
@@ -202,6 +220,7 @@
             this.ClientSize = new System.Drawing.Size(1366, 768);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "Anketa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -228,5 +247,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolTip hint;
+        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox textBox6;
     }
 }

@@ -29,7 +29,7 @@ namespace Psico
             InitializeComponent();
         }
 
-        private void Registration_Load(object sender, EventArgs e)
+        private void FormLoad(object sender, EventArgs e)
         {
             Strela = 0;
             Registr = 0;
@@ -41,9 +41,11 @@ namespace Psico
             label.Name = "label";
             label.Text = "Выберите способ регистрации!";
             label.AutoSize = true;
-            label.Location = new Point(100,130);
+            label.Location = new Point(170,130);
             label.Font = new Font(label.Font.Name,16);
             panel3.Controls.Add(label);
+
+            Formalignment();
         }
 
         private void DrawStrela(object sender, PaintEventArgs e)
@@ -54,8 +56,8 @@ namespace Psico
                 Pen pen = new Pen(Color.DarkCyan, 6);
                 pen.StartCap = System.Drawing.Drawing2D.LineCap.ArrowAnchor;
                 pen.EndCap = System.Drawing.Drawing2D.LineCap.RoundAnchor;
-                e.Graphics.DrawLine(pen, 125, 20, 250, 120);
-                e.Graphics.DrawLine(pen, 375, 20, 250, 120);
+                e.Graphics.DrawLine(pen, 250, 20, 325, 120);
+                e.Graphics.DrawLine(pen, 400, 20, 325, 120);
             }
         }
 
@@ -217,6 +219,7 @@ namespace Psico
         private void GetRegistretion(object sender, EventArgs e)
         {
             int TeacherId = 0;
+            string EndData = "";
 
             // Подключение к БД
             SqlConnection con = DBUtils.GetDBConnection();
@@ -350,32 +353,32 @@ namespace Psico
                                         }
                                         else
                                         {
-                                            MessageBox.Show("Превышено максимально возможное число студентов у преподавателя!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            CreateInfo("Превышено максимально возможное число студентов у преподавателя!", "red");
                                         }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Преподавателя с таким логином не существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        CreateInfo("Преподавателя с таким логином не существует!", "red");
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    CreateInfo("Пользователь с таким логином уже существует!", "red");
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Преподавателя с таким логином не существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                CreateInfo("Преподавателя с таким логином не существует!", "red");
                             }                       
                         }
                         else
                         {
-                            MessageBox.Show("Заполнены не все поля для успешной регистрации! Пожалуйста заполните все необходимые поля для регистрации.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            CreateInfo("Заполнены не все поля для успешной регистрации! Пожалуйста заполните все необходимые поля для регистрации.", "red");
                         }                        
                     }
                     else
                     {
-                        MessageBox.Show("Вы не ввели логин преподавателя, без него регистрация невозможна!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        CreateInfo("Вы не ввели логин преподавателя, без него регистрация невозможна!", "red");
                     }
                 break;
                 
@@ -449,19 +452,56 @@ namespace Psico
                                             client.EnableSsl = true;
                                             client.Send(mail);
 
+                                            //Выбор данных из БД
+                                            SqlCommand GetDay = new SqlCommand("select Day(getdate()) as 'Day'", con);
+                                            SqlDataReader dr3 = GetDay.ExecuteReader();
+                                            // Запись данных из БД
+                                            dr3.Read();
+                                            string Day = dr3["Day"].ToString();
+                                            dr3.Close();
+
+                                            if (Convert.ToInt32(Day) < 10)
+                                            {
+                                                Day = "0" + Day;
+                                            }
+
+                                            //Выбор данных из БД
+                                            SqlCommand GetMonth = new SqlCommand("select MONTH(getdate()) as 'Month'", con);
+                                            SqlDataReader dr4 = GetMonth.ExecuteReader();
+                                            // Запись данных из БД
+                                            dr4.Read();
+                                            string Month = (Convert.ToInt16(dr4["Month"]) + 1).ToString();
+                                            dr4.Close();
+
+                                            if (Convert.ToInt32(Month) < 10)
+                                            {
+                                                Month = "0" + Month;
+                                            }
+
+                                            //Выбор данных из БД
+                                            SqlCommand GetYear = new SqlCommand("select Year(getdate()) as 'Year'", con);
+                                            SqlDataReader dr5 = GetYear.ExecuteReader();
+                                            // Запись данных из БД
+                                            dr5.Read();
+                                            string Year = dr5["Year"].ToString();
+                                            dr5.Close();
+
+                                            EndData = Year + "-" + Month + "-" + Day;
+
                                             // Запись данных В БД
                                             SqlCommand StrPrc1 = new SqlCommand("Teachers_add", con);
                                             StrPrc1.CommandType = CommandType.StoredProcedure;
                                             StrPrc1.Parameters.AddWithValue("@Unique_Naim", (panel3.Controls["textbox8"] as TextBox).Text);
+                                            StrPrc1.Parameters.AddWithValue("@User_End_Data", EndData);
                                             StrPrc1.Parameters.AddWithValue("@KolvoNeRegStudents", Convert.ToInt32((panel3.Controls["textbox7"] as TextBox).Text));
                                             StrPrc1.ExecuteNonQuery();
 
                                             // Выбор количества данных в таблице БД
                                             SqlCommand GetTeacherId = new SqlCommand("select id_teacher as 'id' from Teachers where Unique_Naim='" + (panel3.Controls["textbox8"] as TextBox).Text + "'", con);
-                                            SqlDataReader dr4 = GetTeacherId.ExecuteReader();
-                                            dr4.Read();
-                                            TeacherId = Convert.ToInt32(dr4["id"].ToString());
-                                            dr4.Close();
+                                            SqlDataReader dr6 = GetTeacherId.ExecuteReader();
+                                            dr6.Read();
+                                            TeacherId = Convert.ToInt32(dr6["id"].ToString());
+                                            dr6.Close();
 
                                             // Запись данных В БД
                                             SqlCommand StrPrc2 = new SqlCommand("users_add", con);
@@ -474,10 +514,10 @@ namespace Psico
 
                                             // Выбор количества данных в таблице БД
                                             SqlCommand GetUserID = new SqlCommand("select id_user as 'id' from users where User_Login = '" + (panel3.Controls["textbox5"] as TextBox).Text + "'", con);
-                                            SqlDataReader dr3 = GetUserID.ExecuteReader();
-                                            dr3.Read();
-                                            int UserId = Convert.ToInt32(dr3["id"].ToString());
-                                            dr3.Close();
+                                            SqlDataReader dr7 = GetUserID.ExecuteReader();
+                                            dr7.Read();
+                                            int UserId = Convert.ToInt32(dr7["id"].ToString());
+                                            dr7.Close();
 
                                             // Запись данных В БД
                                             SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
@@ -503,43 +543,41 @@ namespace Psico
                                         }
                                         catch
                                         {
-                                            MessageBox.Show("Сообщение с вашим паролем не было отправлено!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            CreateInfo("Сообщение с вашим паролем не было отправлено, обратитесь к администратору!", "red");
                                         }
                                     }
                                     else
                                     {
-                                        MessageBox.Show("Пользователь с таким логином уже существует!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        CreateInfo("Пользователь с таким логином уже существует!", "red");
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Введённое уникальное имя уже существует, выберите другое.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    CreateInfo("Введённое уникальное имя уже существует, выберите другое.", "red");
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Заполнены не все поля для успешной регистрации! Пожалуйста заполните все необходимые поля для регистрации.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                CreateInfo("Заполнены не все поля для успешной регистрации! Пожалуйста заполните все необходимые поля для регистрации.", "red");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Введённый ключ активации неверен! Пожалуйста убедитесь в правильности введённого ключа активации и попробуйде ещё раз.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            CreateInfo("Введённый ключ активации неверен! Пожалуйста убедитесь в правильности введённого ключа активации и попробуйде ещё раз.", "red");
                             (panel3.Controls["textbox4"] as TextBox).Text = "";
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Ключ активации не был введён, пожалуйста введите ключ активации для регистрации!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        CreateInfo("Ключ активации не был введён, пожалуйста введите ключ активации для регистрации!", "red");
                     }
                 break;
                 
                 // Если пользователь не выбрал форму регистрации
                 default:
-                    MessageBox.Show("Выберите способ регистрации!","Ошибка!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    CreateInfo("Выберите способ регистрации!", "red");
                 break;
             }
-
-            //OpenAutorizationForm();
         }
 
         public static string GetKey(int x=16)
@@ -659,6 +697,85 @@ namespace Psico
             Strela = 1;
             (panel3.Controls["label"] as Label).Visible = false;
             panel3.Invalidate();
+        }
+
+        private void WindowDrag(object sender, MouseEventArgs e)
+        {
+            panel2.Capture = false;
+            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+            WndProc(ref n);
+        }
+
+        private void CreateInfo(string labelinfo, string color)
+        {
+            Timer timer = new Timer();
+            timer.Tick += TimerTick;
+            timer.Start();
+
+            Panel panel = new Panel();
+            panel.Name = "panel";
+            panel.Size = new Size(600, 100);
+            panel.Location = new Point(panel1.Width / 2 - panel.Width / 2, panel1.Height / 2 - panel.Height / 2);
+            panel.BackColor = Color.LightGray;
+            panel.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(panel);
+            panel.BringToFront();
+
+            Label label = new Label();
+            label.Name = "label";
+            label.Text = labelinfo;
+            label.Size = new Size(panel.Width, panel.Height);
+            label.Font = new Font(label.Font.FontFamily, 16);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+
+            switch (color)
+            {
+                case "red":
+                    label.ForeColor = Color.Red;
+                    timer.Interval = 5000;
+                    break;
+                case "lime":
+                    label.ForeColor = Color.LimeGreen;
+                    timer.Interval = 2000;
+                    break;
+                default:
+                    label.ForeColor = Color.Black;
+                    timer.Interval = 5000;
+                    break;
+            }
+
+            label.Location = new Point(0, 0);
+            panel.Controls.Add(label);
+            label.BringToFront();
+        }
+
+        private void TimerTick(object sender, EventArgs e)
+        {
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                (sender as Timer).Stop();
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void Formalignment()
+        {
+            // Адаптация разрешения экрана пользователя
+            Rectangle screen = Screen.PrimaryScreen.Bounds;
+            if (screen.Width < 1360 && screen.Width > 1000)
+            {
+                panel2.Width = 1024;
+            }
+
+            // Позиционирование элементов формы пользователя
+            WindowState = FormWindowState.Maximized;
+            BackColor = Color.PowderBlue;
+            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
+            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
         }
     }
 }

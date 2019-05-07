@@ -14,6 +14,7 @@ using System.Drawing;
 using System.Data.SqlClient;
 using SqlConn;
 using System.Data;
+using Xceed.Words.NET;
 
 namespace Psico
 {
@@ -114,6 +115,85 @@ namespace Psico
 
                 Program.Insert = "Выбрано " + KolvoSelectedCB + " из " + KolvoALLCB + "  'Галочек'";
                 wordinsert.Ins();
+            }
+
+            // Закрываем документ
+            Program.Insert = "Окончание протокола";
+            wordinsert.Ins();
+
+            if (Program.StageName.Count !=0)
+            {
+                // Открываем документ
+                DocX document = DocX.Load(Program.doc);
+
+                // создаём столбцовую диаграмму
+                BarChart barChart = new BarChart();
+                // создаём набор данных и добавляем в диаграмму
+                barChart.AddSeries(TestData.GetSeriesFirst());
+                // добавляем столбцовую диаграмму
+                document.InsertChart(barChart);
+
+                // создаём линейную диаграмму
+                LineChart lineChart = new LineChart();
+                // создаём набор данных и добавляем на диаграмму
+                lineChart.AddSeries(TestData.GetSeriesSecond());
+                // добавляем линейную диаграмму
+                document.InsertChart(lineChart);
+
+                // сохраняем документ
+                document.Save();
+            }
+        }
+
+        class TestData
+        {
+            public string name { get; set; }
+            public int value { get; set; }
+
+            private static List<TestData> GetTestDataFirst()
+            {
+                List<TestData> testDataFirst = new List<TestData>();
+
+                for (int i = 0; i < Program.StageSec.Count; i++)
+                {
+                    testDataFirst.Add(new TestData() { name = Program.StageName[i].ToString(), value = Program.StageSec[i] });
+                }
+
+                return testDataFirst;
+            }
+
+            public static Series GetSeriesFirst()
+            {
+                // создаём набор данных
+                Series seriesFirst = new Series("График по "+Program.NomerZadachi+" задаче.");
+
+                // заполняем данными
+                seriesFirst.Bind(GetTestDataFirst(), "name", "value");
+
+                return seriesFirst;
+            }
+
+            private static List<TestData> GetTestDataSecond()
+            {
+                List<TestData> testDataSecond = new List<TestData>();
+
+                for (int i = 0; i < Program.NumberStage.Count; i++)
+                {
+                    testDataSecond.Add(new TestData() { name = Program.StageName[i].ToString(), value = Program.NumberStage[i] });
+                }
+
+                return testDataSecond;
+            }
+
+            public static Series GetSeriesSecond()
+            {
+                // создаём набор данных
+                Series seriesSecond = new Series("График по " + Program.NomerZadachi + " задаче.");
+
+                // заполняем данными
+                seriesSecond.Bind(GetTestDataSecond(), "name", "value");
+
+                return seriesSecond;
             }
         }
     }

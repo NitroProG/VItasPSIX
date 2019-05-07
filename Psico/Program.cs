@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using SqlConn;
 
 namespace Psico
 {
@@ -80,5 +82,9 @@ namespace Psico
 
         public static int katamT; // Время на форме катамнеза
         public static int FullAllKatam; // Всё время на этапе катамнез
+
+        public static List<int> StageSec = new List<int>(); // Время на этапе
+        public static List<string> StageName = new List<string>(); // Название этапа
+        public static List<int> NumberStage = new List<int>(); // Номер этапа
     }
 }

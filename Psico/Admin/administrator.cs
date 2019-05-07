@@ -11,6 +11,7 @@ using System.Data.SqlClient;
 using SqlConn;
 using System.Net;
 using System.Net.Mail;
+using Xceed.Words.NET;
 
 namespace Psico
 {
@@ -59,6 +60,9 @@ namespace Psico
 
         private void GetLicenseKey(object sender, EventArgs e)
         {
+            // Подключение к БД
+            con.Open();
+
             //Выбор данных из БД
             SqlCommand GetKeyDefender = new SqlCommand("select DefenderKey from defender", con);
             SqlDataReader dr = GetKeyDefender.ExecuteReader();
@@ -67,12 +71,15 @@ namespace Psico
             dr.Read();
             Clipboard.SetText(dr["DefenderKey"].ToString());
             dr.Close();
+
+            con.Close();
+
+            MessageBox.Show("Ключ активации программы был скопирован в буфер обмена, для того чтобы его посмотреть откройте любой текстовый редактор и нажмите сочитание клавишь 'Ctrl+C'","Ключ активации",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void FormLoad(object sender, EventArgs e)
         {
-            // Подключение к БД
-            con.Open();
+            FormAlignment();
         }
 
         private void OpenAddUserForm(object sender, EventArgs e)
@@ -94,6 +101,30 @@ namespace Psico
             DeleteUser deleteUser = new DeleteUser();
             deleteUser.Show();
             Close();
+        }
+
+        private void WindowDrag(object sender, MouseEventArgs e)
+        {
+            panel2.Capture = false;
+            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+            WndProc(ref n);
+        }
+
+        private void FormAlignment()
+        {
+            // Адаптация разрешения экрана пользователя
+            Rectangle screen = Screen.PrimaryScreen.Bounds;
+            if (screen.Width < 1360 && screen.Width > 1000)
+            {
+                panel2.Width = 1024;
+            }
+
+            // Позиционирование элементов формы пользователя
+            WindowState = FormWindowState.Maximized;
+            BackColor = Color.PowderBlue;
+            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
+            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
+
         }
     }
 }

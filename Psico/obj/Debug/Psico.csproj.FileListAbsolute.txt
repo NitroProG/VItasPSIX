@@ -103,3 +103,5 @@ C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.ExitProtokol.res
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.AddUser.resources
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.DeleteUser.resources
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.UpdateUser.resources
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\bin\Debug\Xceed.Words.NET.dll
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.csproj.CopyComplete

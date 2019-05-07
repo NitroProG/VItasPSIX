@@ -24,32 +24,37 @@ namespace Psico
             Close();
         }
 
-        private void ExitFromProgram(object sender, EventArgs e)
+        private void FormLoad(object sender, EventArgs e)
         {
-            Application.Exit();
+            FormAlignment();
         }
 
-        private void FormLoad(object sender, EventArgs e)
+        private void WindowDrag(object sender, MouseEventArgs e)
+        {
+            panel2.Capture = false;
+            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+            WndProc(ref n);
+        }
+
+        private void FormAlignment()
         {
             // Адаптация разрешения экрана пользователя
             Rectangle screen = Screen.PrimaryScreen.Bounds;
-            if (Convert.ToInt32(screen.Size.Width) < 1300)
+            if (screen.Width < 1360 && screen.Width > 1000)
             {
-                Width = 1024;
-                Height = 768;
                 panel2.Width = 1024;
-                panel2.Height = 768;
-                int newFontSize = 12;
-                richTextBox1.Font = new Font(richTextBox1.Font.FontFamily, newFontSize);
-                button3.Left = button3.Left - 350;
+                panel1.Width = 1000;
+                richTextBox1.Font = new Font(richTextBox1.Font.FontFamily, 12);
+                label1.Left = Width / 2 - label1.Width / 2;
+                label2.Left = Width / 2 - label2.Width / 2;
+                button1.Left = Width / 2 - button1.Width / 2;
             }
 
             // Позиционирование элементов формы пользователя
-            panel1.Left = Width / 2 - panel1.Width / 2;
-            Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;  
-            label1.Left = Width / 2 - label1.Width / 2;
-            label2.Left = Width / 2 - label2.Width / 2;
-            button1.Left = Width / 2 - button1.Width / 2;
+            WindowState = FormWindowState.Maximized;
+            BackColor = Color.PowderBlue;
+            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
+            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
         }
     }
 }

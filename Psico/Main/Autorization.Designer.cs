@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Autorization));
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -38,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.hint = new System.Windows.Forms.ToolTip(this.components);
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +51,7 @@
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(294, 241);
+            this.button1.Location = new System.Drawing.Point(476, 308);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(140, 35);
             this.button1.TabIndex = 0;
@@ -65,7 +67,7 @@
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(61, 241);
+            this.button2.Location = new System.Drawing.Point(22, 308);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(140, 35);
             this.button2.TabIndex = 1;
@@ -78,15 +80,16 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.textBox2);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(433, 222);
+            this.panel1.Location = new System.Drawing.Point(363, 204);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 300);
+            this.panel1.Size = new System.Drawing.Size(641, 360);
             this.panel1.TabIndex = 2;
             // 
             // button3
@@ -96,12 +99,12 @@
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button3.Location = new System.Drawing.Point(294, 200);
+            this.button3.Location = new System.Drawing.Point(476, 267);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(140, 35);
             this.button3.TabIndex = 8;
             this.button3.Text = "Регистрация";
-            this.hint.SetToolTip(this.button3, "Авторизироваться");
+            this.hint.SetToolTip(this.button3, "Зарегистрироваться");
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.OpenFormRegistration);
             // 
@@ -109,19 +112,19 @@
             // 
             this.textBox2.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(61, 155);
+            this.textBox2.Location = new System.Drawing.Point(133, 191);
             this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '*';
             this.textBox2.ShortcutsEnabled = false;
             this.textBox2.Size = new System.Drawing.Size(373, 31);
             this.textBox2.TabIndex = 7;
             this.hint.SetToolTip(this.textBox2, "Пароль");
+            this.textBox2.UseSystemPasswordChar = true;
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(61, 107);
+            this.textBox1.Location = new System.Drawing.Point(133, 143);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(373, 31);
             this.textBox1.TabIndex = 6;
@@ -131,7 +134,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(153, 11);
+            this.label1.Location = new System.Drawing.Point(225, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(192, 34);
             this.label1.TabIndex = 3;
@@ -145,6 +148,7 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1366, 768);
             this.panel2.TabIndex = 3;
+            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WindowDrag);
             // 
             // hint
             // 
@@ -152,19 +156,33 @@
             this.hint.InitialDelay = 1;
             this.hint.ReshowDelay = 100;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox1.Location = new System.Drawing.Point(133, 229);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(181, 24);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.Text = "Посмотреть пароль";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Autorization
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.Black;
+            this.BackColor = System.Drawing.Color.PowderBlue;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1366, 768);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Autorization";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormLoad);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -184,6 +202,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ToolTip hint;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }
 

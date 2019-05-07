@@ -74,19 +74,7 @@ namespace Psico
             comboBox1.DataSource = dt;
             comboBox1.ValueMember = "ido";
 
-            // Адаптация разрешения экрана пользователя
-            Rectangle screen = Screen.PrimaryScreen.Bounds;
-            if (Convert.ToInt32(screen.Size.Width) < 1300)
-            {
-                Width = 1024;
-                Height = 768;
-                panel2.Width = 1024;
-                panel2.Height = 768;
-            }
-
-            // Позиционирование элементов формы пользователя
-            panel1.Left = Width / 2 - panel1.Width / 2;
-            Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
+            FormAlignment();
         }
 
         private void OpenNextForm(object sender, EventArgs e)
@@ -105,6 +93,8 @@ namespace Psico
             Program.zaklOTV = 0;
             Program.NeVernOtv = 0;
             Program.diagnoz = 0;
+            Program.StageName.Clear();
+            Program.StageSec.Clear();
 
             error = 0;
             Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedValue);
@@ -114,8 +104,7 @@ namespace Psico
             {
                 if (Convert.ToString(Program.NomerZadachi) == Convert.ToString(datagr.Rows[i-1].Cells[0].Value))
                 {
-                    DialogResult result = MessageBox.Show("Данная диагностическая задача была уже решена!", "Внимание!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    CreateInfo("Данная диагностическая задача была уже решена!", "red");
                     error = 1;
                 }
             }
@@ -126,6 +115,8 @@ namespace Psico
                 // Запись данных в протокол
                 try
                 {
+                    wordinsert.CreateShift();
+
                     Program.Insert = "Диагностическая задача №" + Program.NomerZadachi + "";
                     wordinsert.Ins();
 
@@ -136,23 +127,21 @@ namespace Psico
                         delete.ExecuteNonQuery();
                         SqlCommand delete3 = new SqlCommand("delete from OtvSelected where users_id = " + Program.user + "", con);
                         delete3.ExecuteNonQuery();
+
+                        Zadacha zadacha = new Zadacha();
+                        zadacha.Show();
+                        Close();
                     }
 
                     catch
                     {
-                        MessageBox.Show("Ошибка в БД, обратитесь к администратору","Ошибка!",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        CreateInfo("Ошибка в Базе данных, обратитесь к администратору", "red");
                     }
-
-
-                    Zadacha zadacha = new Zadacha();
-                    zadacha.Show();
-                    Close();
                 }
 
                 catch
                 {
-                    MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    CreateInfo("Отсутствует шаблон протокола! Обратитесь к администратору.", "red");
                 }
             }
         }
@@ -169,23 +158,97 @@ namespace Psico
 
         private void CBCheckedChanged(object sender, EventArgs e)
         {
-            error = 0;
-            Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedIndex) + 1;
+            //error = 0;
+            //Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedIndex) + 1;
 
-            // Проверка данных о решении задачи
-            for (int i = 1; i < kolvoreshzadach; i++)
+            //// Проверка данных о решении задачи
+            //for (int i = 1; i < kolvoreshzadach; i++)
+            //{
+            //    if (Convert.ToString(Program.NomerZadachi) == Convert.ToString(datagr.Rows[i - 1].Cells[0].Value))
+            //    {
+            //        CreateInfo("Задача уже решена!","lime");
+            //        error = 1;
+            //    }
+            //}
+        }
+
+        private void WindowDrag(object sender, MouseEventArgs e)
+        {
+            panel2.Capture = false;
+            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
+            WndProc(ref n);
+        }
+
+        private void CreateInfo(string labelinfo, string color)
+        {
+            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
+            timer.Tick += TimerTick;
+            timer.Start();
+
+            Panel panel = new Panel();
+            panel.Name = "panel";
+            panel.Size = new Size(600, 100);
+            panel.Location = new Point(panel1.Width / 2 - panel.Width / 2, panel1.Height / 2 - panel.Height / 2);
+            panel.BackColor = Color.LightGray;
+            panel.BorderStyle = BorderStyle.FixedSingle;
+            panel1.Controls.Add(panel);
+            panel.BringToFront();
+
+            Label label = new Label();
+            label.Name = "label";
+            label.Text = labelinfo;
+            label.Size = new Size(panel.Width, panel.Height);
+            label.Font = new Font(label.Font.FontFamily, 16);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+
+            switch (color)
             {
-                if (Convert.ToString(Program.NomerZadachi) == Convert.ToString(datagr.Rows[i - 1].Cells[0].Value))
-                {
-                    label3.Visible = true;
-                    error = 1;
-                }
+                case "red":
+                    label.ForeColor = Color.Red;
+                    timer.Interval = 5000;
+                    break;
+                case "lime":
+                    label.ForeColor = Color.LimeGreen;
+                    timer.Interval = 2000;
+                    break;
+                default:
+                    label.ForeColor = Color.Black;
+                    timer.Interval = 5000;
+                    break;
             }
 
-            if (error == 0)
+            label.Location = new Point(0, 0);
+            panel.Controls.Add(label);
+            label.BringToFront();
+        }
+
+        private void TimerTick(object sender, EventArgs e)
+        {
+            try
             {
-                label3.Visible = false;
+                (panel1.Controls["panel"] as Panel).Dispose();
+                (sender as System.Windows.Forms.Timer).Stop();
             }
+            catch
+            {
+
+            }
+        }
+
+        private void FormAlignment()
+        {
+            // Адаптация разрешения экрана пользователя
+            Rectangle screen = Screen.PrimaryScreen.Bounds;
+            if (screen.Width < 1360 && screen.Width > 1000)
+            {
+                panel2.Width = 1024;
+            }
+
+            // Позиционирование элементов формы пользователя
+            WindowState = FormWindowState.Maximized;
+            BackColor = Color.PowderBlue;
+            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
+            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
         }
     }
 }
