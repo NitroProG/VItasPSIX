@@ -18,11 +18,11 @@ namespace SqlConn
 
             // Подключение к локальной БД
             // Data Source=COMPUTER\\FILESBD;initial catalog=psico; Persist Security info = True; User ID = sa; Password = D6747960f
-            // string conString = "Data Source=" + datasource + ";Initial Catalog=" + database + ";Persist Security Info=True;User ID=" + username + ";Password=" + password;
+             string conString = "Data Source=" + datasource + ";Initial Catalog=" + database + ";Persist Security Info=True;User ID=" + username + ";Password=" + password;
 
             // Подключение к серверу SmarterASP.net
             // "Data Source=SQL6002.site4now.net;Initial Catalog=DB_A48030_Psicotest;User Id=DB_A48030_Psicotest_admin;Password=YOUR_DB_PASSWORD;"
-             string conString = "Data Source=" + datasource + ";Initial Catalog=" + database + ";User ID=" + username + ";Password=" + password;
+            // string conString = "Data Source=" + datasource + ";Initial Catalog=" + database + ";User ID=" + username + ";Password=" + password;
 
             // Создание подключения
             SqlConnection con = new SqlConnection(conString);

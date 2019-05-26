@@ -17,6 +17,9 @@ namespace Psico
         SqlConnection con = DBUtils.GetDBConnection();
         int AddStage;
         string SelectedForm;
+        string zapros = "";
+        string sved = "";
+        string meropr = "";
 
         public AddZadacha()
         {
@@ -47,6 +50,9 @@ namespace Psico
                         StrPrc1.Parameters.AddWithValue("@Sved", richTextBox2.Text);
                         StrPrc1.ExecuteNonQuery();
 
+                        zapros = richTextBox1.Text;
+                        sved = richTextBox2.Text;
+
                         // Выбор количества данных в таблице БД
                         SqlCommand GetZadachaid = new SqlCommand("select id_zadacha as 'id' from Zadacha where Zapros='" + richTextBox1.Text + "' and Sved ='"+richTextBox2.Text+"'", con);
                         SqlDataReader dr1 = GetZadachaid.ExecuteReader();
@@ -54,22 +60,22 @@ namespace Psico
                         Program.NomerZadachi = Convert.ToInt32(dr1["id"].ToString());
                         dr1.Close();
 
-                        CreateInfo("Данные успешно добавлены!","lime");
+                        CreateInfo("Данные успешно добавлены!","lime", panel1);
 
                         // Отрисовка формы
-                        button4.Visible = false;
                         button1.Visible = true;
                         label2.Text = "Сведения от:";
                         label3.Text = "Описание сведений:";
                         label4.Text = "Этап Феноменология (Свободная форма)";
                         richTextBox1.Text = "";
-                        richTextBox1.MaxLength = 50;
+                        richTextBox1.MaxLength = 100;
                         richTextBox2.Text = "";
+                        richTextBox2.MaxLength = 2147483647;
                         ++AddStage;
                     }
                     else
                     {
-                        CreateInfo("Необходимо заполнить все поля для добавления!", "red");
+                        CreateInfo("Необходимо заполнить все поля для добавления!", "red", panel1);
                     }
                     break;
 
@@ -149,20 +155,22 @@ namespace Psico
                         richTextBox2.Visible = true;
                         richTextBox2.Size = new Size(richTextBox1.Size.Width, 40);
                         richTextBox2.Location = new Point(label3.Location.X, label3.Location.Y + 30);
+                        richTextBox2.MaxLength = 300;
 
                         richTextBox3.Visible = true;
                         richTextBox3.Size = new Size(panel2.Width / 3 + 100, panel1.Height / 2);
                         richTextBox3.Location = new Point(label5.Location.X, label5.Location.Y + 30);
-
-                        //button1.Location = new Point(richTextBox3.Location.X, richTextBox3.Location.Y + richTextBox3.Size.Height + 10);
+                        richTextBox3.MaxLength = 2147483647;
 
                         richTextBox4.Visible = true;
                         richTextBox4.Size = new Size(richTextBox1.Size.Width, 40);
                         richTextBox4.Location = new Point(label3.Location.X, label6.Location.Y + 30);
+                        richTextBox4.MaxLength = 2147483647;
 
                         richTextBox5.Visible = true;
                         richTextBox5.Size = new Size(richTextBox1.Size.Width, 40);
                         richTextBox5.Location = new Point(label3.Location.X, label7.Location.Y + 30);
+                        richTextBox5.MaxLength = 2147483647;
 
                         ++AddStage;
                     }
@@ -230,13 +238,18 @@ namespace Psico
                     if (richTextBox1.Text !="")
                     {
                         // Запись данных В БД
-                        SqlCommand StrPrc1 = new SqlCommand("meropr_add", con);
+                        SqlCommand StrPrc1 = new SqlCommand("Zadacha_update", con);
                         StrPrc1.CommandType = CommandType.StoredProcedure;
+                        StrPrc1.Parameters.AddWithValue("@id_zadacha", Program.NomerZadachi);
+                        StrPrc1.Parameters.AddWithValue("@Zapros", zapros);
+                        StrPrc1.Parameters.AddWithValue("@sved", sved);
                         StrPrc1.Parameters.AddWithValue("@meroprtext", richTextBox1.Text);
-                        StrPrc1.Parameters.AddWithValue("@zadacha_id", Program.NomerZadachi);
+                        StrPrc1.Parameters.AddWithValue("@katamneztext", "");
                         StrPrc1.ExecuteNonQuery();
 
-                        CreateInfo("Данные успешно добавлены!", "lime");
+                        meropr = richTextBox1.Text;
+
+                        CreateInfo("Данные успешно добавлены!", "lime", panel1);
 
                         // Отрисовка формы
                         label2.Text = "Катамнез:";
@@ -247,7 +260,7 @@ namespace Psico
                     }
                     else
                     {
-                        CreateInfo("Необходимо заполнить поле для успешного добавления!", "red");
+                        CreateInfo("Необходимо заполнить поле для успешного добавления!", "red", panel1);
                     }
                     break;
 
@@ -256,13 +269,16 @@ namespace Psico
                     if (richTextBox1.Text !="")
                     {
                         // Запись данных В БД
-                        SqlCommand StrPrc1 = new SqlCommand("katamnez_add", con);
+                        SqlCommand StrPrc1 = new SqlCommand("Zadacha_update", con);
                         StrPrc1.CommandType = CommandType.StoredProcedure;
+                        StrPrc1.Parameters.AddWithValue("@id_zadacha", Program.NomerZadachi);
+                        StrPrc1.Parameters.AddWithValue("@Zapros", zapros);
+                        StrPrc1.Parameters.AddWithValue("@sved", sved);
+                        StrPrc1.Parameters.AddWithValue("@meroprtext", meropr);
                         StrPrc1.Parameters.AddWithValue("@katamneztext", richTextBox1.Text);
-                        StrPrc1.Parameters.AddWithValue("@zadacha_id", Program.NomerZadachi);
                         StrPrc1.ExecuteNonQuery();
 
-                        CreateInfo("Данные успешно добавлены!", "lime");
+                        CreateInfo("Данные успешно добавлены!", "lime", panel1);
 
                         // Отрисовка формы
                         label2.Text = "Этап, для которого необходимо выбрать верный ответ:";
@@ -294,7 +310,7 @@ namespace Psico
                     }
                     else
                     {
-                        CreateInfo("Необходимо заполнить поле для успешного добавления!", "red");
+                        CreateInfo("Необходимо заполнить поле для успешного добавления!", "red", panel1);
                     }
                     break;
 
@@ -341,11 +357,11 @@ namespace Psico
                         richTextBox1.Text = "";
                         richTextBox2.Text = "";
 
-                        CreateInfo("Данные успешно добавлены!", "lime");
+                        CreateInfo("Данные успешно добавлены!", "lime", panel1);
                     }
                     else
                     {
-                        CreateInfo("Необходимо заполнить все поля для успешного добавления!", "red");
+                        CreateInfo("Необходимо заполнить все поля для успешного добавления!", "red", panel1);
                     }
                     break;
 
@@ -364,11 +380,11 @@ namespace Psico
                         // Обновление формы
                         richTextBox1.Text = "";
 
-                        CreateInfo("Данные успешно добавлены!", "lime");
+                        CreateInfo("Данные успешно добавлены!", "lime", panel1);
                     }
                     else
                     {
-                        CreateInfo("необходимо заполнить поле для успешного добавления!", "red");
+                        CreateInfo("необходимо заполнить поле для успешного добавления!", "red", panel1);
                     }
                     break;
 
@@ -387,11 +403,11 @@ namespace Psico
                         // Обновление формы
                         richTextBox1.Text = "";
 
-                        CreateInfo("Данные успешно добавлены!", "lime");
+                        CreateInfo("Данные успешно добавлены!", "lime", panel1);
                     }
                     else
                     {
-                        CreateInfo("Необходимо заполнить поле для успешного добавления!", "red");
+                        CreateInfo("Необходимо заполнить поле для успешного добавления!", "red", panel1);
                     }
                     break;
 
@@ -417,11 +433,11 @@ namespace Psico
                         richTextBox4.Text = "";
                         richTextBox5.Text = "";
 
-                        CreateInfo("Данные успешно добавлены!", "lime");
+                        CreateInfo("Данные успешно добавлены!", "lime", panel1);
                     }
                     else
                     {
-                        CreateInfo("Необходимо заполнить как минимум поля со знаком * для успешного добавления!", "red");
+                        CreateInfo("Необходимо заполнить как минимум поля со знаком * для успешного добавления!", "red", panel1);
                     }
                     break;
 
@@ -440,11 +456,11 @@ namespace Psico
                         // Обновление формы
                         richTextBox1.Text = "";
 
-                        CreateInfo("Данные успешно добавлены!", "lime");
+                        CreateInfo("Данные успешно добавлены!", "lime", panel1);
                     }
                     else
                     {
-                        CreateInfo("Необходимо заполнить поле для успешного добавления!", "red");
+                        CreateInfo("Необходимо заполнить поле для успешного добавления!", "red", panel1);
                     }
                     break;
 
@@ -468,11 +484,11 @@ namespace Psico
                         StrPrc1.Parameters.AddWithValue("@zadacha_id", Program.NomerZadachi);
                         StrPrc1.ExecuteNonQuery();
 
-                        CreateInfo("Данные успешно добавлены!","lime");
+                        CreateInfo("Данные успешно добавлены!","lime", panel1);
                     }
                     else
                     {
-                        CreateInfo("Необходимо заполнить поле для успешного добавления!", "red");
+                        CreateInfo("Необходимо заполнить поле для успешного добавления!", "red", panel1);
                     }
                     break;
             }
@@ -499,7 +515,7 @@ namespace Psico
                     break;
 
                 default:
-                    CreateInfo("Необходимо выбрать этап, для которого хотите выбрать верный ответ!", "red");
+                    CreateInfo("Необходимо выбрать этап, для которого хотите выбрать верный ответ!", "red", panel1);
                     break;
             }
 
@@ -522,62 +538,6 @@ namespace Psico
             panel2.Capture = false;
             Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
             WndProc(ref n);
-        }
-
-        private void CreateInfo(string labelinfo, string color)
-        {
-            Timer timer = new Timer();
-            timer.Tick += TimerTick;
-            timer.Start();
-
-            Panel panel = new Panel();
-            panel.Name = "panel";
-            panel.Size = new Size(600, 100);
-            panel.Location = new Point(panel1.Width / 2 - panel.Width / 2, panel1.Height / 2 - panel.Height / 2);
-            panel.BackColor = Color.LightGray;
-            panel.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(panel);
-            panel.BringToFront();
-
-            Label label = new Label();
-            label.Name = "label";
-            label.Text = labelinfo;
-            label.Size = new Size(panel.Width, panel.Height);
-            label.Font = new Font(label.Font.FontFamily, 16);
-            label.TextAlign = ContentAlignment.MiddleCenter;
-
-            switch (color)
-            {
-                case "red":
-                    label.ForeColor = Color.Red;
-                    timer.Interval = 5000;
-                    break;
-                case "lime":
-                    label.ForeColor = Color.LimeGreen;
-                    timer.Interval = 2000;
-                    break;
-                default:
-                    label.ForeColor = Color.Black;
-                    timer.Interval = 5000;
-                    break;
-            }
-
-            label.Location = new Point(0, 0);
-            panel.Controls.Add(label);
-            label.BringToFront();
-        }
-
-        private void TimerTick(object sender, EventArgs e)
-        {
-            try
-            {
-                (panel1.Controls["panel"] as Panel).Dispose();
-                (sender as Timer).Stop();
-            }
-            catch
-            {
-
-            }
         }
 
         private void FormAlignment()
@@ -608,6 +568,56 @@ namespace Psico
             label2.Location = new Point(richTextBox1.Location.X, panel1.Height / 4 - label2.Height / 2);
             richTextBox2.Location = new Point(panel1.Width / 2 - richTextBox2.Width/2, panel1.Height / 2 - richTextBox2.Height / 5);
             label3.Location = new Point(richTextBox2.Location.X, richTextBox2.Location.Y - 30);
+        }
+
+        public void CreateInfo(string labelinfo, string color, Panel MainPanel)
+        {
+            Timer timer = new Timer();
+            timer.Tick += Timer_Tick;
+            timer.Interval = 5000;
+            timer.Start();
+
+            Panel panel = new Panel();
+            panel.Name = "panel";
+            panel.Size = new Size(600, 100);
+            panel.Location = new Point(MainPanel.Width / 2 - panel.Width / 2, MainPanel.Height / 2 - panel.Height / 2);
+            panel.BackColor = Color.LightGray;
+            panel.BorderStyle = BorderStyle.FixedSingle;
+            MainPanel.Controls.Add(panel);
+            panel.BringToFront();
+
+            Label label = new Label();
+            label.Name = "label";
+            label.Text = labelinfo;
+            label.Size = new Size(panel.Width, panel.Height);
+            label.Font = new Font(label.Font.FontFamily, 16);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+            label.Location = new Point(0, 0);
+            panel.Controls.Add(label);
+            label.BringToFront();
+
+            switch (color)
+            {
+                case "red":
+                    label.ForeColor = Color.Red;
+                    break;
+                case "lime":
+                    label.ForeColor = Color.LimeGreen;
+                    break;
+                default:
+                    label.ForeColor = Color.Black;
+                    break;
+            }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                (sender as Timer).Stop();
+            }
+            catch { }
         }
     }
 }

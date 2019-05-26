@@ -82,12 +82,8 @@ namespace Psico
             label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
 
-            // Выравнивание
-            label1.Left = panel1.Width / 2 - label1.Width / 2;
-            label3.TextAlign = ContentAlignment.TopCenter;
-
             // Запись данных из БД
-            SqlCommand text = new SqlCommand("select katamneztext from katamnez where zadacha_id = " + Program.NomerZadachi + "", con);
+            SqlCommand text = new SqlCommand("select katamneztext from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
             SqlDataReader dr1 = text.ExecuteReader();
             dr1.Read();
             richTextBox1.Text = dr1["katamneztext"].ToString();
@@ -97,19 +93,14 @@ namespace Psico
             Program.Insert = "Окно - Катамнез:";
             wordinsert.Ins();
 
-            // Адаптация разрешения экрана пользователя
-            Rectangle screen = Screen.PrimaryScreen.Bounds;
-            // Позиционирование элементов формы пользователя
-            WindowState = FormWindowState.Maximized;
-            BackColor = Color.PowderBlue;
-            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
-            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
+            // Адаптация
+            new FormAlign().Alignment(panel1, panel2, label3, this, button1, button2, button3);
         }
 
         private void Timer(object sender, EventArgs e)
         {
             // Счётчик времени на форме
-            Program.katamT = Program.katamT + 1;
+            Program.katamT++;
         }
 
         private void ExitFromThisForm()

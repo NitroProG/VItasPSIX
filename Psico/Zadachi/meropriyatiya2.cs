@@ -41,12 +41,8 @@ namespace Psico
             label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
 
-            // Выравнивание
-            label1.Left = panel1.Width / 2 - label1.Width / 2;
-            label3.TextAlign = ContentAlignment.TopCenter;
-
             // Запись данных из БД
-            SqlCommand text = new SqlCommand("select meroprtext from meropr where zadacha_id = " + Program.NomerZadachi + "", con);
+            SqlCommand text = new SqlCommand("select meroprtext from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
             SqlDataReader dr1 = text.ExecuteReader();
             dr1.Read();
             richTextBox1.Text = dr1["meroprtext"].ToString();
@@ -56,13 +52,8 @@ namespace Psico
             Program.Insert = "Окно - Мероприятия (Общие сведения): ";
             wordinsert.Ins();
 
-            // Адаптация разрешения экрана пользователя
-            Rectangle screen = Screen.PrimaryScreen.Bounds;
-            // Позиционирование элементов формы пользователя
-            WindowState = FormWindowState.Maximized;
-            BackColor = Color.PowderBlue;
-            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
-            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
+            // Адаптация
+            new FormAlign().Alignment(panel1, panel2, label3, this, button1, button2, button3);
         }
 
         private void OpenPreviousForm(object sender, EventArgs e)
@@ -127,7 +118,7 @@ namespace Psico
         private void Timer(object sender, EventArgs e)
         {
             //  Счётчик времени на форме
-            Program.meropr2T = Program.meropr2T + 1; 
+            Program.meropr2T++;
         }
 
         private void ExitFromThisForm()

@@ -137,57 +137,11 @@ namespace Psico
                 y = y + 30;
             }
 
-            //// Адаптация разрешения экрана пользователя
-            //Rectangle screen = Screen.PrimaryScreen.Bounds;
-            //if (Convert.ToInt32(screen.Size.Width) < 1300)
-            //{
-            //    Width = 1024;
-            //    Height = 768;
-
-            //    panel2.Width = 1024;
-            //    panel2.Height = 768;
-
-            //    panel1.Width = 1003;
-            //    panel1.Height = 747;
-
-            //    richTextBox1.Width = 450;
-            //    richTextBox2.Width = 450;
-            //    richTextBox3.Width = 450;
-
-            //    label3.MaximumSize = new Size(950, 64);
-            //    label3.AutoSize = true;
-            //    label5.Width = 450;
-
-            //    button3.Left = button3.Left - 350;
-            //    button1.Left = button1.Left - 340;
-            //    label4.Left = label4.Left - 170;
-            //    richTextBox1.Left = richTextBox1.Left - 170;
-            //    richTextBox2.Left = richTextBox2.Left - 170;
-
-            //    foreach (Control ctrl in panel1.Controls)
-            //    {
-            //        int newFontSize = 12;
-            //        ctrl.Font = new Font(ctrl.Font.FontFamily, newFontSize);
-            //    }
-            //}
-
-            //// Позиционирование элементов формы на экране пользователя
-            //panel1.Left = Width / 2 - panel1.Width / 2;
-            //Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
-            //label1.Left = panel1.Width / 2 - label1.Width / 2;
-            //label3.Left = panel1.Width / 2 - label3.Width / 2;
-
-            // Адаптация разрешения экрана пользователя
-            Rectangle screen = Screen.PrimaryScreen.Bounds;
-            // Позиционирование элементов формы пользователя
-            WindowState = FormWindowState.Maximized;
-            BackColor = Color.PowderBlue;
-            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
-            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
-
             // Запись данных в протокол
             Program.Insert = "Окно - Феноменология (Свободная форма): ";
             wordinsert.Ins();
+
+            FormAlign();
         }
 
         public void RbChanged(object sender, EventArgs e)
@@ -225,7 +179,7 @@ namespace Psico
         private void Timer(object sender, EventArgs e)
         {
             // Счётчик времени на форме
-            Program.Fenom1T = Program.Fenom1T + 1;
+            Program.Fenom1T++;
         }
 
         private void TimeWithoutKatamnez()
@@ -296,6 +250,52 @@ namespace Psico
             panel2.Capture = false;
             Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
             WndProc(ref n);
+        }
+
+        private void FormAlign()
+        {
+            // Адаптация разрешения экрана пользователя
+            Rectangle screen = Screen.PrimaryScreen.Bounds;
+
+            if (Convert.ToInt32(screen.Size.Width) < 1300)
+            {
+                Width = 1024;
+                Height = 768;
+
+                panel2.Width = 1024;
+                panel2.Height = 768;
+
+                panel1.Width = 1003;
+                panel1.Height = 747;
+
+                richTextBox1.Width = 450;
+                richTextBox2.Width = 450;
+                richTextBox3.Width = 450;
+
+                label5.Width = 450;
+
+                label4.Left = label4.Left - 170;
+                richTextBox1.Left = richTextBox1.Left - 170;
+                richTextBox2.Left = richTextBox2.Left - 170;
+
+                foreach (Control ctrl in panel1.Controls)
+                {
+                    int newFontSize = 12;
+                    ctrl.Font = new Font(ctrl.Font.FontFamily, newFontSize);
+                }
+            }
+
+            // Позиционирование элементов формы пользователя
+            WindowState = FormWindowState.Maximized;
+            BackColor = Color.PowderBlue;
+            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
+            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
+
+            label3.Width = panel1.Width;
+            label3.TextAlign = ContentAlignment.TopCenter;
+            button2.Left = 10;
+            button1.Left = panel1.Width - button1.Width - 10;
+            button3.Left = panel1.Width - button3.Width - 10;
         }
     }
 }

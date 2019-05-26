@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(administrator));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button10 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -49,6 +50,7 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.button10);
             this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.button6);
             this.panel1.Controls.Add(this.button7);
@@ -64,6 +66,21 @@
             this.panel1.Size = new System.Drawing.Size(570, 440);
             this.panel1.TabIndex = 2;
             // 
+            // button10
+            // 
+            this.button10.AutoSize = true;
+            this.button10.BackColor = System.Drawing.Color.PowderBlue;
+            this.button10.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button10.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button10.Location = new System.Drawing.Point(140, 259);
+            this.button10.Name = "button10";
+            this.button10.Size = new System.Drawing.Size(289, 46);
+            this.button10.TabIndex = 42;
+            this.button10.Text = "Просмотр статуса пользователей";
+            this.button10.UseVisualStyleBackColor = false;
+            this.button10.Click += new System.EventHandler(this.OpenUserStatusForm);
+            // 
             // button9
             // 
             this.button9.AutoSize = true;
@@ -71,7 +88,7 @@
             this.button9.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button9.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button9.Location = new System.Drawing.Point(134, 299);
+            this.button9.Location = new System.Drawing.Point(130, 322);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(308, 46);
             this.button9.TabIndex = 41;
@@ -254,5 +271,6 @@
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
     }
 }

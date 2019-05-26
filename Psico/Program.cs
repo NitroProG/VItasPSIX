@@ -24,6 +24,11 @@ namespace Psico
         // Номер решаемой задачи
         public static int NomerZadachi;
 
+        // Открытие word документа
+        public static int WordOpen;
+
+        public static int UserRole;
+
         // Введённые данные пользователем
         public static string fenomenologiya; // Резюме по феноменологии
         public static string glavsved; // Главные сведения по феноменологии

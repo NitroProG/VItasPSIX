@@ -122,10 +122,6 @@ namespace Psico
             label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
 
-            // Выравнивание
-            label1.Left = panel1.Width / 2 - label1.Width / 2;
-            label3.TextAlign = ContentAlignment.TopCenter;
-
             // Определение количества checkbox на форме
             SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from CBFormFill where zadacha_id = " + Program.NomerZadachi + " and FormCB ='Fenom'", con);
             SqlDataReader dr0 = kolvo.ExecuteReader();
@@ -207,7 +203,21 @@ namespace Psico
                 checkBox.Location = new Point(x,y);
                 checkBox.AutoSize = true;
                 panel1.Controls.Add(checkBox);
-                y = y + 30;
+                int textlenght = checkBox.Text.Length;
+
+                if (textlenght > 60)
+                {
+                    checkBox.AutoSize = false;
+                    checkBox.Width = panel1.Width / 3;
+                    checkBox.Height = 40;
+                    y = y + 40;
+                }
+
+                else
+                {
+                    checkBox.AutoSize = true;
+                    y = y + 20;
+                }
 
                 if (i == stolb)
                 {
@@ -215,56 +225,6 @@ namespace Psico
                     y = 246;
                 }
             }
-
-            //// Адаптация разрешения экрана пользователя
-            //Rectangle screen = Screen.PrimaryScreen.Bounds;
-            //if (Convert.ToInt32(screen.Size.Width) < 1300)
-            //{
-            //    Width = 1024;
-            //    Height = 768;
-
-            //    panel2.Width = 1024;
-            //    panel2.Height = 768;
-
-            //    panel1.Width = 1003;
-            //    panel1.Height = 747;
-
-            //    label3.MaximumSize = new Size(950, 64);
-
-            //    button3.Left = button3.Left - 350;
-            //    button1.Left = button1.Left - 340;
-            //    label4.Left = label4.Left - 170;
-            //    richTextBox1.Left = richTextBox1.Left - 170;
-
-            //    foreach (Control ctrl in panel1.Controls)
-            //    {
-            //        int newFontSize = 12;
-            //        ctrl.Font = new Font(ctrl.Font.FontFamily, newFontSize);
-
-            //        if (ctrl is CheckBox)
-            //        {
-            //            ctrl.Left = ctrl.Left - 130;
-            //            int nFontSize = 8;
-            //            ctrl.Font = new Font(ctrl.Font.FontFamily, nFontSize);
-            //        }
-            //    }
-            //}
-
-            //// Позиционирование элементов формы пользователя
-            //panel1.Left = Width / 2 - panel1.Width / 2;
-            //Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
-            //label1.Left = panel1.Width / 2 - label1.Width / 2;
-            //label3.Left = panel1.Width / 2 - label3.Width / 2;
-            //label3.MaximumSize = new Size(1300, 64);
-            //label3.AutoSize = true;
-
-            // Адаптация разрешения экрана пользователя
-            Rectangle screen = Screen.PrimaryScreen.Bounds;
-            // Позиционирование элементов формы пользователя
-            WindowState = FormWindowState.Maximized;
-            BackColor = Color.PowderBlue;
-            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
-            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
 
             // Выбор количества правильных ответов у задачи
             SqlCommand kolotvetov = new SqlCommand("select count(*) as 'kolvo' from Lastotv where users_id = " + Program.user + " and Form_otv = 'Fenom'", con);
@@ -294,12 +254,15 @@ namespace Psico
             // Запись данных в протокол
             Program.Insert = "Окно - Феноменология (Машинный выбор): ";
             wordinsert.Ins();
+
+            // Адаптация
+            new FormAlign().Alignment(panel1, panel2, label3, this, button1, button2, button3);
         }
 
         private void Timer(object sender, EventArgs e)
         {
             // Счётчик времени на форме
-            Program.Fenom2T = Program.Fenom2T + 1;
+            Program.Fenom2T++;
         }
 
         private void TimeWithoutKatamnez()

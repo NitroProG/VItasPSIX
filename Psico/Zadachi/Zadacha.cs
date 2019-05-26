@@ -137,37 +137,8 @@ namespace Psico
                     break;
             }
 
-            // Выравнивание
-            label1.Left = panel1.Width / 2 - label1.Width / 2;
-            label3.TextAlign = ContentAlignment.TopCenter;
-            label4.Width = panel1.Width;
-            label4.TextAlign = ContentAlignment.MiddleCenter;
-
-            // Адаптация разрешения экрана пользователя
-            Rectangle screen = Screen.PrimaryScreen.Bounds;
-            if (Convert.ToInt32(screen.Size.Width) < 1300)
-            {
-                Width = 1024;
-                Height = 768;
-                panel2.Width = 1024;
-                panel2.Height = 768;
-
-                label3.MaximumSize = new Size(950, 64);
-                label3.AutoSize = true;
-            }
-
-            // Позиционирование элементов формы пользователя
-            WindowState = FormWindowState.Maximized;
-            BackColor = Color.PowderBlue;
-            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
-            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
-
-            //// Позиционирование элементов на форме
-            //panel1.Left = Width / 2 - panel1.Width / 2;
-            //Left = Convert.ToInt32(screen.Size.Width) / 2 - Width / 2;
-            //label1.Left = panel1.Width / 2 - label1.Width / 2;
-            //label3.Left = panel1.Width / 2 - label3.Width / 2;
-            //label4.Left = panel1.Width / 2 - label4.Width / 2;
+            // Адаптация
+            new FormAlign().Alignment(panel1,panel2,label3,this,button1,button2,button3);
         }
 
         private void OpenCheckForm(object sender, EventArgs e)

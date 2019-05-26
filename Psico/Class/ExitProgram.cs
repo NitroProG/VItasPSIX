@@ -89,7 +89,7 @@ namespace Psico
             con.Open();
 
             // Выбор количества данных в таблице БД
-            SqlCommand GetUserMail = new SqlCommand("select User_Mail as 'mail' from users where id_user = " + Program.user + "", con);
+            SqlCommand GetUserMail = new SqlCommand("select User_Mail as 'mail' from users where id_user = 1", con);
             SqlDataReader dr1 = GetUserMail.ExecuteReader();
             dr1.Read();
             string UserMail = dr1["mail"].ToString();
@@ -110,6 +110,16 @@ namespace Psico
             {
                 
             }
+            con.Close();
+
+            UpdateUserStatus();
+        }
+
+        public void UpdateUserStatus()
+        {
+            con.Open();
+            SqlCommand UpdateUserStatus = new SqlCommand("UPDATE users SET UserStatus=0 WHERE id_user = " + Program.user + "", con);
+            UpdateUserStatus.ExecuteNonQuery();
             con.Close();
         }
     }

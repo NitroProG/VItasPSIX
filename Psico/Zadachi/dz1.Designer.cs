@@ -59,7 +59,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1366, 768);
             this.panel2.TabIndex = 11;
-            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WindowDrag);
             // 
             // panel1
             // 
@@ -145,11 +144,10 @@
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(139, 136);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(276, 24);
+            this.label4.Size = new System.Drawing.Size(850, 24);
             this.label4.TabIndex = 37;
             this.label4.Text = "Резюме по феноменологии";
             // 

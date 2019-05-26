@@ -149,7 +149,7 @@ namespace InsertWord
             //И на новый лист
             wordApp.Selection.InsertBreak(ref oType);
 
-            wordApp.Documents.Close();
+            wordApp.Documents.Save();
             wordApp.Quit();
         }
     }

@@ -11,7 +11,6 @@ using System.Data.SqlClient;
 using SqlConn;
 using word = Microsoft.Office.Interop.Word;
 using InsertWord;
-using System.Threading;
 
 namespace Psico
 {
@@ -35,8 +34,8 @@ namespace Psico
                 exprg.ExProtokolSent();
             }
 
-            Autorization autorization = new Autorization();
-            autorization.Show();
+            exprg.UpdateUserStatus();
+            new Autorization().Show();
             Close();
         }
 
@@ -93,6 +92,7 @@ namespace Psico
             Program.zaklOTV = 0;
             Program.NeVernOtv = 0;
             Program.diagnoz = 0;
+            Program.WordOpen = 0;
             Program.StageName.Clear();
             Program.StageSec.Clear();
 
@@ -104,7 +104,7 @@ namespace Psico
             {
                 if (Convert.ToString(Program.NomerZadachi) == Convert.ToString(datagr.Rows[i-1].Cells[0].Value))
                 {
-                    CreateInfo("Данная диагностическая задача была уже решена!", "red");
+                    CreateInfo("Данная диагностическая задача была уже решена!", "red", panel1);
                     error = 1;
                 }
             }
@@ -135,13 +135,13 @@ namespace Psico
 
                     catch
                     {
-                        CreateInfo("Ошибка в Базе данных, обратитесь к администратору", "red");
+                        CreateInfo("Ошибка в Базе данных, обратитесь к администратору", "red", panel1);
                     }
                 }
 
                 catch
                 {
-                    CreateInfo("Отсутствует шаблон протокола! Обратитесь к администратору.", "red");
+                    CreateInfo("Отсутствует шаблон протокола! Обратитесь к администратору.", "red",panel1);
                 }
             }
         }
@@ -153,23 +153,8 @@ namespace Psico
                 exprg.ExProtokolSent();
             }
 
+            exprg.UpdateUserStatus();                   
             Application.Exit();
-        }
-
-        private void CBCheckedChanged(object sender, EventArgs e)
-        {
-            //error = 0;
-            //Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedIndex) + 1;
-
-            //// Проверка данных о решении задачи
-            //for (int i = 1; i < kolvoreshzadach; i++)
-            //{
-            //    if (Convert.ToString(Program.NomerZadachi) == Convert.ToString(datagr.Rows[i - 1].Cells[0].Value))
-            //    {
-            //        CreateInfo("Задача уже решена!","lime");
-            //        error = 1;
-            //    }
-            //}
         }
 
         private void WindowDrag(object sender, MouseEventArgs e)
@@ -177,62 +162,6 @@ namespace Psico
             panel2.Capture = false;
             Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
             WndProc(ref n);
-        }
-
-        private void CreateInfo(string labelinfo, string color)
-        {
-            System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-            timer.Tick += TimerTick;
-            timer.Start();
-
-            Panel panel = new Panel();
-            panel.Name = "panel";
-            panel.Size = new Size(600, 100);
-            panel.Location = new Point(panel1.Width / 2 - panel.Width / 2, panel1.Height / 2 - panel.Height / 2);
-            panel.BackColor = Color.LightGray;
-            panel.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(panel);
-            panel.BringToFront();
-
-            Label label = new Label();
-            label.Name = "label";
-            label.Text = labelinfo;
-            label.Size = new Size(panel.Width, panel.Height);
-            label.Font = new Font(label.Font.FontFamily, 16);
-            label.TextAlign = ContentAlignment.MiddleCenter;
-
-            switch (color)
-            {
-                case "red":
-                    label.ForeColor = Color.Red;
-                    timer.Interval = 5000;
-                    break;
-                case "lime":
-                    label.ForeColor = Color.LimeGreen;
-                    timer.Interval = 2000;
-                    break;
-                default:
-                    label.ForeColor = Color.Black;
-                    timer.Interval = 5000;
-                    break;
-            }
-
-            label.Location = new Point(0, 0);
-            panel.Controls.Add(label);
-            label.BringToFront();
-        }
-
-        private void TimerTick(object sender, EventArgs e)
-        {
-            try
-            {
-                (panel1.Controls["panel"] as Panel).Dispose();
-                (sender as System.Windows.Forms.Timer).Stop();
-            }
-            catch
-            {
-
-            }
         }
 
         private void FormAlignment()
@@ -249,6 +178,67 @@ namespace Psico
             BackColor = Color.PowderBlue;
             panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
             panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
+        }
+
+        public void CreateInfo(string labelinfo, string color, Panel MainPanel)
+        {
+            Timer timer = new Timer();
+            timer.Tick += Timer_Tick;
+            timer.Interval = 5000;
+            timer.Start();
+
+            Panel panel = new Panel();
+            panel.Name = "panel";
+            panel.Size = new Size(600, 100);
+            panel.Location = new Point(MainPanel.Width / 2 - panel.Width / 2, MainPanel.Height / 2 - panel.Height / 2);
+            panel.BackColor = Color.LightGray;
+            panel.BorderStyle = BorderStyle.FixedSingle;
+            MainPanel.Controls.Add(panel);
+            panel.BringToFront();
+
+            Label label = new Label();
+            label.Name = "label";
+            label.Text = labelinfo;
+            label.Size = new Size(panel.Width, panel.Height);
+            label.Font = new Font(label.Font.FontFamily, 16);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+            label.Location = new Point(0, 0);
+            panel.Controls.Add(label);
+            label.BringToFront();
+
+            switch (color)
+            {
+                case "red":
+                    label.ForeColor = Color.Red;
+                    break;
+                case "lime":
+                    label.ForeColor = Color.LimeGreen;
+                    break;
+                default:
+                    label.ForeColor = Color.Black;
+                    break;
+            }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                (sender as Timer).Stop();
+            }
+            catch
+            {
+            }
+            try
+            {
+                ((panel1.Controls["RestorePassword"] as Panel).Controls["panel"] as Panel).Dispose();
+                (sender as Timer).Stop();
+            }
+            catch
+            {
+
+            }
         }
     }
 }

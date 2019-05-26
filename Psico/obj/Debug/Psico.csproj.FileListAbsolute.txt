@@ -105,3 +105,4 @@ C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.DeleteUser.resou
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.UpdateUser.resources
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\bin\Debug\Xceed.Words.NET.dll
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.csproj.CopyComplete
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.TeacherStudents.resources

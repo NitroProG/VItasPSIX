@@ -16,6 +16,7 @@ namespace Psico
 {
     public partial class dpo : Form
     {
+        Rectangle screen = Screen.PrimaryScreen.Bounds;
         SqlConnection con = DBUtils.GetDBConnection();
         DataGridView datagr = new DataGridView();
         DataGridView datagr1 = new DataGridView();
@@ -51,9 +52,8 @@ namespace Psico
             label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
 
-            // Выравнивание
-            label1.Left = panel1.Width / 2 - label1.Width / 2;
-            label3.TextAlign = ContentAlignment.TopCenter;
+            // Адаптация
+            FormAlign();
 
             // Выбор количества данных, необходимых для записи в listbox
             SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from dpo where zadacha_id = " + Program.NomerZadachi + "", con);
@@ -94,33 +94,35 @@ namespace Psico
             panel1.Controls.Add(datagr1);
             datagr1.Visible = false;
 
-            // Динамическое создание label
-            Label lb = new Label();
-            lb.Name = "label";
-            lb.Location = new Point(636,122);
-            lb.AutoSize = true;
-            panel1.Controls.Add(lb);
-
             // Динамическое создание richtextbox
             RichTextBox rtb = new RichTextBox();
             rtb.Name = "richtextbox";
-            rtb.Location = new Point(636, 180);
-            rtb.Width = 680;
+            rtb.Location = new Point(panel1.Width / 2 + 10, 180);
+            rtb.Width = panel1.Width/2-20;
             panel1.Controls.Add(rtb);
             rtb.ShortcutsEnabled = false;
             rtb.ReadOnly = true;
 
+            // Динамическое создание label
+            Label lb = new Label();
+            lb.Name = "label6";
+            lb.Location = new Point(panel1.Width / 2 + 10, 122);
+            lb.AutoSize = true;
+            lb.MaximumSize = new Size(rtb.Width,40);
+            panel1.Controls.Add(lb);
+            if (Convert.ToInt32(screen.Size.Width) < 1300) lb.Font = new Font(lb.Font.FontFamily, 10);
+
             // Если в задаче есть рисунки
             if (Convert.ToString(datagr.Rows[1].Cells[3].Value) != "")
             {
-                rtb.Height = 200;
+                rtb.Height = panel1.Height/4;
 
                 // Динамическое создание picturebox
                 PictureBox pb = new PictureBox();
                 pb.Name = "picturebox";
-                pb.Location = new Point(636, 400);
-                pb.Width = 680;
-                pb.Height = 250;
+                pb.Location = new Point(panel1.Width/2+10, 400);
+                pb.Width = panel1.Width/2-20;
+                pb.Height = panel1.Height/3;
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
                 pb.Enabled = false;
                 pb.Click += PbClick;
@@ -129,15 +131,18 @@ namespace Psico
 
                 // Динамическое создание label
                 Label label = new Label();
-                label.Name = "label";
+                label.Name = "label7";
                 label.Text = "Для увеличения или уменьшения рисунка нажмите левую кнопку мыши";
-                label.Location = new Point(636,660);
+                label.Location = new Point(panel1.Width/2+10,660);
                 label.AutoSize = true;
+                label.MaximumSize = new Size(pb.Width,40);
+                label.Visible = false;
                 panel1.Controls.Add(label);
+                if (Convert.ToInt32(screen.Size.Width) < 1300) label.Font = new Font(label.Font.FontFamily, 10);
             }
 
             // Если рисунков в задаче нет
-            else rtb.Height = 500;
+            else rtb.Height = panel1.Height/2;
 
             //Запись данных из БД в listbox
             for (int i = 1; i < kolvolb; i++)
@@ -155,34 +160,26 @@ namespace Psico
             // Запись данных в протокол
             Program.Insert = "Окно - Обследование: ";
             wordinsert.Ins();
-
-            // Адаптация разрешения экрана пользователя
-            Rectangle screen = Screen.PrimaryScreen.Bounds;
-            // Позиционирование элементов формы пользователя
-            WindowState = FormWindowState.Maximized;
-            BackColor = Color.PowderBlue;
-            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
-            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
         }
 
         private void PbClick(object sender, EventArgs e)
         {
             // Изменение размера рисунка
-            if (((panel1.Controls["picturebox"] as PictureBox).Width == 680)&& ((panel1.Controls["picturebox"] as PictureBox).Height == 250))
+            if (((panel1.Controls["picturebox"] as PictureBox).Width == panel1.Width / 2 - 20) && ((panel1.Controls["picturebox"] as PictureBox).Height == panel1.Height / 3))
             {
                 // Увеличить
                 (panel1.Controls["picturebox"] as PictureBox).Location = new Point(0,0);
-                (panel1.Controls["picturebox"] as PictureBox).Width = 1345;
-                (panel1.Controls["picturebox"] as PictureBox).Height = 740;
+                (panel1.Controls["picturebox"] as PictureBox).Width = panel1.Width;
+                (panel1.Controls["picturebox"] as PictureBox).Height = panel1.Height;
                 (panel1.Controls["picturebox"] as PictureBox).BringToFront();
             }
 
             else
             {
                 // Уменьшить
-                (panel1.Controls["picturebox"] as PictureBox).Location = new Point(636,400);
-                (panel1.Controls["picturebox"] as PictureBox).Width = 680;
-                (panel1.Controls["picturebox"] as PictureBox).Height = 250;
+                (panel1.Controls["picturebox"] as PictureBox).Location = new Point(panel1.Width / 2 + 10, 400);
+                (panel1.Controls["picturebox"] as PictureBox).Width = panel1.Width / 2 - 20;
+                (panel1.Controls["picturebox"] as PictureBox).Height = panel1.Height / 3;
             }
         }
 
@@ -316,6 +313,7 @@ namespace Psico
                         // Если в таблице есть рисунок
                         if (Convert.ToString(datagr.Rows[1].Cells[3].Value) != "")
                         {
+                            (panel1.Controls["label7"] as Label).Visible = true;
                             (panel1.Controls["picturebox"] as PictureBox).Load("" + Convert.ToString(datagr.Rows[i - 1].Cells[3].Value + ""));
                         }
 
@@ -323,15 +321,15 @@ namespace Psico
                         panel1.Controls["richtextbox"].Text = Convert.ToString(datagr.Rows[i - 1].Cells[2].Value);
 
                         // Запись данных в label
-                        panel1.Controls["label"].Text = Convert.ToString(datagr.Rows[i - 1].Cells[1].Value);
-                        kolvotext = panel1.Controls["label"].Text.Length;
+                        panel1.Controls["label6"].Text = Convert.ToString(datagr.Rows[i - 1].Cells[1].Value);
+                        kolvotext = panel1.Controls["label6"].Text.Length;
 
                         // Если название длинное, то перенос на следующую строчку
                         if (kolvotext > 70)
                         {
-                            (panel1.Controls["label"] as Label).AutoSize = false;
-                            (panel1.Controls["label"] as Label).Width = 680;
-                            (panel1.Controls["label"] as Label).Height = 40;
+                            (panel1.Controls["label6"] as Label).AutoSize = false;
+                            (panel1.Controls["label6"] as Label).Width = 680;
+                            (panel1.Controls["label6"] as Label).Height = 40;
                         }
 
                         button4.Visible = false;
@@ -389,13 +387,13 @@ namespace Psico
         private void TimeOnForm(object sender, EventArgs e)
         {
             // Счётчик времени на форме
-            Program.dpoT = Program.dpoT + 1;
+            Program.dpoT++;
         }
 
         private void TimeOnSeeListboxInfo(object sender, EventArgs e)
         {
             // Счётчик времени на форме
-            Program.infochekT = Program.infochekT + 1;
+            Program.infochekT++;
         }
 
         private void TimeWithoutKatamnez()
@@ -450,6 +448,58 @@ namespace Psico
             panel2.Capture = false;
             Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
             WndProc(ref n);
+        }
+
+        private void FormAlign()
+        {
+            // Адаптация разрешения экрана пользователя
+            if (Convert.ToInt32(screen.Size.Width) < 1300)
+            {
+                Width = 1024;
+                Height = 768;
+
+                panel2.Width = 1024;
+                panel2.Height = 768;
+
+                panel1.Width = 1003;
+                panel1.Height = 747;
+
+                foreach (Control ctrl in panel1.Controls)
+                {
+                    int newFontSize = 12;
+                    ctrl.Font = new Font(ctrl.Font.FontFamily, newFontSize);
+                }
+
+                listBox1.Font = new Font(listBox1.Font.FontFamily, 7);
+                label4.Font = new Font(listBox1.Font.FontFamily, 9);
+            }
+
+            // Позиционирование элементов формы пользователя
+            WindowState = FormWindowState.Maximized;
+            BackColor = Color.PowderBlue;
+            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
+            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
+
+            label1.Left = panel1.Width / 2 - label1.Width / 2;
+
+            label3.Width = panel1.Width;
+            label3.TextAlign = ContentAlignment.TopCenter;
+            label3.Left = panel1.Width / 2 - label3.Width / 2;
+
+            button1.Left = panel1.Width - button1.Width - 10;
+            button2.Left = 10;
+            button3.Left = panel1.Width - button3.Width - 10;
+
+            richTextBox1.Width = panel1.Width / 2 - 10;
+            label4.Width = richTextBox1.Width;
+
+            listBox1.Width = panel1.Width / 2 - 10;
+
+            button5.Location = new Point(listBox1.Location.X+listBox1.Width-button5.Width,listBox1.Location.Y+listBox1.Height+10);
+            button4.Location = new Point(listBox1.Location.X, listBox1.Location.Y + listBox1.Height + 10);
+
+            richTextBox2.Width = panel1.Width / 2 - 10;
+            label5.Width = richTextBox2.Width;
         }
     }
 }

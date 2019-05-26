@@ -122,10 +122,6 @@ namespace Psico
             label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
 
-            // Выравнивание
-            label1.Left = panel1.Width / 2 - label1.Width / 2;
-            label3.TextAlign = ContentAlignment.TopCenter;
-
             // Определение количества checkbox на форме
             SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from CBFormFill where zadacha_id = " + Program.NomerZadachi + " and FormCB = 'Teor'", con);
             SqlDataReader dr0 = kolvo.ExecuteReader();
@@ -199,7 +195,7 @@ namespace Psico
             datagr5.Visible = false;
 
             //Динамическое создание checkbox
-            for (int x = 242, y = 246, i = 1; i < kolvoCb; i++)
+            for (int x = 200, y = 246, i = 1; i < kolvoCb; i++)
             {
                 CheckBox checkBox = new CheckBox();
                 checkBox.Name = "checkbox" + i + "";
@@ -208,10 +204,10 @@ namespace Psico
                 panel1.Controls.Add(checkBox);
                 kolvotext = checkBox.Text.Length;
 
-                if (kolvotext > 70)
+                if (kolvotext > 60)
                 {
                     checkBox.AutoSize = false;
-                    checkBox.Width = 500;
+                    checkBox.Width = panel1.Width/3;
                     checkBox.Height = 40;
                     y = y + 40;
                 }
@@ -224,7 +220,7 @@ namespace Psico
                 // Создание 2 столбца с checkbox
                 if (i == stolb)
                 {
-                    x = 750;
+                    x = 700;
                     y = 246;
                 }
             }
@@ -258,19 +254,14 @@ namespace Psico
             Program.Insert = "Окно - Гипотезы (Машинный выбор): ";
             wordinsert.Ins();
 
-            // Адаптация разрешения экрана пользователя
-            Rectangle screen = Screen.PrimaryScreen.Bounds;
-            // Позиционирование элементов формы пользователя
-            WindowState = FormWindowState.Maximized;
-            BackColor = Color.PowderBlue;
-            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
-            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
+            // Адаптация
+            new FormAlign().Alignment(panel1, panel2, label3, this, button1, button2, button3);
         }
 
         private void timer(object sender, EventArgs e)
         {
             // Счётчик времени на форме
-            Program.gip2T = Program.gip2T + 1; 
+            Program.gip2T++;
         }
 
         private void TimeWithoutKatamnez()

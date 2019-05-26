@@ -225,6 +225,7 @@
             this.richTextBox2.BackColor = System.Drawing.Color.PowderBlue;
             this.richTextBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBox2.Location = new System.Drawing.Point(399, 387);
+            this.richTextBox2.MaxLength = 100;
             this.richTextBox2.Name = "richTextBox2";
             this.richTextBox2.Size = new System.Drawing.Size(551, 86);
             this.richTextBox2.TabIndex = 56;
@@ -245,6 +246,7 @@
             this.richTextBox1.BackColor = System.Drawing.Color.PowderBlue;
             this.richTextBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.richTextBox1.Location = new System.Drawing.Point(399, 219);
+            this.richTextBox1.MaxLength = 300;
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(551, 86);
             this.richTextBox1.TabIndex = 54;

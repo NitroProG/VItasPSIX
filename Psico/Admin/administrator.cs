@@ -11,13 +11,12 @@ using System.Data.SqlClient;
 using SqlConn;
 using System.Net;
 using System.Net.Mail;
-using Xceed.Words.NET;
 
 namespace Psico
 {
     public partial class administrator : Form
     {
-
+        ExitProgram exitProgram = new ExitProgram();
         SqlConnection con = DBUtils.GetDBConnection();
 
         public administrator()
@@ -27,34 +26,34 @@ namespace Psico
 
         private void OpenFormUpdateZadacha(object sender, EventArgs e)
         {
-            UpdateZadacha updateZadacha = new UpdateZadacha();
-            updateZadacha.Show();
+            new UpdateZadacha().Show();
             Close();
         }
 
         private void OpenAutorizationForm(object sender, EventArgs e)
         {
-            Autorization autorization = new Autorization();
-            autorization.Show();
+            exitProgram.UpdateUserStatus();
+
+            new Autorization().Show();
             Close();
         }
 
         private void ExitFromProgramm(object sender, EventArgs e)
         {
+            exitProgram.UpdateUserStatus();
+
             Application.Exit();
         }
 
         private void OpenFormAddZadacha(object sender, EventArgs e)
         {
-            AddZadacha addZadacha = new AddZadacha();
-            addZadacha.Show();
+            new AddZadacha().Show();
             Close();
         }
 
         private void OpenFormDeleteZadacha(object sender, EventArgs e)
         {
-            DeleteZadacha deleteZadacha = new DeleteZadacha();
-            deleteZadacha.Show();
+            new DeleteZadacha().Show();
             Close();
         }
 
@@ -74,7 +73,7 @@ namespace Psico
 
             con.Close();
 
-            MessageBox.Show("Ключ активации программы был скопирован в буфер обмена, для того чтобы его посмотреть откройте любой текстовый редактор и нажмите сочитание клавишь 'Ctrl+C'","Ключ активации",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            CreateInfo("Ключ активации программы был скопирован в буфер обмена, для того чтобы его посмотреть откройте любой текстовый редактор и нажмите сочитание клавишь 'Ctrl+C'","lime", panel1);
         }
 
         private void FormLoad(object sender, EventArgs e)
@@ -84,22 +83,19 @@ namespace Psico
 
         private void OpenAddUserForm(object sender, EventArgs e)
         {
-            AddUser addUser = new AddUser();
-            addUser.Show();
+            new AddUser().Show();
             Close();
         }
 
         private void OpenUpdateUserForm(object sender, EventArgs e)
         {
-            UpdateUser updateUser = new UpdateUser();
-            updateUser.Show();
+            new UpdateUser().Show();
             Close();
         }
 
         private void OpenDeleteUserForm(object sender, EventArgs e)
         {
-            DeleteUser deleteUser = new DeleteUser();
-            deleteUser.Show();
+            new DeleteUser().Show();
             Close();
         }
 
@@ -124,7 +120,62 @@ namespace Psico
             BackColor = Color.PowderBlue;
             panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
             panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
+        }
 
+        public void CreateInfo(string labelinfo, string color, Panel MainPanel)
+        {
+            Timer timer = new Timer();
+            timer.Tick += Timer_Tick;
+            timer.Interval = 5000;
+            timer.Start();
+
+            Panel panel = new Panel();
+            panel.Name = "panel";
+            panel.Size = new Size(600, 100);
+            panel.Location = new Point(MainPanel.Width / 2 - panel.Width / 2, MainPanel.Height / 2 - panel.Height / 2);
+            panel.BackColor = Color.LightGray;
+            panel.BorderStyle = BorderStyle.FixedSingle;
+            MainPanel.Controls.Add(panel);
+            panel.BringToFront();
+
+            Label label = new Label();
+            label.Name = "label";
+            label.Text = labelinfo;
+            label.Size = new Size(panel.Width, panel.Height);
+            label.Font = new Font(label.Font.FontFamily, 14);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+            label.Location = new Point(0, 0);
+            panel.Controls.Add(label);
+            label.BringToFront();
+
+            switch (color)
+            {
+                case "red":
+                    label.ForeColor = Color.Red;
+                    break;
+                case "lime":
+                    label.ForeColor = Color.LimeGreen;
+                    break;
+                default:
+                    label.ForeColor = Color.Black;
+                    break;
+            }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                (sender as Timer).Stop();
+            }
+            catch { }
+        }
+
+        private void OpenUserStatusForm(object sender, EventArgs e)
+        {
+            new TeacherStudents().Show();
+            Close();
         }
     }
 }

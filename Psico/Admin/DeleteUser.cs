@@ -69,7 +69,7 @@ namespace Psico
 
             // Динамическое создание combobox
             ComboBox1.Name = "Combobox1";
-            ComboBox1.Location = new Point(label3.Location.X+20,150);
+            ComboBox1.Location = new Point(label3.Location.X+20,label3.Location.Y+35);
             ComboBox1.Size = new Size(70,50);
             ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBox1.Font = new Font(ComboBox1.Font.FontFamily, 12);
@@ -78,7 +78,7 @@ namespace Psico
             // Динамическое создание combobox
             RadioButton1.Name = "Radiobutton1";
             RadioButton1.Text = "Пользователя.";
-            RadioButton1.Location = new Point(label4.Location.X+20, 260);
+            RadioButton1.Location = new Point(label4.Location.X+20, label4.Location.Y+20);
             RadioButton1.Size = new Size(200, 50);
             RadioButton1.Font = new Font(RadioButton1.Font.FontFamily, 12);
             RadioButton1.Click += UserSettingChanged;
@@ -87,7 +87,7 @@ namespace Psico
             // Динамическое создание combobox
             RadioButton2.Name = "Radiobutton2";
             RadioButton2.Text = "Решённую задачу.";
-            RadioButton2.Location = new Point(label4.Location.X+20, 300);
+            RadioButton2.Location = new Point(label4.Location.X+20, label4.Location.Y+60);
             RadioButton2.Size = new Size(200, 50);
             RadioButton2.Click += ZadachaSettingChanged;
             RadioButton2.Font = new Font(RadioButton2.Font.FontFamily, 12);
@@ -122,11 +122,11 @@ namespace Psico
             switch (checkSettingForDelete)
             {
                 case 0:
-                    CreateInfo("Для удаления необходимо выбрать что вы хотите удалить: пользователя или решённую им задачу!", "red");
+                    CreateInfo("Для удаления необходимо выбрать что вы хотите удалить: пользователя или решённую им задачу!", "red", panel1);
                     break;
 
                 case 1:
-                    if (datagr1.CurrentRow.Cells[1].Value.ToString() != "admin" && datagr1.CurrentRow.Cells[2].Value.ToString() != "Admin")
+                    if (datagr1.CurrentRow.Cells[1].Value.ToString() != "admin" || datagr1.CurrentRow.Cells[2].Value.ToString() != "Admin")
                     {
                         try
                         {
@@ -138,8 +138,6 @@ namespace Psico
                                     delete1.ExecuteNonQuery();
                                     SqlCommand delete2 = new SqlCommand("delete from Lastotv where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
                                     delete2.ExecuteNonQuery();
-                                    SqlCommand delete3 = new SqlCommand("delete from InfoUser where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete3.ExecuteNonQuery();
                                     SqlCommand delete4 = new SqlCommand("delete from Resh where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
                                     delete4.ExecuteNonQuery();
                                     SqlCommand delete5 = new SqlCommand("delete from OtvSelected where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
@@ -156,8 +154,6 @@ namespace Psico
                                     delete7.ExecuteNonQuery();
                                     SqlCommand delete8 = new SqlCommand("delete from Lastotv where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
                                     delete8.ExecuteNonQuery();
-                                    SqlCommand delete9 = new SqlCommand("delete from InfoUser where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete9.ExecuteNonQuery();
                                     SqlCommand delete10 = new SqlCommand("delete from Resh where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
                                     delete10.ExecuteNonQuery();
                                     SqlCommand delete11 = new SqlCommand("delete from OtvSelected where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
@@ -174,8 +170,6 @@ namespace Psico
                                     delete13.ExecuteNonQuery();
                                     SqlCommand delete14 = new SqlCommand("delete from Lastotv where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
                                     delete14.ExecuteNonQuery();
-                                    SqlCommand delete15 = new SqlCommand("delete from InfoUser where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete15.ExecuteNonQuery();
                                     SqlCommand delete16 = new SqlCommand("delete from Resh where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
                                     delete16.ExecuteNonQuery();
                                     SqlCommand delete17 = new SqlCommand("delete from OtvSelected where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
@@ -189,19 +183,19 @@ namespace Psico
                         }
                         catch
                         {
-                            CreateInfo("Необходимо выбрать пользователя в таблице для его удаления! Если вы выбрали пользователя, а сообщение осталось обратитесь к администратору!", "red");
+                            CreateInfo("Необходимо выбрать пользователя в таблице для его удаления! Если вы выбрали пользователя, а сообщение осталось обратитесь к администратору!", "red", panel1);
                         }
                     }
                     else
                     {
-                        CreateInfo("Невозможно удалить главного администратора!", "red");
+                        CreateInfo("Невозможно удалить главного администратора!", "red", panel1);
                     }
                     break;
 
                 case 2:
                     if ((panel1.Controls["Combobox1"] as ComboBox).SelectedIndex < 0)
                     {
-                        CreateInfo("У пользователя нет решённых задач, удаленние отменено!", "red");
+                        CreateInfo("У пользователя нет решённых задач, удаленние отменено!", "red", panel1);
                     }
                     else
                     {
@@ -253,20 +247,90 @@ namespace Psico
             datagr1.DataSource = ds1.Tables[0];
         }
 
-        private void CreateInfo(string labelinfo, string color)
+        private void FormAlignment()
+        {
+            // Адаптация разрешения экрана пользователя
+            Rectangle screen = Screen.PrimaryScreen.Bounds;
+
+            // Позиционирование элементов формы пользователя
+            WindowState = FormWindowState.Maximized;
+            BackColor = Color.PowderBlue;
+            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
+            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);            
+        }
+
+        private void tableFilter(object sender, EventArgs e)
+        {
+            string role = "";
+
+            switch (comboBox2.SelectedItem)
+            {
+                case "Администратор":
+                    role = "Admin";
+                    break;
+
+                case "Преподаватель":
+                    role = "Teacher";
+                    break;
+
+                case "Студент":
+                    role = "Student";
+                    break;
+            }
+
+            DatagrInfo();
+            datagr1.CurrentCell = null;
+
+            for (int i = 0; i < datagr1.Rows.Count; i++)
+            {
+                if (datagr1.Rows[i].Cells[2].Value.ToString() != role)
+                {
+                    datagr1.Rows[i].Visible = false;
+                }
+            }
+
+        }
+
+        private void TextFinder(object sender, EventArgs e)
+        {
+            DatagrInfo();
+            datagr1.CurrentCell = null;
+
+            int Find;
+
+            for (int x = 0; x < datagr1.Rows.Count; x++)
+            {
+                Find = 0;
+
+                for (int y = 0; y < datagr1.ColumnCount; y++)
+                {
+                    if (datagr1.Rows[x].Cells[y].Value.ToString().Contains(textBox6.Text))
+                    {
+                        Find = 1;
+                    }
+                }
+
+                if (Find != 1)
+                {
+                    datagr1.Rows[x].Visible = false;
+                }
+            }
+        }
+
+        public void CreateInfo(string labelinfo, string color, Panel MainPanel)
         {
             Timer timer = new Timer();
+            timer.Tick += Timer_Tick;
             timer.Interval = 5000;
-            timer.Tick += TimerTick;
             timer.Start();
 
             Panel panel = new Panel();
             panel.Name = "panel";
             panel.Size = new Size(600, 100);
-            panel.Location = new Point(panel1.Width / 2 - panel.Width / 2, panel1.Height / 2 - panel.Height / 2);
+            panel.Location = new Point(MainPanel.Width / 2 - panel.Width / 2, MainPanel.Height / 2 - panel.Height / 2);
             panel.BackColor = Color.LightGray;
             panel.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(panel);
+            MainPanel.Controls.Add(panel);
             panel.BringToFront();
 
             Label label = new Label();
@@ -275,6 +339,9 @@ namespace Psico
             label.Size = new Size(panel.Width, panel.Height);
             label.Font = new Font(label.Font.FontFamily, 16);
             label.TextAlign = ContentAlignment.MiddleCenter;
+            label.Location = new Point(0, 0);
+            panel.Controls.Add(label);
+            label.BringToFront();
 
             switch (color)
             {
@@ -288,35 +355,16 @@ namespace Psico
                     label.ForeColor = Color.Black;
                     break;
             }
-
-            label.Location = new Point(0, 0);
-            panel.Controls.Add(label);
-            label.BringToFront();
         }
 
-        private void TimerTick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             try
             {
                 (panel1.Controls["panel"] as Panel).Dispose();
                 (sender as Timer).Stop();
             }
-            catch
-            {
-
-            }
-        }
-
-        private void FormAlignment()
-        {
-            // Адаптация разрешения экрана пользователя
-            Rectangle screen = Screen.PrimaryScreen.Bounds;
-
-            // Позиционирование элементов формы пользователя
-            WindowState = FormWindowState.Maximized;
-            BackColor = Color.PowderBlue;
-            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
-            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);            
+            catch{}
         }
     }
 }

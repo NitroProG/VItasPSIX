@@ -48,7 +48,7 @@ namespace Psico
                     StrPrc1.ExecuteNonQuery();
 
                     GetSelectFenom1Stage();
-                    CreateInfo("Данные успешно изменены!", "lime");
+                    CreateInfo("Данные успешно изменены!", "lime",panel1);
                     break;
 
                 case "Fenom2":
@@ -61,7 +61,7 @@ namespace Psico
                     StrPrc2.ExecuteNonQuery();
 
                     GetSelectFenom2Stage();
-                    CreateInfo("Данные успешно изменены!", "lime");
+                    CreateInfo("Данные успешно изменены!", "lime", panel1);
                     break;
 
                 case "Gip":
@@ -74,7 +74,7 @@ namespace Psico
                     StrPrc3.ExecuteNonQuery();
 
                     GetSelectGipStage();
-                    CreateInfo("Данные успешно изменены!", "lime");
+                    CreateInfo("Данные успешно изменены!", "lime", panel1);
                     break;
 
                 case "Dpo":
@@ -90,7 +90,7 @@ namespace Psico
                     StrPrc4.ExecuteNonQuery();
 
                     GetSelectDpoStage();
-                    CreateInfo("Данные успешно изменены!", "lime");
+                    CreateInfo("Данные успешно изменены!", "lime", panel1);
                     break;
 
                 case "Zakl":
@@ -103,31 +103,21 @@ namespace Psico
                     StrPrc5.ExecuteNonQuery();
 
                     GetSelectZaklStage();
-                    CreateInfo("Данные успешно изменены!", "lime");
+                    CreateInfo("Данные успешно изменены!", "lime", panel1);
                     break;
 
-                case "Meropr":
-                    SqlCommand StrPrc6 = new SqlCommand("meropr_update", con);
+                case "ZadachaInfo":
+                    SqlCommand StrPrc6 = new SqlCommand("Zadacha_update", con);
                     StrPrc6.CommandType = CommandType.StoredProcedure;
-                    StrPrc6.Parameters.AddWithValue("@id_meropr", Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value));
-                    StrPrc6.Parameters.AddWithValue("@meroprtext", richTextBox1.Text);
-                    StrPrc6.Parameters.AddWithValue("@zadacha_id", SelectedZadacha);
+                    StrPrc6.Parameters.AddWithValue("@id_zadacha", SelectedZadacha);
+                    StrPrc6.Parameters.AddWithValue("@Zapros", richTextBox1.Text);
+                    StrPrc6.Parameters.AddWithValue("@sved", richTextBox2.Text);
+                    StrPrc6.Parameters.AddWithValue("@meroprtext", richTextBox3.Text);
+                    StrPrc6.Parameters.AddWithValue("@katamneztext", richTextBox4.Text);
                     StrPrc6.ExecuteNonQuery();
 
-                    GetSelectMeroprStage();
-                    CreateInfo("Данные успешно изменены!", "lime");
-                    break;
-
-                case "Katamnez":
-                    SqlCommand StrPrc7 = new SqlCommand("katamnez_update", con);
-                    StrPrc7.CommandType = CommandType.StoredProcedure;
-                    StrPrc7.Parameters.AddWithValue("@id_katamnez", Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value));
-                    StrPrc7.Parameters.AddWithValue("@katamneztext", richTextBox1.Text);
-                    StrPrc7.Parameters.AddWithValue("@zadacha_id", SelectedZadacha);
-                    StrPrc7.ExecuteNonQuery();
-
-                    GetSelectKatamnezStage();
-                    CreateInfo("Данные успешно изменены!", "lime");
+                    GetSelectZadachaInfo();
+                    CreateInfo("Данные успешно изменены!", "lime", panel1);
                     break;
 
                 case "VernOtv":
@@ -156,7 +146,7 @@ namespace Psico
                     StrPrc8.ExecuteNonQuery();
 
                     GetSelectVernOtvStage();
-                    CreateInfo("Данные успешно изменены!", "lime");
+                    CreateInfo("Данные успешно изменены!", "lime", panel1);
                     break;
             }
 
@@ -192,12 +182,11 @@ namespace Psico
                     richTextBox1.Text = datagr1.CurrentRow.Cells[1].Value.ToString();
                     break;
 
-                case "Meropr":
+                case "ZadachaInfo":
                     richTextBox1.Text = datagr1.CurrentRow.Cells[1].Value.ToString();
-                    break;
-
-                case "Katamnez":
-                    richTextBox1.Text = datagr1.CurrentRow.Cells[1].Value.ToString();
+                    richTextBox2.Text = datagr1.CurrentRow.Cells[2].Value.ToString();
+                    richTextBox3.Text = datagr1.CurrentRow.Cells[3].Value.ToString();
+                    richTextBox4.Text = datagr1.CurrentRow.Cells[4].Value.ToString();
                     break;
 
                 case "VernOtv":
@@ -221,7 +210,7 @@ namespace Psico
                     break;
 
                 default:
-                    CreateInfo("Вы не выбрали этап задачи, который хотите изменить!", "red");
+                    CreateInfo("Вы не выбрали этап задачи, который хотите изменить!", "red",panel1);
                     break;
             }
         }
@@ -238,7 +227,6 @@ namespace Psico
             button6.Visible = true;
             button7.Visible = true;
             button8.Visible = true;
-            button9.Visible = true;
             button10.Visible = true;
             button11.Visible = true;
             button13.Visible = true;
@@ -262,10 +250,12 @@ namespace Psico
             button12.Visible = false;
             button14.Visible = false;
             button15.Visible = false;
+            button16.Visible = false;
+            textBox6.Visible = false;
+            label9.Visible = false;
             button6.Visible = false;
             button7.Visible = false;
             button8.Visible = false;
-            button9.Visible = false;
             button10.Visible = false;
             button11.Visible = false;
             button13.Visible = false;
@@ -280,33 +270,42 @@ namespace Psico
         {
             (panel1.Controls["label"] as Label).Visible = false;
             (panel1.Controls["datagrview1"] as DataGridView).Visible = true;
+            button12.Enabled = true;
+            button14.Enabled = true;
             button5.Visible = true;
             button12.Visible = true;
             button14.Visible = true;
             button15.Visible = true;
+            button16.Visible = true;
+            textBox6.Visible = true;
+            label9.Visible = true;
             richTextBox1.Visible = false;
             richTextBox2.Visible = false;
             richTextBox3.Visible = false;
             richTextBox4.Visible = false;
             richTextBox5.Visible = false;
             comboBox2.Visible = false;
+            datagr1.CurrentCell = null;
         }
 
         private void SelectFenom1Stage(object sender, EventArgs e)
         {
             GetSelectFenom1Stage();
             datagr1.Columns[0].Visible = false;
+            datagr1.Columns[1].Visible = true;
             datagr1.Columns[2].Visible = true;
+            datagr1.Columns[3].Visible = false;
             datagr1.Columns[1].HeaderText = "От кого сведения";
             datagr1.Columns[2].HeaderText = "Сведения";
-            datagr1.Columns[3].HeaderText = "Номер задачи";
-            richTextBox1.MaxLength = 50;
+            richTextBox1.MaxLength = 100;
+            richTextBox2.MaxLength = 2147483647;
         }
 
         private void GetSelectFenom1Stage()
         {
             SelectedStage = "Fenom1";
             UserSelectStage();
+            UserInfoClean();
 
             SqlDataAdapter da1 = new SqlDataAdapter("select * from Fenom1 where zadacha_id = " + SelectedZadacha + "", con);
             SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
@@ -329,9 +328,10 @@ namespace Psico
         {
             GetSelectFenom2Stage();
             datagr1.Columns[0].Visible = false;
+            datagr1.Columns[1].Visible = true;
             datagr1.Columns[2].Visible = false;
+            datagr1.Columns[3].Visible = false;
             datagr1.Columns[1].HeaderText = "Вариант ответа";
-            datagr1.Columns[3].HeaderText = "Номер задачи";
             richTextBox1.MaxLength = 2147483647;
         }
 
@@ -339,6 +339,7 @@ namespace Psico
         {
             SelectedStage = "Fenom2";
             UserSelectStage();
+            UserInfoClean();
 
             SqlDataAdapter da1 = new SqlDataAdapter("select * from CBFormFill where zadacha_id = " + SelectedZadacha + " and FormCB = 'Fenom'", con);
             SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
@@ -356,9 +357,10 @@ namespace Psico
         {
             GetSelectGipStage();
             datagr1.Columns[0].Visible = false;
+            datagr1.Columns[1].Visible = true;
             datagr1.Columns[2].Visible = false;
+            datagr1.Columns[3].Visible = false;
             datagr1.Columns[1].HeaderText = "Вариант ответа";
-            datagr1.Columns[3].HeaderText = "Номер задачи";
             richTextBox1.MaxLength = 2147483647;
         }
 
@@ -366,6 +368,7 @@ namespace Psico
         {
             SelectedStage = "Gip";
             UserSelectStage();
+            UserInfoClean();
 
             SqlDataAdapter da1 = new SqlDataAdapter("select * from  CBFormFill where zadacha_id = " + SelectedZadacha + " and FormCB = 'Teor'", con);
             SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
@@ -383,20 +386,29 @@ namespace Psico
         {
             GetSelectDpoStage();
             datagr1.Columns[0].Visible = false;
+            datagr1.Columns[1].Visible = true;
             datagr1.Columns[2].Visible = true;
+            datagr1.Columns[3].Visible = true;
+            datagr1.Columns[4].Visible = true;
+            datagr1.Columns[5].Visible = true;
+            datagr1.Columns[6].Visible = false;
             datagr1.Columns[1].HeaderText = "Краткое наименование методики";
             datagr1.Columns[2].HeaderText = "Полное наименование методики";
             datagr1.Columns[3].HeaderText = "Данные";
             datagr1.Columns[4].HeaderText = "Путь к файлу с 1 рисунком";
             datagr1.Columns[5].HeaderText = "Путь к файлу со 2 рисунком";
-            datagr1.Columns[6].HeaderText = "Номер задачи";
             richTextBox1.MaxLength = 100;
+            richTextBox2.MaxLength = 300;
+            richTextBox3.MaxLength = 2147483647;
+            richTextBox4.MaxLength = 2147483647;
+            richTextBox5.MaxLength = 2147483647;
         }
 
         private void GetSelectDpoStage()
         {
             SelectedStage = "Dpo";
             UserSelectStage();
+            UserInfoClean();
 
             SqlDataAdapter da1 = new SqlDataAdapter("select * from Dpo where zadacha_id = " + SelectedZadacha + "", con);
             SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
@@ -434,9 +446,10 @@ namespace Psico
         {
             GetSelectZaklStage();
             datagr1.Columns[0].Visible = false;
+            datagr1.Columns[1].Visible = true;
             datagr1.Columns[2].Visible = false;
+            datagr1.Columns[3].Visible = false;
             datagr1.Columns[1].HeaderText = "Вариант ответа";
-            datagr1.Columns[3].HeaderText = "Номер задачи";
             richTextBox1.MaxLength = 2147483647;
         }
 
@@ -444,6 +457,7 @@ namespace Psico
         {
             SelectedStage = "Zakl";
             UserSelectStage();
+            UserInfoClean();
 
             SqlDataAdapter da1 = new SqlDataAdapter("select * from CBFormFill where zadacha_id = " + SelectedZadacha + " and FormCB = 'Diag'", con);
             SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
@@ -457,73 +471,77 @@ namespace Psico
             new ToolTip().SetToolTip(richTextBox1, "Название вариантов ответов");
         }
 
-        private void SelectMeroprStage(object sender, EventArgs e)
+        private void SelectZadachaInfo(object sender, EventArgs e)
         {
-            GetSelectMeroprStage();
+            GetSelectZadachaInfo();
             datagr1.Columns[0].Visible = false;
+            datagr1.Columns[1].Visible = true;
             datagr1.Columns[2].Visible = true;
-            datagr1.Columns[1].HeaderText = "Данные по мероприятиям";
-            datagr1.Columns[2].HeaderText = "Номер задачи";
-            richTextBox1.MaxLength = 2147483647;
+            datagr1.Columns[3].Visible = true;
+            datagr1.Columns[4].Visible = true;
+            datagr1.Columns[1].HeaderText = "Запрос";
+            datagr1.Columns[2].HeaderText = "Сведения";
+            datagr1.Columns[3].HeaderText = "Данные по мероприятиям";
+            datagr1.Columns[4].HeaderText = "Данные по катамнезу";
+            richTextBox1.MaxLength = 300;
+            richTextBox2.MaxLength = 100;
+            richTextBox3.MaxLength = 2147483647;
+            richTextBox4.MaxLength = 2147483647;
         }
 
-        private void GetSelectMeroprStage()
+        private void GetSelectZadachaInfo()
         {
-            SelectedStage = "Meropr";
+            SelectedStage = "ZadachaInfo";
             UserSelectStage();
+            UserInfoClean();
 
-            SqlDataAdapter da1 = new SqlDataAdapter("select * from meropr where zadacha_id = " + SelectedZadacha + "", con);
+            SqlDataAdapter da1 = new SqlDataAdapter("select * from zadacha where id_zadacha = " + SelectedZadacha + "", con);
             SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
             DataSet ds1 = new DataSet();
-            da1.Fill(ds1, "Meropr");
+            da1.Fill(ds1, "zadacha");
             datagr1.DataSource = ds1.Tables[0];
 
             richTextBox1.Visible = true;
             richTextBox1.Location = new Point(panel1.Width / 2 + 50, datagr1.Location.Y);
-            richTextBox1.Size = new Size(panel1.Width / 2 - 100, panel1.Height / 2);
+            richTextBox1.Size = new Size(panel1.Width / 2 - 100, 55);
+            new ToolTip().SetToolTip(richTextBox1, "Запрос");
+
+            richTextBox2.Visible = true;
+            richTextBox2.Location = new Point(panel1.Width / 2 + 50, richTextBox1.Location.Y+richTextBox1.Height + 10);
+            richTextBox2.Size = new Size(panel1.Width / 2 - 100, 35);
+            new ToolTip().SetToolTip(richTextBox1, "Сведения по задаче");
+
+            richTextBox3.Visible = true;
+            richTextBox3.Location = new Point(panel1.Width / 2 + 50, richTextBox2.Location.Y+richTextBox2.Height + 10);
+            richTextBox3.Size = new Size(panel1.Width / 2 - 100, panel1.Height / 6);
             new ToolTip().SetToolTip(richTextBox1, "Описание проводимых мероприятий");
-        }
 
-        private void SelectKatamnezStage(object sender, EventArgs e)
-        {
-            GetSelectKatamnezStage();
-            datagr1.Columns[0].Visible = false;
-            datagr1.Columns[2].Visible = true;
-            datagr1.Columns[1].HeaderText = "Данные по катамнезу";
-            datagr1.Columns[2].HeaderText = "Номер задачи";
-            richTextBox1.MaxLength = 2147483647;
-        }
-
-        private void GetSelectKatamnezStage()
-        {
-            SelectedStage = "Katamnez";
-            UserSelectStage();
-
-            SqlDataAdapter da1 = new SqlDataAdapter("select * from katamnez where zadacha_id = " + SelectedZadacha + "", con);
-            SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
-            DataSet ds1 = new DataSet();
-            da1.Fill(ds1, "katamnez");
-            datagr1.DataSource = ds1.Tables[0];
-
-            richTextBox1.Visible = true;
-            richTextBox1.Location = new Point(panel1.Width / 2 + 50, datagr1.Location.Y);
-            richTextBox1.Size = new Size(panel1.Width / 2 - 100, panel1.Height / 2);
+            richTextBox4.Visible = true;
+            richTextBox4.Location = new Point(panel1.Width / 2 + 50, richTextBox3.Location.Y+richTextBox3.Height+10);
+            richTextBox4.Size = new Size(panel1.Width / 2 - 100, panel1.Height / 6);
             new ToolTip().SetToolTip(richTextBox1, "Описание катамнеза");
+
+            button12.Enabled = false;
+            button14.Enabled = false;
         }
 
         private void SelectVernOtvStage(object sender, EventArgs e)
         {
             GetSelectVernOtvStage();
             datagr1.Columns[0].Visible = false;
+            datagr1.Columns[1].Visible = true;
+            datagr1.Columns[2].Visible = true;
+            datagr1.Columns[3].Visible = false;
             datagr1.Columns[1].HeaderText = "Вариант ответа";
             datagr1.Columns[2].HeaderText = "Этап";
-            datagr1.Columns[3].HeaderText = "Номер задачи";
+            richTextBox1.MaxLength = 2147483647;
         }
 
         private void GetSelectVernOtvStage()
         {
             SelectedStage = "VernOtv";
             UserSelectStage();
+            UserInfoClean();
 
             SqlDataAdapter da1 = new SqlDataAdapter("select * from vernotv where zadacha_id = " + SelectedZadacha + "", con);
             SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
@@ -559,7 +577,7 @@ namespace Psico
                     delete1.ExecuteNonQuery();
 
                     GetSelectFenom1Stage();
-                    CreateInfo("Данные успешно удалены!", "lime");
+                    CreateInfo("Данные успешно удалены!", "lime", panel1);
                     break;
 
                 case "Fenom2":
@@ -567,7 +585,7 @@ namespace Psico
                     delete2.ExecuteNonQuery();
 
                     GetSelectFenom2Stage();
-                    CreateInfo("Данные успешно удалены!", "lime");
+                    CreateInfo("Данные успешно удалены!", "lime", panel1);
                     break;
 
                 case "Gip":
@@ -575,7 +593,7 @@ namespace Psico
                     delete3.ExecuteNonQuery();
 
                     GetSelectGipStage();
-                    CreateInfo("Данные успешно удалены!", "lime");
+                    CreateInfo("Данные успешно удалены!", "lime", panel1);
                     break;
 
                 case "Dpo":
@@ -583,7 +601,7 @@ namespace Psico
                     delete4.ExecuteNonQuery();
 
                     GetSelectDpoStage();
-                    CreateInfo("Данные успешно удалены!", "lime");
+                    CreateInfo("Данные успешно удалены!", "lime", panel1);
                     break;
 
                 case "Zakl":
@@ -591,23 +609,7 @@ namespace Psico
                     delete5.ExecuteNonQuery();
 
                     GetSelectZaklStage();
-                    CreateInfo("Данные успешно удалены!", "lime");
-                    break;
-
-                case "Meropr":
-                    SqlCommand delete6 = new SqlCommand("delete from meropr where id_meropr = " + Convert.ToInt16(datagr1.CurrentRow.Cells[0].Value) + " and zadacha_id = " + SelectedZadacha + "", con);
-                    delete6.ExecuteNonQuery();
-
-                    GetSelectMeroprStage();
-                    CreateInfo("Данные успешно удалены!", "lime");
-                    break;
-
-                case "Katamnez":
-                    SqlCommand delete7 = new SqlCommand("delete from katamnez where id_katamnez = " + Convert.ToInt16(datagr1.CurrentRow.Cells[0].Value) + " and zadacha_id = " + SelectedZadacha + "", con);
-                    delete7.ExecuteNonQuery();
-
-                    GetSelectKatamnezStage();
-                    CreateInfo("Данные успешно удалены!", "lime");
+                    CreateInfo("Данные успешно удалены!", "lime", panel1);
                     break;
 
                 case "VernOtv":
@@ -615,7 +617,7 @@ namespace Psico
                     delete8.ExecuteNonQuery();
 
                     GetSelectVernOtvStage();
-                    CreateInfo("Данные успешно удалены!", "lime");
+                    CreateInfo("Данные успешно удалены!", "lime", panel1);
                     break;
             }
 
@@ -638,7 +640,7 @@ namespace Psico
                     StrPrc1.ExecuteNonQuery();
 
                     GetSelectFenom1Stage();
-                    CreateInfo("Данные успешно добавлены!", "lime");
+                    CreateInfo("Данные успешно добавлены!", "lime", panel1);
                     break;
 
                 case "Fenom2":
@@ -650,7 +652,7 @@ namespace Psico
                     StrPrc2.ExecuteNonQuery();
 
                     GetSelectFenom2Stage();
-                    CreateInfo("Данные успешно добавлены!", "lime");
+                    CreateInfo("Данные успешно добавлены!", "lime", panel1);
                     break;
 
                 case "Gip":
@@ -662,7 +664,7 @@ namespace Psico
                     StrPrc3.ExecuteNonQuery();
 
                     GetSelectGipStage();
-                    CreateInfo("Данные успешно добавлены!", "lime");
+                    CreateInfo("Данные успешно добавлены!", "lime", panel1);
                     break;
 
                 case "Dpo":
@@ -677,7 +679,7 @@ namespace Psico
                     StrPrc4.ExecuteNonQuery();
 
                     GetSelectDpoStage();
-                    CreateInfo("Данные успешно добавлены!", "lime");
+                    CreateInfo("Данные успешно добавлены!", "lime", panel1);
                     break;
 
                 case "Zakl":
@@ -689,29 +691,7 @@ namespace Psico
                     StrPrc5.ExecuteNonQuery();
 
                     GetSelectZaklStage();
-                    CreateInfo("Данные успешно добавлены!", "lime");
-                    break;
-
-                case "Meropr":
-                    SqlCommand StrPrc6 = new SqlCommand("meropr_add", con);
-                    StrPrc6.CommandType = CommandType.StoredProcedure;
-                    StrPrc6.Parameters.AddWithValue("@meroprtext", richTextBox1.Text);
-                    StrPrc6.Parameters.AddWithValue("@zadacha_id", SelectedZadacha);
-                    StrPrc6.ExecuteNonQuery();
-
-                    GetSelectMeroprStage();
-                    CreateInfo("Данные успешно добавлены!", "lime");
-                    break;
-
-                case "Katamnez":
-                    SqlCommand StrPrc7 = new SqlCommand("katamnez_add", con);
-                    StrPrc7.CommandType = CommandType.StoredProcedure;
-                    StrPrc7.Parameters.AddWithValue("@katamneztext", richTextBox1.Text);
-                    StrPrc7.Parameters.AddWithValue("@zadacha_id", SelectedZadacha);
-                    StrPrc7.ExecuteNonQuery();
-
-                    GetSelectKatamnezStage();
-                    CreateInfo("Данные успешно добавлены!", "lime");
+                    CreateInfo("Данные успешно добавлены!", "lime", panel1);
                     break;
 
                 case "VernOtv":
@@ -739,67 +719,11 @@ namespace Psico
                     StrPrc8.ExecuteNonQuery();
 
                     GetSelectVernOtvStage();
-                    CreateInfo("Данные успешно добавлены!", "lime");
+                    CreateInfo("Данные успешно добавлены!", "lime",panel1);
                     break;
             }
 
             con.Close();
-        }
-
-        private void CreateInfo(string labelinfo, string color)
-        {
-            Timer timer = new Timer();
-            timer.Tick += TimerTick;
-            timer.Start();
-
-            Panel panel = new Panel();
-            panel.Name = "panel";
-            panel.Size = new Size(600, 100);
-            panel.Location = new Point(panel1.Width / 2 - panel.Width / 2, panel1.Height / 2 - panel.Height / 2);
-            panel.BackColor = Color.LightGray;
-            panel.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(panel);
-            panel.BringToFront();
-
-            Label label = new Label();
-            label.Name = "label";
-            label.Text = labelinfo;
-            label.Size = new Size(panel.Width, panel.Height);
-            label.Font = new Font(label.Font.FontFamily, 16);
-            label.TextAlign = ContentAlignment.MiddleCenter;
-
-            switch (color)
-            {
-                case "red":
-                    label.ForeColor = Color.Red;
-                    timer.Interval = 5000;
-                    break;
-                case "lime":
-                    label.ForeColor = Color.LimeGreen;
-                    timer.Interval = 2000;
-                    break;
-                default:
-                    label.ForeColor = Color.Black;
-                    timer.Interval = 5000;
-                    break;
-            }
-
-            label.Location = new Point(0, 0);
-            panel.Controls.Add(label);
-            label.BringToFront();
-        }
-
-        private void TimerTick(object sender, EventArgs e)
-        {
-            try
-            {
-                (panel1.Controls["panel"] as Panel).Dispose();
-                (sender as Timer).Stop();
-            }
-            catch
-            {
-
-            }
         }
 
         private void FormLoad(object sender, EventArgs e)
@@ -879,21 +803,17 @@ namespace Psico
                 button10.Width = 100;
                 button10.Left = button7.Left + button7.Width + 10;
 
-                button11.Font = new Font(button11.Font.FontFamily, 12);
-                button11.Width = 100;
-                button11.Location = new Point(button3.Left+button3.Width/2-button11.Width/2,button3.Location.Y+40);
-
                 button13.Font = new Font(button13.Font.FontFamily, 12);
                 button13.Width = 100;
-                button13.Location = new Point(button6.Left+button6.Width/2-button13.Width/2, button6.Location.Y + 40);
+                button13.Location = new Point(panel1.Width/2-button13.Width/2, button6.Location.Y + 40);
 
-                button9.Font = new Font(button9.Font.FontFamily, 12);
-                button9.Width = 100;
-                button9.Location = new Point(button7.Left+button7.Width/2-button9.Width/2, button7.Location.Y + 40);
+                button11.Font = new Font(button11.Font.FontFamily, 12);
+                button11.Width = 100;
+                button11.Location = new Point(button13.Location.X-button11.Width-10,button3.Location.Y+40);
 
                 button8.Font = new Font(button8.Font.FontFamily, 12);
                 button8.Width = 100;
-                button8.Location = new Point(button10.Left+button10.Width/2-button8.Width/2, button10.Location.Y + 40);
+                button8.Location = new Point(button13.Location.X+button13.Width+10, button10.Location.Y + 40);
 
                 datagr1.Width = panel1.Width / 2;
             }
@@ -915,12 +835,21 @@ namespace Psico
             button2.Location = new Point(30, panel1.Height - 70);
             button4.Location = new Point(30, panel1.Height - 70);
             button5.Location = new Point(panel1.Width - button5.Width - 30, panel1.Height - 70);
+            button12.Location = new Point(button5.Location.X - button12.Width - 10, panel1.Height - 70);
+            button14.Location = new Point(button12.Location.X - button14.Width - 10, panel1.Height - 70);
             button15.Location = new Point(button5.Location.X, button5.Location.Y-button15.Height - 10);
-            button12.Location = new Point(button5.Location.X- button12.Width-10, panel1.Height - 70);
-            button14.Location = new Point(button12.Location.X-button14.Width-10, panel1.Height - 70);
+            button16.Location = new Point(button15.Location.X-button16.Width-10, button15.Location.Y);
+            textBox6.Location = new Point(button14.Location.X, button15.Location.Y + 17);
+            textBox6.Width = button14.Width;
+            label9.Location = new Point(button14.Location.X, button15.Location.Y);
         }
 
         private void CleanRichTextBox(object sender, EventArgs e)
+        {
+            UserInfoClean();
+        }
+
+        private void UserInfoClean()
         {
             switch (SelectedStage)
             {
@@ -961,6 +890,167 @@ namespace Psico
                     richTextBox1.Text = "";
                     break;
             }
+        }
+
+        private void InfoFinder(object sender, EventArgs e)
+        {
+            switch (SelectedStage)
+            {
+                case "Fenom1":
+                    GetSelectFenom1Stage();
+                    datagr1.Columns[0].Visible = false;
+                    datagr1.Columns[1].Visible = true;
+                    datagr1.Columns[2].Visible = true;
+                    datagr1.Columns[3].Visible = false;
+                    datagr1.Columns[1].HeaderText = "От кого сведения";
+                    datagr1.Columns[2].HeaderText = "Сведения";
+                    richTextBox1.MaxLength = 50;
+                    break;
+
+                case "Fenom2":
+                    GetSelectFenom2Stage();
+                    datagr1.Columns[0].Visible = false;
+                    datagr1.Columns[1].Visible = true;
+                    datagr1.Columns[2].Visible = false;
+                    datagr1.Columns[3].Visible = false;
+                    datagr1.Columns[1].HeaderText = "Вариант ответа";
+                    richTextBox1.MaxLength = 2147483647;
+                    break;
+
+                case "Gip":
+                    GetSelectGipStage();
+                    datagr1.Columns[0].Visible = false;
+                    datagr1.Columns[1].Visible = true;
+                    datagr1.Columns[2].Visible = false;
+                    datagr1.Columns[3].Visible = false;
+                    datagr1.Columns[1].HeaderText = "Вариант ответа";
+                    richTextBox1.MaxLength = 2147483647;
+                    break;
+
+                case "Dpo":
+                    GetSelectDpoStage();
+                    datagr1.Columns[0].Visible = false;
+                    datagr1.Columns[1].Visible = true;
+                    datagr1.Columns[2].Visible = true;
+                    datagr1.Columns[3].Visible = true;
+                    datagr1.Columns[4].Visible = true;
+                    datagr1.Columns[5].Visible = true;
+                    datagr1.Columns[6].Visible = false;
+                    datagr1.Columns[1].HeaderText = "Краткое наименование методики";
+                    datagr1.Columns[2].HeaderText = "Полное наименование методики";
+                    datagr1.Columns[3].HeaderText = "Данные";
+                    datagr1.Columns[4].HeaderText = "Путь к файлу с 1 рисунком";
+                    datagr1.Columns[5].HeaderText = "Путь к файлу со 2 рисунком";
+                    richTextBox1.MaxLength = 100;
+                    break;
+
+                case "Zakl":
+                    GetSelectZaklStage();
+                    datagr1.Columns[0].Visible = false;
+                    datagr1.Columns[1].Visible = true;
+                    datagr1.Columns[2].Visible = false;
+                    datagr1.Columns[3].Visible = false;
+                    datagr1.Columns[1].HeaderText = "Вариант ответа";
+                    richTextBox1.MaxLength = 2147483647;
+                    break;
+
+                case "ZadachaInfo":
+                    GetSelectZadachaInfo();
+                    datagr1.Columns[0].Visible = false;
+                    datagr1.Columns[1].Visible = true;
+                    datagr1.Columns[2].Visible = true;
+                    datagr1.Columns[3].Visible = true;
+                    datagr1.Columns[4].Visible = true;
+                    datagr1.Columns[1].HeaderText = "Запрос";
+                    datagr1.Columns[2].HeaderText = "Сведения";
+                    datagr1.Columns[3].HeaderText = "Данные по мероприятиям";
+                    datagr1.Columns[4].HeaderText = "Данные по катамнезу";
+                    button12.Enabled = false;
+                    button14.Enabled = false;
+                    richTextBox1.MaxLength = 2147483647;
+                    break;
+
+                case "VernOtv":
+                    GetSelectVernOtvStage();
+                    datagr1.Columns[0].Visible = false;
+                    datagr1.Columns[1].Visible = true;
+                    datagr1.Columns[2].Visible = true;
+                    datagr1.Columns[3].Visible = false;
+                    datagr1.Columns[1].HeaderText = "Вариант ответа";
+                    datagr1.Columns[2].HeaderText = "Этап";
+                    break;
+            }
+
+            int Find;
+
+            datagr1.CurrentCell = null;
+
+            for (int x = 0; x < datagr1.Rows.Count; x++)
+            {
+                Find = 0;
+
+                for (int y = 0; y < datagr1.ColumnCount; y++)
+                {
+                    if (datagr1.Rows[x].Cells[y].Value.ToString().Contains(textBox6.Text))
+                    {
+                        Find = 1;
+                    }
+                }
+
+                if (Find != 1)
+                {
+                    datagr1.Rows[x].Visible = false;
+                }
+            }
+        }
+
+        public void CreateInfo(string labelinfo, string color, Panel MainPanel)
+        {
+            Timer timer = new Timer();
+            timer.Tick += Timer_Tick;
+            timer.Interval = 5000;
+            timer.Start();
+
+            Panel panel = new Panel();
+            panel.Name = "panel";
+            panel.Size = new Size(600, 100);
+            panel.Location = new Point(MainPanel.Width / 2 - panel.Width / 2, MainPanel.Height / 2 - panel.Height / 2);
+            panel.BackColor = Color.LightGray;
+            panel.BorderStyle = BorderStyle.FixedSingle;
+            MainPanel.Controls.Add(panel);
+            panel.BringToFront();
+
+            Label label = new Label();
+            label.Name = "label";
+            label.Text = labelinfo;
+            label.Size = new Size(panel.Width, panel.Height);
+            label.Font = new Font(label.Font.FontFamily, 16);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+            label.Location = new Point(0, 0);
+            panel.Controls.Add(label);
+            label.BringToFront();
+
+            switch (color)
+            {
+                case "red":
+                    label.ForeColor = Color.Red;
+                    break;
+                case "lime":
+                    label.ForeColor = Color.LimeGreen;
+                    break;
+                default:
+                    label.ForeColor = Color.Black;
+                    break;
+            }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                (sender as Timer).Stop();
+            }catch { }
         }
     }
 }

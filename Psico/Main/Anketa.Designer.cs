@@ -83,30 +83,36 @@
             this.textBox7.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox7.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox7.Location = new System.Drawing.Point(79, 186);
+            this.textBox7.MaxLength = 150;
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(395, 31);
-            this.textBox7.TabIndex = 36;
+            this.textBox7.TabIndex = 37;
             this.hint.SetToolTip(this.textBox7, "Отчество");
+            this.textBox7.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ZapretNumber);
             // 
             // textBox6
             // 
             this.textBox6.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox6.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox6.Location = new System.Drawing.Point(79, 149);
+            this.textBox6.MaxLength = 150;
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(395, 31);
-            this.textBox6.TabIndex = 40;
+            this.textBox6.TabIndex = 36;
             this.hint.SetToolTip(this.textBox6, "Имя");
+            this.textBox6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ZapretNumber);
             // 
             // textBox5
             // 
             this.textBox5.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox5.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox5.Location = new System.Drawing.Point(79, 334);
+            this.textBox5.MaxLength = 2;
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(395, 31);
-            this.textBox5.TabIndex = 39;
+            this.textBox5.TabIndex = 41;
             this.hint.SetToolTip(this.textBox5, "Возраст");
+            this.textBox5.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ZapretRusAndEng);
             // 
             // textBox4
             // 
@@ -116,17 +122,19 @@
             this.textBox4.MaxLength = 1;
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(395, 31);
-            this.textBox4.TabIndex = 38;
+            this.textBox4.TabIndex = 40;
             this.hint.SetToolTip(this.textBox4, "Год обучения");
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ZapretRusAndEng);
             // 
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox3.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox3.Location = new System.Drawing.Point(79, 260);
+            this.textBox3.MaxLength = 300;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(395, 31);
-            this.textBox3.TabIndex = 37;
+            this.textBox3.TabIndex = 39;
             this.hint.SetToolTip(this.textBox3, "Место работы и стаж");
             // 
             // textBox2
@@ -134,21 +142,24 @@
             this.textBox2.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox2.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox2.Location = new System.Drawing.Point(79, 223);
-            this.textBox2.MaxLength = 30;
+            this.textBox2.MaxLength = 50;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(395, 31);
-            this.textBox2.TabIndex = 36;
+            this.textBox2.TabIndex = 38;
             this.hint.SetToolTip(this.textBox2, "Образование");
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ZapretNumber);
             // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.PowderBlue;
             this.textBox1.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox1.Location = new System.Drawing.Point(79, 112);
+            this.textBox1.MaxLength = 150;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(395, 31);
             this.textBox1.TabIndex = 35;
             this.hint.SetToolTip(this.textBox1, "Фамилия");
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ZapretNumber);
             // 
             // button3
             // 
@@ -186,7 +197,7 @@
             this.button2.Location = new System.Drawing.Point(79, 421);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(113, 35);
-            this.button2.TabIndex = 1;
+            this.button2.TabIndex = 43;
             this.button2.Text = "НАЗАД";
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.OpenFormAutorization);
@@ -201,7 +212,7 @@
             this.button1.Location = new System.Drawing.Point(361, 421);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(113, 35);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 42;
             this.button1.Text = "ДАЛЕЕ";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.OpenNextForm);

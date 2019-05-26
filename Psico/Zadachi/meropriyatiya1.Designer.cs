@@ -82,11 +82,10 @@
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label6.Location = new System.Drawing.Point(30, 475);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(514, 24);
+            this.label6.Size = new System.Drawing.Size(850, 24);
             this.label6.TabIndex = 41;
             this.label6.Text = "Напишите рекомендации классному руководителю";
             // 
@@ -121,11 +120,10 @@
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(30, 164);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(332, 24);
+            this.label4.Size = new System.Drawing.Size(850, 24);
             this.label4.TabIndex = 37;
             this.label4.Text = "Напишите рекомендации матери";
             // 

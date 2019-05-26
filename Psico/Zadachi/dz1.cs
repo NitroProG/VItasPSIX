@@ -109,27 +109,18 @@ namespace Psico
             label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
             dr.Close();
 
-            // Выравнивание
-            label1.Left = panel1.Width / 2 - label1.Width / 2;
-            label3.TextAlign = ContentAlignment.TopCenter;
-
             // Запись данных в протокол
             Program.Insert = "Окно - Заключение (Свободная форма): ";
             wordinsert.Ins();
 
-            // Адаптация разрешения экрана пользователя
-            Rectangle screen = Screen.PrimaryScreen.Bounds;
-            // Позиционирование элементов формы пользователя
-            WindowState = FormWindowState.Maximized;
-            BackColor = Color.PowderBlue;
-            panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
-            panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
+            // Адаптация
+            new FormAlign().Alignment(panel1, panel2, label3, this, button1, button2, button3);
         }
 
         private void Timer(object sender, EventArgs e)
         {
             // Счётчик времени на форме
-            Program.zakl1T = Program.zakl1T + 1;
+            Program.zakl1T++;
         }
 
         private void TimeWithoutKatamnez()
@@ -183,13 +174,6 @@ namespace Psico
             Program.StageName.Add("Д");
             Program.StageSec.Add(Program.AllZakl);
             Program.NumberStage.Add(4);
-        }
-
-        private void WindowDrag(object sender, MouseEventArgs e)
-        {
-            panel2.Capture = false;
-            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
-            WndProc(ref n);
         }
     }
 }

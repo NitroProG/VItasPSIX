@@ -74,11 +74,10 @@
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("MS Reference Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(238, 123);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(303, 24);
+            this.label4.Size = new System.Drawing.Size(850, 24);
             this.label4.TabIndex = 39;
             this.label4.Text = "Диагностическое заключение";
             // 

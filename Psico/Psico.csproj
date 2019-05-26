@@ -110,6 +110,7 @@
       <DependentUpon>DeleteUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\ExitProgram.cs" />
+    <Compile Include="Class\FormAlign.cs" />
     <Compile Include="Main\ExitProtokol.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +136,13 @@
       <DependentUpon>UpdateUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\WordInsert.cs" />
+    <Compile Include="Main\TeacherStudents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\TeacherStudents.Designer.cs">
+      <DependentUpon>TeacherStudents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Class\Shifr.cs" />
     <Compile Include="Zadachi\dpo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -262,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Main\WaitingForm.resx">
       <DependentUpon>WaitingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\TeacherStudents.resx">
+      <DependentUpon>TeacherStudents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Zadachi\dpo.resx">
       <DependentUpon>dpo.cs</DependentUpon>

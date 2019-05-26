@@ -31,6 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateZadacha));
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button16 = new System.Windows.Forms.Button();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.button15 = new System.Windows.Forms.Button();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.button14 = new System.Windows.Forms.Button();
@@ -43,7 +46,6 @@
             this.button8 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -73,6 +75,9 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.button16);
+            this.panel1.Controls.Add(this.textBox6);
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.button15);
             this.panel1.Controls.Add(this.comboBox2);
             this.panel1.Controls.Add(this.button14);
@@ -85,7 +90,6 @@
             this.panel1.Controls.Add(this.button8);
             this.panel1.Controls.Add(this.button13);
             this.panel1.Controls.Add(this.button11);
-            this.panel1.Controls.Add(this.button9);
             this.panel1.Controls.Add(this.button10);
             this.panel1.Controls.Add(this.button7);
             this.panel1.Controls.Add(this.button6);
@@ -101,6 +105,42 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1345, 747);
             this.panel1.TabIndex = 2;
+            // 
+            // button16
+            // 
+            this.button16.AutoSize = true;
+            this.button16.BackColor = System.Drawing.Color.PowderBlue;
+            this.button16.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button16.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button16.Location = new System.Drawing.Point(972, 625);
+            this.button16.Name = "button16";
+            this.button16.Size = new System.Drawing.Size(165, 46);
+            this.button16.TabIndex = 64;
+            this.button16.Text = "Найти";
+            this.button16.UseVisualStyleBackColor = false;
+            this.button16.Visible = false;
+            this.button16.Click += new System.EventHandler(this.InfoFinder);
+            // 
+            // textBox6
+            // 
+            this.textBox6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox6.Location = new System.Drawing.Point(779, 645);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.Size = new System.Drawing.Size(187, 26);
+            this.textBox6.TabIndex = 63;
+            this.textBox6.Visible = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label9.Location = new System.Drawing.Point(775, 623);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 19);
+            this.label9.TabIndex = 62;
+            this.label9.Text = "Поиск:";
+            this.label9.Visible = false;
             // 
             // button15
             // 
@@ -229,7 +269,7 @@
             this.button8.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button8.Location = new System.Drawing.Point(793, 105);
+            this.button8.Location = new System.Drawing.Point(730, 105);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(144, 37);
             this.button8.TabIndex = 52;
@@ -245,14 +285,14 @@
             this.button13.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button13.Location = new System.Drawing.Point(405, 105);
+            this.button13.Location = new System.Drawing.Point(469, 105);
             this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(279, 37);
+            this.button13.Size = new System.Drawing.Size(255, 37);
             this.button13.TabIndex = 51;
-            this.button13.Text = "Мероприятия (общие сведения)";
+            this.button13.Text = "Основные данные по задаче";
             this.button13.UseVisualStyleBackColor = false;
             this.button13.Visible = false;
-            this.button13.Click += new System.EventHandler(this.SelectMeroprStage);
+            this.button13.Click += new System.EventHandler(this.SelectZadachaInfo);
             // 
             // button11
             // 
@@ -269,22 +309,6 @@
             this.button11.UseVisualStyleBackColor = false;
             this.button11.Visible = false;
             this.button11.Click += new System.EventHandler(this.SelectZaklStage);
-            // 
-            // button9
-            // 
-            this.button9.AutoSize = true;
-            this.button9.BackColor = System.Drawing.Color.PowderBlue;
-            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button9.Location = new System.Drawing.Point(690, 105);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(97, 37);
-            this.button9.TabIndex = 47;
-            this.button9.Text = "Катамнез";
-            this.button9.UseVisualStyleBackColor = false;
-            this.button9.Visible = false;
-            this.button9.Click += new System.EventHandler(this.SelectKatamnezStage);
             // 
             // button10
             // 
@@ -477,7 +501,6 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button13;
         private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
@@ -490,5 +513,8 @@
         private System.Windows.Forms.Button button12;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Button button15;
+        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button button16;
     }
 }

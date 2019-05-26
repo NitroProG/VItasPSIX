@@ -18,20 +18,19 @@ namespace SqlConn
             //string password = "adminadmin";
 
             // Подключение к локальной БД
-            //string datasource = "IWANTTOSAYHELLO\\FILESBD";
-            //string database = "psico";
-            //string username = "sa";
-            //string password = "D6747960f";
+            string datasource = "IWANTTOSAYHELLO\\FILESBD";
+            string database = "psico";
+            string username = "sa";
+            string password = "D6747960f";
 
             // Подключение к серверу SmarterASP.net
-            string datasource = "SQL6002.site4now.net";
-            string database = "DB_A48030_Psicotest";
-            string username = "DB_A48030_Psicotest_admin";
-            string password = "6747960d";
+            //string datasource = "SQL6001.site4now.net";
+            //string database = "DB_A48030_Psicotest";
+            //string username = "DB_A48030_Psicotest_admin";
+            //string password = "6747960d";
 
             // Возвращение данных о подключении
             return DBSQLServerUtils.GetDBConnection(username, password, datasource, database);
         }
     }
-
 }

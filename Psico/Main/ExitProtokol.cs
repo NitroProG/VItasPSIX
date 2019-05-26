@@ -165,7 +165,7 @@ namespace Psico
             public static Series GetSeriesFirst()
             {
                 // создаём набор данных
-                Series seriesFirst = new Series("График по "+Program.NomerZadachi+" задаче.");
+                Series seriesFirst = new Series("График по "+Program.NomerZadachi+" задаче. Последовательность этапов диагностического процесса (С учётом времени).");
 
                 // заполняем данными
                 seriesFirst.Bind(GetTestDataFirst(), "name", "value");
@@ -188,7 +188,7 @@ namespace Psico
             public static Series GetSeriesSecond()
             {
                 // создаём набор данных
-                Series seriesSecond = new Series("График по " + Program.NomerZadachi + " задаче.");
+                Series seriesSecond = new Series("График по " + Program.NomerZadachi + " задаче. Последовательность этапов диагностического процесса.");
 
                 // заполняем данными
                 seriesSecond.Bind(GetTestDataSecond(), "name", "value");

@@ -104,16 +104,22 @@ namespace Psico
                         case 1:
                             textbox.Size = new Size(230, 40);
                             textbox.Location = new Point(250, 57);
+                            textbox.MaxLength = 50;
                             //textbox.PasswordChar = '*';
                             textbox.ShortcutsEnabled = false;
+                            textbox.KeyPress += ZapretRus;
                             break;
                         case 2:
                             textbox.Size = new Size(230, 40);
                             textbox.Location = new Point(250, 117);
+                            textbox.MaxLength = 50;
+                            textbox.KeyPress += ZapretRus;
                             break;
                         case 3:
                             textbox.Size = new Size(230, 40);
                             textbox.Location = new Point(250, 177);
+                            textbox.MaxLength = 150;
+                            textbox.KeyPress += ZapretRus;
                             break;
                     }
                     textbox.Font = new Font(textbox.Font.Name, 16);
@@ -180,21 +186,27 @@ namespace Psico
                             break;
                         case 5:
                             textbox.Size = new Size(230, 40);
+                            textbox.MaxLength = 50;
                             textbox.Location = new Point(250, 67);
+                            textbox.KeyPress += ZapretRus;
                             break;
                         case 6:
                             textbox.Size = new Size(230, 40);
+                            textbox.MaxLength = 150;
                             textbox.Location = new Point(250, 117);
+                            textbox.KeyPress += ZapretRus;
                             break;
                         case 7:
                             textbox.Size = new Size(50, 40);
                             textbox.Location = new Point(250, 167);
                             textbox.MaxLength = 3;
-                            textbox.KeyPress += NumberCheck;
+                            textbox.KeyPress += ZapretRusAndEng;
                             break;
                         case 8:
                             textbox.Size = new Size(230, 40);
                             textbox.Location = new Point(250, 217);
+                            textbox.MaxLength = 30;
+                            textbox.KeyPress += ZapretRus;
                             break;
                     }
                     textbox.Font = new Font(textbox.Font.Name, 16);
@@ -205,10 +217,26 @@ namespace Psico
             teacher = 1;
         }
 
-        private void NumberCheck(object sender, KeyPressEventArgs e)
+        private void ZapretRusAndEng(object sender, KeyPressEventArgs e)
         {
-            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+            if (Char.IsDigit(e.KeyChar) || Char.IsControl(e.KeyChar)) return;
+            else
+            {
                 e.Handled = true;
+                CreateInfo("Возможно ввести только цифры!", "red", panel1);
+            }
+        }
+
+        private void ZapretRus(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar >= 'A' && e.KeyChar <= 'Z') || (e.KeyChar >= 'a' && e.KeyChar <= 'z') || (e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == '_' || e.KeyChar == (char)Keys.Back || e.KeyChar == '.' || e.KeyChar=='@')
+            {
+            }
+            else
+            {
+                CreateInfo("Возможно вводить только цифры и латинские буквы!", "red", panel1);
+                e.Handled = true;
+            }
         }
 
         private void OpenPreviousForm(object sender, EventArgs e)
@@ -300,44 +328,40 @@ namespace Psico
                                         {
                                             string password = GetPassword();
 
-                                            // Отправка пароля по почте
-                                            MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", (panel3.Controls["textbox3"] as TextBox).Text, "Пароль для программы Psico", password);
-                                            SmtpClient client = new SmtpClient("smtp.yandex.ru");
-                                            client.Port = 587;
-                                            client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
-                                            client.EnableSsl = true;
-                                            client.Send(mail);
+                                            try
+                                            {
+                                                // Отправка пароля по почте
+                                                MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", (panel3.Controls["textbox3"] as TextBox).Text, "Пароль для программы Psico", password);
+                                                SmtpClient client = new SmtpClient("smtp.yandex.ru");
+                                                client.Port = 587;
+                                                client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
+                                                client.EnableSsl = true;
+                                                client.Send(mail);
+                                            }
+                                            catch
+                                            {
+
+                                            }
 
                                             // Запись данных В БД
                                             SqlCommand StrPrc2 = new SqlCommand("users_add", con);
                                             StrPrc2.CommandType = CommandType.StoredProcedure;
                                             StrPrc2.Parameters.AddWithValue("@User_Login", (panel3.Controls["textbox2"] as TextBox).Text);
-                                            StrPrc2.Parameters.AddWithValue("@User_Password", password);
-                                            StrPrc2.Parameters.AddWithValue("@User_Mail", (panel3.Controls["textbox3"] as TextBox).Text);
+                                            StrPrc2.Parameters.AddWithValue("@User_Password", new Shifr().Shifrovka(password,"Pass"));
+                                            StrPrc2.Parameters.AddWithValue("@User_Mail", new Shifr().Shifrovka((panel3.Controls["textbox3"] as TextBox).Text, "Mail"));
+                                            StrPrc2.Parameters.AddWithValue("@UserStatus", 0);
                                             StrPrc2.Parameters.AddWithValue("@Teacher_id", PrepodID);
                                             StrPrc2.ExecuteNonQuery();
 
-                                            // Выбор данных в таблице БД
-                                            SqlCommand GetUniqueNaim = new SqlCommand("select Unique_Naim as 'UniqueNaim' from Teachers where id_teacher = '" + PrepodID + "'", con);
-                                            SqlDataReader dr6 = GetUniqueNaim.ExecuteReader();
-                                            dr6.Read();
-                                            string UniqueNaim = dr6["UniqueNaim"].ToString();
-                                            dr6.Close();
-
-                                            // Изменение ключа активации программы
-                                            SqlCommand StrPrc4 = new SqlCommand("Teachers_update", con);
-                                            StrPrc4.CommandType = CommandType.StoredProcedure;
-                                            StrPrc4.Parameters.AddWithValue("@id_teacher", PrepodID);
-                                            StrPrc4.Parameters.AddWithValue("@Unique_Naim", UniqueNaim);
-                                            StrPrc4.Parameters.AddWithValue("@KolvoNeRegStudents", studentkolvo - 1);
-                                            StrPrc4.ExecuteNonQuery();
+                                            SqlCommand UpdateTeacher = new SqlCommand("UPDATE Teachers SET KolvoNeRegStudents="+(studentkolvo-1)+" WHERE id_teacher = " + PrepodID + "", con);
+                                            UpdateTeacher.ExecuteNonQuery();
 
                                             // Выбор количества данных в таблице БД
                                             SqlCommand GetUserID = new SqlCommand("select id_user as 'id' from users where User_Login = '" + (panel3.Controls["textbox2"] as TextBox).Text + "'", con);
-                                            SqlDataReader dr7 = GetUserID.ExecuteReader();
-                                            dr7.Read();
-                                            int UserId = Convert.ToInt32(dr7["id"].ToString());
-                                            dr7.Close();
+                                            SqlDataReader dr8 = GetUserID.ExecuteReader();
+                                            dr8.Read();
+                                            int UserId = Convert.ToInt32(dr8["id"].ToString());
+                                            dr8.Close();
 
                                             // Запись данных В БД
                                             SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
@@ -353,32 +377,32 @@ namespace Psico
                                         }
                                         else
                                         {
-                                            CreateInfo("Превышено максимально возможное число студентов у преподавателя!", "red");
+                                            CreateInfo("Превышено максимально возможное число студентов у преподавателя!", "red", panel1);
                                         }
                                     }
                                     else
                                     {
-                                        CreateInfo("Преподавателя с таким логином не существует!", "red");
+                                        CreateInfo("Преподавателя с таким логином не существует!", "red", panel1);
                                     }
                                 }
                                 else
                                 {
-                                    CreateInfo("Пользователь с таким логином уже существует!", "red");
+                                    CreateInfo("Пользователь с таким логином уже существует!", "red", panel1);
                                 }
                             }
                             else
                             {
-                                CreateInfo("Преподавателя с таким логином не существует!", "red");
+                                CreateInfo("Преподавателя с таким логином не существует!", "red", panel1);
                             }                       
                         }
                         else
                         {
-                            CreateInfo("Заполнены не все поля для успешной регистрации! Пожалуйста заполните все необходимые поля для регистрации.", "red");
+                            CreateInfo("Заполнены не все поля для успешной регистрации! Пожалуйста заполните все необходимые поля для регистрации.", "red", panel1);
                         }                        
                     }
                     else
                     {
-                        CreateInfo("Вы не ввели логин преподавателя, без него регистрация невозможна!", "red");
+                        CreateInfo("Вы не ввели логин преподавателя, без него регистрация невозможна!", "red", panel1);
                     }
                 break;
                 
@@ -389,14 +413,13 @@ namespace Psico
                         //Выбор данных из БД
                         SqlCommand GetKeyDefender = new SqlCommand("select DefenderKey from defender", con);
                         SqlDataReader dr = GetKeyDefender.ExecuteReader();
-
                         // Запись данных из БД
                         dr.Read();
                         KeyCheck = dr["DefenderKey"].ToString();
                         dr.Close();
 
                         // Проверка правильности ключа активации
-                        if ((panel3.Controls["textbox4"] as TextBox).Text == KeyCheck)
+                        if ((panel3.Controls["textbox4"] as TextBox).Text == new Shifr().DeShifrovka(KeyCheck,"Kod"))
                         {
                             // Проверка введённых данных
                             if ((panel3.Controls["textbox5"] as TextBox).Text != "" && (panel3.Controls["textbox6"] as TextBox).Text != "" && (panel3.Controls["textbox7"] as TextBox).Text != "")
@@ -507,8 +530,9 @@ namespace Psico
                                             SqlCommand StrPrc2 = new SqlCommand("users_add", con);
                                             StrPrc2.CommandType = CommandType.StoredProcedure;
                                             StrPrc2.Parameters.AddWithValue("@User_Login", (panel3.Controls["textbox5"] as TextBox).Text);
-                                            StrPrc2.Parameters.AddWithValue("@User_Password", password);
-                                            StrPrc2.Parameters.AddWithValue("@User_Mail", (panel3.Controls["textbox6"] as TextBox).Text);
+                                            StrPrc2.Parameters.AddWithValue("@User_Password", new Shifr().Shifrovka(password,"Pass"));
+                                            StrPrc2.Parameters.AddWithValue("@User_Mail", new Shifr().Shifrovka((panel3.Controls["textbox6"] as TextBox).Text,"Mail"));
+                                            StrPrc2.Parameters.AddWithValue("@UserStatus", 0);
                                             StrPrc2.Parameters.AddWithValue("@Teacher_id", TeacherId);
                                             StrPrc2.ExecuteNonQuery();
 
@@ -530,52 +554,48 @@ namespace Psico
                                             // Генерация нового ключа активации
                                             string key = GetKey();
 
-                                            // Изменение ключа активации программы
-                                            SqlCommand StrPrc4 = new SqlCommand("defend_update", con);
-                                            StrPrc4.CommandType = CommandType.StoredProcedure;
-                                            StrPrc4.Parameters.AddWithValue("@id_defend", 1);
-                                            StrPrc4.Parameters.AddWithValue("@DefenderKey", key);
-                                            StrPrc4.ExecuteNonQuery();
+                                            SqlCommand UpdateDefenderKey = new SqlCommand("UPDATE defender SET DefenderKey='" + key + "' WHERE id_defend = 1", con);
+                                            UpdateDefenderKey.ExecuteNonQuery();
 
                                             MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                             OpenAutorizationForm();
-                                        }
+                                    }
                                         catch
-                                        {
-                                            CreateInfo("Сообщение с вашим паролем не было отправлено, обратитесь к администратору!", "red");
-                                        }
+                                    {
+                                        CreateInfo("Сообщение с вашим паролем не было отправлено, обратитесь к администратору!", "red", panel1);
+                                    }
                                     }
                                     else
                                     {
-                                        CreateInfo("Пользователь с таким логином уже существует!", "red");
+                                        CreateInfo("Пользователь с таким логином уже существует!", "red", panel1);
                                     }
                                 }
                                 else
                                 {
-                                    CreateInfo("Введённое уникальное имя уже существует, выберите другое.", "red");
+                                    CreateInfo("Введённое уникальное имя уже существует, выберите другое.", "red", panel1);
                                 }
                             }
                             else
                             {
-                                CreateInfo("Заполнены не все поля для успешной регистрации! Пожалуйста заполните все необходимые поля для регистрации.", "red");
+                                CreateInfo("Заполнены не все поля для успешной регистрации! Пожалуйста заполните все необходимые поля для регистрации.", "red", panel1);
                             }
                         }
                         else
                         {
-                            CreateInfo("Введённый ключ активации неверен! Пожалуйста убедитесь в правильности введённого ключа активации и попробуйде ещё раз.", "red");
+                            CreateInfo("Введённый ключ активации неверен! Пожалуйста убедитесь в правильности введённого ключа активации и попробуйде ещё раз.", "red", panel1);
                             (panel3.Controls["textbox4"] as TextBox).Text = "";
                         }
                     }
                     else
                     {
-                        CreateInfo("Ключ активации не был введён, пожалуйста введите ключ активации для регистрации!", "red");
+                        CreateInfo("Ключ активации не был введён, пожалуйста введите ключ активации для регистрации!", "red", panel1);
                     }
                 break;
                 
                 // Если пользователь не выбрал форму регистрации
                 default:
-                    CreateInfo("Выберите способ регистрации!", "red");
+                       CreateInfo("Выберите способ регистрации!", "red", panel1);
                 break;
             }
         }
@@ -706,62 +726,6 @@ namespace Psico
             WndProc(ref n);
         }
 
-        private void CreateInfo(string labelinfo, string color)
-        {
-            Timer timer = new Timer();
-            timer.Tick += TimerTick;
-            timer.Start();
-
-            Panel panel = new Panel();
-            panel.Name = "panel";
-            panel.Size = new Size(600, 100);
-            panel.Location = new Point(panel1.Width / 2 - panel.Width / 2, panel1.Height / 2 - panel.Height / 2);
-            panel.BackColor = Color.LightGray;
-            panel.BorderStyle = BorderStyle.FixedSingle;
-            panel1.Controls.Add(panel);
-            panel.BringToFront();
-
-            Label label = new Label();
-            label.Name = "label";
-            label.Text = labelinfo;
-            label.Size = new Size(panel.Width, panel.Height);
-            label.Font = new Font(label.Font.FontFamily, 16);
-            label.TextAlign = ContentAlignment.MiddleCenter;
-
-            switch (color)
-            {
-                case "red":
-                    label.ForeColor = Color.Red;
-                    timer.Interval = 5000;
-                    break;
-                case "lime":
-                    label.ForeColor = Color.LimeGreen;
-                    timer.Interval = 2000;
-                    break;
-                default:
-                    label.ForeColor = Color.Black;
-                    timer.Interval = 5000;
-                    break;
-            }
-
-            label.Location = new Point(0, 0);
-            panel.Controls.Add(label);
-            label.BringToFront();
-        }
-
-        private void TimerTick(object sender, EventArgs e)
-        {
-            try
-            {
-                (panel1.Controls["panel"] as Panel).Dispose();
-                (sender as Timer).Stop();
-            }
-            catch
-            {
-
-            }
-        }
-
         private void Formalignment()
         {
             // Адаптация разрешения экрана пользователя
@@ -776,6 +740,67 @@ namespace Psico
             BackColor = Color.PowderBlue;
             panel2.Location = new Point(screen.Size.Width / 2 - panel2.Width / 2, screen.Size.Height / 2 - panel2.Height / 2);
             panel1.Location = new Point(panel2.Width / 2 - panel1.Width / 2, panel2.Height / 2 - panel1.Height / 2);
+        }
+
+        public void CreateInfo(string labelinfo, string color, Panel MainPanel)
+        {
+            Timer timer = new Timer();
+            timer.Tick += Timer_Tick;
+            timer.Interval = 5000;
+            timer.Start();
+
+            Panel panel = new Panel();
+            panel.Name = "panel";
+            panel.Size = new Size(600, 100);
+            panel.Location = new Point(MainPanel.Width / 2 - panel.Width / 2, MainPanel.Height / 2 - panel.Height / 2);
+            panel.BackColor = Color.LightGray;
+            panel.BorderStyle = BorderStyle.FixedSingle;
+            MainPanel.Controls.Add(panel);
+            panel.BringToFront();
+
+            Label label = new Label();
+            label.Name = "label";
+            label.Text = labelinfo;
+            label.Size = new Size(panel.Width, panel.Height);
+            label.Font = new Font(label.Font.FontFamily, 16);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+            label.Location = new Point(0, 0);
+            panel.Controls.Add(label);
+            label.BringToFront();
+
+            switch (color)
+            {
+                case "red":
+                    label.ForeColor = Color.Red;
+                    break;
+                case "lime":
+                    label.ForeColor = Color.LimeGreen;
+                    break;
+                default:
+                    label.ForeColor = Color.Black;
+                    break;
+            }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                (sender as Timer).Stop();
+            }
+            catch
+            {
+            }
+            try
+            {
+                ((panel1.Controls["RestorePassword"] as Panel).Controls["panel"] as Panel).Dispose();
+                (sender as Timer).Stop();
+            }
+            catch
+            {
+
+            }
         }
     }
 }

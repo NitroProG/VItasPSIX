@@ -12,7 +12,7 @@ go
 
 CREATE PROCEDURE [DBO].[defend_add]
 (
-@DefenderKey nvarchar(16)
+@DefenderKey nvarchar(44)
 )
 AS
 	insert into [dbo].[defender]([DefenderKey]) 
@@ -22,7 +22,7 @@ go
 CREATE PROCEDURE [DBO].[defend_update]
 (
 @id_defend int,
-@DefenderKey nvarchar(16)
+@DefenderKey nvarchar(44)
 )
 AS
 	update [dbo].defender
@@ -43,7 +43,7 @@ go
 CREATE PROCEDURE [DBO].[dpo_add]
 (
 @lb_small nvarchar(100),
-@lb nvarchar(max),
+@lb nvarchar(300),
 @lbtext nvarchar(max),
 @lb_image nvarchar(max),
 @lb_image2 nvarchar(max),
@@ -58,7 +58,7 @@ CREATE PROCEDURE [DBO].[dpo_update]
 (
 @dpo_id int,
 @lb_small nvarchar(100),
-@lb nvarchar(max),
+@lb nvarchar(300),
 @lbtext nvarchar(max),
 @lb_image nvarchar(max),
 @lb_image2 nvarchar(max),
@@ -158,7 +158,7 @@ go
 
 CREATE PROCEDURE [DBO].[Fenom1_add]
 (
-@rb nvarchar(50),
+@rb nvarchar(100),
 @rbtext nvarchar(max),
 @zadacha_id int
 )
@@ -169,7 +169,7 @@ go
 CREATE PROCEDURE [DBO].[Fenom1_update]
 (
 @id_fenom1 int,
-@rb nvarchar(50),
+@rb nvarchar(100),
 @rbtext nvarchar(max),
 @zadacha_id int
 )
@@ -180,121 +180,6 @@ AS
 	RBText=@rbtext,
 	zadacha_id=@zadacha_id
 	where id_Fenom1=@id_fenom1
-go
-
-CREATE PROCEDURE [DBO].[Infouser_delete]
-(
-@id_info int
-)
-AS
-	DELETE from [dbo].[InfoUser]
-	where id_Info=@id_info;
-go
-
-CREATE PROCEDURE [DBO].[InfoUser_add]
-(
-@Fam nvarchar(max),
-@Imya nvarchar(max),
-@Otch nvarchar(max),
-@Study nvarchar(30),
-@Work nvarchar(max),
-@Year nvarchar(1),
-@Old int,
-@User_id int
-)
-AS
-	insert into [dbo].[InfoUser]([Fam],[Imya],[Otch],[Study],[Work],[YearUser],[Old],[users_id])
-		   values((@Fam),(@Imya),(@Otch),(@Study),(@Work),(@Year),(@Old),(@User_id));
-go
-
-CREATE PROCEDURE [DBO].[InfoUser_update]
-(
-@id_info int,
-@Fam nvarchar(max),
-@Imya nvarchar(max),
-@Otch nvarchar(max),
-@Study nvarchar(30),
-@Work nvarchar(max),
-@Year nvarchar(1),
-@Old int,
-@User_id int
-)
-AS
-	update [dbo].InfoUser
-	set
-	Fam=@Fam,
-	Imya=@Imya,
-	Otch=@Otch,
-	Study=@Study,
-	Work=@Work,
-	YearUser=@Year,
-	Old=@Old,
-	users_id=@User_id
-	where id_Info=@id_info
-go
-
-CREATE PROCEDURE [DBO].[katamnez_delete]
-(
-@id_katamnez int
-)
-AS
-	DELETE from [dbo].[katamnez]
-	where id_katamnez=@id_katamnez;
-go
-
-CREATE PROCEDURE [DBO].[katamnez_add]
-(
-@katamneztext nvarchar(max),
-@zadacha_id int
-)
-AS
-	insert into [dbo].[katamnez]([katamneztext],[zadacha_id]) values((@katamneztext),(@zadacha_id));
-go
-
-CREATE PROCEDURE [DBO].[katamnez_update]
-(
-@id_katamnez int,
-@katamneztext nvarchar(max),
-@zadacha_id int
-)
-AS
-	update [dbo].katamnez
-	set
-	katamneztext=@katamneztext,
-	zadacha_id=@zadacha_id
-	where id_katamnez=@id_katamnez
-go
-
-CREATE PROCEDURE [DBO].[meropr_delete]
-(
-@id_meropr int
-)
-AS
-	DELETE from [dbo].[meropr]
-	where id_meropr=@id_meropr;
-go
-
-CREATE PROCEDURE [DBO].[meropr_add]
-(
-@meroprtext nvarchar(max),
-@zadacha_id int
-)
-AS
-	insert into [dbo].[meropr]([meroprtext],[zadacha_id]) values((@meroprtext),(@zadacha_id));
-go
-
-CREATE PROCEDURE [DBO].[meropr_update]
-(
-@id_meropr int,
-@meroprtext nvarchar(max),
-@zadacha_id int
-)
-AS
-	update [dbo].meropr
-	set
-	meroprtext=@meroprtext,
-	zadacha_id=@zadacha_id
-	where id_meropr=@id_meropr
 go
 
 CREATE PROCEDURE [DBO].[Lastotv_delete]
@@ -376,22 +261,31 @@ go
 
 CREATE PROCEDURE [DBO].[users_add]
 (
-@User_Login nvarchar(max),
-@User_Password nvarchar(max),
-@User_Mail nvarchar(max),
+@User_Login nvarchar(88),
+@User_Password nvarchar(88),
+@User_Mail nvarchar(216),
+@UserStatus bit,
 @Teacher_id int
 )
 AS
-	insert into [dbo].[users]([User_Login],[User_Password],[User_Mail],[Teacher_id])
-		   values((@User_Login),(@User_Password),(@User_Mail),(@Teacher_id));
+	insert into [dbo].[users]([User_Login],[User_Password],[User_Mail],[UserStatus],[Teacher_id])
+		   values((@User_Login),(@User_Password),(@User_Mail),(@UserStatus),(@Teacher_id));
 go
 
 CREATE PROCEDURE [DBO].[users_update]
 (
 @id_user int,
-@User_Login nvarchar(max),
-@User_Password nvarchar(max),
-@User_Mail nvarchar(max),
+@User_Login nvarchar(50),
+@User_Password nvarchar(88),
+@User_Mail nvarchar(216),
+@Fam nvarchar(150),
+@Imya nvarchar(150),
+@Otch nvarchar(150),
+@Study nvarchar(50),
+@Work nvarchar(300),
+@Year int,
+@Old int,
+@UserStatus bit,
 @Teacher_id int
 )
 AS
@@ -400,6 +294,14 @@ AS
 	User_Login=@User_Login,
 	User_Password=@User_Password,
 	User_Mail=@User_Mail,
+	Fam=@Fam,
+	Imya=@Imya,
+	Otch=@Otch,
+	Study=@Study,
+	Work=@Work,
+	YearUser=@Year,
+	Old=@Old,
+	UserStatus=@UserStatus,
 	Teacher_id=@Teacher_id
 	where id_user=@id_user
 go
@@ -450,8 +352,8 @@ go
 
 CREATE PROCEDURE [DBO].[Zadacha_add]
 (
-@Zapros nvarchar(max),
-@sved nvarchar(max)
+@Zapros nvarchar(300),
+@sved nvarchar(100)
 )
 AS
 	insert into [dbo].[Zadacha]([Zapros],[sved]) values((@Zapros),(@sved));
@@ -460,14 +362,18 @@ go
 CREATE PROCEDURE [DBO].[Zadacha_update]
 (
 @id_zadacha int,
-@Zapros nvarchar(max),
-@sved nvarchar(max)
+@Zapros nvarchar(300),
+@sved nvarchar(100),
+@meroprtext nvarchar(max),
+@katamneztext nvarchar(max)
 )
 AS
 	update [dbo].Zadacha
 	set
 	Zapros=@Zapros,
-	sved=@sved
+	sved=@sved,
+	meroprtext=@meroprtext,
+	katamneztext=@katamneztext
 	where id_zadacha=@id_zadacha
 go
 
@@ -482,9 +388,9 @@ go
 
 CREATE PROCEDURE [DBO].[Dostup_add]
 (
-@UpdateZadach int,
-@UpdateUsers int,
-@WorkZadach int
+@UpdateZadach bit,
+@UpdateUsers bit,
+@WorkZadach bit
 )
 AS
 	insert into [dbo].[Dostup]([UpdateZadach],[UpdateUsers],[WorkZadach]) values((@UpdateZadach),(@UpdateUsers),(@WorkZadach));
@@ -493,9 +399,9 @@ go
 CREATE PROCEDURE [DBO].[Dostup_update]
 (
 @id_Dostup int,
-@UpdateZadach int,
-@UpdateUsers int,
-@WorkZadach int
+@UpdateZadach bit,
+@UpdateUsers bit,
+@WorkZadach bit
 )
 AS
 	update [dbo].Dostup
@@ -553,7 +459,7 @@ go
 CREATE PROCEDURE [DBO].[Teachers_add]
 (
 @Unique_Naim nvarchar(30),
-@User_End_Data nvarchar(10),
+@User_End_Data date,
 @KolvoNeRegStudents int
 )
 AS
@@ -564,7 +470,7 @@ CREATE PROCEDURE [DBO].[Teachers_update]
 (
 @id_teacher int,
 @Unique_Naim nvarchar(30),
-@User_End_Data nvarchar(10),
+@User_End_Data date,
 @KolvoNeRegStudents int
 )
 AS
