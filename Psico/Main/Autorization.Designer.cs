@@ -174,7 +174,7 @@
             this.checkBox1.TabIndex = 9;
             this.checkBox1.Text = "Посмотреть пароль";
             this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.ShowHidePassword);
             // 
             // button3
             // 
@@ -210,7 +210,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1366, 768);
             this.panel2.TabIndex = 3;
-            this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WindowDrag);
             // 
             // hint
             // 
@@ -234,6 +233,7 @@
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormLoad);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Autorization_KeyDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

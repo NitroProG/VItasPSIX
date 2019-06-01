@@ -19,7 +19,11 @@ namespace Psico
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Autorization());
+            
         }
+
+        // Проверка начала решения диагностчиеской задачи
+        public static int checkopenzadacha = 0;
 
         // Номер решаемой задачи
         public static int NomerZadachi;
@@ -27,6 +31,7 @@ namespace Psico
         // Открытие word документа
         public static int WordOpen;
 
+        // Переменная, которая хранит роль пользователя
         public static int UserRole;
 
         // Введённые данные пользователем

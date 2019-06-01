@@ -51,6 +51,15 @@
     <ApplicationIcon>icons8-slack-40.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ARSoft.Tools.Net, Version=2.2.2.0, Culture=neutral, PublicKeyToken=1940454cd762ec57, processorArchitecture=MSIL">
+      <HintPath>..\packages\ARSoft.Tools.Net.2.2.2\lib\net45\ARSoft.Tools.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="BouncyCastle.Crypto, Version=1.7.4137.9688, Culture=neutral, PublicKeyToken=a4292a325f69b123, processorArchitecture=MSIL">
+      <HintPath>..\packages\BouncyCastle.1.7.0\lib\Net40-Client\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EmailValidation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmailValidator.NET.1.0.5\lib\net45\EmailValidation.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Office.Interop.Word.15.0.4797.1003\lib\net20\Microsoft.Office.Interop.Word.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -83,8 +92,7 @@
     <Compile Include="Admin\AddZadacha.Designer.cs">
       <DependentUpon>AddZadacha.cs</DependentUpon>
     </Compile>
-    <Compile Include="Class\DBSQLServerUtils.cs" />
-    <Compile Include="Class\DBUtils.cs" />
+    <Compile Include="Class\CheckExistMail.cs" />
     <Compile Include="Admin\administrator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +151,8 @@
       <DependentUpon>TeacherStudents.cs</DependentUpon>
     </Compile>
     <Compile Include="Class\Shifr.cs" />
+    <Compile Include="Class\SQL_Query.cs" />
+    <Compile Include="Class\SQLConnectionString.cs" />
     <Compile Include="Zadachi\dpo.cs">
       <SubType>Form</SubType>
     </Compile>

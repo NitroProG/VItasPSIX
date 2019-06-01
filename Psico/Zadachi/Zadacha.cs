@@ -1,24 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SqlConn;
-using System.IO;
-using word = Microsoft.Office.Interop.Word;
 using InsertWord;
-using System.Threading;
 
 namespace Psico
 {
     public partial class Zadacha : Form
     {
-        SqlConnection con = DBUtils.GetDBConnection();
+        SqlConnection con = SQLConnectionString.GetDBConnection();
         WordInsert wordinsert = new WordInsert();
         ExitProgram exitProgram = new ExitProgram();
         string podzadacha;
@@ -33,16 +25,20 @@ namespace Psico
             // Если задача решена верно
             if (Program.diagnoz == 3)
             {
+                // Вывод сообщения
                 DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
                 // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
+                    // Формирование протокола
                     ExitFromReshZadacha();
 
+                    // Отправка протокола по почте главному администратору
                     exitProgram.ExProtokolSent();
 
+                    // Выход из программы
                     Application.Exit();
                 }
             }
@@ -50,16 +46,20 @@ namespace Psico
             // Если задача не решена
             else
             {
+                // Вывод сообщения
                 DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
                 // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
+                    // Формирование протокола
                     exitProgram.ExProgr();
 
+                    // Отправка протокола на почту главному администратору
                     exitProgram.ExProtokolSent();
 
+                    // Выход из программы
                     Application.Exit();
                 }
             }
@@ -70,14 +70,17 @@ namespace Psico
             // Если задача решена верно
             if (Program.diagnoz == 3)
             {
+                // Вывод сообщения
                 DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
                 // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
+                    // Формирование протокола
                     ExitFromReshZadacha();
 
+                    // Открытие формы со списком задач
                     SpisokZadach spisokZadach = new SpisokZadach();
                     spisokZadach.Show();
                     Close();
@@ -87,14 +90,17 @@ namespace Psico
             // Если задача не решена
             else
             {
+                // Вывод сообщения
                 DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
                 // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
+                    // Формирование протокола
                     exitProgram.ExProgr();
 
+                    // Открытие формы со списокм задач
                     SpisokZadach spisokZadach = new SpisokZadach();
                     spisokZadach.Show();
                     Close();
@@ -106,14 +112,13 @@ namespace Psico
         {
             //Выбор данных из БД
             con.Open();
+
             SqlCommand get_otd_name = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
             SqlDataReader dr = get_otd_name.ExecuteReader();
 
             // Запись данных из БД
-            dr.Read();
-            label3.Text = dr["Zapros"].ToString();
-            label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
-            dr.Close();
+            label3.Text = new SQL_Query().GetInfoFromBD("select Zapros from zadacha where id_zadacha = " + Program.NomerZadachi + "");
+            label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + new SQL_Query().GetInfoFromBD("select sved from zadacha where id_zadacha = " + Program.NomerZadachi + "") + "";
 
             // Проверка решения задачи
             switch (Program.diagnoz)
@@ -137,7 +142,7 @@ namespace Psico
                     break;
             }
 
-            // Адаптация
+            // Адаптация под разрешение экрана
             new FormAlign().Alignment(panel1,panel2,label3,this,button1,button2,button3);
         }
 
@@ -222,14 +227,8 @@ namespace Psico
             StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
             StrPrc1.ExecuteNonQuery();
 
+            // Формирование протокола
             exitProgram.ExProgr();
-        }
-
-        private void WindowDrag(object sender, MouseEventArgs e)
-        {
-            panel2.Capture = false;
-            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
-            WndProc(ref n);
         }
     }
 }

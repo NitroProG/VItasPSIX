@@ -1,23 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SqlConn;
-using word = Microsoft.Office.Interop.Word;
 using InsertWord;
-using System.Threading;
 
 namespace Psico
 {
     public partial class Fenom1 : Form
     {
-        SqlConnection con = DBUtils.GetDBConnection();
+        SqlConnection con = SQLConnectionString.GetDBConnection();
         int kolvoRb;
         DataGridView datagr = new DataGridView();
         WordInsert wordinsert = new WordInsert();
@@ -30,16 +23,21 @@ namespace Psico
 
         private void OpenMainForm(object sender, EventArgs e)
         {
+            // Выход из окна
             ExitFromThisForm();
 
+            // Запись в протокол
             Program.Insert = "Время общее на этапе феноменологии: " + Program.AllFenom + " сек";
             wordinsert.Ins();
 
+            // Запись данных для графиков
             StageInfo();
 
+            // Запись о времени
             Program.FullAllFenom = Program.FullAllFenom + Program.AllFenom;
             Program.AllFenom = 0;
 
+            // Переход на главноме меню задачи
             Zadacha zadacha = new Zadacha();
             zadacha.Show();
             Close();
@@ -50,6 +48,7 @@ namespace Psico
             // Если задача решена 
             if (Program.diagnoz == 3)
             {
+                // Вывод сообщения
                 DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
@@ -63,6 +62,7 @@ namespace Psico
                     StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
                     StrPrc1.ExecuteNonQuery();
 
+                    // Выход из программы
                     ExitFromProgram();
                 }
             }
@@ -70,12 +70,14 @@ namespace Psico
             // Если задача не решена
             else
             {
+                // Вывод сообщения
                 DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
                 // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
+                    // Выход из программы
                     ExitFromProgram();
                 }
             }
@@ -93,36 +95,25 @@ namespace Psico
             con.Open();
 
             // Выбор данных из БД
-            SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
-            SqlDataReader dr = Zaprosi.ExecuteReader();
-            dr.Read();
-            label3.Text = dr["Zapros"].ToString();
-            label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
-            dr.Close();
+            label3.Text = new SQL_Query().GetInfoFromBD("select Zapros from zadacha where id_zadacha = " + Program.NomerZadachi + "");
+            label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + new SQL_Query().GetInfoFromBD("select sved from zadacha where id_zadacha = " + Program.NomerZadachi + "") + "";
 
             // Выравнивание
             label1.Left = panel1.Width / 2 - label1.Width / 2;
             label3.TextAlign = ContentAlignment.TopCenter;
 
             // Подсчёт количества radiobutton, необходимых для заполнения формы
-            SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from fenom1 where zadacha_id = " + Program.NomerZadachi + "", con);
-            SqlDataReader dr0 = kolvo.ExecuteReader();
-            dr0.Read();
-            kolvoRb = Convert.ToInt32(dr0["kolvo"].ToString());
-            dr0.Close();
-            kolvoRb = kolvoRb + 1;
+            kolvoRb = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select count(*) from fenom1 where zadacha_id = " + Program.NomerZadachi + "")) + 1;
 
             // Создание таблицы с данными из БД
             datagr.Name = "datagrview";
             datagr.Location = new Point(300,300);
-            SqlDataAdapter da1 = new SqlDataAdapter("select rb, rbtext from fenom1 where zadacha_id = " + Program.NomerZadachi + "", con);
-            SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
-            DataSet ds1 = new DataSet();
-            da1.Fill(ds1, "fenom1");
-            datagr.DataSource = ds1.Tables[0];
             datagr.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             panel1.Controls.Add(datagr);
             datagr.Visible = false;
+
+            // Заполнение datagr
+            new SQL_Query().UpdateDatagr("select rb, rbtext from fenom1 where zadacha_id = " + Program.NomerZadachi + "","fenom1",datagr);
 
             // Динамическое создание radiobutton на форме
             for (int y = 150, i = 1; i < kolvoRb; i++)
@@ -141,6 +132,7 @@ namespace Psico
             Program.Insert = "Окно - Феноменология (Свободная форма): ";
             wordinsert.Ins();
 
+            // Адаптация под разрешение экрана
             FormAlign();
         }
 
@@ -169,8 +161,10 @@ namespace Psico
 
         private void OpenNextForm(object sender, EventArgs e)
         {
+            // Выход из окна
             ExitFromThisForm();
 
+            // Переход на следующее окно
             Fenom2 fenom2 = new Fenom2();
             fenom2.Show();
             Close();
@@ -187,6 +181,7 @@ namespace Psico
             // Если задача не решена
             if (Program.diagnoz != 3)
             {
+                // Запись данных о времени
                 Program.AllTBezK = Program.AllTBezK + Program.Fenom1T;
             }
         }
@@ -195,6 +190,7 @@ namespace Psico
         {
             timer1.Enabled = false;
 
+            // Запись данных в поля на форме
             Program.AllT = Program.AllT + Program.Fenom1T;
             Program.AllFenom = Program.Fenom1T + Program.AllFenom;
             Program.fenomenologiya = richTextBox2.Text;
@@ -240,23 +236,17 @@ namespace Psico
 
         private void StageInfo()
         {
+            // Запись данных для графиков
             Program.StageName.Add("Ф");
             Program.StageSec.Add(Program.AllFenom);
             Program.NumberStage.Add(1);
         }
 
-        private void WindowDrag(object sender, MouseEventArgs e)
-        {
-            panel2.Capture = false;
-            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
-            WndProc(ref n);
-        }
 
         private void FormAlign()
         {
             // Адаптация разрешения экрана пользователя
             Rectangle screen = Screen.PrimaryScreen.Bounds;
-
             if (Convert.ToInt32(screen.Size.Width) < 1300)
             {
                 Width = 1024;

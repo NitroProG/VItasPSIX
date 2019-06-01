@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Psico
@@ -19,26 +13,23 @@ namespace Psico
 
         private void OpenNextForm(object sender, EventArgs e)
         {
+            // Открытие формы Список задач
             SpisokZadach spisokZadach = new SpisokZadach();
             spisokZadach.Show();
+
+            // Закрытие этой формы
             Close();
         }
 
         private void FormLoad(object sender, EventArgs e)
         {
+            // Адаптация по разрешению экрана
             FormAlignment();
-        }
-
-        private void WindowDrag(object sender, MouseEventArgs e)
-        {
-            panel2.Capture = false;
-            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
-            WndProc(ref n);
         }
 
         private void FormAlignment()
         {
-            // Адаптация разрешения экрана пользователя
+            // Адаптация по разрешению экрана
             Rectangle screen = Screen.PrimaryScreen.Bounds;
             if (screen.Width < 1360 && screen.Width > 1000)
             {

@@ -1,23 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SqlConn;
 using InsertWord;
-using System.Threading;
 
 namespace Psico
 {
     public partial class dpo : Form
     {
         Rectangle screen = Screen.PrimaryScreen.Bounds;
-        SqlConnection con = DBUtils.GetDBConnection();
+        SqlConnection con = SQLConnectionString.GetDBConnection();
         DataGridView datagr = new DataGridView();
         DataGridView datagr1 = new DataGridView();
         WordInsert wordinsert = new WordInsert();
@@ -45,54 +39,37 @@ namespace Psico
             con.Open();
 
             // Запись данных на форму из БД
-            SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
-            SqlDataReader dr = Zaprosi.ExecuteReader();
-            dr.Read();
-            label3.Text = dr["Zapros"].ToString();
-            label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
-            dr.Close();
+            label3.Text = new SQL_Query().GetInfoFromBD("select Zapros from zadacha where id_zadacha = " + Program.NomerZadachi + "");
+            label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + new SQL_Query().GetInfoFromBD("select sved from zadacha where id_zadacha = " + Program.NomerZadachi + "") + "";
 
-            // Адаптация
+            // Адаптация под разрешение экрана
             FormAlign();
 
             // Выбор количества данных, необходимых для записи в listbox
-            SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from dpo where zadacha_id = " + Program.NomerZadachi + "", con);
-            SqlDataReader dr0 = kolvo.ExecuteReader();
-            dr0.Read();
-            kolvolb = Convert.ToInt32(dr0["kolvo"].ToString());
-            dr0.Close();
-            kolvolb = kolvolb + 1;
+            kolvolb = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select count(*) from dpo where zadacha_id = " + Program.NomerZadachi + ""));
 
             // Выбор количества данных в таблице БД
-            SqlCommand kolvoProsmotr = new SqlCommand("select count(*) as 'kolvo' from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Dpo'", con);
-            SqlDataReader dr1 = kolvoProsmotr.ExecuteReader();
-            dr1.Read();
-            AllProsmotrMerodiks = Convert.ToInt32(dr1["kolvo"].ToString());
-            dr1.Close();
+            AllProsmotrMerodiks = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select count(*) from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Dpo'"));
 
             // Динамическое создание таблицы
             datagr.Name = "datagrview";
             datagr.Location = new Point(300, 300);
-            SqlDataAdapter da1 = new SqlDataAdapter("select lb_small,lb, lbtext, lb_image, lb_image2 from dpo where zadacha_id = " + Program.NomerZadachi + "", con);
-            SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
-            DataSet ds1 = new DataSet();
-            da1.Fill(ds1, "dpo");
-            datagr.DataSource = ds1.Tables[0];
             datagr.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             panel1.Controls.Add(datagr);
             datagr.Visible = false;
 
+            // Обновление datagr
+            new SQL_Query().UpdateDatagr("select lb_small,lb, lbtext, lb_image, lb_image2 from dpo where zadacha_id = " + Program.NomerZadachi + "", "dpo",datagr);
+
             // Динамическое создание таблицы
             datagr1.Name = "datagrview1";
             datagr1.Location = new Point(300, 300);
-            SqlDataAdapter da2 = new SqlDataAdapter("select InfoSelected from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Dpo'", con);
-            SqlCommandBuilder cb2 = new SqlCommandBuilder(da2);
-            DataSet ds2 = new DataSet();
-            da2.Fill(ds2, "OtvSelected");
-            datagr1.DataSource = ds2.Tables[0];
             datagr1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             panel1.Controls.Add(datagr1);
             datagr1.Visible = false;
+
+            // Обновление datagr1
+            new SQL_Query().UpdateDatagr("select InfoSelected from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Dpo'", "OtvSelected", datagr1);
 
             // Динамическое создание richtextbox
             RichTextBox rtb = new RichTextBox();
@@ -201,47 +178,55 @@ namespace Psico
                     StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
                     StrPrc1.ExecuteNonQuery();
 
-                    ExitFromThisForm();
-
-                    exitProgram.ExProgr();
-
-                    exitProgram.ExProtokolSent();
-
-                    Application.Exit();
+                    // Выход
+                    FullExit();
                 }
             }
 
             // Если задача не решена
             else
             {
+                // Вывод сообщения
                 DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
                 // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
-                    ExitFromThisForm();
-
-                    exitProgram.ExProgr();
-
-                    exitProgram.ExProtokolSent();
-
-                    Application.Exit();
+                    // Выход
+                    FullExit();
                 }
             }
         }
 
-        private void OpenMainForm(object sender, EventArgs e)
+        public void FullExit()
         {
+            // Выход из окна
             ExitFromThisForm();
 
-            Zadacha zadacha = new Zadacha();
-            zadacha.Show();
+            // Формирование протокола
+            exitProgram.ExProgr();
+
+            // Отправка протокола
+            exitProgram.ExProtokolSent();
+
+            // Выход из программа
+            Application.Exit();
+        }
+
+        private void OpenMainForm(object sender, EventArgs e)
+        {
+            // Выход из окна
+            ExitFromThisForm();
+
+            // Открытие главной формы задачи
+            new Zadacha().Show();
             Close();
         }
 
         private void ShowListBoxInfo(object sender, EventArgs e)
         {
+            // Показ сведений о выбранной методике
             if (listBox1.SelectedIndex >= 0)
             {  
                 int checkProsmotrmetodik = 0;
@@ -291,18 +276,11 @@ namespace Psico
                     StrPrc1.Parameters.AddWithValue("@Users_id", Program.user);
                     StrPrc1.ExecuteNonQuery();
 
-                    SqlDataAdapter da2 = new SqlDataAdapter("select InfoSelected from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Dpo'", con);
-                    SqlCommandBuilder cb2 = new SqlCommandBuilder(da2);
-                    DataSet ds2 = new DataSet();
-                    da2.Fill(ds2, "OtvSelected");
-                    datagr1.DataSource = ds2.Tables[0];
+                    // Обновление datagr1
+                    new SQL_Query().UpdateDatagr("select InfoSelected from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Dpo'", "OtvSelected",datagr1);
 
                     // Выбор количества данных в таблице БД
-                    SqlCommand kolvoProsmotr = new SqlCommand("select count(*) as 'kolvo' from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Dpo'", con);
-                    SqlDataReader dr1 = kolvoProsmotr.ExecuteReader();
-                    dr1.Read();
-                    AllProsmotrMerodiks = Convert.ToInt32(dr1["kolvo"].ToString());
-                    dr1.Close();
+                    AllProsmotrMerodiks = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select count(*) as 'kolvo' from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Dpo'"));
                 }
 
                 // При выборе данных в listbox
@@ -438,21 +416,15 @@ namespace Psico
 
         private void StageInfo()
         {
+            // Добавление данных для графиков
             Program.StageName.Add("О");
             Program.StageSec.Add(Program.dpoT);
             Program.NumberStage.Add(3);
         }
 
-        private void WindowDrag(object sender, MouseEventArgs e)
-        {
-            panel2.Capture = false;
-            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
-            WndProc(ref n);
-        }
-
         private void FormAlign()
         {
-            // Адаптация разрешения экрана пользователя
+            // Адаптация под разрешение экрана
             if (Convert.ToInt32(screen.Size.Width) < 1300)
             {
                 Width = 1024;

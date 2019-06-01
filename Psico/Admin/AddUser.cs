@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SqlConn;
@@ -14,6 +9,8 @@ namespace Psico
 {
     public partial class AddUser : Form
     {
+        SqlConnection con = SQLConnectionString.GetDBConnection();
+        Timer timer = new Timer();
         int UserSelectedStatus = 0;
         int Admin = 0;
         int teacher = 0;
@@ -26,192 +23,166 @@ namespace Psico
 
         private void OpenMainForm(object sender, EventArgs e)
         {
+            // Открытие главной формы администратора
             OpenMainForm();
         }
 
         private void AddUsers(object sender, EventArgs e)
         {
+            // Объявление переменных
             int TeacherId = 0;
             int checkteacherUniqueNaim = 0;
             string LoginCheck;
 
-            // Подключение к БД
-            SqlConnection con = DBUtils.GetDBConnection();
-            con.Open();
-
+            // Добавление пользователя в зависимости от указанной роли
             switch (comboBox1.SelectedIndex)
             {
                 // Добавление администратора
                 case 0:
-                    // Необходимо заполнить все поля
+                    // Проверка на ввод данных
                     if ((panel1.Controls["textbox1"] as TextBox).Text != "" && (panel1.Controls["textbox2"] as TextBox).Text != "" && (panel1.Controls["textbox3"] as TextBox).Text != "" &&
                         (panel1.Controls["textbox4"] as TextBox).Text != "" && (panel1.Controls["EndDataMask1"] as MaskedTextBox).MaskCompleted == true)
                     {
-                        //Выбор данных из БД
-                        SqlCommand CheckUniqueName = new SqlCommand("select id_teacher from Teachers where Unique_Naim='" + (panel1.Controls["textbox4"].Text) + "'", con);
-                        SqlDataReader dr1 = CheckUniqueName.ExecuteReader();
-                        try
-                        {
-                            // Запись данных из БД
-                            dr1.Read();
-                            checkteacherUniqueNaim = Convert.ToInt32(dr1["id_teacher"].ToString());
-                            dr1.Close();
-                        }
-                        catch
-                        {
-                            checkteacherUniqueNaim = 0;
-                            dr1.Close();
-                        }
+                        // Проверка на существование указанного уникального имени в БД
+                        checkteacherUniqueNaim = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_teacher from Teachers where Unique_Naim='" + (panel1.Controls["textbox4"].Text) + "'"));
 
-                        // Если введённого уникального имени нет в БД
+                        // Если указанное уникальное имя не зарегистрированно в БД
                         if (checkteacherUniqueNaim == 0)
                         {
-                            //Выбор данных из БД
-                            SqlCommand CheckUserLogin = new SqlCommand("select User_Mail from users where User_Login='" + (panel1.Controls["textbox1"].Text) + "'", con);
-                            SqlDataReader dr2 = CheckUserLogin.ExecuteReader();
-                            try
+                            // Проверка на существование указанного логина в БД
+                            LoginCheck = new SQL_Query().GetInfoFromBD("select User_Mail from users where User_Login='" + (panel1.Controls["textbox1"].Text) + "'");
+
+                            // Если указанный логин не существует в БД
+                            if (LoginCheck == "0")
                             {
-                                // Запись данных из БД
-                                dr2.Read();
-                                LoginCheck = dr2["User_Mail"].ToString();
-                                dr2.Close();
-                            }
-                            catch
-                            {
-                                LoginCheck = "";
-                                dr2.Close();
-                            }
+                                // Проверка на существование указанной почты
+                                string CheckMail = "";
+                                CheckMail = new CheckExistMail().CheckMail(panel1.Controls["textbox3"].Text);
 
-                            // Если введённого логина нет в БД
-                            if (LoginCheck == "")
-                            {
-                                //Выбор данных из БД
-                                SqlCommand GetYear = new SqlCommand("select Year(getdate()) as 'year'", con);
-                                SqlDataReader dr3 = GetYear.ExecuteReader();
-                                dr3.Read();
-                                int Nowyear = Convert.ToInt32(dr3["year"]);
-                                dr3.Close();
-
-                                //Выбор данных из БД
-                                SqlCommand GetMonth = new SqlCommand("select Month(getdate()) as 'Month'", con);
-                                SqlDataReader dr4 = GetMonth.ExecuteReader();
-                                dr4.Read();
-                                string NowMonth = dr4["Month"].ToString();
-                                dr4.Close();
-                                if (Convert.ToInt32(NowMonth) < 10)
+                                // Если указанная почта существует
+                                if (CheckMail == "Почтовый ящик существует")
                                 {
-                                    NowMonth = "0" + NowMonth;
-                                }
-
-                                //Выбор данных из БД
-                                SqlCommand GetDay = new SqlCommand("select Day(getdate()) as 'Day'", con);
-                                SqlDataReader dr5 = GetDay.ExecuteReader();
-                                dr5.Read();
-                                string NowDay = dr5["Day"].ToString();
-                                dr5.Close();
-                                if (Convert.ToInt32(NowDay) < 10)
-                                {
-                                    NowDay = "0" + NowDay;
-                                }
-
-                                // Выбор отдельно введённого года
-                                char year1 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[0];
-                                char year2 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[1];
-                                char year3 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[2];
-                                char year4 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[3];
-                                string Year = year1.ToString() + year2.ToString() + year3.ToString() + year4.ToString();
-
-                                // Выбор отдельно введённого месяца
-                                char Month1 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[5];
-                                char Month2 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[6];
-                                string Month = Month1.ToString() + Month2.ToString();
-
-                                // Выбор отдельно введённого дня
-                                char Day1 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[8];
-                                char Day2 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[9];
-                                string Day = Day1.ToString() + Day2.ToString();
-
-                                if (Convert.ToInt16(Month) != 00 && Convert.ToInt16(Day) != 00)
-                                {
-                                    if (Convert.ToInt32(Month) <= 12)
+                                    // Выбор сегодняшней даты
+                                    int Nowyear = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select Year(getdate()) as 'year'"));
+                                    string NowMonth = new SQL_Query().GetInfoFromBD("select Month(getdate()) as 'Month'");
+                                    if (Convert.ToInt32(NowMonth) < 10)
                                     {
-                                        if (Convert.ToInt32(Day) <= 28)
+                                        NowMonth = "0" + NowMonth;
+                                    }
+                                    string NowDay = new SQL_Query().GetInfoFromBD("select Day(getdate()) as 'Day'");
+                                    if (Convert.ToInt32(NowDay) < 10)
+                                    {
+                                        NowDay = "0" + NowDay;
+                                    }
+
+                                    // Выбор отдельно введённого года
+                                    char year1 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[0];
+                                    char year2 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[1];
+                                    char year3 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[2];
+                                    char year4 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[3];
+                                    string Year = year1.ToString() + year2.ToString() + year3.ToString() + year4.ToString();
+
+                                    // Выбор отдельно введённого месяца
+                                    char Month1 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[5];
+                                    char Month2 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[6];
+                                    string Month = Month1.ToString() + Month2.ToString();
+
+                                    // Выбор отдельно введённого дня
+                                    char Day1 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[8];
+                                    char Day2 = (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text[9];
+                                    string Day = Day1.ToString() + Day2.ToString();
+
+                                    // Проверка на корректность указаннного месяца и дня
+                                    if (Convert.ToInt16(Month) != 00 && Convert.ToInt16(Day) != 00)
+                                    {
+                                        // Проверка на указанный месяц
+                                        if (Convert.ToInt32(Month) <= 12)
                                         {
-                                            DateTime NowData = DateTime.Parse("" + NowDay + "/" + NowMonth + "/" + Nowyear + "");
-                                            DateTime UserData = DateTime.Parse("" + Day + "/" + Month + "/" + Year + "");
-
-                                            if (UserData > NowData)
+                                            // Проверка на указанный день
+                                            if (Convert.ToInt32(Day) <= 28)
                                             {
-                                                // Регистрация администратора
-                                                try
+                                                // Объявление сегодняшней и пользовательской даты
+                                                DateTime NowData = DateTime.Parse("" + NowDay + "/" + NowMonth + "/" + Nowyear + "");
+                                                DateTime UserData = DateTime.Parse("" + Day + "/" + Month + "/" + Year + "");
+
+                                                // Если пользовательская дата больше сегодняшней
+                                                if (UserData > NowData)
                                                 {
-                                                    // Запись пользователя как преподавателя
-                                                    SqlCommand StrPrc1 = new SqlCommand("Teachers_add", con);
-                                                    StrPrc1.CommandType = CommandType.StoredProcedure;
-                                                    StrPrc1.Parameters.AddWithValue("@Unique_Naim", (panel1.Controls["textbox4"] as TextBox).Text);
-                                                    StrPrc1.Parameters.AddWithValue("@User_End_Data", (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text);
-                                                    StrPrc1.Parameters.AddWithValue("@KolvoNeRegStudents", 999);
-                                                    StrPrc1.ExecuteNonQuery();
+                                                    try
+                                                    {
+                                                        // Подключение к БД
+                                                        con.Open();
 
-                                                    // Выбор номера преподавателя
-                                                    SqlCommand GetTeacherId = new SqlCommand("select id_teacher as 'id' from Teachers where Unique_Naim='" + (panel1.Controls["textbox4"] as TextBox).Text + "'", con);
-                                                    SqlDataReader dr6 = GetTeacherId.ExecuteReader();
-                                                    dr6.Read();
-                                                    TeacherId = Convert.ToInt32(dr6["id"].ToString());
-                                                    dr6.Close();
+                                                        // Запись пользователя как преподавателя
+                                                        SqlCommand StrPrc1 = new SqlCommand("Teachers_add", con);
+                                                        StrPrc1.CommandType = CommandType.StoredProcedure;
+                                                        StrPrc1.Parameters.AddWithValue("@Unique_Naim", (panel1.Controls["textbox4"] as TextBox).Text);
+                                                        StrPrc1.Parameters.AddWithValue("@User_End_Data", (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text);
+                                                        StrPrc1.Parameters.AddWithValue("@KolvoNeRegStudents", 999);
+                                                        StrPrc1.ExecuteNonQuery();
 
-                                                    // Запись пользователя 
-                                                    SqlCommand StrPrc2 = new SqlCommand("users_add", con);
-                                                    StrPrc2.CommandType = CommandType.StoredProcedure;
-                                                    StrPrc2.Parameters.AddWithValue("@User_Login", (panel1.Controls["textbox1"] as TextBox).Text);
-                                                    StrPrc2.Parameters.AddWithValue("@User_Password", new Shifr().Shifrovka((panel1.Controls["textbox2"] as TextBox).Text, "Pass"));
-                                                    StrPrc2.Parameters.AddWithValue("@User_Mail", new Shifr().Shifrovka((panel1.Controls["textbox3"] as TextBox).Text, "Mail"));
-                                                    StrPrc2.Parameters.AddWithValue("@UserStatus", 0);
-                                                    StrPrc2.Parameters.AddWithValue("@Teacher_id", TeacherId);
-                                                    StrPrc2.ExecuteNonQuery();
+                                                        // Выбор номера преподавателя
+                                                        TeacherId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_teacher as 'id' from Teachers where Unique_Naim='" + (panel1.Controls["textbox4"] as TextBox).Text + "'"));
 
-                                                    // Выбор номера пользователя
-                                                    SqlCommand GetUserID = new SqlCommand("select id_user as 'id' from users where User_Login = '" + (panel1.Controls["textbox1"] as TextBox).Text + "'", con);
-                                                    SqlDataReader dr7 = GetUserID.ExecuteReader();
-                                                    dr7.Read();
-                                                    int UserId = Convert.ToInt32(dr7["id"].ToString());
-                                                    dr7.Close();
+                                                        // Запись пользователя 
+                                                        SqlCommand StrPrc2 = new SqlCommand("users_add", con);
+                                                        StrPrc2.CommandType = CommandType.StoredProcedure;
+                                                        StrPrc2.Parameters.AddWithValue("@User_Login", (panel1.Controls["textbox1"] as TextBox).Text);
+                                                        StrPrc2.Parameters.AddWithValue("@User_Password", new Shifr().Shifrovka((panel1.Controls["textbox2"] as TextBox).Text, "Pass"));
+                                                        StrPrc2.Parameters.AddWithValue("@User_Mail", new Shifr().Shifrovka((panel1.Controls["textbox3"] as TextBox).Text, "Mail"));
+                                                        StrPrc2.Parameters.AddWithValue("@UserStatus", 0);
+                                                        StrPrc2.Parameters.AddWithValue("@Teacher_id", TeacherId);
+                                                        StrPrc2.ExecuteNonQuery();
 
-                                                    // Запись информации о роли пользователя
-                                                    SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
-                                                    StrPrc3.CommandType = CommandType.StoredProcedure;
-                                                    StrPrc3.Parameters.AddWithValue("@Naim", "Admin");
-                                                    StrPrc3.Parameters.AddWithValue("@Users_id", UserId);
-                                                    StrPrc3.Parameters.AddWithValue("@Dostup_id", 1);
-                                                    StrPrc3.ExecuteNonQuery();
+                                                        // Выбор номера пользователя
+                                                        int UserId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_user as 'id' from users where User_Login = '" + (panel1.Controls["textbox1"] as TextBox).Text + "'"));
 
-                                                    MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                        // Запись информации о роли пользователя
+                                                        SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
+                                                        StrPrc3.CommandType = CommandType.StoredProcedure;
+                                                        StrPrc3.Parameters.AddWithValue("@Naim", "Admin");
+                                                        StrPrc3.Parameters.AddWithValue("@Users_id", UserId);
+                                                        StrPrc3.Parameters.AddWithValue("@Dostup_id", 1);
+                                                        StrPrc3.ExecuteNonQuery();
 
-                                                    OpenMainForm();
+                                                        // Отключение от БД
+                                                        con.Close();
+
+                                                        // Вывод сообщения
+                                                        MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                                        // Открытие главной формы администратора
+                                                        OpenMainForm();
+                                                    }
+                                                    catch
+                                                    {
+                                                        CreateInfo("Сообщение с вашим паролем не было отправлено!", "red", panel1);
+                                                        con.Close();
+                                                    }
                                                 }
-                                                catch
+                                                else
                                                 {
-                                                    CreateInfo("Сообщение с вашим паролем не было отправлено!", "red", panel1);
+                                                    CreateInfo("Выбранная вами дата окончания уже прошла!", "red", panel1);
                                                 }
                                             }
                                             else
                                             {
-                                                CreateInfo("Выбранная вами дата окончания уже прошла!", "red", panel1);
+                                                CreateInfo("Максимально возможный для выбора день - 28!", "red", panel1);
                                             }
                                         }
                                         else
                                         {
-                                            CreateInfo("Максимально возможный для выбора день - 28!", "red", panel1);
+                                            CreateInfo("Некорректно введён месяц окончания!", "red", panel1);
                                         }
                                     }
                                     else
                                     {
-                                        CreateInfo("Некорректно введён месяц окончания!", "red", panel1);
+                                        CreateInfo("Некорректно введён месяц или день окончания!", "red", panel1);
                                     }
                                 }
                                 else
                                 {
-                                    CreateInfo("Некорректно введён месяц или день окончания!", "red", panel1);
+                                    CreateInfo(CheckMail,"red",panel1);
                                 }
                             }
                             else
@@ -233,175 +204,152 @@ namespace Psico
                 // Добавление преподавателя
                 case 1:
 
-                    // Проверка введённых данных
+                    // Проверка на ввод данных
                     if ((panel1.Controls["textbox10"] as TextBox).Text != "" && (panel1.Controls["textbox6"] as TextBox).Text != "" && (panel1.Controls["textbox7"] as TextBox).Text != "" && 
                         (panel1.Controls["textbox8"] as TextBox).Text != "" && (panel1.Controls["textbox9"] as TextBox).Text != "" && (panel1.Controls["EndDataMask2"] as MaskedTextBox).MaskCompleted == true)
                     {
-                        //Выбор данных из БД
-                        SqlCommand CheckUniqueName = new SqlCommand("select id_teacher from Teachers where Unique_Naim='" + (panel1.Controls["textbox10"].Text) + "'", con);
-                        SqlDataReader dr1 = CheckUniqueName.ExecuteReader();
+                        //Проверка на существование указанного уникального имени в БД
+                        checkteacherUniqueNaim = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_teacher from Teachers where Unique_Naim='" + (panel1.Controls["textbox10"].Text) + "'"));
 
-                        try
-                        {
-                            // Запись данных из БД
-                            dr1.Read();
-                            checkteacherUniqueNaim = Convert.ToInt32(dr1["id_teacher"].ToString());
-                            dr1.Close();
-                        }
-                        catch
-                        {
-                            checkteacherUniqueNaim = 0;
-                            dr1.Close();
-                        }
-
+                        // Если указанное уникальное имя не зарегистрированно в БД
                         if (checkteacherUniqueNaim == 0)
                         {
-                            //Выбор данных из БД
-                            SqlCommand CheckUserLogin = new SqlCommand("select User_Mail from users where User_Login='" + (panel1.Controls["textbox6"].Text) + "'", con);
-                            SqlDataReader dr2 = CheckUserLogin.ExecuteReader();
+                            // Проверка на существование указанного логина в БД
+                            LoginCheck = new SQL_Query().GetInfoFromBD("select User_Mail from users where User_Login='" + (panel1.Controls["textbox6"].Text) + "'");
 
-                            try
+                            // Если указанный логин не зарегистрирован в БД
+                            if (LoginCheck == "0")
                             {
-                                // Запись данных из БД
-                                dr2.Read();
-                                LoginCheck = dr2["User_Mail"].ToString();
-                                dr2.Close();
-                            }
-                            catch
-                            {
-                                LoginCheck = "";
-                                dr2.Close();
-                            }
+                                // Проверка указанной почты на существование
+                                string checkmail = "";
+                                checkmail = new CheckExistMail().CheckMail(panel1.Controls["textbox8"].Text);
 
-                            if (LoginCheck == "")
-                            {
-                                //Выбор данных из БД
-                                SqlCommand GetYear = new SqlCommand("select Year(getdate()) as 'year'", con);
-                                SqlDataReader dr3 = GetYear.ExecuteReader();
-                                dr3.Read();
-                                int Nowyear = Convert.ToInt32(dr3["year"]);
-                                dr3.Close();
-
-                                //Выбор данных из БД
-                                SqlCommand GetMonth = new SqlCommand("select Month(getdate()) as 'Month'", con);
-                                SqlDataReader dr4 = GetMonth.ExecuteReader();
-                                dr4.Read();
-                                string NowMonth = dr4["Month"].ToString();
-                                dr4.Close();
-
-                                if (Convert.ToInt32(NowMonth) < 10)
+                                // Если указанная почта существует
+                                if (checkmail == "Почтовый ящик существует")
                                 {
-                                    NowMonth = "0" + NowMonth;
-                                }
-
-                                //Выбор данных из БД
-                                SqlCommand GetDay = new SqlCommand("select Day(getdate()) as 'Day'", con);
-                                SqlDataReader dr5 = GetDay.ExecuteReader();
-                                dr5.Read();
-                                string NowDay = dr5["Day"].ToString();
-                                dr5.Close();
-
-                                if (Convert.ToInt32(NowDay) < 10)
-                                {
-                                    NowDay = "0" + NowDay;
-                                }
-
-                                char year1 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[0];
-                                char year2 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[1];
-                                char year3 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[2];
-                                char year4 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[3];
-                                string Year = year1.ToString() + year2.ToString() + year3.ToString() + year4.ToString();
-
-                                char Month1 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[5];
-                                char Month2 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[6];
-                                string Month = Month1.ToString() + Month2.ToString();
-
-                                char Day1 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[8];
-                                char Day2 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[9];
-                                string Day = Day1.ToString() + Day2.ToString();
-
-                                if (Convert.ToInt16(Month) != 00 && Convert.ToInt16(Day) != 00)
-                                {
-                                    if (Convert.ToInt32(Month) <= 12)
+                                    //Выбор сегодняшней даты из БД
+                                    int Nowyear = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select Year(getdate()) as 'year'"));
+                                    string NowMonth = new SQL_Query().GetInfoFromBD("select Month(getdate()) as 'Month'");
+                                    if (Convert.ToInt32(NowMonth) < 10)
                                     {
-                                        if (Convert.ToInt32(Day) <= 28)
+                                        NowMonth = "0" + NowMonth;
+                                    }
+                                    string NowDay = new SQL_Query().GetInfoFromBD("select Day(getdate()) as 'Day'");
+                                    if (Convert.ToInt32(NowDay) < 10)
+                                    {
+                                        NowDay = "0" + NowDay;
+                                    }
+
+                                    // Выбор отдельно введённого года
+                                    char year1 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[0];
+                                    char year2 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[1];
+                                    char year3 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[2];
+                                    char year4 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[3];
+                                    string Year = year1.ToString() + year2.ToString() + year3.ToString() + year4.ToString();
+
+                                    // Выбор отдельно введённого месяца
+                                    char Month1 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[5];
+                                    char Month2 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[6];
+                                    string Month = Month1.ToString() + Month2.ToString();
+
+                                    // Выбор отдельно введённого дня
+                                    char Day1 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[8];
+                                    char Day2 = (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text[9];
+                                    string Day = Day1.ToString() + Day2.ToString();
+
+                                    // Проверка на корректность указаннного месяца и дня
+                                    if (Convert.ToInt16(Month) != 00 && Convert.ToInt16(Day) != 00)
+                                    {
+                                        // Проверка указанного месяца
+                                        if (Convert.ToInt32(Month) <= 12)
                                         {
-                                            DateTime NowData = DateTime.Parse("" + NowDay + "/" + NowMonth + "/" + Nowyear + "");
-                                            DateTime UserData = DateTime.Parse("" + Day + "/" + Month + "/" + Year + "");
-
-                                            if (UserData > NowData)
+                                            // Проверка указанного дня
+                                            if (Convert.ToInt32(Day) <= 28)
                                             {
-                                                // Регистрация
-                                                try
+                                                // Объявление сегодняшней и пользовательской даты
+                                                DateTime NowData = DateTime.Parse("" + NowDay + "/" + NowMonth + "/" + Nowyear + "");
+                                                DateTime UserData = DateTime.Parse("" + Day + "/" + Month + "/" + Year + "");
+
+                                                // Если пользовательская дата больше сегодняшней
+                                                if (UserData > NowData)
                                                 {
-                                                    // Запись данных В БД
-                                                    SqlCommand StrPrc1 = new SqlCommand("Teachers_add", con);
-                                                    StrPrc1.CommandType = CommandType.StoredProcedure;
-                                                    StrPrc1.Parameters.AddWithValue("@Unique_Naim", (panel1.Controls["textbox10"] as TextBox).Text);
-                                                    StrPrc1.Parameters.AddWithValue("@User_End_Data", (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text);
-                                                    StrPrc1.Parameters.AddWithValue("@KolvoNeRegStudents", Convert.ToInt32((panel1.Controls["textbox9"] as TextBox).Text));
-                                                    StrPrc1.ExecuteNonQuery();
+                                                    // Регистрация
+                                                    try
+                                                    {
+                                                        // Подключение к БД
+                                                        con.Open();
 
-                                                    // Выбор количества данных в таблице БД
-                                                    SqlCommand GetTeacherId = new SqlCommand("select id_teacher as 'id' from Teachers where Unique_Naim='" + (panel1.Controls["textbox10"] as TextBox).Text + "'", con);
-                                                    SqlDataReader dr6 = GetTeacherId.ExecuteReader();
-                                                    dr6.Read();
-                                                    TeacherId = Convert.ToInt32(dr6["id"].ToString());
-                                                    dr6.Close();
+                                                        // Запись данных о новом преподавателе
+                                                        SqlCommand StrPrc1 = new SqlCommand("Teachers_add", con);
+                                                        StrPrc1.CommandType = CommandType.StoredProcedure;
+                                                        StrPrc1.Parameters.AddWithValue("@Unique_Naim", (panel1.Controls["textbox10"] as TextBox).Text);
+                                                        StrPrc1.Parameters.AddWithValue("@User_End_Data", (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text);
+                                                        StrPrc1.Parameters.AddWithValue("@KolvoNeRegStudents", Convert.ToInt32((panel1.Controls["textbox9"] as TextBox).Text));
+                                                        StrPrc1.ExecuteNonQuery();
 
-                                                    // Запись данных В БД
-                                                    SqlCommand StrPrc2 = new SqlCommand("users_add", con);
-                                                    StrPrc2.CommandType = CommandType.StoredProcedure;
-                                                    StrPrc2.Parameters.AddWithValue("@User_Login", (panel1.Controls["textbox6"] as TextBox).Text);
-                                                    StrPrc2.Parameters.AddWithValue("@User_Password", new Shifr().Shifrovka((panel1.Controls["textbox7"] as TextBox).Text,"Pass"));
-                                                    StrPrc2.Parameters.AddWithValue("@User_Mail", new Shifr().Shifrovka((panel1.Controls["textbox8"] as TextBox).Text, "Mail"));
-                                                    StrPrc2.Parameters.AddWithValue("@UserStatus", 0);
-                                                    StrPrc2.Parameters.AddWithValue("@Teacher_id", TeacherId);
-                                                    StrPrc2.ExecuteNonQuery();
+                                                        // Выбор номера нового преподавателя
+                                                        TeacherId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_teacher as 'id' from Teachers where Unique_Naim='" + (panel1.Controls["textbox10"] as TextBox).Text + "'"));
 
-                                                    // Выбор количества данных в таблице БД
-                                                    SqlCommand GetUserID = new SqlCommand("select id_user as 'id' from users where User_Login = '" + (panel1.Controls["textbox6"] as TextBox).Text + "'", con);
-                                                    SqlDataReader dr7 = GetUserID.ExecuteReader();
-                                                    dr7.Read();
-                                                    int UserId = Convert.ToInt32(dr7["id"].ToString());
-                                                    dr7.Close();
+                                                        // Запись данных о новом пользователе
+                                                        SqlCommand StrPrc2 = new SqlCommand("users_add", con);
+                                                        StrPrc2.CommandType = CommandType.StoredProcedure;
+                                                        StrPrc2.Parameters.AddWithValue("@User_Login", (panel1.Controls["textbox6"] as TextBox).Text);
+                                                        StrPrc2.Parameters.AddWithValue("@User_Password", new Shifr().Shifrovka((panel1.Controls["textbox7"] as TextBox).Text, "Pass"));
+                                                        StrPrc2.Parameters.AddWithValue("@User_Mail", new Shifr().Shifrovka((panel1.Controls["textbox8"] as TextBox).Text, "Mail"));
+                                                        StrPrc2.Parameters.AddWithValue("@UserStatus", 0);
+                                                        StrPrc2.Parameters.AddWithValue("@Teacher_id", TeacherId);
+                                                        StrPrc2.ExecuteNonQuery();
 
-                                                    // Запись данных В БД
-                                                    SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
-                                                    StrPrc3.CommandType = CommandType.StoredProcedure;
-                                                    StrPrc3.Parameters.AddWithValue("@Naim", "Teacher");
-                                                    StrPrc3.Parameters.AddWithValue("@Users_id", UserId);
-                                                    StrPrc3.Parameters.AddWithValue("@Dostup_id", 2);
-                                                    StrPrc3.ExecuteNonQuery();
+                                                        // Выбор номера пользователя 
+                                                        int UserId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_user as 'id' from users where User_Login = '" + (panel1.Controls["textbox6"] as TextBox).Text + "'"));
 
-                                                    MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                        // Запись данных о роли нового пользователя
+                                                        SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
+                                                        StrPrc3.CommandType = CommandType.StoredProcedure;
+                                                        StrPrc3.Parameters.AddWithValue("@Naim", "Teacher");
+                                                        StrPrc3.Parameters.AddWithValue("@Users_id", UserId);
+                                                        StrPrc3.Parameters.AddWithValue("@Dostup_id", 2);
+                                                        StrPrc3.ExecuteNonQuery();
 
-                                                    OpenMainForm();
+                                                        // Отключение от БД
+                                                        con.Close();
+
+                                                        // Вывод сообщения
+                                                        MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                                        // Открытие главной формы администратора
+                                                        OpenMainForm();
+                                                    }
+                                                    catch
+                                                    {
+                                                        CreateInfo("Сообщение с вашим паролем не было отправлено!", "red", panel1);
+                                                        con.Close();
+                                                    }
                                                 }
-                                                catch
+                                                else
                                                 {
-                                                    CreateInfo("Сообщение с вашим паролем не было отправлено!", "red", panel1);
+                                                    CreateInfo("Выбранная вами дата окончания уже прошла!", "red", panel1);
                                                 }
                                             }
                                             else
                                             {
-                                                CreateInfo("Выбранная вами дата окончания уже прошла!", "red", panel1);
+                                                CreateInfo("Максимально возможный для выбора день - 28!", "red", panel1);
                                             }
                                         }
                                         else
                                         {
-                                            CreateInfo("Максимально возможный для выбора день - 28!", "red", panel1);
+                                            CreateInfo("Некорректно введён месяц окончания!", "red", panel1);
                                         }
                                     }
                                     else
                                     {
-                                        CreateInfo("Некорректно введён месяц окончания!", "red", panel1);
+                                        CreateInfo("Некорректно введён месяц или день окончания!", "red", panel1);
                                     }
                                 }
                                 else
                                 {
-                                    CreateInfo("Некорректно введён месяц или день окончания!", "red", panel1);
-                                }                                
+                                    CreateInfo(checkmail,"red",panel1);
+                                }
                             }
                             else
                             {
@@ -421,127 +369,94 @@ namespace Psico
 
                 // Студент
                 case 2:
+                    // Проверка на ввод данных
                     if ((panel1.Controls["textbox12"] as TextBox).Text != "")
                     {
-                        // Проверка введённых данных
+                        // Проверка на ввод данных
                         if ((panel1.Controls["textbox14"] as TextBox).Text != "" && (panel1.Controls["textbox15"] as TextBox).Text != "" && (panel1.Controls["textbox12"] as TextBox).Text != "" &&
                             (panel1.Controls["textbox13"] as TextBox).Text != "")
                         {
-                            // Проверка на существование преподавателя по его логину
-                            SqlCommand GetTeacherId = new SqlCommand("select id_user as 'id' from users where User_Login = '" + (panel1.Controls["textbox12"] as TextBox).Text + "'", con);
-                            SqlDataReader dr2 = GetTeacherId.ExecuteReader();
+                            // Проверка на существование преподавателя по указанному логину
+                            TeacherId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_user as 'id' from users where User_Login = '" + (panel1.Controls["textbox12"] as TextBox).Text + "'"));
 
-                            try
-                            {
-                                dr2.Read();
-                                TeacherId = Convert.ToInt32(dr2["id"].ToString());
-                                dr2.Close();
-                            }
-
-                            catch
-                            {
-                                TeacherId = 0;
-                                dr2.Close();
-                            }
-
+                            // Если преподаватель существует
                             if (TeacherId != 0)
                             {
                                 // Проверка на существования пользователя с выбранным логином
-                                SqlCommand CheckUserLogin = new SqlCommand("select User_Mail from users where User_Login='" + (panel1.Controls["textbox13"].Text) + "'", con);
-                                SqlDataReader dr1 = CheckUserLogin.ExecuteReader();
+                                LoginCheck = new SQL_Query().GetInfoFromBD("select User_Mail from users where User_Login='" + (panel1.Controls["textbox13"].Text) + "'");
 
-                                try
+                                // Если указанный логин не зарегистрирован в БД
+                                if (LoginCheck == "0")
                                 {
-                                    // Запись данных из БД
-                                    dr1.Read();
-                                    LoginCheck = dr1["User_Mail"].ToString();
-                                    dr1.Close();
-                                }
-                                catch
-                                {
-                                    LoginCheck = "";
-                                    dr1.Close();
-                                }
+                                    // Проверка роли по указанному логину преподавателя
+                                    string CheckRole = new SQL_Query().GetInfoFromBD("select Naim as 'RoleName' from Role where users_id = '" + TeacherId + "'");
 
-                                if (LoginCheck == "")
-                                {
-                                    // Проверка введённого логина преподавателя 
-                                    SqlCommand CheckRoleName = new SqlCommand("select Naim as 'RoleName' from Role where users_id = '" + TeacherId + "'", con);
-                                    SqlDataReader dr3 = CheckRoleName.ExecuteReader();
-                                    dr3.Read();
-                                    string CheckRole = dr3["RoleName"].ToString();
-                                    dr3.Close();
-
+                                    // Если роль является "Преподаватель"
                                     if (CheckRole == "Teacher")
                                     {
-                                        // Выбор номера преподавателя в БД
-                                        SqlCommand GetPrepodId = new SqlCommand("select Teacher_id as 'ID' from users where id_user = '" + TeacherId + "'", con);
-                                        SqlDataReader dr4 = GetPrepodId.ExecuteReader();
-                                        dr4.Read();
-                                        int PrepodID = Convert.ToInt32(dr4["ID"].ToString());
-                                        dr4.Close();
+                                        // Выбор номера преподавателя
+                                        int PrepodID = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select Teacher_id as 'ID' from users where id_user = '" + TeacherId + "'"));
 
-                                        // Проверка на возможность добавить ещё студентов для выбранного преподавателя
-                                        SqlCommand GetKolvoStudent = new SqlCommand("select KolvoNeRegStudents as 'kolvostudents' from Teachers where id_teacher = '" + PrepodID + "'", con);
-                                        SqlDataReader dr5 = GetKolvoStudent.ExecuteReader();
-                                        dr5.Read();
-                                        int studentkolvo = Convert.ToInt32(dr5["kolvostudents"].ToString());
-                                        dr5.Close();
+                                        // Выбор количества возможных регистраций студентов у преподавателя
+                                        int studentkolvo = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select KolvoNeRegStudents as 'kolvostudents' from Teachers where id_teacher = '" + PrepodID + "'"));
 
+                                        // Если количество больше 0
                                         if (studentkolvo > 0)
                                         {
+                                            // Проверка указанной почты на существование
+                                            string checkmail = "";
+                                            checkmail = new CheckExistMail().CheckMail(panel1.Controls["textbox15"].Text);
 
-                                            // Запись данных В БД
-                                            SqlCommand StrPrc2 = new SqlCommand("users_add", con);
-                                            StrPrc2.CommandType = CommandType.StoredProcedure;
-                                            StrPrc2.Parameters.AddWithValue("@User_Login", (panel1.Controls["textbox13"] as TextBox).Text);
-                                            StrPrc2.Parameters.AddWithValue("@User_Password", new Shifr().Shifrovka((panel1.Controls["textbox14"] as TextBox).Text, "Pass"));
-                                            StrPrc2.Parameters.AddWithValue("@User_Mail", new Shifr().Shifrovka((panel1.Controls["textbox15"] as TextBox).Text, "Mail"));
-                                            StrPrc2.Parameters.AddWithValue("@UserStatus", 0);
-                                            StrPrc2.Parameters.AddWithValue("@Teacher_id", PrepodID);
-                                            StrPrc2.ExecuteNonQuery();
+                                            // Если указанная почта существует
+                                            if (checkmail == "Почтовый ящик существует")
+                                            {
+                                                // Подключение к БД
+                                                con.Open();
 
-                                            // Выбор данных в таблице БД
-                                            SqlCommand GetUniqueNaim = new SqlCommand("select Unique_Naim as 'UniqueNaim' from Teachers where id_teacher = '" + PrepodID + "'", con);
-                                            SqlDataReader dr6 = GetUniqueNaim.ExecuteReader();
-                                            dr6.Read();
-                                            string UniqueNaim = dr6["UniqueNaim"].ToString();
-                                            dr6.Close();
+                                                // Запись данных о новом пользователе в БД
+                                                SqlCommand StrPrc2 = new SqlCommand("users_add", con);
+                                                StrPrc2.CommandType = CommandType.StoredProcedure;
+                                                StrPrc2.Parameters.AddWithValue("@User_Login", (panel1.Controls["textbox13"] as TextBox).Text);
+                                                StrPrc2.Parameters.AddWithValue("@User_Password", new Shifr().Shifrovka((panel1.Controls["textbox14"] as TextBox).Text, "Pass"));
+                                                StrPrc2.Parameters.AddWithValue("@User_Mail", new Shifr().Shifrovka((panel1.Controls["textbox15"] as TextBox).Text, "Mail"));
+                                                StrPrc2.Parameters.AddWithValue("@UserStatus", 0);
+                                                StrPrc2.Parameters.AddWithValue("@Teacher_id", PrepodID);
+                                                StrPrc2.ExecuteNonQuery();
 
-                                            // Выбор данных в таблице БД
-                                            SqlCommand GetUserEndData = new SqlCommand("select User_End_Data from Teachers where id_teacher = '" + PrepodID + "'", con);
-                                            SqlDataReader dr8 = GetUserEndData.ExecuteReader();
-                                            dr8.Read();
-                                            string UserEndData = dr8["User_End_Data"].ToString();
-                                            dr8.Close();
+                                                // Объявление переменной с новым значением количества возможных регистраций у преподавателя
+                                                int UpdateStudentKolvo = studentkolvo - 1;
 
-                                            // Изменение количества возможных студентов у преподавателя
-                                            SqlCommand StrPrc4 = new SqlCommand("Teachers_update", con);
-                                            StrPrc4.CommandType = CommandType.StoredProcedure;
-                                            StrPrc4.Parameters.AddWithValue("@id_teacher", PrepodID);
-                                            StrPrc4.Parameters.AddWithValue("@Unique_Naim", UniqueNaim);
-                                            StrPrc4.Parameters.AddWithValue("@User_End_Data", UserEndData);
-                                            StrPrc4.Parameters.AddWithValue("@KolvoNeRegStudents", studentkolvo - 1);
-                                            StrPrc4.ExecuteNonQuery();
+                                                // Изменение количества регистраций студентов у преподавателя
+                                                new SQL_Query().UpdateOneCell("UPDATE teachers SET KolvoNeRegStudents="+UpdateStudentKolvo+" WHERE id_teacher = " + PrepodID + "");
 
-                                            // Выбор номера добавленного пользователя
-                                            SqlCommand GetUserID = new SqlCommand("select id_user as 'id' from users where User_Login = '" + (panel1.Controls["textbox13"] as TextBox).Text + "'", con);
-                                            SqlDataReader dr7 = GetUserID.ExecuteReader();
-                                            dr7.Read();
-                                            int UserId = Convert.ToInt32(dr7["id"].ToString());
-                                            dr7.Close();
+                                                // Выбор номера нового пользователя
+                                                int UserId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_user as 'id' from users where User_Login = '" + (panel1.Controls["textbox13"] as TextBox).Text + "'"));
 
-                                            // Запись данных В БД
-                                            SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
-                                            StrPrc3.CommandType = CommandType.StoredProcedure;
-                                            StrPrc3.Parameters.AddWithValue("@Naim", "Student");
-                                            StrPrc3.Parameters.AddWithValue("@Users_id", UserId);
-                                            StrPrc3.Parameters.AddWithValue("@Dostup_id", 3);
-                                            StrPrc3.ExecuteNonQuery();
+                                                // Запись данных о роли нового пользователя в БД
+                                                SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
+                                                StrPrc3.CommandType = CommandType.StoredProcedure;
+                                                StrPrc3.Parameters.AddWithValue("@Naim", "Student");
+                                                StrPrc3.Parameters.AddWithValue("@Users_id", UserId);
+                                                StrPrc3.Parameters.AddWithValue("@Dostup_id", 3);
+                                                StrPrc3.ExecuteNonQuery();
 
-                                            MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                // Отключение от БД
+                                                con.Close();
 
-                                            OpenMainForm();
+                                                // Вывод сообщения
+                                                MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                                // Открытие главной формы администратора
+                                                OpenMainForm();
+                                            }
+                                            else
+                                            {
+                                                // Вывод сообщени
+                                                CreateInfo(checkmail,"red",panel1);
+
+                                                // Отключение от БД
+                                                con.Close();
+                                            }
                                         }
                                         else
                                         {
@@ -574,7 +489,7 @@ namespace Psico
                     }
                     break;
 
-                // Ничего не выбрано
+                // Тип регистрации не выбран
                 default:
                     CreateInfo("Для добавления пользователя необходимо выбрать его статус и ввести для него данные!","red", panel1);
                     break;
@@ -594,7 +509,7 @@ namespace Psico
                     if (Admin == 0)
                     {
                         // Заполнение Panel1
-                        for (int i = 0; i < 6; i++)
+                        for (int i = 1; i < 6; i++)
                         {
                             // Создание label
                             Label label = new Label();
@@ -867,6 +782,7 @@ namespace Psico
             // Очистка формы
             switch (UserSelectedStatus)
             {
+                // Если выбран тип регистрации "Админ"
                 case 1:
                     if (teacher != 0)
                     {
@@ -909,6 +825,7 @@ namespace Psico
                     }
                     break;
 
+                // Если выбран тип регистрации "Преподаватель"
                 case 2:
                     if (Admin !=0)
                     {
@@ -951,6 +868,7 @@ namespace Psico
                     }                    
                     break;
 
+                // Если выбран тип регистрации "Студент"
                 case 3:
                     if (Admin != 0)
                     {
@@ -997,21 +915,14 @@ namespace Psico
 
         private void OpenMainForm()
         {
-            administrator administrator = new administrator();
-            administrator.Show();
+            //Открытие главной формы администратора
+            new administrator().Show();
             Close();
-        }
-
-        private void WindowDrag(object sender, MouseEventArgs e)
-        {
-            panel2.Capture = false;
-            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
-            WndProc(ref n);
         }
 
         private void FormAlignment()
         {
-            // Адаптация разрешения экрана пользователя
+            // Адаптация под разрешение экрана
             Rectangle screen = Screen.PrimaryScreen.Bounds;
 
             // Позиционирование элементов формы пользователя
@@ -1024,10 +935,12 @@ namespace Psico
 
         private void FormLoad(object sender, EventArgs e)
         {
+            // Адаптация под разрешение экрана
             FormAlignment();
 
+            // Динамическое создание Label
             Label label = new Label();
-            label.Text = "Статус пользователя:";
+            label.Text = "Роль пользователя:";
             label.Location = new Point(67,69);
             label.Font = new Font(label.Font.Name, 16);
             label.AutoSize = true;
@@ -1036,11 +949,22 @@ namespace Psico
 
         public void CreateInfo(string labelinfo, string color, Panel MainPanel)
         {
-            Timer timer = new Timer();
+            // Удаление динамической созданной Panel
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                timer.Stop();
+            }
+            catch
+            {
+            }
+
+            // Создание таймера
             timer.Tick += Timer_Tick;
             timer.Interval = 5000;
             timer.Start();
 
+            // Динамической создание Panel
             Panel panel = new Panel();
             panel.Name = "panel";
             panel.Size = new Size(600, 100);
@@ -1050,16 +974,19 @@ namespace Psico
             MainPanel.Controls.Add(panel);
             panel.BringToFront();
 
+            // Динамической создание Label
             Label label = new Label();
             label.Name = "label";
             label.Text = labelinfo;
             label.Size = new Size(panel.Width, panel.Height);
-            label.Font = new Font(label.Font.FontFamily, 16);
+            label.Font = new Font(label.Font.FontFamily, 14);
             label.TextAlign = ContentAlignment.MiddleCenter;
             label.Location = new Point(0, 0);
             panel.Controls.Add(label);
+            label.Click += Label_Click;
             label.BringToFront();
 
+            // Выбор цвета для шрифта сообщения
             switch (color)
             {
                 case "red":
@@ -1074,17 +1001,29 @@ namespace Psico
             }
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Label_Click(object sender, EventArgs e)
         {
+            // Удаление динамической созданной Panel
             try
             {
                 (panel1.Controls["panel"] as Panel).Dispose();
-                (sender as Timer).Stop();
+                timer.Stop();
             }catch{}
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Удаление динамической созданной Panel
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                timer.Stop();
+            }catch { }
         }
 
         private void ZapretRusAndEng(object sender, KeyPressEventArgs e)
         {
+            // Запрет на ввод букв
             if (Char.IsDigit(e.KeyChar) || Char.IsControl(e.KeyChar)) return;
             else
             {
@@ -1095,7 +1034,8 @@ namespace Psico
 
         private void ZapretRus(object sender, KeyPressEventArgs e)
         {
-            if ((e.KeyChar >= 'A' && e.KeyChar <= 'Z') || (e.KeyChar >= 'a' && e.KeyChar <= 'z') || (e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == '_' || e.KeyChar == (char)Keys.Back)
+            // Запрет на ввод русских букв
+            if ((e.KeyChar >= 'A' && e.KeyChar <= 'Z') || (e.KeyChar >= 'a' && e.KeyChar <= 'z') || (e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == '_' || e.KeyChar == (char)Keys.Back || e.KeyChar == '.' || e.KeyChar == '@')
             {
             }
             else

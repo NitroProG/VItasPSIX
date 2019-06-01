@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Data;
-using Microsoft.Win32;
 
 namespace Psico
 {
@@ -14,9 +8,8 @@ namespace Psico
     {
         public void Alignment(Panel panel1, Panel panel2, Label label3, Form form, Button button1, Button button2, Button button3)
         {
-            // Адаптация разрешения экрана пользователя
+            // Адаптация под разрешение экрана
             Rectangle screen = Screen.PrimaryScreen.Bounds;
-
             if (Convert.ToInt32(screen.Size.Width) < 1300)
             {
                 form.Width = 1024;
@@ -48,7 +41,6 @@ namespace Psico
             button1.Location = new Point(panel1.Width - button1.Width - 10, panel1.Height - button1.Height - 10);
             button2.Location = new Point(10, panel1.Height - button2.Height - 10);
             button3.Location = new Point(panel1.Width - button3.Width - 10, 10);
-
             foreach (Control ctrl in panel1.Controls)
             {
                 if (ctrl is Label || ctrl is RichTextBox)

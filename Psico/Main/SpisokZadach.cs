@@ -1,21 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SqlConn;
-using word = Microsoft.Office.Interop.Word;
 using InsertWord;
 
 namespace Psico
 {
     public partial class SpisokZadach : Form
     {
+        Timer timer = new Timer();
+        SqlConnection con = SQLConnectionString.GetDBConnection();
         DataGridView datagr = new DataGridView();
         WordInsert wordinsert = new WordInsert();
         ExitProgram exprg = new ExitProgram();
@@ -29,12 +24,17 @@ namespace Psico
 
         private void OpenAutorizationForm(object sender, EventArgs e)
         {
-            if (Program.diagnoz != 0)
+            // Если диагностическая задача была решена
+            if (Program.checkopenzadacha != 0)
             {
+                // Отправка сообщения на почту главного администратора с протоколом
                 exprg.ExProtokolSent();
             }
 
-            exprg.UpdateUserStatus();
+            //Изменение статуса пользователя на "Не в сети"
+            new SQL_Query().UpdateOneCell("UPDATE users SET UserStatus=0 WHERE id_user = " + Program.user + "");
+
+            // Открытие формы авторизации
             new Autorization().Show();
             Close();
         }
@@ -42,44 +42,27 @@ namespace Psico
         private void FormLoad(object sender, EventArgs e)
         {
             // Подключение к БД
-            SqlConnection con = DBUtils.GetDBConnection();
             con.Open();
 
-            // Выбор количества решённых задач пользователем
-            SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from resh where users_id = " + Program.user + "", con);
-            SqlDataReader dr0 = kolvo.ExecuteReader();
-            dr0.Read();
-            kolvoreshzadach = Convert.ToInt32(dr0["kolvo"].ToString());
-            dr0.Close();
-            kolvoreshzadach = kolvoreshzadach + 1;
+            // Выбор количества решённых задач студентом
+            kolvoreshzadach = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select count(*) as 'kolvo' from resh where users_id = " + Program.user + "")) + 1;
 
-            // Динамическое создание таблицы 
-            datagr.Name = "datagrview";
-            datagr.Location = new Point(100, 100);
-            SqlDataAdapter da1 = new SqlDataAdapter("select zadacha_id from resh where users_id = " + Program.user + "", con);
-            SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
-            DataSet ds1 = new DataSet();
-            da1.Fill(ds1, "dpo");
-            datagr.DataSource = ds1.Tables[0];
-            datagr.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            panel2.Controls.Add(datagr);
-            datagr.Visible = false;
+            // Заполнение datagr данными из БД
+            new SQL_Query().CreateDatagr("select zadacha_id from resh where users_id = " + Program.user + "","resh",panel2,datagr);
 
-            // Создание списка задач 
-            SqlCommand get_otd_name = new SqlCommand("select id_zadacha as \"ido\" from zadacha", con);
-            SqlDataReader dr = get_otd_name.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Load(dr);
-            comboBox1.DataSource = dt;
-            comboBox1.ValueMember = "ido";
+            // Заполнение combobox данными из БД
+            new SQL_Query().GetInfoForCombobox("select id_zadacha as \"ido\" from zadacha",comboBox1);
 
+            // Адаптация разрешения экрана 
             FormAlignment();
+
+            // Отключение от БД
+            con.Close();
         }
 
         private void OpenNextForm(object sender, EventArgs e)
         {
             // Подключение к БД
-            SqlConnection con = DBUtils.GetDBConnection();
             con.Open();
 
             // Обнуление переменных
@@ -94,79 +77,87 @@ namespace Psico
             Program.diagnoz = 0;
             Program.WordOpen = 0;
             Program.StageName.Clear();
-            Program.StageSec.Clear();
-
+            Program.StageSec.Clear();        
             error = 0;
+
+            // Запись в переменную выбранного номера диагностической задачи
             Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedValue);
 
-            // Проверка данных о решении задачи
+            // Запись данных о начале решения диагностической задачи
+            Program.checkopenzadacha = 1;
+
+            // Цикл выбирающий все решённые задачи
             for (int i = 1; i < kolvoreshzadach; i++)
             {
+                // Проверка выбранной диагностической задачи на решённость
                 if (Convert.ToString(Program.NomerZadachi) == Convert.ToString(datagr.Rows[i-1].Cells[0].Value))
                 {
+                    // Вывод сообщения
                     CreateInfo("Данная диагностическая задача была уже решена!", "red", panel1);
+
+                    // Запись в переменную значение об ошибке
                     error = 1;
                 }
             }
 
-            // Если выбранная задача не решена
+            // Если выбранная диагностическая задача не решена
             if (error == 0)
             {
-                // Запись данных в протокол
                 try
                 {
+                    // Вставка разрыва страницы
                     wordinsert.CreateShift();
 
+                    // Запись данных в протокол
                     Program.Insert = "Диагностическая задача №" + Program.NomerZadachi + "";
                     wordinsert.Ins();
 
                     try
                     {
-                        // Обнуление выбранных ответов пользователем
-                        SqlCommand delete = new SqlCommand("delete from Lastotv where users_id = " + Program.user + "", con);
-                        delete.ExecuteNonQuery();
-                        SqlCommand delete3 = new SqlCommand("delete from OtvSelected where users_id = " + Program.user + "", con);
-                        delete3.ExecuteNonQuery();
+                        // Удаление данных о последних выбранных вариантах ответа пользователя
+                        new SQL_Query().DeleteInfoFromBD("delete from Lastotv where users_id = " + Program.user + "");
 
+                        // Удаление данных о всех выбранных вариантах ответа пользователя
+                        new SQL_Query().DeleteInfoFromBD("delete from OtvSelected where users_id = " + Program.user + "");
+
+                        // Открытие главной формы диагностической задачи
                         Zadacha zadacha = new Zadacha();
                         zadacha.Show();
                         Close();
                     }
-
                     catch
                     {
                         CreateInfo("Ошибка в Базе данных, обратитесь к администратору", "red", panel1);
                     }
                 }
-
                 catch
                 {
                     CreateInfo("Отсутствует шаблон протокола! Обратитесь к администратору.", "red",panel1);
                 }
             }
+            //Отключение от БД
+            con.Close();
         }
 
         private void ExitFromProgram(object sender, EventArgs e)
         {
-            if (Program.diagnoz !=0)
+            // Проверка решения диагностической задачи
+            if (Program.checkopenzadacha !=0)
             {
+                // Отправка сообщения с протоколом главному администратору
                 exprg.ExProtokolSent();
             }
 
-            exprg.UpdateUserStatus();                   
-            Application.Exit();
-        }
+            // Изменение статуса пользователя на "Не в сети"
+            new SQL_Query().UpdateOneCell("UPDATE users SET UserStatus=0 WHERE id_user = " + Program.user + "");
 
-        private void WindowDrag(object sender, MouseEventArgs e)
-        {
-            panel2.Capture = false;
-            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
-            WndProc(ref n);
+            // Выход из программы
+            Application.Exit();
         }
 
         private void FormAlignment()
         {
-            // Адаптация разрешения экрана пользователя
+            // Адаптация разрешения экрана 
             Rectangle screen = Screen.PrimaryScreen.Bounds;
             if (screen.Width < 1360 && screen.Width > 1000)
             {
@@ -182,11 +173,22 @@ namespace Psico
 
         public void CreateInfo(string labelinfo, string color, Panel MainPanel)
         {
-            Timer timer = new Timer();
+            // Удаление динамической созданной Panel
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                timer.Stop();
+            }
+            catch
+            {
+            }
+
+            // Запуск таймера
             timer.Tick += Timer_Tick;
             timer.Interval = 5000;
             timer.Start();
 
+            // Динамическое создание Panel
             Panel panel = new Panel();
             panel.Name = "panel";
             panel.Size = new Size(600, 100);
@@ -196,6 +198,7 @@ namespace Psico
             MainPanel.Controls.Add(panel);
             panel.BringToFront();
 
+            // Динамическое создание Label
             Label label = new Label();
             label.Name = "label";
             label.Text = labelinfo;
@@ -204,8 +207,10 @@ namespace Psico
             label.TextAlign = ContentAlignment.MiddleCenter;
             label.Location = new Point(0, 0);
             panel.Controls.Add(label);
+            label.Click += Label_Click;
             label.BringToFront();
 
+            // Выбор значения по условию переменной color
             switch (color)
             {
                 case "red":
@@ -220,24 +225,29 @@ namespace Psico
             }
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Label_Click(object sender, EventArgs e)
         {
+            // Удаление динамической созданной Panel
             try
             {
                 (panel1.Controls["panel"] as Panel).Dispose();
-                (sender as Timer).Stop();
+                timer.Stop();
             }
             catch
             {
             }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Удаление динамической созданной Panel
             try
             {
-                ((panel1.Controls["RestorePassword"] as Panel).Controls["panel"] as Panel).Dispose();
-                (sender as Timer).Stop();
+                (panel1.Controls["panel"] as Panel).Dispose();
+                timer.Stop();
             }
             catch
             {
-
             }
         }
     }

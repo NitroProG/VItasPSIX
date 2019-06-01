@@ -1,22 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SqlConn;
 using InsertWord;
-using System.Threading;
 
 namespace Psico
 {
     public partial class teor1 : Form
     {
-        SqlConnection con = DBUtils.GetDBConnection();
+        SqlConnection con = SQLConnectionString.GetDBConnection();
         WordInsert wordinsert = new WordInsert();
         ExitProgram exitProgram = new ExitProgram();
 
@@ -30,6 +23,7 @@ namespace Psico
             // Если задача решена
             if (Program.diagnoz == 3)
             {
+                // Вывод сообщения
                 DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
@@ -43,6 +37,7 @@ namespace Psico
                     StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
                     StrPrc1.ExecuteNonQuery();
 
+                    // Выход из программы
                     ExitFromProgram();
                 }
             }
@@ -50,12 +45,14 @@ namespace Psico
             // Если задача не решена
             else
             {
+                // Вывод сообщения
                 DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
                 // Если пользователь нажал ОК
                 if (result == DialogResult.OK)
                 {
+                    // Выход из программы
                     ExitFromProgram();
                 }
             }
@@ -63,16 +60,21 @@ namespace Psico
 
         private void OpenMainForm(object sender, EventArgs e)
         {
+            // Выход из окна
             ExitFromThisForm();
 
+            // Запись в протокол
             Program.Insert = "Время общее на этапе гипотезы: " + Program.AllGip + " сек";
             wordinsert.Ins();
 
+            // Запись данных для графиков
             StageInfo();
 
+            // Запись о времени
             Program.FullAllGip = Program.FullAllGip + Program.AllGip;
             Program.AllGip = 0;
 
+            // Открытие главной формы диагностической задачи
             Zadacha zadacha = new Zadacha();
             zadacha.Show();
             Close();
@@ -80,8 +82,10 @@ namespace Psico
 
         private void OpenNextForm(object sender, EventArgs e)
         {
+            // Выход из окна
             ExitFromThisForm();
 
+            // Открытие следующей формы
             teor2 teor2 = new teor2();
             teor2.Show();
             Close();
@@ -99,18 +103,14 @@ namespace Psico
             con.Open();
 
             // Выбор данных из БД
-            SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
-            SqlDataReader dr = Zaprosi.ExecuteReader();
-            dr.Read();
-            label3.Text = dr["Zapros"].ToString();
-            label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
-            dr.Close();
+            label3.Text = new SQL_Query().GetInfoFromBD("select Zapros from zadacha where id_zadacha = " + Program.NomerZadachi + "");
+            label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + new SQL_Query().GetInfoFromBD("select sved from zadacha where id_zadacha = " + Program.NomerZadachi + "") + "";
 
             // Запись данных в протокол
             Program.Insert = "Окно - Гипотезы (Свободная форма): ";
             wordinsert.Ins();
 
-            // Адаптация
+            // Адаптация под разрешение экрана
             new FormAlign().Alignment(panel1, panel2, label3, this, button1, button2, button3);
         }
 
@@ -125,6 +125,7 @@ namespace Psico
             // Если задача не решена
             if (Program.diagnoz != 3)
             {
+                // Запись о времени
                 Program.AllTBezK = Program.AllTBezK + Program.gip1T;
             }
         }
@@ -150,35 +151,36 @@ namespace Psico
 
         private void ExitFromProgram()
         {
+            // Выход из окна
             ExitFromThisForm();
 
+            // Запись в протокол
             Program.Insert = "Время общее на этапе гипотезы: " + Program.AllGip + " сек";
             wordinsert.Ins();
 
+            // Запись данных для графиков
             StageInfo();
 
+            // Запись о времени
             Program.FullAllGip = Program.FullAllGip + Program.AllGip;
             Program.AllGip = 0;
 
+            // Формирование протокола
             exitProgram.ExProgr();
 
+            // Отправка протокола на почту главному администратору
             exitProgram.ExProtokolSent();
 
+            // Выход из программы
             Application.Exit();
         }
 
         private void StageInfo()
         {
+            // Запись данных для графиков
             Program.StageName.Add("Г");
             Program.StageSec.Add(Program.AllGip);
             Program.NumberStage.Add(2);
-        }
-
-        private void WindowDrag(object sender, MouseEventArgs e)
-        {
-            panel2.Capture = false;
-            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
-            WndProc(ref n);
         }
     }
 }

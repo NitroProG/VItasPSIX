@@ -10,21 +10,24 @@ namespace InsertWord
     {
         public void Ins()
         {
-            // Запись данных  в протокол
             try
             {
+                // Создание процесса Word
                 var wordApp = new word.Application();
 
+                // Открытие Word документа
                 var wordDocument = wordApp.Documents.Open(Program.doc);
-
+                
                 Object missing = System.Reflection.Missing.Value;
 
+                // Закрытие документа и процесса Word
                 if (Program.Insert == "Окончание протокола")
                 {
                     wordApp.Documents.Close();
                     wordApp.Quit();
                 }
 
+                // Запись данных в протокол
                 else
                 {
                     word.Paragraph para1 = wordDocument.Content.Paragraphs.Add(ref missing);
@@ -82,15 +85,16 @@ namespace InsertWord
                     para1.Range.Font.Name = "Times New Roman";
                     para1.Range.InsertParagraphAfter();
 
+                    // Сохранение документа и выход
                     wordDocument.Save();
                     wordApp.Quit();
                 }
             }
-
             catch
             {
+                // Вывод сообщения
                 MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+                                                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -104,12 +108,15 @@ namespace InsertWord
 
         public void CheckboxInsert()
         {
-            // Запись данных в протокол
             try
             {
+                // Создание Word процесса
                 var wordApp = new word.Application();
+
+                // Открытие Word документа
                 var wordDocument = wordApp.Documents.Open(Program.doc);
 
+                // Запись данных в протокол
                 Object missing = System.Reflection.Missing.Value;
 
                 word.Paragraph para1 = wordDocument.Content.Paragraphs.Add(ref missing);
@@ -121,24 +128,27 @@ namespace InsertWord
                 para1.Range.Font.Name = "Times New Roman";
                 para1.Range.InsertParagraphAfter();
 
+                // Сохранение документа и выход 
                 wordDocument.Save();
                 wordApp.Quit();
             }
-
             catch
             {
+                // Вывод сообщения
                 MessageBox.Show("Отсутствует шаблон протокола! Обратитесь в службу поддержки.", "Внимание!",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning); // Вывод сообщения
+                                                              MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         public void CreateShift()
         {
+            // Создание Word процесса
             var wordApp = new word.Application();
 
+            // Открытие WOrd документа
             var wordDocument = wordApp.Documents.Open(Program.doc);
 
-            //Сдвигаемся вниз в конец документа
+            //Вставка разрыва страницы
             object unit;
             object extend;
             unit = word.WdUnits.wdStory;
@@ -146,9 +156,9 @@ namespace InsertWord
             wordApp.Selection.EndKey(ref unit, ref extend);
             object oType;
             oType = word.WdBreakType.wdSectionBreakNextPage;
-            //И на новый лист
             wordApp.Selection.InsertBreak(ref oType);
 
+            // Сохранение документа и выход
             wordApp.Documents.Save();
             wordApp.Quit();
         }

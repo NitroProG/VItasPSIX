@@ -1,36 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using word = Microsoft.Office.Interop.Word;
-using Psico;
-using System.Threading;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using InsertWord;
 using System.Net;
 using System.Net.Mail;
-using System.Drawing;
 using System.Data.SqlClient;
 using SqlConn;
-using System.Data;
 
 namespace Psico
 {
     class ExitProgram
     {
         WordInsert wordinsert = new WordInsert();
-        SqlConnection con = DBUtils.GetDBConnection();
+        SqlConnection con = SQLConnectionString.GetDBConnection();
 
         public void ExProgr()
         {
+
+            // Открытие формы ожидания формирования протокола
             WaitingForm wf = new WaitingForm();
-            wf.UseWaitCursor = true;
             wf.Show();
+            wf.UseWaitCursor = true;
 
             try
             {
-
                 //Добавление данных в протокол
                 Program.Insert = "Окно - Итоги:";
                 wordinsert.Ins();
@@ -50,35 +41,22 @@ namespace Psico
                 wordinsert.Ins();
                 Program.Insert = "Время работы с задачей: " + Program.AllT + " сек";
                 wordinsert.Ins();
-
                 Program.Insert = "Окно - Количественные показатели:";
                 wordinsert.Ins();
                 Program.Insert = "Количество попыток поставить диагноз:" + Program.KolvoOpenZakl + "";
                 wordinsert.Ins();
+                Program.Insert = "Количество просмотренных методик:" + new SQL_Query().GetInfoFromBD("select count(*) as 'kolvo' from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Dpo'") + "";
 
-                // подключение к БД
-                con.Open();
-
-                // Выбор количества данных в таблице БД
-                SqlCommand kolvoProsmotr = new SqlCommand("select count(*) as 'kolvo' from OtvSelected where users_id = " + Program.user + " and FormOtvSelected = 'Dpo'", con);
-                SqlDataReader dr1 = kolvoProsmotr.ExecuteReader();
-                dr1.Read();
-                Program.Insert = "Количество просмотренных методик:"+ dr1["kolvo"].ToString() + "";
-                dr1.Close();
-                wordinsert.Ins();                
-
+                // Открытие формы выхода из программы
                 ExitProtokol ExPr = new ExitProtokol();
                 ExPr.Show();
 
-                con.Close();
-
+                // Закрытие формы
                 wf.Close();
                 ExPr.Close();
             }
-
             catch
             {
-                con.Close();
                 MessageBox.Show("Не удалось записать данные в протокол!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 wf.Close();
             }
@@ -86,15 +64,10 @@ namespace Psico
 
         public void ExProtokolSent()
         {
-            con.Open();
+            // Выбор почты главного администратора
+            string UserMail = new Shifr().DeShifrovka(new SQL_Query().GetInfoFromBD("select User_Mail as 'mail' from users where id_user = 1"), "Mail");
 
-            // Выбор количества данных в таблице БД
-            SqlCommand GetUserMail = new SqlCommand("select User_Mail as 'mail' from users where id_user = 1", con);
-            SqlDataReader dr1 = GetUserMail.ExecuteReader();
-            dr1.Read();
-            string UserMail = dr1["mail"].ToString();
-            dr1.Close();
-
+            // Отправка сообщения с протоколом на почту главному администратору
             try
             {
                 MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", UserMail, "Протокол программы psico.", "Ваш отчёт.");
@@ -104,23 +77,10 @@ namespace Psico
                 client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
                 client.EnableSsl = true;
                 client.Send(mail);
-            }
+            }catch { }
 
-            catch
-            {
-                
-            }
-            con.Close();
-
-            UpdateUserStatus();
-        }
-
-        public void UpdateUserStatus()
-        {
-            con.Open();
-            SqlCommand UpdateUserStatus = new SqlCommand("UPDATE users SET UserStatus=0 WHERE id_user = " + Program.user + "", con);
-            UpdateUserStatus.ExecuteNonQuery();
-            con.Close();
+            // Изменение статуса пользователя на "Не в сети"
+            new SQL_Query().UpdateOneCell("UPDATE users SET UserStatus=0 WHERE id_user = " + Program.user + "");
         }
     }
 }

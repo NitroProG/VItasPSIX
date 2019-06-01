@@ -1,0 +1,1 @@
+Data Source=SQL6003.site4now.net;Initial Catalog=DB_A48030_Psicotest;User Id=DB_A48030_Psicotest_admin;Password=6747960d;

@@ -33,7 +33,6 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -46,7 +45,6 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.textBox6);
             this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.button4);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(197, 11);
@@ -86,21 +84,6 @@
             this.label9.Size = new System.Drawing.Size(72, 23);
             this.label9.TabIndex = 52;
             this.label9.Text = "Поиск:";
-            // 
-            // button5
-            // 
-            this.button5.AutoSize = true;
-            this.button5.BackColor = System.Drawing.Color.PowderBlue;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Times New Roman", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button5.Location = new System.Drawing.Point(727, 684);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(217, 46);
-            this.button5.TabIndex = 36;
-            this.button5.Text = "Изменить статус";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.UpdateUser);
             // 
             // button4
             // 
@@ -152,7 +135,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label1;
     }

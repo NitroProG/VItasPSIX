@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SqlConn;
@@ -14,8 +8,9 @@ namespace Psico
 {
     public partial class TeacherStudents : Form
     {
-        SqlConnection con = DBUtils.GetDBConnection();
+        SqlConnection con = SQLConnectionString.GetDBConnection();
         DataGridView datagr1 = new DataGridView();
+        Timer timer = new Timer();
 
         public TeacherStudents()
         {
@@ -24,8 +19,6 @@ namespace Psico
 
         private void FormLoad(object sender, EventArgs e)
         {
-            con.Open();
-
             // Динамическое создание таблицы
             datagr1.Name = "datagrview1";
             datagr1.Size = new Size(780, 500);
@@ -35,18 +28,10 @@ namespace Psico
             datagr1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             datagr1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             datagr1.CellClick += SelectUser;
-
-            con.Close();
-
-            TableFill();
-
             datagr1.ColumnHeadersDefaultCellStyle.BackColor = Color.PowderBlue;
             datagr1.DefaultCellStyle.SelectionBackColor = Color.PowderBlue;
             datagr1.DefaultCellStyle.SelectionForeColor = Color.Black;
             datagr1.BackgroundColor = Color.White;
-
-            panel1.Controls.Add(datagr1);
-
             datagr1.ReadOnly = true;
             datagr1.AllowUserToResizeColumns = false;
             datagr1.AllowUserToResizeRows = false;
@@ -55,6 +40,13 @@ namespace Psico
             datagr1.AllowUserToOrderColumns = false;
             datagr1.RowHeadersVisible = false;
             datagr1.EnableHeadersVisualStyles = false;
+            panel1.Controls.Add(datagr1);
+
+            // Заполнение таблицы
+            TableFill();
+
+            // Адаптация под разрешение экрана
+            FormAlignment();
 
             datagr1.Columns[0].Visible = false;
             datagr1.Columns[1].HeaderText = "Логин";
@@ -69,92 +61,80 @@ namespace Psico
             datagr1.Columns[10].Visible = false;
             datagr1.Columns[11].HeaderText = "В сети";
             datagr1.Columns[12].Visible = false;
-
-            FormAlignment();
         }
 
         private void SelectUser(object sender, DataGridViewCellEventArgs e)
         {
+            try
+            {
+                // Изменение статуса на противоположный у пользователя
+                if (Convert.ToInt32(datagr1.CurrentRow.Cells[11].Value) == 1)
+                {
+                    // Изменение статуса пользователя на "Не в сети"
+                    new SQL_Query().UpdateOneCell("UPDATE users SET UserStatus=0 WHERE id_user = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
+                }
+                else
+                {
+                    // Изменение статуса пользователя на "В сети"
+                    new SQL_Query().UpdateOneCell("UPDATE users SET UserStatus=1 WHERE id_user = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
+                }
 
+                // Заполнение таблицы
+                TableFill();
+
+                // Вывод сообщения
+                CreateInfo("Статус успешно изменён!", "lime", panel1);
+            }
+            catch
+            {
+                // Вывод сообщения
+                CreateInfo("Необходимо выбрать пользователя в таблице, для того чтобы изменить его статус!", "red", panel1);
+            }
         }
 
         private void TableFill()
         {
-            con.Open();
-
+            // Проверка роли пользователя
             if (Program.UserRole == 1)
             {
-                SqlDataAdapter da1 = new SqlDataAdapter("select * from users",con);
-                SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
-                DataSet ds1 = new DataSet();
-                da1.Fill(ds1, "users");
-                datagr1.DataSource = ds1.Tables[0];
+                // Вывод данных в datagr1
+                new SQL_Query().UpdateDatagr("select * from users","users",datagr1);
             }
             else
             {
-                //Выбор данных из БД
-                SqlCommand GetTeacherId = new SqlCommand("select Teacher_id from users where id_user = " + Program.user + "", con);
-                SqlDataReader dr1 = GetTeacherId.ExecuteReader();
-                dr1.Read();
-                int Teacherid = Convert.ToInt32(dr1["Teacher_id"]);
-                dr1.Close();
+                // Выбор номера преподавателя
+                int Teacherid = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select Teacher_id from users where id_user = " + Program.user + ""));
 
-                SqlDataAdapter da1 = new SqlDataAdapter("select * from users where Teacher_id = " + Teacherid + "", con);
-                SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
-                DataSet ds1 = new DataSet();
-                da1.Fill(ds1, "users");
-                datagr1.DataSource = ds1.Tables[0];
+                // Вывод данных в datagr1
+                new SQL_Query().UpdateDatagr("select * from users where Teacher_id = " + Teacherid + "", "users", datagr1);
             }
 
+            // Отмена выбора ячейки в datagr1
             datagr1.CurrentCell = null;
-
-            con.Close();
         }
 
         private void OpenAutorizationForm(object sender, EventArgs e)
         {
+            // Проверка роли пользователя
             if (Program.UserRole == 1)
             {
+                // Открытие формы администратора
                 new administrator().Show();
             }
             else
             {
-                new ExitProgram().UpdateUserStatus();
+                // Изменение статуса пользователя на "Не в сети"
+                new SQL_Query().UpdateOneCell("UPDATE users SET UserStatus=0 WHERE id_user = " + Program.user + "");
+
+                // Открытие формы авторизации
                 new Autorization().Show();
             }
             Close();
         }
 
-        private void UpdateUser(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Convert.ToInt32(datagr1.CurrentRow.Cells[11].Value) == 1)
-                {
-                    con.Open();
-                    SqlCommand UpdateUserStatus = new SqlCommand("UPDATE users SET UserStatus=0 WHERE id_user = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                    UpdateUserStatus.ExecuteNonQuery();
-                    con.Close();
-                }
-                else
-                {
-                    con.Open();
-                    SqlCommand UpdateUserStatus = new SqlCommand("UPDATE users SET UserStatus=1 WHERE id_user = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                    UpdateUserStatus.ExecuteNonQuery();
-                    con.Close();
-                }
-
-                TableFill();
-            }
-            catch
-            {
-                CreateInfo("Необходимо выбрать пользователя в таблице, для того чтобы изменить его статус!", "red", panel1);
-            }
-        }
-
         private void FormAlignment()
         {
-            // Адаптация разрешения экрана пользователя
+            // Адаптация разрешения экрана
             Rectangle screen = Screen.PrimaryScreen.Bounds;
 
             // Позиционирование элементов формы пользователя
@@ -165,14 +145,14 @@ namespace Psico
 
         private void Find(object sender, EventArgs e)
         {
+            // Заполнение datagr1
             TableFill();
 
-            int Find;
-
+            // Поиск в datagr1
+            int Find;          
             for (int x = 0; x < datagr1.Rows.Count; x++)
             {
                 Find = 0;
-
                 for (int y = 0; y < datagr1.ColumnCount; y++)
                 {
                     if (datagr1.Rows[x].Cells[y].Value.ToString().Contains(textBox6.Text))
@@ -180,23 +160,34 @@ namespace Psico
                         Find = 1;
                     }
                 }
-
                 if (Find != 1)
                 {
                     datagr1.Rows[x].Visible = false;
                 }
             }
 
+            // Очищение строки поиска
             textBox6.Text = "";
         }
 
         public void CreateInfo(string labelinfo, string color, Panel MainPanel)
         {
-            Timer timer = new Timer();
+            // Удаление динамической созданной Panel
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                timer.Stop();
+            }
+            catch
+            {
+            }
+
+            // Создание таймера
             timer.Tick += Timer_Tick;
             timer.Interval = 5000;
             timer.Start();
 
+            // Динамической создание Panel
             Panel panel = new Panel();
             panel.Name = "panel";
             panel.Size = new Size(600, 100);
@@ -206,16 +197,19 @@ namespace Psico
             MainPanel.Controls.Add(panel);
             panel.BringToFront();
 
+            // Динамической создание Label
             Label label = new Label();
             label.Name = "label";
             label.Text = labelinfo;
             label.Size = new Size(panel.Width, panel.Height);
-            label.Font = new Font(label.Font.FontFamily, 16);
+            label.Font = new Font(label.Font.FontFamily, 14);
             label.TextAlign = ContentAlignment.MiddleCenter;
             label.Location = new Point(0, 0);
             panel.Controls.Add(label);
+            label.Click += Label_Click;
             label.BringToFront();
 
+            // Выбор цвета для шрифта сообщения
             switch (color)
             {
                 case "red":
@@ -230,13 +224,30 @@ namespace Psico
             }
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Label_Click(object sender, EventArgs e)
         {
+            // Удаление динамической созданной Panel
             try
             {
                 (panel1.Controls["panel"] as Panel).Dispose();
-                (sender as Timer).Stop();
-            }catch{}
+                timer.Stop();
+            }
+            catch
+            {
+            }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Удаление динамической созданной Panel
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                timer.Stop();
+            }
+            catch
+            {
+            }
         }
     }
 }

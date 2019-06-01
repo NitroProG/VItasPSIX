@@ -106,3 +106,8 @@ C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.UpdateUser.resou
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\bin\Debug\Xceed.Words.NET.dll
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.csproj.CopyComplete
 C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\obj\Debug\Psico.TeacherStudents.resources
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\bin\Debug\ARSoft.Tools.Net.dll
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\bin\Debug\EmailValidation.dll
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\bin\Debug\ARSoft.Tools.Net.xml
+C:\Users\Batya\Documents\GitHub\VItasPSIX\Psico\bin\Debug\BouncyCastle.Crypto.pdb

@@ -1,22 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SqlConn;
 using InsertWord;
-using System.Threading;
 
 namespace Psico
 {
     public partial class dz2 : Form
     {
-        SqlConnection con = DBUtils.GetDBConnection();
+        SqlConnection con = SQLConnectionString.GetDBConnection();
         DataGridView datagr = new DataGridView();
         DataGridView datagr1 = new DataGridView();
         DataGridView datagr2 = new DataGridView();
@@ -47,62 +42,43 @@ namespace Psico
             con.Open();
 
             // Запись данных на форму из БД
-            SqlCommand Zaprosi = new SqlCommand("select Zapros, sved from zadacha where id_zadacha = " + Program.NomerZadachi + "", con);
-            SqlDataReader dr = Zaprosi.ExecuteReader();
-            dr.Read();
-            label3.Text = dr["Zapros"].ToString();
-            label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + dr["sved"].ToString() + "";
-            dr.Close();
+            label3.Text = new SQL_Query().GetInfoFromBD("select Zapros from zadacha where id_zadacha = " + Program.NomerZadachi + "");
+            label1.Text = "Задача №" + Convert.ToString(Program.NomerZadachi) + "   " + new SQL_Query().GetInfoFromBD("select sved from zadacha where id_zadacha = " + Program.NomerZadachi + "") + "";
 
             // Выбор количества checkbox необходимых для заполнения формы
-            SqlCommand kolvo = new SqlCommand("select count(*) as 'kolvo' from CBFormFill where zadacha_id = " + Program.NomerZadachi + " and FormCB = 'Diag'", con);
-            SqlDataReader dr0 = kolvo.ExecuteReader();
-            dr0.Read();
-            kolvoCb = Convert.ToInt32(dr0["kolvo"].ToString());
-            dr0.Close();
-            kolvoCb = kolvoCb + 1;
+            kolvoCb = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select count(*) from CBFormFill where zadacha_id = " + Program.NomerZadachi + " and FormCB = 'Diag'")) + 1;
             stolb = kolvoCb / 2;
 
             // Выбор количества правильных ответов у задачи
-            SqlCommand kolotv = new SqlCommand("select count(*) as 'kolvo' from vernotv where zadacha_id = " + Program.NomerZadachi + " and FormVernOtv = 'Diag'", con);
-            SqlDataReader dr1 = kolotv.ExecuteReader();
-            dr1.Read();
-            kolvootv = Convert.ToInt32(dr1["kolvo"].ToString());
-            dr1.Close();
+            kolvootv = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select count(*) from vernotv where zadacha_id = " + Program.NomerZadachi + " and FormVernOtv = 'Diag'"));
 
             // Динамическое создание таблицы
             datagr.Name = "datagrview";
-            SqlDataAdapter da1 = new SqlDataAdapter("select CB from CBFormFill where zadacha_id = " + Program.NomerZadachi + " and FormCB = 'Diag'", con);
-            SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
-            DataSet ds1 = new DataSet();
-            da1.Fill(ds1, "CBFormFill");
-            datagr.DataSource = ds1.Tables[0];
             datagr.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             panel1.Controls.Add(datagr);
             datagr.Visible = false;
 
+            // Обновление datagr
+            new SQL_Query().UpdateDatagr("select CB from CBFormFill where zadacha_id = " + Program.NomerZadachi + " and FormCB = 'Diag'", "CBFormFill",datagr);
+
             // Динамическое создание таблицы
             datagr1.Name = "datagrview1";
-            SqlDataAdapter da2 = new SqlDataAdapter("select otv from vernotv where zadacha_id = " + Program.NomerZadachi + " and FormVernOtv = 'Diag'", con);
-            SqlCommandBuilder cb2 = new SqlCommandBuilder(da2);
-            DataSet ds2 = new DataSet();
-            da2.Fill(ds2, "vernotv");
-            datagr1.DataSource = ds2.Tables[0];
             datagr1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             panel1.Controls.Add(datagr1);
             datagr1.Visible = false;
 
+            // Обновление datagr1
+            new SQL_Query().UpdateDatagr("select otv from vernotv where zadacha_id = " + Program.NomerZadachi + " and FormVernOtv = 'Diag'", "vernotv",datagr1);
+
             // Создание таблицы с данными из БД
             datagr2.Name = "datagrview2";
             datagr2.Location = new Point(400, 400);
-            SqlDataAdapter da3 = new SqlDataAdapter("select name_otv from Lastotv where users_id = " + Program.user + " and Form_otv = 'Diag'", con);
-            SqlCommandBuilder cb3 = new SqlCommandBuilder(da3);
-            DataSet ds3 = new DataSet();
-            da3.Fill(ds3, "Lastotv");
-            datagr2.DataSource = ds3.Tables[0];
             datagr2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             panel1.Controls.Add(datagr2);
             datagr2.Visible = false;
+
+            // Обновление datagr2
+            new SQL_Query().UpdateDatagr("select name_otv from Lastotv where users_id = " + Program.user + " and Form_otv = 'Diag'", "Lastotv",datagr2);
 
             // Динамическое создание checkbox 
             for (int x = 200, y = 246, i = 1; i < kolvoCb; i++)
@@ -137,11 +113,7 @@ namespace Psico
             }
 
             // Выбор количества правильных ответов у задачи
-            SqlCommand kolotvo = new SqlCommand("select count(*) as 'kolvo' from Lastotv where users_id = " + Program.user + " and Form_otv = 'Diag'", con);
-            SqlDataReader dr2 = kolotvo.ExecuteReader();
-            dr2.Read();
-            kolvovibor = Convert.ToInt32(dr2["kolvo"].ToString());
-            dr2.Close();
+            kolvovibor = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select count(*) from Lastotv where users_id = " + Program.user + " and Form_otv = 'Diag'"));
 
             // Выбор checkbox которые были выбраны в предыдущий раз на форме
             if (datagr2.Rows.Count != 0)
@@ -165,7 +137,7 @@ namespace Psico
             Program.Insert = "Окно - Заключение (Машинный выбор): ";
             wordinsert.Ins();
 
-            // Адаптация
+            // Адаптация под разрешение экрана
             new FormAlign().Alignment(panel1, panel2, label3, this, button1, button2, button3);
         }
 
@@ -174,12 +146,14 @@ namespace Psico
             // Если задача решена
             if (Program.diagnoz == 3)
             {
+                // Вывод сообщения
                 DialogResult result = MessageBox.Show("Если вы закроете программу, у вас не будет возможности вернутся к этой задаче!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
                 // Если пользователь нажал кнопку ОК
                 if (result == DialogResult.OK)
                 {
+                    // Запись данных о выбранных вариантах ответа
                     GetCBChecked();
 
                     // Запись данных в БД о решении задачи пользователем
@@ -189,6 +163,7 @@ namespace Psico
                     StrPrc1.Parameters.AddWithValue("@Zadacha_id", Program.NomerZadachi);
                     StrPrc1.ExecuteNonQuery();
 
+                    // Выход из программы
                     ExitFromProgram();
                 }
             }
@@ -196,14 +171,17 @@ namespace Psico
             // Если задача не решена
             else
             {
+                // Вывод сообщения
                 DialogResult result = MessageBox.Show("Если вы закроете программу, ваши данные не сохранятся!", "Внимание!",
                 MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
 
                 // Если пользователь нажал кнопку ОК
                 if (result == DialogResult.OK)
                 {
+                    // Запись данных о выбранных вариантах ответа
                     GetCBChecked();
 
+                    // Выход из программы   
                     ExitFromProgram();
                 }
             }
@@ -211,10 +189,13 @@ namespace Psico
 
         private void OpenPreviousForm(object sender, EventArgs e)
         {
+            // Запись данных о выбранных вариантах ответа
             GetCBChecked();
 
+            // Выход из окна
             ExitFromThisForm();
 
+            // Открытие предыдущей формы
             dz1 dz1 = new dz1();
             dz1.Show();
             Close();
@@ -222,18 +203,24 @@ namespace Psico
 
         private void OpenMainForm(object sender, EventArgs e)
         {
+            // Запись данных о выбранных вариантах ответа
             GetCBChecked();
 
+            // Выход из окна
             ExitFromThisForm();
 
+            // ЗАпись данных в протокол
             Program.Insert = "Время общее на этапе заключения: " + Program.AllZakl + " сек";
             wordinsert.Ins();
 
+            // Запись данных для графиков
             StageInfo();
 
+            // Запись данных о времени
             Program.FullAllZakl = Program.FullAllZakl + Program.AllZakl;
             Program.AllZakl = 0;
 
+            // Открытие главной формы администратора
             Zadacha zadacha = new Zadacha();
             zadacha.Show();
             Close();
@@ -251,6 +238,7 @@ namespace Psico
             // Если задача не решена
             if (Program.diagnoz != 3)
             {
+                // Запись данных о времени
                 Program.AllTBezK = Program.AllTBezK + Program.zakl2T;
             }
         }
@@ -280,7 +268,7 @@ namespace Psico
                 Program.diagnoz = 1;
             }
 
-            // Проверка решения задачи
+            // Запись данных в протокол
             switch (Program.diagnoz)
             {
                 case 1:
@@ -297,6 +285,7 @@ namespace Psico
                     break;
             }
 
+            // Запись данных о времени
             timer1.Enabled = false;
             Program.AllT = Program.AllT + Program.zakl2T;
             Program.AllZakl = Program.zakl2T + Program.AllZakl;
@@ -304,35 +293,43 @@ namespace Psico
             // Время до решения задачи
             TimeWithoutKatamnez();
 
+            // Запись данных в протокол
             Program.Insert = "Время на заключении (Машинный выбор): " + Program.zakl2T + " сек";
             wordinsert.Ins();
         }
 
         private void ExitFromProgram()
         {
+            // Выход из окна
             ExitFromThisForm();
 
+            // Запись данных в протокол
             Program.Insert = "Время общее на этапе заключения: " + Program.AllZakl + " сек";
             wordinsert.Ins();
 
+            // Запись днных для графиков
             StageInfo();
 
+            // Запись данных о времени
             Program.FullAllZakl = Program.FullAllZakl + Program.AllZakl;
             Program.AllZakl = 0;
 
+            // Формирование протокола
             exitProgram.ExProgr();
 
+            // Отправка протокола
             exitProgram.ExProtokolSent();
 
+            // Выход из программы
             Application.Exit();
         }
 
         private void GetCBChecked()
         {
             // Обновление выбранных ответов
-            SqlCommand delete = new SqlCommand("delete from Lastotv where users_id = " + Program.user + " and Form_otv = 'Diag'", con);
-            delete.ExecuteNonQuery();
+            new SQL_Query().DeleteInfoFromBD("delete from Lastotv where users_id = " + Program.user + " and Form_otv = 'Diag'");
 
+            // Обновление переменных
             int otvchek = 0;
             int otv = 0;
             otv = kolvootv - 1;
@@ -389,16 +386,10 @@ namespace Psico
 
         private void StageInfo()
         {
+            // Запись данных для графиков
             Program.StageName.Add("Д");
             Program.StageSec.Add(Program.AllZakl);
             Program.NumberStage.Add(4);
-        }
-
-        private void WindowDrag(object sender, MouseEventArgs e)
-        {
-            panel2.Capture = false;
-            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
-            WndProc(ref n);
         }
     }
 }

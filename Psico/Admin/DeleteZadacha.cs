@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SqlConn;
@@ -16,7 +10,8 @@ namespace Psico
 {
     public partial class DeleteZadacha : Form
     {
-        SqlConnection con = DBUtils.GetDBConnection();
+        Timer timer = new Timer();
+        SqlConnection con = SQLConnectionString.GetDBConnection();
         int Delete = 0;
         int kolvoPopitok = 0;
         string Key = "";
@@ -28,8 +23,8 @@ namespace Psico
 
         private void OpenMainForm(object sender, EventArgs e)
         {
-            administrator admin = new administrator();
-            admin.Show();
+            // Открытие главной формы администратора
+            new administrator().Show();
             Close();
         }
 
@@ -49,20 +44,14 @@ namespace Psico
 
         private void DeleteZadachaa(object sender, EventArgs e)
         {
-            con.Open();
-
             switch (Delete)
             {
                 case 0:
-
+                    // Вывод сообщения
                     CreateInfo("На почту главного администратора выслан ключ для удаления задачи, вам необходимо его указать и ещё раз нажать на кнопку удаления", "lime", panel1);
 
-                    //Выбор данных из БД
-                    SqlCommand GetMainAdminMail = new SqlCommand("select User_Mail from users where id_user = 1", con);
-                    SqlDataReader dr1 = GetMainAdminMail.ExecuteReader();
-                    dr1.Read();
-                    string MainAdminMail = dr1["User_Mail"].ToString();
-                    dr1.Close();
+                    //Выбор почты главного администратора
+                    string MainAdminMail = new Shifr().DeShifrovka(new SQL_Query().GetInfoFromBD("select User_Mail from users where id_user = 1"), "Mail");
 
                     // Генерация ключа для удаления задачи
                     Key = GetKey();
@@ -70,122 +59,118 @@ namespace Psico
                     try
                     {
                         // Отправка пароля по почте
-                        MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", MainAdminMail, "Программа Psico", "В программе была зарегистрированна попытка удаления задачи пользователем под номером: "+Program.user+", ключ для удаления: " + Key);
+                        MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", MainAdminMail, "Удаление диагностической задачи в программе Psico", "В программе была зарегистрированна попытка удаления задачи пользователем под номером: "+Program.user+", ключ для удаления: " + Key);
                         SmtpClient client = new SmtpClient("smtp.yandex.ru");
                         client.Port = 587;
                         client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
                         client.EnableSsl = true;
                         client.Send(mail);
 
+                        // Обновление формы
+                        comboBox1.Enabled = false;
                         textBox1.Visible = true;
                         Delete = 1;
                     }
                     catch
                     {
+                        // Вывод сообщения
                         CreateInfo("Ошибка отправки ключа, обратитесь к главному администратору!","red", panel1);
                     }
 
                     break;
 
                 case 1:
+                    // Проверка на ввод данных
                     if (textBox1.Text != "")
                     {
-                        if (kolvoPopitok < 10)
+                        // Проверка количества попыток ввода кода подтрвеждения
+                        if (kolvoPopitok < 5)
                         {
+                            // Проверка на корректность указанного кода подтверждения
                             if (textBox1.Text == Key)
                             {
+                                // Вывод сообщения
                                 DialogResult result = MessageBox.Show("Если вы удалите задачу, её не возможно будет вернуть, также задача удалится и у остальных пользователях!", "Внимание!",
                                 MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
+                                // Если была нажата кнопка "Ок"
                                 if (result == DialogResult.Yes)
                                 {
+                                    // Запись в переменную выбранной диагностической задачи
                                     int SelectedNumb = Convert.ToInt32(comboBox1.SelectedValue);
 
                                     // Удаление задачи
-                                    SqlCommand StrPrc1 = new SqlCommand("delete from resh where zadacha_id = " + SelectedNumb + "", con);
-                                    StrPrc1.ExecuteNonQuery();
-                                    SqlCommand StrPrc2 = new SqlCommand("delete from Fenom1 where zadacha_id = " + SelectedNumb + "", con);
-                                    StrPrc2.ExecuteNonQuery();
-                                    SqlCommand StrPrc3 = new SqlCommand("delete from CBFormFill where zadacha_id = " + SelectedNumb + "", con);
-                                    StrPrc3.ExecuteNonQuery();
-                                    SqlCommand StrPrc4 = new SqlCommand("delete from dpo where zadacha_id = " + SelectedNumb + "", con);
-                                    StrPrc4.ExecuteNonQuery();
-                                    SqlCommand StrPrc5 = new SqlCommand("delete from vernotv where zadacha_id = " + SelectedNumb + "", con);
-                                    StrPrc5.ExecuteNonQuery();
-                                    SqlCommand StrPrc6 = new SqlCommand("delete from Zadacha where id_zadacha = " + SelectedNumb + "", con);
-                                    StrPrc6.ExecuteNonQuery();
+                                    new SQL_Query().DeleteInfoFromBD("delete from resh where zadacha_id = " + SelectedNumb + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from Fenom1 where zadacha_id = " + SelectedNumb + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from CBFormFill where zadacha_id = " + SelectedNumb + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from dpo where zadacha_id = " + SelectedNumb + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from vernotv where zadacha_id = " + SelectedNumb + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from Zadacha where id_zadacha = " + SelectedNumb + "");
 
-                                    // Создание списка задач 
-                                    SqlCommand get_otd_name = new SqlCommand("select id_zadacha as \"ido\" from zadacha", con);
-                                    SqlDataReader dr2 = get_otd_name.ExecuteReader();
-                                    DataTable dt = new DataTable();
-                                    dt.Load(dr2);
-                                    comboBox1.DataSource = dt;
-                                    comboBox1.ValueMember = "ido";
+                                    // Обновление списка задач
+                                    new SQL_Query().GetInfoForCombobox("select id_zadacha as \"ido\" from zadacha",comboBox1);
 
+                                    // Вывод сообщения
                                     CreateInfo("Задача успешно удалена!", "lime", panel1);
 
+                                    // Обновление формы
                                     textBox1.Visible = false;
+                                    textBox1.Text = "";
+                                    comboBox1.Enabled = true;
                                     Delete = 0;
+                                    kolvoPopitok = 0;
                                 }
                                 else
                                 {
+                                    // Открытие главной формы администратора
                                     new administrator().Show();
                                     Close();
                                 }
                             }
                             else
                             {
+                                // Вывод сообщения
                                 CreateInfo("Указанный ключ для удаления задачи неверен!", "red", panel1);
                             }
                         }
                         else
                         {
+                            // Обновление формы
                             textBox1.Visible = false;
+                            textBox1.Text = "";
+                            comboBox1.Enabled = true;
                             Delete = 0;
                             kolvoPopitok = 0;
+
+                            // Вывод сообщения
                             CreateInfo("Вы превысили лимит попыток ввода ключа для удаления задачи, вам необходимо отправить новый ключ главному администратору!", "red", panel1);
                         }
                     }
                     else
                     {
+                        // Вывод сообщения
                         CreateInfo("Необходимо ввести ключ для удаления задачи!", "red", panel1);
                     }
                     break;
             }
 
-            con.Close();
+            // Прибавление количества попыток ввода кода подтверждения
             kolvoPopitok++;
         }
 
         private void FormLoad(object sender, EventArgs e)
         {
-            // Подключение к БД
-            con.Open();
+            // Обновление списка задач
+            new SQL_Query().GetInfoForCombobox("select id_zadacha as \"ido\" from zadacha", comboBox1);
+            comboBox1.Width = 100;
 
-            // Создание списка задач 
-            SqlCommand get_otd_name = new SqlCommand("select id_zadacha as \"ido\" from zadacha", con);
-            SqlDataReader dr = get_otd_name.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Load(dr);
-            comboBox1.DataSource = dt;
-            comboBox1.ValueMember = "ido";
-
-            con.Close();
-
+            // Адаптация под разрешение экрана
             FormAlignment();
-        }
-
-        private void WindowDrag(object sender, MouseEventArgs e)
-        {
-            panel2.Capture = false;
-            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
-            WndProc(ref n);
         }
 
         private void FormAlignment()
         {
-            // Адаптация разрешения экрана пользователя
+            // Адаптация под разрешение экрана
             Rectangle screen = Screen.PrimaryScreen.Bounds;
 
             // Позиционирование элементов формы пользователя
@@ -198,11 +183,22 @@ namespace Psico
 
         public void CreateInfo(string labelinfo, string color, Panel MainPanel)
         {
-            Timer timer = new Timer();
+            // Удаление динамической созданной Panel
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                timer.Stop();
+            }
+            catch
+            {
+            }
+
+            // Создание таймера
             timer.Tick += Timer_Tick;
             timer.Interval = 5000;
             timer.Start();
 
+            // Динамической создание Panel
             Panel panel = new Panel();
             panel.Name = "panel";
             panel.Size = new Size(600, 100);
@@ -212,16 +208,19 @@ namespace Psico
             MainPanel.Controls.Add(panel);
             panel.BringToFront();
 
+            // Динамической создание Label
             Label label = new Label();
             label.Name = "label";
             label.Text = labelinfo;
             label.Size = new Size(panel.Width, panel.Height);
-            label.Font = new Font(label.Font.FontFamily, 14);
+            label.Font = new Font(label.Font.FontFamily, 16);
             label.TextAlign = ContentAlignment.MiddleCenter;
             label.Location = new Point(0, 0);
             panel.Controls.Add(label);
+            label.Click += Label_Click;
             label.BringToFront();
 
+            // Выбор цвета для шрифта сообщения
             switch (color)
             {
                 case "red":
@@ -236,14 +235,30 @@ namespace Psico
             }
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Label_Click(object sender, EventArgs e)
         {
+            // Удаление динамической созданной Panel
             try
             {
                 (panel1.Controls["panel"] as Panel).Dispose();
-                (sender as Timer).Stop();
+                timer.Stop();
             }
-            catch { }
+            catch
+            {
+            }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Удаление динамической созданной Panel
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                timer.Stop();
+            }
+            catch
+            {
+            }
         }
     }
 }

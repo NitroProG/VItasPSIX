@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using word = Microsoft.Office.Interop.Word;
 using System.Data.SqlClient;
@@ -15,8 +10,9 @@ namespace Psico
 {
     public partial class Anketa : Form
     {
-        SqlConnection con = DBUtils.GetDBConnection();
+        SqlConnection con = SQLConnectionString.GetDBConnection();
         DataGridView datagr = new DataGridView();
+        Timer timer = new Timer();
 
         public Anketa()
         {
@@ -36,17 +32,13 @@ namespace Psico
             // Подключение к БД
             con.Open();
 
+            // Адаптация под разрешение экрана
             FormAlignment();
 
-            // Динамическое создание таблицы
-            SqlDataAdapter da1 = new SqlDataAdapter("select * from users where id_user = " + Program.user + "", con);
-            SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
-            DataSet ds1 = new DataSet();
-            da1.Fill(ds1, "users");
-            datagr.DataSource = ds1.Tables[0];
-            panel2.Controls.Add(datagr);
-            datagr.Visible = false;
+            // Заполнение datagr
+            new SQL_Query().CreateDatagr("select * from users where id_user = " + Program.user + "", "users",panel2,datagr);
 
+            // Если студент уже указывал личные данные
             if (datagr.Rows[0].Cells[4].Value.ToString() != "")
             {
                 textBox1.Text = datagr.Rows[0].Cells[4].Value.ToString();
@@ -61,21 +53,26 @@ namespace Psico
 
         private void OpenFormAutorization(object sender, EventArgs e)
         {
-            new ExitProgram().UpdateUserStatus();
+            // Изменение статуса пользователя на "Не в сети"
+            new SQL_Query().UpdateOneCell("UPDATE users SET UserStatus=0 WHERE id_user = " + Program.user + "");
+
+            // Открытие формы авторизации
             new Autorization().Show();
+
+            // Закрытие этой формы
             Close();
         }
 
         private void OpenNextForm(object sender, EventArgs e)
         {
-            // Присвоение переменным даты и времени
+            // Присвоение к переменным даты и времени
             var date = DateTime.Now.ToString("dd.MM.yyyy");
             var timeProtokol = DateTime.Now.ToString("HH.mm.ss");
 
-            // проверка на заполнение данных
+            // проверка на ввод данных
             if (textBox1.Text !="" || textBox2.Text !="" || textBox4.Text != "" || textBox5.Text != "" || textBox6.Text != "")
             {
-                // Присвоение переменным, заполенными данными
+                // Присвоение к переменным, указанными данными
                 Program.FIO = textBox1.Text +" "+ textBox6.Text +" "+ textBox7.Text;
                 Program.Study = textBox2.Text;
                 Program.Work = textBox3.Text;
@@ -100,6 +97,7 @@ namespace Psico
                 StrPrc1.Parameters.AddWithValue("@Teacher_id", Convert.ToInt16(datagr.Rows[0].Cells[12].Value));
                 StrPrc1.ExecuteNonQuery();
 
+                // Создание процесса Word
                 var wordApp = new word.Application();
 
                 try
@@ -122,6 +120,7 @@ namespace Psico
                     wordDocument.SaveAs2(Program.doc); 
                     wordApp.Quit();
 
+                    // Открытие формы вступления
                     Vstuplenie vstuplenie = new Vstuplenie();
                     vstuplenie.Show();
                     Close();
@@ -142,22 +141,16 @@ namespace Psico
 
         private void ExitFromProgram(object sender, EventArgs e)
         {
-            new ExitProgram().UpdateUserStatus();
+            // Изменение статуса пользователя на "Не в сети"
+            new SQL_Query().UpdateOneCell("UPDATE users SET UserStatus=0 WHERE id_user = " + Program.user + "");
 
             // Выход из программы
             Application.Exit(); 
         }
 
-        private void WindowDrag(object sender, MouseEventArgs e)
-        {
-            panel2.Capture = false;
-            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
-            WndProc(ref n);
-        }
-
         private void FormAlignment()
         {
-            // Адаптация разрешения экрана пользователя
+            // Адаптация под разрешение экрана
             Rectangle screen = Screen.PrimaryScreen.Bounds;
             if (screen.Width < 1360 && screen.Width > 1000)
             {
@@ -173,11 +166,22 @@ namespace Psico
 
         public void CreateInfo(string labelinfo, string color, Panel MainPanel)
         {
-            Timer timer = new Timer();
+            // Удаление динамической созданной Panel
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                timer.Stop();
+            }
+            catch
+            {
+            }
+
+            // Создание таймера
             timer.Tick += Timer_Tick;
             timer.Interval = 5000;
             timer.Start();
 
+            // Динамической создание Panel
             Panel panel = new Panel();
             panel.Name = "panel";
             panel.Size = new Size(600, 100);
@@ -187,6 +191,7 @@ namespace Psico
             MainPanel.Controls.Add(panel);
             panel.BringToFront();
 
+            // Динамической создание Label
             Label label = new Label();
             label.Name = "label";
             label.Text = labelinfo;
@@ -195,8 +200,10 @@ namespace Psico
             label.TextAlign = ContentAlignment.MiddleCenter;
             label.Location = new Point(0, 0);
             panel.Controls.Add(label);
+            label.Click += Label_Click;
             label.BringToFront();
 
+            // Выбор цвета для шрифта сообщения
             switch (color)
             {
                 case "red":
@@ -211,18 +218,35 @@ namespace Psico
             }
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Label_Click(object sender, EventArgs e)
         {
+            // Удаление динамической созданной Panel
             try
             {
                 (panel1.Controls["panel"] as Panel).Dispose();
-                (sender as Timer).Stop();
+                timer.Stop();
             }
-            catch { }
+            catch
+            {
+            }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Удаление динамической созданной Panel
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                timer.Stop();
+            }
+            catch
+            {
+            }
         }
 
         private void ZapretRusAndEng(object sender, KeyPressEventArgs e)
         {
+            // Разрешение на ввод только цифр
             if (Char.IsDigit(e.KeyChar) || Char.IsControl(e.KeyChar)) return;
             else
             {
@@ -233,7 +257,8 @@ namespace Psico
 
         private void ZapretNumber(object sender, KeyPressEventArgs e)
         {
-            if (Char.IsControl(e.KeyChar) || Char.IsLetter(e.KeyChar)) return;
+            // Запрет на ввод цифр
+            if (Char.IsControl(e.KeyChar) || Char.IsLetter(e.KeyChar) || Char.IsSeparator(e.KeyChar)) return;
             else
             {
                 e.Handled = true;

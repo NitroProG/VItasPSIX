@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SqlConn;
@@ -14,7 +8,8 @@ namespace Psico
 {
     public partial class DeleteUser : Form
     {
-        SqlConnection con = DBUtils.GetDBConnection();
+        Timer timer = new Timer();
+        SqlConnection con = SQLConnectionString.GetDBConnection();
         DataGridView datagr1 = new DataGridView();
         ComboBox ComboBox1 = new ComboBox();
         RadioButton RadioButton1 = new RadioButton();
@@ -28,11 +23,13 @@ namespace Psico
 
         private void OpenMainForm(object sender, EventArgs e)
         {
+            // Открытие главной формы администратора
             GetOpenMainForm();
         }
 
         private void FormLoad(object sender, EventArgs e)
         {
+            // Подключение к БД
             con.Open();
 
             // Динамическое создание таблицы
@@ -44,6 +41,7 @@ namespace Psico
             datagr1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             datagr1.CellClick += SelectUser;
 
+            // Заполнение datagr1
             DatagrInfo();
 
             panel1.Controls.Add(datagr1);
@@ -64,7 +62,6 @@ namespace Psico
             datagr1.Columns[1].HeaderText = "Логин пользователя";
             datagr1.Columns[2].HeaderText = "Роль пользователя";
 
-
             label2.Location = new Point(datagr1.Location.X,datagr1.Location.Y-30);
 
             // Динамическое создание combobox
@@ -75,7 +72,7 @@ namespace Psico
             ComboBox1.Font = new Font(ComboBox1.Font.FontFamily, 12);
             panel1.Controls.Add(ComboBox1);
 
-            // Динамическое создание combobox
+            // Динамическое создание radiobutton
             RadioButton1.Name = "Radiobutton1";
             RadioButton1.Text = "Пользователя.";
             RadioButton1.Location = new Point(label4.Location.X+20, label4.Location.Y+20);
@@ -84,7 +81,7 @@ namespace Psico
             RadioButton1.Click += UserSettingChanged;
             panel1.Controls.Add(RadioButton1);
 
-            // Динамическое создание combobox
+            // Динамическое создание radiobutton
             RadioButton2.Name = "Radiobutton2";
             RadioButton2.Text = "Решённую задачу.";
             RadioButton2.Location = new Point(label4.Location.X+20, label4.Location.Y+60);
@@ -93,132 +90,123 @@ namespace Psico
             RadioButton2.Font = new Font(RadioButton2.Font.FontFamily, 12);
             panel1.Controls.Add(RadioButton2);
 
+            // Адаптация под разрешение экаран
             FormAlignment();
         }
 
         private void UserSettingChanged(object sender, EventArgs e)
         {
+            // Изменение типа удаления на "Удаление пользователя"
             checkSettingForDelete = 1;
         }
 
         private void ZadachaSettingChanged(object sender, EventArgs e)
         {
+            // Изменение типа удаления на "Удаление задачи"
             checkSettingForDelete = 2;
         }
 
         private void SelectUser(object sender, DataGridViewCellEventArgs e)
         {
-            // Создание списка задач 
-            SqlCommand get_otd_name = new SqlCommand("select Zadacha_id as \"ido\" from resh where users_id = '" + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "'", con);
-            SqlDataReader dr = get_otd_name.ExecuteReader();
-            DataTable dt = new DataTable();
-            dt.Load(dr);
-            (panel1.Controls["Combobox1"] as ComboBox).DataSource = dt;
-            (panel1.Controls["Combobox1"] as ComboBox).ValueMember = "ido";
+            // Заполнение combobox
+            new SQL_Query().GetInfoForCombobox("select Zadacha_id as \"ido\" from resh where users_id = '" + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "'", (panel1.Controls["Combobox1"] as ComboBox));
         }
 
         private void DeleteUsers(object sender, EventArgs e)
         {
+            // Удаление данных в зависимости от указанного типа удаления
             switch (checkSettingForDelete)
             {
+                // Если тип удаления не выбран
                 case 0:
                     CreateInfo("Для удаления необходимо выбрать что вы хотите удалить: пользователя или решённую им задачу!", "red", panel1);
                     break;
-
+                
+                // если выбран тип "Удаление пользователя"
                 case 1:
+                    // Проверка на удаление главного администратора
                     if (datagr1.CurrentRow.Cells[1].Value.ToString() != "admin" || datagr1.CurrentRow.Cells[2].Value.ToString() != "Admin")
                     {
                         try
                         {
+                            // Удаление данных в зависимости от роли пользователя, которого необходимо удалить
                             switch (datagr1.CurrentRow.Cells[2].Value.ToString())
                             {
+                                // Если роль пользователя "Админ"
                                 case "Admin":
                                     // Удаление данных
-                                    SqlCommand delete1 = new SqlCommand("delete from Role where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete1.ExecuteNonQuery();
-                                    SqlCommand delete2 = new SqlCommand("delete from Lastotv where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete2.ExecuteNonQuery();
-                                    SqlCommand delete4 = new SqlCommand("delete from Resh where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete4.ExecuteNonQuery();
-                                    SqlCommand delete5 = new SqlCommand("delete from OtvSelected where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete5.ExecuteNonQuery();
-                                    SqlCommand delete6 = new SqlCommand("delete from Users where id_user = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete6.ExecuteNonQuery();
+                                    new SQL_Query().DeleteInfoFromBD("delete from Role where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from Lastotv where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from Resh where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from OtvSelected where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from Users where id_user = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
 
+                                    // Обновление datagr
                                     DatagrInfo();
                                     break;
 
                                 case "Teacher":
                                     // Удаление данных
-                                    SqlCommand delete7 = new SqlCommand("delete from Role where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete7.ExecuteNonQuery();
-                                    SqlCommand delete8 = new SqlCommand("delete from Lastotv where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete8.ExecuteNonQuery();
-                                    SqlCommand delete10 = new SqlCommand("delete from Resh where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete10.ExecuteNonQuery();
-                                    SqlCommand delete11 = new SqlCommand("delete from OtvSelected where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete11.ExecuteNonQuery();
-                                    SqlCommand delete12 = new SqlCommand("delete from Users where id_user = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete12.ExecuteNonQuery();
+                                    new SQL_Query().DeleteInfoFromBD("delete from Role where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from Lastotv where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from Resh where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from OtvSelected where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from Users where id_user = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
 
+                                    // Обновление datagr
                                     DatagrInfo();
                                     break;
 
                                 case "Student":
                                     // Удаление данных
-                                    SqlCommand delete13 = new SqlCommand("delete from Role where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete13.ExecuteNonQuery();
-                                    SqlCommand delete14 = new SqlCommand("delete from Lastotv where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete14.ExecuteNonQuery();
-                                    SqlCommand delete16 = new SqlCommand("delete from Resh where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete16.ExecuteNonQuery();
-                                    SqlCommand delete17 = new SqlCommand("delete from OtvSelected where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete17.ExecuteNonQuery();
-                                    SqlCommand delete18 = new SqlCommand("delete from Users where id_user = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "", con);
-                                    delete18.ExecuteNonQuery();
+                                    new SQL_Query().DeleteInfoFromBD("delete from Role where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from Lastotv where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from Resh where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from OtvSelected where users_id = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
+                                    new SQL_Query().DeleteInfoFromBD("delete from Users where id_user = " + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "");
 
+                                    // Обновление datagr
                                     DatagrInfo();
                                     break;
                             }
+
+                            // Вывод сообщения
+                            CreateInfo("Пользователь успешно удалён!","lime",panel1);
                         }
                         catch
                         {
+                            // Вывод сообщения
                             CreateInfo("Необходимо выбрать пользователя в таблице для его удаления! Если вы выбрали пользователя, а сообщение осталось обратитесь к администратору!", "red", panel1);
                         }
                     }
                     else
                     {
+                        // Вывод сообщения
                         CreateInfo("Невозможно удалить главного администратора!", "red", panel1);
                     }
                     break;
 
+                // Если выбран тип "Удаление задачи"
                 case 2:
+                    // Проверка на существование решённых задач у выбранного пользователя
                     if ((panel1.Controls["Combobox1"] as ComboBox).SelectedIndex < 0)
                     {
+                        // Вывод сообщения
                         CreateInfo("У пользователя нет решённых задач, удаленние отменено!", "red", panel1);
                     }
                     else
                     {
-                        // Выбор данных в таблице БД
-                        SqlCommand GetReshId = new SqlCommand("select id_resh as 'id' from resh where users_id=" + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + " and zadacha_id=" + (panel1.Controls["Combobox1"] as ComboBox).SelectedValue + "", con);
-                        SqlDataReader dr4 = GetReshId.ExecuteReader();
-                        dr4.Read();
-                        int ReshId = Convert.ToInt32(dr4["id"].ToString());
-                        dr4.Close();
+                        // Выбор номера указанной диагностической задачи
+                        int ReshId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_resh as 'id' from resh where users_id=" + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + " and zadacha_id=" + (panel1.Controls["Combobox1"] as ComboBox).SelectedValue + ""));
 
-                        // Удаление данных
-                        SqlCommand StrPrc2 = new SqlCommand("[dbo].Resh_delete", con); // Объявление переменной
-                        StrPrc2.CommandType = CommandType.StoredProcedure;
-                        StrPrc2.Parameters.AddWithValue("@id_resh", ReshId); // Удаление данных
-                        StrPrc2.ExecuteNonQuery();
+                        // Удаление данных о решении выбранной диагностической задачи
+                        new SQL_Query().DeleteInfoFromBD("Delete from resh where id_resh = "+ReshId+"");
 
-                        // Создание списка задач 
-                        SqlCommand get_otd_name = new SqlCommand("select Zadacha_id as \"ido\" from resh where users_id = '" + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "'", con);
-                        SqlDataReader dr = get_otd_name.ExecuteReader();
-                        DataTable dt = new DataTable();
-                        dt.Load(dr);
-                        (panel1.Controls["Combobox1"] as ComboBox).DataSource = dt;
-                        (panel1.Controls["Combobox1"] as ComboBox).ValueMember = "ido";
+                        // Заполнение combobox
+                        new SQL_Query().GetInfoForCombobox("select Zadacha_id as \"ido\" from resh where users_id = '" + Convert.ToInt32(datagr1.CurrentRow.Cells[0].Value) + "'", (panel1.Controls["Combobox1"] as ComboBox));
+
+                        // Вывод сообщения
+                        CreateInfo("Вы успешно удалили решённую студентом диагностическую задачу!","lime",panel1);
                     }
                     break;
             }
@@ -226,30 +214,20 @@ namespace Psico
 
         private void GetOpenMainForm()
         {
-            administrator admin = new administrator();
-            admin.Show();
+            // Открытие главной формы администратора
+            new administrator().Show();
             Close();
-        }
-
-        private void WindowDrag(object sender, MouseEventArgs e)
-        {
-            panel2.Capture = false;
-            Message n = Message.Create(Handle, 0xa1, new IntPtr(2), IntPtr.Zero);
-            WndProc(ref n);
         }
 
         private void DatagrInfo()
         {
-            SqlDataAdapter da1 = new SqlDataAdapter("select * from CreateTableForDeleteUsers", con);
-            SqlCommandBuilder cb1 = new SqlCommandBuilder(da1);
-            DataSet ds1 = new DataSet();
-            da1.Fill(ds1, "CreateTableForUpdateUsers");
-            datagr1.DataSource = ds1.Tables[0];
+            // Заполнение datagr1
+            new SQL_Query().UpdateDatagr("select * from CreateTableForDeleteUsers", "CreateTableForUpdateUsers", datagr1);
         }
 
         private void FormAlignment()
         {
-            // Адаптация разрешения экрана пользователя
+            // Адаптация под разрешение экрана
             Rectangle screen = Screen.PrimaryScreen.Bounds;
 
             // Позиционирование элементов формы пользователя
@@ -261,8 +239,11 @@ namespace Psico
 
         private void tableFilter(object sender, EventArgs e)
         {
+            // Объявление переменных
+            int comboboxALL = 0;
             string role = "";
 
+            // Выбор данных для фильтрации
             switch (comboBox2.SelectedItem)
             {
                 case "Администратор":
@@ -276,28 +257,40 @@ namespace Psico
                 case "Студент":
                     role = "Student";
                     break;
+                case "Всё":
+                    comboboxALL = 1;
+                    break;
             }
 
+            // Заполнение datagr1
             DatagrInfo();
+
+            // Отключение выбора ячейки в datagr1
             datagr1.CurrentCell = null;
 
-            for (int i = 0; i < datagr1.Rows.Count; i++)
+            // Фильтрация datagr1
+            if (comboboxALL !=1)
             {
-                if (datagr1.Rows[i].Cells[2].Value.ToString() != role)
+                for (int i = 0; i < datagr1.Rows.Count; i++)
                 {
-                    datagr1.Rows[i].Visible = false;
+                    if (datagr1.Rows[i].Cells[2].Value.ToString() != role)
+                    {
+                        datagr1.Rows[i].Visible = false;
+                    }
                 }
             }
-
         }
 
         private void TextFinder(object sender, EventArgs e)
         {
+            // Заполнение datagr1
             DatagrInfo();
+
+            // Отключение выбора ячейки в datagr1
             datagr1.CurrentCell = null;
 
+            // Поиск в datagr1
             int Find;
-
             for (int x = 0; x < datagr1.Rows.Count; x++)
             {
                 Find = 0;
@@ -319,11 +312,22 @@ namespace Psico
 
         public void CreateInfo(string labelinfo, string color, Panel MainPanel)
         {
-            Timer timer = new Timer();
+            // Удаление динамической созданной Panel
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                timer.Stop();
+            }
+            catch
+            {
+            }
+
+            // Создание таймера
             timer.Tick += Timer_Tick;
             timer.Interval = 5000;
             timer.Start();
 
+            // Динамической создание Panel
             Panel panel = new Panel();
             panel.Name = "panel";
             panel.Size = new Size(600, 100);
@@ -333,6 +337,7 @@ namespace Psico
             MainPanel.Controls.Add(panel);
             panel.BringToFront();
 
+            // Динамической создание Label
             Label label = new Label();
             label.Name = "label";
             label.Text = labelinfo;
@@ -341,8 +346,10 @@ namespace Psico
             label.TextAlign = ContentAlignment.MiddleCenter;
             label.Location = new Point(0, 0);
             panel.Controls.Add(label);
+            label.Click += Label_Click;
             label.BringToFront();
 
+            // Выбор цвета для шрифта сообщения
             switch (color)
             {
                 case "red":
@@ -357,14 +364,30 @@ namespace Psico
             }
         }
 
-        private void Timer_Tick(object sender, EventArgs e)
+        private void Label_Click(object sender, EventArgs e)
         {
+            // Удаление динамической созданной Panel
             try
             {
                 (panel1.Controls["panel"] as Panel).Dispose();
-                (sender as Timer).Stop();
+                timer.Stop();
             }
-            catch{}
+            catch
+            {
+            }
+        }
+
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Удаление динамической созданной Panel
+            try
+            {
+                (panel1.Controls["panel"] as Panel).Dispose();
+                timer.Stop();
+            }
+            catch
+            {
+            }
         }
     }
 }
