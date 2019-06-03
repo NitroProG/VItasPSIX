@@ -70,7 +70,7 @@ namespace Psico
             // Отправка сообщения с протоколом на почту главному администратору
             try
             {
-                MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", UserMail, "Протокол программы psico.", "Ваш отчёт.");
+                MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", UserMail, "Протокол от программы psico.", "");
                 SmtpClient client = new SmtpClient("smtp.yandex.ru");
                 mail.Attachments.Add(new Attachment(Program.doc));
                 client.Port = 587;

@@ -44,118 +44,129 @@ namespace Psico
 
         private void DeleteZadachaa(object sender, EventArgs e)
         {
-            switch (Delete)
+            // Проверка на существование диагностических задач в программе
+            string checkZadacha = new SQL_Query().GetInfoFromBD("select zapros from zadacha");
+
+            if (checkZadacha != "0")
             {
-                case 0:
-                    // Вывод сообщения
-                    CreateInfo("На почту главного администратора выслан ключ для удаления задачи, вам необходимо его указать и ещё раз нажать на кнопку удаления", "lime", panel1);
+                switch (Delete)
+                {
+                    case 0:
 
-                    //Выбор почты главного администратора
-                    string MainAdminMail = new Shifr().DeShifrovka(new SQL_Query().GetInfoFromBD("select User_Mail from users where id_user = 1"), "Mail");
-
-                    // Генерация ключа для удаления задачи
-                    Key = GetKey();
-
-                    try
-                    {
-                        // Отправка пароля по почте
-                        MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", MainAdminMail, "Удаление диагностической задачи в программе Psico", "В программе была зарегистрированна попытка удаления задачи пользователем под номером: "+Program.user+", ключ для удаления: " + Key);
-                        SmtpClient client = new SmtpClient("smtp.yandex.ru");
-                        client.Port = 587;
-                        client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
-                        client.EnableSsl = true;
-                        client.Send(mail);
-
-                        // Обновление формы
-                        comboBox1.Enabled = false;
-                        textBox1.Visible = true;
-                        Delete = 1;
-                    }
-                    catch
-                    {
-                        // Вывод сообщения
-                        CreateInfo("Ошибка отправки ключа, обратитесь к главному администратору!","red", panel1);
-                    }
-
-                    break;
-
-                case 1:
-                    // Проверка на ввод данных
-                    if (textBox1.Text != "")
-                    {
-                        // Проверка количества попыток ввода кода подтрвеждения
-                        if (kolvoPopitok < 5)
+                        try
                         {
-                            // Проверка на корректность указанного кода подтверждения
-                            if (textBox1.Text == Key)
+                            //Выбор почты главного администратора
+                            string MainAdminMail = new Shifr().DeShifrovka(new SQL_Query().GetInfoFromBD("select User_Mail from users where id_user = 1"), "Mail");
+
+                            // Генерация ключа для удаления задачи
+                            Key = GetKey();
+
+                            // Отправка пароля по почте
+                            MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", MainAdminMail, "Удаление диагностической задачи в программе Psico", "В программе была зарегистрированна попытка удаления задачи пользователем под номером: " + Program.user + ", ключ для удаления: " + Key);
+                            SmtpClient client = new SmtpClient("smtp.yandex.ru");
+                            client.Port = 587;
+                            client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
+                            client.EnableSsl = true;
+                            client.Send(mail);
+
+                            // Вывод сообщения
+                            CreateInfo("На почту главного администратора выслан ключ для удаления задачи, вам необходимо его указать и ещё раз нажать на кнопку удаления", "lime", panel1);
+
+                            // Обновление формы
+                            comboBox1.Enabled = false;
+                            textBox1.Visible = true;
+                            Delete = 1;
+                        }
+                        catch
+                        {
+                            // Вывод сообщения
+                            CreateInfo("Ошибка отправки ключа, обратитесь к главному администратору!", "red", panel1);
+                        }
+
+                        break;
+
+                    case 1:
+                        // Проверка на ввод данных
+                        if (textBox1.Text != "")
+                        {
+                            // Проверка количества попыток ввода кода подтрвеждения
+                            if (kolvoPopitok < 5)
                             {
-                                // Вывод сообщения
-                                DialogResult result = MessageBox.Show("Если вы удалите задачу, её не возможно будет вернуть, также задача удалится и у остальных пользователях!", "Внимание!",
-                                MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-                                // Если была нажата кнопка "Ок"
-                                if (result == DialogResult.Yes)
+                                // Проверка на корректность указанного кода подтверждения
+                                if (textBox1.Text == Key)
                                 {
-                                    // Запись в переменную выбранной диагностической задачи
-                                    int SelectedNumb = Convert.ToInt32(comboBox1.SelectedValue);
-
-                                    // Удаление задачи
-                                    new SQL_Query().DeleteInfoFromBD("delete from resh where zadacha_id = " + SelectedNumb + "");
-                                    new SQL_Query().DeleteInfoFromBD("delete from Fenom1 where zadacha_id = " + SelectedNumb + "");
-                                    new SQL_Query().DeleteInfoFromBD("delete from CBFormFill where zadacha_id = " + SelectedNumb + "");
-                                    new SQL_Query().DeleteInfoFromBD("delete from dpo where zadacha_id = " + SelectedNumb + "");
-                                    new SQL_Query().DeleteInfoFromBD("delete from vernotv where zadacha_id = " + SelectedNumb + "");
-                                    new SQL_Query().DeleteInfoFromBD("delete from Zadacha where id_zadacha = " + SelectedNumb + "");
-
-                                    // Обновление списка задач
-                                    new SQL_Query().GetInfoForCombobox("select id_zadacha as \"ido\" from zadacha",comboBox1);
-
                                     // Вывод сообщения
-                                    CreateInfo("Задача успешно удалена!", "lime", panel1);
+                                    DialogResult result = MessageBox.Show("Если вы удалите задачу, её не возможно будет вернуть, также задача удалится и у остальных пользователях!", "Внимание!",
+                                    MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-                                    // Обновление формы
-                                    textBox1.Visible = false;
-                                    textBox1.Text = "";
-                                    comboBox1.Enabled = true;
-                                    Delete = 0;
-                                    kolvoPopitok = 0;
+                                    // Если была нажата кнопка "Ок"
+                                    if (result == DialogResult.Yes)
+                                    {
+                                        // Запись в переменную выбранной диагностической задачи
+                                        int SelectedNumb = Convert.ToInt32(comboBox1.SelectedValue);
+
+                                        // Удаление задачи
+                                        new SQL_Query().DeleteInfoFromBD("delete from resh where zadacha_id = " + SelectedNumb + "");
+                                        new SQL_Query().DeleteInfoFromBD("delete from Fenom1 where zadacha_id = " + SelectedNumb + "");
+                                        new SQL_Query().DeleteInfoFromBD("delete from CBFormFill where zadacha_id = " + SelectedNumb + "");
+                                        new SQL_Query().DeleteInfoFromBD("delete from dpo where zadacha_id = " + SelectedNumb + "");
+                                        new SQL_Query().DeleteInfoFromBD("delete from vernotv where zadacha_id = " + SelectedNumb + "");
+                                        new SQL_Query().DeleteInfoFromBD("delete from Zadacha where id_zadacha = " + SelectedNumb + "");
+
+                                        // Обновление списка задач
+                                        new SQL_Query().GetInfoForCombobox("select id_zadacha as \"ido\" from zadacha", comboBox1);
+
+                                        // Вывод сообщения
+                                        CreateInfo("Задача успешно удалена!", "lime", panel1);
+
+                                        // Обновление формы
+                                        textBox1.Visible = false;
+                                        textBox1.Text = "";
+                                        comboBox1.Enabled = true;
+                                        Delete = 0;
+                                        kolvoPopitok = 0;
+                                    }
+                                    else
+                                    {
+                                        // Открытие главной формы администратора
+                                        new administrator().Show();
+                                        Close();
+                                    }
                                 }
                                 else
                                 {
-                                    // Открытие главной формы администратора
-                                    new administrator().Show();
-                                    Close();
+                                    // Вывод сообщения
+                                    CreateInfo("Указанный ключ для удаления задачи неверен!", "red", panel1);
+
+                                    // Прибавление количества попыток ввода кода подтверждения
+                                    kolvoPopitok++;
                                 }
                             }
                             else
                             {
+                                // Обновление формы
+                                textBox1.Visible = false;
+                                textBox1.Text = "";
+                                comboBox1.Enabled = true;
+                                Delete = 0;
+                                kolvoPopitok = 0;
+
                                 // Вывод сообщения
-                                CreateInfo("Указанный ключ для удаления задачи неверен!", "red", panel1);
+                                CreateInfo("Вы превысили лимит попыток ввода ключа для удаления задачи, вам необходимо отправить новый ключ главному администратору!", "red", panel1);
                             }
                         }
                         else
                         {
-                            // Обновление формы
-                            textBox1.Visible = false;
-                            textBox1.Text = "";
-                            comboBox1.Enabled = true;
-                            Delete = 0;
-                            kolvoPopitok = 0;
-
                             // Вывод сообщения
-                            CreateInfo("Вы превысили лимит попыток ввода ключа для удаления задачи, вам необходимо отправить новый ключ главному администратору!", "red", panel1);
+                            CreateInfo("Необходимо ввести ключ для удаления задачи!", "red", panel1);
                         }
-                    }
-                    else
-                    {
-                        // Вывод сообщения
-                        CreateInfo("Необходимо ввести ключ для удаления задачи!", "red", panel1);
-                    }
-                    break;
+                        break;
+                }
             }
-
-            // Прибавление количества попыток ввода кода подтверждения
-            kolvoPopitok++;
+            else
+            {
+                CreateInfo("В программе отсутствуют диагностические задачи!","red",panel1);
+            }            
         }
 
         private void FormLoad(object sender, EventArgs e)

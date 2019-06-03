@@ -18,7 +18,6 @@ namespace Psico
                 SqlCommand sq = new SqlCommand(Query, con);
                 string Info = sq.ExecuteScalar().ToString();
                 con.Close();
-                //MessageBox.Show(Info);
                 return (Info);
             }
             catch

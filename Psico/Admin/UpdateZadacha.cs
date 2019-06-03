@@ -217,23 +217,33 @@ namespace Psico
 
         private void SelectZadacha(object sender, EventArgs e)
         {
-            // Обновление формы после выбора диагностической задачи для её изменения
-            (panel1.Controls["label"] as Label).Text = "Выберите этап задачи, который хотите изменить";
-            label2.Visible = false;
-            comboBox1.Visible = false;
-            button1.Visible = false;
-            button2.Visible = true;
-            button3.Visible = true;
-            button4.Visible = false;
-            button6.Visible = true;
-            button7.Visible = true;
-            button8.Visible = true;
-            button10.Visible = true;
-            button11.Visible = true;
-            button13.Visible = true;
+            // Проверка на существование диагностических задач в программе
+            string checkZadacha = new SQL_Query().GetInfoFromBD("select zapros from zadacha");
 
-            // Запись данных о выбранной диагностической задаче
-            SelectedZadacha = Convert.ToInt32(comboBox1.SelectedValue);
+            if (checkZadacha != "0")
+            {
+                // Обновление формы после выбора диагностической задачи для её изменения
+                (panel1.Controls["label"] as Label).Text = "Выберите этап задачи, который хотите изменить";
+                label2.Visible = false;
+                comboBox1.Visible = false;
+                button1.Visible = false;
+                button2.Visible = true;
+                button3.Visible = true;
+                button4.Visible = false;
+                button6.Visible = true;
+                button7.Visible = true;
+                button8.Visible = true;
+                button10.Visible = true;
+                button11.Visible = true;
+                button13.Visible = true;
+
+                // Запись данных о выбранной диагностической задаче
+                SelectedZadacha = Convert.ToInt32(comboBox1.SelectedValue);
+            }
+            else
+            {
+                CreateInfo("В программе отсутствуют диагностические задачи!","red",panel1);
+            }
         }
 
         private void BackToChooseZadacha(object sender, EventArgs e)

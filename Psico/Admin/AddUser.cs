@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using SqlConn;
+using System.Net;
+using System.Net.Mail;
 
 namespace Psico
 {
@@ -62,6 +64,25 @@ namespace Psico
                                 // Если указанная почта существует
                                 if (CheckMail == "Почтовый ящик существует")
                                 {
+                                    try
+                                    {
+                                        // Отправка данных по почте
+                                        MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", panel1.Controls["textbox3"].Text, "Регистрация в программе Psico",
+                                                                           "Вы успешно зарегистрировались в программе Psico.\r\n" +
+                                                                           "Ваши данные для авторизации:\r\n" +
+                                                                           "    Логин: " + panel1.Controls["textbox1"].Text + ".\r\n" +
+                                                                           "    Пароль: " + panel1.Controls["textbox2"].Text + ".");
+                                        SmtpClient client = new SmtpClient("smtp.yandex.ru");
+                                        client.Port = 587;
+                                        client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
+                                        client.EnableSsl = true;
+                                        client.Send(mail);
+                                    }
+                                    catch
+                                    {
+                                        CreateInfo("Сообщение с вашим паролем не было отправлено, обратитесь к администратору!", "red", panel1);
+                                    }
+
                                     // Выбор сегодняшней даты
                                     int Nowyear = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select Year(getdate()) as 'year'"));
                                     string NowMonth = new SQL_Query().GetInfoFromBD("select Month(getdate()) as 'Month'");
@@ -108,57 +129,49 @@ namespace Psico
                                                 // Если пользовательская дата больше сегодняшней
                                                 if (UserData > NowData)
                                                 {
-                                                    try
-                                                    {
-                                                        // Подключение к БД
-                                                        con.Open();
+                                                    // Подключение к БД
+                                                    con.Open();
 
-                                                        // Запись пользователя как преподавателя
-                                                        SqlCommand StrPrc1 = new SqlCommand("Teachers_add", con);
-                                                        StrPrc1.CommandType = CommandType.StoredProcedure;
-                                                        StrPrc1.Parameters.AddWithValue("@Unique_Naim", (panel1.Controls["textbox4"] as TextBox).Text);
-                                                        StrPrc1.Parameters.AddWithValue("@User_End_Data", (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text);
-                                                        StrPrc1.Parameters.AddWithValue("@KolvoNeRegStudents", 999);
-                                                        StrPrc1.ExecuteNonQuery();
+                                                    // Запись пользователя как преподавателя
+                                                    SqlCommand StrPrc1 = new SqlCommand("Teachers_add", con);
+                                                    StrPrc1.CommandType = CommandType.StoredProcedure;
+                                                    StrPrc1.Parameters.AddWithValue("@Unique_Naim", (panel1.Controls["textbox4"] as TextBox).Text);
+                                                    StrPrc1.Parameters.AddWithValue("@User_End_Data", (panel1.Controls["EndDataMask1"] as MaskedTextBox).Text);
+                                                    StrPrc1.Parameters.AddWithValue("@KolvoNeRegStudents", 999);
+                                                    StrPrc1.ExecuteNonQuery();
 
-                                                        // Выбор номера преподавателя
-                                                        TeacherId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_teacher as 'id' from Teachers where Unique_Naim='" + (panel1.Controls["textbox4"] as TextBox).Text + "'"));
+                                                    // Выбор номера преподавателя
+                                                    TeacherId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_teacher as 'id' from Teachers where Unique_Naim='" + (panel1.Controls["textbox4"] as TextBox).Text + "'"));
 
-                                                        // Запись пользователя 
-                                                        SqlCommand StrPrc2 = new SqlCommand("users_add", con);
-                                                        StrPrc2.CommandType = CommandType.StoredProcedure;
-                                                        StrPrc2.Parameters.AddWithValue("@User_Login", (panel1.Controls["textbox1"] as TextBox).Text);
-                                                        StrPrc2.Parameters.AddWithValue("@User_Password", new Shifr().Shifrovka((panel1.Controls["textbox2"] as TextBox).Text, "Pass"));
-                                                        StrPrc2.Parameters.AddWithValue("@User_Mail", new Shifr().Shifrovka((panel1.Controls["textbox3"] as TextBox).Text, "Mail"));
-                                                        StrPrc2.Parameters.AddWithValue("@UserStatus", 0);
-                                                        StrPrc2.Parameters.AddWithValue("@Teacher_id", TeacherId);
-                                                        StrPrc2.ExecuteNonQuery();
+                                                    // Запись пользователя 
+                                                    SqlCommand StrPrc2 = new SqlCommand("users_add", con);
+                                                    StrPrc2.CommandType = CommandType.StoredProcedure;
+                                                    StrPrc2.Parameters.AddWithValue("@User_Login", (panel1.Controls["textbox1"] as TextBox).Text);
+                                                    StrPrc2.Parameters.AddWithValue("@User_Password", new Shifr().Shifrovka((panel1.Controls["textbox2"] as TextBox).Text, "Pass"));
+                                                    StrPrc2.Parameters.AddWithValue("@User_Mail", new Shifr().Shifrovka((panel1.Controls["textbox3"] as TextBox).Text, "Mail"));
+                                                    StrPrc2.Parameters.AddWithValue("@UserStatus", 0);
+                                                    StrPrc2.Parameters.AddWithValue("@Teacher_id", TeacherId);
+                                                    StrPrc2.ExecuteNonQuery();
 
-                                                        // Выбор номера пользователя
-                                                        int UserId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_user as 'id' from users where User_Login = '" + (panel1.Controls["textbox1"] as TextBox).Text + "'"));
+                                                    // Выбор номера пользователя
+                                                    int UserId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_user as 'id' from users where User_Login = '" + (panel1.Controls["textbox1"] as TextBox).Text + "'"));
 
-                                                        // Запись информации о роли пользователя
-                                                        SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
-                                                        StrPrc3.CommandType = CommandType.StoredProcedure;
-                                                        StrPrc3.Parameters.AddWithValue("@Naim", "Admin");
-                                                        StrPrc3.Parameters.AddWithValue("@Users_id", UserId);
-                                                        StrPrc3.Parameters.AddWithValue("@Dostup_id", 1);
-                                                        StrPrc3.ExecuteNonQuery();
+                                                    // Запись информации о роли пользователя
+                                                    SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
+                                                    StrPrc3.CommandType = CommandType.StoredProcedure;
+                                                    StrPrc3.Parameters.AddWithValue("@Naim", "Admin");
+                                                    StrPrc3.Parameters.AddWithValue("@Users_id", UserId);
+                                                    StrPrc3.Parameters.AddWithValue("@Dostup_id", 1);
+                                                    StrPrc3.ExecuteNonQuery();
 
-                                                        // Отключение от БД
-                                                        con.Close();
+                                                    // Отключение от БД
+                                                    con.Close();
 
-                                                        // Вывод сообщения
-                                                        MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                    // Вывод сообщения
+                                                    MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                                        // Открытие главной формы администратора
-                                                        OpenMainForm();
-                                                    }
-                                                    catch
-                                                    {
-                                                        CreateInfo("Сообщение с вашим паролем не было отправлено!", "red", panel1);
-                                                        con.Close();
-                                                    }
+                                                    // Открытие главной формы администратора
+                                                    OpenMainForm();
                                                 }
                                                 else
                                                 {
@@ -227,6 +240,27 @@ namespace Psico
                                 // Если указанная почта существует
                                 if (checkmail == "Почтовый ящик существует")
                                 {
+                                    try
+                                    {
+                                        // Отправка данных по почте
+                                        MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", panel1.Controls["textbox8"].Text, "Регистрация в программе Psico",
+                                                                           "Вы успешно зарегистрировались в программе Psico.\r\n" +
+                                                                           "Ваши данные для авторизации:\r\n" +
+                                                                           "    Логин: " + panel1.Controls["textbox6"].Text + ".\r\n" +
+                                                                           "    Пароль: " + panel1.Controls["textbox7"].Text + ".\r\n" +
+                                                                           "Дата окончания лицензии: "+ panel1.Controls["EndDataMask2"].Text + ".\r\n" +
+                                                                           "Для изменения даты окончания лицензии необходимо обращаться к администратору программы.");
+                                        SmtpClient client = new SmtpClient("smtp.yandex.ru");
+                                        client.Port = 587;
+                                        client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
+                                        client.EnableSsl = true;
+                                        client.Send(mail);
+                                    }
+                                    catch
+                                    {
+                                        CreateInfo("Сообщение с вашим паролем не было отправлено, обратитесь к администратору!", "red", panel1);
+                                    }
+
                                     //Выбор сегодняшней даты из БД
                                     int Nowyear = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select Year(getdate()) as 'year'"));
                                     string NowMonth = new SQL_Query().GetInfoFromBD("select Month(getdate()) as 'Month'");
@@ -273,58 +307,49 @@ namespace Psico
                                                 // Если пользовательская дата больше сегодняшней
                                                 if (UserData > NowData)
                                                 {
-                                                    // Регистрация
-                                                    try
-                                                    {
-                                                        // Подключение к БД
-                                                        con.Open();
+                                                    // Подключение к БД
+                                                    con.Open();
 
-                                                        // Запись данных о новом преподавателе
-                                                        SqlCommand StrPrc1 = new SqlCommand("Teachers_add", con);
-                                                        StrPrc1.CommandType = CommandType.StoredProcedure;
-                                                        StrPrc1.Parameters.AddWithValue("@Unique_Naim", (panel1.Controls["textbox10"] as TextBox).Text);
-                                                        StrPrc1.Parameters.AddWithValue("@User_End_Data", (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text);
-                                                        StrPrc1.Parameters.AddWithValue("@KolvoNeRegStudents", Convert.ToInt32((panel1.Controls["textbox9"] as TextBox).Text));
-                                                        StrPrc1.ExecuteNonQuery();
+                                                    // Запись данных о новом преподавателе
+                                                    SqlCommand StrPrc1 = new SqlCommand("Teachers_add", con);
+                                                    StrPrc1.CommandType = CommandType.StoredProcedure;
+                                                    StrPrc1.Parameters.AddWithValue("@Unique_Naim", (panel1.Controls["textbox10"] as TextBox).Text);
+                                                    StrPrc1.Parameters.AddWithValue("@User_End_Data", (panel1.Controls["EndDataMask2"] as MaskedTextBox).Text);
+                                                    StrPrc1.Parameters.AddWithValue("@KolvoNeRegStudents", Convert.ToInt32((panel1.Controls["textbox9"] as TextBox).Text));
+                                                    StrPrc1.ExecuteNonQuery();
 
-                                                        // Выбор номера нового преподавателя
-                                                        TeacherId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_teacher as 'id' from Teachers where Unique_Naim='" + (panel1.Controls["textbox10"] as TextBox).Text + "'"));
+                                                    // Выбор номера нового преподавателя
+                                                    TeacherId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_teacher as 'id' from Teachers where Unique_Naim='" + (panel1.Controls["textbox10"] as TextBox).Text + "'"));
 
-                                                        // Запись данных о новом пользователе
-                                                        SqlCommand StrPrc2 = new SqlCommand("users_add", con);
-                                                        StrPrc2.CommandType = CommandType.StoredProcedure;
-                                                        StrPrc2.Parameters.AddWithValue("@User_Login", (panel1.Controls["textbox6"] as TextBox).Text);
-                                                        StrPrc2.Parameters.AddWithValue("@User_Password", new Shifr().Shifrovka((panel1.Controls["textbox7"] as TextBox).Text, "Pass"));
-                                                        StrPrc2.Parameters.AddWithValue("@User_Mail", new Shifr().Shifrovka((panel1.Controls["textbox8"] as TextBox).Text, "Mail"));
-                                                        StrPrc2.Parameters.AddWithValue("@UserStatus", 0);
-                                                        StrPrc2.Parameters.AddWithValue("@Teacher_id", TeacherId);
-                                                        StrPrc2.ExecuteNonQuery();
+                                                    // Запись данных о новом пользователе
+                                                    SqlCommand StrPrc2 = new SqlCommand("users_add", con);
+                                                    StrPrc2.CommandType = CommandType.StoredProcedure;
+                                                    StrPrc2.Parameters.AddWithValue("@User_Login", (panel1.Controls["textbox6"] as TextBox).Text);
+                                                    StrPrc2.Parameters.AddWithValue("@User_Password", new Shifr().Shifrovka((panel1.Controls["textbox7"] as TextBox).Text, "Pass"));
+                                                    StrPrc2.Parameters.AddWithValue("@User_Mail", new Shifr().Shifrovka((panel1.Controls["textbox8"] as TextBox).Text, "Mail"));
+                                                    StrPrc2.Parameters.AddWithValue("@UserStatus", 0);
+                                                    StrPrc2.Parameters.AddWithValue("@Teacher_id", TeacherId);
+                                                    StrPrc2.ExecuteNonQuery();
 
-                                                        // Выбор номера пользователя 
-                                                        int UserId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_user as 'id' from users where User_Login = '" + (panel1.Controls["textbox6"] as TextBox).Text + "'"));
+                                                    // Выбор номера пользователя 
+                                                    int UserId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_user as 'id' from users where User_Login = '" + (panel1.Controls["textbox6"] as TextBox).Text + "'"));
 
-                                                        // Запись данных о роли нового пользователя
-                                                        SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
-                                                        StrPrc3.CommandType = CommandType.StoredProcedure;
-                                                        StrPrc3.Parameters.AddWithValue("@Naim", "Teacher");
-                                                        StrPrc3.Parameters.AddWithValue("@Users_id", UserId);
-                                                        StrPrc3.Parameters.AddWithValue("@Dostup_id", 2);
-                                                        StrPrc3.ExecuteNonQuery();
+                                                    // Запись данных о роли нового пользователя
+                                                    SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
+                                                    StrPrc3.CommandType = CommandType.StoredProcedure;
+                                                    StrPrc3.Parameters.AddWithValue("@Naim", "Teacher");
+                                                    StrPrc3.Parameters.AddWithValue("@Users_id", UserId);
+                                                    StrPrc3.Parameters.AddWithValue("@Dostup_id", 2);
+                                                    StrPrc3.ExecuteNonQuery();
 
-                                                        // Отключение от БД
-                                                        con.Close();
+                                                    // Отключение от БД
+                                                    con.Close();
 
-                                                        // Вывод сообщения
-                                                        MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                    // Вывод сообщения
+                                                    MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                                                        // Открытие главной формы администратора
-                                                        OpenMainForm();
-                                                    }
-                                                    catch
-                                                    {
-                                                        CreateInfo("Сообщение с вашим паролем не было отправлено!", "red", panel1);
-                                                        con.Close();
-                                                    }
+                                                    // Открытие главной формы администратора
+                                                    OpenMainForm();
                                                 }
                                                 else
                                                 {
@@ -410,6 +435,25 @@ namespace Psico
                                             // Если указанная почта существует
                                             if (checkmail == "Почтовый ящик существует")
                                             {
+                                                try
+                                                {
+                                                    // Отправка данных по почте
+                                                    MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", panel1.Controls["textbox15"].Text, "Регистрация в программе Psico",
+                                                                                       "Вы успешно зарегистрировались в программе Psico.\r\n" +
+                                                                                       "Ваши данные для авторизации:\r\n" +
+                                                                                       "    Логин: " + panel1.Controls["textbox13"].Text + ".\r\n" +
+                                                                                       "    Пароль: " + panel1.Controls["textbox14"].Text + ".");
+                                                    SmtpClient client = new SmtpClient("smtp.yandex.ru");
+                                                    client.Port = 587;
+                                                    client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
+                                                    client.EnableSsl = true;
+                                                    client.Send(mail);
+                                                }
+                                                catch
+                                                {
+                                                    CreateInfo("Сообщение с вашим паролем не было отправлено, обратитесь к администратору!", "red", panel1);
+                                                }
+
                                                 // Подключение к БД
                                                 con.Open();
 

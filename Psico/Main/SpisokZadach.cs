@@ -24,6 +24,7 @@ namespace Psico
 
         private void OpenAutorizationForm(object sender, EventArgs e)
         {
+
             // Если диагностическая задача была решена
             if (Program.checkopenzadacha != 0)
             {
@@ -34,6 +35,9 @@ namespace Psico
             //Изменение статуса пользователя на "Не в сети"
             new SQL_Query().UpdateOneCell("UPDATE users SET UserStatus=0 WHERE id_user = " + Program.user + "");
 
+            // Удаление динамической созданной Panel
+            new Autorization().CloseInfo();
+
             // Открытие формы авторизации
             new Autorization().Show();
             Close();
@@ -41,9 +45,6 @@ namespace Psico
 
         private void FormLoad(object sender, EventArgs e)
         {
-            // Подключение к БД
-            con.Open();
-
             // Выбор количества решённых задач студентом
             kolvoreshzadach = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select count(*) as 'kolvo' from resh where users_id = " + Program.user + "")) + 1;
 
@@ -55,70 +56,72 @@ namespace Psico
 
             // Адаптация разрешения экрана 
             FormAlignment();
-
-            // Отключение от БД
-            con.Close();
         }
 
         private void OpenNextForm(object sender, EventArgs e)
         {
-            // Подключение к БД
-            con.Open();
+            // Проверка на существование диагностических задач в программе
+            string checkZadacha = new SQL_Query().GetInfoFromBD("select zapros from zadacha");
 
-            // Обнуление переменных
-            Program.AllT = 0;
-            Program.fenomenologiya = "";
-            Program.glavsved = "";
-            Program.gipotezi = "";
-            Program.obsledovaniya = "";
-            Program.zakluch = "";
-            Program.zaklOTV = 0;
-            Program.NeVernOtv = 0;
-            Program.diagnoz = 0;
-            Program.WordOpen = 0;
-            Program.StageName.Clear();
-            Program.StageSec.Clear();        
-            error = 0;
-
-            // Запись в переменную выбранного номера диагностической задачи
-            Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedValue);
-
-            // Запись данных о начале решения диагностической задачи
-            Program.checkopenzadacha = 1;
-
-            // Цикл выбирающий все решённые задачи
-            for (int i = 1; i < kolvoreshzadach; i++)
+            if (checkZadacha != "0")
             {
-                // Проверка выбранной диагностической задачи на решённость
-                if (Convert.ToString(Program.NomerZadachi) == Convert.ToString(datagr.Rows[i-1].Cells[0].Value))
-                {
-                    // Вывод сообщения
-                    CreateInfo("Данная диагностическая задача была уже решена!", "red", panel1);
+                // Обнуление переменных
+                Program.AllT = 0;
+                Program.fenomenologiya = "";
+                Program.glavsved = "";
+                Program.gipotezi = "";
+                Program.obsledovaniya = "";
+                Program.zakluch = "";
+                Program.zaklOTV = 0;
+                Program.NeVernOtv = 0;
+                Program.diagnoz = 0;
+                Program.WordOpen = 0;
+                Program.StageName.Clear();
+                Program.StageSec.Clear();
+                Program.NumberStage.Clear();
+                Program.KolvoOpenZakl = 0;
+                error = 0;
 
-                    // Запись в переменную значение об ошибке
-                    error = 1;
+                // Запись в переменную выбранного номера диагностической задачи
+                Program.NomerZadachi = Convert.ToInt32(comboBox1.SelectedValue);
+
+                // Запись данных о начале решения диагностической задачи
+                Program.checkopenzadacha = 1;
+
+                // Цикл выбирающий все решённые задачи
+                for (int i = 1; i < kolvoreshzadach; i++)
+                {
+                    // Проверка выбранной диагностической задачи на решённость
+                    if (Convert.ToString(Program.NomerZadachi) == Convert.ToString(datagr.Rows[i - 1].Cells[0].Value))
+                    {
+                        // Вывод сообщения
+                        CreateInfo("Данная диагностическая задача была уже решена!", "red", panel1);
+
+                        // Запись в переменную значение об ошибке
+                        error = 1;
+                    }
                 }
-            }
 
-            // Если выбранная диагностическая задача не решена
-            if (error == 0)
-            {
-                try
+                // Если выбранная диагностическая задача не решена
+                if (error == 0)
                 {
-                    // Вставка разрыва страницы
-                    wordinsert.CreateShift();
-
-                    // Запись данных в протокол
-                    Program.Insert = "Диагностическая задача №" + Program.NomerZadachi + "";
-                    wordinsert.Ins();
-
                     try
                     {
+                        // Вставка разрыва страницы
+                        wordinsert.CreateShift();
+
+                        // Запись данных в протокол
+                        Program.Insert = "Диагностическая задача №" + Program.NomerZadachi + "";
+                        wordinsert.Ins();
+
                         // Удаление данных о последних выбранных вариантах ответа пользователя
                         new SQL_Query().DeleteInfoFromBD("delete from Lastotv where users_id = " + Program.user + "");
 
                         // Удаление данных о всех выбранных вариантах ответа пользователя
                         new SQL_Query().DeleteInfoFromBD("delete from OtvSelected where users_id = " + Program.user + "");
+
+                        // Удаление динамической созданной Panel
+                        new Autorization().CloseInfo();
 
                         // Открытие главной формы диагностической задачи
                         Zadacha zadacha = new Zadacha();
@@ -127,16 +130,14 @@ namespace Psico
                     }
                     catch
                     {
-                        CreateInfo("Ошибка в Базе данных, обратитесь к администратору", "red", panel1);
+                        CreateInfo("Отсутствует шаблон протокола! Обратитесь к администратору.", "red", panel1);
                     }
                 }
-                catch
-                {
-                    CreateInfo("Отсутствует шаблон протокола! Обратитесь к администратору.", "red",panel1);
-                }
             }
-            //Отключение от БД
-            con.Close();
+            else
+            {
+                CreateInfo("В программе отсутствуют диагностические задачи!","red",panel1);
+            }                
         }
 
         private void ExitFromProgram(object sender, EventArgs e)

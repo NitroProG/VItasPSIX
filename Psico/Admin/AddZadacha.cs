@@ -70,6 +70,9 @@ namespace Psico
                         richTextBox2.Text = "";
                         richTextBox2.MaxLength = 2147483647;
                         ++AddStage;
+
+                        // Удаление динамической созданной Panel
+                        CloseInfo();
                     }
                     else
                     {
@@ -100,6 +103,9 @@ namespace Psico
                             richTextBox1.MaxLength = 2147483647;
                             richTextBox2.Visible = false;
                             ++AddStage;
+
+                            // Удаление динамической созданной Panel
+                            CloseInfo();
                         }
                     }
                     else
@@ -128,6 +134,9 @@ namespace Psico
                             label4.Text = "Этап Гипотезы (машинный выбор)";
                             richTextBox1.Text = "";
                             ++AddStage;
+
+                            // Удаление динамической созданной Panel
+                            CloseInfo();
                         }
                     }
                     else
@@ -202,6 +211,9 @@ namespace Psico
                             richTextBox5.MaxLength = 2147483647;
 
                             ++AddStage;
+
+                            // Удаление динамической созданной Panel
+                            CloseInfo();
                         }
                     }
                     else
@@ -247,6 +259,9 @@ namespace Psico
                             richTextBox5.Visible = false;
 
                             ++AddStage;
+
+                            // Удаление динамической созданной Panel
+                            CloseInfo();
                         }
                     }
                     else
@@ -283,6 +298,9 @@ namespace Psico
                             label2.Location = new Point(richTextBox1.Location.X, richTextBox1.Location.Y - 35);
 
                             ++AddStage;
+
+                            // Удаление динамической созданной Panel
+                            CloseInfo();
                         }
                     }
                     else
@@ -308,6 +326,9 @@ namespace Psico
                         richTextBox1.Text = "";
 
                         ++AddStage;
+
+                        // Удаление динамической созданной Panel
+                        CloseInfo();
                     }
                     else
                     {
@@ -353,6 +374,9 @@ namespace Psico
                         comboBox2.Size = new Size(label2.Width + comboBox1.Width - label3.Width, comboBox2.Height);
 
                         ++AddStage;
+
+                        // Удаление динамической созданной Panel
+                        CloseInfo();
                     }
                     else
                     {
@@ -376,6 +400,9 @@ namespace Psico
                         // Открытие главной формы администратора
                         new administrator().Show();
                         Close();
+
+                        // Удаление динамической созданной Panel
+                        CloseInfo();
                     }
                     else
                     {
@@ -701,17 +728,16 @@ namespace Psico
         private void Label_Click(object sender, EventArgs e)
         {
             // Удаление динамической созданной Panel
-            try
-            {
-                (panel1.Controls["panel"] as Panel).Dispose();
-                timer.Stop();
-            }
-            catch
-            {
-            }
+            CloseInfo();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Удаление динамической созданной Panel
+            CloseInfo();
+        }
+
+        private void CloseInfo()
         {
             // Удаление динамической созданной Panel
             try

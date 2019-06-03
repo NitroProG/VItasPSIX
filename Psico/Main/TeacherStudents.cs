@@ -118,6 +118,9 @@ namespace Psico
             // Проверка роли пользователя
             if (Program.UserRole == 1)
             {
+                // Удаление динамической созданной Panel
+                new Autorization().CloseInfo();
+
                 // Открытие формы администратора
                 new administrator().Show();
             }
@@ -125,6 +128,9 @@ namespace Psico
             {
                 // Изменение статуса пользователя на "Не в сети"
                 new SQL_Query().UpdateOneCell("UPDATE users SET UserStatus=0 WHERE id_user = " + Program.user + "");
+
+                // Удаление динамической созданной Panel
+                new Autorization().CloseInfo();
 
                 // Открытие формы авторизации
                 new Autorization().Show();

@@ -53,6 +53,9 @@ namespace Psico
 
         private void OpenFormAutorization(object sender, EventArgs e)
         {
+            // Удаление динамической созданной Panel
+            CloseInfo();
+
             // Изменение статуса пользователя на "Не в сети"
             new SQL_Query().UpdateOneCell("UPDATE users SET UserStatus=0 WHERE id_user = " + Program.user + "");
 
@@ -120,6 +123,9 @@ namespace Psico
                     wordDocument.SaveAs2(Program.doc); 
                     wordApp.Quit();
 
+                    // Удаление динамической созданной Panel
+                    new Autorization().CloseInfo();
+
                     // Открытие формы вступления
                     Vstuplenie vstuplenie = new Vstuplenie();
                     vstuplenie.Show();
@@ -167,14 +173,7 @@ namespace Psico
         public void CreateInfo(string labelinfo, string color, Panel MainPanel)
         {
             // Удаление динамической созданной Panel
-            try
-            {
-                (panel1.Controls["panel"] as Panel).Dispose();
-                timer.Stop();
-            }
-            catch
-            {
-            }
+            CloseInfo();
 
             // Создание таймера
             timer.Tick += Timer_Tick;
@@ -221,17 +220,16 @@ namespace Psico
         private void Label_Click(object sender, EventArgs e)
         {
             // Удаление динамической созданной Panel
-            try
-            {
-                (panel1.Controls["panel"] as Panel).Dispose();
-                timer.Stop();
-            }
-            catch
-            {
-            }
+            CloseInfo();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Удаление динамической созданной Panel
+            CloseInfo();
+        }
+
+        private void CloseInfo()
         {
             // Удаление динамической созданной Panel
             try

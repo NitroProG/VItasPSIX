@@ -77,12 +77,12 @@ namespace Psico
                 client.Send(mail);
 
                 // Вывод сообщения
-                CreateInfo("Ключ активации программного продукта для преподавателя был отправлен на почту главному администратору!", "lime", panel1);
+                CreateInfo("Ключ активации программного продукта\r\n для преподавателя был отправлен на\r\n почту главному администратору!", "lime", panel1);
             }
             catch
             {
                 // Вывод сообщения
-                CreateInfo("Ключ активации программного продукта для преподавателя не был отправлен, проверьте подключение к интернету!", "red", panel1);
+                CreateInfo("Ключ активации программного продукта\r\n для преподавателя не был отправлен,\r\n проверьте подключение к интернету!", "red", panel1);
             }
         }
 
@@ -90,6 +90,32 @@ namespace Psico
         {
             // Адаптация под разрешение экрана
             FormAlignment();
+
+            // Проверка на существование ключа активации программного продукта
+            string CheckLicenseKey = new SQL_Query().GetInfoFromBD("select defenderkey from defender");
+
+            if (CheckLicenseKey == "0")
+            {
+                // Генерация нового ключа активации
+                string key = new Shifr().Shifrovka(GetKey(), "Kod");
+
+                // Обновление ключа активации программного продукта
+                new SQL_Query().UpdateOneCell("insert into defender(DefenderKey) values ('"+key+"')");
+            }
+        }
+
+        public static string GetKey(int x = 16)
+        {
+            // Генерация ключа активации программного продукта
+            string key = "";
+            var r = new Random();
+            while (key.Length < x)
+            {
+                Char c = (char)r.Next(33, 125);
+                if (Char.IsLetterOrDigit(c))
+                    key += c;
+            }
+            return key;
         }
 
         private void OpenAddUserForm(object sender, EventArgs e)

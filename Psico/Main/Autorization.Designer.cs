@@ -233,7 +233,7 @@
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FormLoad);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Autorization_KeyDown);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.HotKeys);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

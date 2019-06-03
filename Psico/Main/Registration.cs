@@ -248,6 +248,9 @@ namespace Psico
 
         private void OpenPreviousForm(object sender, EventArgs e)
         {
+            // Удаление динамической созданной Panel
+            new Autorization().CloseInfo();
+
             // Открытие формы авторизации
             OpenAutorizationForm();
         }
@@ -312,7 +315,11 @@ namespace Psico
                                                 try
                                                 {
                                                     // Отправка пароля по почте
-                                                    MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", (panel3.Controls["textbox3"] as TextBox).Text, "Пароль для программы Psico", password);
+                                                    MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", (panel3.Controls["textbox3"] as TextBox).Text, "Регистрация в программе Psico",
+                                                                                       "Вы успешно зарегистрировались в программе Psico.\r\n" +
+                                                                                       "Ваши данные для авторизации:\r\n" +
+                                                                                       "    Логин: " + panel3.Controls["textbox2"].Text + ".\r\n" +
+                                                                                       "    Пароль: " + password + ".\r\n");
                                                     SmtpClient client = new SmtpClient("smtp.yandex.ru");
                                                     client.Port = 587;
                                                     client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
@@ -350,6 +357,9 @@ namespace Psico
 
                                                 // Вывод сообщения
                                                 MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                                // Удаление динамической созданной Panel
+                                                new Autorization().CloseInfo();
 
                                                 // Переход на форму авторизации
                                                 OpenAutorizationForm();
@@ -423,81 +433,90 @@ namespace Psico
                                         // Если указанная почта существует
                                         if (CheckMail == "Почтовый ящик существует")
                                         {
+                                            // Выбор сегодняшней даты
+                                            string Day = new SQL_Query().GetInfoFromBD("select Day(getdate()) as 'Day'");
+                                            if (Convert.ToInt32(Day) < 10)
+                                            {
+                                                Day = "0" + Day;
+                                            }
+                                            string Month = (Convert.ToInt32(new SQL_Query().GetInfoFromBD("select MONTH(getdate()) as 'Month'")) + 1).ToString();
+                                            if (Convert.ToInt32(Month) < 10)
+                                            {
+                                                Month = "0" + Month;
+                                            }
+                                            string Year = new SQL_Query().GetInfoFromBD("select Year(getdate()) as 'Year'");
+                                            EndData = Year + "-" + Month + "-" + Day;
+
                                             // Генерация пароля для преподавателя
                                             string password = GetPassword();
 
                                             try
                                             {
                                                 // Отправка пароля по почте
-                                                MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", (panel3.Controls["textbox6"] as TextBox).Text, "Пароль для программы Psico", password);
+                                                MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", (panel3.Controls["textbox6"] as TextBox).Text, "Регистрация в программе Psico",
+                                                                                   "Вы успешно зарегистрировались в программе Psico.\r\n" +
+                                                                                   "Ваши данные для авторизации:\r\n" +
+                                                                                   "    Логин: " + panel3.Controls["textbox5"].Text + ".\r\n" +
+                                                                                   "    Пароль: " + password + ".\r\n" +
+                                                                                   "Дата окончания лицензии: " + EndData +".\r\n" +
+                                                                                   "Для изменения даты окончания лицензии необходимо обращаться к администратору.");
                                                 SmtpClient client = new SmtpClient("smtp.yandex.ru");
                                                 client.Port = 587;
                                                 client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
                                                 client.EnableSsl = true;
                                                 client.Send(mail);
-
-                                                // Выбор сегодняшней даты
-                                                string Day = new SQL_Query().GetInfoFromBD("select Day(getdate()) as 'Day'");
-                                                if (Convert.ToInt32(Day) < 10)
-                                                {
-                                                    Day = "0" + Day;
-                                                }
-                                                string Month = (Convert.ToInt32(new SQL_Query().GetInfoFromBD("select MONTH(getdate()) as 'Month'")) + 1).ToString();
-                                                if (Convert.ToInt32(Month) < 10)
-                                                {
-                                                    Month = "0" + Month;
-                                                }
-                                                string Year = new SQL_Query().GetInfoFromBD("select Year(getdate()) as 'Year'");
-                                                EndData = Year + "-" + Month + "-" + Day;
-
-                                                // Запись данных В БД
-                                                SqlCommand StrPrc1 = new SqlCommand("Teachers_add", con);
-                                                StrPrc1.CommandType = CommandType.StoredProcedure;
-                                                StrPrc1.Parameters.AddWithValue("@Unique_Naim", (panel3.Controls["textbox8"] as TextBox).Text);
-                                                StrPrc1.Parameters.AddWithValue("@User_End_Data", EndData);
-                                                StrPrc1.Parameters.AddWithValue("@KolvoNeRegStudents", Convert.ToInt32((panel3.Controls["textbox7"] as TextBox).Text));
-                                                StrPrc1.ExecuteNonQuery();
-
-                                                // Выбор номера добавленного преподавателя
-                                                TeacherId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_teacher as 'id' from Teachers where Unique_Naim='" + (panel3.Controls["textbox8"] as TextBox).Text + "'"));
-
-                                                // Запись данных В БД
-                                                SqlCommand StrPrc2 = new SqlCommand("users_add", con);
-                                                StrPrc2.CommandType = CommandType.StoredProcedure;
-                                                StrPrc2.Parameters.AddWithValue("@User_Login", (panel3.Controls["textbox5"] as TextBox).Text);
-                                                StrPrc2.Parameters.AddWithValue("@User_Password", new Shifr().Shifrovka(password, "Pass"));
-                                                StrPrc2.Parameters.AddWithValue("@User_Mail", new Shifr().Shifrovka((panel3.Controls["textbox6"] as TextBox).Text, "Mail"));
-                                                StrPrc2.Parameters.AddWithValue("@UserStatus", 0);
-                                                StrPrc2.Parameters.AddWithValue("@Teacher_id", TeacherId);
-                                                StrPrc2.ExecuteNonQuery();
-
-                                                // Выбор номера добавленного пользователя
-                                                int UserId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_user as 'id' from users where User_Login = '" + (panel3.Controls["textbox5"] as TextBox).Text + "'"));
-
-                                                // Запись данных В БД
-                                                SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
-                                                StrPrc3.CommandType = CommandType.StoredProcedure;
-                                                StrPrc3.Parameters.AddWithValue("@Naim", "Teacher");
-                                                StrPrc3.Parameters.AddWithValue("@Users_id", UserId);
-                                                StrPrc3.Parameters.AddWithValue("@Dostup_id", 2);
-                                                StrPrc3.ExecuteNonQuery();
-
-                                                // Генерация нового ключа активации
-                                                string key = new Shifr().Shifrovka(GetKey(),"Kod");
-
-                                                // Обновление ключа активации программного продукта
-                                                new SQL_Query().UpdateOneCell("UPDATE defender SET DefenderKey='" + key + "' WHERE id_defend = 1");
-
-                                                //Вывод сообщения
-                                                MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                                // Переход на форму авторизации
-                                                OpenAutorizationForm();
                                             }
                                             catch
                                             {
                                                 CreateInfo("Сообщение с вашим паролем не было отправлено, обратитесь к администратору!", "red", panel1);
                                             }
+
+                                            // Запись данных В БД
+                                            SqlCommand StrPrc1 = new SqlCommand("Teachers_add", con);
+                                            StrPrc1.CommandType = CommandType.StoredProcedure;
+                                            StrPrc1.Parameters.AddWithValue("@Unique_Naim", (panel3.Controls["textbox8"] as TextBox).Text);
+                                            StrPrc1.Parameters.AddWithValue("@User_End_Data", EndData);
+                                            StrPrc1.Parameters.AddWithValue("@KolvoNeRegStudents", Convert.ToInt32((panel3.Controls["textbox7"] as TextBox).Text));
+                                            StrPrc1.ExecuteNonQuery();
+
+                                            // Выбор номера добавленного преподавателя
+                                            TeacherId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_teacher as 'id' from Teachers where Unique_Naim='" + (panel3.Controls["textbox8"] as TextBox).Text + "'"));
+
+                                            // Запись данных В БД
+                                            SqlCommand StrPrc2 = new SqlCommand("users_add", con);
+                                            StrPrc2.CommandType = CommandType.StoredProcedure;
+                                            StrPrc2.Parameters.AddWithValue("@User_Login", (panel3.Controls["textbox5"] as TextBox).Text);
+                                            StrPrc2.Parameters.AddWithValue("@User_Password", new Shifr().Shifrovka(password, "Pass"));
+                                            StrPrc2.Parameters.AddWithValue("@User_Mail", new Shifr().Shifrovka((panel3.Controls["textbox6"] as TextBox).Text, "Mail"));
+                                            StrPrc2.Parameters.AddWithValue("@UserStatus", 0);
+                                            StrPrc2.Parameters.AddWithValue("@Teacher_id", TeacherId);
+                                            StrPrc2.ExecuteNonQuery();
+
+                                            // Выбор номера добавленного пользователя
+                                            int UserId = Convert.ToInt32(new SQL_Query().GetInfoFromBD("select id_user as 'id' from users where User_Login = '" + (panel3.Controls["textbox5"] as TextBox).Text + "'"));
+
+                                            // Запись данных В БД
+                                            SqlCommand StrPrc3 = new SqlCommand("Role_add", con);
+                                            StrPrc3.CommandType = CommandType.StoredProcedure;
+                                            StrPrc3.Parameters.AddWithValue("@Naim", "Teacher");
+                                            StrPrc3.Parameters.AddWithValue("@Users_id", UserId);
+                                            StrPrc3.Parameters.AddWithValue("@Dostup_id", 2);
+                                            StrPrc3.ExecuteNonQuery();
+
+                                            // Генерация нового ключа активации
+                                            string key = new Shifr().Shifrovka(GetKey(), "Kod");
+
+                                            // Обновление ключа активации программного продукта
+                                            new SQL_Query().UpdateOneCell("UPDATE defender SET DefenderKey='" + key + "' WHERE id_defend = 1");
+
+                                            //Вывод сообщения
+                                            MessageBox.Show("Вы успешно зарегистрировались", "Отлично!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                            // Удаление динамической созданной Panel
+                                            new Autorization().CloseInfo();
+
+                                            // Переход на форму авторизации
+                                            OpenAutorizationForm();
                                         }
                                         else
                                         {

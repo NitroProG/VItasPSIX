@@ -6,19 +6,18 @@ using System.Data.SqlClient;
 using SqlConn;
 using System.Net;
 using System.Net.Mail;
-using System.Threading;
 
 namespace Psico
 {
     public partial class Autorization : Form
     {
-        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
-        System.Windows.Forms.Timer timer1 = new System.Windows.Forms.Timer();
-        System.Windows.Forms.Timer timer2 = new System.Windows.Forms.Timer();
-        System.Windows.Forms.Timer timer3 = new System.Windows.Forms.Timer();
-        System.Windows.Forms.Timer timer4 = new System.Windows.Forms.Timer();
-        System.Windows.Forms.Timer timer5 = new System.Windows.Forms.Timer();
-        System.Windows.Forms.Timer timer6 = new System.Windows.Forms.Timer();
+        Timer timer = new Timer();
+        Timer timer1 = new Timer();
+        Timer timer2 = new Timer();
+        Timer timer3 = new Timer();
+        Timer timer4 = new Timer();
+        Timer timer5 = new Timer();
+        Timer timer6 = new Timer();
         int TimerStatus1 = 0;
         int TimerStatus2 = 0;
         int TimerStatus3 = 0;
@@ -44,10 +43,6 @@ namespace Psico
             // Разрешение на получение события нажатия сочитания клавиш
             KeyPreview = true;
 
-            // Поток для обнуления статуса у главного администратора
-            Thread Status = new Thread(UpdateMainAdminStatus);
-            Status.Start();
-
             // Таймеры
             timer1.Tick += Timer_Tick1;
             timer1.Interval = 10;
@@ -61,6 +56,8 @@ namespace Psico
             timer5.Interval = 10;
             timer6.Tick += Timer_Tick6;
             timer6.Interval = 10;
+
+            Program.checkopenzadacha = 0;
         }
 
         private void UpdateMainAdminStatus()
@@ -121,6 +118,12 @@ namespace Psico
                                     switch (UserRole)
                                     {
                                         case "Admin":
+                                            // Обнуление статуса у главного администратора
+                                            UpdateMainAdminStatus();
+
+                                            // Удаление динамической созданной Panel
+                                            new Autorization().CloseInfo();
+
                                             //Присвоение переменной роли пользователя
                                             Program.UserRole = 1;
 
@@ -131,6 +134,9 @@ namespace Psico
                                             Hide();
                                             break;
                                         case "Teacher":
+                                            // Удаление динамической созданной Panel
+                                            new Autorization().CloseInfo();
+
                                             //Присвоение переменной роли пользователя
                                             Program.UserRole = 2;
 
@@ -141,6 +147,9 @@ namespace Psico
                                             Hide();
                                             break;
                                         case "Student":
+                                            // Удаление динамической созданной Panel
+                                            new Autorization().CloseInfo();
+
                                             //Присвоение переменной роли пользователя
                                             Program.UserRole = 3;
 
@@ -193,9 +202,13 @@ namespace Psico
 
         private void OpenFormRegistration(object sender, EventArgs e)
         {
+
             // Проверка подключения к БД
             if (CheckConnection == 0)
             {
+                // Удаление динамической созданной Panel
+                new Autorization().CloseInfo();
+
                 // Открытие формы регистрации
                 new Registration().Show();
 
@@ -440,7 +453,7 @@ namespace Psico
 
                         // Отправка Кода подтверждения на указанную почту
                         MailMessage mail = new MailMessage("ProgrammPsicotest@yandex.ru", ((panel1.Controls["RestorePassword"] as Panel).Controls["Mail"] as TextBox).Text,
-                                                           "Код подтверждения для изменения пароля", NewPassKey.ToString());
+                                                           "Код подтверждения для изменения пароля в программе Psico", NewPassKey.ToString());
                         SmtpClient client = new SmtpClient("smtp.yandex.ru");
                         client.Port = 587;
                         client.Credentials = new NetworkCredential("ProgrammPsicotest@yandex.ru", "DogCatPigMonkeyLionTiger");
@@ -612,14 +625,7 @@ namespace Psico
         public void CreateInfo(string labelinfo, string color, Panel MainPanel)
         {
             // Удаление динамической созданной Panel
-            try
-            {
-                (panel1.Controls["panel"] as Panel).Dispose();
-                timer.Stop();
-            }
-            catch
-            {
-            }
+            CloseInfo();
 
             // Создание таймера
             timer.Tick += Timer_Tick;
@@ -666,17 +672,16 @@ namespace Psico
         private void Label_Click(object sender, EventArgs e)
         {
             // Удаление динамической созданной Panel
-            try
-            {
-                (panel1.Controls["panel"] as Panel).Dispose();
-                timer.Stop();
-            }
-            catch
-            {
-            }
+            CloseInfo();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
+        {
+            // Удаление динамической созданной Panel
+            CloseInfo();
+        }
+        
+        public void CloseInfo()
         {
             // Удаление динамической созданной Panel
             try
@@ -702,7 +707,7 @@ namespace Psico
             }
         }
 
-        private void Autorization_KeyDown(object sender, KeyEventArgs e)
+        private void HotKeys(object sender, KeyEventArgs e)
         {
             // Сочитание клавиш Ctrl + Shift + D
             if (e.Control && e.Shift && e.KeyCode == Keys.D)
